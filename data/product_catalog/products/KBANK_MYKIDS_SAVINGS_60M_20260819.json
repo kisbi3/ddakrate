@@ -40,14 +40,17 @@
     "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
     "missing_reason_code": "REQUIRED_FACT_MISSING",
     "missing_fact": {
-      "resolution_strategy": "QUERY_INSTITUTION",
+      "resolution_strategy": "ASK_USER",
       "impact": null,
-      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
-      "question": null,
-      "expected_semantic_type": null,
+      "required_source": "USER_SELF_REPORT_PENDING_INSTITUTION_VERIFICATION",
+      "question": "가입 대상자가 만 17세 미만이고 케이뱅크 마이키즈 서비스 가입 대상인가요?",
+      "expected_semantic_type": "SELF_REPORTED_FACT",
       "action_id": null,
       "reward_id": null,
-      "grounding_terms": []
+      "grounding_terms": [
+        "만 17세 미만",
+        "케이뱅크 마이키즈 서비스 가입 대상"
+      ]
     },
     "action": null,
     "required_semantic_type": null,

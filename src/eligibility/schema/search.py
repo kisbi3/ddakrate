@@ -112,8 +112,12 @@ class IntentPatch(StrictSearchModel):
     silently erase unrelated intent state.
     """
 
-    upsert_product_types: list[str] = Field(default_factory=list)
-    remove_product_types: list[str] = Field(default_factory=list)
+    upsert_product_types: list[Literal["INSTALLMENT_SAVINGS", "TIME_DEPOSIT"]] = Field(
+        default_factory=list
+    )
+    remove_product_types: list[Literal["INSTALLMENT_SAVINGS", "TIME_DEPOSIT"]] = Field(
+        default_factory=list
+    )
     upsert_hard_constraints: list[HardConstraint] = Field(default_factory=list)
     remove_hard_constraint_keys: list[str] = Field(default_factory=list)
     upsert_preferences: list[Preference] = Field(default_factory=list)
@@ -130,7 +134,9 @@ class IntentPatch(StrictSearchModel):
 class ProductSearchIntent(StrictSearchModel):
     search_intent_id: str
     user_id: str
-    product_types: list[str] = Field(default_factory=list)
+    product_types: list[Literal["INSTALLMENT_SAVINGS", "TIME_DEPOSIT"]] = Field(
+        default_factory=list
+    )
     ranking_objective: RankingObjective = RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST
     hard_constraints: list[HardConstraint] = Field(default_factory=list)
     preferences: list[Preference] = Field(default_factory=list)
@@ -289,6 +295,8 @@ class CandidateEvaluation(StrictSearchModel):
     confirmed_after_tax_interest: Decimal | None = None
     realizable_after_tax_interest: Decimal | None = None
     conditional_upper_after_tax_interest: Decimal | None = None
+    confirmed_pre_tax_interest: Decimal | None = None
+    conditional_upper_pre_tax_interest: Decimal | None = None
     estimated_total_principal: Decimal | None = None
     realizable_pre_tax_interest: Decimal | None = None
     preference_score: int = 0
@@ -333,6 +341,9 @@ class PlannedQuestion(StrictSearchModel):
     question: str
     affected_product_ids: list[str]
     score: Decimal
+    product_context: str | None = None
+    explanation: str | None = None
+    question_stage: Literal["PRE_SEARCH"] | None = None
 
 
 class TopKStabilityResult(StrictSearchModel):
@@ -357,6 +368,7 @@ class RecommendationListItem(StrictSearchModel):
     maximum_deposit_summary: str
     planned_contribution_summary: str
     estimated_total_principal: Decimal | None = None
+    estimated_pre_tax_interest: Decimal | None = None
     estimated_after_tax_interest: Decimal | None = None
     ranking_comparability: RankingComparability = RankingComparability.COMPARABLE
     missing_ranking_input_count: int = Field(default=0, ge=0)

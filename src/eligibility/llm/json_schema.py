@@ -4,6 +4,15 @@ from copy import deepcopy
 from typing import Any
 
 
+_UNSUPPORTED_REGEX_LOOKAROUNDS = ("(?=", "(?!", "(?<=", "(?<!")
+
+
+def _has_unsupported_regex_lookaround(value: Any) -> bool:
+    return isinstance(value, str) and any(
+        token in value for token in _UNSUPPORTED_REGEX_LOOKAROUNDS
+    )
+
+
 def openai_strict_json_schema(schema: dict[str, Any]) -> dict[str, Any]:
     """Normalize a Pydantic JSON Schema for OpenAI strict Structured Outputs.
 
@@ -26,6 +35,31 @@ def openai_strict_json_schema(schema: dict[str, Any]) -> dict[str, Any]:
 
         # Defaults are a Pydantic/runtime concern and are not needed by the model.
         node.pop("default", None)
+
+        # Pydantic represents Decimal as either a JSON number or a string guarded
+        # by a lookaround regex. OpenAI Structured Outputs does not support regex
+        # lookarounds. Prefer the numeric branch so the transport contract stays
+        # strict; Pydantic remains the final response validator.
+        any_of = node.get("anyOf")
+        if isinstance(any_of, list) and any(
+            isinstance(branch, dict) and branch.get("type") == "number"
+            for branch in any_of
+        ):
+            node["anyOf"] = [
+                branch
+                for branch in any_of
+                if not (
+                    isinstance(branch, dict)
+                    and branch.get("type") == "string"
+                    and _has_unsupported_regex_lookaround(branch.get("pattern"))
+                )
+            ]
+
+        # Other model schemas may also contain a Pydantic-generated lookaround.
+        # Dropping only the unsupported transport keyword avoids provider-side
+        # schema rejection while preserving final validation in Pydantic.
+        if _has_unsupported_regex_lookaround(node.get("pattern")):
+            node.pop("pattern", None)
 
         for key, value in list(node.items()):
             node[key] = visit(value)

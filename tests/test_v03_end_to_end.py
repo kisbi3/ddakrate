@@ -75,7 +75,7 @@ def test_salary_envelope_6m_unknown_to_achievable():
     assert (before_rule.progress.current, before_rule.progress.required) == (0, 6)
     assert before.rates.realizable_rate == Decimal("3.05")
     assert "6개월" in question
-    assert "+1.0%p" in question
+    assert "%p" not in question
 
     store = submit_user_fact(
         store,

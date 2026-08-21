@@ -6,17 +6,18 @@ from eligibility.application import QuestionGenerator
 from eligibility.application_service import ApplicationService
 from eligibility.conversation import ConversationOrchestrator
 from eligibility.catalog import load_default_product_catalog
-from eligibility.fixtures.user_001 import USER_ID, user_001
 from eligibility.llm import LLMConfigurationError, LLMGateway, LLMSettings
 from eligibility.search.intent import IntentParser
 from eligibility.search.questions import RankingAwareQuestionPlanner
 from eligibility.search.recommendation import GroundedResultExplainer, RecommendationService
+from eligibility.web.debug_trace import DebugTraceStore
 
 
 @dataclass(frozen=True)
 class WebRuntime:
     service: ApplicationService
-    sample_user_id: str
+    sample_user_id: str | None
+    user_data_mode: str
     product_count: int
     llm_enabled: bool
     llm_provider: str
@@ -24,6 +25,7 @@ class WebRuntime:
     llm_api_family: str
     llm_gateway: LLMGateway | None = None
     llm_configuration_error: str | None = None
+    debug_trace_store: DebugTraceStore | None = None
 
 
 def build_web_runtime() -> WebRuntime:
@@ -39,11 +41,15 @@ def build_web_runtime() -> WebRuntime:
     """
 
     settings = LLMSettings.from_env()
+    debug_trace_store = DebugTraceStore()
     gateway: LLMGateway | None = None
     configuration_error: str | None = None
     if settings.provider != "MOCK":
         try:
-            gateway = LLMGateway.from_settings(settings)
+            gateway = LLMGateway.from_settings(
+                settings,
+                debug_observer=debug_trace_store.observer(),
+            )
         except LLMConfigurationError as exc:
             configuration_error = str(exc)
 
@@ -51,10 +57,15 @@ def build_web_runtime() -> WebRuntime:
 
     service = ApplicationService(
         products,
-        user_fact_stores={USER_ID: user_001()},
+        user_fact_stores={},
         intent_parser=IntentParser(gateway),
         question_planner=RankingAwareQuestionPlanner(
-            question_generator=QuestionGenerator(gateway)
+            question_generator=QuestionGenerator(gateway),
+            # The Web conversation explores a wider consideration set than the
+            # visible Top 5. This lets answers promote or demote plausible
+            # challengers over several turns instead of stopping as soon as the
+            # current five happen to be mathematically stable.
+            exploration_depth_multiplier=3,
         ),
         recommendation_service=RecommendationService(
             explainer=GroundedResultExplainer(gateway)
@@ -63,7 +74,8 @@ def build_web_runtime() -> WebRuntime:
     )
     return WebRuntime(
         service=service,
-        sample_user_id=USER_ID,
+        sample_user_id=None,
+        user_data_mode="CONVERSATIONAL_INPUT",
         product_count=len(products),
         llm_enabled=gateway is not None,
         llm_provider=settings.provider,
@@ -75,4 +87,5 @@ def build_web_runtime() -> WebRuntime:
         ),
         llm_gateway=gateway,
         llm_configuration_error=configuration_error,
+        debug_trace_store=debug_trace_store,
     )

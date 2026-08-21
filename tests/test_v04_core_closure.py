@@ -66,8 +66,9 @@ def test_question_generator_rejects_rate_unit_rebinding():
 
     question = QuestionGenerator(_gateway_for(request, hallucination)).generate(request)
 
-    assert question == request.question
+    assert question == QuestionGenerator.deterministic_fallback(request)
     assert "+6.0%p" not in question
+    assert "%p" not in question
     payload = build_question_payload(request, request.question or "")
     assert any(claim.unit == "MONTH" and claim.value == "6" for claim in payload.claims)
     assert any(
@@ -82,7 +83,7 @@ def test_question_generator_rejects_new_financial_condition():
 
     question = QuestionGenerator(_gateway_for(request, hallucination)).generate(request)
 
-    assert question == request.question
+    assert question == QuestionGenerator.deterministic_fallback(request)
     assert "신한카드" not in question
 
 
@@ -102,8 +103,10 @@ def test_question_generator_uses_deterministic_fallback():
         )
     )
 
-    assert QuestionGenerator(gateway).generate(request) == request.question
-    assert QuestionGenerator().generate(request) == request.question
+    fallback = QuestionGenerator.deterministic_fallback(request)
+    assert QuestionGenerator(gateway).generate(request) == fallback
+    assert QuestionGenerator().generate(request) == fallback
+    assert "%p" not in fallback
 
 
 def _revision_request() -> MissingFactRequest:

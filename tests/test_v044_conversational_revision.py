@@ -152,7 +152,7 @@ def test_revised_choice_recalculates_interest():
 
 def test_revised_choice_reranks_product():
     product = kakao_26_week_product()
-    competitor = make_product("REVISION-COMPETITOR", base_rate="0.4")
+    competitor = make_product("REVISION-COMPETITOR", base_rate="1.2", term_value=6)
     store = kakao_pre_subscription_user(intent=True).with_fact(
         verified_fact("REVISION-ELIGIBLE", "ELIGIBLE", True, user_id=KAKAO_USER_ID)
     )

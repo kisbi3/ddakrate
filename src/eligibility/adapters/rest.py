@@ -134,6 +134,15 @@ class RestApplicationAdapter:
                 return RestResponse(status_code=200, body=result.model_dump(mode="json"))
 
             match = re.fullmatch(
+                r"/search-sessions/([^/]+)/recommendations/([^/]+)/preview", path
+            )
+            if method == "GET" and match:
+                detail = self.service.get_product_recommendation_detail(
+                    match.group(1), match.group(2), include_explanation=False
+                )
+                return RestResponse(status_code=200, body=detail.model_dump(mode="json"))
+
+            match = re.fullmatch(
                 r"/search-sessions/([^/]+)/recommendations/([^/]+)", path
             )
             if method == "GET" and match:

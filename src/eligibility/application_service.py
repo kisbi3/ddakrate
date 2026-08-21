@@ -4,6 +4,7 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from decimal import Decimal
+import re
 from typing import Any, Iterable
 
 from eligibility.application import (
@@ -63,7 +64,11 @@ from eligibility.search.questions import RankingAwareQuestionPlanner
 from eligibility.search.ranking import RankingService
 from eligibility.search.recommendation import RecommendationService
 from eligibility.search.retrieval import CandidateRetriever
-from eligibility.search.contribution import apply_product_contribution_choices
+from eligibility.search.contribution import (
+    apply_product_contribution_choices,
+    resolve_term,
+    term_summary,
+)
 from eligibility.working_note import InMemorySearchWorkingNoteStore, SearchWorkingNoteStore
 
 
@@ -100,6 +105,8 @@ class _SearchRuntime:
     product_contribution_choices: dict[tuple[str, str], ProductContributionChoice] = field(default_factory=dict)
     product_contribution_choice_history: list[ProductContributionChoice] = field(default_factory=list)
     reopened_question_ids: set[str] = field(default_factory=set)
+    skipped_question_ids: set[str] = field(default_factory=set)
+    pre_search_profile_answers: dict[str, str] = field(default_factory=dict)
     working_note_turn_sequence: int = 0
 
 
@@ -247,6 +254,134 @@ class ApplicationService:
 
         runtime = self._runtime(search_session_id)
         return self._mutable_state_summary(runtime)
+
+    def list_debug_search_sessions(self) -> list[dict[str, Any]]:
+        """Return lightweight session rows for the local orchestration inspector."""
+
+        return [
+            {
+                "search_session_id": runtime.session.search_session_id,
+                "status": runtime.session.status.value,
+                "created_at": runtime.session.created_at.isoformat(),
+                "updated_at": runtime.session.updated_at.isoformat(),
+                "intent_version": runtime.session.intent_version,
+                "candidate_count": len(runtime.candidate_products),
+                "answered_question_count": len(runtime.session.answered_question_ids),
+                "active_question": (
+                    runtime.active_question.question
+                    if runtime.active_question is not None
+                    else None
+                ),
+                "source_utterances": list(runtime.intent.source_utterances),
+            }
+            for runtime in sorted(
+                self._sessions.values(),
+                key=lambda item: item.session.updated_at,
+                reverse=True,
+            )
+        ]
+
+    def get_debug_search_snapshot(self, search_session_id: str) -> dict[str, Any]:
+        """Expose exact structured inputs/outputs used by the local Web runtime.
+
+        This is deliberately an internal observability view, not a public product
+        contract. It lets the private inspector explain where the LLM stops and
+        deterministic retrieval/evaluation/ranking/question selection begins.
+        """
+
+        runtime = self._runtime(search_session_id)
+        audit_events = self.audit_sink.read(trace_id=runtime.audit.trace_id)
+        return {
+            "session": runtime.session.model_dump(mode="json"),
+            "multi_turn": {
+                "source_utterances": list(runtime.intent.source_utterances),
+                "working_note": self.working_note_store.load(search_session_id),
+                "working_note_turn_sequence": runtime.working_note_turn_sequence,
+                "active_question": (
+                    runtime.active_question.model_dump(mode="json")
+                    if runtime.active_question is not None
+                    else None
+                ),
+                "answered_question_ids": list(runtime.session.answered_question_ids),
+                "skipped_question_ids": sorted(runtime.skipped_question_ids),
+                "question_history": [
+                    question.model_dump(mode="json")
+                    for question in runtime.question_history.values()
+                ],
+                "answer_records": [
+                    record.model_dump(mode="json") for record in runtime.answer_records
+                ],
+                "pre_search_profile_answers": dict(runtime.pre_search_profile_answers),
+            },
+            "engine": {
+                "call_order": [
+                    "IntentParser (LLM structured output)",
+                    "CandidateRetriever (deterministic)",
+                    "MultiProductEvaluator / FinancialEligibilityEngine (deterministic)",
+                    "RankingService (deterministic)",
+                    "RankingAwareQuestionPlanner (deterministic selection; wording may use LLM)",
+                ],
+                "retrieval": {
+                    "input": {
+                        "intent": runtime.intent.model_dump(mode="json"),
+                        "as_of": runtime.as_of.isoformat(),
+                        "catalog_product_ids": list(self.products),
+                        "excluded_product_ids": list(runtime.session.excluded_product_ids),
+                    },
+                    "output": {
+                        "candidate_product_ids": list(runtime.candidate_products),
+                        "filter_decisions": [
+                            decision.model_dump(mode="json")
+                            for decision in runtime.filter_decisions
+                        ],
+                    },
+                },
+                "evaluation": {
+                    "input": {
+                        "candidate_product_ids": list(runtime.candidate_products),
+                        "facts": runtime.fact_store.model_dump(mode="json"),
+                        "subscription_date": runtime.subscription_date.isoformat(),
+                        "product_contribution_choices": [
+                            item.model_dump(mode="json")
+                            for item in runtime.product_contribution_choices.values()
+                        ],
+                    },
+                    "output": {
+                        product_id: evaluation.model_dump(mode="json")
+                        for product_id, evaluation in runtime.evaluations.items()
+                    },
+                },
+                "ranking": {
+                    "input": {
+                        "objective": runtime.intent.ranking_objective.value,
+                        "top_k": runtime.intent.requested_top_k,
+                        "evaluated_product_ids": list(runtime.evaluations),
+                    },
+                    "output": (
+                        runtime.ranking.model_dump(mode="json")
+                        if runtime.ranking is not None
+                        else None
+                    ),
+                },
+                "question_planner": {
+                    "input": {
+                        "answered_question_ids": list(
+                            runtime.session.answered_question_ids
+                        ),
+                        "suppressed_question_ids": sorted(runtime.skipped_question_ids),
+                        "evaluated_product_ids": list(runtime.evaluations),
+                    },
+                    "output": (
+                        runtime.active_question.model_dump(mode="json")
+                        if runtime.active_question is not None
+                        else None
+                    ),
+                },
+            },
+            "audit_timeline": [
+                event.model_dump(mode="json") for event in audit_events
+            ],
+        }
 
     def close_search_session(self, search_session_id: str) -> None:
         runtime = self._runtime(search_session_id)
@@ -839,6 +974,13 @@ class ApplicationService:
         patch: IntentPatch | None = None,
     ) -> SearchSession:
         runtime = self._runtime(search_session_id)
+        active_question_before_update = runtime.active_question
+        ranking_only_patch = (
+            patch is not None
+            and patch.ranking_objective_patch is not None
+            and patch.model_dump(exclude_none=True, exclude_defaults=True)
+            == {"ranking_objective_patch": patch.ranking_objective_patch}
+        )
         if intent is None:
             if patch is not None:
                 intent = IntentParser.apply_patch(runtime.intent, patch)
@@ -858,6 +1000,17 @@ class ApplicationService:
             payload={"intent_version": runtime.session.intent_version},
         )
         self._run_pipeline(runtime)
+        if ranking_only_patch and active_question_before_update is not None:
+            runtime.active_question = active_question_before_update
+            runtime.session = runtime.session.model_copy(
+                update={
+                    "active_question_id": active_question_before_update.question_id,
+                    "status": SearchSessionStatus.QUESTIONING,
+                    "updated_at": datetime.now(timezone.utc),
+                },
+                deep=True,
+            )
+            self._refresh_ranking_stability(runtime, material_question=True)
         return runtime.session
 
     def handle_user_message(
@@ -916,6 +1069,10 @@ class ApplicationService:
             action.operation == ConversationOperation.SHOW_CURRENT_RESULTS
             for action in plan.actions
         )
+        explanation_requested = any(
+            action.operation == ConversationOperation.EXPLAIN_ACTIVE_QUESTION
+            for action in plan.actions
+        )
         priority = {
             ConversationOperation.UPDATE_SEARCH_INTENT: 10,
             ConversationOperation.SET_PRODUCT_EXCLUSION: 20,
@@ -927,6 +1084,8 @@ class ApplicationService:
             ConversationOperation.REVISE_PRODUCT_CONTRIBUTION_CHOICE: 40,
             ConversationOperation.EXCLUDE_PRODUCT: 45,
             ConversationOperation.SUBMIT_ACTIVE_QUESTION_ANSWER: 50,
+            ConversationOperation.SKIP_ACTIVE_QUESTION: 50,
+            ConversationOperation.EXPLAIN_ACTIVE_QUESTION: 80,
             ConversationOperation.SHOW_CURRENT_RESULTS: 90,
             ConversationOperation.NO_OP: 99,
         }
@@ -953,6 +1112,7 @@ class ApplicationService:
                 ConversationOperation.REVISE_PRODUCT_CONTRIBUTION_CHOICE,
                 ConversationOperation.EXCLUDE_PRODUCT,
                 ConversationOperation.SUBMIT_ACTIVE_QUESTION_ANSWER,
+                ConversationOperation.SKIP_ACTIVE_QUESTION,
             }
             state_changed = any(item in mutating_operations for item in executed)
             if state_changed:
@@ -999,6 +1159,11 @@ class ApplicationService:
         next_question = self.get_next_question(search_session_id)
         recommendations = None
         unresolved_warning = None
+        assistant_message = (
+            runtime.active_question.explanation
+            if explanation_requested and runtime.active_question is not None
+            else None
+        )
         if current_results_requested:
             runtime.audit.emit(
                 "CONVERSATION_ORCHESTRATOR",
@@ -1011,7 +1176,7 @@ class ApplicationService:
                 recommendations = self.get_top_recommendations(search_session_id)
                 if runtime.active_question is not None or not runtime.ranking.stability.stable:
                     unresolved_warning = (
-                        "일부 미확인 조건에 따라 현재 Top 5 구성 또는 순위가 달라질 수 있습니다."
+                        "조건 검토가 진행 중이므로 현재 목록은 확정 Top 5가 아닌 후보 목록입니다."
                     )
             # The question remains active in SearchSession but is not the response
             # priority for this turn. A later turn can resume it normally.
@@ -1028,6 +1193,7 @@ class ApplicationService:
             recommendations=recommendations,
             current_results_requested=current_results_requested,
             unresolved_warning=unresolved_warning,
+            assistant_message=assistant_message,
         )
 
     # ------------------------------------------------------------------
@@ -1050,7 +1216,12 @@ class ApplicationService:
         runtime = self._runtime(search_session_id)
         if runtime.conflicts:
             return None
-        self._select_question(runtime)
+        # The pipeline selects and stores the active question. Rewording it on
+        # every GET adds an unnecessary LLM call and can make one conversational
+        # turn appear to ask two slightly different questions. Only select when
+        # no active question has been materialized yet.
+        if runtime.active_question is None:
+            self._select_question(runtime)
         return runtime.active_question
 
     def submit_user_answer(
@@ -1060,6 +1231,7 @@ class ApplicationService:
         answer: Any,
         answered_at: datetime | None = None,
         question_id: str | None = None,
+        select_next: bool = True,
     ) -> SearchSession:
         runtime = self._runtime(search_session_id)
         question = runtime.active_question
@@ -1067,6 +1239,11 @@ class ApplicationService:
             raise ValueError("There is no active question")
         if question_id is not None and question.question_id != question_id:
             raise ValueError("question_id does not match active question")
+        if self._is_unknown_answer(answer):
+            return self.skip_active_question(
+                search_session_id,
+                select_next=select_next,
+            )
         if question.question_kind == "CONTRIBUTION_FEASIBILITY":
             return self._submit_contribution_feasibility_answer(
                 runtime,
@@ -1082,6 +1259,8 @@ class ApplicationService:
                 answered_at=self._effective_answered_at(runtime, answered_at),
             )
         assert question.request is not None
+        if question.question_stage == "PRE_SEARCH":
+            self._record_pre_search_profile_answer(runtime, question, answer)
         request_ref = self._request_reference(question.request)
         submission = UserAnswerSubmission(
             request_reference=request_ref,
@@ -1112,7 +1291,26 @@ class ApplicationService:
             merge=True,
         )
         self._rank(runtime)
-        self._select_question(runtime)
+        if select_next:
+            self._select_question(runtime)
+        return runtime.session
+
+    def skip_active_question(
+        self,
+        search_session_id: str,
+        *,
+        select_next: bool = True,
+    ) -> SearchSession:
+        """Keep a question unresolved while moving the conversation forward."""
+
+        runtime = self._runtime(search_session_id)
+        question = runtime.active_question
+        if question is None:
+            raise ValueError("There is no active question")
+        runtime.skipped_question_ids.add(question.question_id)
+        self._commit_answered_question(runtime, question.question_id)
+        if select_next:
+            self._select_question(runtime)
         return runtime.session
 
     def revise_user_answer(
@@ -1350,8 +1548,11 @@ class ApplicationService:
             runtime.evaluations,
             runtime.intent,
             answered_question_ids=set(runtime.session.answered_question_ids),
+            suppressed_question_ids=runtime.skipped_question_ids,
             audit=runtime.audit,
         )
+        if question is not None:
+            question = self._with_question_context(runtime, question)
         runtime.active_question = question
         self._refresh_ranking_stability(runtime, material_question=question is not None)
         if question is None:
@@ -1412,6 +1613,212 @@ class ApplicationService:
             },
             deep=True,
         )
+
+    def _with_question_context(
+        self,
+        runtime: _SearchRuntime,
+        question: PlannedQuestion,
+    ) -> PlannedQuestion:
+        from eligibility.search.ranking import _institution_name
+
+        products = [
+            runtime.candidate_products[product_id]
+            for product_id in question.affected_product_ids
+            if product_id in runtime.candidate_products
+        ]
+        labels = [
+            f"{_institution_name(product.institution_id)} · {product.name}"
+            for product in products
+        ]
+        if not labels:
+            product_context = None
+        elif len(labels) <= 2:
+            product_context = " / ".join(labels)
+        else:
+            product_context = f"{labels[0]} 외 {len(labels) - 1}개 상품"
+
+        fact_type = question.request.fact_type if question.request is not None else ""
+        rendered_question = question.question
+        question_stage = None
+        external_profile_check = (
+            question.request is not None
+            and question.request.resolution_strategy
+            in {
+                ResolutionStrategy.QUERY_INSTITUTION,
+                ResolutionStrategy.QUERY_MYDATA,
+            }
+        )
+        if external_profile_check:
+            rule_label = self._evaluation_rule_label(
+                runtime,
+                question.affected_product_ids[0]
+                if question.affected_product_ids
+                else None,
+                question.request.requested_by_rule_id,
+            )
+            subject = product_context or "현재 비교 중인 상품"
+            if not rule_label or rule_label == "공식 가입대상 충족":
+                raise ValueError(
+                    "Generic official eligibility must be datafied before it can "
+                    "be presented as a user question"
+                )
+            rendered_question = f"{subject}의 '{rule_label}' 조건에 해당하시나요?"
+            explanation = (
+                "원래 은행 또는 마이데이터 조회로 확인하는 항목이지만 현재는 해당 "
+                "연동이 없어 사용자에게 직접 확인하고 있어요. '네' 또는 '아니요'로 "
+                "답하면 사용자 응답으로 구분해 반영하며, 판단하기 어렵다면 "
+                "'모르겠어요'로 검토를 완료할 수 있습니다."
+            )
+        elif fact_type == "SALARY_ACCOUNT_CHANGE_POSSIBLE":
+            question_stage = "PRE_SEARCH"
+            product_context = "추천 전 사전 확인"
+            explanation = (
+                "급여이체 우대가 있는 상품을 공정하게 비교하기 위한 사전 질문이에요. "
+                "예: '현재 국민은행이고, 더 유리하면 바꿀 수 있어요'처럼 현재 은행과 "
+                "변경 의향을 함께 답하면 됩니다. 급여를 받지 않거나 정하지 못했다면 "
+                "그대로 말해 주세요."
+            )
+        elif fact_type == "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE":
+            explanation = (
+                "현재 후보에 남은 신한은행 상품의 카드 결제실적 우대를 확인하는 질문이에요. "
+                "예: '현재 신한카드 대금은 국민은행 계좌에서 빠져나가고, 더 유리하면 "
+                "신한은행으로 바꿀 수 있어요'처럼 현재 결제계좌 은행과 변경 의향을 "
+                "함께 답하면 됩니다. 신한카드가 없다면 그 사실을 그대로 말해 주세요."
+            )
+        elif fact_type == "SPECIAL_RATE_COUPON_VALID":
+            explanation = (
+                "신한은행 '청년 처음적금'의 첫거래 또는 이벤트 우대에 적용되는 "
+                "특별금리 우대쿠폰이에요.\n\n"
+                "현재 AI가 확인한 데이터\n"
+                "- 적용 대상: 신한은행이 발급했고 청년 처음적금에 사용할 수 있는 유효한 쿠폰 보유자\n"
+                "- 우대 적용: 첫거래 조건과 이벤트 쿠폰 조건 중 하나를 충족하면 적용\n"
+                "- 근거: 청년 처음적금 상품설명서 p.3 '[4] 첫거래 또는 이벤트 우대'\n"
+                "- 발급 대상의 세부 기준: 현재 카탈로그에 없음\n"
+                "- 발급 기간·발급 수량·잔여 수량: 현재 카탈로그와 실시간 연동에 없음\n"
+                "- 정확한 발급 경로: 현재 공식 근거 데이터에 없음\n\n"
+                "따라서 지금은 보유 여부만 판정할 수 있고, 대상·기간·수량을 AI가 "
+                "추측해서 안내하면 안 됩니다. 이 항목들은 SHINHAN_EVENT_COUPON "
+                "서비스 데이터를 추가 수집하거나 신한은행 실시간 연동이 되어야 정확히 안내할 수 있어요."
+            )
+        elif fact_type == "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY":
+            period = (
+                term_summary(resolve_term(products[0], runtime.intent.contribution_plan))
+                if products
+                else "31일"
+            )
+            rendered_question = (
+                f"{period} 동안 매일 직접 입금하는 것을 꾸준히 할 수 있으세요?"
+            )
+            explanation = (
+                "자동이체 횟수가 아니라 카카오뱅크 앱에서 매일 직접 입금해야 하는 "
+                "조건이에요. 하루에 여러 번 입금해도 하루 실적으로 계산되는 조건이므로, "
+                f"{period} 동안 하루씩 직접 입금할 수 있는지를 묻습니다."
+            )
+        elif fact_type == "WILL_KN_TOUCH_DEPOSIT_DAY":
+            period = (
+                term_summary(resolve_term(products[0], runtime.intent.contribution_plan))
+                if products
+                else "1개월"
+            )
+            target = max(
+                [
+                    int(value)
+                    for value in re.findall(
+                        r"(\d+)\s*(?:일|회)",
+                        " ".join(
+                            [
+                                question.request.question or "",
+                                *question.request.grounding_terms,
+                            ]
+                        ),
+                    )
+                ],
+                default=25,
+            )
+            rendered_question = (
+                f"{period} 가입 기간 동안 매일 직접 입금해 {target}일 이상 채울 수 있으세요?"
+            )
+            explanation = (
+                f"Touch UP 적금의 가입기간은 {period}이고, 자동이체가 아니라 직접 "
+                f"입금한 날짜를 세는 조건이에요. 여기서는 그 기간 안에 {target}일 이상 "
+                "직접 입금할 수 있는지를 묻습니다."
+            )
+        elif fact_type == "WILL_TOSS_MONTHLY_AUTO_TRANSFER_ALL":
+            resolved_terms = {
+                resolve_term(product, runtime.intent.contribution_plan).model_dump_json()
+                for product in products
+            }
+            term_labels = {
+                term_summary(resolve_term(product, runtime.intent.contribution_plan))
+                for product in products
+            }
+            if len(resolved_terms) == 1 and term_labels:
+                period = next(iter(term_labels))
+                rendered_question = (
+                    f"{period} 동안 매달 자동이체가 빠짐없이 실행되도록 유지하실 수 있나요?"
+                )
+            else:
+                rendered_question = (
+                    "각 상품의 가입 기간 동안 매달 자동이체가 빠짐없이 실행되도록 "
+                    "유지하실 수 있나요?"
+                )
+            product_context = (
+                f"자동이체 공통 조건 · {product_context}"
+                if product_context
+                else "자동이체 공통 조건"
+            )
+            explanation = (
+                "한 상품만을 위한 질문이 아니라, 같은 자동이체 유지 조건을 쓰는 현재 "
+                "후보들에 공통으로 적용되는 질문이에요. 자동이체를 설정하는 것뿐 아니라 "
+                "표시된 기간 동안 잔액 부족이나 이체 해지 없이 매월 성공할 수 있는지를 묻습니다."
+            )
+        elif fact_type == "KBANK_MYKIDS_ELIGIBLE":
+            explanation = (
+                "케이뱅크 마이키즈 적금은 가입 대상자가 만 17세 미만이고 "
+                "마이키즈 서비스 가입 대상이어야 해요. 여기서는 본인이 아는 범위에서 "
+                "답하고, 실제 가입 가능 여부는 케이뱅크에서 다시 확인합니다."
+            )
+        elif "SUPERSOL" in fact_type or "SuperSOL" in question.question:
+            explanation = (
+                "신한 SuperSOL은 신한금융그룹의 통합 금융 앱이에요. 이 질문은 앱의 "
+                "정회원 가입, 최초 로그인과 필요한 기간 동안 회원 유지를 할 수 있는지 묻습니다."
+            )
+        else:
+            subject = product_context or "현재 비교 중인 상품"
+            explanation = (
+                f"{subject}의 가입 가능 여부나 우대조건을 확인하기 위한 질문이에요. "
+                "의미가 불분명하거나 확인할 수 없으면 '모르겠어요'를 선택해도 됩니다."
+            )
+        return question.model_copy(
+            update={
+                "product_context": product_context,
+                "explanation": explanation,
+                "question": rendered_question,
+                "question_stage": question_stage,
+            },
+            deep=True,
+        )
+
+    @staticmethod
+    def _evaluation_rule_label(
+        runtime: _SearchRuntime,
+        product_id: str | None,
+        rule_id: str,
+    ) -> str | None:
+        if product_id is None or product_id not in runtime.evaluations:
+            return None
+        evaluation = runtime.evaluations[product_id].product_evaluation
+        stack = [
+            evaluation.eligibility,
+            *evaluation.preferential_rule_results,
+            *evaluation.global_guard_results,
+        ]
+        while stack:
+            result = stack.pop()
+            if result.rule_id == rule_id:
+                return result.rule_name
+            stack.extend(result.children)
+        return None
 
     def _submit_ranking_input_answer(
         self,
@@ -1720,6 +2127,21 @@ class ApplicationService:
         if isinstance(answer, dict):
             return bool(answer.get("declined"))
         return False
+
+    @staticmethod
+    def _is_unknown_answer(answer: Any) -> bool:
+        if answer is None:
+            return True
+        if not isinstance(answer, str):
+            return False
+        return answer.strip().casefold() in {
+            "unknown",
+            "skip",
+            "모름",
+            "모르겠어요",
+            "잘 모르겠어요",
+            "잘모르겠어요",
+        }
 
     @staticmethod
     def _normalize_ranking_input_answer(
@@ -2056,8 +2478,7 @@ class ApplicationService:
                 stale_ids.add(item.input_id)
         runtime.declined_ranking_input_ids.difference_update(stale_ids)
 
-    @staticmethod
-    def _mutable_state_summary(runtime: _SearchRuntime) -> dict[str, Any]:
+    def _mutable_state_summary(self, runtime: _SearchRuntime) -> dict[str, Any]:
         user_declarations = [
             {
                 "fact_type": fact.fact_type,
@@ -2068,9 +2489,38 @@ class ApplicationService:
             for fact in runtime.fact_store.active_facts
             if fact.source_type == FactSourceType.USER_DECLARED
         ]
+        remaining_question_count = len(
+            self.question_planner.score_candidates(
+                runtime.evaluations,
+                runtime.intent,
+                answered_question_ids=set(runtime.session.answered_question_ids),
+                suppressed_question_ids=runtime.skipped_question_ids,
+            )
+        )
+        completed_question_count = len(runtime.session.answered_question_ids)
         return {
             "intent": runtime.intent.model_dump(mode="json"),
             "user_declarations": user_declarations,
+            "pre_search_profile_answers": [
+                {"fact_type": fact_type, "summary": summary}
+                for fact_type, summary in sorted(
+                    runtime.pre_search_profile_answers.items()
+                )
+            ],
+            "acknowledged_unknown_answers": [
+                {
+                    "question_id": question.question_id,
+                    "fact_type": (
+                        question.request.fact_type
+                        if question.request is not None
+                        else question.question_kind
+                    ),
+                    "question": question.question,
+                    "affected_product_ids": question.affected_product_ids,
+                }
+                for question_id in sorted(runtime.skipped_question_ids)
+                if (question := runtime.question_history.get(question_id)) is not None
+            ],
             "product_contribution_choices": [
                 item.model_dump(mode="json")
                 for item in sorted(
@@ -2079,7 +2529,57 @@ class ApplicationService:
                 )
             ],
             "excluded_product_ids": list(runtime.session.excluded_product_ids),
+            "search_progress": {
+                "recalculation_round": (
+                    1
+                    + len(runtime.session.answered_question_ids)
+                    + max(0, runtime.session.intent_version - 1)
+                ),
+                "catalog_product_count": len(self.products),
+                "candidate_product_count": len(runtime.candidate_products),
+                "viable_product_count": (
+                    len(runtime.ranking.ordered_product_ids)
+                    if runtime.ranking is not None
+                    else 0
+                ),
+                "visible_top_k_count": (
+                    len(runtime.ranking.items) if runtime.ranking is not None else 0
+                ),
+                "visible_top_product_ids": (
+                    [item.product_id for item in runtime.ranking.items]
+                    if runtime.ranking is not None
+                    else []
+                ),
+                "ranking_stable": (
+                    runtime.ranking.stability.stable
+                    if runtime.ranking is not None
+                    else False
+                ),
+                "has_next_question": runtime.active_question is not None,
+                "completed_question_count": completed_question_count,
+                "estimated_total_question_count": (
+                    completed_question_count + remaining_question_count
+                ),
+                "estimate_is_dynamic": True,
+            },
         }
+
+    @staticmethod
+    def _record_pre_search_profile_answer(
+        runtime: _SearchRuntime,
+        question: PlannedQuestion,
+        answer: Any,
+    ) -> None:
+        if question.request is None:
+            return
+        fact_type = question.request.fact_type
+        if answer is True:
+            summary = "필요하면 변경 가능"
+        elif answer is False:
+            summary = "변경하지 않음"
+        else:
+            summary = "확인 필요"
+        runtime.pre_search_profile_answers[fact_type] = summary
 
     def _conversation_context(self, runtime: _SearchRuntime) -> dict[str, Any]:
         mutable_facts = []
@@ -2185,6 +2685,8 @@ class ApplicationService:
             "product_contribution_choices",
             "product_contribution_choice_history",
             "reopened_question_ids",
+            "skipped_question_ids",
+            "pre_search_profile_answers",
         )
         return {name: deepcopy(getattr(runtime, name)) for name in fields}
 
@@ -2265,10 +2767,30 @@ class ApplicationService:
             )
             return
         if action.operation == ConversationOperation.SUBMIT_ACTIVE_QUESTION_ANSWER:
+            active_question = runtime.active_question
             answer = action.answer
             if hasattr(answer, "model_dump"):
                 answer = answer.model_dump(mode="python", exclude_none=True)
-            self.submit_user_answer(session_id, answer=answer)
+            # The conversation turn performs one authoritative full pipeline pass
+            # after all actions. Avoid generating an intermediate question here;
+            # it would be discarded immediately and adds an unnecessary LLM call.
+            self.submit_user_answer(session_id, answer=answer, select_next=False)
+            if (
+                active_question is not None
+                and active_question.question_stage == "PRE_SEARCH"
+                and active_question.request is not None
+                and action.rationale
+            ):
+                runtime.pre_search_profile_answers[
+                    active_question.request.fact_type
+                ] = action.rationale.strip()
+            return
+        if action.operation == ConversationOperation.SKIP_ACTIVE_QUESTION:
+            self.skip_active_question(session_id, select_next=False)
+            return
+        if action.operation == ConversationOperation.EXPLAIN_ACTIVE_QUESTION:
+            if runtime.active_question is None:
+                raise ValueError("There is no active question to explain")
             return
         if action.operation == ConversationOperation.EXCLUDE_PRODUCT:
             assert action.product_id is not None

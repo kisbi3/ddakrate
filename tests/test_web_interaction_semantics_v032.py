@@ -325,7 +325,7 @@ def test_question_fallback_distinguishes_historical_fact_and_future_intent():
     assert "과거 또는 현재" in historical_q
     assert "기관 검증 정보가 아닙니다" in historical_q
     assert "앞으로" in future_q
-    assert "목표" in future_q
+    assert "꾸준히 지킬 수" in future_q
     assert "과거 또는 현재" not in future_q
 
 

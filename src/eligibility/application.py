@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from eligibility.audit import AuditEventType, AuditSession, canonical_hash
 from eligibility.llm import LLMGateway, LLMPurpose
+from eligibility.llm.system_prompts import QUESTION_GENERATION_SYSTEM_PROMPT
 from eligibility.llm.grounding import (
     CanonicalQuestionPayload,
     ClaimBinding,
@@ -53,48 +54,136 @@ class QuestionGenerator:
             return fallback
         canonical_payload = build_question_payload(request, fallback)
         payload = canonical_payload.model_dump(mode="json")
-        prompt = (
-            "다음 CanonicalQuestionPayload의 typed claim만 표현하여 사용자가 답할 수 "
-            "있는 한 문장의 한국어 질문을 생성하세요. 기간 claim을 금리 claim으로 "
-            "바꾸는 등 value/unit을 재결합하지 마세요. source에 없는 금융조건이나 "
-            "행동을 추가하지 마세요. fact_type, rule_id, action_id, reward_id를 정확히 "
-            "복사하고, 사용한 claim은 claim_bindings에 원문 그대로 넣으세요.\n"
-            + json.dumps(payload, ensure_ascii=False, indent=2)
+        prompt = "CANONICAL_QUESTION_PAYLOAD:\n" + json.dumps(
+            payload, ensure_ascii=False, indent=2
         )
         try:
             response = self.gateway.generate_structured(
                 LLMPurpose.QUESTION_GENERATION,
                 prompt,
                 GeneratedQuestion,
+                system_prompt=QUESTION_GENERATION_SYSTEM_PROMPT,
                 metadata={"missing_fact_request_hash": canonical_hash(payload)},
             )
         except Exception:
             return fallback
         if not self._is_grounded(response.data, request, canonical_payload):
             return fallback
-        return response.data.question
+        if self._contains_rate(response.data.question):
+            return fallback
+        return self._add_brand_context(response.data.question)
 
     @staticmethod
     def deterministic_fallback(request: MissingFactRequest) -> str:
         if request.question:
-            return request.question
-        impact = ""
-        if request.impact is not None and request.impact.rate_pp is not None:
-            impact = f" 이 답변은 +{request.impact.rate_pp}%p 조건 판정에 사용됩니다."
+            question = QuestionGenerator._strip_rate_wording(request.question)
+            if request.fact_type == "SALARY_ACCOUNT_CHANGE_POSSIBLE":
+                return (
+                    "현재 급여를 어느 은행 계좌로 받고 계신가요? 다른 은행 상품이 더 "
+                    "유리하다면 급여 수령계좌를 옮길 의향이 있는지도 함께 알려주세요."
+                )
+            if request.fact_type == "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE":
+                return (
+                    "신한카드를 사용하고 계시다면 현재 카드대금은 어느 은행 계좌에서 "
+                    "결제되나요? 더 유리하다면 결제계좌를 신한은행으로 바꿀 의향이 "
+                    "있는지도 함께 알려주세요."
+                )
+            if request.fact_type == "SPECIAL_RATE_COUPON_VALID":
+                return (
+                    "신한은행 청년 처음적금에 적용되는 특별금리 쿠폰을 "
+                    "가지고 계신가요?"
+                )
+            if "자동이체 전 회차 성공" in question:
+                return "매월 자동이체가 빠짐없이 되도록 유지할 수 있으세요?"
+            repeated_deposit = re.fullmatch(
+                r"직접\s*입금(?:\s*누적)?\s*(\d+)(?:일\s*이상(?::\s*매일\s*우대\s*\d+번째)?|일차)"
+                r"(?:\s*우대)?(?:을|를)?\s*목표로\s*관리할까요\?",
+                question,
+            )
+            if repeated_deposit:
+                days = repeated_deposit.group(1)
+                return f"가입 기간 동안 매일 직접 입금해 {days}일 이상 채울 수 있으세요?"
+            count_bonus = re.fullmatch(
+                r"누적\s*(\d+)회\s*입금\s*보너스(?:을|를)?\s*목표로\s*관리할까요\?",
+                question,
+            )
+            if count_bonus:
+                count = count_bonus.group(1)
+                return f"{count}일 동안 매일 직접 입금하는 것을 꾸준히 할 수 있으세요?"
+            fraction = re.fullmatch(
+                r"(?:전체\s*)?계약월수\s*(\d+)\s*/\s*(\d+)\s*이상\s*"
+                r"(납입월\s*달성|자동이체\s*성공)(?:을|를)?\s*목표로\s*관리할까요\?",
+                question,
+            )
+            if fraction:
+                numerator, denominator, action = fraction.groups()
+                if "자동이체" in action:
+                    return (
+                        f"가입 기간 동안 {denominator}개월 중 {numerator}개월 이상 "
+                        "자동이체로 납입할 수 있으세요?"
+                    )
+                return (
+                    f"가입 기간 동안 {denominator}개월 중 {numerator}개월 이상 "
+                    "꾸준히 납입할 수 있으세요?"
+                )
+            question = re.sub(
+                r"(?:을|를)?\s*목표로\s*관리할까요\?\s*$",
+                "을 꾸준히 할 수 있으세요?",
+                question,
+            )
+            question = re.sub(
+                r"^이\s*상품의\s*(?:우대(?:금리)?\s*)?(?:을|를)?\s*받으려면\s*",
+                "",
+                question,
+            )
+            question = re.sub(
+                r"해야\s*합니다\.\s*이\s*조건을\s*꾸준히\s*할\s*수\s*있으세요\?\s*$",
+                "할 수 있으세요?",
+                question,
+            )
+            return QuestionGenerator._add_brand_context(question.strip())
 
         if request.expected_semantic_type == FactSemanticType.FUTURE_INTENT:
             action = request.action_id or request.fact_type
-            return f"앞으로 {action} 조건을 수행하고 목표로 관리하시겠습니까?{impact}"
+            return QuestionGenerator._add_brand_context(
+                f"앞으로 {action} 조건을 꾸준히 지킬 수 있으세요?"
+            )
 
         if request.expected_semantic_type == FactSemanticType.SELF_REPORTED_FACT:
             return (
                 f"과거 또는 현재 {request.fact_type} 사실에 해당했습니까?"
                 " 답변은 개인화 판정에 사용되며 금융데이터 확인값과 구분하여 표시됩니다."
                 " 기관 검증 정보가 아닙니다."
-                f"{impact}"
             )
 
-        return f"{request.fact_type} 사실을 확인해 주시겠습니까?{impact}"
+        return f"{request.fact_type} 사실을 확인해 주시겠습니까?"
+
+    @staticmethod
+    def _add_brand_context(text: str) -> str:
+        return re.sub(r"(?<!신한\s)SuperSOL", "신한 SuperSOL", text)
+
+    @staticmethod
+    def _contains_rate(text: str) -> bool:
+        return bool(
+            re.search(
+                r"[+-]?\s*\d+(?:\.\d+)?\s*(?:%p|퍼센트포인트|%|퍼센트)",
+                text,
+                re.IGNORECASE,
+            )
+        )
+
+    @staticmethod
+    def _strip_rate_wording(text: str) -> str:
+        text = re.sub(
+            r"\s*(?:을|를)?\s*(?:받기\s*위해\s*)?"
+            r"[+-]?\s*\d+(?:\.\d+)?\s*(?:%p|퍼센트포인트|%|퍼센트)"
+            r"(?:\s*(?:우대(?:금리)?|금리))?",
+            " ",
+            text,
+            flags=re.IGNORECASE,
+        )
+        text = re.sub(r"\s+", " ", text).strip()
+        return re.sub(r"\s+([?.!,])", r"\1", text)
 
     @classmethod
     def _is_grounded(

@@ -16,9 +16,13 @@ from eligibility.llm.models import (
     StructuredGenerationRequest,
 )
 from eligibility.llm.transport import HTTPResponse
+from eligibility.conversation import ConversationOrchestrator
 from eligibility.schema.conversation import ConversationPlan
+from eligibility.schema.search import IntentPatch
+from eligibility.search.intent import IntentParser
 from eligibility.web.app import create_app
 from eligibility.web.runtime import build_web_runtime
+from eligibility.web.debug_trace import DebugTraceStore
 
 
 class Answer(BaseModel):
@@ -135,6 +139,82 @@ def test_openai_responses_structured_payload_and_parse() -> None:
     assert "default" not in json.dumps(schema)
 
 
+def test_debug_trace_records_exact_messages_schema_and_output() -> None:
+    trace = DebugTraceStore()
+    settings = LLMSettings.from_env({"LLM_PROVIDER": "MOCK"})
+    gateway = LLMGateway.from_settings(
+        settings,
+        mock_responses={
+            LLMPurpose.CONVERSATION_ORCHESTRATION: {
+                "actions": [{"operation": "NO_OP"}]
+            }
+        },
+        debug_observer=trace.observer(),
+    )
+
+    with trace.request(
+        method="POST",
+        path="/api/search-sessions/SEARCH-1/messages",
+        payload={"message": "그게 뭐예요?"},
+        search_session_id="SEARCH-1",
+    ) as request_id:
+        response = gateway.generate_structured(
+            LLMPurpose.CONVERSATION_ORCHESTRATION,
+            "CURRENT_CONTEXT: {}\nUSER_MESSAGE: 그게 뭐예요?",
+            ConversationPlan,
+        )
+        trace.finish_request(
+            request_id,
+            status_code=200,
+            response_payload=response.data.model_dump(mode="json"),
+        )
+
+    captured = trace.requests_for_session("SEARCH-1")[0]["llm_calls"][0]
+    assert captured["request"]["messages"] == [
+        {
+            "role": "user",
+            "content": "CURRENT_CONTEXT: {}\nUSER_MESSAGE: 그게 뭐예요?",
+        }
+    ]
+    assert captured["request"]["response_schema_name"] == "ConversationPlan"
+    assert captured["request"]["response_json_schema"]
+    assert captured["output"]["actions"][0]["operation"] == "NO_OP"
+
+
+def test_runtime_intent_and_conversation_calls_separate_system_and_user_messages() -> None:
+    settings = LLMSettings.from_env({"LLM_PROVIDER": "MOCK"})
+    gateway = LLMGateway.from_settings(
+        settings,
+        mock_responses={
+            LLMPurpose.INTENT_PARSING: IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"]
+            ),
+            LLMPurpose.CONVERSATION_ORCHESTRATION: {
+                "actions": [{"operation": "NO_OP"}]
+            },
+        },
+    )
+
+    intent = IntentParser(gateway).parse("적금을 찾아줘", user_id="SYSTEM-PROMPT-USER")
+    ConversationOrchestrator(gateway).interpret("그대로 보여줘", context={})
+
+    intent_request, conversation_request = gateway.client.call_history
+    assert intent_request.response_schema_name == "IntentPatch"
+    assert [message.role.value for message in intent_request.messages] == ["system", "user"]
+    assert "구조화 추출기" in intent_request.messages[0].content
+    assert "CURRENT_SEARCH_INTENT" in intent_request.messages[1].content
+    assert intent.capabilities == []
+    assert intent.hard_constraints == []
+
+    assert conversation_request.response_schema_name == "ConversationPlan"
+    assert [message.role.value for message in conversation_request.messages] == [
+        "system",
+        "user",
+    ]
+    assert "구조화 라우터" in conversation_request.messages[0].content
+    assert "CURRENT_CONTEXT" in conversation_request.messages[1].content
+
+
 def test_openai_responses_gpt56_luna_omits_unsupported_temperature() -> None:
     transport = FakeTransport([responses_success()])
     adapter = OpenAIResponsesAdapter(
@@ -192,6 +272,37 @@ def test_conversation_plan_schema_has_no_untyped_any_and_normalizes_for_strict_o
 
     walk(schema)
     assert empty_nodes == []
+
+
+def test_conversation_plan_schema_removes_openai_unsupported_decimal_regex() -> None:
+    schema = openai_strict_json_schema(ConversationPlan.model_json_schema())
+    patterns: list[str] = []
+
+    def collect_patterns(node: Any) -> None:
+        if isinstance(node, dict):
+            pattern = node.get("pattern")
+            if isinstance(pattern, str):
+                patterns.append(pattern)
+            for value in node.values():
+                collect_patterns(value)
+        elif isinstance(node, list):
+            for value in node:
+                collect_patterns(value)
+
+    collect_patterns(schema)
+    assert all(
+        token not in pattern
+        for pattern in patterns
+        for token in ("(?=", "(?!", "(?<=", "(?<!")
+    )
+
+    amount_schema = schema["$defs"]["ContributionPlanPatch"]["properties"][
+        "desired_periodic_amount"
+    ]
+    assert {branch.get("type") for branch in amount_schema["anyOf"]} == {
+        "number",
+        "null",
+    }
 
 
 def test_openai_missing_key_keeps_web_runtime_safe_and_reports_configuration(monkeypatch) -> None:

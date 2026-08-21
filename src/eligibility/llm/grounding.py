@@ -271,9 +271,11 @@ def build_question_payload(request: MissingFactRequest, fallback: str) -> Canoni
                     label=term,
                 )
             )
-        # Numeric targets remain explicit; semantic terms are required by canonical
-        # concept and may therefore be paraphrased using an approved alias.
-        if numeric or not semantic:
+        # Numeric claims are validated by typed value/unit below, so requiring the
+        # entire source phrase here would reject harmless conversational rewrites
+        # such as "계약월수 2/3" -> "3개월 중 2개월". Free text without a
+        # recognized numeric or semantic claim still has to appear verbatim.
+        if not numeric and not semantic:
             required_terms.append(term)
         if not numeric and not semantic:
             claims.append(
@@ -379,6 +381,25 @@ def validate_grounded_text(
     }
     candidate_numeric = {_claim_key(claim) for claim in extract_numeric_claims(text)}
     if not candidate_numeric <= allowed_numeric:
+        return False
+
+    required_numeric = {
+        _claim_key(claim)
+        for claim in payload.claims
+        if claim.source_ref is not None
+        and claim.source_ref.startswith("grounding_terms[")
+        and claim.claim_type != ClaimType.RATE
+        and claim.claim_type
+        in {
+            ClaimType.DURATION,
+            ClaimType.AMOUNT,
+            ClaimType.COUNT,
+            ClaimType.RANK,
+            ClaimType.INTEREST,
+            ClaimType.NUMBER,
+        }
+    }
+    if not required_numeric <= candidate_numeric:
         return False
 
     compact = re.sub(r"\s+", "", text).casefold()

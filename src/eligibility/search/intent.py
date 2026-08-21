@@ -3,12 +3,16 @@ from __future__ import annotations
 import re
 from datetime import datetime, timezone
 from decimal import Decimal
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from eligibility.audit import canonical_hash
 from eligibility.llm import LLMGateway, LLMPurpose
+from eligibility.llm.system_prompts import (
+    INTENT_CLARIFICATION_SYSTEM_PROMPT,
+    INTENT_PARSING_SYSTEM_PROMPT,
+)
 from eligibility.schema.application_input import (
     Capability,
     HardConstraint,
@@ -39,7 +43,9 @@ from eligibility.schema.search import (
 class ProductSearchIntentDraft(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    product_types: list[str] = Field(default_factory=list)
+    product_types: list[Literal["INSTALLMENT_SAVINGS", "TIME_DEPOSIT"]] = Field(
+        default_factory=list
+    )
     ranking_objective: RankingObjective = RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST
     hard_constraints: list[HardConstraint] = Field(default_factory=list)
     preferences: list[Preference] = Field(default_factory=list)
@@ -59,19 +65,22 @@ class IntentParser:
         utterance = utterance.strip()
         if not utterance:
             raise ValueError("utterance must not be empty")
-        draft = self._parse_with_llm(utterance) if self.gateway is not None else None
-        if draft is None:
-            draft = self._parse_deterministically(utterance)
         now = datetime.now(timezone.utc)
         identity = {"user_id": user_id, "utterance": utterance, "at": now.isoformat()}
-        return ProductSearchIntent(
+        baseline = ProductSearchIntent(
             search_intent_id=f"INTENT-{canonical_hash(identity)[:16]}",
             user_id=user_id,
-            source_utterances=[utterance],
             created_at=now,
             updated_at=now,
-            **draft.model_dump(mode="python"),
         )
+        patch = (
+            self._parse_patch_with_llm(utterance, current=baseline, initial=True)
+            if self.gateway is not None
+            else None
+        )
+        if patch is None:
+            patch = self._parse_patch_deterministically(utterance)
+        return self.apply_patch(baseline, patch, source_utterance=utterance)
 
     def update(
         self,
@@ -80,7 +89,11 @@ class IntentParser:
     ) -> ProductSearchIntent:
         """Apply a follow-up utterance as an IntentPatch, never category replacement."""
 
-        patch = self._parse_patch_with_llm(utterance) if self.gateway is not None else None
+        patch = (
+            self._parse_patch_with_llm(utterance, current=current)
+            if self.gateway is not None
+            else None
+        )
         if patch is None:
             patch = self._parse_patch_deterministically(utterance)
         return self.apply_patch(current, patch, source_utterance=utterance)
@@ -201,23 +214,54 @@ class IntentParser:
                 merged.append(item)
         return merged
 
-    def _parse_patch_with_llm(self, utterance: str) -> IntentPatch | None:
+    def _parse_patch_with_llm(
+        self,
+        utterance: str,
+        *,
+        current: ProductSearchIntent,
+        initial: bool = False,
+    ) -> IntentPatch | None:
         assert self.gateway is not None
         prompt = (
-            "사용자의 후속 금융상품 탐색 발화를 IntentPatch로 구조화하세요. "
-            "사용자가 명시적으로 바꾼 key만 upsert/remove하고, 언급하지 않은 기존 값은 "
-            "절대 삭제하지 마세요. remove는 사용자가 해당 조건을 더 이상 적용하지 않겠다고 "
-            "명시한 경우에만 사용하세요. 정의된 schema 밖의 값을 만들지 마세요.\n" + utterance
+            "CURRENT_SEARCH_INTENT:\n"
+            + current.model_dump_json(indent=2)
+            + "\n\nUSER_UTTERANCE:\n<user_utterance>\n"
+            + utterance
+            + "\n</user_utterance>"
         )
         try:
-            return self.gateway.generate_structured(
+            generated = self.gateway.generate_structured(
                 LLMPurpose.INTENT_PARSING,
                 prompt,
                 IntentPatch,
-                metadata={"utterance_hash": canonical_hash(utterance), "operation": "PATCH"},
+                system_prompt=INTENT_PARSING_SYSTEM_PROMPT,
+                metadata={
+                    "utterance_hash": canonical_hash(utterance),
+                    "operation": "INITIAL_PATCH" if initial else "PATCH",
+                },
             ).data
+            patch = IntentPatch.model_validate(
+                generated.model_dump(mode="python")
+                if isinstance(generated, BaseModel)
+                else generated
+            )
+            return patch.model_copy(
+                update={
+                    "requested_top_k_patch": self._explicit_requested_top_k(utterance)
+                },
+                deep=True,
+            )
         except Exception:
             return None
+
+    @staticmethod
+    def _explicit_requested_top_k(utterance: str) -> int | None:
+        count_match = re.search(r"(?:top|상위)\s*(\d+)|(\d+)\s*개", utterance, re.I)
+        if count_match:
+            return max(1, min(20, int(count_match.group(1) or count_match.group(2))))
+        if re.search(r"하나만|한\s*개", utterance):
+            return 1
+        return None
 
     @staticmethod
     def _parse_patch_deterministically(utterance: str) -> IntentPatch:
@@ -283,24 +327,8 @@ class IntentParser:
             remove_numeric_preference_keys=list(dict.fromkeys(remove_numeric)),
             contribution_plan_patch=contribution_patch,
             ranking_objective_patch=objective_patch,
+            requested_top_k_patch=IntentParser._explicit_requested_top_k(utterance),
         )
-
-    def _parse_with_llm(self, utterance: str) -> ProductSearchIntentDraft | None:
-        assert self.gateway is not None
-        prompt = (
-            "사용자 금융상품 탐색 발화를 ProductSearchIntentDraft로 구조화하세요. "
-            "Hard Constraint, Preference, Capability, NumericPreference의 의미를 섞지 "
-            "말고, 사용자가 말하지 않은 제한을 추가하지 마세요.\n" + utterance
-        )
-        try:
-            return self.gateway.generate_structured(
-                LLMPurpose.INTENT_PARSING,
-                prompt,
-                ProductSearchIntentDraft,
-                metadata={"utterance_hash": canonical_hash(utterance)},
-            ).data
-        except Exception:
-            return None
 
     @staticmethod
     def _parse_deterministically(utterance: str) -> ProductSearchIntentDraft:
@@ -312,7 +340,9 @@ class IntentParser:
             product_types.append("TIME_DEPOSIT")
 
         objective = RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST
-        if re.search(r"금리.*(높|최고|제일)|(?:높|최고|제일).*금리", compact):
+        if "세전이자" in compact or "이자금순" in compact:
+            objective = RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST
+        elif re.search(r"금리.*(높|최고|제일)|(?:높|최고|제일).*금리", compact):
             objective = RankingObjective.MAX_REALIZABLE_RATE
         elif re.search(r"(관리|조건).*(쉽|편)|(?:쉽|편).*(관리|조건)", compact):
             objective = RankingObjective.MIN_ACTION_BURDEN
@@ -508,23 +538,19 @@ class IntentConflictClarifier:
         fallback = IntentConflictValidator.clarification(conflicts)
         if self.gateway is None:
             return fallback
-        prompt = (
-            "다음 IntentConflict를 사용자가 이해하기 쉬운 한 문장으로 다시 물으세요. "
-            "conflict_ids와 allowed_resolutions는 정확히 복사하고, 새로운 금융조건이나 "
-            "해결 선택지를 추가하지 마세요.\n"
-            + str(
-                {
-                    "conflicts": [item.model_dump(mode="json") for item in conflicts],
-                    "conflict_ids": fallback.conflict_ids,
-                    "allowed_resolutions": fallback.allowed_resolutions,
-                }
-            )
+        prompt = "INTENT_CONFLICTS:\n" + str(
+            {
+                "conflicts": [item.model_dump(mode="json") for item in conflicts],
+                "conflict_ids": fallback.conflict_ids,
+                "allowed_resolutions": fallback.allowed_resolutions,
+            }
         )
         try:
             generated = self.gateway.generate_structured(
                 LLMPurpose.INTENT_CLARIFICATION,
                 prompt,
                 GeneratedClarification,
+                system_prompt=INTENT_CLARIFICATION_SYSTEM_PROMPT,
                 metadata={"conflict_hash": canonical_hash(fallback.question_payload)},
             ).data
         except Exception:

@@ -466,7 +466,7 @@ def test_followup_pronoun_context_exposes_active_product_focus():
 
 def test_state_update_recalculates_interest_and_top5():
     kakao = kakao_26_week_product()
-    competitor = make_product("V045-INTEREST-COMP", base_rate="0.45")
+    competitor = make_product("V045-INTEREST-COMP", base_rate="0.9", term_value=6)
     store = kakao_pre_subscription_user(intent=True).with_fact(
         verified_fact("V045-ELIG-COMP", "ELIGIBLE", True, user_id=KAKAO_USER_ID)
     )

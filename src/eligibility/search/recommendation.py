@@ -7,6 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from eligibility.audit import AuditEventType, AuditSession, canonical_hash
 from eligibility.llm import LLMGateway, LLMPurpose
+from eligibility.llm.system_prompts import RESULT_EXPLANATION_SYSTEM_PROMPT
 from eligibility.llm.grounding import (
     CanonicalClaim,
     CanonicalQuestionPayload,
@@ -59,12 +60,7 @@ class GroundedResultExplainer:
         if self.gateway is None:
             return fallback
         payload = self._payload(detail, fallback)
-        prompt = (
-            "다음 상품 추천 상세정보를 자연스러운 한국어로 설명하세요. typed claim의 "
-            "숫자·단위·순위·금리·이자를 바꾸지 말고, UNKNOWN을 가능하다고 단정하거나 "
-            "ACHIEVABLE을 보장이라고 표현하지 마세요. source에 없는 금융조건을 추가하지 "
-            "마세요. 사용한 claim은 claim_bindings에 정확히 복사하세요.\n"
-            + json.dumps(
+        prompt = "RECOMMENDATION_DETAIL_AND_CLAIMS:\n" + json.dumps(
                 {
                     "detail": detail.model_dump(mode="json"),
                     "canonical_claims": payload.model_dump(mode="json"),
@@ -72,12 +68,12 @@ class GroundedResultExplainer:
                 ensure_ascii=False,
                 indent=2,
             )
-        )
         try:
             response = self.gateway.generate_structured(
                 LLMPurpose.RESULT_EXPLANATION,
                 prompt,
                 GeneratedExplanation,
+                system_prompt=RESULT_EXPLANATION_SYSTEM_PROMPT,
                 metadata={"detail_hash": canonical_hash(detail)},
             )
         except Exception:
@@ -94,11 +90,11 @@ class GroundedResultExplainer:
     @staticmethod
     def deterministic_fallback(detail: ProductRecommendationDetail) -> str:
         sentences = [f"{detail.product_name}은 현재 추천 {detail.rank}위입니다."]
-        if detail.estimated_after_tax_interest is not None:
+        if detail.estimated_pre_tax_interest is not None:
             sentences.append(
                 "계획대로 우대조건을 달성할 경우 예상금리는 "
-                f"{detail.realizable_rate}%이며, 예상 세후이자는 "
-                f"{int(detail.estimated_after_tax_interest):,}원입니다."
+                f"{detail.realizable_rate}%이며, 예상 세전이자는 "
+                f"{int(detail.estimated_pre_tax_interest):,}원입니다."
             )
         else:
             sentences.append(
@@ -131,7 +127,7 @@ class GroundedResultExplainer:
             )
         if detail.recommendation_reason.unknowns:
             sentences.append(
-                "추가 확인 항목: "
+                "가입 시 최종 확인 항목: "
                 + join_items(detail.recommendation_reason.unknowns, 2)
                 + "."
             )
@@ -383,7 +379,7 @@ class RecommendationService:
         if result.status == EvaluationStatus.UNSATISFIABLE:
             return "현재 정보로 받을 수 없음"
         if result.status == EvaluationStatus.UNKNOWN:
-            return "추가 확인 필요"
+            return "가입 시 최종 확인 필요"
         if VerificationLevel.SELF_REPORTED in result.evidence_levels:
             return "사용자 응답 기준 충족"
         return "금융데이터로 확인"
@@ -490,18 +486,22 @@ class RecommendationService:
             and ranking.ranking_objective
             in {
                 RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST,
+                RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST,
                 RankingObjective.BALANCED,
             }
             and candidate.ranking_comparability == RankingComparability.COMPARABLE
-            and candidate.realizable_after_tax_interest is not None
+            and candidate.realizable_pre_tax_interest is not None
             and ranking.items
             and ranking.items[0].product_id == product.product_id
         ):
             positive_entries.append(
                 RecommendationReasonEntry(
                     code="HIGHEST_AFTER_TAX_INTEREST",
-                    text=f"현재 비교 가능한 후보 중 예상 세후이자가 가장 높음 ({int(candidate.realizable_after_tax_interest):,}원)",
+                    text=f"현재 비교 가능한 후보 중 예상 세전이자가 가장 높음 ({int(candidate.realizable_pre_tax_interest):,}원)",
                     evidence={
+                        "estimated_pre_tax_interest": str(
+                            candidate.realizable_pre_tax_interest
+                        ),
                         "estimated_after_tax_interest": str(
                             candidate.realizable_after_tax_interest
                         ),
@@ -558,7 +558,7 @@ class RecommendationService:
                 unknown_entries.append(
                     RecommendationReasonEntry(
                         code="RULE_UNKNOWN",
-                        text=f"{result.rule_name}: 추가 확인 필요",
+                        text=f"{result.rule_name}: 가입 시 최종 확인 필요",
                         evidence={"rule_id": result.rule_id, "reason_code": result.reason_code},
                     )
                 )
@@ -567,7 +567,7 @@ class RecommendationService:
             unknown_entries.append(
                 RecommendationReasonEntry(
                     code="MISSING_CONTRIBUTION_INPUT",
-                    text="예상 세후이자 비교에 필요한 납입 입력이 아직 완료되지 않음",
+                    text="예상 세전이자 비교에 필요한 납입 입력이 아직 완료되지 않음",
                     evidence={
                         "ranking_comparability": candidate.ranking_comparability.value,
                         "missing_input_ids": [
@@ -587,4 +587,3 @@ class RecommendationService:
             action_entries=action_entries,
             unknown_entries=unknown_entries,
         )
-

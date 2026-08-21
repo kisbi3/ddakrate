@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <title>내 금리 찾기 · 금융상품 AI 추천</title>
-  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="/static/styles.css?v=20260821-7" />
 </head>
 <body>
   <div class="app-shell">
@@ -14,11 +14,11 @@
         <div class="brand-mark" aria-hidden="true">%</div>
         <div>
           <div class="brand-name">내 금리 찾기</div>
-          <div class="brand-sub">광고 최고금리 대신, 내가 실제 받을 금리와 세후이자를 비교해요</div>
+          <div class="brand-sub">광고 최고금리 대신, 내가 실제 받을 금리와 세전이자를 비교해요</div>
         </div>
       </div>
       <div class="runtime-pills">
-        <span class="pill pill-data">샘플 사용자 데이터 연결</span>
+        <span class="pill pill-muted">대화로 조건 확인</span>
         <span class="pill" id="llm-pill">LLM 확인 중</span>
         <span class="pill pill-muted" id="product-count-pill">상품 불러오는 중</span>
       </div>
@@ -29,16 +29,16 @@
         <div class="pane-header">
           <div>
             <h1>원하는 조건을 편하게 말해주세요</h1>
-            <p>샘플 금융데이터와 상품 조건을 함께 확인해 추천합니다.</p>
           </div>
+          <button class="new-chat-button" id="new-chat-button" type="button" title="대화를 처음부터 시작합니다">처음부터</button>
         </div>
 
         <div class="chat-scroll" id="chat-scroll">
           <div class="message assistant-message intro-message">
             <div class="avatar">AI</div>
             <div class="bubble">
-              <strong>한 문장으로 시작해도 충분해요</strong>
-              <p>예: “1년 정도, 월 30만원 넣을 수 있어. 실제 세후이자가 큰 순서로 보여줘.”</p>
+              <strong>어떤 상품을 찾고 있으세요?</strong>
+              <p>원하는 기간과 납입금액, 중요하게 생각하는 조건을 편하게 말해 주세요.</p>
             </div>
           </div>
           <div class="starter-prompts" id="starter-prompts">
@@ -49,16 +49,8 @@
           <div id="messages"></div>
         </div>
 
-        <div class="question-dock hidden" id="question-dock" role="region" aria-live="polite" aria-label="추천을 위한 다음 질문">
-          <div class="question-label"><span>다음 질문</span><span class="question-note">잘 모르겠으면 건너뛰어도 돼요</span></div>
-          <div class="question-text" id="question-text"></div>
-          <div class="question-help">답하면 관련 상품의 예상이자와 순위를 바로 다시 계산합니다.</div>
-          <div class="question-options" id="question-options"></div>
-          <button class="text-action" id="show-current-button">지금은 건너뛰고 결과 보기</button>
-        </div>
-
         <form class="composer" id="composer">
-          <textarea id="message-input" rows="1" placeholder="예: 월 20만원으로 바꿀게. / 카카오는 빼줘. / 금리 높은 순으로 보여줘."></textarea>
+          <textarea id="message-input" rows="1" placeholder="AI에게 질문하세요!"></textarea>
           <button type="submit" class="send-button" id="send-button" aria-label="메시지 보내기">
             <span>보내기</span>
           </button>
@@ -72,14 +64,14 @@
             <h2>내 조건에 맞춘 추천</h2>
           </div>
           <div class="results-actions">
-            <button class="ghost-button" id="refresh-button" disabled>다시 계산</button>
+            <button class="ghost-button refresh-button" id="refresh-button" disabled aria-label="추천 새로고침"><span aria-hidden="true">↻</span> 새로고침</button>
           </div>
         </div>
 
         <section class="understood-card" id="understood-card">
           <div class="section-title-row">
             <div>
-              <div class="section-kicker">내가 이해한 조건</div>
+              <div class="section-kicker">AI가 이해한 조건</div>
               <div class="section-caption" id="state-caption">조건이 다르면 왼쪽 대화에서 편하게 수정해 주세요.</div>
             </div>
           </div>
@@ -88,25 +80,18 @@
           </div>
         </section>
 
-        <div class="warning-banner hidden" id="warning-banner">
-          <div class="warning-icon">?</div>
-          <div>
-            <strong>아직 확인하지 않은 조건이 있어요.</strong>
-            <span id="warning-text">현재 순위는 추가 답변에 따라 달라질 수 있습니다.</span>
-          </div>
-        </div>
-
         <section class="recommendation-section">
           <div class="recommendation-toolbar">
-            <div class="toolbar-copy">
-              <span id="recommendation-count">추천 결과 대기 중</span>
-              <span class="dot">·</span>
-              <span id="ranking-objective">예상 세후이자 기준</span>
+            <div class="toolbar-copy"><span id="recommendation-count">추천 결과 대기 중</span></div>
+            <div class="ranking-toggle" id="ranking-toggle" role="group" aria-label="추천 정렬 기준">
+              <button type="button" data-objective="BALANCED">균형 기준</button>
+              <button type="button" data-objective="MAX_REALIZABLE_RATE">금리순</button>
+              <button type="button" data-objective="MAX_ESTIMATED_PRE_TAX_INTEREST">이자금순</button>
             </div>
             <div class="legend">
               <span><i class="legend-dot verified"></i>금융데이터 확인</span>
               <span><i class="legend-dot plan"></i>계획 기준</span>
-              <span><i class="legend-dot unknown"></i>추가 확인</span>
+              <span><i class="legend-dot unknown"></i>가입 시 기관 확인</span>
             </div>
           </div>
 
@@ -135,6 +120,6 @@
   </aside>
 
   <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
-  <script type="module" src="/static/app.js"></script>
+  <script type="module" src="/static/app.js?v=20260821-8"></script>
 </body>
 </html>

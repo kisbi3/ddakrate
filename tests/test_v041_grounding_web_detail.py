@@ -62,17 +62,27 @@ def test_question_rejects_new_non_numeric_action():
 
     result = QuestionGenerator(_question_gateway(request, hallucination)).generate(request)
 
-    assert result == request.question
+    assert result == QuestionGenerator.deterministic_fallback(request)
     assert "입출금통장" not in result
 
 
 def test_allowed_action_paraphrase_remains_possible():
     request = _salary_request()
-    wording = "가입 후 월급봉투 실적을 6개월 이상 채워 +1.0%p 우대를 목표로 관리할까요?"
+    wording = "가입 후 월급봉투 실적을 6개월 이상 꾸준히 채울 수 있으세요?"
 
     result = QuestionGenerator(_question_gateway(request, wording)).generate(request)
 
     assert result == wording
+
+
+def test_question_hides_preferential_rate_even_when_grounded():
+    request = _salary_request()
+    wording = "가입 후 월급봉투 실적을 6개월 이상 채워 +1.0%p 우대를 받을까요?"
+
+    result = QuestionGenerator(_question_gateway(request, wording)).generate(request)
+
+    assert result == QuestionGenerator.deterministic_fallback(request)
+    assert "%p" not in result
 
 
 def _single_detail():

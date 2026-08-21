@@ -277,7 +277,28 @@ def test_irrelevant_lower_candidate_question_not_asked():
     assert all(item.fact_type != "LOW_CANDIDATE_FACT" for item in questions)
 
 
-def test_external_unanswerable_fact_stops_question_loop():
+def test_conversational_exploration_can_include_plausible_lower_candidate():
+    top = [
+        make_product(f"EXPLORE-SAFE-{i}", base_rate=str(rate))
+        for i, rate in enumerate((5.0, 4.8, 4.6, 4.4, 4.2), start=1)
+    ]
+    challenger = make_product(
+        "EXPLORE-CHALLENGER",
+        base_rate="1.0",
+        reward_pp="0.1",
+        bonus_fact_type="EXPLORATION_FACT",
+    )
+    intent = make_intent(top_k=5)
+    evaluations = _evaluate([*top, challenger], intent=intent)
+
+    questions = RankingAwareQuestionPlanner(
+        exploration_depth_multiplier=2
+    ).score_candidates(evaluations, intent)
+
+    assert any(item.fact_type == "EXPLORATION_FACT" for item in questions)
+
+
+def test_external_top_product_fact_becomes_self_reported_review_question():
     product = make_product(
         "EXTERNAL-ONLY",
         base_rate="2",
@@ -290,4 +311,7 @@ def test_external_unanswerable_fact_stops_question_loop():
 
     candidate = evaluations[product.product_id]
     assert candidate.product_evaluation.missing_facts[0].resolution_strategy == ResolutionStrategy.QUERY_INSTITUTION
-    assert RankingAwareQuestionPlanner().select_next(evaluations, intent) is None
+    question = RankingAwareQuestionPlanner().select_next(evaluations, intent)
+    assert question is not None and question.request is not None
+    assert question.request.resolution_strategy == ResolutionStrategy.QUERY_INSTITUTION
+    assert question.request.expected_semantic_type == FactSemanticType.SELF_REPORTED_FACT

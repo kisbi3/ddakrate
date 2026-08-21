@@ -244,7 +244,7 @@ def test_affordability_increase_recalculates_options_then_interest_and_ranking()
 
 def test_user_excluded_product_is_session_local_and_reranks_others():
     kakao = kakao_26_week_product()
-    other = make_product("V043-OTHER", base_rate="1.5")
+    other = make_product("V043-OTHER", base_rate="1.5", term_value=6)
     service = _service(kakao, other)
     session = _session(service, _kakao_intent("80000", top_k=2))
     question = service.get_next_question(session.search_session_id)

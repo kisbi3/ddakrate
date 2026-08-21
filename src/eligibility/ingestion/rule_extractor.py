@@ -15,13 +15,7 @@ from eligibility.ingestion.validators import (
     ValidationSeverity,
 )
 from eligibility.llm import LLMGateway, LLMPurpose, LLMStructuredOutputError
-
-
-_SYSTEM_PROMPT = """You extract executable financial product knowledge drafts.
-Return only structured data matching the supplied schema. Keep institution-specific
-service concepts in service_references and required_facts; never invent a bank-specific
-DSL operator. Preserve document_id, page, section, and source provenance. Do not
-calculate customer eligibility, interest rates, or achievement probability."""
+from eligibility.llm.system_prompts import RULE_EXTRACTION_SYSTEM_PROMPT
 
 
 class RuleExtractor:
@@ -69,7 +63,7 @@ class RuleExtractor:
                 LLMPurpose.RULE_EXTRACTION,
                 json.dumps(prompt_payload, ensure_ascii=False, indent=2),
                 ProductKnowledgeDraft,
-                system_prompt=_SYSTEM_PROMPT,
+                system_prompt=RULE_EXTRACTION_SYSTEM_PROMPT,
                 metadata={
                     "input_document_id": document_id,
                     "input_document_hash": canonical_hash(prompt_payload),

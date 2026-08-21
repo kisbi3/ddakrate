@@ -2,11 +2,13 @@ from __future__ import annotations
 
 from collections import defaultdict
 from decimal import Decimal
+import re
 
 from eligibility.application import QuestionGenerator, UserAnswerMapper
 from eligibility.audit import AuditEventType, AuditSession, canonical_hash
 from eligibility.schema.enums import (
     EvaluationStatus,
+    FactSemanticType,
     RankingInputStatus,
     RankingObjective,
     ResolutionStrategy,
@@ -23,13 +25,24 @@ from eligibility.search.ranking import RankingService
 class RankingAwareQuestionPlanner:
     """Select ASK_USER facts by Top-K impact, never by an arbitrary question budget."""
 
+    PRE_SEARCH_PROFILE_FACTS = {
+        "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+    }
+    PRE_SEARCH_PROFILE_ORDER = {
+        "SALARY_ACCOUNT_CHANGE_POSSIBLE": 0,
+    }
+
     def __init__(
         self,
         question_generator: QuestionGenerator | None = None,
         ranking_service: RankingService | None = None,
+        exploration_depth_multiplier: int = 1,
     ) -> None:
+        if exploration_depth_multiplier < 1:
+            raise ValueError("exploration_depth_multiplier must be at least 1")
         self.question_generator = question_generator or QuestionGenerator()
         self.ranking_service = ranking_service or RankingService()
+        self.exploration_depth_multiplier = exploration_depth_multiplier
 
     def score_candidates(
         self,
@@ -37,6 +50,7 @@ class RankingAwareQuestionPlanner:
         intent: ProductSearchIntent,
         *,
         answered_question_ids: set[str] | None = None,
+        suppressed_question_ids: set[str] | None = None,
         audit: AuditSession | None = None,
     ) -> list[QuestionCandidate]:
         # ``answered_question_ids`` is retained as audit/history compatibility,
@@ -45,10 +59,13 @@ class RankingAwareQuestionPlanner:
         # later mutable-state change makes it unresolved again, the question must
         # be eligible again even when the same historical question id exists.
         answered_question_ids = answered_question_ids or set()
+        suppressed_question_ids = suppressed_question_ids or set()
         frontier = self._frontier(evaluations, intent)
+        current_top = self._current_top(evaluations, intent)
         ranking_inputs: list[QuestionCandidate] = []
         interest_metric_required = intent.ranking_objective in {
             RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST,
+            RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST,
             RankingObjective.BALANCED,
         }
         for product_id, candidate in evaluations.items():
@@ -149,7 +166,21 @@ class RankingAwareQuestionPlanner:
         for product_id in frontier:
             candidate = evaluations[product_id]
             for request in candidate.product_evaluation.missing_facts:
-                if request.resolution_strategy != ResolutionStrategy.ASK_USER:
+                if request.resolution_strategy not in {
+                    ResolutionStrategy.ASK_USER,
+                    ResolutionStrategy.QUERY_INSTITUTION,
+                    ResolutionStrategy.QUERY_MYDATA,
+                }:
+                    continue
+                if (
+                    request.resolution_strategy != ResolutionStrategy.ASK_USER
+                    and (
+                        product_id not in current_top
+                        or not self._is_boolean_confirmation(
+                            candidate, request.requested_by_rule_id
+                        )
+                    )
+                ):
                     continue
                 key = (
                     request.fact_type,
@@ -190,7 +221,16 @@ class RankingAwareQuestionPlanner:
             # A stated reward impact is not enough by itself: a cap or a
             # satisfied sibling branch may make the answer unable to change
             # eligibility, realizable/upper value, Top-K membership, or order.
-            if ranking_impact <= 0 and eligibility_impact == 0:
+            # A question can stop changing membership once a product has made
+            # the current Top K, but it still has to be presented before that
+            # list is considered fully reviewed.  This closes every ASK_USER
+            # condition for the visible products instead of silently ending as
+            # soon as their numerical order happens to be stable.
+            if (
+                ranking_impact <= 0
+                and eligibility_impact == 0
+                and not current_top.intersection(product_ids)
+            ):
                 continue
             branch_value = sum(
                 1
@@ -247,13 +287,20 @@ class RankingAwareQuestionPlanner:
                 )
 
         return sorted(
-            [*ranking_inputs, *scored],
+            [
+                item
+                for item in [*ranking_inputs, *scored]
+                if item.question_id not in suppressed_question_ids
+            ],
             key=lambda item: (
                 (
                     0
+                    if item.fact_type in self.PRE_SEARCH_PROFILE_FACTS
+                    else 1
                     if item.question_kind == "CONTRIBUTION_FEASIBILITY"
-                    else (1 if item.question_kind == "RANKING_INPUT" else 2)
+                    else (2 if item.question_kind == "RANKING_INPUT" else 3)
                 ),
+                self.PRE_SEARCH_PROFILE_ORDER.get(item.fact_type, 99),
                 -item.score,
                 -item.eligibility_impact,
                 -item.candidate_coverage,
@@ -267,12 +314,14 @@ class RankingAwareQuestionPlanner:
         intent: ProductSearchIntent,
         *,
         answered_question_ids: set[str] | None = None,
+        suppressed_question_ids: set[str] | None = None,
         audit: AuditSession | None = None,
     ) -> PlannedQuestion | None:
         candidates = self.score_candidates(
             evaluations,
             intent,
             answered_question_ids=answered_question_ids,
+            suppressed_question_ids=suppressed_question_ids,
             audit=audit,
         )
         if not candidates:
@@ -286,11 +335,26 @@ class RankingAwareQuestionPlanner:
             rendered_question = selected.ranking_input.question
         else:
             assert selected.request is not None
-            rendered_question = self.question_generator.generate(selected.request)
+            request = selected.request
+            if request.resolution_strategy in {
+                ResolutionStrategy.QUERY_INSTITUTION,
+                ResolutionStrategy.QUERY_MYDATA,
+            }:
+                request = request.model_copy(
+                    update={
+                        "expected_semantic_type": FactSemanticType.SELF_REPORTED_FACT,
+                    },
+                    deep=True,
+                )
+            rendered_question = self.question_generator.generate(request)
         question = PlannedQuestion(
             question_id=selected.question_id,
             question_kind=selected.question_kind,
-            request=selected.request,
+            request=(
+                request
+                if selected.question_kind == "FINANCIAL_FACT"
+                else selected.request
+            ),
             ranking_input=selected.ranking_input,
             feasibility_clarification=selected.feasibility_clarification,
             question=rendered_question,
@@ -343,7 +407,8 @@ class RankingAwareQuestionPlanner:
                 item.product_id,
             ),
         )
-        frontier = {item.product_id for item in optimistic[: intent.requested_top_k]}
+        exploration_size = intent.requested_top_k * self.exploration_depth_multiplier
+        frontier = {item.product_id for item in optimistic[:exploration_size]}
 
         final_order = sorted(
             candidates,
@@ -351,7 +416,7 @@ class RankingAwareQuestionPlanner:
                 item, intent.ranking_objective
             ),
         )
-        current_top = final_order[: intent.requested_top_k]
+        current_top = final_order[:exploration_size]
         frontier.update(item.product_id for item in current_top)
         if len(final_order) > intent.requested_top_k and current_top:
             kth = self.ranking_service.realizable_metric(
@@ -366,6 +431,38 @@ class RankingAwareQuestionPlanner:
                 >= kth
             )
         return frontier
+
+    def _current_top(
+        self,
+        evaluations: dict[str, CandidateEvaluation],
+        intent: ProductSearchIntent,
+    ) -> set[str]:
+        candidates = [
+            item
+            for item in evaluations.values()
+            if item.eligibility_status != EvaluationStatus.UNSATISFIABLE
+        ]
+        known = [
+            item
+            for item in candidates
+            if item.eligibility_status
+            in {EvaluationStatus.SATISFIED, EvaluationStatus.ACHIEVABLE}
+        ]
+        unknown = [
+            item
+            for item in candidates
+            if item.eligibility_status == EvaluationStatus.UNKNOWN
+        ]
+        sort_key = lambda item: self.ranking_service._final_sort_key(
+            item, intent.ranking_objective
+        )
+        if len(known) >= intent.requested_top_k:
+            ordered = [*sorted(known, key=sort_key), *sorted(unknown, key=sort_key)]
+        else:
+            ordered = sorted(candidates, key=sort_key)
+        return {
+            item.product_id for item in ordered[: intent.requested_top_k]
+        }
 
     def _candidate_uncertainty(
         self,
@@ -390,9 +487,24 @@ class RankingAwareQuestionPlanner:
                     if item.impact is not None and item.impact.rate_pp is not None
                     else Decimal("0")
                 ),
+                -RankingAwareQuestionPlanner._target_magnitude(item),
                 item.requested_by_rule_id,
             ),
         )[0]
+
+    @staticmethod
+    def _target_magnitude(request) -> int:
+        """Prefer one representative high-water-mark for repeated action rules."""
+
+        text = " ".join([request.question or "", *request.grounding_terms])
+        targets = [
+            int(match.group(1))
+            for match in re.finditer(
+                r"(\d+)\s*(?:일|회|개월|주|번|번째)",
+                text,
+            )
+        ]
+        return max(targets, default=0)
 
     @staticmethod
     def _request_in_eligibility(
@@ -404,6 +516,27 @@ class RankingAwareQuestionPlanner:
             result = stack.pop()
             if any(item.fact_type == fact_type for item in result.missing_facts):
                 return True
+            stack.extend(result.children)
+        return False
+
+    @staticmethod
+    def _is_boolean_confirmation(
+        candidate: CandidateEvaluation,
+        requested_by_rule_id: str,
+    ) -> bool:
+        evaluation = candidate.product_evaluation
+        stack = [
+            evaluation.eligibility,
+            *evaluation.preferential_rule_results,
+            *evaluation.global_guard_results,
+        ]
+        while stack:
+            result = stack.pop()
+            if result.rule_id == requested_by_rule_id:
+                return (
+                    result.rule_name.strip() != "공식 가입대상 충족"
+                    and isinstance(result.evidence.get("expected"), bool)
+                )
             stack.extend(result.children)
         return False
 

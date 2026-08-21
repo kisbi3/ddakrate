@@ -15,6 +15,7 @@ from eligibility.schema.enums import (
 )
 from eligibility.schema.product import ContractTerm, ProductDefinition
 from eligibility.schema.search import CandidateFilterDecision, ProductSearchIntent
+from eligibility.search.contribution import terms_equivalent
 
 
 _CLOSED_STATUSES = {SaleStatus.SOLD_OUT, SaleStatus.ENDED, SaleStatus.SUSPENDED}
@@ -59,6 +60,26 @@ class CandidateRetriever:
                 "PRODUCT_TYPE_MISMATCH",
                 actual=product.product_type,
                 requested=intent.product_types,
+            )
+
+        contribution_plan = intent.contribution_plan
+        if (
+            contribution_plan is not None
+            and contribution_plan.selected_term_value is not None
+            and contribution_plan.selected_term_unit is not None
+            and not self._supports_requested_term(
+                product,
+                ContractTerm(
+                    value=contribution_plan.selected_term_value,
+                    unit=contribution_plan.selected_term_unit,
+                ),
+            )
+        ):
+            return self._remove(
+                product,
+                "REQUESTED_TERM_NOT_AVAILABLE",
+                requested_value=contribution_plan.selected_term_value,
+                requested_unit=contribution_plan.selected_term_unit.value,
             )
 
         for hard in intent.hard_constraints:
@@ -246,6 +267,39 @@ class CandidateRetriever:
         if term.unit == TermUnit.WEEK:
             return Decimal(term.value) * Decimal("7") / Decimal("30.4375")
         return Decimal(term.value) / Decimal("30.4375")
+
+    @classmethod
+    def _supports_requested_term(
+        cls,
+        product: ProductDefinition,
+        requested: ContractTerm,
+    ) -> bool:
+        metadata = product.metadata
+        requested_months = cls._term_to_months(requested)
+        if metadata is not None:
+            if metadata.available_terms:
+                return (
+                    any(
+                        terms_equivalent(available, requested)
+                        for available in metadata.available_terms
+                    )
+                    or min(
+                        cls._term_to_months(available)
+                        for available in metadata.available_terms
+                    )
+                    <= requested_months
+                )
+            if metadata.min_term is not None and metadata.max_term is not None:
+                # A shorter fixed product can still be a useful alternative to
+                # a preferred horizon. A product whose *minimum* term already
+                # exceeds the requested horizon must not be projected at its
+                # longer representative/max term.
+                return cls._term_to_months(metadata.min_term) <= requested_months
+        if product.contract_term is not None:
+            return cls._term_to_months(product.contract_term) <= requested_months
+        if product.contract_months is not None:
+            return Decimal(product.contract_months) <= requested_months
+        return True
 
     def _term_bounds_months(self, product: ProductDefinition) -> tuple[Decimal, Decimal] | None:
         metadata = product.metadata

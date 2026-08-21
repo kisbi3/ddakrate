@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import StrEnum
-from typing import TypeAlias
+from typing import Literal, TypeAlias
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -33,6 +33,8 @@ class ConversationOperation(StrEnum):
     REVISE_USER_ANSWER = "REVISE_USER_ANSWER"
     REVISE_USER_DECLARED_FACT = "REVISE_USER_DECLARED_FACT"
     SUBMIT_ACTIVE_QUESTION_ANSWER = "SUBMIT_ACTIVE_QUESTION_ANSWER"
+    SKIP_ACTIVE_QUESTION = "SKIP_ACTIVE_QUESTION"
+    EXPLAIN_ACTIVE_QUESTION = "EXPLAIN_ACTIVE_QUESTION"
     EXCLUDE_PRODUCT = "EXCLUDE_PRODUCT"
     NO_OP = "NO_OP"
 
@@ -47,7 +49,11 @@ class ConversationStructuredAnswer(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    resolution: str
+    resolution: Literal[
+        "CHANGE_PRODUCT_CONTRIBUTION_CHOICE",
+        "ADJUST_GLOBAL_AFFORDABILITY",
+        "EXCLUDE_PRODUCT",
+    ]
     new_value: ApplicationScalar | None = None
     maximum_affordable_periodic_amount: ApplicationScalar | None = None
 
@@ -122,3 +128,4 @@ class ConversationTurnResult(BaseModel):
     recommendations: ProductRecommendationResult | None = None
     current_results_requested: bool = False
     unresolved_warning: str | None = None
+    assistant_message: str | None = None

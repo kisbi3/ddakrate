@@ -117,6 +117,7 @@ class RankingService:
     ) -> TopKStabilityResult:
         if objective in {
             RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST,
+            RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST,
             RankingObjective.BALANCED,
         } and any(
             item.ranking_comparability != RankingComparability.COMPARABLE
@@ -174,6 +175,7 @@ class RankingService:
                 objective
                 in {
                     RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST,
+                    RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST,
                     RankingObjective.BALANCED,
                 }
                 and candidate.ranking_comparability != RankingComparability.COMPARABLE
@@ -235,6 +237,19 @@ class RankingService:
         elif objective == RankingObjective.MIN_ACTION_BURDEN:
             primary = Decimal(-candidate.action_burden_score)
             secondary = candidate.realizable_rate
+        elif objective == RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST:
+            if (
+                candidate.ranking_comparability != RankingComparability.COMPARABLE
+                or candidate.realizable_pre_tax_interest is None
+            ):
+                return (
+                    1,
+                    eligibility_priority,
+                    candidate.material_unknown_count,
+                    candidate.product_id,
+                )
+            primary = candidate.realizable_pre_tax_interest
+            secondary = candidate.realizable_rate
         else:
             if (
                 candidate.ranking_comparability != RankingComparability.COMPARABLE
@@ -274,6 +289,8 @@ class RankingService:
             return candidate.realizable_rate
         if objective == RankingObjective.MIN_ACTION_BURDEN:
             return Decimal(-candidate.action_burden_score)
+        if objective == RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST:
+            return candidate.realizable_pre_tax_interest or Decimal("0")
         if candidate.realizable_after_tax_interest is None:
             return Decimal("0")
         return candidate.realizable_after_tax_interest
@@ -287,6 +304,8 @@ class RankingService:
             return candidate.user_specific_conditional_upper_rate
         if objective == RankingObjective.MIN_ACTION_BURDEN:
             return Decimal(-candidate.action_burden_score)
+        if objective == RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST:
+            return candidate.conditional_upper_pre_tax_interest or Decimal("0")
         if candidate.conditional_upper_after_tax_interest is None:
             return Decimal("0")
         return candidate.conditional_upper_after_tax_interest
@@ -327,6 +346,7 @@ class RankingService:
             maximum_deposit_summary=candidate.contribution_projection.maximum_deposit_summary,
             planned_contribution_summary=candidate.contribution_projection.planned_contribution_summary,
             estimated_total_principal=candidate.estimated_total_principal,
+            estimated_pre_tax_interest=candidate.realizable_pre_tax_interest,
             estimated_after_tax_interest=candidate.realizable_after_tax_interest,
             ranking_comparability=candidate.ranking_comparability,
             missing_ranking_input_count=len(candidate.missing_ranking_inputs),
@@ -344,5 +364,9 @@ def _institution_name(institution_id: str) -> str:
         "IBK_BANK": "IBK기업은행",
         "HANA_BANK": "하나은행",
         "KB_BANK": "KB국민은행",
+        "KBANK": "케이뱅크",
         "TOSS_BANK": "토스뱅크",
+        "WOORI_BANK": "우리은행",
+        "BNK_BUSAN": "BNK부산은행",
+        "BNK_KYONGNAM": "BNK경남은행",
     }.get(institution_id, institution_id)

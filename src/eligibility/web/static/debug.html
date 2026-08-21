@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>내 금리 찾기 · 내부 흐름 보기</title>
+  <link rel="stylesheet" href="/static/debug.css?v=20260821-1" />
+</head>
+<body>
+  <header class="debug-topbar">
+    <div>
+      <div class="eyebrow">PRIVATE RUNTIME INSPECTOR</div>
+      <h1>AI → 멀티턴 → Engine 흐름 보기</h1>
+      <p>브라우저 요청부터 실제 LLM payload, 결정론적 검색·평가·랭킹까지 한 화면에서 봅니다.</p>
+    </div>
+    <div class="top-actions">
+      <span id="connection-pill" class="status-pill">연결 확인 중</span>
+      <a href="/" target="_blank" class="button-link">제출 화면 열기 ↗</a>
+    </div>
+  </header>
+
+  <main class="debug-layout">
+    <aside class="session-sidebar">
+      <div class="sidebar-title">
+        <h2>SearchSession</h2>
+        <button id="refresh-button" type="button">새로고침</button>
+      </div>
+      <p class="muted">제출 화면에서 대화하면 여기에 자동으로 나타납니다.</p>
+      <div id="session-list" class="session-list"></div>
+    </aside>
+
+    <section class="debug-main">
+      <div id="empty-state" class="empty-state">
+        <strong>아직 확인할 SearchSession이 없습니다.</strong>
+        <span>제출 화면에서 검색을 시작한 뒤 이 화면으로 돌아오세요.</span>
+      </div>
+
+      <div id="session-content" class="hidden">
+        <section class="summary-strip" id="summary-strip"></section>
+
+        <section class="architecture-note">
+          <div class="architecture-node llm">LLM<br><small>의도·operation·문장화</small></div>
+          <div class="arrow">→</div>
+          <div class="architecture-node state">SearchSession<br><small>멀티턴 상태·Working Note</small></div>
+          <div class="arrow">→</div>
+          <div class="architecture-node engine">Engine<br><small>검색·판정·금리·랭킹</small></div>
+          <div class="boundary-copy">
+            <strong>판정 경계</strong>
+            <span>AI는 무엇을 바꿀지만 구조화하고, 상품 판정과 숫자 계산은 Engine이 수행합니다.</span>
+          </div>
+        </section>
+
+        <nav class="view-tabs" aria-label="디버그 보기 선택">
+          <button class="active" data-view="turns">Turn별 실제 호출</button>
+          <button data-view="state">멀티턴 상태</button>
+          <button data-view="engine">Engine 입력·출력</button>
+          <button data-view="audit">전체 Audit</button>
+        </nav>
+
+        <section id="view-turns" class="view-panel">
+          <div class="two-column">
+            <div>
+              <div class="section-heading">
+                <h2>요청 Timeline</h2>
+                <span id="request-count" class="count-badge"></span>
+              </div>
+              <div id="request-list" class="request-list"></div>
+            </div>
+            <div id="request-detail" class="request-detail"></div>
+          </div>
+        </section>
+
+        <section id="view-state" class="view-panel hidden"></section>
+        <section id="view-engine" class="view-panel hidden"></section>
+        <section id="view-audit" class="view-panel hidden"></section>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/static/debug.js?v=20260821-1"></script>
+</body>
+</html>

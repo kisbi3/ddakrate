@@ -243,6 +243,8 @@ class MultiProductEvaluator:
                 confirmed_after_tax_interest=(confirmed.after_tax_interest if confirmed else None),
                 realizable_after_tax_interest=(realizable.after_tax_interest if realizable else None),
                 conditional_upper_after_tax_interest=(upper.after_tax_interest if upper else None),
+                confirmed_pre_tax_interest=(confirmed.pre_tax_interest if confirmed else None),
+                conditional_upper_pre_tax_interest=(upper.pre_tax_interest if upper else None),
                 estimated_total_principal=(
                     realizable.total_principal
                     if realizable is not None

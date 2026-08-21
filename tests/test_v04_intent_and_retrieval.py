@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from datetime import date
 from decimal import Decimal
+from types import SimpleNamespace
+
+import pytest
 
 from eligibility.application_service import ApplicationService
 from eligibility.schema.application_input import (
@@ -23,7 +26,12 @@ from eligibility.schema.enums import (
     RulePurpose,
 )
 from eligibility.schema.rule import FactComparisonRule
-from eligibility.search.intent import IntentConflictValidator, IntentParser
+from eligibility.schema.search import IntentPatch
+from eligibility.search.intent import (
+    IntentConflictValidator,
+    IntentParser,
+    ProductSearchIntentDraft,
+)
 from eligibility.search.retrieval import CandidateRetriever
 
 from tests.v04_helpers import AS_OF, base_store, make_intent, make_product
@@ -56,6 +64,42 @@ def test_parse_hard_preference_capability_numeric_input():
     states = {item.capability_id: item.state for item in intent.capabilities}
     assert states["NEW_CARD_ISSUANCE"] == CapabilityState.CANNOT
     assert states["CHANGE_SALARY_ACCOUNT"] == CapabilityState.CAN
+
+
+class _IntentPatchGateway:
+    def __init__(self):
+        self.calls = []
+
+    def generate_structured(self, *_args, **_kwargs):
+        self.calls.append((_args, _kwargs))
+        return SimpleNamespace(
+            data=IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                requested_top_k_patch=1,
+            )
+        )
+
+
+def test_llm_intent_uses_default_top5_unless_user_explicitly_requests_count():
+    gateway = _IntentPatchGateway()
+    parser = IntentParser(gateway)
+
+    default = parser.parse("금리가 높은 적금을 추천해줘", user_id="WEB-USER")
+    explicit = parser.parse("상위 3개 적금을 추천해줘", user_id="WEB-USER")
+
+    assert default.requested_top_k == 5
+    assert explicit.requested_top_k == 3
+    assert default.capabilities == []
+    assert default.hard_constraints == []
+    assert gateway.calls[0][0][2] is IntentPatch
+    assert "구조화 추출기" in gateway.calls[0][1]["system_prompt"]
+    assert "CURRENT_SEARCH_INTENT" in gateway.calls[0][0][1]
+    assert "ProductSearchIntentDraft" not in gateway.calls[0][0][1]
+
+
+def test_llm_intent_schema_rejects_localized_product_type():
+    with pytest.raises(ValueError):
+        ProductSearchIntentDraft(product_types=["적금"])
 
 
 def test_cross_category_hard_soft_conflict():
@@ -189,6 +233,19 @@ def test_hard_term_violation_is_removed():
 
     assert retained == []
     assert decisions[0].reason_code == "HARD_TERM_VIOLATION"
+
+
+def test_product_whose_minimum_term_exceeds_preferred_horizon_is_removed():
+    product = make_product("TERM-60M", term_value=60)
+
+    retained, decisions = CandidateRetriever().retrieve(
+        [product],
+        make_intent(selected_term_value=12),
+        as_of=AS_OF,
+    )
+
+    assert retained == []
+    assert decisions[0].reason_code == "REQUESTED_TERM_NOT_AVAILABLE"
 
 
 def test_capability_cannot_does_not_remove_product():

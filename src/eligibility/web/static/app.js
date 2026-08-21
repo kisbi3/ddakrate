@@ -1,5 +1,11 @@
 const $ = (selector) => document.querySelector(selector);
 
+function createConversationUserId() {
+  const suffix = globalThis.crypto?.randomUUID?.()
+    || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  return `WEB-${suffix}`;
+}
+
 const state = {
   runtime: null,
   session: null,
@@ -7,8 +13,11 @@ const state = {
   recommendations: null,
   activeQuestion: null,
   currentDetail: null,
+  detailCache: new Map(),
+  detailCacheRecommendationId: null,
   busy: false,
   productNames: new Map(),
+  userId: createConversationUserId(),
 };
 
 const els = {
@@ -20,17 +29,12 @@ const els = {
   composer: $('#composer'),
   input: $('#message-input'),
   sendButton: $('#send-button'),
-  questionDock: $('#question-dock'),
-  questionText: $('#question-text'),
-  questionOptions: $('#question-options'),
-  showCurrentButton: $('#show-current-button'),
+  newChatButton: $('#new-chat-button'),
   refreshButton: $('#refresh-button'),
   stateChips: $('#state-chips'),
-  warningBanner: $('#warning-banner'),
-  warningText: $('#warning-text'),
   recommendations: $('#recommendations'),
   recommendationCount: $('#recommendation-count'),
-  rankingObjective: $('#ranking-objective'),
+  rankingToggle: $('#ranking-toggle'),
   detailBackdrop: $('#detail-backdrop'),
   detailDrawer: $('#detail-drawer'),
   detailInstitution: $('#detail-institution'),
@@ -102,6 +106,10 @@ function setBusy(busy) {
   state.busy = busy;
   els.sendButton.disabled = busy;
   els.refreshButton.disabled = busy || !state.session;
+  els.newChatButton.disabled = busy;
+  for (const button of els.rankingToggle.querySelectorAll('button')) {
+    button.disabled = busy || !state.session;
+  }
   els.input.disabled = busy;
 }
 
@@ -130,10 +138,125 @@ function appendMessage(role, text, { meta = null } = {}) {
   requestAnimationFrame(() => { els.chatScroll.scrollTop = els.chatScroll.scrollHeight; });
 }
 
+function appendProcessingMessage() {
+  const row = document.createElement('div');
+  row.className = 'message assistant-message processing-message';
+  row.setAttribute('role', 'status');
+  row.setAttribute('aria-live', 'polite');
+  row.setAttribute('aria-label', 'AI가 입력한 내용을 처리하고 있습니다.');
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = 'AI';
+  row.appendChild(avatar);
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble processing-bubble';
+  bubble.setAttribute('aria-hidden', 'true');
+  bubble.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+  row.appendChild(bubble);
+
+  els.messages.appendChild(row);
+  requestAnimationFrame(() => { els.chatScroll.scrollTop = els.chatScroll.scrollHeight; });
+  return row;
+}
+
+function removeProcessingMessage(row) {
+  row?.remove();
+}
+
+function activeQuestionMessage() {
+  return els.messages.querySelector('.active-question-message');
+}
+
+function finishActiveQuestionMessage() {
+  const row = activeQuestionMessage();
+  if (!row) return;
+  row.classList.remove('active-question-message');
+  row.querySelector('.inline-question-options')?.remove();
+}
+
+function appendQuestionMessage(question) {
+  const text = String(question?.question || '').trim();
+  if (!text) return false;
+  const existing = activeQuestionMessage();
+  if (existing?.dataset.questionId === question.question_id) return true;
+  finishActiveQuestionMessage();
+
+  const row = document.createElement('div');
+  row.className = 'message assistant-message active-question-message';
+  row.dataset.questionId = question.question_id;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = 'AI';
+  row.appendChild(avatar);
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble question-bubble';
+  const preSearch = question.question_stage === 'PRE_SEARCH';
+  const context = String(question.product_context || '').trim();
+  if (context && !preSearch) {
+    const contextNode = document.createElement('div');
+    contextNode.className = 'question-bubble-context';
+    contextNode.textContent = context;
+    bubble.appendChild(contextNode);
+  }
+  const body = document.createElement('div');
+  body.className = 'question-bubble-text';
+  body.textContent = text;
+  bubble.appendChild(body);
+
+  const progress = state.uiState?.search_progress;
+  const completed = Number(progress?.completed_question_count || 0);
+  const estimated = Number(progress?.estimated_total_question_count || 0);
+  if (estimated > 0) {
+    const progressNode = document.createElement('div');
+    progressNode.className = 'question-bubble-progress';
+    progressNode.textContent = `진행 ${completed} / 예상 ${estimated}`;
+    bubble.appendChild(progressNode);
+  }
+
+  const options = document.createElement('div');
+  options.className = 'inline-question-options';
+  const addButton = (label, answer) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = label;
+    button.addEventListener('click', () => answerQuestion(answer, label));
+    options.appendChild(button);
+  };
+  if (question.question_kind === 'RANKING_INPUT') {
+    for (const option of question.ranking_input?.allowed_options || []) {
+      const field = question.ranking_input?.required_field || '';
+      addButton(field.includes('amount') ? formatWon(option) : String(option), option);
+    }
+  } else if (question.question_kind === 'FINANCIAL_FACT' && !preSearch) {
+    addButton('네', true);
+    addButton('아니요', false);
+    addButton('모르겠어요', 'UNKNOWN');
+  } else if (question.question_kind === 'CONTRIBUTION_FEASIBILITY') {
+    const clarification = question.feasibility_clarification || {};
+    for (const option of clarification.feasible_options || []) {
+      addButton(formatWon(option), option);
+    }
+    if ((clarification.allowed_resolutions || []).includes('EXCLUDE_PRODUCT')) {
+      addButton('이 상품은 제외', 'EXCLUDE_PRODUCT');
+    }
+  }
+  if (options.childElementCount) bubble.appendChild(options);
+
+  row.appendChild(bubble);
+  els.messages.appendChild(row);
+  requestAnimationFrame(() => { els.chatScroll.scrollTop = els.chatScroll.scrollHeight; });
+  return true;
+}
+
 function objectiveLabel(value) {
   return {
-    MAX_ESTIMATED_AFTER_TAX_INTEREST: '예상 세후이자 높은 순',
-    MAX_REALIZABLE_RATE: '실현 가능 금리 높은 순',
+    MAX_ESTIMATED_AFTER_TAX_INTEREST: '세전 이자금순',
+    MAX_ESTIMATED_PRE_TAX_INTEREST: '세전 이자금순',
+    MAX_REALIZABLE_RATE: '금리순',
     MIN_ACTION_BURDEN: '관리 부담 낮은 순',
     BALANCED: '균형 기준',
   }[value] || '개인화 기준';
@@ -144,7 +267,7 @@ function verificationBadge(value) {
     FINANCIAL_DATA_VERIFIED: ['금융데이터 확인', 'verified'],
     USER_RESPONSE_INCLUDED: ['사용자 응답 포함', 'plan'],
     PLAN_BASED: ['계획 기준', 'plan'],
-    ADDITIONAL_VERIFICATION_REQUIRED: ['추가 확인', 'unknown'],
+    ADDITIONAL_VERIFICATION_REQUIRED: ['기관 확인 필요', 'unknown'],
   }[value] || [String(value || '확인 필요'), 'unknown'];
 }
 
@@ -162,7 +285,7 @@ function evaluationStatusLabel(value) {
     SATISFIED: '충족',
     ACHIEVABLE: '달성 가능',
     UNSATISFIABLE: '받을 수 없음',
-    UNKNOWN: '추가 확인',
+    UNKNOWN: '가입 시 확인',
   }[value] || String(value || '');
 }
 
@@ -223,9 +346,33 @@ function renderStateChips() {
     add(labelMap[capability.capability_id] || capability.capability_id, valueMap[capability.state] || capability.state);
   }
 
+  const profileLabels = {
+    SALARY_ACCOUNT_CHANGE_POSSIBLE: '급여 수령계좌',
+    CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE: '신한카드 결제계좌',
+  };
+  const profileFactTypes = new Set();
+  for (const profile of snapshot.pre_search_profile_answers || []) {
+    profileFactTypes.add(profile.fact_type);
+    add(
+      profileLabels[profile.fact_type] || '사전 확인',
+      profile.summary,
+      'fact',
+    );
+  }
+
   for (const declaration of snapshot.user_declarations || []) {
+    if (profileFactTypes.has(declaration.fact_type)) continue;
     const human = humanFactLabel(declaration.fact_type, declaration.value);
     if (human) add(human[0], human[1], 'fact');
+  }
+
+  for (const acknowledged of snapshot.acknowledged_unknown_answers || []) {
+    const human = humanFactLabel(acknowledged.fact_type, null);
+    add(
+      human ? human[0] : '확인 어려운 조건',
+      human ? '사용자가 모름' : acknowledged.question,
+      'fact',
+    );
   }
 
   for (const choice of snapshot.product_contribution_choices || []) {
@@ -257,9 +404,28 @@ function renderStateChips() {
 function renderRecommendations() {
   const rec = state.recommendations;
   if (!rec) return;
-  els.rankingObjective.textContent = objectiveLabel(rec.ranking_objective);
+  for (const button of els.rankingToggle.querySelectorAll('button')) {
+    const representsLegacyInterest = (
+      button.dataset.objective === 'MAX_ESTIMATED_PRE_TAX_INTEREST'
+      && rec.ranking_objective === 'MAX_ESTIMATED_AFTER_TAX_INTEREST'
+    );
+    button.classList.toggle(
+      'active',
+      button.dataset.objective === rec.ranking_objective || representsLegacyInterest,
+    );
+  }
   const items = rec.top_products || [];
-  els.recommendationCount.textContent = items.length >= 5 ? 'Top 5 추천' : `${items.length}개 후보 추천`;
+  const progress = state.uiState?.search_progress;
+  const roundLabel = progress?.recalculation_round > 1
+    ? `${progress.recalculation_round}차 재계산 · `
+    : '';
+  const poolLabel = progress ? `후보 ${progress.viable_product_count}개 중 ` : '';
+  const reviewing = Boolean(state.activeQuestion);
+  els.recommendationCount.textContent = items.length >= 5
+    ? reviewing
+      ? `${roundLabel}${poolLabel}후보 5개 · 조건 확인 중`
+      : `${roundLabel}${poolLabel}Top 5`
+    : `${roundLabel}${items.length}개 후보 추천`;
   els.recommendations.innerHTML = '';
   state.productNames.clear();
 
@@ -278,13 +444,10 @@ function renderRecommendations() {
 
     const [eligText, eligKind] = eligibilityBadge(item.eligibility_badge);
     const [verifyText, verifyKind] = verificationBadge(item.verification_badge);
-    const unknownBadge = item.material_unknown_count > 0
-      ? `<span class="mini-badge unknown">미확인 ${Number(item.material_unknown_count)}개</span>`
-      : '';
     const comparison = item.ranking_comparability === 'COMPARABLE';
-    const interestHtml = comparison && item.estimated_after_tax_interest !== null
-      ? `<div class="metric-label">내 예상 세후이자</div><div class="money-value">${formatWon(item.estimated_after_tax_interest)}</div><div class="money-sub">총 납입 ${formatWon(item.estimated_total_principal)} 기준</div>`
-      : `<div class="metric-label">내 예상 세후이자</div><div class="not-comparable">시작금액 선택 필요</div><div class="money-sub">선택하면 금액 기준으로 순위를 다시 계산해요.</div>`;
+    const interestHtml = comparison && item.estimated_pre_tax_interest !== null
+      ? `<div class="metric-label">내 예상 세전이자</div><div class="money-value">${formatWon(item.estimated_pre_tax_interest)}</div><div class="money-sub">총 납입 ${formatWon(item.estimated_total_principal)} 기준</div>`
+      : `<div class="metric-label">내 예상 세전이자</div><div class="not-comparable">시작금액 선택 필요</div><div class="money-sub">선택하면 금액 기준으로 순위를 다시 계산해요.</div>`;
 
     card.innerHTML = `
       <div class="product-main">
@@ -295,7 +458,6 @@ function renderRecommendations() {
           <div class="product-meta">
             <span class="mini-badge ${eligKind}">${escapeHtml(eligText)}</span>
             <span class="mini-badge ${verifyKind}">${escapeHtml(verifyText)}</span>
-            ${unknownBadge}
           </div>
           <div class="meta-line">
             <span>${escapeHtml(item.term_summary)}</span>
@@ -325,54 +487,31 @@ function renderRecommendations() {
 function renderQuestion(question) {
   state.activeQuestion = question || null;
   if (!question) {
-    els.questionDock.classList.add('hidden');
+    finishActiveQuestionMessage();
     return;
   }
-  els.questionDock.classList.remove('hidden');
-  els.questionText.textContent = question.question;
-  els.questionOptions.innerHTML = '';
-
-  const addButton = (label, answer) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = label;
-    btn.addEventListener('click', () => answerQuestion(answer, label));
-    els.questionOptions.appendChild(btn);
-  };
-
-  if (question.question_kind === 'RANKING_INPUT') {
-    for (const option of question.ranking_input?.allowed_options || []) {
-      const field = question.ranking_input?.required_field || '';
-      const label = field.includes('amount') ? formatWon(option) : String(option);
-      addButton(label, option);
-    }
-  } else if (question.question_kind === 'FINANCIAL_FACT') {
-    const semantic = question.request?.expected_semantic_type || '';
-    const factType = question.request?.fact_type || '';
-    const isIntent = semantic === 'FUTURE_INTENT' || /WILLING|POSSIBLE/.test(factType);
-    addButton(isIntent ? '네, 할 수 있어요' : '네, 있어요', true);
-    addButton(isIntent ? '아니요, 어려워요' : '아니요, 없어요', false);
-  } else if (question.question_kind === 'CONTRIBUTION_FEASIBILITY') {
-    const clarification = question.feasibility_clarification || {};
-    for (const option of clarification.feasible_options || []) {
-      addButton(formatWon(option), option);
-    }
-    if ((clarification.allowed_resolutions || []).includes('EXCLUDE_PRODUCT')) {
-      addButton('이 상품은 제외', 'EXCLUDE_PRODUCT');
-    }
-  }
+  appendQuestionMessage(question);
 }
 
-function showWarning(text) {
-  if (!text) {
-    els.warningBanner.classList.add('hidden');
-    return;
+async function preloadRecommendationDetails() {
+  if (!state.session || !state.recommendations) return;
+  const recommendationId = state.recommendations.recommendation_id || '';
+  if (state.detailCacheRecommendationId !== recommendationId) {
+    state.detailCache.clear();
+    state.detailCacheRecommendationId = recommendationId;
   }
-  els.warningText.textContent = text;
-  els.warningBanner.classList.remove('hidden');
+  const sessionId = state.session.search_session_id;
+  const items = state.recommendations.top_products || [];
+  await Promise.all(items.map(async (item) => {
+    if (state.detailCache.has(item.product_id)) return;
+    const detail = await api(
+      `/search-sessions/${sessionId}/recommendations/${encodeURIComponent(item.product_id)}/preview`,
+    );
+    state.detailCache.set(item.product_id, detail);
+  }));
 }
 
-async function syncAll({ session = null, question = undefined, recommendations = undefined, warning = undefined } = {}) {
+async function syncAll({ session = null, question = undefined, recommendations = undefined } = {}) {
   if (session) state.session = session;
   if (!state.session) return;
   const id = state.session.search_session_id;
@@ -392,69 +531,79 @@ async function syncAll({ session = null, question = undefined, recommendations =
     if (nextQuestion && nextQuestion.question === null && Object.keys(nextQuestion).length === 1) nextQuestion = null;
   }
   renderQuestion(nextQuestion);
+  if (state.recommendations) {
+    await preloadRecommendationDetails().catch(() => null);
+  }
   if (state.recommendations) renderRecommendations();
   else renderStateChips();
-
-  const hasMaterialUnknown = (state.recommendations?.top_products || []).some((item) => item.material_unknown_count > 0 || item.ranking_comparability !== 'COMPARABLE');
-  const defaultWarning = (nextQuestion || hasMaterialUnknown)
-    ? '현재 순위는 미확인 조건이나 상품별 납입 선택에 따라 달라질 수 있습니다.'
-    : null;
-  showWarning(warning !== undefined ? warning : defaultWarning);
   els.refreshButton.disabled = false;
+  return nextQuestion;
 }
 
 async function startSearch(message) {
   setBusy(true);
   renderLoading();
+  let processingMessage = null;
   try {
     const now = new Date();
     const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     appendMessage('user', message);
+    processingMessage = appendProcessingMessage();
     els.starterPrompts.classList.add('hidden');
     const session = await api('/search-sessions', {
       method: 'POST',
       body: {
-        user_id: state.runtime.sample_user_id,
+        user_id: state.userId,
         natural_language_query: message,
         as_of: today,
         subscription_date: today,
       },
     });
     state.session = session;
-    appendMessage('assistant', '연결된 샘플 금융데이터와 상품 조건을 대조해 추천을 계산했어요. 필요한 정보가 있으면 한 가지씩 더 물어볼게요.');
-    await syncAll({ session });
+    const nextQuestion = await syncAll({ session });
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
+    if (!nextQuestion) {
+      appendMessage('assistant', '말씀하신 조건으로 추천을 계산했어요. 왼쪽에서 조건을 더 말하면 결과를 계속 좁혀갈 수 있어요.');
+    }
   } catch (error) {
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
     showStartError(error);
   } finally {
+    removeProcessingMessage(processingMessage);
     setBusy(false);
   }
 }
 
 async function sendFollowup(message) {
   setBusy(true);
+  let processingMessage = null;
   try {
     appendMessage('user', message);
+    processingMessage = appendProcessingMessage();
     const result = await api(`/search-sessions/${state.session.search_session_id}/messages`, {
       method: 'POST',
       body: { message },
     });
     state.session = result.session;
-    if (result.next_question) {
-      appendMessage('assistant', '좋아요. 다음 조건도 하나만 확인해볼게요.');
-    } else if (result.current_results_requested) {
-      appendMessage('assistant', '현재까지 확인된 정보만으로 결과를 보여드릴게요. 미확인 조건은 그대로 남겨둡니다.');
-    } else if (result.recommendations) {
-      appendMessage('assistant', '말씀하신 조건을 반영해 추천 결과를 다시 계산했어요.');
-    } else {
-      appendMessage('assistant', '말씀하신 내용을 현재 검색 상태에 반영했어요.');
-    }
     await syncAll({
       session: result.session,
       question: result.next_question,
       recommendations: result.recommendations === null ? undefined : result.recommendations,
-      warning: result.unresolved_warning || undefined,
     });
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
+    if (result.assistant_message) {
+      appendMessage('assistant', result.assistant_message);
+    } else if (result.current_results_requested) {
+      appendMessage('assistant', '현재까지 답한 조건으로 후보를 보여드릴게요. 남은 질문을 마치면 Top 5가 확정됩니다.');
+    } else if (result.recommendations) {
+      appendMessage('assistant', '말씀하신 조건을 반영해 추천 결과를 다시 계산했어요.');
+    }
   } catch (error) {
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
     if (error.status === 503 && error.payload?.llm_enabled === false) {
       appendMessage('assistant', '현재 Web 런타임에 대화용 AI가 설정되어 있지 않아 자유로운 후속 문장 해석은 사용할 수 없어요. 위에 표시된 선택형 질문과 현재 결과 보기는 계속 사용할 수 있습니다.');
       toast('대화형 AI 설정을 확인해 주세요.', 'error');
@@ -466,46 +615,103 @@ async function sendFollowup(message) {
       toast(error.message, 'error');
     }
   } finally {
+    removeProcessingMessage(processingMessage);
     setBusy(false);
   }
 }
 
 async function answerQuestion(answer, label) {
   if (!state.session || !state.activeQuestion || state.busy) return;
+  const answeredQuestion = state.activeQuestion;
+  renderQuestion(null);
   setBusy(true);
+  let processingMessage = null;
   try {
     appendMessage('user', label);
+    processingMessage = appendProcessingMessage();
     const session = await api(`/search-sessions/${state.session.search_session_id}/answers`, {
       method: 'POST',
-      body: { question_id: state.activeQuestion.question_id, answer },
+      body: { question_id: answeredQuestion.question_id, answer },
     });
     state.session = session;
     const next = await api(`/search-sessions/${state.session.search_session_id}/questions/next`).catch(() => null);
-    if (next && next.question) appendMessage('assistant', '좋아요. 다음 조건도 하나만 확인해볼게요.');
-    else appendMessage('assistant', '답변을 반영해 금리와 예상 이자, 순위를 다시 계산했어요.');
     await syncAll({ session, question: next && next.question ? next : null });
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
+    if (!next?.question) appendMessage('assistant', '모든 질문을 반영해 Top 5와 예상 금리, 세전이자를 계산했어요.');
   } catch (error) {
+    removeProcessingMessage(processingMessage);
+    processingMessage = null;
     appendMessage('assistant', `답변을 반영하지 못했어요: ${error.message}`);
+    renderQuestion(answeredQuestion);
     toast(error.message, 'error');
+  } finally {
+    removeProcessingMessage(processingMessage);
+    setBusy(false);
+  }
+}
+
+async function changeRankingObjective(objective) {
+  if (!state.session || state.busy) return;
+  if (state.uiState?.intent?.ranking_objective === objective) return;
+  setBusy(true);
+  try {
+    const session = await api(`/search-sessions/${state.session.search_session_id}/intent`, {
+      method: 'PATCH',
+      body: { patch: { ranking_objective_patch: objective } },
+    });
+    state.session = session;
+    await syncAll({ session });
+    toast(`${objectiveLabel(objective)}으로 정렬했습니다.`);
+  } catch (error) {
+    toast(`정렬 기준을 바꾸지 못했어요: ${error.message}`, 'error');
   } finally {
     setBusy(false);
   }
 }
 
-async function showCurrentResults() {
-  if (!state.session) return;
+async function resetConversation() {
+  if (state.busy) return;
+  const previousSessionId = state.session?.search_session_id;
   setBusy(true);
-  try {
-    const rec = await api(`/search-sessions/${state.session.search_session_id}/recommendations`);
-    state.recommendations = rec;
-    renderRecommendations();
-    showWarning('질문을 건너뛴 상태입니다. 미확인 조건에 따라 Top 5 구성이나 순위가 달라질 수 있습니다.');
-    appendMessage('assistant', '현재까지 확인된 정보로 결과를 보여드릴게요. 질문은 그대로 남겨두어서 나중에 다시 이어서 답할 수 있어요.');
-  } catch (error) {
-    toast(error.message, 'error');
-  } finally {
-    setBusy(false);
+  if (previousSessionId) {
+    try {
+      await api(`/search-sessions/${previousSessionId}`, { method: 'DELETE' });
+    } catch (error) {
+      toast(`이전 대화 정리 중 문제가 있었어요: ${error.message}`, 'error');
+    }
   }
+
+  state.session = null;
+  state.uiState = null;
+  state.recommendations = null;
+  state.activeQuestion = null;
+  state.currentDetail = null;
+  state.detailCache.clear();
+  state.detailCacheRecommendationId = null;
+  state.productNames.clear();
+  state.userId = createConversationUserId();
+
+  els.messages.innerHTML = '';
+  els.starterPrompts.classList.remove('hidden');
+  els.input.value = '';
+  els.input.style.height = '';
+  renderQuestion(null);
+  renderStateChips();
+  closeDetail();
+  els.recommendationCount.textContent = '추천 결과 대기 중';
+  els.recommendations.innerHTML = `
+    <div class="empty-results">
+      <div class="empty-illustration">₩</div>
+      <h3>검색 조건을 알려주세요</h3>
+      <p>광고 최고금리가 아니라, 실제 납입계획과 받을 수 있는 우대조건을 기준으로 비교합니다.</p>
+    </div>`;
+  for (const button of els.rankingToggle.querySelectorAll('button')) {
+    button.classList.remove('active');
+  }
+  els.chatScroll.scrollTop = 0;
+  setBusy(false);
+  els.input.focus();
 }
 
 function renderLoading() {
@@ -561,15 +767,38 @@ async function openDetail(productId) {
   if (!state.session) return;
   els.detailBackdrop.classList.remove('hidden');
   els.detailDrawer.classList.remove('hidden');
+  const cached = state.detailCache.get(productId);
+  if (cached) {
+    state.currentDetail = cached;
+    renderDetail(cached);
+    if (!cached.explanation) hydrateDetailExplanation(productId);
+    return;
+  }
   els.detailInstitution.textContent = '불러오는 중';
   els.detailProductName.textContent = '상품 상세';
   els.detailContent.innerHTML = '<div class="skeleton"></div><div class="skeleton" style="margin-top:10px"></div>';
   try {
     const detail = await api(`/search-sessions/${state.session.search_session_id}/recommendations/${encodeURIComponent(productId)}`);
+    state.detailCache.set(productId, detail);
     state.currentDetail = detail;
     renderDetail(detail);
   } catch (error) {
     els.detailContent.innerHTML = `<div class="empty-results"><h3>상세정보를 불러오지 못했습니다</h3><p>${escapeHtml(error.message)}</p></div>`;
+  }
+}
+
+async function hydrateDetailExplanation(productId) {
+  try {
+    const detail = await api(
+      `/search-sessions/${state.session.search_session_id}/recommendations/${encodeURIComponent(productId)}`,
+    );
+    state.detailCache.set(productId, detail);
+    if (state.currentDetail?.product_id === productId) {
+      state.currentDetail = detail;
+      renderDetail(detail);
+    }
+  } catch {
+    // The complete structured detail is already visible from the preview.
   }
 }
 
@@ -597,8 +826,7 @@ function renderDetail(detail) {
       <div class="detail-info"><div class="label">내 납입계획</div><div class="value">${escapeHtml(detail.planned_contribution_summary)}</div></div>
       <div class="detail-info"><div class="label">상품 납입한도</div><div class="value">${escapeHtml(detail.maximum_deposit_summary)}</div></div>
       <div class="detail-info"><div class="label">예상 총 납입액</div><div class="value">${formatWon(detail.estimated_total_principal)}</div></div>
-      <div class="detail-info"><div class="label">예상 세전이자</div><div class="value">${formatWon(detail.estimated_pre_tax_interest)}</div></div>
-      <div class="detail-info emphasis"><div class="label">예상 세후이자</div><div class="value">${formatWon(detail.estimated_after_tax_interest)}</div></div>
+      <div class="detail-info emphasis"><div class="label">예상 세전이자</div><div class="value">${formatWon(detail.estimated_pre_tax_interest)}</div></div>
     </div>
 
     <section class="detail-section">
@@ -607,13 +835,13 @@ function renderDetail(detail) {
         ${renderReasonBox('좋은 점', reason.positives, 'good')}
         ${renderReasonBox('아쉬운 점', reason.limitations, 'limit')}
         ${renderReasonBox('하면 좋은 행동', reason.actions, 'action')}
-        ${renderReasonBox('추가 확인', reason.unknowns, 'unknown')}
+        ${renderReasonBox('가입 시 확인할 사항', reason.unknowns, 'unknown')}
       </div>
     </section>
 
     <section class="detail-section">
       <h3>금리 구성 · 판정 근거</h3>
-      <div class="rate-legend"><span><i class="status-SATISFIED">✓</i> 이미 충족</span><span><i class="status-ACHIEVABLE">→</i> 계획대로 달성 가능</span><span><i class="status-UNSATISFIABLE">×</i> 받을 수 없음</span><span><i class="status-UNKNOWN">?</i> 추가 확인</span></div>
+      <div class="rate-legend"><span><i class="status-SATISFIED">✓</i> 이미 충족</span><span><i class="status-ACHIEVABLE">→</i> 계획대로 달성 가능</span><span><i class="status-UNSATISFIABLE">×</i> 받을 수 없음</span><span><i class="status-UNKNOWN">?</i> 가입 시 기관 확인</span></div>
       <div class="rate-tree">${(detail.rate_breakdown || []).map((x) => renderRateNode(x)).join('')}</div>
       ${capNote}
     </section>
@@ -692,7 +920,12 @@ els.starterPrompts.addEventListener('click', (event) => {
   els.composer.requestSubmit();
 });
 
-els.showCurrentButton.addEventListener('click', showCurrentResults);
+els.newChatButton.addEventListener('click', resetConversation);
+els.rankingToggle.addEventListener('click', async (event) => {
+  const button = event.target.closest('button[data-objective]');
+  if (!button || !state.session || state.busy) return;
+  await changeRankingObjective(button.dataset.objective);
+});
 els.refreshButton.addEventListener('click', async () => {
   if (!state.session || state.busy) return;
   setBusy(true);

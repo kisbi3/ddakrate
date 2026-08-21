@@ -11,7 +11,7 @@ from eligibility.fixtures.kakao_26_week import kakao_26_week_product
 from eligibility.fixtures.ibk_parent_benefit import ibk_parent_benefit_product
 from eligibility.fixtures.hana_run import hana_run_product
 from eligibility.schema.enums import RankingObjective
-from eligibility.schema.search import ProductSearchIntent
+from eligibility.schema.search import ContributionPlan, ProductSearchIntent
 from eligibility.schema.user_fact import UserFactStore
 from eligibility.schema.evaluation import EvaluationContext
 
@@ -77,6 +77,9 @@ def test_default_web_runtime_loads_catalog50(monkeypatch):
     runtime = build_web_runtime()
     assert runtime.product_count == 50
     assert len(runtime.service.products) == 50
+    assert runtime.sample_user_id is None
+    assert runtime.user_data_mode == "CONVERSATIONAL_INPUT"
+    assert runtime.service.user_fact_stores == {}
 
 
 def test_packaged_catalog_mirror_is_loadable(monkeypatch):
@@ -116,3 +119,124 @@ def test_default_web_api_uses_catalog50_and_returns_top5(monkeypatch):
     )
     assert recommendations.status_code == 200
     assert len(recommendations.json()["top_products"]) == 5
+
+
+def test_mykids_eligibility_is_asked_with_bank_and_product_context():
+    product = next(
+        item
+        for item in _catalog()
+        if item.product_id == "KBANK_MYKIDS_SAVINGS_60M_20260819"
+    )
+    service = ApplicationService([product])
+    intent = ProductSearchIntent(
+        search_intent_id="INTENT-MYKIDS-CONTEXT",
+        user_id="MYKIDS-USER",
+        product_types=["INSTALLMENT_SAVINGS"],
+        ranking_objective=RankingObjective.MAX_REALIZABLE_RATE,
+        requested_top_k=1,
+    )
+    session = service.create_search_session(user_id="MYKIDS-USER", intent=intent)
+
+    question = service.get_next_question(session.search_session_id)
+    assert question is not None and question.request is not None
+    assert question.request.fact_type == "KBANK_MYKIDS_ELIGIBLE"
+    assert "케이뱅크" in question.product_context
+    assert "만 17세 미만" in question.question
+    assert "실제 가입 가능 여부" in question.explanation
+
+
+def test_withus_eligibility_uses_official_customer_type_and_one_account_rules():
+    product = next(
+        item
+        for item in _catalog()
+        if item.product_id == "BNK_KYONGNAM_WITHUS_FREE_36M_2025"
+    )
+    assert product.eligibility_rule.name == "가입대상 및 1인 1좌"
+    assert product.eligibility_rule.source is not None
+    assert product.eligibility_rule.source.source_text == (
+        "가입대상: 실명의 개인 및 개인사업자. 가입좌수: 1인 1좌."
+    )
+
+    service = ApplicationService([product])
+    intent = ProductSearchIntent(
+        search_intent_id="INTENT-WITHUS-ELIGIBILITY",
+        user_id="WITHUS-USER",
+        product_types=["INSTALLMENT_SAVINGS"],
+        ranking_objective=RankingObjective.MAX_REALIZABLE_RATE,
+        requested_top_k=1,
+    )
+    session = service.create_search_session(user_id="WITHUS-USER", intent=intent)
+    observed_questions = {}
+    answers = {
+        "BNK_WITHUS_REAL_NAME_INDIVIDUAL_OR_SOLE_PROPRIETOR": True,
+        "BNK_WITHUS_EXISTING_ACCOUNT_HELD": False,
+    }
+    for _ in range(2):
+        question = service.get_next_question(session.search_session_id)
+        assert question is not None and question.request is not None
+        fact_type = question.request.fact_type
+        observed_questions[fact_type] = question.question
+        service.submit_user_answer(
+            session.search_session_id,
+            question_id=question.question_id,
+            answer=answers[fact_type],
+        )
+
+    assert observed_questions == {
+        "BNK_WITHUS_REAL_NAME_INDIVIDUAL_OR_SOLE_PROPRIETOR": (
+            "BNK 위더스WithUs 자유적금은 실명의 개인 또는 개인사업자가 가입할 수 "
+            "있어요. 본인 명의의 개인이나 개인사업자로 가입하시나요?"
+        ),
+        "BNK_WITHUS_EXISTING_ACCOUNT_HELD": (
+            "현재 BNK 위더스WithUs 자유적금 계좌를 이미 보유하고 있나요?"
+        ),
+    }
+    evaluation = service.evaluate_candidates(session.search_session_id)[product.product_id]
+    assert evaluation.eligibility_status.value == "SATISFIED"
+
+
+def test_equivalent_toss_auto_transfer_questions_are_grouped_once():
+    product_ids = {
+        "TOSS_CHILD_SAVINGS_20260714",
+        "TOSS_FREE_SAVINGS_12M_20260508",
+    }
+    products = [item for item in _catalog() if item.product_id in product_ids]
+    service = ApplicationService(products)
+    intent = ProductSearchIntent(
+        search_intent_id="INTENT-TOSS-SHARED-AUTO",
+        user_id="TOSS-USER",
+        product_types=["INSTALLMENT_SAVINGS"],
+        ranking_objective=RankingObjective.MAX_REALIZABLE_RATE,
+        contribution_plan=ContributionPlan(
+            desired_periodic_amount=Decimal("200000"),
+            frequency="MONTHLY",
+        ),
+        requested_top_k=2,
+    )
+    session = service.create_search_session(user_id="TOSS-USER", intent=intent)
+
+    question = service.get_next_question(session.search_session_id)
+    while (
+        question is not None
+        and question.request is not None
+        and question.request.fact_type
+        in {
+            "TOSS_CHILD_ELIGIBLE",
+            "ELIGIBLE_TOSS_FREE_SAVINGS_12M_20260508",
+        }
+    ):
+        service.submit_user_answer(
+            session.search_session_id,
+            question_id=question.question_id,
+            answer=True,
+        )
+        question = service.get_next_question(session.search_session_id)
+
+    assert question is not None and question.request is not None
+    assert question.request.fact_type == "WILL_TOSS_MONTHLY_AUTO_TRANSFER_ALL"
+    assert set(question.affected_product_ids) == product_ids
+    assert question.question == (
+        "12개월 동안 매달 자동이체가 빠짐없이 실행되도록 유지하실 수 있나요?"
+    )
+    assert question.product_context is not None
+    assert question.product_context.startswith("자동이체 공통 조건")

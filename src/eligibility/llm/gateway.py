@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, TypeVar
+from typing import Any, Callable, Mapping, TypeVar
 
 from pydantic import BaseModel
 
@@ -34,10 +34,12 @@ class LLMGateway:
         *,
         profiles: Mapping[LLMPurpose, LLMProfile] | None = None,
         audit: AuditSession | None = None,
+        debug_observer: Callable[[str, dict[str, Any]], None] | None = None,
     ) -> None:
         self.client = client
         self.profiles = dict(profiles or DEFAULT_PROFILES)
         self.audit = audit
+        self.debug_observer = debug_observer
 
     @classmethod
     def from_settings(
@@ -47,6 +49,7 @@ class LLMGateway:
         mock_responses: Mapping[LLMPurpose | str, Any] | None = None,
         profiles: Mapping[LLMPurpose, LLMProfile] | None = None,
         audit: AuditSession | None = None,
+        debug_observer: Callable[[str, dict[str, Any]], None] | None = None,
     ) -> "LLMGateway":
         if settings.provider == "MOCK":
             client: LLMClient = MockLLMAdapter(
@@ -84,7 +87,12 @@ class LLMGateway:
         }
         if audit is not None:
             audit.llm_payload_mode = settings.log_payload_mode
-        return cls(client, profiles=configured_profiles, audit=audit)
+        return cls(
+            client,
+            profiles=configured_profiles,
+            audit=audit,
+            debug_observer=debug_observer,
+        )
 
     def generate_text(
         self,
@@ -104,12 +112,15 @@ class LLMGateway:
             timeout_seconds=profile.timeout_seconds,
             metadata=metadata or {},
         )
+        self._debug_started(request)
         self._audit_started(request, profile)
         try:
             response = self.client.generate_text(request)
         except Exception as exc:
+            self._debug_failed(exc)
             self._audit_failed(request, profile, exc)
             raise
+        self._debug_completed(response, response.text)
         self._audit_completed(request, profile, response, response.text)
         return response
 
@@ -136,12 +147,15 @@ class LLMGateway:
             timeout_seconds=profile.timeout_seconds,
             metadata=metadata or {},
         )
+        self._debug_started(request)
         self._audit_started(request, profile)
         try:
             response = self.client.generate_structured(request, response_model)
         except Exception as exc:
+            self._debug_failed(exc)
             self._audit_failed(request, profile, exc)
             raise
+        self._debug_completed(response, response.data.model_dump(mode="json"))
         self._audit_completed(
             request,
             profile,
@@ -153,6 +167,52 @@ class LLMGateway:
 
     def health_check(self) -> LLMHealthStatus:
         return self.client.health_check()
+
+    def _debug_started(self, request: TextGenerationRequest) -> None:
+        if self.debug_observer is None:
+            return
+        self.debug_observer(
+            "started",
+            {
+                "purpose": request.purpose.value,
+                "provider": getattr(self.client, "provider", type(self.client).__name__),
+                "model": getattr(self.client, "model", "unknown"),
+                "request": request.model_dump(mode="json"),
+            },
+        )
+
+    def _debug_completed(
+        self,
+        response: TextGenerationResponse | StructuredGenerationResponse[Any],
+        output: Any,
+    ) -> None:
+        if self.debug_observer is None:
+            return
+        self.debug_observer(
+            "completed",
+            {
+                "output": output,
+                "latency_ms": response.latency_ms,
+                "token_usage": (
+                    response.token_usage.model_dump(mode="json")
+                    if response.token_usage is not None
+                    else None
+                ),
+                "retry_count": response.retry_count,
+                "model_version": response.model_version,
+            },
+        )
+
+    def _debug_failed(self, error: Exception) -> None:
+        if self.debug_observer is None:
+            return
+        self.debug_observer(
+            "failed",
+            {
+                "error": f"{type(error).__name__}: {error}",
+                "error_code": getattr(error, "error_code", None),
+            },
+        )
 
     @staticmethod
     def _messages(prompt: str, system_prompt: str | None) -> list[LLMMessage]:
