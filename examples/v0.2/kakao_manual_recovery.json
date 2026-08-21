@@ -1,0 +1,1272 @@
+{
+  "schema_version": "0.2",
+  "evaluation_id": "EVAL-e78fd75dd8451c11",
+  "user_id": "KAKAO_U001",
+  "product_id": "KAKAOBANK_26_WEEK_SAVINGS_20260819",
+  "product_name": "26주적금",
+  "as_of": "2027-02-18",
+  "subscription_date": "2026-08-20",
+  "eligibility_status": "SATISFIED",
+  "eligibility": {
+    "rule_id": "K26_ELIG_INITIAL_AMOUNT",
+    "rule_name": "허용된 최초 가입금액",
+    "rule_type": "FACT_COMPARE",
+    "status": "SATISFIED",
+    "reason_code": "INITIAL_AMOUNT_ALLOWED",
+    "progress": null,
+    "missing_facts": [],
+    "evidence": {
+      "fact_type": "KAKAO_26W_INITIAL_AMOUNT_KRW",
+      "fact_id": "K26-F-AMOUNT",
+      "actual": 1000,
+      "expected": [
+        1000,
+        2000,
+        3000,
+        5000,
+        10000
+      ],
+      "operator": "IN",
+      "effective_at": "2027-02-18",
+      "source_type": "INSTITUTION_VERIFIED"
+    },
+    "source_provenance": [
+      {
+        "source_type": "PRODUCT_DOCUMENT",
+        "reference": "카카오뱅크 26주적금 공식 상품페이지",
+        "details": {
+          "document": "카카오뱅크 26주적금 공식 상품페이지",
+          "version_date": "2026-08-19",
+          "section": "최초 가입금액 선택",
+          "source_url": "https://www.kakaobank.com/products/26weeks"
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "K26-F-AMOUNT",
+        "details": {
+          "fact_type": "KAKAO_26W_INITIAL_AMOUNT_KRW",
+          "subject_person_id": "KAKAO_U001",
+          "valid_from": "2026-08-20",
+          "valid_to": null
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "fixture/kakao-26w/K26-F-AMOUNT",
+        "details": {
+          "description": "Human-reviewed KakaoBank regression fact"
+        }
+      }
+    ],
+    "children": []
+  },
+  "preferential_rule_results": [
+    {
+      "rule_id": "K26_RATE_FIRST_7",
+      "rule_name": "최초 7주 자동이체 연속 성공",
+      "rule_type": "COUNT_CONSECUTIVE",
+      "status": "UNSATISFIABLE",
+      "reason_code": "FIRST_7_AUTO_TRANSFER_STREAK_BROKEN",
+      "progress": {
+        "current": 3,
+        "required": 7,
+        "unit": "OCCURRENCE"
+      },
+      "missing_facts": [],
+      "evidence": {
+        "entity": "SCHEDULED_OCCURRENCE",
+        "schedule_id": "KAKAO_26W_001",
+        "subject_person_ids": [
+          "KAKAO_U001"
+        ],
+        "from_sequence": 1,
+        "matched_sequence_nos": [
+          1,
+          2,
+          3
+        ],
+        "consecutive_count": 3,
+        "qualifying_occurrence_count": 25,
+        "first_break_sequence": 4,
+        "break_reason": "SEQUENCE_PREDICATE_FAILED",
+        "break_occurrence_ids": [
+          "K26-O-04-AUTO",
+          "K26-O-04-MANUAL-FILL"
+        ],
+        "expected": 7,
+        "operator": "GTE",
+        "window": null
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "카카오뱅크 26주적금 공식 상품페이지",
+          "details": {
+            "document": "카카오뱅크 26주적금 공식 상품페이지",
+            "version_date": "2026-08-19",
+            "section": "7주 연속 자동이체 우대",
+            "source_url": "https://www.kakaobank.com/products/26weeks"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-01-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 1,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/1/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-02-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 2,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/2/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-03-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 3,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/3/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-04-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 4,
+            "method": "AUTO_TRANSFER",
+            "status": "FAILED"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/4/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-05-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 5,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/5/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-06-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 6,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/6/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-07-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 7,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/7/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-08-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 8,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/8/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-09-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 9,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/9/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-10-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 10,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/10/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-11-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 11,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/11/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-12-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 12,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/12/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-13-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 13,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/13/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-14-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 14,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/14/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-15-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 15,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/15/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-16-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 16,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/16/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-17-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 17,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/17/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-18-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 18,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/18/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-19-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 19,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/19/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-20-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 20,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/20/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-21-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 21,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/21/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-22-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 22,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/22/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-23-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 23,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/23/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-24-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 24,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/24/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-25-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 25,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/25/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-26-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 26,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/26/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-04-MANUAL-FILL",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 4,
+            "method": "MANUAL_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/4/MANUAL-FILL",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "rule_id": "K26_RATE_FIRST_26",
+      "rule_name": "최초 26주 자동이체 연속 성공",
+      "rule_type": "COUNT_CONSECUTIVE",
+      "status": "UNSATISFIABLE",
+      "reason_code": "FIRST_26_AUTO_TRANSFER_STREAK_BROKEN",
+      "progress": {
+        "current": 3,
+        "required": 26,
+        "unit": "OCCURRENCE"
+      },
+      "missing_facts": [],
+      "evidence": {
+        "entity": "SCHEDULED_OCCURRENCE",
+        "schedule_id": "KAKAO_26W_001",
+        "subject_person_ids": [
+          "KAKAO_U001"
+        ],
+        "from_sequence": 1,
+        "matched_sequence_nos": [
+          1,
+          2,
+          3
+        ],
+        "consecutive_count": 3,
+        "qualifying_occurrence_count": 25,
+        "first_break_sequence": 4,
+        "break_reason": "SEQUENCE_PREDICATE_FAILED",
+        "break_occurrence_ids": [
+          "K26-O-04-AUTO",
+          "K26-O-04-MANUAL-FILL"
+        ],
+        "expected": 26,
+        "operator": "GTE",
+        "window": null
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "카카오뱅크 26주적금 공식 상품페이지",
+          "details": {
+            "document": "카카오뱅크 26주적금 공식 상품페이지",
+            "version_date": "2026-08-19",
+            "section": "26주 연속 자동이체 우대",
+            "source_url": "https://www.kakaobank.com/products/26weeks"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-01-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 1,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/1/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-02-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 2,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/2/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-03-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 3,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/3/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-04-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 4,
+            "method": "AUTO_TRANSFER",
+            "status": "FAILED"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/4/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-05-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 5,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/5/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-06-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 6,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/6/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-07-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 7,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/7/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-08-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 8,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/8/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-09-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 9,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/9/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-10-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 10,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/10/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-11-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 11,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/11/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-12-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 12,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/12/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-13-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 13,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/13/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-14-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 14,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/14/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-15-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 15,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/15/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-16-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 16,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/16/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-17-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 17,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/17/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-18-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 18,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/18/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-19-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 19,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/19/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-20-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 20,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/20/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-21-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 21,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/21/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-22-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 22,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/22/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-23-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 23,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/23/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-24-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 24,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/24/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-25-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 25,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/25/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-26-AUTO",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 26,
+            "method": "AUTO_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/26/AUTO",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-O-04-MANUAL-FILL",
+          "details": {
+            "record_type": "SCHEDULED_OCCURRENCE",
+            "schedule_id": "KAKAO_26W_001",
+            "sequence_no": 4,
+            "method": "MANUAL_TRANSFER",
+            "status": "SUCCESS"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-kakaobank/auto-transfer/4/MANUAL-FILL",
+          "details": {
+            "description": null,
+            "manual_fill_does_not_change_auto_transfer_status": true
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "global_guard_results": [
+    {
+      "rule_id": "K26_GUARD_MATURITY",
+      "rule_name": "만기해지",
+      "rule_type": "FACT_COMPARE",
+      "status": "SATISFIED",
+      "reason_code": "MATURED_NORMALLY",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "TERMINATION_TYPE",
+        "fact_id": "K26-F-TERM",
+        "actual": "MATURED",
+        "expected": "MATURED",
+        "operator": "EQ",
+        "effective_at": "2027-02-18",
+        "source_type": "INSTITUTION_VERIFIED"
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "카카오뱅크 26주적금 공식 상품페이지",
+          "details": {
+            "document": "카카오뱅크 26주적금 공식 상품페이지",
+            "version_date": "2026-08-19",
+            "section": "만기해지 우대금리 적용",
+            "source_url": "https://www.kakaobank.com/products/26weeks"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "K26-F-TERM",
+          "details": {
+            "fact_type": "TERMINATION_TYPE",
+            "subject_person_id": "KAKAO_U001",
+            "valid_from": "2026-08-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "fixture/kakao-26w/K26-F-TERM",
+          "details": {
+            "description": "Human-reviewed KakaoBank regression fact"
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "rates": {
+    "advertised_max_rate": "5.0",
+    "confirmed_rate": "2.0",
+    "realizable_rate": "2.0",
+    "user_specific_conditional_upper_rate": "2.0",
+    "preferential_cap": "3.0",
+    "guard_status": "SATISFIED",
+    "applied_rewards": [
+      {
+        "rule_id": "K26_RATE_FIRST_7",
+        "rule_name": "최초 7주 자동이체 연속 성공",
+        "status": "UNSATISFIABLE",
+        "reward_pp": "1.0",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_user_specific_conditional_upper": false
+      },
+      {
+        "rule_id": "K26_RATE_FIRST_26",
+        "rule_name": "최초 26주 자동이체 연속 성공",
+        "status": "UNSATISFIABLE",
+        "reward_pp": "2.0",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_user_specific_conditional_upper": false
+      }
+    ]
+  },
+  "missing_facts": [],
+  "interest_estimates": {}
+}

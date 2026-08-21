@@ -1,0 +1,10 @@
+flowchart TD
+    P["청년 처음적금 — 월급봉투 6개월 Golden Flow"]
+    ELIG["Golden fixture 가입 가능<br/>ELIG-SHINHAN_GOLDEN_ELIGIBLE | FACT_COMPARE<br/>phase=PRE_SUBSCRIPTION<br/>SHINHAN_GOLDEN_ELIGIBLE EQ True"]
+    P --> ELIG
+    RATE0["가입 후 월급봉투 인정월 6개월<br/>RATE_SALARY_ENVELOPE_6M | COUNT_DISTINCT_PERIODS<br/>phase=POST_SUBSCRIPTION<br/>period=MONTH | SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED | GTE 6"]
+    P -->|+1.0%p| RATE0
+    RATE0_FUTURE["Future Achievement<br/>mode=ACCUMULATIVE<br/>intent=WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M<br/>goal=SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH"]
+    RATE0 -. future .-> RATE0_FUTURE
+    RATE0_SRC["신한은행 청년 처음적금 상품설명서<br/>p.2 | [1] 주거래 우대"]
+    RATE0 -. source .-> RATE0_SRC

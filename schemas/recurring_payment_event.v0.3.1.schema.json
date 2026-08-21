@@ -1,0 +1,198 @@
+{
+  "$defs": {
+    "FactProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "title": "Reference",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "reference"
+      ],
+      "title": "FactProvenance",
+      "type": "object"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "FUTURE_INTENT",
+        "SELF_REPORTED_FACT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    },
+    "RecurringPaymentCategory": {
+      "enum": [
+        "UTILITY",
+        "TELECOM",
+        "APARTMENT_MANAGEMENT",
+        "INSURANCE",
+        "TAX_OR_PUBLIC_FEE",
+        "OTHER"
+      ],
+      "title": "RecurringPaymentCategory",
+      "type": "string"
+    },
+    "RecurringPaymentMethod": {
+      "enum": [
+        "AUTO_DEBIT",
+        "CARD",
+        "TRANSFER",
+        "OTHER"
+      ],
+      "title": "RecurringPaymentMethod",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Generic recurring-payment observation shared across institutions.",
+  "properties": {
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "subject_person_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Subject Person Id"
+    },
+    "event_type": {
+      "default": "QUALIFIED_RECURRING_PAYMENT",
+      "title": "Event Type",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "amount": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Amount"
+    },
+    "currency": {
+      "default": "KRW",
+      "title": "Currency",
+      "type": "string"
+    },
+    "category": {
+      "$ref": "#/$defs/RecurringPaymentCategory"
+    },
+    "payment_method": {
+      "$ref": "#/$defs/RecurringPaymentMethod"
+    },
+    "source_account": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Account"
+    },
+    "institution": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Institution"
+    },
+    "settlement_bank": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Settlement Bank"
+    },
+    "source_type": {
+      "$ref": "#/$defs/FactSourceType"
+    },
+    "semantic_type": {
+      "$ref": "#/$defs/FactSemanticType",
+      "default": "OBSERVED_EVENT"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/FactProvenance"
+      },
+      "title": "Provenance",
+      "type": "array"
+    }
+  },
+  "required": [
+    "event_id",
+    "user_id",
+    "occurred_at",
+    "amount",
+    "category",
+    "payment_method",
+    "source_type"
+  ],
+  "title": "RecurringPaymentEvent",
+  "type": "object"
+}

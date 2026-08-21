@@ -1,0 +1,228 @@
+{
+  "product_id": "SHINHAN_11ST_SHOPPING_SAVINGS_20260520",
+  "institution_id": "SHINHAN_BANK",
+  "name": "신한 11번가 쇼핑 적금",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 77,
+    "unit": "DAY"
+  },
+  "base_rate": "5.5",
+  "advertised_max_rate": "11.0",
+  "preferential_rate_cap": "5.5",
+  "eligibility_rule": {
+    "rule_id": "SHINHAN_11ST_SHOPPING_SAVINGS_20260520_ELIG",
+    "name": "공식 가입대상 충족",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "신한은행 11번가 쇼핑 적금 상품설명서",
+      "document_id": null,
+      "version_date": "2026-05-20",
+      "page": null,
+      "section": "가입대상",
+      "source_url": "https://img.shinhan.com/sbank2016/seol/20260520000000980001LC000030.PDF?1786548212087=",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "ELIGIBLE_SHINHAN_11ST_SHOPPING_SAVINGS_20260520",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "EQ",
+    "expected": true,
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "OFFICIAL_ELIGIBILITY_MATCH",
+    "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": {
+      "resolution_strategy": "QUERY_INSTITUTION",
+      "impact": null,
+      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
+      "question": null,
+      "expected_semantic_type": null,
+      "action_id": null,
+      "reward_id": null,
+      "grounding_terms": []
+    },
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "SHINHAN_11ST_SHOPPING_SAVINGS_20260520_R01",
+        "name": "11Pay 신한계좌 결제 또는 11번가 신한카드 결제 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "신한은행 11번가 쇼핑 적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-05-20",
+          "page": null,
+          "section": "결제 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20260520000000980001LC000030.PDF?1786548212087=",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "SHINHAN_11ST_PAYMENT_ELIGIBLE",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "5.5"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "5.5",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "SHINHAN_11ST_SHOPPING_SAVINGS_20260520_MATURITY_GUARD",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "신한은행 11번가 쇼핑 적금 상품설명서",
+        "document_id": null,
+        "version_date": "2026-05-20",
+        "page": null,
+        "section": "만기/중도해지",
+        "source_url": "https://img.shinhan.com/sbank2016/seol/20260520000000980001LC000030.PDF?1786548212087=",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION",
+      "missing_reason_code": "MATURITY_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "SHINHAN_BANK",
+    "product_id": "SHINHAN_11ST_SHOPPING_SAVINGS_20260520",
+    "product_name": "신한 11번가 쇼핑 적금",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 77,
+      "unit": "DAY"
+    },
+    "max_term": {
+      "value": 77,
+      "unit": "DAY"
+    },
+    "available_terms": [
+      {
+        "value": 77,
+        "unit": "DAY"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": "1000",
+      "periodic_amount_max": "100000",
+      "contribution_frequency": "WEEKLY",
+      "contribution_mode": "FLEXIBLE",
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "5.5",
+    "advertised_max_rate": "11.0",
+    "preferential_rate_cap": "5.5",
+    "allowed_channels": [
+      "PARTNER",
+      "MOBILE"
+    ],
+    "features": [
+      {
+        "feature_id": "CARD_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "신한은행 11번가 쇼핑 적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-05-20",
+          "page": null,
+          "section": "결제 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20260520000000980001LC000030.PDF?1786548212087=",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "만 14세 이상 대한민국 국민인 실명의 개인 및 개인사업자",
+    "one_account_per_person": true,
+    "sale_start": null,
+    "sale_end": "2026-12-31",
+    "quantity_limit": 100000,
+    "early_termination_policy": "우대금리는 원칙적으로 만기해지 시 적용하며 중도해지 시 상품별 중도해지이율을 적용.",
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": "2026-05-20",
+    "effective_to": null,
+    "source_reference": {
+      "document": "신한은행 11번가 쇼핑 적금 상품설명서",
+      "document_id": null,
+      "version_date": "2026-05-20",
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://img.shinhan.com/sbank2016/seol/20260520000000980001LC000030.PDF?1786548212087=",
+      "source_text": null
+    }
+  }
+}

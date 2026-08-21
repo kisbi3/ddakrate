@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "AchievementMode": {
+      "enum": [
+        "ACCUMULATIVE",
+        "CONSECUTIVE",
+        "MAINTAIN_UNTIL_DEADLINE",
+        "ONE_TIME_BEFORE_DEADLINE"
+      ],
+      "title": "AchievementMode",
+      "type": "string"
+    },
+    "GoalStatus": {
+      "enum": [
+        "ACTIVE",
+        "AT_RISK",
+        "COMPLETED",
+        "FAILED",
+        "PAUSED"
+      ],
+      "title": "GoalStatus",
+      "type": "string"
+    },
+    "PeriodUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH"
+      ],
+      "title": "PeriodUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "goal_id": {
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "subscription_id": {
+      "title": "Subscription Id",
+      "type": "string"
+    },
+    "rule_id": {
+      "title": "Rule Id",
+      "type": "string"
+    },
+    "tracking_mode": {
+      "$ref": "#/$defs/AchievementMode"
+    },
+    "metric": {
+      "title": "Metric",
+      "type": "string"
+    },
+    "opportunity_unit": {
+      "$ref": "#/$defs/PeriodUnit"
+    },
+    "required_target": {
+      "minimum": 0,
+      "title": "Required Target",
+      "type": "integer"
+    },
+    "current_progress": {
+      "minimum": 0,
+      "title": "Current Progress",
+      "type": "integer"
+    },
+    "window_start": {
+      "format": "date",
+      "title": "Window Start",
+      "type": "string"
+    },
+    "deadline": {
+      "format": "date",
+      "title": "Deadline",
+      "type": "string"
+    },
+    "remaining_required": {
+      "minimum": 0,
+      "title": "Remaining Required",
+      "type": "integer"
+    },
+    "remaining_opportunities": {
+      "minimum": 0,
+      "title": "Remaining Opportunities",
+      "type": "integer"
+    },
+    "buffer": {
+      "title": "Buffer",
+      "type": "integer"
+    },
+    "rate_reward_pp": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Rate Reward Pp"
+    },
+    "status": {
+      "$ref": "#/$defs/GoalStatus"
+    },
+    "safety_threshold": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Safety Threshold",
+      "type": "integer"
+    },
+    "created_from_evaluation_id": {
+      "title": "Created From Evaluation Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "next_check_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Check At"
+    },
+    "alert_policy": {
+      "additionalProperties": true,
+      "title": "Alert Policy",
+      "type": "object"
+    }
+  },
+  "required": [
+    "goal_id",
+    "user_id",
+    "product_id",
+    "subscription_id",
+    "rule_id",
+    "tracking_mode",
+    "metric",
+    "opportunity_unit",
+    "required_target",
+    "current_progress",
+    "window_start",
+    "deadline",
+    "remaining_required",
+    "remaining_opportunities",
+    "buffer",
+    "rate_reward_pp",
+    "status",
+    "created_from_evaluation_id"
+  ],
+  "title": "GoalInstance",
+  "type": "object"
+}

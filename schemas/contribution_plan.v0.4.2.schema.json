@@ -1,0 +1,153 @@
+{
+  "$defs": {
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Global user contribution preference shared across the search session.\n\nProduct-specific ranking choices (for example a Kakao 26-week start amount)\nare stored separately as :class:`ProductContributionChoice` and overlaid only\nfor the matching product during cashflow construction.  The legacy\n``preferred_start_amount`` / ``incremental_amount`` fields remain for\nbackward compatibility with direct evaluator callers, but ApplicationService\nranking-input answers do not mutate them.",
+  "properties": {
+    "desired_periodic_amount": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Desired Periodic Amount"
+    },
+    "maximum_affordable_periodic_amount": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Maximum Affordable Periodic Amount"
+    },
+    "frequency": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "selected_term_value": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selected Term Value"
+    },
+    "selected_term_unit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TermUnit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "preferred_start_amount": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Preferred Start Amount"
+    },
+    "incremental_amount": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Incremental Amount"
+    },
+    "currency": {
+      "default": "KRW",
+      "title": "Currency",
+      "type": "string"
+    },
+    "tax_rate": {
+      "anyOf": [
+        {
+          "exclusiveMaximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "default": "0.154",
+      "title": "Tax Rate"
+    }
+  },
+  "title": "ContributionPlan",
+  "type": "object"
+}

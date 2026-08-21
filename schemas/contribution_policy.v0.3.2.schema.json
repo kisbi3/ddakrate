@@ -1,0 +1,187 @@
+{
+  "$defs": {
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ContributionMode": {
+      "enum": [
+        "FIXED",
+        "FLEXIBLE",
+        "INCREMENTAL"
+      ],
+      "title": "ContributionMode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "initial_amount_min": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Initial Amount Min"
+    },
+    "initial_amount_max": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Initial Amount Max"
+    },
+    "initial_amount_options": {
+      "items": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+            "type": "string"
+          }
+        ]
+      },
+      "title": "Initial Amount Options",
+      "type": "array"
+    },
+    "periodic_amount_min": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Periodic Amount Min"
+    },
+    "periodic_amount_max": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Periodic Amount Max"
+    },
+    "contribution_frequency": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "contribution_mode": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionMode"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "increment_amount": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Increment Amount"
+    },
+    "increment_amount_options": {
+      "items": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+            "type": "string"
+          }
+        ]
+      },
+      "title": "Increment Amount Options",
+      "type": "array"
+    },
+    "total_principal_limit": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Total Principal Limit"
+    },
+    "currency": {
+      "default": "KRW",
+      "title": "Currency",
+      "type": "string"
+    }
+  },
+  "title": "ContributionPolicy",
+  "type": "object"
+}

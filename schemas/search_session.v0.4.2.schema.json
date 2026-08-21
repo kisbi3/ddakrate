@@ -1,0 +1,168 @@
+{
+  "$defs": {
+    "ProductContributionChoice": {
+      "additionalProperties": false,
+      "description": "One product-scoped answer required to complete that product's cashflow.\n\nIdentity is semantic and product scoped: ``(product_id, field)``.  This is\ndeliberately not part of ``ProductSearchIntent.contribution_plan`` because a\nstart amount or product-specific term selection must never leak into other\ncandidates.",
+      "properties": {
+        "choice_id": {
+          "title": "Choice Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "source_question_id": {
+          "title": "Source Question Id",
+          "type": "string"
+        },
+        "answered_at": {
+          "format": "date-time",
+          "title": "Answered At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "choice_id",
+        "product_id",
+        "field",
+        "value",
+        "source_question_id"
+      ],
+      "title": "ProductContributionChoice",
+      "type": "object"
+    },
+    "SearchSessionStatus": {
+      "enum": [
+        "INTENT_COLLECTION",
+        "CLARIFICATION_REQUIRED",
+        "CANDIDATES_RETRIEVED",
+        "QUESTIONING",
+        "RANKING_READY",
+        "COMPLETED"
+      ],
+      "title": "SearchSessionStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "search_session_id": {
+      "title": "Search Session Id",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "intent_version": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Intent Version",
+      "type": "integer"
+    },
+    "status": {
+      "$ref": "#/$defs/SearchSessionStatus",
+      "default": "INTENT_COLLECTION"
+    },
+    "candidate_product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Candidate Product Ids",
+      "type": "array"
+    },
+    "active_question_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Active Question Id"
+    },
+    "answered_question_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Answered Question Ids",
+      "type": "array"
+    },
+    "ranking_run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ranking Run Id"
+    },
+    "recommendation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recommendation Id"
+    },
+    "product_contribution_choices": {
+      "items": {
+        "$ref": "#/$defs/ProductContributionChoice"
+      },
+      "title": "Product Contribution Choices",
+      "type": "array"
+    },
+    "top_k": {
+      "default": 5,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Top K",
+      "type": "integer"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "search_session_id",
+    "user_id"
+  ],
+  "title": "SearchSession",
+  "type": "object"
+}

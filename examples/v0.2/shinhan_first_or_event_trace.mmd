@@ -1,0 +1,42 @@
+flowchart TD
+    P["청년 처음적금<br/>advertised=6.05% | realizable=4.55%"]
+    G_ELIG["가입자격"]
+    P --> G_ELIG
+    G_ELIG_R0{"청년 처음적금 가입자격<br/>ELIGIBILITY | AND"}
+    G_ELIG --> G_ELIG_R0
+    G_ELIG_R0_C0["가입연령 18~39세<br/>ELIG_AGE | DERIVED_COMPARE"]
+    G_ELIG_R0 --> G_ELIG_R0_C0
+    G_ELIG_R0_C0_E["Evidence<br/>actual=28<br/>expected=[18, 39]<br/>operator=BETWEEN_INCLUSIVE<br/>derivation=AGE_AT<br/>input_fact_id=F-BIRTH<br/>reference_date=2026-08-20"]
+    G_ELIG_R0_C0 --> G_ELIG_R0_C0_E
+    G_ELIG_R0_C0_S["SATISFIED<br/>AGE_WITHIN_ALLOWED_RANGE"]
+    G_ELIG_R0_C0_E --> G_ELIG_R0_C0_S
+    G_ELIG_R0_C1["1인 1계좌<br/>ELIG_ONE_ACCOUNT | FACT_COMPARE"]
+    G_ELIG_R0 --> G_ELIG_R0_C1
+    G_ELIG_R0_C1_E["Evidence<br/>actual=0<br/>expected=0<br/>operator=EQ<br/>fact_type=SHINHAN_YOUTH_FIRST_ACTIVE_ACCOUNT_COUNT<br/>source_type=MYDATA_VERIFIED<br/>effective_at=2026-08-20<br/>fact_id=F-SAME-PRODUCT-COUNT"]
+    G_ELIG_R0_C1 --> G_ELIG_R0_C1_E
+    G_ELIG_R0_C1_S["SATISFIED<br/>NO_EXISTING_SAME_PRODUCT_ACCOUNT"]
+    G_ELIG_R0_C1_E --> G_ELIG_R0_C1_S
+    G_ELIG_R0_E["Evidence<br/>declared_children=2<br/>evaluated_children=2"]
+    G_ELIG_R0 --> G_ELIG_R0_E
+    G_ELIG_R0_S["SATISFIED<br/>ALL_AND_CHILDREN_SATISFIED"]
+    G_ELIG_R0_E --> G_ELIG_R0_S
+    G_RATE["우대금리"]
+    P --> G_RATE
+    G_RATE_R0{"첫거래 또는 이벤트 우대<br/>RATE_FIRST_OR_EVENT | OR"}
+    G_RATE --> G_RATE_R0
+    G_RATE_R0_C0["첫거래 branch<br/>RATE_FIRST_TRANSACTION_BRANCH | NOT_EXISTS"]
+    G_RATE_R0 --> G_RATE_R0_C0
+    G_RATE_R0_C0_E["Evidence<br/>holding_from=2025-11-15<br/>holding_to=2026-04-12<br/>lookback_from=2025-08-20<br/>lookback_to=2026-08-19<br/>overlap=True<br/>matched_count=1<br/>entity=ACCOUNT_HOLDING_INTERVAL"]
+    G_RATE_R0_C0 --> G_RATE_R0_C0_E
+    G_RATE_R0_C0_S["UNSATISFIABLE<br/>PRIOR_HOLDING_OVERLAPS_LOOKBACK"]
+    G_RATE_R0_C0_E --> G_RATE_R0_C0_S
+    G_RATE_R0_C1["이벤트 branch<br/>RATE_EVENT_BRANCH | FACT_COMPARE"]
+    G_RATE_R0 --> G_RATE_R0_C1
+    G_RATE_R0_C1_E["Evidence<br/>expected=True<br/>operator=EQ<br/>fact_type=SPECIAL_RATE_COUPON_VALID<br/>effective_at=2026-08-19"]
+    G_RATE_R0_C1 --> G_RATE_R0_C1_E
+    G_RATE_R0_C1_S["UNKNOWN<br/>EVENT_COUPON_STATUS_UNRESOLVED"]
+    G_RATE_R0_C1_E --> G_RATE_R0_C1_S
+    G_RATE_R0_E["Evidence<br/>declared_children=2<br/>evaluated_children=2"]
+    G_RATE_R0 --> G_RATE_R0_E
+    G_RATE_R0_S["UNKNOWN<br/>OR_CHILD_UNKNOWN"]
+    G_RATE_R0_E --> G_RATE_R0_S

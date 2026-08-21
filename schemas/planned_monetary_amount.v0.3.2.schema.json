@@ -1,0 +1,75 @@
+{
+  "$defs": {
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "SELF_REPORTED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "User-entered planning amount, never authoritative settlement evidence.",
+  "properties": {
+    "amount": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Amount"
+    },
+    "currency": {
+      "title": "Currency",
+      "type": "string"
+    },
+    "period": {
+      "$ref": "#/$defs/TermUnit"
+    },
+    "source": {
+      "$ref": "#/$defs/FactSourceType",
+      "default": "USER_DECLARED"
+    },
+    "semantic_type": {
+      "$ref": "#/$defs/FactSemanticType"
+    }
+  },
+  "required": [
+    "amount",
+    "currency",
+    "period",
+    "semantic_type"
+  ],
+  "title": "PlannedMonetaryAmount",
+  "type": "object"
+}

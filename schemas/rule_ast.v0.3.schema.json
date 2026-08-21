@@ -1,0 +1,2067 @@
+{
+  "$defs": {
+    "AchievementMode": {
+      "enum": [
+        "ACCUMULATIVE",
+        "CONSECUTIVE",
+        "MAINTAIN_UNTIL_DEADLINE",
+        "ONE_TIME_BEFORE_DEADLINE"
+      ],
+      "title": "AchievementMode",
+      "type": "string"
+    },
+    "ActionDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "title": "Action Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "burden_score": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Burden Score"
+        }
+      },
+      "required": [
+        "action_id",
+        "description"
+      ],
+      "title": "ActionDefinition",
+      "type": "object"
+    },
+    "AndRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "AND",
+          "default": "AND",
+          "title": "Type",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "AND": "#/$defs/AndRule",
+                "COUNT_CONSECUTIVE": "#/$defs/CountConsecutiveRule",
+                "COUNT_DISTINCT_MONTHS": "#/$defs/CountDistinctMonthsRule",
+                "COUNT_DISTINCT_PERIODS": "#/$defs/CountDistinctPeriodsRule",
+                "DERIVED_COMPARE": "#/$defs/DerivedComparisonRule",
+                "ENTITY_COUNT": "#/$defs/EntityCountRule",
+                "EXISTS": "#/$defs/ExistsRule",
+                "FACT_COMPARE": "#/$defs/FactComparisonRule",
+                "NOT": "#/$defs/NotRule",
+                "NOT_EXISTS": "#/$defs/NotExistsRule",
+                "OR": "#/$defs/OrRule"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AndRule"
+              },
+              {
+                "$ref": "#/$defs/OrRule"
+              },
+              {
+                "$ref": "#/$defs/NotRule"
+              },
+              {
+                "$ref": "#/$defs/FactComparisonRule"
+              },
+              {
+                "$ref": "#/$defs/DerivedComparisonRule"
+              },
+              {
+                "$ref": "#/$defs/EntityCountRule"
+              },
+              {
+                "$ref": "#/$defs/ExistsRule"
+              },
+              {
+                "$ref": "#/$defs/NotExistsRule"
+              },
+              {
+                "$ref": "#/$defs/CountDistinctPeriodsRule"
+              },
+              {
+                "$ref": "#/$defs/CountDistinctMonthsRule"
+              },
+              {
+                "$ref": "#/$defs/CountConsecutiveRule"
+              }
+            ]
+          },
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "children"
+      ],
+      "title": "AndRule",
+      "type": "object"
+    },
+    "ComparisonOperator": {
+      "enum": [
+        "EQ",
+        "NEQ",
+        "GT",
+        "GTE",
+        "LT",
+        "LTE",
+        "IN",
+        "NOT_IN",
+        "BETWEEN_INCLUSIVE"
+      ],
+      "title": "ComparisonOperator",
+      "type": "string"
+    },
+    "ContextDateField": {
+      "enum": [
+        "as_of",
+        "subscription_date",
+        "maturity_date"
+      ],
+      "title": "ContextDateField",
+      "type": "string"
+    },
+    "CountConsecutiveRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "COUNT_CONSECUTIVE",
+          "default": "COUNT_CONSECUTIVE",
+          "title": "Type",
+          "type": "string"
+        },
+        "entity": {
+          "const": "SCHEDULED_OCCURRENCE",
+          "default": "SCHEDULED_OCCURRENCE",
+          "title": "Entity",
+          "type": "string"
+        },
+        "schedule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schedule Id"
+        },
+        "subject_selector": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSubjectSelector"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/ValuePredicate"
+          },
+          "title": "Filters",
+          "type": "array"
+        },
+        "from_sequence": {
+          "default": 1,
+          "minimum": 1,
+          "title": "From Sequence",
+          "type": "integer"
+        },
+        "window": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TimeWindow"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "minimum": 0,
+          "title": "Expected",
+          "type": "integer"
+        },
+        "true_reason_code": {
+          "default": "CONSECUTIVE_COUNT_REACHED",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "CONSECUTIVE_COUNT_NOT_REACHED",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "operator",
+        "expected"
+      ],
+      "title": "CountConsecutiveRule",
+      "type": "object"
+    },
+    "CountDistinctMonthsRule": {
+      "additionalProperties": false,
+      "description": "Backward-compatible v0.1 alias of COUNT_DISTINCT_PERIODS(MONTH).",
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "COUNT_DISTINCT_MONTHS",
+          "default": "COUNT_DISTINCT_MONTHS",
+          "title": "Type",
+          "type": "string"
+        },
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "date_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Path"
+        },
+        "subject_selector": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSubjectSelector"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/ValuePredicate"
+          },
+          "title": "Filters",
+          "type": "array"
+        },
+        "window": {
+          "$ref": "#/$defs/TimeWindow"
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "minimum": 0,
+          "title": "Expected",
+          "type": "integer"
+        },
+        "future_achievement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FutureAchievementSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "true_reason_code": {
+          "default": "DISTINCT_MONTH_COUNT_REACHED",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "DISTINCT_MONTH_COUNT_NOT_REACHED",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "fact_type",
+        "window",
+        "operator",
+        "expected"
+      ],
+      "title": "CountDistinctMonthsRule",
+      "type": "object"
+    },
+    "CountDistinctPeriodsRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "COUNT_DISTINCT_PERIODS",
+          "default": "COUNT_DISTINCT_PERIODS",
+          "title": "Type",
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/$defs/PeriodUnit"
+        },
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "date_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Path"
+        },
+        "subject_selector": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSubjectSelector"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/$defs/ValuePredicate"
+          },
+          "title": "Filters",
+          "type": "array"
+        },
+        "window": {
+          "$ref": "#/$defs/TimeWindow"
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "minimum": 0,
+          "title": "Expected",
+          "type": "integer"
+        },
+        "future_achievement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FutureAchievementSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "true_reason_code": {
+          "default": "DISTINCT_PERIOD_COUNT_REACHED",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "DISTINCT_PERIOD_COUNT_NOT_REACHED",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "period",
+        "fact_type",
+        "window",
+        "operator",
+        "expected"
+      ],
+      "title": "CountDistinctPeriodsRule",
+      "type": "object"
+    },
+    "CoverageRequirement": {
+      "additionalProperties": false,
+      "description": "Describe the data domain that must fully cover an absence-rule window.",
+      "properties": {
+        "fact_domain": {
+          "title": "Fact Domain",
+          "type": "string"
+        },
+        "institution": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution"
+        },
+        "accepted_source_types": {
+          "items": {
+            "$ref": "#/$defs/FactSourceType"
+          },
+          "title": "Accepted Source Types",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_domain"
+      ],
+      "title": "CoverageRequirement",
+      "type": "object"
+    },
+    "DateExpression": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/TimeExpressionType"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "context_field": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContextDateField"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "expression": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "DateExpression",
+      "type": "object"
+    },
+    "DerivedComparisonRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "DERIVED_COMPARE",
+          "default": "DERIVED_COMPARE",
+          "title": "Type",
+          "type": "string"
+        },
+        "derivation": {
+          "const": "AGE_AT",
+          "title": "Derivation",
+          "type": "string"
+        },
+        "input_fact_type": {
+          "title": "Input Fact Type",
+          "type": "string"
+        },
+        "reference_date": {
+          "$ref": "#/$defs/DateExpression"
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "title": "Expected"
+        },
+        "true_reason_code": {
+          "default": "DERIVED_COMPARISON_MATCH",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "DERIVED_COMPARISON_MISMATCH",
+          "title": "False Reason Code",
+          "type": "string"
+        },
+        "missing_reason_code": {
+          "default": "DERIVATION_INPUT_MISSING",
+          "title": "Missing Reason Code",
+          "type": "string"
+        },
+        "missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "derivation",
+        "input_fact_type",
+        "reference_date",
+        "operator",
+        "expected"
+      ],
+      "title": "DerivedComparisonRule",
+      "type": "object"
+    },
+    "EntityCountRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "ENTITY_COUNT",
+          "default": "ENTITY_COUNT",
+          "title": "Type",
+          "type": "string"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityType"
+        },
+        "filters": {
+          "additionalProperties": true,
+          "title": "Filters",
+          "type": "object"
+        },
+        "active_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "title": "Expected",
+          "type": "integer"
+        },
+        "true_reason_code": {
+          "default": "ENTITY_COUNT_MATCH",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "ENTITY_COUNT_MISMATCH",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "entity",
+        "operator",
+        "expected"
+      ],
+      "title": "EntityCountRule",
+      "type": "object"
+    },
+    "EntityType": {
+      "enum": [
+        "ACCOUNT_HOLDING_INTERVAL",
+        "SCHEDULED_OCCURRENCE"
+      ],
+      "title": "EntityType",
+      "type": "string"
+    },
+    "EvaluationPhase": {
+      "enum": [
+        "PRE_SUBSCRIPTION",
+        "POST_SUBSCRIPTION",
+        "BOTH"
+      ],
+      "title": "EvaluationPhase",
+      "type": "string"
+    },
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
+      "type": "string"
+    },
+    "ExistsRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "EXISTS",
+          "default": "EXISTS",
+          "title": "Type",
+          "type": "string"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityType"
+        },
+        "filters": {
+          "additionalProperties": true,
+          "title": "Filters",
+          "type": "object"
+        },
+        "overlaps": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TimeWindow"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coverage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoverageRequirement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coverage_fact_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coverage Fact Type"
+        },
+        "coverage_missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "true_reason_code": {
+          "default": "MATCHING_ENTITY_EXISTS",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "MATCHING_ENTITY_NOT_FOUND",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "entity"
+      ],
+      "title": "ExistsRule",
+      "type": "object"
+    },
+    "FactComparisonRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "FACT_COMPARE",
+          "default": "FACT_COMPARE",
+          "title": "Type",
+          "type": "string"
+        },
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "value_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value Path"
+        },
+        "effective_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "subject_selector": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSubjectSelector"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "title": "Expected"
+        },
+        "on_true_status": {
+          "$ref": "#/$defs/EvaluationStatus",
+          "default": "SATISFIED"
+        },
+        "on_false_status": {
+          "$ref": "#/$defs/EvaluationStatus",
+          "default": "UNSATISFIABLE"
+        },
+        "on_missing_status": {
+          "$ref": "#/$defs/EvaluationStatus",
+          "default": "UNKNOWN"
+        },
+        "true_reason_code": {
+          "default": "FACT_COMPARISON_MATCH",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "FACT_COMPARISON_MISMATCH",
+          "title": "False Reason Code",
+          "type": "string"
+        },
+        "missing_reason_code": {
+          "default": "REQUIRED_FACT_MISSING",
+          "title": "Missing Reason Code",
+          "type": "string"
+        },
+        "missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "required_semantic_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSemanticType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "fact_type",
+        "operator",
+        "expected"
+      ],
+      "title": "FactComparisonRule",
+      "type": "object"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    },
+    "FactSubjectMode": {
+      "enum": [
+        "STORE_USER",
+        "EXPLICIT",
+        "RELATED_PERSON"
+      ],
+      "title": "FactSubjectMode",
+      "type": "string"
+    },
+    "FactSubjectSelector": {
+      "additionalProperties": false,
+      "description": "Select whose facts a generic rule evaluates.\n\nSTORE_USER preserves v0.1 behavior. RELATED_PERSON traverses verified\nPersonRelationship records without encoding a bank-specific family rule in\nthe DSL.",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/FactSubjectMode",
+          "default": "STORE_USER"
+        },
+        "person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Person Id"
+        },
+        "relationship_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relationship Type"
+        },
+        "include_store_user": {
+          "default": false,
+          "title": "Include Store User",
+          "type": "boolean"
+        },
+        "allowed_relationship_source_types": {
+          "items": {
+            "$ref": "#/$defs/FactSourceType"
+          },
+          "title": "Allowed Relationship Source Types",
+          "type": "array"
+        },
+        "relationship_missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "FactSubjectSelector",
+      "type": "object"
+    },
+    "FutureAchievementSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "capability_rule": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "AND": "#/$defs/AndRule",
+                  "COUNT_CONSECUTIVE": "#/$defs/CountConsecutiveRule",
+                  "COUNT_DISTINCT_MONTHS": "#/$defs/CountDistinctMonthsRule",
+                  "COUNT_DISTINCT_PERIODS": "#/$defs/CountDistinctPeriodsRule",
+                  "DERIVED_COMPARE": "#/$defs/DerivedComparisonRule",
+                  "ENTITY_COUNT": "#/$defs/EntityCountRule",
+                  "EXISTS": "#/$defs/ExistsRule",
+                  "FACT_COMPARE": "#/$defs/FactComparisonRule",
+                  "NOT": "#/$defs/NotRule",
+                  "NOT_EXISTS": "#/$defs/NotExistsRule",
+                  "OR": "#/$defs/OrRule"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AndRule"
+                },
+                {
+                  "$ref": "#/$defs/OrRule"
+                },
+                {
+                  "$ref": "#/$defs/NotRule"
+                },
+                {
+                  "$ref": "#/$defs/FactComparisonRule"
+                },
+                {
+                  "$ref": "#/$defs/DerivedComparisonRule"
+                },
+                {
+                  "$ref": "#/$defs/EntityCountRule"
+                },
+                {
+                  "$ref": "#/$defs/ExistsRule"
+                },
+                {
+                  "$ref": "#/$defs/NotExistsRule"
+                },
+                {
+                  "$ref": "#/$defs/CountDistinctPeriodsRule"
+                },
+                {
+                  "$ref": "#/$defs/CountDistinctMonthsRule"
+                },
+                {
+                  "$ref": "#/$defs/CountConsecutiveRule"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capability Rule"
+        },
+        "intent_fact_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Intent Fact Type"
+        },
+        "missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "achievement_mode": {
+          "$ref": "#/$defs/AchievementMode",
+          "default": "ACCUMULATIVE"
+        },
+        "max_qualifying_units_per_opportunity": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Max Qualifying Units Per Opportunity",
+          "type": "integer"
+        },
+        "max_new_qualifying_months_per_month": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Max New Qualifying Months Per Month",
+          "type": "integer"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "goal_template": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GoalTemplate"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "achievable_reason_code": {
+          "default": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "title": "Achievable Reason Code",
+          "type": "string"
+        },
+        "insufficient_time_reason_code": {
+          "default": "INSUFFICIENT_REMAINING_MONTHS",
+          "title": "Insufficient Time Reason Code",
+          "type": "string"
+        },
+        "user_declined_reason_code": {
+          "default": "USER_DECLINED",
+          "title": "User Declined Reason Code",
+          "type": "string"
+        }
+      },
+      "title": "FutureAchievementSpec",
+      "type": "object"
+    },
+    "GoalTemplate": {
+      "additionalProperties": false,
+      "properties": {
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "tracking_mode": {
+          "$ref": "#/$defs/AchievementMode",
+          "default": "ACCUMULATIVE"
+        },
+        "safety_threshold": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Safety Threshold",
+          "type": "integer"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "metric",
+        "unit"
+      ],
+      "title": "GoalTemplate",
+      "type": "object"
+    },
+    "MissingFactSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "resolution_strategy": {
+          "$ref": "#/$defs/ResolutionStrategy"
+        },
+        "impact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RateImpact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "required_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required Source"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        }
+      },
+      "required": [
+        "resolution_strategy"
+      ],
+      "title": "MissingFactSpec",
+      "type": "object"
+    },
+    "NotExistsRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "NOT_EXISTS",
+          "default": "NOT_EXISTS",
+          "title": "Type",
+          "type": "string"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityType"
+        },
+        "filters": {
+          "additionalProperties": true,
+          "title": "Filters",
+          "type": "object"
+        },
+        "overlaps": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TimeWindow"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coverage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoverageRequirement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coverage_fact_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coverage Fact Type"
+        },
+        "coverage_missing_fact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "true_reason_code": {
+          "default": "NO_MATCHING_ENTITY",
+          "title": "True Reason Code",
+          "type": "string"
+        },
+        "false_reason_code": {
+          "default": "MATCHING_ENTITY_EXISTS",
+          "title": "False Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "entity"
+      ],
+      "title": "NotExistsRule",
+      "type": "object"
+    },
+    "NotRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "NOT",
+          "default": "NOT",
+          "title": "Type",
+          "type": "string"
+        },
+        "child": {
+          "discriminator": {
+            "mapping": {
+              "AND": "#/$defs/AndRule",
+              "COUNT_CONSECUTIVE": "#/$defs/CountConsecutiveRule",
+              "COUNT_DISTINCT_MONTHS": "#/$defs/CountDistinctMonthsRule",
+              "COUNT_DISTINCT_PERIODS": "#/$defs/CountDistinctPeriodsRule",
+              "DERIVED_COMPARE": "#/$defs/DerivedComparisonRule",
+              "ENTITY_COUNT": "#/$defs/EntityCountRule",
+              "EXISTS": "#/$defs/ExistsRule",
+              "FACT_COMPARE": "#/$defs/FactComparisonRule",
+              "NOT": "#/$defs/NotRule",
+              "NOT_EXISTS": "#/$defs/NotExistsRule",
+              "OR": "#/$defs/OrRule"
+            },
+            "propertyName": "type"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/AndRule"
+            },
+            {
+              "$ref": "#/$defs/OrRule"
+            },
+            {
+              "$ref": "#/$defs/NotRule"
+            },
+            {
+              "$ref": "#/$defs/FactComparisonRule"
+            },
+            {
+              "$ref": "#/$defs/DerivedComparisonRule"
+            },
+            {
+              "$ref": "#/$defs/EntityCountRule"
+            },
+            {
+              "$ref": "#/$defs/ExistsRule"
+            },
+            {
+              "$ref": "#/$defs/NotExistsRule"
+            },
+            {
+              "$ref": "#/$defs/CountDistinctPeriodsRule"
+            },
+            {
+              "$ref": "#/$defs/CountDistinctMonthsRule"
+            },
+            {
+              "$ref": "#/$defs/CountConsecutiveRule"
+            }
+          ],
+          "title": "Child"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "child"
+      ],
+      "title": "NotRule",
+      "type": "object"
+    },
+    "OrRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose",
+          "default": "SUPPORTING"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "type": {
+          "const": "OR",
+          "default": "OR",
+          "title": "Type",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "AND": "#/$defs/AndRule",
+                "COUNT_CONSECUTIVE": "#/$defs/CountConsecutiveRule",
+                "COUNT_DISTINCT_MONTHS": "#/$defs/CountDistinctMonthsRule",
+                "COUNT_DISTINCT_PERIODS": "#/$defs/CountDistinctPeriodsRule",
+                "DERIVED_COMPARE": "#/$defs/DerivedComparisonRule",
+                "ENTITY_COUNT": "#/$defs/EntityCountRule",
+                "EXISTS": "#/$defs/ExistsRule",
+                "FACT_COMPARE": "#/$defs/FactComparisonRule",
+                "NOT": "#/$defs/NotRule",
+                "NOT_EXISTS": "#/$defs/NotExistsRule",
+                "OR": "#/$defs/OrRule"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/AndRule"
+              },
+              {
+                "$ref": "#/$defs/OrRule"
+              },
+              {
+                "$ref": "#/$defs/NotRule"
+              },
+              {
+                "$ref": "#/$defs/FactComparisonRule"
+              },
+              {
+                "$ref": "#/$defs/DerivedComparisonRule"
+              },
+              {
+                "$ref": "#/$defs/EntityCountRule"
+              },
+              {
+                "$ref": "#/$defs/ExistsRule"
+              },
+              {
+                "$ref": "#/$defs/NotExistsRule"
+              },
+              {
+                "$ref": "#/$defs/CountDistinctPeriodsRule"
+              },
+              {
+                "$ref": "#/$defs/CountDistinctMonthsRule"
+              },
+              {
+                "$ref": "#/$defs/CountConsecutiveRule"
+              }
+            ]
+          },
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "children"
+      ],
+      "title": "OrRule",
+      "type": "object"
+    },
+    "PeriodUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH"
+      ],
+      "title": "PeriodUnit",
+      "type": "string"
+    },
+    "RateImpact": {
+      "additionalProperties": false,
+      "properties": {
+        "rate_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Rate Pp"
+        }
+      },
+      "required": [
+        "rate_pp"
+      ],
+      "title": "RateImpact",
+      "type": "object"
+    },
+    "ResolutionStrategy": {
+      "enum": [
+        "QUERY_INSTITUTION",
+        "QUERY_MYDATA",
+        "DERIVE",
+        "ASK_USER",
+        "UNRESOLVABLE"
+      ],
+      "title": "ResolutionStrategy",
+      "type": "string"
+    },
+    "RulePurpose": {
+      "enum": [
+        "ELIGIBILITY",
+        "PREFERENTIAL_RATE",
+        "GLOBAL_GUARD",
+        "SUPPORTING"
+      ],
+      "title": "RulePurpose",
+      "type": "string"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    },
+    "TimeExpressionType": {
+      "enum": [
+        "LITERAL",
+        "CONTEXT",
+        "START_OF_MONTH",
+        "END_OF_MONTH",
+        "ADD_DAYS",
+        "ADD_MONTHS",
+        "ADD_YEARS",
+        "BUSINESS_DAY_OFFSET"
+      ],
+      "title": "TimeExpressionType",
+      "type": "string"
+    },
+    "TimeWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/DateExpression"
+        },
+        "end": {
+          "$ref": "#/$defs/DateExpression"
+        },
+        "inclusive": {
+          "default": true,
+          "title": "Inclusive",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "TimeWindow",
+      "type": "object"
+    },
+    "ValuePredicate": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "operator": {
+          "$ref": "#/$defs/ComparisonOperator"
+        },
+        "expected": {
+          "title": "Expected"
+        }
+      },
+      "required": [
+        "path",
+        "operator",
+        "expected"
+      ],
+      "title": "ValuePredicate",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "AND": "#/$defs/AndRule",
+      "COUNT_CONSECUTIVE": "#/$defs/CountConsecutiveRule",
+      "COUNT_DISTINCT_MONTHS": "#/$defs/CountDistinctMonthsRule",
+      "COUNT_DISTINCT_PERIODS": "#/$defs/CountDistinctPeriodsRule",
+      "DERIVED_COMPARE": "#/$defs/DerivedComparisonRule",
+      "ENTITY_COUNT": "#/$defs/EntityCountRule",
+      "EXISTS": "#/$defs/ExistsRule",
+      "FACT_COMPARE": "#/$defs/FactComparisonRule",
+      "NOT": "#/$defs/NotRule",
+      "NOT_EXISTS": "#/$defs/NotExistsRule",
+      "OR": "#/$defs/OrRule"
+    },
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/AndRule"
+    },
+    {
+      "$ref": "#/$defs/OrRule"
+    },
+    {
+      "$ref": "#/$defs/NotRule"
+    },
+    {
+      "$ref": "#/$defs/FactComparisonRule"
+    },
+    {
+      "$ref": "#/$defs/DerivedComparisonRule"
+    },
+    {
+      "$ref": "#/$defs/EntityCountRule"
+    },
+    {
+      "$ref": "#/$defs/ExistsRule"
+    },
+    {
+      "$ref": "#/$defs/NotExistsRule"
+    },
+    {
+      "$ref": "#/$defs/CountDistinctPeriodsRule"
+    },
+    {
+      "$ref": "#/$defs/CountDistinctMonthsRule"
+    },
+    {
+      "$ref": "#/$defs/CountConsecutiveRule"
+    }
+  ]
+}

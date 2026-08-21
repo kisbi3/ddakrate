@@ -1,0 +1,289 @@
+{
+  "product_id": "KBANK_MYKIDS_SAVINGS_60M_20260819",
+  "institution_id": "KBANK",
+  "name": "마이키즈 적금(5년)",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 60,
+    "unit": "MONTH"
+  },
+  "base_rate": "3.5",
+  "advertised_max_rate": "7.5",
+  "preferential_rate_cap": "4.0",
+  "eligibility_rule": {
+    "rule_id": "KBANK_MYKIDS_SAVINGS_60M_20260819_ELIG",
+    "name": "공식 가입대상 충족",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "케이뱅크 마이키즈 적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-19",
+      "page": null,
+      "section": "가입대상",
+      "source_url": "https://www.kbanknow.com/web/product/deposit/mykids-saving",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "KBANK_MYKIDS_ELIGIBLE",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "EQ",
+    "expected": true,
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "OFFICIAL_ELIGIBILITY_MATCH",
+    "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": {
+      "resolution_strategy": "QUERY_INSTITUTION",
+      "impact": null,
+      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
+      "question": null,
+      "expected_semantic_type": null,
+      "action_id": null,
+      "reward_id": null,
+      "grounding_terms": []
+    },
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "KBANK_MYKIDS_SAVINGS_60M_20260819_R01",
+        "name": "계약월수 2/3 이상 납입월 달성",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "케이뱅크 마이키즈 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://www.kbanknow.com/web/product/deposit/mykids-saving",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "MONTH",
+        "fact_type": "KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 40,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "4.0"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "계약월수 2/3 이상 납입월 달성을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+            "reward_id": "REWARD_KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+            "grounding_terms": [
+              "계약월수 2/3 이상 납입월 달성"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+            "description": "계약월수 2/3 이상 납입월 달성",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KBANK_MYKIDS_QUALIFYING_DEPOSIT_MONTH",
+            "unit": "MONTH",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "4.0",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "KBANK_MYKIDS_SAVINGS_60M_20260819_MATURITY_GUARD",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "케이뱅크 마이키즈 적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": "2026-08-19",
+        "page": null,
+        "section": "만기/중도해지",
+        "source_url": "https://www.kbanknow.com/web/product/deposit/mykids-saving",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION",
+      "missing_reason_code": "MATURITY_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "KBANK",
+    "product_id": "KBANK_MYKIDS_SAVINGS_60M_20260819",
+    "product_name": "마이키즈 적금(5년)",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 60,
+      "unit": "MONTH"
+    },
+    "max_term": {
+      "value": 60,
+      "unit": "MONTH"
+    },
+    "available_terms": [
+      {
+        "value": 60,
+        "unit": "MONTH"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": "1000",
+      "periodic_amount_max": "300000",
+      "contribution_frequency": "MONTHLY",
+      "contribution_mode": "FLEXIBLE",
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "3.5",
+    "advertised_max_rate": "7.5",
+    "preferential_rate_cap": "4.0",
+    "allowed_channels": [
+      "MOBILE"
+    ],
+    "features": [
+      {
+        "feature_id": "RELATED_PERSON_PERFORMANCE",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "케이뱅크 마이키즈 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://www.kbanknow.com/web/product/deposit/mykids-saving",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "만 17세 미만이며 마이키즈 서비스 가입 대상",
+    "one_account_per_person": true,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": "우대금리는 원칙적으로 만기해지 시 적용하며 중도해지 시 상품별 중도해지이율을 적용.",
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": "2026-08-19",
+    "effective_to": null,
+    "source_reference": {
+      "document": "케이뱅크 마이키즈 적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-19",
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://www.kbanknow.com/web/product/deposit/mykids-saving",
+      "source_text": null
+    }
+  }
+}

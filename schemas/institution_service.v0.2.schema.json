@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "ServiceFactDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "authoritative_source": {
+          "title": "Authoritative Source",
+          "type": "string"
+        },
+        "derivation_chain": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Derivation Chain",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_type",
+        "description",
+        "authoritative_source"
+      ],
+      "title": "ServiceFactDefinition",
+      "type": "object"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "institution_id": {
+      "title": "Institution Id",
+      "type": "string"
+    },
+    "service_id": {
+      "title": "Service Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
+    },
+    "effective_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective From"
+    },
+    "effective_to": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective To"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/ServiceFactDefinition"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "source_provenance": {
+      "items": {
+        "$ref": "#/$defs/SourceReference"
+      },
+      "title": "Source Provenance",
+      "type": "array"
+    }
+  },
+  "required": [
+    "institution_id",
+    "service_id",
+    "name"
+  ],
+  "title": "InstitutionServiceDefinition",
+  "type": "object"
+}

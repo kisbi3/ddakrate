@@ -1,0 +1,376 @@
+{
+  "schema_version": "0.3",
+  "salary_envelope_6m": {
+    "trace_id": "TRACE-SALARY-DEMO-001",
+    "extraction": {
+      "review_state": "ACTIVE",
+      "rule_ast": {
+        "rule_id": "RATE_SALARY_ENVELOPE_6M",
+        "name": "가입 후 월급봉투 인정월 6개월",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "version_date": "2026-07-22",
+          "page": 2,
+          "section": "[1] 주거래 우대",
+          "source_url": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "MONTH",
+        "fact_type": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED",
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "ADD_MONTHS",
+            "value": null,
+            "context_field": null,
+            "expression": {
+              "type": "CONTEXT",
+              "value": null,
+              "context_field": "maturity_date",
+              "expression": null,
+              "amount": null
+            },
+            "amount": -1
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 6,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "1.0"
+            },
+            "required_source": "USER_DECLARED_FUTURE_INTENT",
+            "question": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?"
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "TRACK_SALARY_ENVELOPE_6M",
+            "description": "가입 후 월급봉투 인정월을 6개월 이상 만든다.",
+            "burden_score": 2
+          },
+          "goal_template": {
+            "metric": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH",
+            "unit": "MONTH",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 1,
+            "description": "월급봉투 인정월 6개월"
+          },
+          "achievable_reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+          "insufficient_time_reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES",
+          "user_declined_reason_code": "USER_DECLINED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_COUNT_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_COUNT_NOT_REACHED"
+      },
+      "service_reference": {
+        "institution_id": "SHINHAN_BANK",
+        "service_name": "급여클럽",
+        "concept_name": "월급봉투",
+        "reference_type": "REQUIRES_SERVICE_DEFINITION",
+        "used_by_rule_ids": [
+          "RATE_SALARY_ENVELOPE_6M"
+        ],
+        "provenance": [
+          {
+            "document_id": "DOC-SHINHAN-YOUTH-20260722",
+            "document_name": "신한은행 청년 처음적금 상품설명서",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+            "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+          }
+        ]
+      },
+      "required_facts": [
+        {
+          "fact_type": "SHINHAN_GOLDEN_ELIGIBLE",
+          "semantic_type": "OBSERVED_FACT",
+          "authority_hint": "INSTITUTION_OR_MYDATA",
+          "used_by_rule_ids": [
+            "ELIG-SHINHAN_GOLDEN_ELIGIBLE"
+          ],
+          "description": null
+        },
+        {
+          "fact_type": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED",
+          "semantic_type": "OBSERVED_EVENT",
+          "authority_hint": "INSTITUTION_SERVICE",
+          "used_by_rule_ids": [
+            "RATE_SALARY_ENVELOPE_6M"
+          ],
+          "description": null
+        },
+        {
+          "fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+          "semantic_type": "FUTURE_INTENT",
+          "authority_hint": "USER_DECLARED",
+          "used_by_rule_ids": [
+            "RATE_SALARY_ENVELOPE_6M"
+          ],
+          "description": null
+        }
+      ],
+      "provenance": [
+        {
+          "document_id": "DOC-SHINHAN-YOUTH-20260722",
+          "document_name": "신한은행 청년 처음적금 상품설명서",
+          "page": 2,
+          "section": "[1] 주거래 우대",
+          "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+          "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+        }
+      ],
+      "unresolved_items": [
+        {
+          "issue_type": "EXTERNAL_DEFINITION_REQUIRED",
+          "description": "월급봉투 인정정의는 급여클럽 Service Definition이 필요함",
+          "related_rule_ids": [
+            "RATE_SALARY_ENVELOPE_6M"
+          ],
+          "provenance": [
+            {
+              "document_id": "DOC-SHINHAN-YOUTH-20260722",
+              "document_name": "신한은행 청년 처음적금 상품설명서",
+              "page": 2,
+              "section": "[1] 주거래 우대",
+              "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+              "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+            }
+          ]
+        }
+      ],
+      "golden_diff_metrics": {
+        "rule_recall": 1.0,
+        "hallucinated_rule_count": 0,
+        "logical_structure_mismatch": 0,
+        "temporal_mismatch": 0,
+        "aggregation_mismatch": 0,
+        "reward_mismatch": 0,
+        "service_reference_recall": 1.0,
+        "required_fact_recall": 1.0,
+        "provenance_match": 1.0,
+        "unresolved_item_recall": 1.0
+      }
+    },
+    "before_user_answer": {
+      "status": "UNKNOWN",
+      "reason_code": "FUTURE_INTENT_REQUIRED",
+      "progress": {
+        "current": 0,
+        "required": 6,
+        "unit": "MONTH"
+      },
+      "missing_fact_types": [
+        "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M"
+      ],
+      "confirmed_rate": "3.05",
+      "realizable_rate": "3.05",
+      "user_specific_conditional_upper_rate": "4.05"
+    },
+    "question": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?",
+    "submitted_fact": {
+      "fact_id": "F-INTENT-WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M-TRUE",
+      "user_id": "U-FUTURE-001",
+      "fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+      "value": true,
+      "subject_person_id": null,
+      "related_person_id": null,
+      "valid_from": "2026-08-19",
+      "valid_to": null,
+      "source_type": "USER_DECLARED",
+      "semantic_type": "FUTURE_INTENT",
+      "provenance": [
+        {
+          "reference": "fixture/user-answer/future-intent",
+          "description": null,
+          "attributes": {}
+        }
+      ],
+      "collected_at": "2026-08-19T00:00:00Z",
+      "confidence": null
+    },
+    "after_user_answer": {
+      "status": "ACHIEVABLE",
+      "reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+      "progress": {
+        "current": 0,
+        "required": 6,
+        "unit": "MONTH"
+      },
+      "missing_fact_types": [],
+      "confirmed_rate": "3.05",
+      "realizable_rate": "4.05",
+      "user_specific_conditional_upper_rate": "4.05"
+    },
+    "goal": {
+      "created": {
+        "goal_id": "GOAL-3fde98d0df2138d4d29c",
+        "user_id": "U-FUTURE-001",
+        "product_id": "SHINHAN_SALARY_ENVELOPE_6M_GOLDEN",
+        "subscription_id": "SUB-SALARY-DEMO-001",
+        "rule_id": "RATE_SALARY_ENVELOPE_6M",
+        "tracking_mode": "ACCUMULATIVE",
+        "metric": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH",
+        "opportunity_unit": "MONTH",
+        "required_target": 6,
+        "current_progress": 0,
+        "window_start": "2026-08-20",
+        "deadline": "2027-07-19",
+        "remaining_required": 6,
+        "remaining_opportunities": 12,
+        "buffer": 6,
+        "rate_reward_pp": "1.0",
+        "status": "ACTIVE",
+        "safety_threshold": 1,
+        "created_from_evaluation_id": "EVAL-826b3c60b60e228b",
+        "created_at": "2026-08-19T12:59:06.197925Z",
+        "next_check_at": null,
+        "alert_policy": {
+          "buffer_safety_threshold": 1
+        }
+      },
+      "after_progress": {
+        "goal_id": "GOAL-3fde98d0df2138d4d29c",
+        "user_id": "U-FUTURE-001",
+        "product_id": "SHINHAN_SALARY_ENVELOPE_6M_GOLDEN",
+        "subscription_id": "SUB-SALARY-DEMO-001",
+        "rule_id": "RATE_SALARY_ENVELOPE_6M",
+        "tracking_mode": "ACCUMULATIVE",
+        "metric": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH",
+        "opportunity_unit": "MONTH",
+        "required_target": 6,
+        "current_progress": 4,
+        "window_start": "2026-08-20",
+        "deadline": "2027-07-19",
+        "remaining_required": 2,
+        "remaining_opportunities": 2,
+        "buffer": 0,
+        "rate_reward_pp": "1.0",
+        "status": "AT_RISK",
+        "safety_threshold": 1,
+        "created_from_evaluation_id": "EVAL-826b3c60b60e228b",
+        "created_at": "2026-08-19T12:59:06.197925Z",
+        "next_check_at": null,
+        "alert_policy": {
+          "buffer_safety_threshold": 1
+        }
+      },
+      "alert": {
+        "alert_id": "ALERT-023ced56115283f37201",
+        "user_id": "U-FUTURE-001",
+        "product_id": "SHINHAN_SALARY_ENVELOPE_6M_GOLDEN",
+        "goal_id": "GOAL-3fde98d0df2138d4d29c",
+        "alert_type": "CRITICAL",
+        "severity": "CRITICAL",
+        "trigger_reason": "NO_REMAINING_BUFFER",
+        "deterministic_payload": {
+          "required_target": 6,
+          "current_progress": 4,
+          "remaining_required": 2,
+          "remaining_opportunities": 2,
+          "buffer": 0,
+          "rate_reward_pp": "1.0",
+          "goal_status": "AT_RISK"
+        },
+        "created_at": "2026-08-19T12:59:06.198160Z"
+      }
+    }
+  },
+  "step_30000_300d": {
+    "trace_id": "TRACE-STEP-DEMO-001",
+    "case_a": {
+      "status": "UNKNOWN",
+      "reason_code": "FUTURE_INTENT_REQUIRED",
+      "progress": {
+        "current": 0,
+        "required": 300,
+        "unit": "DAY"
+      },
+      "missing_fact_types": [
+        "WILL_TRACK_STEP_30000_300D"
+      ],
+      "confirmed_rate": "2.0",
+      "realizable_rate": "2.0",
+      "user_specific_conditional_upper_rate": "4.0"
+    },
+    "case_b": {
+      "status": "ACHIEVABLE",
+      "reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+      "progress": {
+        "current": 0,
+        "required": 300,
+        "unit": "DAY"
+      },
+      "missing_fact_types": [],
+      "confirmed_rate": "2.0",
+      "realizable_rate": "4.0",
+      "user_specific_conditional_upper_rate": "4.0"
+    },
+    "case_c": {
+      "current_progress": 170,
+      "remaining_required": 130,
+      "remaining_opportunities": 150,
+      "buffer": 20,
+      "status": "ACTIVE",
+      "alert": null
+    },
+    "case_d": {
+      "current_progress": 249,
+      "remaining_required": 51,
+      "remaining_opportunities": 50,
+      "buffer": -1,
+      "status": "FAILED",
+      "alert": {
+        "alert_id": "ALERT-2332c0352e46c0098f92",
+        "user_id": "U-FUTURE-001",
+        "product_id": "SYNTHETIC_STEP_30000_300D",
+        "goal_id": "GOAL-d9e5d5de32dc1515b373",
+        "alert_type": "FAILED",
+        "severity": "CRITICAL",
+        "trigger_reason": "INSUFFICIENT_REMAINING_OPPORTUNITIES",
+        "deterministic_payload": {
+          "required_target": 300,
+          "current_progress": 249,
+          "remaining_required": 51,
+          "remaining_opportunities": 50,
+          "buffer": -1,
+          "rate_reward_pp": "2.0",
+          "goal_status": "FAILED"
+        },
+        "created_at": "2026-08-19T12:59:06.205012Z"
+      }
+    },
+    "time_infeasible": {
+      "status": "UNSATISFIABLE",
+      "reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES",
+      "progress": {
+        "current": 0,
+        "required": 300,
+        "unit": "DAY"
+      },
+      "missing_fact_types": [],
+      "confirmed_rate": "2.0",
+      "realizable_rate": "2.0",
+      "user_specific_conditional_upper_rate": "2.0"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$defs": {
+    "IntentConflictType": {
+      "enum": [
+        "CAPABILITY_CONTRADICTION",
+        "PREFERENCE_CONTRADICTION",
+        "HARD_CONSTRAINT_CONTRADICTION",
+        "NUMERIC_HARD_CONTRADICTION",
+        "HARD_SOFT_CONTRADICTION",
+        "HARD_CAPABILITY_CONTRADICTION",
+        "INTENT_UPDATE_CONTRADICTION"
+      ],
+      "title": "IntentConflictType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "conflict_id": {
+      "title": "Conflict Id",
+      "type": "string"
+    },
+    "field": {
+      "title": "Field",
+      "type": "string"
+    },
+    "conflict_type": {
+      "$ref": "#/$defs/IntentConflictType"
+    },
+    "left_input": {
+      "additionalProperties": true,
+      "title": "Left Input",
+      "type": "object"
+    },
+    "right_input": {
+      "additionalProperties": true,
+      "title": "Right Input",
+      "type": "object"
+    },
+    "severity": {
+      "default": "ERROR",
+      "enum": [
+        "ERROR",
+        "WARNING"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "resolution_options": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Resolution Options",
+      "type": "array"
+    }
+  },
+  "required": [
+    "conflict_id",
+    "field",
+    "conflict_type",
+    "left_input",
+    "right_input"
+  ],
+  "title": "IntentConflict",
+  "type": "object"
+}

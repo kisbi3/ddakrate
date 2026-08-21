@@ -1,0 +1,462 @@
+{
+  "product_id": "KAKAOBANK_26_WEEK_SAVINGS_20260819",
+  "institution_id": "KAKAOBANK",
+  "name": "26주적금",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 26,
+    "unit": "WEEK"
+  },
+  "base_rate": "2.0",
+  "advertised_max_rate": "5.0",
+  "preferential_rate_cap": "3.0",
+  "eligibility_rule": {
+    "rule_id": "K26_ELIG_INITIAL_AMOUNT",
+    "name": "허용된 최초 가입금액",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "카카오뱅크 26주적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-19",
+      "page": null,
+      "section": "최초 가입금액 선택",
+      "source_url": "https://www.kakaobank.com/products/26weeks",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "KAKAO_26W_INITIAL_AMOUNT_KRW",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "IN",
+    "expected": [
+      1000,
+      2000,
+      3000,
+      5000,
+      10000
+    ],
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "INITIAL_AMOUNT_ALLOWED",
+    "false_reason_code": "INITIAL_AMOUNT_NOT_ALLOWED",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": null,
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "K26_RATE_7_CONSECUTIVE",
+        "name": "가입기간 중 자동이체 7주 연속 성공",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 26주적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "7주 연속 자동이체 우대",
+          "source_url": "https://www.kakaobank.com/products/26weeks",
+          "source_text": null
+        },
+        "type": "COUNT_CONSECUTIVE",
+        "entity": "SCHEDULED_OCCURRENCE",
+        "schedule_id": "KAKAO_26W_001",
+        "subject_selector": null,
+        "filters": [
+          {
+            "path": "method",
+            "operator": "EQ",
+            "expected": "AUTO_TRANSFER"
+          },
+          {
+            "path": "status",
+            "operator": "EQ",
+            "expected": "SUCCESS"
+          }
+        ],
+        "from_sequence": null,
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 7,
+        "expected_occurrence_count": 26,
+        "opportunity_period": "WEEK",
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_EVENT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": {
+          "fact_domain": "KAKAO_26W_AUTO_TRANSFER_OCCURRENCE",
+          "institution": "KAKAOBANK",
+          "accepted_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ]
+        },
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_ATTEMPT_KAKAO_7_CONSECUTIVE",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "1.0"
+            },
+            "required_source": "USER_DECLARED_FUTURE_INTENT",
+            "question": "가입 후 자동이체 성공을 7주 연속 유지해야 +1.0%p 우대를 받을 수 있습니다. 이 조건을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "MAINTAIN_KAKAO_26W_AUTO_TRANSFER",
+            "reward_id": "REWARD_K26_RATE_7_CONSECUTIVE",
+            "grounding_terms": [
+              "자동이체",
+              "7주"
+            ]
+          },
+          "achievement_mode": "CONSECUTIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "MAINTAIN_KAKAO_26W_AUTO_TRANSFER",
+            "description": "매주 예정된 자동이체가 성공하도록 출금계좌 잔액을 관리한다.",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_26W_AUTO_TRANSFER_SUCCESS_STREAK",
+            "unit": "OCCURRENCE",
+            "tracking_mode": "CONSECUTIVE",
+            "safety_threshold": 0,
+            "description": "자동이체 7주 연속 성공",
+            "coverage_fact_domain": "KAKAO_26W_AUTO_TRANSFER_OCCURRENCE",
+            "coverage_institution": "KAKAOBANK"
+          },
+          "achievable_reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+          "insufficient_time_reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "ANY_7_AUTO_TRANSFERS_CONSECUTIVE",
+        "false_reason_code": "NO_7_WEEK_AUTO_TRANSFER_STREAK"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "1.0",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "K26_RATE_26_CONSECUTIVE",
+        "name": "자동이체 26주 연속 성공",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 26주적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "26주 연속 자동이체 추가 우대",
+          "source_url": "https://www.kakaobank.com/products/26weeks",
+          "source_text": null
+        },
+        "type": "COUNT_CONSECUTIVE",
+        "entity": "SCHEDULED_OCCURRENCE",
+        "schedule_id": "KAKAO_26W_001",
+        "subject_selector": null,
+        "filters": [
+          {
+            "path": "method",
+            "operator": "EQ",
+            "expected": "AUTO_TRANSFER"
+          },
+          {
+            "path": "status",
+            "operator": "EQ",
+            "expected": "SUCCESS"
+          }
+        ],
+        "from_sequence": null,
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 26,
+        "expected_occurrence_count": 26,
+        "opportunity_period": "WEEK",
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_EVENT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": {
+          "fact_domain": "KAKAO_26W_AUTO_TRANSFER_OCCURRENCE",
+          "institution": "KAKAOBANK",
+          "accepted_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ]
+        },
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_ATTEMPT_KAKAO_26_CONSECUTIVE",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "2.0"
+            },
+            "required_source": "USER_DECLARED_FUTURE_INTENT",
+            "question": "가입 후 자동이체 성공을 26주 연속 유지해야 +2.0%p 우대를 받을 수 있습니다. 이 조건을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "MAINTAIN_KAKAO_26W_AUTO_TRANSFER",
+            "reward_id": "REWARD_K26_RATE_26_CONSECUTIVE",
+            "grounding_terms": [
+              "자동이체",
+              "26주"
+            ]
+          },
+          "achievement_mode": "CONSECUTIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "MAINTAIN_KAKAO_26W_AUTO_TRANSFER",
+            "description": "매주 예정된 자동이체가 성공하도록 출금계좌 잔액을 관리한다.",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_26W_AUTO_TRANSFER_SUCCESS_STREAK",
+            "unit": "OCCURRENCE",
+            "tracking_mode": "CONSECUTIVE",
+            "safety_threshold": 0,
+            "description": "자동이체 26주 연속 성공",
+            "coverage_fact_domain": "KAKAO_26W_AUTO_TRANSFER_OCCURRENCE",
+            "coverage_institution": "KAKAOBANK"
+          },
+          "achievable_reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+          "insufficient_time_reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "ALL_26_AUTO_TRANSFERS_CONSECUTIVE",
+        "false_reason_code": "FULL_26_WEEK_AUTO_TRANSFER_STREAK_BROKEN"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "2.0",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "K26_GUARD_MATURITY",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "카카오뱅크 26주적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": "2026-08-19",
+        "page": null,
+        "section": "만기해지 우대금리 적용",
+        "source_url": "https://www.kakaobank.com/products/26weeks",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION_BLOCKS_PREFERENTIAL_RATE",
+      "missing_reason_code": "MATURITY_GUARD_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "KAKAOBANK",
+    "product_id": "KAKAOBANK_26_WEEK_SAVINGS_20260819",
+    "product_name": "26주적금",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 26,
+      "unit": "WEEK"
+    },
+    "max_term": {
+      "value": 26,
+      "unit": "WEEK"
+    },
+    "available_terms": [
+      {
+        "value": 26,
+        "unit": "WEEK"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": "1000",
+      "initial_amount_max": "10000",
+      "initial_amount_options": [
+        "1000",
+        "2000",
+        "3000",
+        "5000",
+        "10000"
+      ],
+      "periodic_amount_min": null,
+      "periodic_amount_max": null,
+      "contribution_frequency": "WEEKLY",
+      "contribution_mode": "INCREMENTAL",
+      "increment_amount": null,
+      "increment_amount_options": [
+        "1000",
+        "2000",
+        "3000",
+        "5000",
+        "10000"
+      ],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "2.0",
+    "advertised_max_rate": "5.0",
+    "preferential_rate_cap": "3.0",
+    "allowed_channels": [],
+    "features": [
+      {
+        "feature_id": "INCREMENTAL_CONTRIBUTION",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "카카오뱅크 26주적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "상품 기본조건 및 최초 가입금액",
+          "source_url": "https://www.kakaobank.com/products/26weeks",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "CONSECUTIVE_AUTO_TRANSFER_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "카카오뱅크 26주적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-19",
+          "page": null,
+          "section": "자동이체 연속 성공 우대",
+          "source_url": "https://www.kakaobank.com/products/26weeks",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": null,
+    "one_account_per_person": null,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": null,
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": null,
+    "effective_to": null,
+    "source_reference": {
+      "document": "카카오뱅크 26주적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-19",
+      "page": null,
+      "section": "상품 기본조건 및 최초 가입금액",
+      "source_url": "https://www.kakaobank.com/products/26weeks",
+      "source_text": null
+    }
+  }
+}

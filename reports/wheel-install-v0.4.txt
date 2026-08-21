@@ -1,0 +1,13 @@
+$ python -m pip install --no-deps --target /tmp/fee-v04-wheel dist/financial_eligibility_engine-0.4.0-py3-none-any.whl
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing ./dist/financial_eligibility_engine-0.4.0-py3-none-any.whl
+Installing collected packages: financial-eligibility-engine
+Successfully installed financial-eligibility-engine-0.4.0
+$ PYTHONPATH=/tmp/fee-v04-wheel python packaged import/service smoke
+eligibility.__version__ = 0.4.0
+ApplicationService = ApplicationService
+RestApplicationAdapter = RestApplicationAdapter
+MCPToolAdapter = MCPToolAdapter
+session_status = QUESTIONING
+recommendation_count = 2
+top_product = SHINHAN_YOUTH_FIRST_SAVINGS_20260722

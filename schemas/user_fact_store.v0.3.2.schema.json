@@ -1,0 +1,807 @@
+{
+  "$defs": {
+    "AccountHoldingInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "title": "Account Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "institution": {
+          "title": "Institution",
+          "type": "string"
+        },
+        "product_type": {
+          "title": "Product Type",
+          "type": "string"
+        },
+        "product_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Id"
+        },
+        "product_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Name"
+        },
+        "held_from": {
+          "format": "date",
+          "title": "Held From",
+          "type": "string"
+        },
+        "held_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Held To"
+        },
+        "ownership": {
+          "default": "USER",
+          "title": "Ownership",
+          "type": "string"
+        },
+        "subject_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject Person Id"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "account_id",
+        "user_id",
+        "institution",
+        "product_type",
+        "held_from",
+        "source_type"
+      ],
+      "title": "AccountHoldingInterval",
+      "type": "object"
+    },
+    "AccountLifecycleEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "account_id": {
+          "title": "Account Id",
+          "type": "string"
+        },
+        "event_type": {
+          "$ref": "#/$defs/AccountLifecycleEventType"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "original_opened_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Opened At"
+        },
+        "previous_owner_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Owner Person Id"
+        },
+        "new_owner_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "New Owner Person Id"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_id",
+        "user_id",
+        "account_id",
+        "event_type",
+        "occurred_at",
+        "source_type"
+      ],
+      "title": "AccountLifecycleEvent",
+      "type": "object"
+    },
+    "AccountLifecycleEventType": {
+      "enum": [
+        "OPENED",
+        "CANCELLED",
+        "WITHDRAWN",
+        "RENAMED",
+        "CLOSED"
+      ],
+      "title": "AccountLifecycleEventType",
+      "type": "string"
+    },
+    "DataCoverage": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_id": {
+          "title": "Coverage Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "fact_domain": {
+          "title": "Fact Domain",
+          "type": "string"
+        },
+        "institution": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution"
+        },
+        "covered_from": {
+          "format": "date",
+          "title": "Covered From",
+          "type": "string"
+        },
+        "covered_to": {
+          "format": "date",
+          "title": "Covered To",
+          "type": "string"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "coverage_id",
+        "user_id",
+        "fact_domain",
+        "covered_from",
+        "covered_to",
+        "source_type"
+      ],
+      "title": "DataCoverage",
+      "type": "object"
+    },
+    "FactProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "title": "Reference",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "reference"
+      ],
+      "title": "FactProvenance",
+      "type": "object"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "SELF_REPORTED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    },
+    "PersonRelationship": {
+      "additionalProperties": false,
+      "properties": {
+        "relationship_id": {
+          "title": "Relationship Id",
+          "type": "string"
+        },
+        "person_a": {
+          "title": "Person A",
+          "type": "string"
+        },
+        "person_b": {
+          "title": "Person B",
+          "type": "string"
+        },
+        "relationship_type": {
+          "title": "Relationship Type",
+          "type": "string"
+        },
+        "valid_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid From"
+        },
+        "valid_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid To"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Reference"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "relationship_id",
+        "person_a",
+        "person_b",
+        "relationship_type",
+        "source_type"
+      ],
+      "title": "PersonRelationship",
+      "type": "object"
+    },
+    "RecurringPaymentCategory": {
+      "enum": [
+        "UTILITY",
+        "TELECOM",
+        "APARTMENT_MANAGEMENT",
+        "INSURANCE",
+        "TAX_OR_PUBLIC_FEE",
+        "OTHER"
+      ],
+      "title": "RecurringPaymentCategory",
+      "type": "string"
+    },
+    "RecurringPaymentEvent": {
+      "additionalProperties": false,
+      "description": "Generic recurring-payment observation shared across institutions.",
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "subject_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject Person Id"
+        },
+        "event_type": {
+          "default": "QUALIFIED_RECURRING_PAYMENT",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "currency": {
+          "default": "KRW",
+          "title": "Currency",
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/$defs/RecurringPaymentCategory"
+        },
+        "payment_method": {
+          "$ref": "#/$defs/RecurringPaymentMethod"
+        },
+        "source_account": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Account"
+        },
+        "institution": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution"
+        },
+        "settlement_bank": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Settlement Bank"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "semantic_type": {
+          "$ref": "#/$defs/FactSemanticType",
+          "default": "OBSERVED_EVENT"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_id",
+        "user_id",
+        "occurred_at",
+        "amount",
+        "category",
+        "payment_method",
+        "source_type"
+      ],
+      "title": "RecurringPaymentEvent",
+      "type": "object"
+    },
+    "RecurringPaymentMethod": {
+      "enum": [
+        "AUTO_DEBIT",
+        "CARD",
+        "TRANSFER",
+        "OTHER"
+      ],
+      "title": "RecurringPaymentMethod",
+      "type": "string"
+    },
+    "ScheduledOccurrence": {
+      "additionalProperties": false,
+      "properties": {
+        "occurrence_id": {
+          "title": "Occurrence Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "schedule_id": {
+          "title": "Schedule Id",
+          "type": "string"
+        },
+        "sequence_no": {
+          "minimum": 1,
+          "title": "Sequence No",
+          "type": "integer"
+        },
+        "scheduled_at": {
+          "format": "date-time",
+          "title": "Scheduled At",
+          "type": "string"
+        },
+        "method": {
+          "$ref": "#/$defs/ScheduledOccurrenceMethod"
+        },
+        "status": {
+          "$ref": "#/$defs/ScheduledOccurrenceStatus"
+        },
+        "observed_event_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Event Id"
+        },
+        "subject_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject Person Id"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "semantic_type": {
+          "$ref": "#/$defs/FactSemanticType",
+          "default": "OBSERVED_EVENT"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "occurrence_id",
+        "user_id",
+        "schedule_id",
+        "sequence_no",
+        "scheduled_at",
+        "method",
+        "status",
+        "source_type"
+      ],
+      "title": "ScheduledOccurrence",
+      "type": "object"
+    },
+    "ScheduledOccurrenceMethod": {
+      "enum": [
+        "AUTO_TRANSFER",
+        "MANUAL_TRANSFER",
+        "DIRECT_ACTION",
+        "OTHER"
+      ],
+      "title": "ScheduledOccurrenceMethod",
+      "type": "string"
+    },
+    "ScheduledOccurrenceStatus": {
+      "enum": [
+        "SCHEDULED",
+        "SUCCESS",
+        "FAILED",
+        "CANCELLED",
+        "SKIPPED"
+      ],
+      "title": "ScheduledOccurrenceStatus",
+      "type": "string"
+    },
+    "UserFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        },
+        "subject_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject Person Id"
+        },
+        "related_person_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Related Person Id"
+        },
+        "valid_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid From"
+        },
+        "valid_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid To"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "semantic_type": {
+          "$ref": "#/$defs/FactSemanticType",
+          "default": "OBSERVED_FACT"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "collected_at": {
+          "format": "date-time",
+          "title": "Collected At",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        }
+      },
+      "required": [
+        "fact_id",
+        "user_id",
+        "fact_type",
+        "value",
+        "source_type"
+      ],
+      "title": "UserFact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/UserFact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "account_holdings": {
+      "items": {
+        "$ref": "#/$defs/AccountHoldingInterval"
+      },
+      "title": "Account Holdings",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/PersonRelationship"
+      },
+      "title": "Relationships",
+      "type": "array"
+    },
+    "scheduled_occurrences": {
+      "items": {
+        "$ref": "#/$defs/ScheduledOccurrence"
+      },
+      "title": "Scheduled Occurrences",
+      "type": "array"
+    },
+    "recurring_payment_events": {
+      "items": {
+        "$ref": "#/$defs/RecurringPaymentEvent"
+      },
+      "title": "Recurring Payment Events",
+      "type": "array"
+    },
+    "data_coverages": {
+      "items": {
+        "$ref": "#/$defs/DataCoverage"
+      },
+      "title": "Data Coverages",
+      "type": "array"
+    },
+    "account_lifecycle_events": {
+      "items": {
+        "$ref": "#/$defs/AccountLifecycleEvent"
+      },
+      "title": "Account Lifecycle Events",
+      "type": "array"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "title": "UserFactStore",
+  "type": "object"
+}

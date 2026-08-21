@@ -1,0 +1,874 @@
+{
+  "schema_version": "0.2",
+  "evaluation_id": "EVAL-52cad2d30925e773",
+  "user_id": "HANA_U001",
+  "product_id": "HANA_RUN_SAVINGS_20260429",
+  "product_name": "달려라 하나 적금",
+  "as_of": "2027-04-15",
+  "subscription_date": "2026-05-01",
+  "eligibility_status": "SATISFIED",
+  "eligibility": {
+    "rule_id": "HANA_RUN_ELIGIBILITY",
+    "rule_name": "달려라 하나 적금 가입자격",
+    "rule_type": "AND",
+    "status": "SATISFIED",
+    "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+    "progress": null,
+    "missing_facts": [],
+    "evidence": {
+      "evaluated_children": 2,
+      "declared_children": 2,
+      "child_statuses": {
+        "HANA_RUN_AGE": "SATISFIED",
+        "HANA_RUN_ONE_ACCOUNT": "SATISFIED"
+      }
+    },
+    "source_provenance": [
+      {
+        "source_type": "PRODUCT_DOCUMENT",
+        "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+        "details": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "version_date": "2026-04-29",
+          "section": "가입대상",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "HANA-F-BIRTH",
+        "details": {
+          "fact_type": "BIRTH_DATE",
+          "subject_person_id": "HANA_U001",
+          "valid_from": null,
+          "valid_to": null
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "virtual-mydata/user-profile",
+        "details": {
+          "description": null
+        }
+      },
+      {
+        "source_type": "PRODUCT_DOCUMENT",
+        "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+        "details": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "version_date": "2026-04-29",
+          "section": "1인 1계좌",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "HANA-F-ACCOUNT-COUNT",
+        "details": {
+          "fact_type": "HANA_RUN_ACTIVE_ACCOUNT_COUNT",
+          "subject_person_id": "HANA_U001",
+          "valid_from": "2026-05-01",
+          "valid_to": null
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "virtual-hana/account-snapshot",
+        "details": {
+          "description": null
+        }
+      }
+    ],
+    "children": [
+      {
+        "rule_id": "HANA_RUN_AGE",
+        "rule_name": "만 19세 이상",
+        "rule_type": "DERIVED_COMPARE",
+        "status": "SATISFIED",
+        "reason_code": "AGE_AT_LEAST_19",
+        "progress": null,
+        "missing_facts": [],
+        "evidence": {
+          "derivation": "AGE_AT",
+          "input_fact_id": "HANA-F-BIRTH",
+          "actual": 33,
+          "expected": 19,
+          "operator": "GTE",
+          "reference_date": "2026-05-01"
+        },
+        "source_provenance": [
+          {
+            "source_type": "PRODUCT_DOCUMENT",
+            "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "details": {
+              "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+              "version_date": "2026-04-29",
+              "section": "가입대상",
+              "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+            }
+          },
+          {
+            "source_type": "INSTITUTION_VERIFIED",
+            "reference": "HANA-F-BIRTH",
+            "details": {
+              "fact_type": "BIRTH_DATE",
+              "subject_person_id": "HANA_U001",
+              "valid_from": null,
+              "valid_to": null
+            }
+          },
+          {
+            "source_type": "INSTITUTION_VERIFIED",
+            "reference": "virtual-mydata/user-profile",
+            "details": {
+              "description": null
+            }
+          }
+        ],
+        "children": []
+      },
+      {
+        "rule_id": "HANA_RUN_ONE_ACCOUNT",
+        "rule_name": "1인 1계좌",
+        "rule_type": "FACT_COMPARE",
+        "status": "SATISFIED",
+        "reason_code": "NO_EXISTING_SAME_PRODUCT_ACCOUNT",
+        "progress": null,
+        "missing_facts": [],
+        "evidence": {
+          "fact_type": "HANA_RUN_ACTIVE_ACCOUNT_COUNT",
+          "fact_id": "HANA-F-ACCOUNT-COUNT",
+          "actual": 0,
+          "expected": 0,
+          "operator": "EQ",
+          "effective_at": "2026-05-01",
+          "source_type": "INSTITUTION_VERIFIED"
+        },
+        "source_provenance": [
+          {
+            "source_type": "PRODUCT_DOCUMENT",
+            "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "details": {
+              "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+              "version_date": "2026-04-29",
+              "section": "1인 1계좌",
+              "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+            }
+          },
+          {
+            "source_type": "INSTITUTION_VERIFIED",
+            "reference": "HANA-F-ACCOUNT-COUNT",
+            "details": {
+              "fact_type": "HANA_RUN_ACTIVE_ACCOUNT_COUNT",
+              "subject_person_id": "HANA_U001",
+              "valid_from": "2026-05-01",
+              "valid_to": null
+            }
+          },
+          {
+            "source_type": "INSTITUTION_VERIFIED",
+            "reference": "virtual-hana/account-snapshot",
+            "details": {
+              "description": null
+            }
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  "preferential_rule_results": [
+    {
+      "rule_id": "HANA_RUN_RATE_100KM",
+      "rule_name": "누적거리 100km 우대",
+      "rule_type": "AND",
+      "status": "SATISFIED",
+      "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "evaluated_children": 2,
+        "declared_children": 2,
+        "child_statuses": {
+          "HANA_RUN_RATE_100KM_SERVICE": "SATISFIED",
+          "HANA_RUN_RATE_100KM_DISTANCE": "SATISFIED"
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "details": {
+            "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "version_date": "2026-04-29",
+            "section": "누적거리 100km 구간",
+            "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-HEALTH-ACTIVE",
+          "details": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2026-05-01",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/service-status",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/consent/active",
+          "details": {
+            "description": "건강데이터 및 측정 동의 유지",
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-DISTANCE",
+          "details": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2027-04-15",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-running-distance",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/running-data/linked",
+          "details": {
+            "description": "허용된 앱·기기 달리기 기록 연동",
+            "manual_input": false,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-distance/snapshot-20270415",
+          "details": {
+            "description": "하나 건강자산관리 화면 인정 누적거리",
+            "confirmed_km": 523,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "HANA_RUN_RATE_100KM_SERVICE",
+          "rule_name": "하나 건강자산관리 서비스 활성",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "fact_id": "HANA-F-HEALTH-ACTIVE",
+            "actual": true,
+            "expected": true,
+            "operator": "EQ",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-HEALTH-ACTIVE",
+              "details": {
+                "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2026-05-01",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/service-status",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "rule_id": "HANA_RUN_RATE_100KM_DISTANCE",
+          "rule_name": "하나 인정 누적거리 100km 이상",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "fact_id": "HANA-F-DISTANCE",
+            "actual": 523,
+            "expected": 100,
+            "operator": "GTE",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-DISTANCE",
+              "details": {
+                "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2027-04-15",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-running-distance",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/running-data/linked",
+              "details": {
+                "description": "허용된 앱·기기 달리기 기록 연동",
+                "manual_input": false,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-distance/snapshot-20270415",
+              "details": {
+                "description": "하나 건강자산관리 화면 인정 누적거리",
+                "confirmed_km": 523,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "rule_id": "HANA_RUN_RATE_200KM_INCREMENT",
+      "rule_name": "누적거리 200km 추가 우대",
+      "rule_type": "AND",
+      "status": "SATISFIED",
+      "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "evaluated_children": 2,
+        "declared_children": 2,
+        "child_statuses": {
+          "HANA_RUN_RATE_200KM_INCREMENT_SERVICE": "SATISFIED",
+          "HANA_RUN_RATE_200KM_INCREMENT_DISTANCE": "SATISFIED"
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "details": {
+            "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "version_date": "2026-04-29",
+            "section": "누적거리 200km 구간",
+            "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-HEALTH-ACTIVE",
+          "details": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2026-05-01",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/service-status",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/consent/active",
+          "details": {
+            "description": "건강데이터 및 측정 동의 유지",
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-DISTANCE",
+          "details": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2027-04-15",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-running-distance",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/running-data/linked",
+          "details": {
+            "description": "허용된 앱·기기 달리기 기록 연동",
+            "manual_input": false,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-distance/snapshot-20270415",
+          "details": {
+            "description": "하나 건강자산관리 화면 인정 누적거리",
+            "confirmed_km": 523,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "HANA_RUN_RATE_200KM_INCREMENT_SERVICE",
+          "rule_name": "하나 건강자산관리 서비스 활성",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "fact_id": "HANA-F-HEALTH-ACTIVE",
+            "actual": true,
+            "expected": true,
+            "operator": "EQ",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-HEALTH-ACTIVE",
+              "details": {
+                "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2026-05-01",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/service-status",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "rule_id": "HANA_RUN_RATE_200KM_INCREMENT_DISTANCE",
+          "rule_name": "하나 인정 누적거리 200km 이상",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "fact_id": "HANA-F-DISTANCE",
+            "actual": 523,
+            "expected": 200,
+            "operator": "GTE",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-DISTANCE",
+              "details": {
+                "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2027-04-15",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-running-distance",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/running-data/linked",
+              "details": {
+                "description": "허용된 앱·기기 달리기 기록 연동",
+                "manual_input": false,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-distance/snapshot-20270415",
+              "details": {
+                "description": "하나 건강자산관리 화면 인정 누적거리",
+                "confirmed_km": 523,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "rule_id": "HANA_RUN_RATE_500KM_INCREMENT",
+      "rule_name": "누적거리 500km 추가 우대",
+      "rule_type": "AND",
+      "status": "SATISFIED",
+      "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "evaluated_children": 2,
+        "declared_children": 2,
+        "child_statuses": {
+          "HANA_RUN_RATE_500KM_INCREMENT_SERVICE": "SATISFIED",
+          "HANA_RUN_RATE_500KM_INCREMENT_DISTANCE": "SATISFIED"
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "details": {
+            "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "version_date": "2026-04-29",
+            "section": "누적거리 500km 구간",
+            "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-HEALTH-ACTIVE",
+          "details": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2026-05-01",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/service-status",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/consent/active",
+          "details": {
+            "description": "건강데이터 및 측정 동의 유지",
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-DISTANCE",
+          "details": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2027-04-15",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-running-distance",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/running-data/linked",
+          "details": {
+            "description": "허용된 앱·기기 달리기 기록 연동",
+            "manual_input": false,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "hana-health/confirmed-distance/snapshot-20270415",
+          "details": {
+            "description": "하나 건강자산관리 화면 인정 누적거리",
+            "confirmed_km": 523,
+            "layer": "INSTITUTION_SERVICE"
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "HANA_RUN_RATE_500KM_INCREMENT_SERVICE",
+          "rule_name": "하나 건강자산관리 서비스 활성",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "fact_id": "HANA-F-HEALTH-ACTIVE",
+            "actual": true,
+            "expected": true,
+            "operator": "EQ",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-HEALTH-ACTIVE",
+              "details": {
+                "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2026-05-01",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/service-status",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "rule_id": "HANA_RUN_RATE_500KM_INCREMENT_DISTANCE",
+          "rule_name": "하나 인정 누적거리 500km 이상",
+          "rule_type": "FACT_COMPARE",
+          "status": "SATISFIED",
+          "reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "fact_id": "HANA-F-DISTANCE",
+            "actual": 523,
+            "expected": 500,
+            "operator": "GTE",
+            "effective_at": "2027-04-15",
+            "source_type": "INSTITUTION_VERIFIED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "HANA-F-DISTANCE",
+              "details": {
+                "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+                "subject_person_id": "HANA_U001",
+                "valid_from": "2027-04-15",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-running-distance",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/consent/active",
+              "details": {
+                "description": "건강데이터 및 측정 동의 유지",
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/running-data/linked",
+              "details": {
+                "description": "허용된 앱·기기 달리기 기록 연동",
+                "manual_input": false,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "hana-health/confirmed-distance/snapshot-20270415",
+              "details": {
+                "description": "하나 건강자산관리 화면 인정 누적거리",
+                "confirmed_km": 523,
+                "layer": "INSTITUTION_SERVICE"
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "global_guard_results": [
+    {
+      "rule_id": "HANA_RUN_GUARD_MATURITY",
+      "rule_name": "만기해지",
+      "rule_type": "FACT_COMPARE",
+      "status": "SATISFIED",
+      "reason_code": "MATURED_NORMALLY",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "TERMINATION_TYPE",
+        "fact_id": "HANA-F-TERM",
+        "actual": "MATURED",
+        "expected": "MATURED",
+        "operator": "EQ",
+        "effective_at": "2027-05-01",
+        "source_type": "INSTITUTION_VERIFIED"
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "details": {
+            "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+            "version_date": "2026-04-29",
+            "section": "만기해지",
+            "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "HANA-F-TERM",
+          "details": {
+            "fact_type": "TERMINATION_TYPE",
+            "subject_person_id": "HANA_U001",
+            "valid_from": "2027-05-01",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-hana/termination",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "rates": {
+    "advertised_max_rate": "6.0",
+    "confirmed_rate": "4.3",
+    "realizable_rate": "4.3",
+    "user_specific_conditional_upper_rate": "4.3",
+    "preferential_cap": "4.2",
+    "guard_status": "SATISFIED",
+    "applied_rewards": [
+      {
+        "rule_id": "HANA_RUN_RATE_100KM",
+        "rule_name": "누적거리 100km 우대",
+        "status": "SATISFIED",
+        "reward_pp": "1.5",
+        "included_in_confirmed": true,
+        "included_in_realizable": true,
+        "included_in_user_specific_conditional_upper": true
+      },
+      {
+        "rule_id": "HANA_RUN_RATE_200KM_INCREMENT",
+        "rule_name": "누적거리 200km 추가 우대",
+        "status": "SATISFIED",
+        "reward_pp": "0.5",
+        "included_in_confirmed": true,
+        "included_in_realizable": true,
+        "included_in_user_specific_conditional_upper": true
+      },
+      {
+        "rule_id": "HANA_RUN_RATE_500KM_INCREMENT",
+        "rule_name": "누적거리 500km 추가 우대",
+        "status": "SATISFIED",
+        "reward_pp": "0.5",
+        "included_in_confirmed": true,
+        "included_in_realizable": true,
+        "included_in_user_specific_conditional_upper": true
+      }
+    ]
+  },
+  "missing_facts": [],
+  "interest_estimates": {}
+}

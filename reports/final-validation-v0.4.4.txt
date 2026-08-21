@@ -1,0 +1,40 @@
+Financial Eligibility Engine v0.4.4 final validation
+=====================================================
+
+Baseline v0.4.3 (before patch)
+- full pytest: 305 passed
+- compileall: PASS
+- module version: 0.4.3
+- clean wheel install/import: PASS
+- v0.4 / v0.4.1 / v0.4.2 / v0.4.3 adversarial: PASS
+
+Final v0.4.4 working tree
+- full pytest: 332 passed, 0 failed
+- v0.3.2 regression: 176 passed
+- v0.4: 50 passed
+- v0.4.1: 26 passed
+- v0.4.2: 29 passed
+- v0.4.3: 24 passed
+- v0.4.4: 27 passed
+- Kakao targeted: 12 passed
+- compileall: PASS
+- source import/version: 0.4.4
+- schema export: 39 v0.4.4 JSON schemas
+- v0.4 / v0.4.1 / v0.4.2 / v0.4.3 / v0.4.4 adversarial: PASS
+- wheel build: PASS
+- clean wheel install/import: PASS
+- installed conversational orchestration smoke: PASS
+
+Key closure checks
+- ProductContributionChoice revision/supersession: PASS
+- stale choice revalidation after global plan change: PASS
+- feasible replacement options + question reopening: PASS
+- natural-language multi-state revision: PASS (LLM mock orchestration + deterministic backend)
+- user-declared fact supersession: PASS
+- authoritative fact protection: PASS
+- invalid revision atomicity: PASS
+- REST POST /search-sessions/{id}/messages: PASS
+- MCP thin conversational reuse: PASS
+- Kakao late 7-streak / from_sequence=None / manual-fill semantics: PASS
+
+Verdict: READY_FOR_WEB_UI

@@ -1,0 +1,4357 @@
+{
+  "product_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818",
+  "institution_id": "KAKAOBANK",
+  "name": "한달적금",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 31,
+    "unit": "DAY"
+  },
+  "base_rate": "0.5",
+  "advertised_max_rate": "6.0",
+  "preferential_rate_cap": "5.5",
+  "eligibility_rule": {
+    "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_ELIG",
+    "name": "공식 가입대상 충족",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "카카오뱅크 한달적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-18",
+      "page": null,
+      "section": "가입대상",
+      "source_url": "https://www.kakaobank.com/products/m1savings",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "ELIGIBLE_KAKAOBANK_ONE_MONTH_SAVINGS_20260818",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "EQ",
+    "expected": true,
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "OFFICIAL_ELIGIBILITY_MATCH",
+    "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": {
+      "resolution_strategy": "QUERY_INSTITUTION",
+      "impact": null,
+      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
+      "question": null,
+      "expected_semantic_type": null,
+      "action_id": null,
+      "reward_id": null,
+      "grounding_terms": []
+    },
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R01",
+        "name": "직접 입금 누적 1일 이상: 매일 우대 1번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 1,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 1일 이상: 매일 우대 1번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 1일 이상: 매일 우대 1번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 1일 이상: 매일 우대 1번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R02",
+        "name": "직접 입금 누적 2일 이상: 매일 우대 2번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 2,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 2일 이상: 매일 우대 2번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 2일 이상: 매일 우대 2번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 2일 이상: 매일 우대 2번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R03",
+        "name": "직접 입금 누적 3일 이상: 매일 우대 3번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 3,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 3일 이상: 매일 우대 3번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 3일 이상: 매일 우대 3번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 3일 이상: 매일 우대 3번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R04",
+        "name": "직접 입금 누적 4일 이상: 매일 우대 4번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 4,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 4일 이상: 매일 우대 4번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 4일 이상: 매일 우대 4번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 4일 이상: 매일 우대 4번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R05",
+        "name": "직접 입금 누적 5일 이상: 매일 우대 5번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 5,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 5일 이상: 매일 우대 5번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 5일 이상: 매일 우대 5번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 5일 이상: 매일 우대 5번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R06",
+        "name": "직접 입금 누적 6일 이상: 매일 우대 6번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 6,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 6일 이상: 매일 우대 6번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 6일 이상: 매일 우대 6번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 6일 이상: 매일 우대 6번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R07",
+        "name": "직접 입금 누적 7일 이상: 매일 우대 7번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 7,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 7일 이상: 매일 우대 7번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 7일 이상: 매일 우대 7번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 7일 이상: 매일 우대 7번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R08",
+        "name": "직접 입금 누적 8일 이상: 매일 우대 8번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 8,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 8일 이상: 매일 우대 8번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 8일 이상: 매일 우대 8번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 8일 이상: 매일 우대 8번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R09",
+        "name": "직접 입금 누적 9일 이상: 매일 우대 9번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 9,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 9일 이상: 매일 우대 9번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 9일 이상: 매일 우대 9번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 9일 이상: 매일 우대 9번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R10",
+        "name": "직접 입금 누적 10일 이상: 매일 우대 10번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 10,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 10일 이상: 매일 우대 10번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 10일 이상: 매일 우대 10번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 10일 이상: 매일 우대 10번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R11",
+        "name": "직접 입금 누적 11일 이상: 매일 우대 11번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 11,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 11일 이상: 매일 우대 11번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 11일 이상: 매일 우대 11번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 11일 이상: 매일 우대 11번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R12",
+        "name": "직접 입금 누적 12일 이상: 매일 우대 12번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 12,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 12일 이상: 매일 우대 12번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 12일 이상: 매일 우대 12번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 12일 이상: 매일 우대 12번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R13",
+        "name": "직접 입금 누적 13일 이상: 매일 우대 13번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 13,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 13일 이상: 매일 우대 13번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 13일 이상: 매일 우대 13번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 13일 이상: 매일 우대 13번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R14",
+        "name": "직접 입금 누적 14일 이상: 매일 우대 14번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 14,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 14일 이상: 매일 우대 14번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 14일 이상: 매일 우대 14번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 14일 이상: 매일 우대 14번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R15",
+        "name": "직접 입금 누적 15일 이상: 매일 우대 15번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 15,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 15일 이상: 매일 우대 15번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 15일 이상: 매일 우대 15번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 15일 이상: 매일 우대 15번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R16",
+        "name": "직접 입금 누적 16일 이상: 매일 우대 16번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 16,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 16일 이상: 매일 우대 16번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 16일 이상: 매일 우대 16번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 16일 이상: 매일 우대 16번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R17",
+        "name": "직접 입금 누적 17일 이상: 매일 우대 17번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 17,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 17일 이상: 매일 우대 17번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 17일 이상: 매일 우대 17번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 17일 이상: 매일 우대 17번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R18",
+        "name": "직접 입금 누적 18일 이상: 매일 우대 18번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 18,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 18일 이상: 매일 우대 18번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 18일 이상: 매일 우대 18번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 18일 이상: 매일 우대 18번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R19",
+        "name": "직접 입금 누적 19일 이상: 매일 우대 19번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 19,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 19일 이상: 매일 우대 19번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 19일 이상: 매일 우대 19번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 19일 이상: 매일 우대 19번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R20",
+        "name": "직접 입금 누적 20일 이상: 매일 우대 20번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 20,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 20일 이상: 매일 우대 20번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 20일 이상: 매일 우대 20번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 20일 이상: 매일 우대 20번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R21",
+        "name": "직접 입금 누적 21일 이상: 매일 우대 21번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 21,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 21일 이상: 매일 우대 21번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 21일 이상: 매일 우대 21번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 21일 이상: 매일 우대 21번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R22",
+        "name": "직접 입금 누적 22일 이상: 매일 우대 22번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 22,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 22일 이상: 매일 우대 22번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 22일 이상: 매일 우대 22번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 22일 이상: 매일 우대 22번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R23",
+        "name": "직접 입금 누적 23일 이상: 매일 우대 23번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 23,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 23일 이상: 매일 우대 23번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 23일 이상: 매일 우대 23번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 23일 이상: 매일 우대 23번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R24",
+        "name": "직접 입금 누적 24일 이상: 매일 우대 24번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 24,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 24일 이상: 매일 우대 24번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 24일 이상: 매일 우대 24번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 24일 이상: 매일 우대 24번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R25",
+        "name": "직접 입금 누적 25일 이상: 매일 우대 25번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 25,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 25일 이상: 매일 우대 25번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 25일 이상: 매일 우대 25번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 25일 이상: 매일 우대 25번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R26",
+        "name": "직접 입금 누적 26일 이상: 매일 우대 26번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 26,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 26일 이상: 매일 우대 26번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 26일 이상: 매일 우대 26번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 26일 이상: 매일 우대 26번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R27",
+        "name": "직접 입금 누적 27일 이상: 매일 우대 27번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 27,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 27일 이상: 매일 우대 27번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 27일 이상: 매일 우대 27번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 27일 이상: 매일 우대 27번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R28",
+        "name": "직접 입금 누적 28일 이상: 매일 우대 28번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 28,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 28일 이상: 매일 우대 28번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 28일 이상: 매일 우대 28번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 28일 이상: 매일 우대 28번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R29",
+        "name": "직접 입금 누적 29일 이상: 매일 우대 29번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 29,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 29일 이상: 매일 우대 29번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 29일 이상: 매일 우대 29번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 29일 이상: 매일 우대 29번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R30",
+        "name": "직접 입금 누적 30일 이상: 매일 우대 30번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 30,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 30일 이상: 매일 우대 30번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 30일 이상: 매일 우대 30번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 30일 이상: 매일 우대 30번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R31",
+        "name": "직접 입금 누적 31일 이상: 매일 우대 31번째 0.10%p",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 31,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.1"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "직접 입금 누적 31일 이상: 매일 우대 31번째 0.10%p을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "직접 입금 누적 31일 이상: 매일 우대 31번째 0.10%p"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "직접 입금 누적 31일 이상: 매일 우대 31번째 0.10%p",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R32",
+        "name": "누적 5회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 5,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.2"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 5회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 5회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 5회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R33",
+        "name": "누적 10회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 10,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.2"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 10회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 10회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 10회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R34",
+        "name": "누적 15회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 15,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.3"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 15회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 15회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 15회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.3",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R35",
+        "name": "누적 20회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 20,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.3"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 20회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 20회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 20회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.3",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R36",
+        "name": "누적 25회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 25,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.5"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 25회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 25회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 25회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_R37",
+        "name": "누적 31회 입금 보너스",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "보너스 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        },
+        "type": "COUNT_DISTINCT_PERIODS",
+        "period": "DAY",
+        "fact_type": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+        "event_entity": null,
+        "date_path": null,
+        "subject_selector": null,
+        "filters": [],
+        "window": {
+          "start": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "subscription_date",
+            "expression": null,
+            "amount": null
+          },
+          "end": {
+            "type": "CONTEXT",
+            "value": null,
+            "context_field": "maturity_date",
+            "expression": null,
+            "amount": null
+          },
+          "inclusive": true
+        },
+        "operator": "GTE",
+        "expected": 31,
+        "fact_acceptance_policy": {
+          "strict_semantic_types": [
+            "OBSERVED_FACT",
+            "OBSERVED_EVENT",
+            "DERIVED_FACT"
+          ],
+          "strict_source_types": [
+            "INSTITUTION_VERIFIED",
+            "MYDATA_VERIFIED",
+            "DERIVED"
+          ],
+          "provisional_semantic_types": [
+            "SELF_REPORTED_FACT"
+          ],
+          "provisional_source_types": [
+            "USER_DECLARED"
+          ],
+          "allow_provisional": false
+        },
+        "coverage": null,
+        "coverage_missing_fact": null,
+        "future_achievement": {
+          "capability_rule": null,
+          "intent_fact_type": "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+          "missing_fact": {
+            "resolution_strategy": "ASK_USER",
+            "impact": {
+              "rate_pp": "0.9"
+            },
+            "required_source": "USER_FUTURE_INTENT",
+            "question": "누적 31회 입금 보너스을 목표로 관리할까요?",
+            "expected_semantic_type": "FUTURE_INTENT",
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "reward_id": "REWARD_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "grounding_terms": [
+              "누적 31회 입금 보너스"
+            ]
+          },
+          "achievement_mode": "ACCUMULATIVE",
+          "max_qualifying_units_per_opportunity": 1,
+          "max_new_qualifying_months_per_month": 1,
+          "action": {
+            "action_id": "ACT_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "description": "누적 31회 입금 보너스",
+            "burden_score": 2
+          },
+          "action_paths": [],
+          "goal_template": {
+            "metric": "KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "unit": "DAY",
+            "tracking_mode": "ACCUMULATIVE",
+            "safety_threshold": 0,
+            "description": null,
+            "coverage_fact_domain": null,
+            "coverage_institution": null
+          },
+          "achievable_reason_code": "RECURRING_CONDITION_CAN_BE_COMPLETED",
+          "insufficient_time_reason_code": "INSUFFICIENT_REMAINING_MONTHS",
+          "user_declined_reason_code": "USER_DECLINED",
+          "alternative_action_paths_complete": true,
+          "unmodeled_alternative_reason_code": "ALTERNATIVE_ACTION_PATH_NOT_EVALUATED"
+        },
+        "true_reason_code": "DISTINCT_PERIOD_TARGET_REACHED",
+        "false_reason_code": "DISTINCT_PERIOD_TARGET_NOT_REACHED"
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.9",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818_MATURITY_GUARD",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "카카오뱅크 한달적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": "2026-08-18",
+        "page": null,
+        "section": "만기/중도해지",
+        "source_url": "https://www.kakaobank.com/products/m1savings",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION",
+      "missing_reason_code": "MATURITY_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "KAKAOBANK",
+    "product_id": "KAKAOBANK_ONE_MONTH_SAVINGS_20260818",
+    "product_name": "한달적금",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 31,
+      "unit": "DAY"
+    },
+    "max_term": {
+      "value": 31,
+      "unit": "DAY"
+    },
+    "available_terms": [
+      {
+        "value": 31,
+        "unit": "DAY"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": "1",
+      "periodic_amount_max": "30000",
+      "contribution_frequency": "DAILY",
+      "contribution_mode": "FLEXIBLE",
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "0.5",
+    "advertised_max_rate": "6.0",
+    "preferential_rate_cap": "5.5",
+    "allowed_channels": [
+      "MOBILE"
+    ],
+    "features": [
+      {
+        "feature_id": "DAILY_MANUAL_SAVING_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "카카오뱅크 한달적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-08-18",
+          "page": null,
+          "section": "매일 우대금리",
+          "source_url": "https://www.kakaobank.com/products/m1savings",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "실명의 개인",
+    "one_account_per_person": null,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": "우대금리는 원칙적으로 만기해지 시 적용하며 중도해지 시 상품별 중도해지이율을 적용.",
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": "2026-08-18",
+    "effective_to": null,
+    "source_reference": {
+      "document": "카카오뱅크 한달적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-08-18",
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://www.kakaobank.com/products/m1savings",
+      "source_text": null
+    }
+  }
+}

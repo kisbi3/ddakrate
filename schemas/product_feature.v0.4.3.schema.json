@@ -1,0 +1,132 @@
+{
+  "$defs": {
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Id"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Typed product/application feature used by cheap filtering and preferences.\n\n``feature_id`` is an explicit semantic identifier (for example\n``NEW_CARD_REQUIRED``).  It must never be inferred from Korean/English\nsubstrings in rule names.  ``required_for_subscription`` distinguishes a\nmandatory product-level requirement from a merely optional preferential\naction path.",
+  "properties": {
+    "feature_id": {
+      "title": "Feature Id",
+      "type": "string"
+    },
+    "present": {
+      "default": true,
+      "title": "Present",
+      "type": "boolean"
+    },
+    "required_for_subscription": {
+      "default": false,
+      "title": "Required For Subscription",
+      "type": "boolean"
+    },
+    "required_capabilities": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Capabilities",
+      "type": "array"
+    },
+    "source_reference": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SourceReference"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "feature_id"
+  ],
+  "title": "ProductFeature",
+  "type": "object"
+}

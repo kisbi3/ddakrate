@@ -1,0 +1,65 @@
+{
+  "$defs": {
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "SELF_REPORTED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Reusable per-Fact semantic/authority gate.\n\nThe legacy ``strict_*`` / ``provisional_*`` field names remain for schema\ncompatibility.  In v0.3.2 there is no global trust-mode switch: the first\npair denotes authoritative evidence and the second pair denotes explicitly\nallowed self-reported evidence.",
+  "properties": {
+    "strict_semantic_types": {
+      "items": {
+        "$ref": "#/$defs/FactSemanticType"
+      },
+      "title": "Strict Semantic Types",
+      "type": "array"
+    },
+    "strict_source_types": {
+      "items": {
+        "$ref": "#/$defs/FactSourceType"
+      },
+      "title": "Strict Source Types",
+      "type": "array"
+    },
+    "provisional_semantic_types": {
+      "items": {
+        "$ref": "#/$defs/FactSemanticType"
+      },
+      "title": "Provisional Semantic Types",
+      "type": "array"
+    },
+    "provisional_source_types": {
+      "items": {
+        "$ref": "#/$defs/FactSourceType"
+      },
+      "title": "Provisional Source Types",
+      "type": "array"
+    },
+    "allow_provisional": {
+      "default": false,
+      "title": "Allow Provisional",
+      "type": "boolean"
+    }
+  },
+  "title": "FactAcceptancePolicy",
+  "type": "object"
+}

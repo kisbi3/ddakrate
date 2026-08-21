@@ -1,0 +1,244 @@
+{
+  "$defs": {
+    "AccountHoldingInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "title": "Account Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "institution": {
+          "title": "Institution",
+          "type": "string"
+        },
+        "product_type": {
+          "title": "Product Type",
+          "type": "string"
+        },
+        "product_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Id"
+        },
+        "product_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Name"
+        },
+        "held_from": {
+          "format": "date",
+          "title": "Held From",
+          "type": "string"
+        },
+        "held_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Held To"
+        },
+        "ownership": {
+          "default": "USER",
+          "title": "Ownership",
+          "type": "string"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "account_id",
+        "user_id",
+        "institution",
+        "product_type",
+        "held_from",
+        "source_type"
+      ],
+      "title": "AccountHoldingInterval",
+      "type": "object"
+    },
+    "FactProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "title": "Reference",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "reference"
+      ],
+      "title": "FactProvenance",
+      "type": "object"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    },
+    "UserFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        },
+        "valid_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid From"
+        },
+        "valid_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid To"
+        },
+        "source_type": {
+          "$ref": "#/$defs/FactSourceType"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/FactProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "collected_at": {
+          "format": "date-time",
+          "title": "Collected At",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        }
+      },
+      "required": [
+        "fact_id",
+        "user_id",
+        "fact_type",
+        "value",
+        "source_type"
+      ],
+      "title": "UserFact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/UserFact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "account_holdings": {
+      "items": {
+        "$ref": "#/$defs/AccountHoldingInterval"
+      },
+      "title": "Account Holdings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "title": "UserFactStore",
+  "type": "object"
+}

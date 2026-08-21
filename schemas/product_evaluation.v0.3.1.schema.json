@@ -1,0 +1,684 @@
+{
+  "$defs": {
+    "AppliedReward": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_name": {
+          "title": "Rule Name",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Reward Pp"
+        },
+        "included_in_confirmed": {
+          "title": "Included In Confirmed",
+          "type": "boolean"
+        },
+        "included_in_realizable": {
+          "title": "Included In Realizable",
+          "type": "boolean"
+        },
+        "included_in_user_specific_conditional_upper": {
+          "title": "Included In User Specific Conditional Upper",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rule_id",
+        "rule_name",
+        "status",
+        "reward_pp",
+        "included_in_confirmed",
+        "included_in_realizable",
+        "included_in_user_specific_conditional_upper"
+      ],
+      "title": "AppliedReward",
+      "type": "object"
+    },
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
+      "type": "string"
+    },
+    "EvaluationTrustMode": {
+      "description": "Controls whether self-reported facts may drive a simulated result.",
+      "enum": [
+        "STRICT",
+        "MVP_PROVISIONAL"
+      ],
+      "title": "EvaluationTrustMode",
+      "type": "string"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "FUTURE_INTENT",
+        "SELF_REPORTED_FACT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "InterestEstimate": {
+      "additionalProperties": false,
+      "properties": {
+        "annual_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Annual Rate"
+        },
+        "total_principal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Total Principal"
+        },
+        "pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Pre Tax Interest"
+        },
+        "tax": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Tax"
+        },
+        "after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "After Tax Interest"
+        },
+        "method": {
+          "const": "MONTHLY_SIMPLE_APPROXIMATION",
+          "default": "MONTHLY_SIMPLE_APPROXIMATION",
+          "title": "Method",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "annual_rate",
+        "total_principal",
+        "pre_tax_interest",
+        "tax",
+        "after_tax_interest"
+      ],
+      "title": "InterestEstimate",
+      "type": "object"
+    },
+    "MissingFactImpact": {
+      "additionalProperties": false,
+      "properties": {
+        "rate_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rate Pp"
+        }
+      },
+      "title": "MissingFactImpact",
+      "type": "object"
+    },
+    "MissingFactRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ResolutionStatus",
+          "default": "UNRESOLVED"
+        },
+        "resolution_strategy": {
+          "$ref": "#/$defs/ResolutionStrategy"
+        },
+        "impact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactImpact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "required_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required Source"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        },
+        "requested_by_rule_id": {
+          "title": "Requested By Rule Id",
+          "type": "string"
+        },
+        "expected_semantic_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSemanticType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "action_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Id"
+        },
+        "reward_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reward Id"
+        },
+        "grounding_terms": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Grounding Terms",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_type",
+        "resolution_strategy",
+        "requested_by_rule_id"
+      ],
+      "title": "MissingFactRequest",
+      "type": "object"
+    },
+    "Progress": {
+      "additionalProperties": false,
+      "properties": {
+        "current": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Current"
+        },
+        "required": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Required"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "current",
+        "required",
+        "unit"
+      ],
+      "title": "Progress",
+      "type": "object"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "source_type": {
+          "title": "Source Type",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference"
+        },
+        "details": {
+          "additionalProperties": true,
+          "title": "Details",
+          "type": "object"
+        }
+      },
+      "required": [
+        "source_type"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "RateSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Advertised Max Rate"
+        },
+        "confirmed_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Confirmed Rate"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "preferential_cap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Preferential Cap"
+        },
+        "guard_status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "applied_rewards": {
+          "items": {
+            "$ref": "#/$defs/AppliedReward"
+          },
+          "title": "Applied Rewards",
+          "type": "array"
+        }
+      },
+      "required": [
+        "advertised_max_rate",
+        "confirmed_rate",
+        "realizable_rate",
+        "user_specific_conditional_upper_rate",
+        "preferential_cap",
+        "guard_status"
+      ],
+      "title": "RateSummary",
+      "type": "object"
+    },
+    "ResolutionStatus": {
+      "enum": [
+        "RESOLVED",
+        "UNRESOLVED",
+        "CONFLICT"
+      ],
+      "title": "ResolutionStatus",
+      "type": "string"
+    },
+    "ResolutionStrategy": {
+      "enum": [
+        "QUERY_INSTITUTION",
+        "QUERY_MYDATA",
+        "DERIVE",
+        "ASK_USER",
+        "UNRESOLVABLE"
+      ],
+      "title": "ResolutionStrategy",
+      "type": "string"
+    },
+    "RuleEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_name": {
+          "title": "Rule Name",
+          "type": "string"
+        },
+        "rule_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rule Type"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "progress": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Progress"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "missing_facts": {
+          "items": {
+            "$ref": "#/$defs/MissingFactRequest"
+          },
+          "title": "Missing Facts",
+          "type": "array"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        },
+        "source_provenance": {
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Source Provenance",
+          "type": "array"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/$defs/RuleEvaluation"
+          },
+          "title": "Children",
+          "type": "array"
+        },
+        "is_provisional": {
+          "default": false,
+          "title": "Is Provisional",
+          "type": "boolean"
+        },
+        "verification_level": {
+          "$ref": "#/$defs/VerificationLevel",
+          "default": "VERIFIED"
+        }
+      },
+      "required": [
+        "rule_id",
+        "rule_name",
+        "status",
+        "reason_code"
+      ],
+      "title": "RuleEvaluation",
+      "type": "object"
+    },
+    "VerificationLevel": {
+      "enum": [
+        "VERIFIED",
+        "MIXED",
+        "SELF_REPORTED",
+        "UNKNOWN"
+      ],
+      "title": "VerificationLevel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.3.1",
+      "default": "0.3.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "evaluation_id": {
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "product_name": {
+      "title": "Product Name",
+      "type": "string"
+    },
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "subscription_date": {
+      "format": "date",
+      "title": "Subscription Date",
+      "type": "string"
+    },
+    "eligibility_status": {
+      "$ref": "#/$defs/EvaluationStatus"
+    },
+    "eligibility": {
+      "$ref": "#/$defs/RuleEvaluation"
+    },
+    "preferential_rule_results": {
+      "items": {
+        "$ref": "#/$defs/RuleEvaluation"
+      },
+      "title": "Preferential Rule Results",
+      "type": "array"
+    },
+    "global_guard_results": {
+      "items": {
+        "$ref": "#/$defs/RuleEvaluation"
+      },
+      "title": "Global Guard Results",
+      "type": "array"
+    },
+    "rates": {
+      "$ref": "#/$defs/RateSummary"
+    },
+    "missing_facts": {
+      "items": {
+        "$ref": "#/$defs/MissingFactRequest"
+      },
+      "title": "Missing Facts",
+      "type": "array"
+    },
+    "interest_estimates": {
+      "additionalProperties": {
+        "$ref": "#/$defs/InterestEstimate"
+      },
+      "title": "Interest Estimates",
+      "type": "object"
+    },
+    "trust_mode": {
+      "$ref": "#/$defs/EvaluationTrustMode",
+      "default": "STRICT"
+    },
+    "is_provisional": {
+      "default": false,
+      "title": "Is Provisional",
+      "type": "boolean"
+    },
+    "verification_level": {
+      "$ref": "#/$defs/VerificationLevel",
+      "default": "VERIFIED"
+    },
+    "provisional_rule_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Provisional Rule Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "evaluation_id",
+    "user_id",
+    "product_id",
+    "product_name",
+    "as_of",
+    "subscription_date",
+    "eligibility_status",
+    "eligibility",
+    "preferential_rule_results",
+    "global_guard_results",
+    "rates"
+  ],
+  "title": "ProductEvaluation",
+  "type": "object"
+}

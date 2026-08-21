@@ -1,0 +1,124 @@
+{
+  "$defs": {
+    "FxThresholdClassification": {
+      "enum": [
+        "CLEARLY_ABOVE",
+        "NEAR_THRESHOLD",
+        "BELOW_THRESHOLD"
+      ],
+      "title": "FxThresholdClassification",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "original_amount": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Original Amount"
+    },
+    "original_currency": {
+      "title": "Original Currency",
+      "type": "string"
+    },
+    "estimated_amount": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Estimated Amount"
+    },
+    "target_currency": {
+      "title": "Target Currency",
+      "type": "string"
+    },
+    "quote_reference": {
+      "title": "Quote Reference",
+      "type": "string"
+    },
+    "target_threshold": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Target Threshold"
+    },
+    "distance_from_threshold": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Distance From Threshold"
+    },
+    "classification": {
+      "$ref": "#/$defs/FxThresholdClassification"
+    },
+    "warning": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Warning"
+    },
+    "quoted_at": {
+      "format": "date-time",
+      "title": "Quoted At",
+      "type": "string"
+    },
+    "provider": {
+      "title": "Provider",
+      "type": "string"
+    },
+    "is_planning_estimate": {
+      "default": true,
+      "title": "Is Planning Estimate",
+      "type": "boolean"
+    },
+    "authoritative_for_final_reward": {
+      "default": false,
+      "title": "Authoritative For Final Reward",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "original_amount",
+    "original_currency",
+    "estimated_amount",
+    "target_currency",
+    "quote_reference",
+    "target_threshold",
+    "distance_from_threshold",
+    "classification",
+    "quoted_at",
+    "provider"
+  ],
+  "title": "FxEstimate",
+  "type": "object"
+}

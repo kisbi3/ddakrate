@@ -1,0 +1,809 @@
+{
+  "evaluation_id": "EVAL-e6fb560c6a43a40f",
+  "user_id": "U001",
+  "product_id": "SHINHAN_YOUTH_FIRST_SAVINGS_20260722",
+  "product_name": "청년 처음적금",
+  "as_of": "2026-08-19",
+  "subscription_date": "2026-08-20",
+  "eligibility_status": "SATISFIED",
+  "eligibility": {
+    "rule_id": "ELIGIBILITY",
+    "rule_name": "청년 처음적금 가입자격",
+    "status": "SATISFIED",
+    "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+    "progress": null,
+    "missing_facts": [],
+    "evidence": {
+      "evaluated_children": 2,
+      "declared_children": 2,
+      "child_statuses": {
+        "ELIG_AGE": "SATISFIED",
+        "ELIG_ONE_ACCOUNT": "SATISFIED"
+      }
+    },
+    "source_provenance": [
+      {
+        "source_type": "PRODUCT_DOCUMENT",
+        "reference": "신한은행 청년 처음적금 상품설명서",
+        "details": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "version_date": "2026-07-22",
+          "page": 1,
+          "section": "거래조건/가입대상",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+        }
+      },
+      {
+        "source_type": "MYDATA_VERIFIED",
+        "reference": "F-BIRTH",
+        "details": {
+          "fact_type": "BIRTH_DATE"
+        }
+      },
+      {
+        "source_type": "MYDATA_VERIFIED",
+        "reference": "virtual-mydata/user-profile",
+        "details": {
+          "description": null
+        }
+      },
+      {
+        "source_type": "MYDATA_VERIFIED",
+        "reference": "F-SAME-PRODUCT-COUNT",
+        "details": {
+          "fact_type": "SHINHAN_YOUTH_FIRST_ACTIVE_ACCOUNT_COUNT"
+        }
+      },
+      {
+        "source_type": "MYDATA_VERIFIED",
+        "reference": "virtual-mydata/account-snapshot",
+        "details": {
+          "description": null
+        }
+      }
+    ],
+    "children": [
+      {
+        "rule_id": "ELIG_AGE",
+        "rule_name": "가입연령 18~39세",
+        "status": "SATISFIED",
+        "reason_code": "AGE_WITHIN_ALLOWED_RANGE",
+        "progress": null,
+        "missing_facts": [],
+        "evidence": {
+          "derivation": "AGE_AT",
+          "input_fact_id": "F-BIRTH",
+          "actual": 28,
+          "expected": [
+            18,
+            39
+          ],
+          "operator": "BETWEEN_INCLUSIVE",
+          "reference_date": "2026-08-20"
+        },
+        "source_provenance": [
+          {
+            "source_type": "PRODUCT_DOCUMENT",
+            "reference": "신한은행 청년 처음적금 상품설명서",
+            "details": {
+              "document": "신한은행 청년 처음적금 상품설명서",
+              "version_date": "2026-07-22",
+              "page": 1,
+              "section": "거래조건/가입대상",
+              "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+            }
+          },
+          {
+            "source_type": "MYDATA_VERIFIED",
+            "reference": "F-BIRTH",
+            "details": {
+              "fact_type": "BIRTH_DATE"
+            }
+          },
+          {
+            "source_type": "MYDATA_VERIFIED",
+            "reference": "virtual-mydata/user-profile",
+            "details": {
+              "description": null
+            }
+          }
+        ],
+        "children": []
+      },
+      {
+        "rule_id": "ELIG_ONE_ACCOUNT",
+        "rule_name": "1인 1계좌",
+        "status": "SATISFIED",
+        "reason_code": "NO_EXISTING_SAME_PRODUCT_ACCOUNT",
+        "progress": null,
+        "missing_facts": [],
+        "evidence": {
+          "fact_type": "SHINHAN_YOUTH_FIRST_ACTIVE_ACCOUNT_COUNT",
+          "fact_id": "F-SAME-PRODUCT-COUNT",
+          "actual": 0,
+          "expected": 0,
+          "operator": "EQ",
+          "effective_at": "2026-08-20",
+          "source_type": "MYDATA_VERIFIED"
+        },
+        "source_provenance": [
+          {
+            "source_type": "PRODUCT_DOCUMENT",
+            "reference": "신한은행 청년 처음적금 상품설명서",
+            "details": {
+              "document": "신한은행 청년 처음적금 상품설명서",
+              "version_date": "2026-07-22",
+              "page": 1,
+              "section": "거래조건/가입대상",
+              "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+            }
+          },
+          {
+            "source_type": "MYDATA_VERIFIED",
+            "reference": "F-SAME-PRODUCT-COUNT",
+            "details": {
+              "fact_type": "SHINHAN_YOUTH_FIRST_ACTIVE_ACCOUNT_COUNT"
+            }
+          },
+          {
+            "source_type": "MYDATA_VERIFIED",
+            "reference": "virtual-mydata/account-snapshot",
+            "details": {
+              "description": null
+            }
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  "preferential_rule_results": [
+    {
+      "rule_id": "RATE_SALARY",
+      "rule_name": "주거래 우대",
+      "status": "ACHIEVABLE",
+      "reason_code": "SALARY_MONTHS_CAN_BE_COMPLETED",
+      "progress": {
+        "current": 0,
+        "required": 6,
+        "unit": "MONTH"
+      },
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "SHINHAN_QUALIFYING_SALARY_MONTH",
+        "window_from": "2026-08-01",
+        "window_to": "2027-06-30",
+        "qualifying_months": [],
+        "current": 0,
+        "required": 6,
+        "operator": "GTE",
+        "remaining_required": 6,
+        "available_future_months": [
+          "2026-08",
+          "2026-09",
+          "2026-10",
+          "2026-11",
+          "2026-12",
+          "2027-01",
+          "2027-02",
+          "2027-03",
+          "2027-04",
+          "2027-05",
+          "2027-06"
+        ],
+        "capability_status": "SATISFIED",
+        "action": {
+          "action_id": "CHANGE_SALARY_ACCOUNT",
+          "description": "급여 수령계좌를 신한은행으로 변경하고 6개월의 인정 실적을 만든다.",
+          "burden_score": 2
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "F-SALARY-CHANGE",
+          "details": {
+            "fact_type": "SALARY_ACCOUNT_CHANGE_POSSIBLE"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "fixture/user-intent/salary-account-change",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "CAP_SALARY_ACCOUNT_CHANGE",
+          "rule_name": "급여 수령계좌 변경 가능",
+          "status": "SATISFIED",
+          "reason_code": "SALARY_ACCOUNT_CAN_BE_CHANGED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+            "fact_id": "F-SALARY-CHANGE",
+            "actual": true,
+            "expected": true,
+            "operator": "EQ",
+            "effective_at": "2026-08-19",
+            "source_type": "USER_DECLARED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "F-SALARY-CHANGE",
+              "details": {
+                "fact_type": "SALARY_ACCOUNT_CHANGE_POSSIBLE"
+              }
+            },
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "fixture/user-intent/salary-account-change",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "rule_id": "RATE_CARD",
+      "rule_name": "신한카드 결제 우대",
+      "status": "ACHIEVABLE",
+      "reason_code": "CARD_MONTHS_CAN_BE_COMPLETED",
+      "progress": {
+        "current": 0,
+        "required": 6,
+        "unit": "MONTH"
+      },
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "SHINHAN_CARD_QUALIFYING_MONTH",
+        "window_from": "2026-08-01",
+        "window_to": "2027-06-30",
+        "qualifying_months": [],
+        "current": 0,
+        "required": 6,
+        "operator": "GTE",
+        "remaining_required": 6,
+        "available_future_months": [
+          "2026-08",
+          "2026-09",
+          "2026-10",
+          "2026-11",
+          "2026-12",
+          "2027-01",
+          "2027-02",
+          "2027-03",
+          "2027-04",
+          "2027-05",
+          "2027-06"
+        ],
+        "capability_status": "SATISFIED",
+        "action": {
+          "action_id": "CHANGE_CARD_SETTLEMENT_ACCOUNT",
+          "description": "신한카드 결제계좌를 본인 신한은행 계좌로 변경하고 6개월에 1원 이상 결제한다.",
+          "burden_score": 1
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 2,
+            "section": "[2] 신한카드 결제 우대",
+            "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+          }
+        },
+        {
+          "source_type": "MYDATA_VERIFIED",
+          "reference": "F-CARD-HELD",
+          "details": {
+            "fact_type": "SHINHAN_CARD_HELD"
+          }
+        },
+        {
+          "source_type": "MYDATA_VERIFIED",
+          "reference": "virtual-mydata/card-holding",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "F-CARD-SETTLEMENT-CHANGE",
+          "details": {
+            "fact_type": "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "fixture/user-intent/card-account-change",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "CAP_SHINHAN_CARD_SETTLEMENT",
+          "rule_name": "신한카드 결제계좌 변경 가능",
+          "status": "SATISFIED",
+          "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "evaluated_children": 2,
+            "declared_children": 2,
+            "child_statuses": {
+              "CAP_SHINHAN_CARD_HELD": "SATISFIED",
+              "CAP_CARD_SETTLEMENT_CHANGE": "SATISFIED"
+            }
+          },
+          "source_provenance": [
+            {
+              "source_type": "MYDATA_VERIFIED",
+              "reference": "F-CARD-HELD",
+              "details": {
+                "fact_type": "SHINHAN_CARD_HELD"
+              }
+            },
+            {
+              "source_type": "MYDATA_VERIFIED",
+              "reference": "virtual-mydata/card-holding",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "F-CARD-SETTLEMENT-CHANGE",
+              "details": {
+                "fact_type": "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE"
+              }
+            },
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "fixture/user-intent/card-account-change",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": [
+            {
+              "rule_id": "CAP_SHINHAN_CARD_HELD",
+              "rule_name": "신한카드 보유",
+              "status": "SATISFIED",
+              "reason_code": "SHINHAN_CARD_ALREADY_HELD",
+              "progress": null,
+              "missing_facts": [],
+              "evidence": {
+                "fact_type": "SHINHAN_CARD_HELD",
+                "fact_id": "F-CARD-HELD",
+                "actual": true,
+                "expected": true,
+                "operator": "EQ",
+                "effective_at": "2026-08-19",
+                "source_type": "MYDATA_VERIFIED"
+              },
+              "source_provenance": [
+                {
+                  "source_type": "MYDATA_VERIFIED",
+                  "reference": "F-CARD-HELD",
+                  "details": {
+                    "fact_type": "SHINHAN_CARD_HELD"
+                  }
+                },
+                {
+                  "source_type": "MYDATA_VERIFIED",
+                  "reference": "virtual-mydata/card-holding",
+                  "details": {
+                    "description": null
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "rule_id": "CAP_CARD_SETTLEMENT_CHANGE",
+              "rule_name": "결제계좌 변경 가능",
+              "status": "SATISFIED",
+              "reason_code": "CARD_SETTLEMENT_ACCOUNT_CAN_BE_CHANGED",
+              "progress": null,
+              "missing_facts": [],
+              "evidence": {
+                "fact_type": "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE",
+                "fact_id": "F-CARD-SETTLEMENT-CHANGE",
+                "actual": true,
+                "expected": true,
+                "operator": "EQ",
+                "effective_at": "2026-08-19",
+                "source_type": "USER_DECLARED"
+              },
+              "source_provenance": [
+                {
+                  "source_type": "USER_DECLARED",
+                  "reference": "F-CARD-SETTLEMENT-CHANGE",
+                  "details": {
+                    "fact_type": "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE"
+                  }
+                },
+                {
+                  "source_type": "USER_DECLARED",
+                  "reference": "fixture/user-intent/card-account-change",
+                  "details": {
+                    "description": null
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "RATE_SUPERSOL",
+      "rule_name": "신한 슈퍼SOL 우대",
+      "status": "ACHIEVABLE",
+      "reason_code": "SUPER_SOL_ACTION_COMMITTED",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "SUPER_SOL_JOIN_LOGIN_MAINTAIN_WILLING",
+        "fact_id": "F-SUPERSOL-INTENT-TRUE",
+        "actual": true,
+        "expected": true,
+        "operator": "EQ",
+        "effective_at": "2026-08-19",
+        "source_type": "USER_DECLARED",
+        "action": {
+          "action_id": "JOIN_AND_MAINTAIN_SUPERSOL",
+          "description": "SuperSOL 정회원 가입, 최초 로그인, 회원 유지를 완료한다.",
+          "burden_score": 1
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 2,
+            "section": "[3] 신한 슈퍼SOL 우대",
+            "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "F-SUPERSOL-INTENT-TRUE",
+          "details": {
+            "fact_type": "SUPER_SOL_JOIN_LOGIN_MAINTAIN_WILLING"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "fixture/user-answer/supersol",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "rule_id": "RATE_FIRST_OR_EVENT",
+      "rule_name": "첫거래 또는 이벤트 우대",
+      "status": "UNSATISFIABLE",
+      "reason_code": "ALL_OR_CHILDREN_UNSATISFIABLE",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "evaluated_children": 2,
+        "declared_children": 2,
+        "child_statuses": {
+          "RATE_FIRST_TRANSACTION_BRANCH": "UNSATISFIABLE",
+          "RATE_EVENT_BRANCH": "UNSATISFIABLE"
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 3,
+            "section": "[4] 첫거래 또는 이벤트 우대",
+            "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+          }
+        },
+        {
+          "source_type": "MYDATA_VERIFIED",
+          "reference": "A-SHINHAN-SAVINGS-OLD",
+          "details": {
+            "institution": "SHINHAN_BANK",
+            "product_type": "INSTALLMENT_SAVINGS"
+          }
+        },
+        {
+          "source_type": "MYDATA_VERIFIED",
+          "reference": "virtual-mydata/account-history/closed",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "F-EVENT-COUPON-FALSE",
+          "details": {
+            "fact_type": "SPECIAL_RATE_COUPON_VALID"
+          }
+        },
+        {
+          "source_type": "USER_DECLARED",
+          "reference": "fixture/user-answer/event-coupon",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "RATE_FIRST_TRANSACTION_BRANCH",
+          "rule_name": "첫거래 branch",
+          "status": "UNSATISFIABLE",
+          "reason_code": "PRIOR_HOLDING_OVERLAPS_LOOKBACK",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "entity": "ACCOUNT_HOLDING_INTERVAL",
+            "filters": {
+              "institution": "SHINHAN_BANK",
+              "product_type": [
+                "TIME_DEPOSIT",
+                "INSTALLMENT_SAVINGS",
+                "HOUSING_SUBSCRIPTION"
+              ]
+            },
+            "matched_count": 1,
+            "matched_account_ids": [
+              "A-SHINHAN-SAVINGS-OLD"
+            ],
+            "window": {
+              "start": "2025-08-20",
+              "end": "2026-08-19",
+              "inclusive": true
+            },
+            "holding_from": "2025-11-15",
+            "holding_to": "2026-04-12",
+            "lookback_from": "2025-08-20",
+            "lookback_to": "2026-08-19",
+            "overlap": true
+          },
+          "source_provenance": [
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "신한은행 청년 처음적금 상품설명서",
+              "details": {
+                "document": "신한은행 청년 처음적금 상품설명서",
+                "version_date": "2026-07-22",
+                "page": 3,
+                "section": "[4] 첫거래 또는 이벤트 우대",
+                "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+              }
+            },
+            {
+              "source_type": "MYDATA_VERIFIED",
+              "reference": "A-SHINHAN-SAVINGS-OLD",
+              "details": {
+                "institution": "SHINHAN_BANK",
+                "product_type": "INSTALLMENT_SAVINGS"
+              }
+            },
+            {
+              "source_type": "MYDATA_VERIFIED",
+              "reference": "virtual-mydata/account-history/closed",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "rule_id": "RATE_EVENT_BRANCH",
+          "rule_name": "이벤트 branch",
+          "status": "UNSATISFIABLE",
+          "reason_code": "NO_VALID_EVENT_COUPON",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "SPECIAL_RATE_COUPON_VALID",
+            "fact_id": "F-EVENT-COUPON-FALSE",
+            "actual": false,
+            "expected": true,
+            "operator": "EQ",
+            "effective_at": "2026-08-19",
+            "source_type": "USER_DECLARED"
+          },
+          "source_provenance": [
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "신한은행 청년 처음적금 상품설명서",
+              "details": {
+                "document": "신한은행 청년 처음적금 상품설명서",
+                "version_date": "2026-07-22",
+                "page": 3,
+                "section": "[4] 첫거래 또는 이벤트 우대",
+                "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+              }
+            },
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "F-EVENT-COUPON-FALSE",
+              "details": {
+                "fact_type": "SPECIAL_RATE_COUPON_VALID"
+              }
+            },
+            {
+              "source_type": "USER_DECLARED",
+              "reference": "fixture/user-answer/event-coupon",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "global_guard_results": [
+    {
+      "rule_id": "GUARD_MATURITY",
+      "rule_name": "만기해지 guard",
+      "status": "ACHIEVABLE",
+      "reason_code": "MATURITY_GUARD_PENDING",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "TERMINATION_TYPE",
+        "effective_at": "2027-08-20",
+        "expected": "MATURED",
+        "operator": "EQ",
+        "action": {
+          "action_id": "HOLD_UNTIL_MATURITY",
+          "description": "중도해지하지 않고 계약 만기까지 유지한다.",
+          "burden_score": 2
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 3,
+            "section": "중도해지 우대이자율 미적용",
+            "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF"
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "rates": {
+    "advertised_max_rate": "6.05",
+    "confirmed_rate": "3.05",
+    "realizable_rate": "5.05",
+    "conditional_upper_rate": "5.05",
+    "preferential_cap": "3.0",
+    "guard_status": "ACHIEVABLE",
+    "applied_rewards": [
+      {
+        "rule_id": "RATE_SALARY",
+        "rule_name": "주거래 우대",
+        "status": "ACHIEVABLE",
+        "reward_pp": "1.0",
+        "included_in_confirmed": false,
+        "included_in_realizable": true,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_CARD",
+        "rule_name": "신한카드 결제 우대",
+        "status": "ACHIEVABLE",
+        "reward_pp": "0.5",
+        "included_in_confirmed": false,
+        "included_in_realizable": true,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_SUPERSOL",
+        "rule_name": "신한 슈퍼SOL 우대",
+        "status": "ACHIEVABLE",
+        "reward_pp": "0.5",
+        "included_in_confirmed": false,
+        "included_in_realizable": true,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_FIRST_OR_EVENT",
+        "rule_name": "첫거래 또는 이벤트 우대",
+        "status": "UNSATISFIABLE",
+        "reward_pp": "1.0",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_conditional_upper": false
+      }
+    ]
+  },
+  "missing_facts": [],
+  "interest_estimates": {
+    "confirmed": {
+      "annual_rate": "3.05",
+      "total_principal": "3600000",
+      "pre_tax_interest": "59475",
+      "tax": "9159",
+      "after_tax_interest": "50316",
+      "method": "MONTHLY_SIMPLE_APPROXIMATION",
+      "assumptions": [
+        "Monthly contribution: 300000 KRW",
+        "Contribution count: 12",
+        "General tax rate: 0.154",
+        "Actual bank interest may differ because banks use deposit dates, day counts, and rounding rules."
+      ]
+    },
+    "realizable": {
+      "annual_rate": "5.05",
+      "total_principal": "3600000",
+      "pre_tax_interest": "98475",
+      "tax": "15165",
+      "after_tax_interest": "83310",
+      "method": "MONTHLY_SIMPLE_APPROXIMATION",
+      "assumptions": [
+        "Monthly contribution: 300000 KRW",
+        "Contribution count: 12",
+        "General tax rate: 0.154",
+        "Actual bank interest may differ because banks use deposit dates, day counts, and rounding rules."
+      ]
+    },
+    "conditional_upper": {
+      "annual_rate": "5.05",
+      "total_principal": "3600000",
+      "pre_tax_interest": "98475",
+      "tax": "15165",
+      "after_tax_interest": "83310",
+      "method": "MONTHLY_SIMPLE_APPROXIMATION",
+      "assumptions": [
+        "Monthly contribution: 300000 KRW",
+        "Contribution count: 12",
+        "General tax rate: 0.154",
+        "Actual bank interest may differ because banks use deposit dates, day counts, and rounding rules."
+      ]
+    }
+  }
+}

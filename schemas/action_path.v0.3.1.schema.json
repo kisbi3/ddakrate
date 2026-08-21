@@ -1,0 +1,298 @@
+{
+  "$defs": {
+    "ActionAmountRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "currency": {
+          "default": "KRW",
+          "title": "Currency",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "field",
+        "amount"
+      ],
+      "title": "ActionAmountRequirement",
+      "type": "object"
+    },
+    "ActionDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "title": "Action Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "burden_score": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Burden Score"
+        }
+      },
+      "required": [
+        "action_id",
+        "description"
+      ],
+      "title": "ActionDefinition",
+      "type": "object"
+    },
+    "ActionDuration": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "exclusiveMinimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "$ref": "#/$defs/TermUnit"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "title": "ActionDuration",
+      "type": "object"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Id"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Human-action view of an existing AST branch; not a second evaluator.",
+  "properties": {
+    "action_path_id": {
+      "title": "Action Path Id",
+      "type": "string"
+    },
+    "rule_id": {
+      "title": "Rule Id",
+      "type": "string"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "source_rule_node_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Rule Node Id"
+    },
+    "required_capabilities": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Capabilities",
+      "type": "array"
+    },
+    "one_time_actions": {
+      "items": {
+        "$ref": "#/$defs/ActionDefinition"
+      },
+      "title": "One Time Actions",
+      "type": "array"
+    },
+    "recurring_actions": {
+      "items": {
+        "$ref": "#/$defs/ActionDefinition"
+      },
+      "title": "Recurring Actions",
+      "type": "array"
+    },
+    "required_amounts": {
+      "items": {
+        "$ref": "#/$defs/ActionAmountRequirement"
+      },
+      "title": "Required Amounts",
+      "type": "array"
+    },
+    "required_duration": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ActionDuration"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "requires_external_party": {
+      "default": false,
+      "title": "Requires External Party",
+      "type": "boolean"
+    },
+    "required_service_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Service Refs",
+      "type": "array"
+    },
+    "required_fact_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Fact Types",
+      "type": "array"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/SourceReference"
+      },
+      "title": "Provenance",
+      "type": "array"
+    }
+  },
+  "required": [
+    "action_path_id",
+    "rule_id",
+    "label"
+  ],
+  "title": "ActionPath",
+  "type": "object"
+}

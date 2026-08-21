@@ -1,0 +1,665 @@
+{
+  "$defs": {
+    "AchievementMode": {
+      "enum": [
+        "ACCUMULATIVE",
+        "CONSECUTIVE",
+        "MAINTAIN_UNTIL_DEADLINE",
+        "ONE_TIME_BEFORE_DEADLINE"
+      ],
+      "title": "AchievementMode",
+      "type": "string"
+    },
+    "DraftProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "document_name": {
+          "title": "Document Name",
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        }
+      },
+      "required": [
+        "document_id",
+        "document_name"
+      ],
+      "title": "DraftProvenance",
+      "type": "object"
+    },
+    "DraftWarning": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "related_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Rule Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "DraftWarning",
+      "type": "object"
+    },
+    "EvaluationPhase": {
+      "enum": [
+        "PRE_SUBSCRIPTION",
+        "POST_SUBSCRIPTION",
+        "BOTH"
+      ],
+      "title": "EvaluationPhase",
+      "type": "string"
+    },
+    "ExtractionMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "extractor_profile": {
+          "default": "RULE_EXTRACTION",
+          "title": "Extractor Profile",
+          "type": "string"
+        },
+        "prompt_template_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt Template Id"
+        },
+        "prompt_template_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt Template Version"
+        },
+        "response_schema_version": {
+          "default": "0.3",
+          "title": "Response Schema Version",
+          "type": "string"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "model_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Version"
+        },
+        "document_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Hash"
+        }
+      },
+      "title": "ExtractionMetadata",
+      "type": "object"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "ProductMetadataDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Id"
+        },
+        "institution_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Id"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "product_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Type"
+        },
+        "contract_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contract Value"
+        },
+        "contract_unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TermUnit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "base_rate": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Rate"
+        },
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Advertised Max Rate"
+        },
+        "preferential_rate_cap": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preferential Rate Cap"
+        }
+      },
+      "title": "ProductMetadataDraft",
+      "type": "object"
+    },
+    "RequiredFactDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "semantic_type": {
+          "$ref": "#/$defs/FactSemanticType"
+        },
+        "authority_hint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Authority Hint"
+        },
+        "used_by_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Used By Rule Ids",
+          "type": "array"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "fact_type",
+        "semantic_type"
+      ],
+      "title": "RequiredFactDraft",
+      "type": "object"
+    },
+    "RewardDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/RewardType",
+          "default": "INTEREST_RATE"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "unit": {
+          "$ref": "#/$defs/RewardUnit",
+          "default": "PERCENTAGE_POINT"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "RewardDraft",
+      "type": "object"
+    },
+    "RewardType": {
+      "enum": [
+        "INTEREST_RATE"
+      ],
+      "title": "RewardType",
+      "type": "string"
+    },
+    "RewardUnit": {
+      "enum": [
+        "PERCENTAGE_POINT"
+      ],
+      "title": "RewardUnit",
+      "type": "string"
+    },
+    "RuleDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "purpose": {
+          "$ref": "#/$defs/RulePurpose"
+        },
+        "evaluation_phase": {
+          "$ref": "#/$defs/EvaluationPhase",
+          "default": "PRE_SUBSCRIPTION"
+        },
+        "achievement_mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AchievementMode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ast": {
+          "additionalProperties": true,
+          "title": "Ast",
+          "type": "object"
+        },
+        "reward": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RewardDraft"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/DraftProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "extraction_confidence": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extraction Confidence"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "purpose",
+        "ast"
+      ],
+      "title": "RuleDraft",
+      "type": "object"
+    },
+    "RulePurpose": {
+      "enum": [
+        "ELIGIBILITY",
+        "PREFERENTIAL_RATE",
+        "GLOBAL_GUARD",
+        "SUPPORTING"
+      ],
+      "title": "RulePurpose",
+      "type": "string"
+    },
+    "ServiceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "institution_id": {
+          "title": "Institution Id",
+          "type": "string"
+        },
+        "service_name": {
+          "title": "Service Name",
+          "type": "string"
+        },
+        "concept_name": {
+          "title": "Concept Name",
+          "type": "string"
+        },
+        "reference_type": {
+          "default": "REQUIRES_SERVICE_DEFINITION",
+          "title": "Reference Type",
+          "type": "string"
+        },
+        "used_by_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Used By Rule Ids",
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/DraftProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "institution_id",
+        "service_name",
+        "concept_name"
+      ],
+      "title": "ServiceReference",
+      "type": "object"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    },
+    "UnresolvedItem": {
+      "additionalProperties": false,
+      "properties": {
+        "issue_type": {
+          "title": "Issue Type",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "related_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Rule Ids",
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/DraftProvenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "issue_type",
+        "description"
+      ],
+      "title": "UnresolvedItem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "product_metadata": {
+      "$ref": "#/$defs/ProductMetadataDraft"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/RuleDraft"
+      },
+      "title": "Rules",
+      "type": "array"
+    },
+    "service_references": {
+      "items": {
+        "$ref": "#/$defs/ServiceReference"
+      },
+      "title": "Service References",
+      "type": "array"
+    },
+    "required_facts": {
+      "items": {
+        "$ref": "#/$defs/RequiredFactDraft"
+      },
+      "title": "Required Facts",
+      "type": "array"
+    },
+    "unresolved_items": {
+      "items": {
+        "$ref": "#/$defs/UnresolvedItem"
+      },
+      "title": "Unresolved Items",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "$ref": "#/$defs/DraftWarning"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "extraction_metadata": {
+      "$ref": "#/$defs/ExtractionMetadata"
+    }
+  },
+  "required": [
+    "document_id"
+  ],
+  "title": "ProductKnowledgeDraft",
+  "type": "object"
+}

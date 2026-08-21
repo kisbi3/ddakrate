@@ -1,0 +1,566 @@
+{
+  "$defs": {
+    "ContractTerm": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "exclusiveMinimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "$ref": "#/$defs/TermUnit"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "title": "ContractTerm",
+      "type": "object"
+    },
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ContributionMode": {
+      "enum": [
+        "FIXED",
+        "FLEXIBLE",
+        "INCREMENTAL"
+      ],
+      "title": "ContributionMode",
+      "type": "string"
+    },
+    "ContributionPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "initial_amount_min": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initial Amount Min"
+        },
+        "initial_amount_max": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initial Amount Max"
+        },
+        "initial_amount_options": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              }
+            ]
+          },
+          "title": "Initial Amount Options",
+          "type": "array"
+        },
+        "periodic_amount_min": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Periodic Amount Min"
+        },
+        "periodic_amount_max": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Periodic Amount Max"
+        },
+        "contribution_frequency": {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        "contribution_mode": {
+          "$ref": "#/$defs/ContributionMode"
+        },
+        "increment_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Increment Amount"
+        },
+        "total_principal_limit": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Total Principal Limit"
+        },
+        "currency": {
+          "default": "KRW",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contribution_frequency",
+        "contribution_mode"
+      ],
+      "title": "ContributionPolicy",
+      "type": "object"
+    },
+    "InterestPaymentMethod": {
+      "enum": [
+        "AT_MATURITY",
+        "MONTHLY",
+        "UPFRONT",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "title": "InterestPaymentMethod",
+      "type": "string"
+    },
+    "SaleStatus": {
+      "enum": [
+        "UPCOMING",
+        "ON_SALE",
+        "SOLD_OUT",
+        "ENDED",
+        "SUSPENDED",
+        "UNKNOWN"
+      ],
+      "title": "SaleStatus",
+      "type": "string"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Id"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    },
+    "SubscriptionChannel": {
+      "enum": [
+        "MOBILE",
+        "WEB",
+        "BRANCH",
+        "CALL_CENTER",
+        "PARTNER",
+        "OTHER"
+      ],
+      "title": "SubscriptionChannel",
+      "type": "string"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "institution_id": {
+      "title": "Institution Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "product_name": {
+      "title": "Product Name",
+      "type": "string"
+    },
+    "product_type": {
+      "title": "Product Type",
+      "type": "string"
+    },
+    "sale_status": {
+      "$ref": "#/$defs/SaleStatus",
+      "default": "UNKNOWN"
+    },
+    "min_term": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContractTerm"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "max_term": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContractTerm"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "available_terms": {
+      "items": {
+        "$ref": "#/$defs/ContractTerm"
+      },
+      "title": "Available Terms",
+      "type": "array"
+    },
+    "contribution_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionPolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "base_rate": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Base Rate"
+    },
+    "advertised_max_rate": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Advertised Max Rate"
+    },
+    "preferential_rate_cap": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Preferential Rate Cap"
+    },
+    "allowed_channels": {
+      "items": {
+        "$ref": "#/$defs/SubscriptionChannel"
+      },
+      "title": "Allowed Channels",
+      "type": "array"
+    },
+    "target_customer_summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Customer Summary"
+    },
+    "one_account_per_person": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "One Account Per Person"
+    },
+    "sale_start": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sale Start"
+    },
+    "sale_end": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sale End"
+    },
+    "quantity_limit": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Quantity Limit"
+    },
+    "early_termination_policy": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Early Termination Policy"
+    },
+    "partial_withdrawal_policy": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Partial Withdrawal Policy"
+    },
+    "interest_payment_method": {
+      "$ref": "#/$defs/InterestPaymentMethod",
+      "default": "UNKNOWN"
+    },
+    "tax_treatment": {
+      "additionalProperties": true,
+      "title": "Tax Treatment",
+      "type": "object"
+    },
+    "effective_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective From"
+    },
+    "effective_to": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective To"
+    },
+    "source_reference": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SourceReference"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "institution_id",
+    "product_id",
+    "product_name",
+    "product_type",
+    "base_rate",
+    "advertised_max_rate",
+    "preferential_rate_cap"
+  ],
+  "title": "ProductMetadata",
+  "type": "object"
+}

@@ -1,0 +1,1525 @@
+{
+  "$defs": {
+    "AppliedReward": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_name": {
+          "title": "Rule Name",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Reward Pp"
+        },
+        "verification_level": {
+          "$ref": "#/$defs/VerificationLevel",
+          "default": "UNKNOWN"
+        },
+        "evidence_levels": {
+          "items": {
+            "$ref": "#/$defs/VerificationLevel"
+          },
+          "title": "Evidence Levels",
+          "type": "array"
+        },
+        "evidence_bucket": {
+          "default": "UNKNOWN",
+          "enum": [
+            "VERIFIED",
+            "SELF_REPORTED",
+            "FUTURE_ACTION",
+            "UNKNOWN",
+            "UNSATISFIABLE"
+          ],
+          "title": "Evidence Bucket",
+          "type": "string"
+        },
+        "included_in_confirmed": {
+          "title": "Included In Confirmed",
+          "type": "boolean"
+        },
+        "included_in_realizable": {
+          "title": "Included In Realizable",
+          "type": "boolean"
+        },
+        "included_in_user_specific_conditional_upper": {
+          "title": "Included In User Specific Conditional Upper",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rule_id",
+        "rule_name",
+        "status",
+        "reward_pp",
+        "included_in_confirmed",
+        "included_in_realizable",
+        "included_in_user_specific_conditional_upper"
+      ],
+      "title": "AppliedReward",
+      "type": "object"
+    },
+    "ContributionFeasibilityClarification": {
+      "additionalProperties": false,
+      "description": "User decision required when contribution state conflicts with affordability.\n\nFor a newly unresolved product input ``feasible_options`` may be empty and the\nuser can adjust the global limit or exclude the product.  When a previously\ncommitted product-specific choice becomes stale after a global-state revision,\nv0.4.4 also exposes the currently feasible replacement options and allows\n``CHANGE_PRODUCT_CONTRIBUTION_CHOICE``.",
+      "properties": {
+        "clarification_id": {
+          "title": "Clarification Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "current_affordability_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Current Affordability Amount"
+        },
+        "current_affordability_frequency": {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "current_choice_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Choice Id"
+        },
+        "current_choice_value": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Choice Value"
+        },
+        "feasible_options": {
+          "items": {},
+          "title": "Feasible Options",
+          "type": "array"
+        },
+        "minimum_required_affordability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Required Affordability"
+        },
+        "reason_code": {
+          "default": "ALL_CONTRIBUTION_OPTIONS_INFEASIBLE",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "allowed_resolutions": {
+          "items": {
+            "enum": [
+              "CHANGE_PRODUCT_CONTRIBUTION_CHOICE",
+              "ADJUST_GLOBAL_AFFORDABILITY",
+              "EXCLUDE_PRODUCT"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Resolutions",
+          "type": "array"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "clarification_id",
+        "product_id",
+        "current_affordability_amount",
+        "current_affordability_frequency",
+        "question"
+      ],
+      "title": "ContributionFeasibilityClarification",
+      "type": "object"
+    },
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ContributionOptionFeasibility": {
+      "additionalProperties": false,
+      "description": "Deterministic affordability result for one product-scoped option.",
+      "properties": {
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "option_value": {
+          "title": "Option Value"
+        },
+        "status": {
+          "enum": [
+            "FEASIBLE",
+            "INFEASIBLE"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "max_bucket_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Bucket Amount"
+        },
+        "affordability_limit": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affordability Limit"
+        },
+        "affordability_frequency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContributionFrequency"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "violation_bucket": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Violation Bucket"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "field",
+        "option_value",
+        "status",
+        "reason_code"
+      ],
+      "title": "ContributionOptionFeasibility",
+      "type": "object"
+    },
+    "ContributionProjection": {
+      "additionalProperties": false,
+      "properties": {
+        "frequency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContributionFrequency"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "contribution_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Contribution Count",
+          "type": "integer"
+        },
+        "planned_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Planned Periodic Amount"
+        },
+        "maximum_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Periodic Amount"
+        },
+        "initial_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initial Amount"
+        },
+        "increment_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Increment Amount"
+        },
+        "estimated_total_principal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Total Principal"
+        },
+        "term_summary": {
+          "title": "Term Summary",
+          "type": "string"
+        },
+        "contribution_summary": {
+          "title": "Contribution Summary",
+          "type": "string"
+        },
+        "maximum_deposit_summary": {
+          "title": "Maximum Deposit Summary",
+          "type": "string"
+        },
+        "planned_contribution_summary": {
+          "title": "Planned Contribution Summary",
+          "type": "string"
+        },
+        "cashflows": {
+          "items": {
+            "$ref": "#/$defs/PlannedCashflow"
+          },
+          "title": "Cashflows",
+          "type": "array"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "term_summary",
+        "contribution_summary",
+        "maximum_deposit_summary",
+        "planned_contribution_summary"
+      ],
+      "title": "ContributionProjection",
+      "type": "object"
+    },
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
+      "type": "string"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "SELF_REPORTED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "InterestEstimate": {
+      "additionalProperties": false,
+      "properties": {
+        "annual_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Annual Rate"
+        },
+        "total_principal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Total Principal"
+        },
+        "pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Pre Tax Interest"
+        },
+        "tax": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Tax"
+        },
+        "after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "After Tax Interest"
+        },
+        "method": {
+          "default": "MONTHLY_SIMPLE_APPROXIMATION",
+          "enum": [
+            "MONTHLY_SIMPLE_APPROXIMATION",
+            "DAY_COUNT_SIMPLE_APPROXIMATION"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "annual_rate",
+        "total_principal",
+        "pre_tax_interest",
+        "tax",
+        "after_tax_interest"
+      ],
+      "title": "InterestEstimate",
+      "type": "object"
+    },
+    "MissingFactImpact": {
+      "additionalProperties": false,
+      "properties": {
+        "rate_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rate Pp"
+        }
+      },
+      "title": "MissingFactImpact",
+      "type": "object"
+    },
+    "MissingFactRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ResolutionStatus",
+          "default": "UNRESOLVED"
+        },
+        "resolution_strategy": {
+          "$ref": "#/$defs/ResolutionStrategy"
+        },
+        "impact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactImpact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "required_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required Source"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        },
+        "requested_by_rule_id": {
+          "title": "Requested By Rule Id",
+          "type": "string"
+        },
+        "expected_semantic_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSemanticType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "action_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Id"
+        },
+        "reward_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reward Id"
+        },
+        "grounding_terms": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Grounding Terms",
+          "type": "array"
+        },
+        "missing_fact_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Missing Fact Id"
+        }
+      },
+      "required": [
+        "fact_type",
+        "resolution_strategy",
+        "requested_by_rule_id"
+      ],
+      "title": "MissingFactRequest",
+      "type": "object"
+    },
+    "MissingRankingInput": {
+      "additionalProperties": false,
+      "properties": {
+        "input_id": {
+          "title": "Input Id",
+          "type": "string"
+        },
+        "input_type": {
+          "const": "CONTRIBUTION_PLAN",
+          "default": "CONTRIBUTION_PLAN",
+          "title": "Input Type",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "required_field": {
+          "title": "Required Field",
+          "type": "string"
+        },
+        "allowed_options": {
+          "items": {},
+          "title": "Allowed Options",
+          "type": "array"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "affected_metric": {
+          "const": "ESTIMATED_AFTER_TAX_INTEREST",
+          "default": "ESTIMATED_AFTER_TAX_INTEREST",
+          "title": "Affected Metric",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/RankingInputStatus",
+          "default": "UNRESOLVED"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_id",
+        "product_id",
+        "required_field",
+        "reason",
+        "question"
+      ],
+      "title": "MissingRankingInput",
+      "type": "object"
+    },
+    "PlannedCashflow": {
+      "additionalProperties": false,
+      "properties": {
+        "sequence_no": {
+          "minimum": 1,
+          "title": "Sequence No",
+          "type": "integer"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "days_held": {
+          "minimum": 0,
+          "title": "Days Held",
+          "type": "integer"
+        },
+        "contribution_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contribution Date"
+        }
+      },
+      "required": [
+        "sequence_no",
+        "amount",
+        "days_held"
+      ],
+      "title": "PlannedCashflow",
+      "type": "object"
+    },
+    "ProductEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "0.3.2",
+          "default": "0.3.2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "evaluation_id": {
+          "title": "Evaluation Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "product_name": {
+          "title": "Product Name",
+          "type": "string"
+        },
+        "as_of": {
+          "format": "date",
+          "title": "As Of",
+          "type": "string"
+        },
+        "subscription_date": {
+          "format": "date",
+          "title": "Subscription Date",
+          "type": "string"
+        },
+        "eligibility_status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "eligibility": {
+          "$ref": "#/$defs/RuleEvaluation"
+        },
+        "preferential_rule_results": {
+          "items": {
+            "$ref": "#/$defs/RuleEvaluation"
+          },
+          "title": "Preferential Rule Results",
+          "type": "array"
+        },
+        "global_guard_results": {
+          "items": {
+            "$ref": "#/$defs/RuleEvaluation"
+          },
+          "title": "Global Guard Results",
+          "type": "array"
+        },
+        "rates": {
+          "$ref": "#/$defs/RateSummary"
+        },
+        "missing_facts": {
+          "items": {
+            "$ref": "#/$defs/MissingFactRequest"
+          },
+          "title": "Missing Facts",
+          "type": "array"
+        },
+        "interest_estimates": {
+          "additionalProperties": {
+            "$ref": "#/$defs/InterestEstimate"
+          },
+          "title": "Interest Estimates",
+          "type": "object"
+        },
+        "is_provisional": {
+          "default": false,
+          "title": "Is Provisional",
+          "type": "boolean"
+        },
+        "verification_level": {
+          "$ref": "#/$defs/VerificationLevel",
+          "default": "UNKNOWN"
+        },
+        "evidence_levels": {
+          "items": {
+            "$ref": "#/$defs/VerificationLevel"
+          },
+          "title": "Evidence Levels",
+          "type": "array"
+        },
+        "self_reported_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Self Reported Rule Ids",
+          "type": "array"
+        },
+        "user_intent_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "User Intent Rule Ids",
+          "type": "array"
+        },
+        "provisional_rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Provisional Rule Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evaluation_id",
+        "user_id",
+        "product_id",
+        "product_name",
+        "as_of",
+        "subscription_date",
+        "eligibility_status",
+        "eligibility",
+        "preferential_rule_results",
+        "global_guard_results",
+        "rates"
+      ],
+      "title": "ProductEvaluation",
+      "type": "object"
+    },
+    "Progress": {
+      "additionalProperties": false,
+      "properties": {
+        "current": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Current"
+        },
+        "required": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Required"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "current",
+        "required",
+        "unit"
+      ],
+      "title": "Progress",
+      "type": "object"
+    },
+    "ProvenanceRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "source_type": {
+          "title": "Source Type",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference"
+        },
+        "details": {
+          "additionalProperties": true,
+          "title": "Details",
+          "type": "object"
+        }
+      },
+      "required": [
+        "source_type"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "RankInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "best_possible_rank": {
+          "minimum": 1,
+          "title": "Best Possible Rank",
+          "type": "integer"
+        },
+        "worst_possible_rank": {
+          "minimum": 1,
+          "title": "Worst Possible Rank",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "best_possible_rank",
+        "worst_possible_rank"
+      ],
+      "title": "RankInterval",
+      "type": "object"
+    },
+    "RankingComparability": {
+      "description": "Whether a candidate can participate in the active ranking metric.\n\nFor the default interest objective, COMPARABLE means the candidate has a\ndeterministic KRW after-tax-interest value.  A rate percentage is never a\nsubstitute for a missing KRW amount.",
+      "enum": [
+        "COMPARABLE",
+        "MISSING_CONTRIBUTION_INPUT",
+        "NOT_COMPARABLE"
+      ],
+      "title": "RankingComparability",
+      "type": "string"
+    },
+    "RankingInputStatus": {
+      "enum": [
+        "UNRESOLVED",
+        "RESOLVED",
+        "DECLINED"
+      ],
+      "title": "RankingInputStatus",
+      "type": "string"
+    },
+    "RateEvidenceBreakdown": {
+      "additionalProperties": false,
+      "properties": {
+        "base_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Base Rate"
+        },
+        "verified_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Verified Reward Pp"
+        },
+        "self_reported_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Self Reported Reward Pp"
+        },
+        "future_action_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Future Action Reward Pp"
+        },
+        "unknown_conditional_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0",
+          "title": "Unknown Conditional Reward Pp"
+        }
+      },
+      "required": [
+        "base_rate"
+      ],
+      "title": "RateEvidenceBreakdown",
+      "type": "object"
+    },
+    "RateSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Advertised Max Rate"
+        },
+        "confirmed_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Confirmed Rate"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "preferential_cap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Preferential Cap"
+        },
+        "guard_status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "applied_rewards": {
+          "items": {
+            "$ref": "#/$defs/AppliedReward"
+          },
+          "title": "Applied Rewards",
+          "type": "array"
+        },
+        "evidence_breakdown": {
+          "$ref": "#/$defs/RateEvidenceBreakdown"
+        }
+      },
+      "required": [
+        "advertised_max_rate",
+        "confirmed_rate",
+        "realizable_rate",
+        "user_specific_conditional_upper_rate",
+        "preferential_cap",
+        "guard_status",
+        "evidence_breakdown"
+      ],
+      "title": "RateSummary",
+      "type": "object"
+    },
+    "ResolutionStatus": {
+      "enum": [
+        "RESOLVED",
+        "UNRESOLVED",
+        "CONFLICT"
+      ],
+      "title": "ResolutionStatus",
+      "type": "string"
+    },
+    "ResolutionStrategy": {
+      "enum": [
+        "QUERY_INSTITUTION",
+        "QUERY_MYDATA",
+        "DERIVE",
+        "ASK_USER",
+        "UNRESOLVABLE"
+      ],
+      "title": "ResolutionStrategy",
+      "type": "string"
+    },
+    "RuleEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_name": {
+          "title": "Rule Name",
+          "type": "string"
+        },
+        "rule_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rule Type"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "progress": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Progress"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "missing_facts": {
+          "items": {
+            "$ref": "#/$defs/MissingFactRequest"
+          },
+          "title": "Missing Facts",
+          "type": "array"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        },
+        "source_provenance": {
+          "items": {
+            "$ref": "#/$defs/ProvenanceRecord"
+          },
+          "title": "Source Provenance",
+          "type": "array"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/$defs/RuleEvaluation"
+          },
+          "title": "Children",
+          "type": "array"
+        },
+        "is_provisional": {
+          "default": false,
+          "title": "Is Provisional",
+          "type": "boolean"
+        },
+        "verification_level": {
+          "$ref": "#/$defs/VerificationLevel",
+          "default": "UNKNOWN"
+        },
+        "evidence_levels": {
+          "items": {
+            "$ref": "#/$defs/VerificationLevel"
+          },
+          "title": "Evidence Levels",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "rule_name",
+        "status",
+        "reason_code"
+      ],
+      "title": "RuleEvaluation",
+      "type": "object"
+    },
+    "VerificationLevel": {
+      "description": "User-facing evidence classification for an evaluated rule/result.",
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "SELF_REPORTED",
+        "USER_INTENT",
+        "MIXED",
+        "UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "VerificationLevel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "product_evaluation": {
+      "$ref": "#/$defs/ProductEvaluation"
+    },
+    "confirmed_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Confirmed Rate"
+    },
+    "realizable_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Realizable Rate"
+    },
+    "user_specific_conditional_upper_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "User Specific Conditional Upper Rate"
+    },
+    "confirmed_after_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confirmed After Tax Interest"
+    },
+    "realizable_after_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Realizable After Tax Interest"
+    },
+    "conditional_upper_after_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Conditional Upper After Tax Interest"
+    },
+    "estimated_total_principal": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated Total Principal"
+    },
+    "realizable_pre_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Realizable Pre Tax Interest"
+    },
+    "preference_score": {
+      "default": 0,
+      "title": "Preference Score",
+      "type": "integer"
+    },
+    "action_burden_score": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Action Burden Score",
+      "type": "integer"
+    },
+    "material_unknown_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Material Unknown Count",
+      "type": "integer"
+    },
+    "unresolved_material_fact_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Material Fact Ids",
+      "type": "array"
+    },
+    "contribution_projection": {
+      "$ref": "#/$defs/ContributionProjection"
+    },
+    "ranking_comparability": {
+      "$ref": "#/$defs/RankingComparability",
+      "default": "COMPARABLE"
+    },
+    "missing_ranking_inputs": {
+      "items": {
+        "$ref": "#/$defs/MissingRankingInput"
+      },
+      "title": "Missing Ranking Inputs",
+      "type": "array"
+    },
+    "contribution_option_feasibilities": {
+      "items": {
+        "$ref": "#/$defs/ContributionOptionFeasibility"
+      },
+      "title": "Contribution Option Feasibilities",
+      "type": "array"
+    },
+    "contribution_feasibility_clarification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionFeasibilityClarification"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "rank_interval": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RankInterval"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "product_id",
+    "product_evaluation",
+    "confirmed_rate",
+    "realizable_rate",
+    "user_specific_conditional_upper_rate",
+    "contribution_projection"
+  ],
+  "title": "CandidateEvaluation",
+  "type": "object"
+}

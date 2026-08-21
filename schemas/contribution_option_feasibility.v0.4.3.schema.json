@@ -1,0 +1,105 @@
+{
+  "$defs": {
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Deterministic affordability result for one product-scoped option.",
+  "properties": {
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "field": {
+      "title": "Field",
+      "type": "string"
+    },
+    "option_value": {
+      "title": "Option Value"
+    },
+    "status": {
+      "enum": [
+        "FEASIBLE",
+        "INFEASIBLE"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "max_bucket_amount": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max Bucket Amount"
+    },
+    "affordability_limit": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Affordability Limit"
+    },
+    "affordability_frequency": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "violation_bucket": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Violation Bucket"
+    },
+    "reason_code": {
+      "title": "Reason Code",
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_id",
+    "field",
+    "option_value",
+    "status",
+    "reason_code"
+  ],
+  "title": "ContributionOptionFeasibility",
+  "type": "object"
+}

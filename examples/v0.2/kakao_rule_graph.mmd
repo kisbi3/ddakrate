@@ -1,0 +1,18 @@
+flowchart TD
+    P["26주적금"]
+    ELIG["허용된 최초 가입금액<br/>K26_ELIG_INITIAL_AMOUNT | FACT_COMPARE<br/>KAKAO_26W_INITIAL_AMOUNT_KRW IN [1000, 2000, 3000, 5000, 10000]"]
+    P --> ELIG
+    ELIG_SRC["카카오뱅크 26주적금 공식 상품페이지<br/>p.- | 최초 가입금액 선택"]
+    ELIG -. source .-> ELIG_SRC
+    RATE0["최초 7주 자동이체 연속 성공<br/>K26_RATE_FIRST_7 | COUNT_CONSECUTIVE<br/>schedule=KAKAO_26W_001 | from=1 | GTE 7"]
+    P -->|+1.0%p| RATE0
+    RATE0_SRC["카카오뱅크 26주적금 공식 상품페이지<br/>p.- | 7주 연속 자동이체 우대"]
+    RATE0 -. source .-> RATE0_SRC
+    RATE1["최초 26주 자동이체 연속 성공<br/>K26_RATE_FIRST_26 | COUNT_CONSECUTIVE<br/>schedule=KAKAO_26W_001 | from=1 | GTE 26"]
+    P -->|+2.0%p| RATE1
+    RATE1_SRC["카카오뱅크 26주적금 공식 상품페이지<br/>p.- | 26주 연속 자동이체 우대"]
+    RATE1 -. source .-> RATE1_SRC
+    GUARD0["만기해지<br/>K26_GUARD_MATURITY | FACT_COMPARE<br/>TERMINATION_TYPE EQ MATURED"]
+    P -->|guard| GUARD0
+    GUARD0_SRC["카카오뱅크 26주적금 공식 상품페이지<br/>p.- | 만기해지 우대금리 적용"]
+    GUARD0 -. source .-> GUARD0_SRC

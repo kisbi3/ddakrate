@@ -1,0 +1,173 @@
+{
+  "schema_version": "0.3",
+  "evaluation_id": "EVAL-47f1e4d93cbfe082",
+  "user_id": "U-FUTURE-001",
+  "product_id": "SHINHAN_SALARY_ENVELOPE_6M_GOLDEN",
+  "product_name": "청년 처음적금 — 월급봉투 6개월 Golden Flow",
+  "as_of": "2026-08-19",
+  "subscription_date": "2026-08-20",
+  "eligibility_status": "SATISFIED",
+  "eligibility": {
+    "rule_id": "ELIG-SHINHAN_GOLDEN_ELIGIBLE",
+    "rule_name": "Golden fixture 가입 가능",
+    "rule_type": "FACT_COMPARE",
+    "status": "SATISFIED",
+    "reason_code": "PRODUCT_ELIGIBLE",
+    "progress": null,
+    "missing_facts": [],
+    "evidence": {
+      "fact_type": "SHINHAN_GOLDEN_ELIGIBLE",
+      "fact_id": "F-SHINHAN-GOLDEN-ELIGIBLE",
+      "actual": true,
+      "expected": true,
+      "operator": "EQ",
+      "effective_at": "2026-08-19",
+      "source_type": "INSTITUTION_VERIFIED",
+      "semantic_type": "OBSERVED_FACT"
+    },
+    "source_provenance": [
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "F-SHINHAN-GOLDEN-ELIGIBLE",
+        "details": {
+          "fact_type": "SHINHAN_GOLDEN_ELIGIBLE",
+          "semantic_type": "OBSERVED_FACT",
+          "subject_person_id": "U-FUTURE-001",
+          "valid_from": "2026-08-19",
+          "valid_to": null
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "fixture/shinhan/golden-eligibility",
+        "details": {
+          "description": null
+        }
+      }
+    ],
+    "children": []
+  },
+  "preferential_rule_results": [
+    {
+      "rule_id": "RATE_SALARY_ENVELOPE_6M",
+      "rule_name": "가입 후 월급봉투 인정월 6개월",
+      "rule_type": "COUNT_DISTINCT_PERIODS",
+      "status": "UNKNOWN",
+      "reason_code": "FUTURE_INTENT_REQUIRED",
+      "progress": {
+        "current": 0,
+        "required": 6,
+        "unit": "MONTH"
+      },
+      "missing_facts": [
+        {
+          "fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+          "status": "UNRESOLVED",
+          "resolution_strategy": "ASK_USER",
+          "impact": {
+            "rate_pp": "1.0"
+          },
+          "required_source": "USER_DECLARED_FUTURE_INTENT",
+          "question": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?",
+          "requested_by_rule_id": "RATE_SALARY_ENVELOPE_6M"
+        }
+      ],
+      "evidence": {
+        "fact_type": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED",
+        "period": "MONTH",
+        "subject_person_ids": [
+          "U-FUTURE-001"
+        ],
+        "window_from": "2026-08-20",
+        "window_to": "2027-07-19",
+        "qualifying_periods": [],
+        "current": 0,
+        "required": 6,
+        "operator": "GTE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "achievement_mode": "ACCUMULATIVE",
+        "remaining_required": 6,
+        "available_future_periods": [
+          "2026-08",
+          "2026-09",
+          "2026-10",
+          "2026-11",
+          "2026-12",
+          "2027-01",
+          "2027-02",
+          "2027-03",
+          "2027-04",
+          "2027-05",
+          "2027-06",
+          "2027-07"
+        ],
+        "remaining_opportunities": 12,
+        "max_qualifying_units_per_opportunity": 1,
+        "available_capacity": 12,
+        "buffer": 6,
+        "time_feasible": true,
+        "action": {
+          "action_id": "TRACK_SALARY_ENVELOPE_6M",
+          "description": "가입 후 월급봉투 인정월을 6개월 이상 만든다.",
+          "burden_score": 2
+        },
+        "goal_template": {
+          "metric": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH",
+          "unit": "MONTH",
+          "tracking_mode": "ACCUMULATIVE",
+          "safety_threshold": 1,
+          "description": "월급봉투 인정월 6개월"
+        },
+        "intent_fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+        "intent_status": "UNKNOWN"
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "신한은행 청년 처음적금 상품설명서",
+          "details": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 2,
+            "section": "[1] 주거래 우대"
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "global_guard_results": [],
+  "rates": {
+    "advertised_max_rate": "4.05",
+    "confirmed_rate": "3.05",
+    "realizable_rate": "3.05",
+    "user_specific_conditional_upper_rate": "4.05",
+    "preferential_cap": "1.0",
+    "guard_status": "SATISFIED",
+    "applied_rewards": [
+      {
+        "rule_id": "RATE_SALARY_ENVELOPE_6M",
+        "rule_name": "가입 후 월급봉투 인정월 6개월",
+        "status": "UNKNOWN",
+        "reward_pp": "1.0",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_user_specific_conditional_upper": true
+      }
+    ]
+  },
+  "missing_facts": [
+    {
+      "fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+      "status": "UNRESOLVED",
+      "resolution_strategy": "ASK_USER",
+      "impact": {
+        "rate_pp": "1.0"
+      },
+      "required_source": "USER_DECLARED_FUTURE_INTENT",
+      "question": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?",
+      "requested_by_rule_id": "RATE_SALARY_ENVELOPE_6M"
+    }
+  ],
+  "interest_estimates": {}
+}

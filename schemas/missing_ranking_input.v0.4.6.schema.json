@@ -1,0 +1,66 @@
+{
+  "$defs": {
+    "RankingInputStatus": {
+      "enum": [
+        "UNRESOLVED",
+        "RESOLVED",
+        "DECLINED"
+      ],
+      "title": "RankingInputStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "input_id": {
+      "title": "Input Id",
+      "type": "string"
+    },
+    "input_type": {
+      "const": "CONTRIBUTION_PLAN",
+      "default": "CONTRIBUTION_PLAN",
+      "title": "Input Type",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "required_field": {
+      "title": "Required Field",
+      "type": "string"
+    },
+    "allowed_options": {
+      "items": {},
+      "title": "Allowed Options",
+      "type": "array"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "affected_metric": {
+      "const": "ESTIMATED_AFTER_TAX_INTEREST",
+      "default": "ESTIMATED_AFTER_TAX_INTEREST",
+      "title": "Affected Metric",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/RankingInputStatus",
+      "default": "UNRESOLVED"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    }
+  },
+  "required": [
+    "input_id",
+    "product_id",
+    "required_field",
+    "reason",
+    "question"
+  ],
+  "title": "MissingRankingInput",
+  "type": "object"
+}

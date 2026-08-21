@@ -1,0 +1,29 @@
+{
+  "institution_id": "IBK_BANK",
+  "service_id": "IBK_PARENT_BENEFIT_FAMILY_AGGREGATION",
+  "name": "부모급여우대적금 가족실적 합산 등록",
+  "description": "영업점에서 부모-자녀 1:1 관계를 등록한 뒤 계약기간 실적을 합산하는 IBK 고유 서비스",
+  "effective_from": "2026-02-20",
+  "effective_to": null,
+  "facts": [
+    {
+      "fact_type": "IBK_FAMILY_AGGREGATION_REGISTERED",
+      "description": "해당 적금에 대해 가족실적 합산 등록이 유효함",
+      "authoritative_source": "IBK family-registration service",
+      "derivation_chain": [
+        "PARENT_CHILD_RELATIONSHIP_VERIFIED",
+        "ONE_TO_ONE_FAMILY_REGISTERED_AT_BRANCH",
+        "AGGREGATION_EFFECTIVE_FOR_PRODUCT"
+      ]
+    }
+  ],
+  "source_provenance": [
+    {
+      "document": "IBK부모급여우대적금 공식 상품페이지",
+      "version_date": "2026-02-20",
+      "page": null,
+      "section": "가족실적 합산",
+      "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+    }
+  ]
+}

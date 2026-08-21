@@ -1,0 +1,819 @@
+{
+  "schema_version": "0.2",
+  "evaluation_id": "EVAL-7586c785ab7c928d",
+  "user_id": "PARENT_01",
+  "product_id": "IBK_PARENT_BENEFIT_SAVINGS_20260220",
+  "product_name": "IBK부모급여우대적금",
+  "as_of": "2027-03-01",
+  "subscription_date": "2026-03-01",
+  "eligibility_status": "SATISFIED",
+  "eligibility": {
+    "rule_id": "IBK_ELIGIBILITY",
+    "rule_name": "기본 가입대상 확인",
+    "rule_type": "FACT_COMPARE",
+    "status": "SATISFIED",
+    "reason_code": "IBK_BASE_ELIGIBILITY_CONFIRMED",
+    "progress": null,
+    "missing_facts": [],
+    "evidence": {
+      "fact_type": "IBK_PARENT_BENEFIT_BASE_ELIGIBLE",
+      "fact_id": "IBK-F-ELIG",
+      "actual": true,
+      "expected": true,
+      "operator": "EQ",
+      "effective_at": "2027-03-01",
+      "source_type": "INSTITUTION_VERIFIED"
+    },
+    "source_provenance": [
+      {
+        "source_type": "PRODUCT_DOCUMENT",
+        "reference": "IBK부모급여우대적금 공식 상품페이지",
+        "details": {
+          "document": "IBK부모급여우대적금 공식 상품페이지",
+          "version_date": "2026-02-20",
+          "section": "가입대상 및 1인 1계좌",
+          "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "IBK-F-ELIG",
+        "details": {
+          "fact_type": "IBK_PARENT_BENEFIT_BASE_ELIGIBLE",
+          "subject_person_id": "PARENT_01",
+          "valid_from": null,
+          "valid_to": null
+        }
+      },
+      {
+        "source_type": "INSTITUTION_VERIFIED",
+        "reference": "virtual-ibk/eligibility",
+        "details": {
+          "description": null
+        }
+      }
+    ],
+    "children": []
+  },
+  "preferential_rule_results": [
+    {
+      "rule_id": "IBK_RATE_PARENT_BENEFIT",
+      "rule_name": "부모급여·아동수당 6개월 우대",
+      "rule_type": "OR",
+      "status": "SATISFIED",
+      "reason_code": "OR_CHILD_SATISFIED",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "evaluated_children": 2,
+        "declared_children": 2,
+        "child_statuses": {
+          "IBK_RATE_SELF_PERFORMANCE": "UNSATISFIABLE",
+          "IBK_RATE_FAMILY_BRANCH": "SATISFIED"
+        }
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "IBK부모급여우대적금 공식 상품페이지",
+          "details": {
+            "document": "IBK부모급여우대적금 공식 상품페이지",
+            "version_date": "2026-02-20",
+            "section": "부모급여·아동수당 6개월 이상",
+            "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-1",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "PARENT_01",
+            "valid_from": "2026-03-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/1",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-2",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "PARENT_01",
+            "valid_from": "2026-04-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/2",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-3",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "PARENT_01",
+            "valid_from": "2026-05-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/3",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "IBK부모급여우대적금 공식 상품페이지",
+          "details": {
+            "document": "IBK부모급여우대적금 공식 상품페이지",
+            "version_date": "2026-02-20",
+            "section": "가족실적 합산",
+            "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+          }
+        },
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "IBK부모급여우대적금 공식 상품페이지",
+          "details": {
+            "document": "IBK부모급여우대적금 공식 상품페이지",
+            "version_date": "2026-02-20",
+            "section": "가족 1명 영업점 등록 및 실적 합산",
+            "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "IBK-F-FAMILY-REG",
+          "details": {
+            "fact_type": "IBK_FAMILY_AGGREGATION_REGISTERED",
+            "subject_person_id": "PARENT_01",
+            "valid_from": null,
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "ibk/family-registration/service",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "ibk/family-registration/PARENT_01-CHILD_01",
+          "details": {
+            "record_type": "PERSON_RELATIONSHIP",
+            "relationship_id": "IBK-REL-PARENT-CHILD-01",
+            "person_a": "PARENT_01",
+            "person_b": "CHILD_01",
+            "relationship_type": "PARENT_CHILD"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "ibk/family-registration/one-to-one",
+          "details": {
+            "description": null,
+            "registered_for_product": "IBK_PARENT_BENEFIT_SAVINGS_20260220"
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-4",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "CHILD_01",
+            "valid_from": "2026-06-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/4",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-5",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "CHILD_01",
+            "valid_from": "2026-07-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/5",
+          "details": {
+            "description": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "IBK-F-PERF-6",
+          "details": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "subject_person_id": "CHILD_01",
+            "valid_from": "2026-08-20",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "DERIVED",
+          "reference": "resolver/ibk-parent-benefit/6",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": [
+        {
+          "rule_id": "IBK_RATE_SELF_PERFORMANCE",
+          "rule_name": "가입자 본인 부모급여 실적",
+          "rule_type": "COUNT_DISTINCT_PERIODS",
+          "status": "UNSATISFIABLE",
+          "reason_code": "PARENT_BENEFIT_SIX_MONTHS_NOT_REACHED",
+          "progress": {
+            "current": 3,
+            "required": 6,
+            "unit": "MONTH"
+          },
+          "missing_facts": [],
+          "evidence": {
+            "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+            "period": "MONTH",
+            "subject_person_ids": [
+              "PARENT_01"
+            ],
+            "window_from": "2026-03-01",
+            "window_to": "2027-03-01",
+            "qualifying_periods": [
+              "2026-03",
+              "2026-04",
+              "2026-05"
+            ],
+            "current": 3,
+            "required": 6,
+            "operator": "GTE"
+          },
+          "source_provenance": [
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "IBK부모급여우대적금 공식 상품페이지",
+              "details": {
+                "document": "IBK부모급여우대적금 공식 상품페이지",
+                "version_date": "2026-02-20",
+                "section": "부모급여·아동수당 6개월 이상",
+                "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-1",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-03-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/1",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-2",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-04-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/2",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-3",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-05-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/3",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "rule_id": "IBK_RATE_FAMILY_BRANCH",
+          "rule_name": "가족등록 후 부모·자녀 실적 합산",
+          "rule_type": "AND",
+          "status": "SATISFIED",
+          "reason_code": "ALL_AND_CHILDREN_SATISFIED",
+          "progress": null,
+          "missing_facts": [],
+          "evidence": {
+            "evaluated_children": 2,
+            "declared_children": 2,
+            "child_statuses": {
+              "IBK_FAMILY_REGISTRATION": "SATISFIED",
+              "IBK_RATE_RELATED_PERFORMANCE": "SATISFIED"
+            }
+          },
+          "source_provenance": [
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "IBK부모급여우대적금 공식 상품페이지",
+              "details": {
+                "document": "IBK부모급여우대적금 공식 상품페이지",
+                "version_date": "2026-02-20",
+                "section": "가족실적 합산",
+                "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+              }
+            },
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "IBK부모급여우대적금 공식 상품페이지",
+              "details": {
+                "document": "IBK부모급여우대적금 공식 상품페이지",
+                "version_date": "2026-02-20",
+                "section": "가족 1명 영업점 등록 및 실적 합산",
+                "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "IBK-F-FAMILY-REG",
+              "details": {
+                "fact_type": "IBK_FAMILY_AGGREGATION_REGISTERED",
+                "subject_person_id": "PARENT_01",
+                "valid_from": null,
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "ibk/family-registration/service",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "PRODUCT_DOCUMENT",
+              "reference": "IBK부모급여우대적금 공식 상품페이지",
+              "details": {
+                "document": "IBK부모급여우대적금 공식 상품페이지",
+                "version_date": "2026-02-20",
+                "section": "부모급여·아동수당 6개월 이상",
+                "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "ibk/family-registration/PARENT_01-CHILD_01",
+              "details": {
+                "record_type": "PERSON_RELATIONSHIP",
+                "relationship_id": "IBK-REL-PARENT-CHILD-01",
+                "person_a": "PARENT_01",
+                "person_b": "CHILD_01",
+                "relationship_type": "PARENT_CHILD"
+              }
+            },
+            {
+              "source_type": "INSTITUTION_VERIFIED",
+              "reference": "ibk/family-registration/one-to-one",
+              "details": {
+                "description": null,
+                "registered_for_product": "IBK_PARENT_BENEFIT_SAVINGS_20260220"
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-1",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-03-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/1",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-2",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-04-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/2",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-3",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "PARENT_01",
+                "valid_from": "2026-05-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/3",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-4",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "CHILD_01",
+                "valid_from": "2026-06-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/4",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-5",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "CHILD_01",
+                "valid_from": "2026-07-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/5",
+              "details": {
+                "description": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "IBK-F-PERF-6",
+              "details": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "subject_person_id": "CHILD_01",
+                "valid_from": "2026-08-20",
+                "valid_to": null
+              }
+            },
+            {
+              "source_type": "DERIVED",
+              "reference": "resolver/ibk-parent-benefit/6",
+              "details": {
+                "description": null
+              }
+            }
+          ],
+          "children": [
+            {
+              "rule_id": "IBK_FAMILY_REGISTRATION",
+              "rule_name": "IBK 가족실적 합산 등록",
+              "rule_type": "FACT_COMPARE",
+              "status": "SATISFIED",
+              "reason_code": "IBK_FAMILY_AGGREGATION_ACTIVE",
+              "progress": null,
+              "missing_facts": [],
+              "evidence": {
+                "fact_type": "IBK_FAMILY_AGGREGATION_REGISTERED",
+                "fact_id": "IBK-F-FAMILY-REG",
+                "actual": true,
+                "expected": true,
+                "operator": "EQ",
+                "effective_at": "2027-03-01",
+                "source_type": "INSTITUTION_VERIFIED"
+              },
+              "source_provenance": [
+                {
+                  "source_type": "PRODUCT_DOCUMENT",
+                  "reference": "IBK부모급여우대적금 공식 상품페이지",
+                  "details": {
+                    "document": "IBK부모급여우대적금 공식 상품페이지",
+                    "version_date": "2026-02-20",
+                    "section": "가족 1명 영업점 등록 및 실적 합산",
+                    "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+                  }
+                },
+                {
+                  "source_type": "INSTITUTION_VERIFIED",
+                  "reference": "IBK-F-FAMILY-REG",
+                  "details": {
+                    "fact_type": "IBK_FAMILY_AGGREGATION_REGISTERED",
+                    "subject_person_id": "PARENT_01",
+                    "valid_from": null,
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "INSTITUTION_VERIFIED",
+                  "reference": "ibk/family-registration/service",
+                  "details": {
+                    "description": null
+                  }
+                }
+              ],
+              "children": []
+            },
+            {
+              "rule_id": "IBK_RATE_RELATED_PERFORMANCE",
+              "rule_name": "부모·자녀 합산 부모급여 실적",
+              "rule_type": "COUNT_DISTINCT_PERIODS",
+              "status": "SATISFIED",
+              "reason_code": "PARENT_BENEFIT_SIX_MONTHS_REACHED",
+              "progress": {
+                "current": 6,
+                "required": 6,
+                "unit": "MONTH"
+              },
+              "missing_facts": [],
+              "evidence": {
+                "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                "period": "MONTH",
+                "subject_person_ids": [
+                  "CHILD_01",
+                  "PARENT_01"
+                ],
+                "window_from": "2026-03-01",
+                "window_to": "2027-03-01",
+                "qualifying_periods": [
+                  "2026-03",
+                  "2026-04",
+                  "2026-05",
+                  "2026-06",
+                  "2026-07",
+                  "2026-08"
+                ],
+                "current": 6,
+                "required": 6,
+                "operator": "GTE"
+              },
+              "source_provenance": [
+                {
+                  "source_type": "PRODUCT_DOCUMENT",
+                  "reference": "IBK부모급여우대적금 공식 상품페이지",
+                  "details": {
+                    "document": "IBK부모급여우대적금 공식 상품페이지",
+                    "version_date": "2026-02-20",
+                    "section": "부모급여·아동수당 6개월 이상",
+                    "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+                  }
+                },
+                {
+                  "source_type": "INSTITUTION_VERIFIED",
+                  "reference": "ibk/family-registration/PARENT_01-CHILD_01",
+                  "details": {
+                    "record_type": "PERSON_RELATIONSHIP",
+                    "relationship_id": "IBK-REL-PARENT-CHILD-01",
+                    "person_a": "PARENT_01",
+                    "person_b": "CHILD_01",
+                    "relationship_type": "PARENT_CHILD"
+                  }
+                },
+                {
+                  "source_type": "INSTITUTION_VERIFIED",
+                  "reference": "ibk/family-registration/one-to-one",
+                  "details": {
+                    "description": null,
+                    "registered_for_product": "IBK_PARENT_BENEFIT_SAVINGS_20260220"
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-1",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "PARENT_01",
+                    "valid_from": "2026-03-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/1",
+                  "details": {
+                    "description": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-2",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "PARENT_01",
+                    "valid_from": "2026-04-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/2",
+                  "details": {
+                    "description": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-3",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "PARENT_01",
+                    "valid_from": "2026-05-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/3",
+                  "details": {
+                    "description": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-4",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "CHILD_01",
+                    "valid_from": "2026-06-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/4",
+                  "details": {
+                    "description": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-5",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "CHILD_01",
+                    "valid_from": "2026-07-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/5",
+                  "details": {
+                    "description": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "IBK-F-PERF-6",
+                  "details": {
+                    "fact_type": "IBK_PARENT_BENEFIT_QUALIFIED_CREDIT",
+                    "subject_person_id": "CHILD_01",
+                    "valid_from": "2026-08-20",
+                    "valid_to": null
+                  }
+                },
+                {
+                  "source_type": "DERIVED",
+                  "reference": "resolver/ibk-parent-benefit/6",
+                  "details": {
+                    "description": null
+                  }
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "global_guard_results": [
+    {
+      "rule_id": "IBK_GUARD_MATURITY",
+      "rule_name": "만기해지",
+      "rule_type": "FACT_COMPARE",
+      "status": "SATISFIED",
+      "reason_code": "MATURED_NORMALLY",
+      "progress": null,
+      "missing_facts": [],
+      "evidence": {
+        "fact_type": "TERMINATION_TYPE",
+        "fact_id": "IBK-F-TERM",
+        "actual": "MATURED",
+        "expected": "MATURED",
+        "operator": "EQ",
+        "effective_at": "2027-03-01",
+        "source_type": "INSTITUTION_VERIFIED"
+      },
+      "source_provenance": [
+        {
+          "source_type": "PRODUCT_DOCUMENT",
+          "reference": "IBK부모급여우대적금 공식 상품페이지",
+          "details": {
+            "document": "IBK부모급여우대적금 공식 상품페이지",
+            "version_date": "2026-02-20",
+            "section": "만기해지",
+            "source_url": "https://mybank.ibk.co.kr/uib/jsp/guest/ntr/ntr70/ntr7010/PNTR701000_i2.jsp?grcd=21&lncd=01&pdcd=0124&tmcd=121"
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "IBK-F-TERM",
+          "details": {
+            "fact_type": "TERMINATION_TYPE",
+            "subject_person_id": "PARENT_01",
+            "valid_from": "2027-03-01",
+            "valid_to": null
+          }
+        },
+        {
+          "source_type": "INSTITUTION_VERIFIED",
+          "reference": "virtual-ibk/termination",
+          "details": {
+            "description": null
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "rates": {
+    "advertised_max_rate": "6.5",
+    "confirmed_rate": "4.5",
+    "realizable_rate": "4.5",
+    "user_specific_conditional_upper_rate": "4.5",
+    "preferential_cap": "4.0",
+    "guard_status": "SATISFIED",
+    "applied_rewards": [
+      {
+        "rule_id": "IBK_RATE_PARENT_BENEFIT",
+        "rule_name": "부모급여·아동수당 6개월 우대",
+        "status": "SATISFIED",
+        "reward_pp": "2.0",
+        "included_in_confirmed": true,
+        "included_in_realizable": true,
+        "included_in_user_specific_conditional_upper": true
+      }
+    ]
+  },
+  "missing_facts": [],
+  "interest_estimates": {}
+}

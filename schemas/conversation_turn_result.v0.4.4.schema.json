@@ -1,0 +1,938 @@
+{
+  "$defs": {
+    "ContributionFeasibilityClarification": {
+      "additionalProperties": false,
+      "description": "User decision required when contribution state conflicts with affordability.\n\nFor a newly unresolved product input ``feasible_options`` may be empty and the\nuser can adjust the global limit or exclude the product.  When a previously\ncommitted product-specific choice becomes stale after a global-state revision,\nv0.4.4 also exposes the currently feasible replacement options and allows\n``CHANGE_PRODUCT_CONTRIBUTION_CHOICE``.",
+      "properties": {
+        "clarification_id": {
+          "title": "Clarification Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "current_affordability_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Current Affordability Amount"
+        },
+        "current_affordability_frequency": {
+          "$ref": "#/$defs/ContributionFrequency"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "current_choice_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Choice Id"
+        },
+        "current_choice_value": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Choice Value"
+        },
+        "feasible_options": {
+          "items": {},
+          "title": "Feasible Options",
+          "type": "array"
+        },
+        "minimum_required_affordability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Required Affordability"
+        },
+        "reason_code": {
+          "default": "ALL_CONTRIBUTION_OPTIONS_INFEASIBLE",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "allowed_resolutions": {
+          "items": {
+            "enum": [
+              "CHANGE_PRODUCT_CONTRIBUTION_CHOICE",
+              "ADJUST_GLOBAL_AFFORDABILITY",
+              "EXCLUDE_PRODUCT"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Resolutions",
+          "type": "array"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "clarification_id",
+        "product_id",
+        "current_affordability_amount",
+        "current_affordability_frequency",
+        "question"
+      ],
+      "title": "ContributionFeasibilityClarification",
+      "type": "object"
+    },
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ConversationOperation": {
+      "description": "Narrow domain operations an LLM may select for a follow-up utterance.\n\nThis is deliberately *not* a universal user-state patch language.  Each action\nmaps to an existing ApplicationService domain operation with deterministic\nvalidation and state ownership.",
+      "enum": [
+        "UPDATE_SEARCH_INTENT",
+        "REVISE_PRODUCT_CONTRIBUTION_CHOICE",
+        "REVISE_USER_ANSWER",
+        "REVISE_USER_DECLARED_FACT",
+        "SUBMIT_ACTIVE_QUESTION_ANSWER",
+        "EXCLUDE_PRODUCT",
+        "NO_OP"
+      ],
+      "title": "ConversationOperation",
+      "type": "string"
+    },
+    "EligibilityBadge": {
+      "enum": [
+        "ELIGIBLE",
+        "PLAN_REQUIRED",
+        "VERIFICATION_REQUIRED",
+        "INELIGIBLE"
+      ],
+      "title": "EligibilityBadge",
+      "type": "string"
+    },
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "SELF_REPORTED_FACT",
+        "FUTURE_INTENT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "MissingFactImpact": {
+      "additionalProperties": false,
+      "properties": {
+        "rate_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rate Pp"
+        }
+      },
+      "title": "MissingFactImpact",
+      "type": "object"
+    },
+    "MissingFactRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_type": {
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ResolutionStatus",
+          "default": "UNRESOLVED"
+        },
+        "resolution_strategy": {
+          "$ref": "#/$defs/ResolutionStrategy"
+        },
+        "impact": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactImpact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "required_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required Source"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        },
+        "requested_by_rule_id": {
+          "title": "Requested By Rule Id",
+          "type": "string"
+        },
+        "expected_semantic_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactSemanticType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "action_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Id"
+        },
+        "reward_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reward Id"
+        },
+        "grounding_terms": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Grounding Terms",
+          "type": "array"
+        },
+        "missing_fact_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Missing Fact Id"
+        }
+      },
+      "required": [
+        "fact_type",
+        "resolution_strategy",
+        "requested_by_rule_id"
+      ],
+      "title": "MissingFactRequest",
+      "type": "object"
+    },
+    "MissingRankingInput": {
+      "additionalProperties": false,
+      "properties": {
+        "input_id": {
+          "title": "Input Id",
+          "type": "string"
+        },
+        "input_type": {
+          "const": "CONTRIBUTION_PLAN",
+          "default": "CONTRIBUTION_PLAN",
+          "title": "Input Type",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "required_field": {
+          "title": "Required Field",
+          "type": "string"
+        },
+        "allowed_options": {
+          "items": {},
+          "title": "Allowed Options",
+          "type": "array"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "affected_metric": {
+          "const": "ESTIMATED_AFTER_TAX_INTEREST",
+          "default": "ESTIMATED_AFTER_TAX_INTEREST",
+          "title": "Affected Metric",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/RankingInputStatus",
+          "default": "UNRESOLVED"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_id",
+        "product_id",
+        "required_field",
+        "reason",
+        "question"
+      ],
+      "title": "MissingRankingInput",
+      "type": "object"
+    },
+    "PlannedQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "question_kind": {
+          "default": "FINANCIAL_FACT",
+          "enum": [
+            "FINANCIAL_FACT",
+            "RANKING_INPUT",
+            "CONTRIBUTION_FEASIBILITY"
+          ],
+          "title": "Question Kind",
+          "type": "string"
+        },
+        "request": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingFactRequest"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ranking_input": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingRankingInput"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "feasibility_clarification": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContributionFeasibilityClarification"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "affected_product_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Affected Product Ids",
+          "type": "array"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Score"
+        }
+      },
+      "required": [
+        "question_id",
+        "question",
+        "affected_product_ids",
+        "score"
+      ],
+      "title": "PlannedQuestion",
+      "type": "object"
+    },
+    "ProductContributionChoice": {
+      "additionalProperties": false,
+      "description": "One product-scoped answer required to complete that product's cashflow.\n\nIdentity is semantic and product scoped: ``(product_id, field)``.  This is\ndeliberately not part of ``ProductSearchIntent.contribution_plan`` because a\nstart amount or product-specific term selection must never leak into other\ncandidates.  v0.4.4 adds append-only revision metadata while SearchSession\ncontinues to expose only the latest ACTIVE choice for each semantic key.",
+      "properties": {
+        "choice_id": {
+          "title": "Choice Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "source_question_id": {
+          "title": "Source Question Id",
+          "type": "string"
+        },
+        "answered_at": {
+          "format": "date-time",
+          "title": "Answered At",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "record_status": {
+          "default": "ACTIVE",
+          "enum": [
+            "ACTIVE",
+            "SUPERSEDED"
+          ],
+          "title": "Record Status",
+          "type": "string"
+        },
+        "supersedes_choice_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes Choice Id"
+        }
+      },
+      "required": [
+        "choice_id",
+        "product_id",
+        "field",
+        "value",
+        "source_question_id"
+      ],
+      "title": "ProductContributionChoice",
+      "type": "object"
+    },
+    "ProductRecommendationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "recommendation_id": {
+          "title": "Recommendation Id",
+          "type": "string"
+        },
+        "search_session_id": {
+          "title": "Search Session Id",
+          "type": "string"
+        },
+        "ranking_objective": {
+          "$ref": "#/$defs/RankingObjective"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "top_products": {
+          "items": {
+            "$ref": "#/$defs/RecommendationListItem"
+          },
+          "title": "Top Products",
+          "type": "array"
+        },
+        "unresolved_global_assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved Global Assumptions",
+          "type": "array"
+        },
+        "ranking_explanation_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Ranking Explanation Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recommendation_id",
+        "search_session_id",
+        "ranking_objective",
+        "generated_at",
+        "top_products"
+      ],
+      "title": "ProductRecommendationResult",
+      "type": "object"
+    },
+    "RankingComparability": {
+      "description": "Whether a candidate can participate in the active ranking metric.\n\nFor the default interest objective, COMPARABLE means the candidate has a\ndeterministic KRW after-tax-interest value.  A rate percentage is never a\nsubstitute for a missing KRW amount.",
+      "enum": [
+        "COMPARABLE",
+        "MISSING_CONTRIBUTION_INPUT",
+        "NOT_COMPARABLE"
+      ],
+      "title": "RankingComparability",
+      "type": "string"
+    },
+    "RankingInputStatus": {
+      "enum": [
+        "UNRESOLVED",
+        "RESOLVED",
+        "DECLINED"
+      ],
+      "title": "RankingInputStatus",
+      "type": "string"
+    },
+    "RankingObjective": {
+      "enum": [
+        "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_REALIZABLE_RATE",
+        "MIN_ACTION_BURDEN",
+        "BALANCED"
+      ],
+      "title": "RankingObjective",
+      "type": "string"
+    },
+    "RecommendationListItem": {
+      "additionalProperties": false,
+      "properties": {
+        "rank": {
+          "minimum": 1,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "institution_name": {
+          "title": "Institution Name",
+          "type": "string"
+        },
+        "product_name": {
+          "title": "Product Name",
+          "type": "string"
+        },
+        "product_type": {
+          "title": "Product Type",
+          "type": "string"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Realizable Rate"
+        },
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Advertised Max Rate"
+        },
+        "term_summary": {
+          "title": "Term Summary",
+          "type": "string"
+        },
+        "contribution_summary": {
+          "title": "Contribution Summary",
+          "type": "string"
+        },
+        "maximum_deposit_summary": {
+          "title": "Maximum Deposit Summary",
+          "type": "string"
+        },
+        "planned_contribution_summary": {
+          "title": "Planned Contribution Summary",
+          "type": "string"
+        },
+        "estimated_total_principal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Total Principal"
+        },
+        "estimated_after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated After Tax Interest"
+        },
+        "ranking_comparability": {
+          "$ref": "#/$defs/RankingComparability",
+          "default": "COMPARABLE"
+        },
+        "missing_ranking_input_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Missing Ranking Input Count",
+          "type": "integer"
+        },
+        "eligibility_badge": {
+          "$ref": "#/$defs/EligibilityBadge"
+        },
+        "verification_badge": {
+          "$ref": "#/$defs/VerificationBadge"
+        },
+        "material_unknown_count": {
+          "minimum": 0,
+          "title": "Material Unknown Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rank",
+        "product_id",
+        "institution_name",
+        "product_name",
+        "product_type",
+        "realizable_rate",
+        "advertised_max_rate",
+        "term_summary",
+        "contribution_summary",
+        "maximum_deposit_summary",
+        "planned_contribution_summary",
+        "eligibility_badge",
+        "verification_badge",
+        "material_unknown_count"
+      ],
+      "title": "RecommendationListItem",
+      "type": "object"
+    },
+    "ResolutionStatus": {
+      "enum": [
+        "RESOLVED",
+        "UNRESOLVED",
+        "CONFLICT"
+      ],
+      "title": "ResolutionStatus",
+      "type": "string"
+    },
+    "ResolutionStrategy": {
+      "enum": [
+        "QUERY_INSTITUTION",
+        "QUERY_MYDATA",
+        "DERIVE",
+        "ASK_USER",
+        "UNRESOLVABLE"
+      ],
+      "title": "ResolutionStrategy",
+      "type": "string"
+    },
+    "SearchSession": {
+      "additionalProperties": false,
+      "properties": {
+        "search_session_id": {
+          "title": "Search Session Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "intent_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Intent Version",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/SearchSessionStatus",
+          "default": "INTENT_COLLECTION"
+        },
+        "candidate_product_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Candidate Product Ids",
+          "type": "array"
+        },
+        "active_question_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Active Question Id"
+        },
+        "answered_question_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Answered Question Ids",
+          "type": "array"
+        },
+        "ranking_run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ranking Run Id"
+        },
+        "recommendation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recommendation Id"
+        },
+        "product_contribution_choices": {
+          "items": {
+            "$ref": "#/$defs/ProductContributionChoice"
+          },
+          "title": "Product Contribution Choices",
+          "type": "array"
+        },
+        "excluded_product_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded Product Ids",
+          "type": "array"
+        },
+        "top_k": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "search_session_id",
+        "user_id"
+      ],
+      "title": "SearchSession",
+      "type": "object"
+    },
+    "SearchSessionStatus": {
+      "enum": [
+        "INTENT_COLLECTION",
+        "CLARIFICATION_REQUIRED",
+        "CANDIDATES_RETRIEVED",
+        "QUESTIONING",
+        "RANKING_READY",
+        "COMPLETED"
+      ],
+      "title": "SearchSessionStatus",
+      "type": "string"
+    },
+    "VerificationBadge": {
+      "enum": [
+        "FINANCIAL_DATA_VERIFIED",
+        "USER_RESPONSE_INCLUDED",
+        "PLAN_BASED",
+        "ADDITIONAL_VERIFICATION_REQUIRED"
+      ],
+      "title": "VerificationBadge",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Structured Web handoff result for one natural-language follow-up turn.",
+  "properties": {
+    "search_session_id": {
+      "title": "Search Session Id",
+      "type": "string"
+    },
+    "message": {
+      "title": "Message",
+      "type": "string"
+    },
+    "operations_executed": {
+      "items": {
+        "$ref": "#/$defs/ConversationOperation"
+      },
+      "title": "Operations Executed",
+      "type": "array"
+    },
+    "session": {
+      "$ref": "#/$defs/SearchSession"
+    },
+    "next_question": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlannedQuestion"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "recommendations": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProductRecommendationResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "search_session_id",
+    "message",
+    "session"
+  ],
+  "title": "ConversationTurnResult",
+  "type": "object"
+}

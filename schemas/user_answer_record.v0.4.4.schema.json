@@ -1,0 +1,63 @@
+{
+  "$defs": {
+    "FactRecordStatus": {
+      "description": "Lifecycle state for append-only user facts.\n\nSuperseded facts remain in the store for audit and replay, but deterministic\nresolution only considers ACTIVE facts.",
+      "enum": [
+        "ACTIVE",
+        "SUPERSEDED"
+      ],
+      "title": "FactRecordStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Append-only answer lifecycle record exposed to the Application Layer.",
+  "properties": {
+    "answer_record_id": {
+      "title": "Answer Record Id",
+      "type": "string"
+    },
+    "request_reference": {
+      "title": "Request Reference",
+      "type": "string"
+    },
+    "fact_id": {
+      "title": "Fact Id",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "integer"
+    },
+    "status": {
+      "$ref": "#/$defs/FactRecordStatus"
+    },
+    "supersedes_fact_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Supersedes Fact Id"
+    },
+    "answered_at": {
+      "format": "date-time",
+      "title": "Answered At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "answer_record_id",
+    "request_reference",
+    "fact_id",
+    "version",
+    "status",
+    "answered_at"
+  ],
+  "title": "UserAnswerRecord",
+  "type": "object"
+}

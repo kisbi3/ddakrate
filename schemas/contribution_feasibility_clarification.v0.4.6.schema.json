@@ -1,0 +1,126 @@
+{
+  "$defs": {
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "User decision required when contribution state conflicts with affordability.\n\nFor a newly unresolved product input ``feasible_options`` may be empty and the\nuser can adjust the global limit or exclude the product.  When a previously\ncommitted product-specific choice becomes stale after a global-state revision,\nv0.4.4 also exposes the currently feasible replacement options and allows\n``CHANGE_PRODUCT_CONTRIBUTION_CHOICE``.",
+  "properties": {
+    "clarification_id": {
+      "title": "Clarification Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "current_affordability_amount": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Current Affordability Amount"
+    },
+    "current_affordability_frequency": {
+      "$ref": "#/$defs/ContributionFrequency"
+    },
+    "field": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Field"
+    },
+    "current_choice_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Current Choice Id"
+    },
+    "current_choice_value": {
+      "anyOf": [
+        {},
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Current Choice Value"
+    },
+    "feasible_options": {
+      "items": {},
+      "title": "Feasible Options",
+      "type": "array"
+    },
+    "minimum_required_affordability": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Minimum Required Affordability"
+    },
+    "reason_code": {
+      "default": "ALL_CONTRIBUTION_OPTIONS_INFEASIBLE",
+      "title": "Reason Code",
+      "type": "string"
+    },
+    "allowed_resolutions": {
+      "items": {
+        "enum": [
+          "CHANGE_PRODUCT_CONTRIBUTION_CHOICE",
+          "ADJUST_GLOBAL_AFFORDABILITY",
+          "EXCLUDE_PRODUCT"
+        ],
+        "type": "string"
+      },
+      "title": "Allowed Resolutions",
+      "type": "array"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    }
+  },
+  "required": [
+    "clarification_id",
+    "product_id",
+    "current_affordability_amount",
+    "current_affordability_frequency",
+    "question"
+  ],
+  "title": "ContributionFeasibilityClarification",
+  "type": "object"
+}

@@ -1,0 +1,427 @@
+{
+  "$defs": {
+    "Capability": {
+      "additionalProperties": false,
+      "properties": {
+        "capability_id": {
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/CapabilityState"
+        },
+        "candidate_filter": {
+          "const": false,
+          "default": false,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "capability_id",
+        "state"
+      ],
+      "title": "Capability",
+      "type": "object"
+    },
+    "CapabilityState": {
+      "enum": [
+        "CAN",
+        "UNKNOWN",
+        "CANNOT"
+      ],
+      "title": "CapabilityState",
+      "type": "string"
+    },
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ContributionPlan": {
+      "additionalProperties": false,
+      "description": "Global user contribution preference shared across the search session.\n\nProduct-specific ranking choices (for example a Kakao 26-week start amount)\nare stored separately as :class:`ProductContributionChoice` and overlaid only\nfor the matching product during cashflow construction.  The legacy\n``preferred_start_amount`` / ``incremental_amount`` fields remain for\nbackward compatibility with direct evaluator callers, but ApplicationService\nranking-input answers do not mutate them.",
+      "properties": {
+        "desired_periodic_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Desired Periodic Amount"
+        },
+        "maximum_affordable_periodic_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Affordable Periodic Amount"
+        },
+        "frequency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContributionFrequency"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "selected_term_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Term Value"
+        },
+        "selected_term_unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TermUnit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "preferred_start_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preferred Start Amount"
+        },
+        "incremental_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Incremental Amount"
+        },
+        "currency": {
+          "default": "KRW",
+          "title": "Currency",
+          "type": "string"
+        },
+        "tax_rate": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "default": "0.154",
+          "title": "Tax Rate"
+        }
+      },
+      "title": "ContributionPlan",
+      "type": "object"
+    },
+    "HardConstraint": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "constraint": {
+          "$ref": "#/$defs/HardConstraintValue"
+        },
+        "expected": {
+          "default": true,
+          "title": "Expected"
+        },
+        "candidate_filter": {
+          "const": true,
+          "default": true,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field",
+        "constraint"
+      ],
+      "title": "HardConstraint",
+      "type": "object"
+    },
+    "HardConstraintValue": {
+      "enum": [
+        "REQUIRE",
+        "EXCLUDE"
+      ],
+      "title": "HardConstraintValue",
+      "type": "string"
+    },
+    "NumericPreference": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "direction": {
+          "$ref": "#/$defs/NumericPreferenceDirection"
+        },
+        "strictness": {
+          "$ref": "#/$defs/PreferenceStrictness"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "direction",
+        "strictness"
+      ],
+      "title": "NumericPreference",
+      "type": "object"
+    },
+    "NumericPreferenceDirection": {
+      "enum": [
+        "AT_LEAST",
+        "AT_MOST",
+        "AROUND"
+      ],
+      "title": "NumericPreferenceDirection",
+      "type": "string"
+    },
+    "Preference": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "preference": {
+          "$ref": "#/$defs/PreferenceValue"
+        },
+        "expected": {
+          "default": true,
+          "title": "Expected"
+        },
+        "candidate_filter": {
+          "const": false,
+          "default": false,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field",
+        "preference"
+      ],
+      "title": "Preference",
+      "type": "object"
+    },
+    "PreferenceStrictness": {
+      "enum": [
+        "SOFT",
+        "HARD"
+      ],
+      "title": "PreferenceStrictness",
+      "type": "string"
+    },
+    "PreferenceValue": {
+      "enum": [
+        "PREFER_PRESENT",
+        "NEUTRAL",
+        "PREFER_ABSENT"
+      ],
+      "title": "PreferenceValue",
+      "type": "string"
+    },
+    "RankingObjective": {
+      "enum": [
+        "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_REALIZABLE_RATE",
+        "MIN_ACTION_BURDEN",
+        "BALANCED"
+      ],
+      "title": "RankingObjective",
+      "type": "string"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "search_intent_id": {
+      "title": "Search Intent Id",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    },
+    "product_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Product Types",
+      "type": "array"
+    },
+    "ranking_objective": {
+      "$ref": "#/$defs/RankingObjective",
+      "default": "MAX_ESTIMATED_AFTER_TAX_INTEREST"
+    },
+    "hard_constraints": {
+      "items": {
+        "$ref": "#/$defs/HardConstraint"
+      },
+      "title": "Hard Constraints",
+      "type": "array"
+    },
+    "preferences": {
+      "items": {
+        "$ref": "#/$defs/Preference"
+      },
+      "title": "Preferences",
+      "type": "array"
+    },
+    "capabilities": {
+      "items": {
+        "$ref": "#/$defs/Capability"
+      },
+      "title": "Capabilities",
+      "type": "array"
+    },
+    "numeric_preferences": {
+      "items": {
+        "$ref": "#/$defs/NumericPreference"
+      },
+      "title": "Numeric Preferences",
+      "type": "array"
+    },
+    "contribution_plan": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionPlan"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "requested_top_k": {
+      "default": 5,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Requested Top K",
+      "type": "integer"
+    },
+    "source_utterances": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Utterances",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "search_intent_id",
+    "user_id"
+  ],
+  "title": "ProductSearchIntent",
+  "type": "object"
+}

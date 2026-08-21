@@ -1,0 +1,53 @@
+{
+  "initial_user_facts": {
+    "eligibility_status": "SATISFIED",
+    "condition_statuses": {
+      "ELIG_AGE": "SATISFIED",
+      "ELIG_ONE_ACCOUNT": "SATISFIED",
+      "RATE_SALARY": "ACHIEVABLE",
+      "RATE_CARD": "ACHIEVABLE",
+      "RATE_SUPERSOL": "UNKNOWN",
+      "RATE_FIRST_TRANSACTION_BRANCH": "UNSATISFIABLE",
+      "RATE_EVENT_BRANCH": "UNKNOWN",
+      "RATE_FIRST_OR_EVENT": "UNKNOWN",
+      "GUARD_MATURITY": "ACHIEVABLE"
+    },
+    "rates": {
+      "advertised_max_rate": "6.05",
+      "confirmed_rate": "3.05",
+      "realizable_rate": "4.55",
+      "conditional_upper_rate": "6.05"
+    },
+    "missing_facts": [
+      "SUPER_SOL_JOIN_LOGIN_MAINTAIN_WILLING",
+      "SPECIAL_RATE_COUPON_VALID"
+    ]
+  },
+  "after_supersol_yes": {
+    "rates": {
+      "advertised_max_rate": "6.05",
+      "confirmed_rate": "3.05",
+      "realizable_rate": "5.05",
+      "conditional_upper_rate": "6.05"
+    },
+    "missing_facts": ["SPECIAL_RATE_COUPON_VALID"]
+  },
+  "after_supersol_yes_and_event_no": {
+    "rates": {
+      "advertised_max_rate": "6.05",
+      "confirmed_rate": "3.05",
+      "realizable_rate": "5.05",
+      "conditional_upper_rate": "5.05"
+    },
+    "missing_facts": []
+  },
+  "first_transaction_trace": {
+    "lookback_from": "2025-08-20",
+    "lookback_to": "2026-08-19",
+    "holding_from": "2025-11-15",
+    "holding_to": "2026-04-12",
+    "overlap": true,
+    "status": "UNSATISFIABLE",
+    "reason_code": "PRIOR_HOLDING_OVERLAPS_LOOKBACK"
+  }
+}

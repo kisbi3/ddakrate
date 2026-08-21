@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "description": "Web answer envelope tied to a concrete MissingFactRequest.",
+  "properties": {
+    "request_reference": {
+      "title": "Request Reference",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer"
+    },
+    "answered_at": {
+      "format": "date-time",
+      "title": "Answered At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_reference",
+    "answer",
+    "answered_at"
+  ],
+  "title": "UserAnswerSubmission",
+  "type": "object"
+}

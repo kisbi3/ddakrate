@@ -1,0 +1,157 @@
+{
+  "$defs": {
+    "CanonicalClaim": {
+      "additionalProperties": false,
+      "description": "Typed, immutable semantic atom that an LLM may verbalize.",
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "claim_type": {
+          "$ref": "#/$defs/ClaimType"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "source_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Ref"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        }
+      },
+      "required": [
+        "claim_id",
+        "claim_type",
+        "value"
+      ],
+      "title": "CanonicalClaim",
+      "type": "object"
+    },
+    "ClaimType": {
+      "enum": [
+        "IDENTIFIER",
+        "CONDITION_TERM",
+        "TARGET",
+        "ACTION",
+        "CONDITION",
+        "STATUS",
+        "PRODUCT_ATTRIBUTE",
+        "RECOMMENDATION_REASON",
+        "DURATION",
+        "RATE",
+        "AMOUNT",
+        "COUNT",
+        "RANK",
+        "INTEREST",
+        "NUMBER"
+      ],
+      "title": "ClaimType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "fact_type": {
+      "title": "Fact Type",
+      "type": "string"
+    },
+    "rule_id": {
+      "title": "Rule Id",
+      "type": "string"
+    },
+    "action_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Action Id"
+    },
+    "reward_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reward Id"
+    },
+    "question_type": {
+      "title": "Question Type",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/CanonicalClaim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "required_terms": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Terms",
+      "type": "array"
+    },
+    "allowed_condition_terms": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Condition Terms",
+      "type": "array"
+    },
+    "deterministic_fallback": {
+      "title": "Deterministic Fallback",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fact_type",
+    "rule_id",
+    "question_type",
+    "deterministic_fallback"
+  ],
+  "title": "CanonicalQuestionPayload",
+  "type": "object"
+}

@@ -1,0 +1,243 @@
+{
+  "$defs": {
+    "AuditEventType": {
+      "enum": [
+        "REQUEST_RECEIVED",
+        "DOCUMENT_PARSED",
+        "LLM_CALL_STARTED",
+        "LLM_CALL_COMPLETED",
+        "LLM_CALL_FAILED",
+        "SCHEMA_VALIDATION_COMPLETED",
+        "SEMANTIC_VALIDATION_COMPLETED",
+        "HUMAN_REVIEW_RECORDED",
+        "RULE_LOADED",
+        "DATE_EXPRESSION_RESOLVED",
+        "FACT_REQUESTED",
+        "FACT_CANDIDATES_FOUND",
+        "FACT_SOURCE_SELECTED",
+        "FACT_CONFLICT_DETECTED",
+        "SERVICE_RESOLVER_CALLED",
+        "DATA_COVERAGE_CHECKED",
+        "AGGREGATION_EXECUTED",
+        "COMPARISON_EXECUTED",
+        "FUTURE_CAPACITY_CHECKED",
+        "MISSING_FACT_CREATED",
+        "USER_FACT_RECEIVED",
+        "STATUS_DERIVED",
+        "REWARD_APPLIED",
+        "RATE_SUMMARY_CREATED",
+        "GOAL_CREATED",
+        "GOAL_PROGRESS_UPDATED",
+        "GOAL_FEASIBILITY_RECALCULATED",
+        "ALERT_TRIGGERED",
+        "RESULT_EXPLAINED",
+        "SEARCH_SESSION_CREATED",
+        "SEARCH_INTENT_PARSED",
+        "SEARCH_INTENT_UPDATED",
+        "INTENT_CONFLICT_DETECTED",
+        "CLARIFICATION_REQUESTED",
+        "CLARIFICATION_RESOLVED",
+        "CANDIDATE_FILTERED",
+        "CANDIDATE_RETAINED",
+        "CANDIDATE_EVALUATED",
+        "OPTIMISTIC_BOUND_CALCULATED",
+        "QUESTION_CANDIDATE_SCORED",
+        "QUESTION_SELECTED",
+        "USER_ANSWER_SUPERSEDED",
+        "USER_DECLARED_FACT_SUPERSEDED_BY_INTENT_UPDATE",
+        "PRODUCT_CONTRIBUTION_INPUT_REQUESTED",
+        "PRODUCT_CONTRIBUTION_INPUT_RECORDED",
+        "CONTRIBUTION_OPTION_FEASIBILITY_EVALUATED",
+        "CONTRIBUTION_OPTION_PRUNED",
+        "CONTRIBUTION_FEASIBILITY_CLARIFICATION_CREATED",
+        "CONTRIBUTION_ANSWER_REJECTED",
+        "PRODUCT_EXCLUDED_BY_USER",
+        "GLOBAL_AFFORDABILITY_UPDATED",
+        "RANKING_CALCULATED",
+        "TOP_K_STABILITY_CHECKED",
+        "RECOMMENDATION_CREATED",
+        "PRODUCT_DETAIL_OPENED",
+        "EXPLANATION_GENERATED"
+      ],
+      "title": "AuditEventType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Immutable append-only event persisted by an :class:`AuditSink`.",
+  "properties": {
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "evaluation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Evaluation Id"
+    },
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    },
+    "search_session_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Search Session Id"
+    },
+    "intent_version": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Intent Version"
+    },
+    "ranking_run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ranking Run Id"
+    },
+    "question_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Question Id"
+    },
+    "recommendation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recommendation Id"
+    },
+    "span_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Span Id"
+    },
+    "parent_span_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Span Id"
+    },
+    "component": {
+      "title": "Component",
+      "type": "string"
+    },
+    "event_type": {
+      "$ref": "#/$defs/AuditEventType"
+    },
+    "entity_refs": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Entity Refs",
+      "type": "object"
+    },
+    "input_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Input Hash"
+    },
+    "output_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Output Hash"
+    },
+    "payload": {
+      "additionalProperties": true,
+      "title": "Payload",
+      "type": "object"
+    },
+    "provenance": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Provenance",
+      "type": "array"
+    }
+  },
+  "required": [
+    "event_id",
+    "request_id",
+    "trace_id",
+    "component",
+    "event_type"
+  ],
+  "title": "AuditEvent",
+  "type": "object"
+}

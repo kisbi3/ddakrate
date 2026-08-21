@@ -1,0 +1,269 @@
+{
+  "draft": {
+    "document_id": "DOC-SHINHAN-YOUTH-20260722",
+    "product_metadata": {
+      "product_id": "SHINHAN_SALARY_ENVELOPE_6M_GOLDEN",
+      "institution_id": "SHINHAN_BANK",
+      "name": "청년 처음적금 — 월급봉투 6개월 Golden Flow",
+      "product_type": "INSTALLMENT_SAVINGS",
+      "contract_value": 12,
+      "contract_unit": "MONTH",
+      "base_rate": "3.05",
+      "advertised_max_rate": "4.05",
+      "preferential_rate_cap": "1.0"
+    },
+    "rules": [
+      {
+        "rule_id": "ELIG-SHINHAN_GOLDEN_ELIGIBLE",
+        "name": "Golden fixture 가입 가능",
+        "purpose": "ELIGIBILITY",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "achievement_mode": null,
+        "ast": {
+          "rule_id": "ELIG-SHINHAN_GOLDEN_ELIGIBLE",
+          "name": "Golden fixture 가입 가능",
+          "purpose": "ELIGIBILITY",
+          "evaluation_phase": "PRE_SUBSCRIPTION",
+          "description": null,
+          "source": null,
+          "type": "FACT_COMPARE",
+          "fact_type": "SHINHAN_GOLDEN_ELIGIBLE",
+          "value_path": null,
+          "effective_at": null,
+          "subject_selector": null,
+          "operator": "EQ",
+          "expected": true,
+          "on_true_status": "SATISFIED",
+          "on_false_status": "UNSATISFIABLE",
+          "on_missing_status": "UNKNOWN",
+          "true_reason_code": "PRODUCT_ELIGIBLE",
+          "false_reason_code": "PRODUCT_INELIGIBLE",
+          "missing_reason_code": "REQUIRED_FACT_MISSING",
+          "missing_fact": null,
+          "action": null,
+          "required_semantic_type": null
+        },
+        "reward": null,
+        "provenance": [
+          {
+            "document_id": "DOC-SHINHAN-YOUTH-20260722",
+            "document_name": "신한은행 청년 처음적금 상품설명서",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+            "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+          }
+        ],
+        "extraction_confidence": 0.99
+      },
+      {
+        "rule_id": "RATE_SALARY_ENVELOPE_6M",
+        "name": "가입 후 월급봉투 인정월 6개월",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "POST_SUBSCRIPTION",
+        "achievement_mode": "ACCUMULATIVE",
+        "ast": {
+          "rule_id": "RATE_SALARY_ENVELOPE_6M",
+          "name": "가입 후 월급봉투 인정월 6개월",
+          "purpose": "PREFERENTIAL_RATE",
+          "evaluation_phase": "POST_SUBSCRIPTION",
+          "description": null,
+          "source": {
+            "document": "신한은행 청년 처음적금 상품설명서",
+            "version_date": "2026-07-22",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": null
+          },
+          "type": "COUNT_DISTINCT_PERIODS",
+          "period": "MONTH",
+          "fact_type": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED",
+          "date_path": null,
+          "subject_selector": null,
+          "filters": [],
+          "window": {
+            "start": {
+              "type": "CONTEXT",
+              "value": null,
+              "context_field": "subscription_date",
+              "expression": null,
+              "amount": null
+            },
+            "end": {
+              "type": "ADD_MONTHS",
+              "value": null,
+              "context_field": null,
+              "expression": {
+                "type": "CONTEXT",
+                "value": null,
+                "context_field": "maturity_date",
+                "expression": null,
+                "amount": null
+              },
+              "amount": -1
+            },
+            "inclusive": true
+          },
+          "operator": "GTE",
+          "expected": 6,
+          "future_achievement": {
+            "capability_rule": null,
+            "intent_fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "1.0"
+              },
+              "required_source": "USER_DECLARED_FUTURE_INTENT",
+              "question": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?"
+            },
+            "achievement_mode": "ACCUMULATIVE",
+            "max_qualifying_units_per_opportunity": 1,
+            "max_new_qualifying_months_per_month": 1,
+            "action": {
+              "action_id": "TRACK_SALARY_ENVELOPE_6M",
+              "description": "가입 후 월급봉투 인정월을 6개월 이상 만든다.",
+              "burden_score": 2
+            },
+            "goal_template": {
+              "metric": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED_MONTH",
+              "unit": "MONTH",
+              "tracking_mode": "ACCUMULATIVE",
+              "safety_threshold": 1,
+              "description": "월급봉투 인정월 6개월"
+            },
+            "achievable_reason_code": "FUTURE_INTENT_CONFIRMED_AND_TIME_FEASIBLE",
+            "insufficient_time_reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES",
+            "user_declined_reason_code": "USER_DECLINED"
+          },
+          "true_reason_code": "DISTINCT_PERIOD_COUNT_REACHED",
+          "false_reason_code": "DISTINCT_PERIOD_COUNT_NOT_REACHED"
+        },
+        "reward": {
+          "type": "INTEREST_RATE",
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "provenance": [
+          {
+            "document_id": "DOC-SHINHAN-YOUTH-20260722",
+            "document_name": "신한은행 청년 처음적금 상품설명서",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+            "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+          }
+        ],
+        "extraction_confidence": 0.97
+      }
+    ],
+    "service_references": [
+      {
+        "institution_id": "SHINHAN_BANK",
+        "service_name": "급여클럽",
+        "concept_name": "월급봉투",
+        "reference_type": "REQUIRES_SERVICE_DEFINITION",
+        "used_by_rule_ids": [
+          "RATE_SALARY_ENVELOPE_6M"
+        ],
+        "provenance": [
+          {
+            "document_id": "DOC-SHINHAN-YOUTH-20260722",
+            "document_name": "신한은행 청년 처음적금 상품설명서",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+            "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+          }
+        ]
+      }
+    ],
+    "required_facts": [
+      {
+        "fact_type": "SHINHAN_GOLDEN_ELIGIBLE",
+        "semantic_type": "OBSERVED_FACT",
+        "authority_hint": "INSTITUTION_OR_MYDATA",
+        "used_by_rule_ids": [
+          "ELIG-SHINHAN_GOLDEN_ELIGIBLE"
+        ],
+        "description": null
+      },
+      {
+        "fact_type": "SHINHAN_SALARY_CLUB_ENVELOPE_RECEIVED",
+        "semantic_type": "OBSERVED_EVENT",
+        "authority_hint": "INSTITUTION_SERVICE",
+        "used_by_rule_ids": [
+          "RATE_SALARY_ENVELOPE_6M"
+        ],
+        "description": null
+      },
+      {
+        "fact_type": "WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M",
+        "semantic_type": "FUTURE_INTENT",
+        "authority_hint": "USER_DECLARED",
+        "used_by_rule_ids": [
+          "RATE_SALARY_ENVELOPE_6M"
+        ],
+        "description": null
+      }
+    ],
+    "unresolved_items": [
+      {
+        "issue_type": "EXTERNAL_DEFINITION_REQUIRED",
+        "description": "월급봉투 인정정의는 급여클럽 Service Definition이 필요함",
+        "related_rule_ids": [
+          "RATE_SALARY_ENVELOPE_6M"
+        ],
+        "provenance": [
+          {
+            "document_id": "DOC-SHINHAN-YOUTH-20260722",
+            "document_name": "신한은행 청년 처음적금 상품설명서",
+            "page": 2,
+            "section": "[1] 주거래 우대",
+            "source_url": "https://example.invalid/shinhan-youth-first.pdf",
+            "source_text": "상품 신규 후 인정기간 중 급여클럽 월급봉투를 6개월 이상 받은 경우 연 1.0%p 우대"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "extraction_metadata": {
+      "extractor_profile": "RULE_EXTRACTION",
+      "prompt_template_id": "financial-rule-extraction",
+      "prompt_template_version": "0.3.0",
+      "response_schema_version": "0.3",
+      "provider": "MOCK",
+      "model": "mock-model",
+      "model_version": null,
+      "document_hash": "a92e0ed238f4f80d0e5b43a3ad8d1cdf935826c9ed49f7e1822de089ec9291bc"
+    }
+  },
+  "state": "APPROVED",
+  "state_history": [
+    "DRAFT",
+    "SCHEMA_VALID",
+    "SEMANTIC_VALID",
+    "REVIEW_REQUIRED",
+    "APPROVED"
+  ],
+  "schema_report": {
+    "valid": true,
+    "issues": []
+  },
+  "semantic_report": {
+    "valid": true,
+    "issues": [
+      {
+        "severity": "WARNING",
+        "code": "EXTERNAL_SERVICE_DEPENDENCY",
+        "message": "Institution service definition required: 급여클럽/월급봉투",
+        "rule_id": null,
+        "path": null
+      }
+    ]
+  },
+  "draft_hash": "f52879e2bed0df7fd57c001eae0b0f13ae7fda7697c57200bd792336e72710f8",
+  "reviewer_id": "HUMAN-DEMO-REVIEWER",
+  "review_note": "Golden extraction demo reviewed",
+  "reviewed_at": "2026-08-19T12:59:06.194015Z"
+}

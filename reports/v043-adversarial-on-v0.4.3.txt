@@ -1,0 +1,82 @@
+{
+  "A_cross_frequency_affordability": {
+    "global_monthly_limit": "300000",
+    "allowed_options": [
+      "1000",
+      "2000",
+      "3000"
+    ],
+    "option_results": {
+      "1000": {
+        "status": "FEASIBLE",
+        "max_bucket_amount": "90000",
+        "violation_bucket": null
+      },
+      "2000": {
+        "status": "FEASIBLE",
+        "max_bucket_amount": "180000",
+        "violation_bucket": null
+      },
+      "3000": {
+        "status": "FEASIBLE",
+        "max_bucket_amount": "270000",
+        "violation_bucket": null
+      },
+      "5000": {
+        "status": "INFEASIBLE",
+        "max_bucket_amount": "450000",
+        "violation_bucket": "2026-12"
+      },
+      "10000": {
+        "status": "INFEASIBLE",
+        "max_bucket_amount": "900000",
+        "violation_bucket": "2026-10"
+      }
+    }
+  },
+  "B_five_occurrence_calendar_month": {
+    "subscription_date": "2026-08-20",
+    "october_event_dates": [
+      "2026-10-01",
+      "2026-10-08",
+      "2026-10-15",
+      "2026-10-22",
+      "2026-10-29"
+    ],
+    "october_total": "400000",
+    "four_week_approximation": "320000",
+    "limit": "350000",
+    "actual_feasible": false
+  },
+  "C_all_options_infeasible_clarification": {
+    "candidate_silently_removed": false,
+    "current_limit": "80000",
+    "minimum_required": "90000",
+    "allowed_resolutions": [
+      "ADJUST_GLOBAL_AFFORDABILITY",
+      "EXCLUDE_PRODUCT"
+    ]
+  },
+  "D_affordability_adjustment_to_rerank": {
+    "new_global_monthly_limit": "300000",
+    "selected_start_amount": "3000",
+    "total_principal": "1053000",
+    "after_tax_interest": "7973",
+    "rank": 1
+  },
+  "E_invalid_answer_atomicity": {
+    "invalid_answer": "10000",
+    "business_state_unchanged": true,
+    "same_question_retryable": true,
+    "valid_retry_committed": "2000"
+  },
+  "F_product_state_isolation": {
+    "choices": {
+      "V043-A:preferred_start_amount": "3000",
+      "V043-B:preferred_start_amount": "2000"
+    },
+    "global_monthly_limit": "300000",
+    "global_desired_amount": "300000"
+  }
+}
+[PASS] v0.4.3 adversarial scenarios A-F: /mnt/data/financial-eligibility-engine-v0.4.3/examples/v0.4.3/v0.4.3-adversarial.json

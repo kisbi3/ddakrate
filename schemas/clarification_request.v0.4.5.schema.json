@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "clarification_id": {
+      "title": "Clarification Id",
+      "type": "string"
+    },
+    "conflict_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Conflict Ids",
+      "type": "array"
+    },
+    "allowed_resolutions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Resolutions",
+      "type": "array"
+    },
+    "question_payload": {
+      "additionalProperties": true,
+      "title": "Question Payload",
+      "type": "object"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    },
+    "status": {
+      "default": "PENDING",
+      "enum": [
+        "PENDING",
+        "RESOLVED"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "clarification_id",
+    "conflict_ids",
+    "allowed_resolutions",
+    "question_payload",
+    "question"
+  ],
+  "title": "ClarificationRequest",
+  "type": "object"
+}

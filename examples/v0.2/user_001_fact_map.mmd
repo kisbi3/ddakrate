@@ -1,0 +1,50 @@
+flowchart LR
+    U["사용자\nU001"]
+    F0["BIRTH_DATE<br/>value=1998-04-10<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F0
+    FPV0_0["provenance<br/>virtual-mydata/user-profile"]
+    F0 -. source .-> FPV0_0
+    F1["SHINHAN_CARD_HELD<br/>value=True<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F1
+    FPV1_0["provenance<br/>virtual-mydata/card-holding"]
+    F1 -. source .-> FPV1_0
+    F2["SHINHAN_CARD_SETTLEMENT_BANK<br/>value=OTHER_BANK<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F2
+    FPV2_0["provenance<br/>virtual-mydata/card-settlement-account"]
+    F2 -. source .-> FPV2_0
+    F3["CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE<br/>value=True<br/>source=USER_DECLARED<br/>valid=-~OPEN"]
+    U --> F3
+    FPV3_0["provenance<br/>fixture/user-intent/card-account-change"]
+    F3 -. source .-> FPV3_0
+    F4["SHINHAN_CARD_TYPE<br/>value=CHECK<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F4
+    FPV4_0["provenance<br/>virtual-mydata/card-holding"]
+    F4 -. source .-> FPV4_0
+    F5["SHINHAN_RELEVANT_HOLDING_HISTORY_COMPLETE<br/>value=True<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F5
+    FPV5_0["provenance<br/>virtual-mydata/shinhan-holding-history-coverage"]
+    F5 -. source .-> FPV5_0
+    F6["SALARY_RECEIVING_BANK<br/>value=OTHER_BANK<br/>source=MYDATA_VERIFIED<br/>valid=-~OPEN"]
+    U --> F6
+    FPV6_0["provenance<br/>virtual-mydata/salary-transaction-history"]
+    F6 -. source .-> FPV6_0
+    F7["SALARY_ACCOUNT_CHANGE_POSSIBLE<br/>value=True<br/>source=USER_DECLARED<br/>valid=-~OPEN"]
+    U --> F7
+    FPV7_0["provenance<br/>fixture/user-intent/salary-account-change"]
+    F7 -. source .-> FPV7_0
+    F8["SHINHAN_YOUTH_FIRST_ACTIVE_ACCOUNT_COUNT<br/>value=0<br/>source=MYDATA_VERIFIED<br/>valid=2026-08-19~2026-08-20"]
+    U --> F8
+    FPV8_0["provenance<br/>virtual-mydata/account-snapshot"]
+    F8 -. source .-> FPV8_0
+    A0["계좌보유 | 신한 입출금통장<br/>institution=SHINHAN_BANK<br/>held=2024-01-05~OPEN<br/>source=MYDATA_VERIFIED"]
+    U --> A0
+    APV0_0["provenance<br/>virtual-mydata/account-history/current"]
+    A0 -. source .-> APV0_0
+    A1["계좌보유 | 과거 신한 정기적금<br/>institution=SHINHAN_BANK<br/>held=2025-11-15~2026-04-12<br/>source=MYDATA_VERIFIED"]
+    U --> A1
+    APV1_0["provenance<br/>virtual-mydata/account-history/closed"]
+    A1 -. source .-> APV1_0
+    COV0["Coverage | ACCOUNT_HOLDING_HISTORY<br/>institution=SHINHAN_BANK<br/>covered=2024-01-01~2026-08-19<br/>source=MYDATA_VERIFIED"]
+    U --> COV0
+    COVPV0_0["provenance<br/>virtual-mydata/shinhan-holding-history-coverage-interval"]
+    COV0 -. source .-> COVPV0_0

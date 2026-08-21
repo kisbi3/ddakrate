@@ -1,0 +1,65 @@
+{
+  "$defs": {
+    "FactSemanticType": {
+      "enum": [
+        "OBSERVED_FACT",
+        "OBSERVED_EVENT",
+        "DERIVED_FACT",
+        "FUTURE_INTENT",
+        "SELF_REPORTED_FACT"
+      ],
+      "title": "FactSemanticType",
+      "type": "string"
+    },
+    "FactSourceType": {
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "USER_DECLARED",
+        "UNKNOWN"
+      ],
+      "title": "FactSourceType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Reusable semantic/authority gate for facts and event records.\n\nSTRICT uses only the strict sets. MVP_PROVISIONAL may additionally use the\nprovisional sets, but those records are marked as self-reported evidence.",
+  "properties": {
+    "strict_semantic_types": {
+      "items": {
+        "$ref": "#/$defs/FactSemanticType"
+      },
+      "title": "Strict Semantic Types",
+      "type": "array"
+    },
+    "strict_source_types": {
+      "items": {
+        "$ref": "#/$defs/FactSourceType"
+      },
+      "title": "Strict Source Types",
+      "type": "array"
+    },
+    "provisional_semantic_types": {
+      "items": {
+        "$ref": "#/$defs/FactSemanticType"
+      },
+      "title": "Provisional Semantic Types",
+      "type": "array"
+    },
+    "provisional_source_types": {
+      "items": {
+        "$ref": "#/$defs/FactSourceType"
+      },
+      "title": "Provisional Source Types",
+      "type": "array"
+    },
+    "allow_provisional": {
+      "default": true,
+      "title": "Allow Provisional",
+      "type": "boolean"
+    }
+  },
+  "title": "FactAcceptancePolicy",
+  "type": "object"
+}

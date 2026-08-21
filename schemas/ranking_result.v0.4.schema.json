@@ -1,0 +1,258 @@
+{
+  "$defs": {
+    "EligibilityBadge": {
+      "enum": [
+        "ELIGIBLE",
+        "PLAN_REQUIRED",
+        "VERIFICATION_REQUIRED",
+        "INELIGIBLE"
+      ],
+      "title": "EligibilityBadge",
+      "type": "string"
+    },
+    "RankingObjective": {
+      "enum": [
+        "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_REALIZABLE_RATE",
+        "MIN_ACTION_BURDEN",
+        "BALANCED"
+      ],
+      "title": "RankingObjective",
+      "type": "string"
+    },
+    "RecommendationListItem": {
+      "additionalProperties": false,
+      "properties": {
+        "rank": {
+          "minimum": 1,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "institution_name": {
+          "title": "Institution Name",
+          "type": "string"
+        },
+        "product_name": {
+          "title": "Product Name",
+          "type": "string"
+        },
+        "product_type": {
+          "title": "Product Type",
+          "type": "string"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Realizable Rate"
+        },
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Advertised Max Rate"
+        },
+        "term_summary": {
+          "title": "Term Summary",
+          "type": "string"
+        },
+        "contribution_summary": {
+          "title": "Contribution Summary",
+          "type": "string"
+        },
+        "maximum_deposit_summary": {
+          "title": "Maximum Deposit Summary",
+          "type": "string"
+        },
+        "planned_contribution_summary": {
+          "title": "Planned Contribution Summary",
+          "type": "string"
+        },
+        "estimated_total_principal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Total Principal"
+        },
+        "estimated_after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated After Tax Interest"
+        },
+        "eligibility_badge": {
+          "$ref": "#/$defs/EligibilityBadge"
+        },
+        "verification_badge": {
+          "$ref": "#/$defs/VerificationBadge"
+        },
+        "material_unknown_count": {
+          "minimum": 0,
+          "title": "Material Unknown Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rank",
+        "product_id",
+        "institution_name",
+        "product_name",
+        "product_type",
+        "realizable_rate",
+        "advertised_max_rate",
+        "term_summary",
+        "contribution_summary",
+        "maximum_deposit_summary",
+        "planned_contribution_summary",
+        "eligibility_badge",
+        "verification_badge",
+        "material_unknown_count"
+      ],
+      "title": "RecommendationListItem",
+      "type": "object"
+    },
+    "TopKStabilityResult": {
+      "additionalProperties": false,
+      "properties": {
+        "stable_membership": {
+          "title": "Stable Membership",
+          "type": "boolean"
+        },
+        "current_kth_realizable_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Kth Realizable Score"
+        },
+        "maximum_nonselected_optimistic_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Nonselected Optimistic Score"
+        },
+        "material_internal_question_remaining": {
+          "default": false,
+          "title": "Material Internal Question Remaining",
+          "type": "boolean"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stable_membership",
+        "reason_code"
+      ],
+      "title": "TopKStabilityResult",
+      "type": "object"
+    },
+    "VerificationBadge": {
+      "enum": [
+        "FINANCIAL_DATA_VERIFIED",
+        "USER_RESPONSE_INCLUDED",
+        "PLAN_BASED",
+        "ADDITIONAL_VERIFICATION_REQUIRED"
+      ],
+      "title": "VerificationBadge",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "ranking_run_id": {
+      "title": "Ranking Run Id",
+      "type": "string"
+    },
+    "ranking_objective": {
+      "$ref": "#/$defs/RankingObjective"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/RecommendationListItem"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "ordered_product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Ordered Product Ids",
+      "type": "array"
+    },
+    "stability": {
+      "$ref": "#/$defs/TopKStabilityResult"
+    },
+    "generated_at": {
+      "format": "date-time",
+      "title": "Generated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ranking_run_id",
+    "ranking_objective",
+    "items",
+    "ordered_product_ids",
+    "stability"
+  ],
+  "title": "RankingResult",
+  "type": "object"
+}

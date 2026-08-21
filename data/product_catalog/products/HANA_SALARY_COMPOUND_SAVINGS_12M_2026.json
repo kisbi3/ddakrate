@@ -1,0 +1,359 @@
+{
+  "product_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026",
+  "institution_id": "HANA_BANK",
+  "name": "급여하나 월복리 적금(12개월)",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 12,
+    "unit": "MONTH"
+  },
+  "base_rate": "2.95",
+  "advertised_max_rate": "5.25",
+  "preferential_rate_cap": "2.30",
+  "eligibility_rule": {
+    "rule_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026_ELIG",
+    "name": "공식 가입대상 충족",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": null,
+      "page": null,
+      "section": "가입대상",
+      "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "ELIGIBLE_HANA_SALARY_COMPOUND_SAVINGS_12M_2026",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "EQ",
+    "expected": true,
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "OFFICIAL_ELIGIBILITY_MATCH",
+    "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": {
+      "resolution_strategy": "QUERY_INSTITUTION",
+      "impact": null,
+      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
+      "question": null,
+      "expected_semantic_type": null,
+      "action_id": null,
+      "reward_id": null,
+      "grounding_terms": []
+    },
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026_R01",
+        "name": "급여실적 계약기간 절반 이상 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "급여 우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "HANA_SALARY_HALF_TERM",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.9"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.9",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026_R02",
+        "name": "온라인 가입/재예치 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "온라인 우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "HANA_SALARY_ONLINE_OR_RENEWAL",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.1"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.1",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026_R03",
+        "name": "청년 특별우대(공식 eligibility)",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "청년 특별우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "HANA_SALARY_YOUTH_SPECIAL_ELIGIBLE",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "1.3"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "1.3",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026_MATURITY_GUARD",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": null,
+        "page": null,
+        "section": "만기/중도해지",
+        "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION",
+      "missing_reason_code": "MATURITY_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "HANA_BANK",
+    "product_id": "HANA_SALARY_COMPOUND_SAVINGS_12M_2026",
+    "product_name": "급여하나 월복리 적금(12개월)",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "max_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "available_terms": [
+      {
+        "value": 12,
+        "unit": "MONTH"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": "10000",
+      "periodic_amount_max": "3000000",
+      "contribution_frequency": "MONTHLY",
+      "contribution_mode": "FLEXIBLE",
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "2.95",
+    "advertised_max_rate": "5.25",
+    "preferential_rate_cap": "2.30",
+    "allowed_channels": [
+      "MOBILE"
+    ],
+    "features": [
+      {
+        "feature_id": "SALARY_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "급여 우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "DIGITAL_CHANNEL_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "온라인 우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "YOUTH_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "청년 특별우대",
+          "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "실명의 개인 및 개인사업자",
+    "one_account_per_person": true,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": "우대금리는 원칙적으로 만기해지 시 적용하며 중도해지 시 상품별 중도해지이율을 적용.",
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": null,
+    "effective_to": null,
+    "source_reference": {
+      "document": "하나은행 급여하나 월복리 적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": null,
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://www.hanabank.com/cont/mall/mall08/mall0801/mall080102/1455929_115157.jsp",
+      "source_text": null
+    }
+  }
+}

@@ -1,0 +1,521 @@
+{
+  "$defs": {
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
+      "type": "string"
+    },
+    "PersonalizedRecommendationReason": {
+      "additionalProperties": false,
+      "properties": {
+        "positives": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Positives",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "actions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Actions",
+          "type": "array"
+        },
+        "unknowns": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unknowns",
+          "type": "array"
+        }
+      },
+      "title": "PersonalizedRecommendationReason",
+      "type": "object"
+    },
+    "RateBreakdownItem": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_label": {
+          "title": "Rule Label",
+          "type": "string"
+        },
+        "nominal_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Nominal Reward Pp"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "verification_level": {
+          "$ref": "#/$defs/VerificationLevel"
+        },
+        "evidence_basis": {
+          "title": "Evidence Basis",
+          "type": "string"
+        },
+        "action_summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Summary"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "rule_id",
+        "rule_label",
+        "nominal_reward_pp",
+        "status",
+        "verification_level",
+        "evidence_basis",
+        "reason_code"
+      ],
+      "title": "RateBreakdownItem",
+      "type": "object"
+    },
+    "RateCapAdjustment": {
+      "additionalProperties": false,
+      "properties": {
+        "cap_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Cap Pp"
+        },
+        "pre_cap_total_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Pre Cap Total Pp"
+        },
+        "cap_reduction_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Cap Reduction Pp"
+        },
+        "post_cap_total_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Post Cap Total Pp"
+        }
+      },
+      "required": [
+        "cap_pp",
+        "pre_cap_total_pp",
+        "cap_reduction_pp",
+        "post_cap_total_pp"
+      ],
+      "title": "RateCapAdjustment",
+      "type": "object"
+    },
+    "RateContribution": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "nominal_reward_pp": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Nominal Reward Pp"
+        },
+        "status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "evidence_bucket": {
+          "title": "Evidence Bucket",
+          "type": "string"
+        },
+        "included_in_confirmed": {
+          "title": "Included In Confirmed",
+          "type": "boolean"
+        },
+        "included_in_realizable": {
+          "title": "Included In Realizable",
+          "type": "boolean"
+        },
+        "included_in_conditional_upper": {
+          "title": "Included In Conditional Upper",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rule_id",
+        "nominal_reward_pp",
+        "status",
+        "evidence_bucket",
+        "included_in_confirmed",
+        "included_in_realizable",
+        "included_in_conditional_upper"
+      ],
+      "title": "RateContribution",
+      "type": "object"
+    },
+    "SourceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "title": "Document",
+          "type": "string"
+        },
+        "document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Id"
+        },
+        "version_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Date"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "source_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Text"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "title": "SourceReference",
+      "type": "object"
+    },
+    "VerificationLevel": {
+      "description": "User-facing evidence classification for an evaluated rule/result.",
+      "enum": [
+        "INSTITUTION_VERIFIED",
+        "MYDATA_VERIFIED",
+        "DERIVED",
+        "SELF_REPORTED",
+        "USER_INTENT",
+        "MIXED",
+        "UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "VerificationLevel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "recommendation_id": {
+      "title": "Recommendation Id",
+      "type": "string"
+    },
+    "search_session_id": {
+      "title": "Search Session Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "product_name": {
+      "title": "Product Name",
+      "type": "string"
+    },
+    "institution_name": {
+      "title": "Institution Name",
+      "type": "string"
+    },
+    "product_type": {
+      "title": "Product Type",
+      "type": "string"
+    },
+    "rank": {
+      "title": "Rank",
+      "type": "integer"
+    },
+    "realizable_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Realizable Rate"
+    },
+    "confirmed_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Confirmed Rate"
+    },
+    "advertised_max_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Advertised Max Rate"
+    },
+    "term_summary": {
+      "title": "Term Summary",
+      "type": "string"
+    },
+    "contribution_summary": {
+      "title": "Contribution Summary",
+      "type": "string"
+    },
+    "maximum_deposit_summary": {
+      "title": "Maximum Deposit Summary",
+      "type": "string"
+    },
+    "planned_contribution_summary": {
+      "title": "Planned Contribution Summary",
+      "type": "string"
+    },
+    "estimated_total_principal": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated Total Principal"
+    },
+    "estimated_pre_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated Pre Tax Interest"
+    },
+    "estimated_after_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated After Tax Interest"
+    },
+    "rate_breakdown": {
+      "items": {
+        "$ref": "#/$defs/RateBreakdownItem"
+      },
+      "title": "Rate Breakdown",
+      "type": "array"
+    },
+    "rate_contributions": {
+      "items": {
+        "$ref": "#/$defs/RateContribution"
+      },
+      "title": "Rate Contributions",
+      "type": "array"
+    },
+    "rate_cap_adjustment": {
+      "$ref": "#/$defs/RateCapAdjustment"
+    },
+    "recommendation_reason": {
+      "$ref": "#/$defs/PersonalizedRecommendationReason"
+    },
+    "explanation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Explanation"
+    }
+  },
+  "required": [
+    "recommendation_id",
+    "search_session_id",
+    "product_id",
+    "product_name",
+    "institution_name",
+    "product_type",
+    "rank",
+    "realizable_rate",
+    "confirmed_rate",
+    "advertised_max_rate",
+    "term_summary",
+    "contribution_summary",
+    "maximum_deposit_summary",
+    "planned_contribution_summary",
+    "rate_breakdown",
+    "rate_contributions",
+    "rate_cap_adjustment",
+    "recommendation_reason"
+  ],
+  "title": "ProductRecommendationDetail",
+  "type": "object"
+}

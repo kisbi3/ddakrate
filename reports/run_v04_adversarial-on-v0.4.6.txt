@@ -1,0 +1,112 @@
+{
+  "question_grounding": {
+    "malicious_output_rejected": true,
+    "fallback": "이 상품의 +1.0%p 우대를 받으려면 가입 후 월급봉투 인정조건을 6개월 이상 달성해야 합니다. 이 조건을 목표로 관리할까요?"
+  },
+  "kakao_late_streak": {
+    "week_3_to_9_qualifies": true,
+    "seven_week_status": "SATISFIED",
+    "twenty_six_week_status": "UNSATISFIABLE"
+  },
+  "intent_conflict": {
+    "conflict_type": "HARD_SOFT_CONTRADICTION",
+    "resolution_options": [
+      "KEEP_HARD_REMOVE_PREFERENCE",
+      "REMOVE_HARD_KEEP_PREFERENCE",
+      "SET_NEUTRAL"
+    ]
+  },
+  "top5_frontier": {
+    "top_k": 5,
+    "question_fact_type": "ADV_CHALLENGER_FACT",
+    "affected_products": [
+      "ADV-TOP-6"
+    ]
+  },
+  "shared_fact_revision": {
+    "affected_products": [
+      "ADV-SHARED-A",
+      "ADV-SHARED-B"
+    ],
+    "rates_after_revision": {
+      "ADV-SHARED-A": "3.0",
+      "ADV-SHARED-B": "3.0"
+    },
+    "answer_statuses": [
+      "SUPERSEDED",
+      "ACTIVE"
+    ]
+  },
+  "contribution_rerank": {
+    "before": "ADV-LARGE-CAPACITY",
+    "after": "ADV-HIGH-RATE-SMALL",
+    "planned_contribution": "월 100,000원 납입 계획"
+  },
+  "realizable_only_ranking": {
+    "rank_1": "ADV-REALIZABLE",
+    "unknown_candidate_realizable_rate": "2.0",
+    "unknown_candidate_upper_rate": "12.0"
+  },
+  "list_detail_audit": {
+    "list": {
+      "rank": 1,
+      "product_id": "ADV-HIGH-RATE-SMALL",
+      "institution_name": "TEST_BANK",
+      "product_name": "ADV-HIGH-RATE-SMALL",
+      "product_type": "INSTALLMENT_SAVINGS",
+      "realizable_rate": "4.0",
+      "advertised_max_rate": "4.0",
+      "term_summary": "12개월",
+      "contribution_summary": "월 자유적립 납입",
+      "maximum_deposit_summary": "월 최대 100,000원",
+      "planned_contribution_summary": "월 100,000원 납입 계획",
+      "estimated_total_principal": "1200000",
+      "estimated_after_tax_interest": "21996",
+      "ranking_comparability": "COMPARABLE",
+      "missing_ranking_input_count": 0,
+      "eligibility_badge": "ELIGIBLE",
+      "verification_badge": "FINANCIAL_DATA_VERIFIED",
+      "material_unknown_count": 0
+    },
+    "detail_summary": {
+      "product_id": "ADV-HIGH-RATE-SMALL",
+      "rank": 1,
+      "confirmed_rate": "4.0",
+      "realizable_rate": "4.0",
+      "advertised_max_rate": "4.0",
+      "rate_breakdown_count": 0,
+      "cap_adjustment": {
+        "cap_pp": "0",
+        "pre_cap_total_pp": "0",
+        "cap_reduction_pp": "0",
+        "post_cap_total_pp": "0.0"
+      }
+    },
+    "audit_event_count": 57,
+    "audit_event_types": [
+      "CANDIDATE_EVALUATED",
+      "CANDIDATE_RETAINED",
+      "COMPARISON_EXECUTED",
+      "EXPLANATION_GENERATED",
+      "FACT_CANDIDATES_FOUND",
+      "FACT_REQUESTED",
+      "FACT_SOURCE_SELECTED",
+      "OPTIMISTIC_BOUND_CALCULATED",
+      "PRODUCT_DETAIL_OPENED",
+      "RANKING_CALCULATED",
+      "RATE_SUMMARY_CREATED",
+      "RECOMMENDATION_CREATED",
+      "REQUEST_RECEIVED",
+      "RULE_LOADED",
+      "SEARCH_INTENT_PARSED",
+      "SEARCH_INTENT_UPDATED",
+      "SEARCH_SESSION_CREATED",
+      "STATUS_DERIVED",
+      "TOP_K_STABILITY_CHECKED",
+      "WORKING_NOTE_CREATED",
+      "WORKING_NOTE_UPDATED"
+    ]
+  }
+}
+
+WROTE /mnt/data/work-v046/financial-eligibility-engine-v0.4.6/examples/v0.4/adversarial-results-v0.4.json

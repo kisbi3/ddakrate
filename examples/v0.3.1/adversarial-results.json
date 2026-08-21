@@ -1,0 +1,101 @@
+{
+  "suite": "Financial Eligibility Engine v0.3.1 adversarial hardening",
+  "generated_at": "2026-08-20T11:38:22.587313+00:00",
+  "scenarios": {
+    "strict_self_report_authority": {
+      "strict": {
+        "status": "UNKNOWN",
+        "reason_code": "FACT_AUTHORITY_INSUFFICIENT",
+        "progress": {
+          "current": 0,
+          "required": 6,
+          "unit": "MONTH"
+        },
+        "confirmed_rate": "3.05",
+        "is_provisional": false,
+        "rule_verification_level": "UNKNOWN",
+        "evaluation_verification_level": "INSTITUTION_VERIFIED"
+      },
+      "mvp_provisional_control": {
+        "status": "UNKNOWN",
+        "progress": {
+          "current": 0,
+          "required": 6,
+          "unit": "MONTH"
+        },
+        "confirmed_rate": "3.05",
+        "is_provisional": false,
+        "rule_verification_level": "UNKNOWN",
+        "evaluation_verification_level": "INSTITUTION_VERIFIED",
+        "provisional_rule_ids": []
+      }
+    },
+    "goal_current_month_no_double_count": {
+      "rule_status": "ACHIEVABLE",
+      "current_progress": 1,
+      "future_remaining_opportunities": 11,
+      "qualified_opportunity_keys": [
+        "2026-08"
+      ],
+      "buffer": 6
+    },
+    "rule_draft_ast_identity": {
+      "validation_valid": false,
+      "error_codes": [
+        "RULE_IDENTITY_MISMATCH"
+      ],
+      "activation_blocked": true,
+      "activation_error": "RuleDraft/AST rule_id mismatch: RATE_SALARY_ENVELOPE_6M != ADV-DIFFERENT-AST-ID"
+    },
+    "contribution_plan_evaluation_identity": {
+      "monthly_100000": {
+        "evaluation_id": "EVAL-08cbd67f9a5e116d",
+        "realizable_pre_tax_interest": "26325"
+      },
+      "monthly_500000": {
+        "evaluation_id": "EVAL-a5a747b5c289bbdb",
+        "realizable_pre_tax_interest": "131625"
+      },
+      "identity_collision": false
+    },
+    "kakao_late_seven_week_streak": {
+      "seven_week": {
+        "status": "SATISFIED",
+        "progress": {
+          "current": 7,
+          "required": 7,
+          "unit": "OCCURRENCE"
+        },
+        "streak_start_sequence": 3,
+        "streak_end_sequence": 9,
+        "reason_code": "ANY_7_AUTO_TRANSFERS_CONSECUTIVE"
+      },
+      "twenty_six_week": {
+        "status": "UNSATISFIABLE",
+        "progress": {
+          "current": 7,
+          "required": 26,
+          "unit": "OCCURRENCE"
+        },
+        "reason_code": "INSUFFICIENT_FUTURE_OPPORTUNITIES"
+      },
+      "confirmed_rate": "3.0"
+    },
+    "fx_near_threshold": {
+      "original_amount": "14000000",
+      "original_currency": "KRW",
+      "estimated_amount": "10122.000000",
+      "target_currency": "USD",
+      "quote_reference": "FXQ-MOCK_FX-KRW-USD-2026-08-20T00:00:00+00:00",
+      "target_threshold": "10000",
+      "distance_from_threshold": "122.000000",
+      "classification": "NEAR_THRESHOLD",
+      "warning": "FX_VOLATILITY_WARNING",
+      "quoted_at": "2026-08-20T00:00:00Z",
+      "provider": "MOCK_FX",
+      "is_planning_estimate": true,
+      "authoritative_for_final_reward": false
+    }
+  },
+  "all_assertions_passed": true
+}

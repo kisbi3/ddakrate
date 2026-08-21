@@ -1,0 +1,113 @@
+{
+  "A_interest_ranking_units": {
+    "comparable_candidates": [
+      {
+        "product_id": "UNIT-1",
+        "after_tax_interest_krw": "165"
+      },
+      {
+        "product_id": "UNIT-2",
+        "after_tax_interest_krw": "165"
+      },
+      {
+        "product_id": "UNIT-3",
+        "after_tax_interest_krw": "165"
+      },
+      {
+        "product_id": "UNIT-4",
+        "after_tax_interest_krw": "165"
+      },
+      {
+        "product_id": "UNIT-5",
+        "after_tax_interest_krw": "165"
+      }
+    ],
+    "unresolved_candidate": {
+      "product_id": "UNIT-6",
+      "realizable_rate_percent": "5.0",
+      "after_tax_interest_krw": null,
+      "ranking_comparability": "MISSING_CONTRIBUTION_INPUT"
+    },
+    "percent_substituted_as_krw": false,
+    "stable": false
+  },
+  "B_kakao_contribution_completion": {
+    "question_kind": "RANKING_INPUT",
+    "required_field": "preferred_start_amount",
+    "allowed_options": [
+      "1000",
+      "2000",
+      "3000",
+      "5000",
+      "10000"
+    ],
+    "answer": "10000",
+    "cashflow_count": 26,
+    "initial_amount_krw": "10000",
+    "increment_amount_krw": "10000",
+    "principal_krw": "3510000",
+    "after_tax_interest_krw": "26576",
+    "rank_1": "KAKAOBANK_26_WEEK_SAVINGS_20260819"
+  },
+  "C_intent_patch": {
+    "CHANGE_SALARY_ACCOUNT": "CAN",
+    "BRANCH_VISIT": "CAN",
+    "NEW_CARD_ISSUANCE": "CANNOT"
+  },
+  "D_typed_hard_filter": {
+    "retained": true,
+    "product_id": "ADV-EXISTING-CARD",
+    "typed_feature_present": false,
+    "keyword_rule_name_ignored_for_hard_filter": true
+  },
+  "E_nonnumeric_llm_grounding": {
+    "question_hallucination_rejected": true,
+    "explanation_hallucination_rejected": true,
+    "fallback_used": true
+  },
+  "F_nested_detail": {
+    "parent_status": "UNKNOWN",
+    "branches": [
+      {
+        "rule_id": "RATE_FIRST_TRANSACTION_BRANCH",
+        "label": "첫거래 branch",
+        "status": "UNSATISFIABLE",
+        "reason_code": "PRIOR_HOLDING_OVERLAPS_LOOKBACK"
+      },
+      {
+        "rule_id": "RATE_EVENT_BRANCH",
+        "label": "이벤트 branch",
+        "status": "UNKNOWN",
+        "reason_code": "EVENT_COUPON_STATUS_UNRESOLVED"
+      }
+    ],
+    "branch_status": {
+      "RATE_FIRST_TRANSACTION_BRANCH": "UNSATISFIABLE",
+      "RATE_EVENT_BRANCH": "UNKNOWN"
+    },
+    "branch_reasons": {
+      "RATE_FIRST_TRANSACTION_BRANCH": "PRIOR_HOLDING_OVERLAPS_LOOKBACK",
+      "RATE_EVENT_BRANCH": "EVENT_COUPON_STATUS_UNRESOLVED"
+    }
+  },
+  "G_top5_stability": {
+    "ordered_product_ids": [
+      "STAB-1",
+      "STAB-2",
+      "STAB-3",
+      "STAB-4",
+      "STAB-5",
+      "STAB-6"
+    ],
+    "top5_membership_stable_before_materiality": true,
+    "material_question_fact_type": "MATERIAL_FACT",
+    "material_question_product_ids": [
+      "STAB-1"
+    ],
+    "final_stable_membership": true,
+    "final_stable": false,
+    "reason_code": "MATERIAL_QUESTION_REMAINS"
+  }
+}
+
+WROTE /mnt/data/work-v045/financial-eligibility-engine-v0.4.5/examples/v0.4.1/adversarial-results-v0.4.1.json

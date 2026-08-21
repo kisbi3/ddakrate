@@ -1,0 +1,11 @@
+$ cd original financial-eligibility-engine-v0.4 && PYTHONPATH=src pytest
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+........................................................................ [ 95%]
+..........                                                               [100%]
+226 passed in 0.62s
+$ PYTHONPATH=src python -m compileall -q src tests scripts
+compileall PASS
+$ PYTHONPATH=src python import sanity
+eligibility.__version__ = 0.4.0
+imports PASS

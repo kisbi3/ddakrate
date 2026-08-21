@@ -1,0 +1,464 @@
+{
+  "$defs": {
+    "Capability": {
+      "additionalProperties": false,
+      "properties": {
+        "capability_id": {
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/CapabilityState"
+        },
+        "candidate_filter": {
+          "const": false,
+          "default": false,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "capability_id",
+        "state"
+      ],
+      "title": "Capability",
+      "type": "object"
+    },
+    "CapabilityState": {
+      "enum": [
+        "CAN",
+        "UNKNOWN",
+        "CANNOT"
+      ],
+      "title": "CapabilityState",
+      "type": "string"
+    },
+    "ContributionFrequency": {
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "FLEXIBLE"
+      ],
+      "title": "ContributionFrequency",
+      "type": "string"
+    },
+    "ContributionPlanPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "desired_periodic_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Desired Periodic Amount"
+        },
+        "maximum_affordable_periodic_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Affordable Periodic Amount"
+        },
+        "frequency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContributionFrequency"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "selected_term_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Term Value"
+        },
+        "selected_term_unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TermUnit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "preferred_start_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preferred Start Amount"
+        },
+        "incremental_amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Incremental Amount"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        },
+        "tax_rate": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tax Rate"
+        },
+        "remove_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Remove Fields",
+          "type": "array"
+        }
+      },
+      "title": "ContributionPlanPatch",
+      "type": "object"
+    },
+    "HardConstraint": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "constraint": {
+          "$ref": "#/$defs/HardConstraintValue"
+        },
+        "expected": {
+          "default": true,
+          "title": "Expected"
+        },
+        "candidate_filter": {
+          "const": true,
+          "default": true,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field",
+        "constraint"
+      ],
+      "title": "HardConstraint",
+      "type": "object"
+    },
+    "HardConstraintValue": {
+      "enum": [
+        "REQUIRE",
+        "EXCLUDE"
+      ],
+      "title": "HardConstraintValue",
+      "type": "string"
+    },
+    "NumericPreference": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "direction": {
+          "$ref": "#/$defs/NumericPreferenceDirection"
+        },
+        "strictness": {
+          "$ref": "#/$defs/PreferenceStrictness"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "direction",
+        "strictness"
+      ],
+      "title": "NumericPreference",
+      "type": "object"
+    },
+    "NumericPreferenceDirection": {
+      "enum": [
+        "AT_LEAST",
+        "AT_MOST",
+        "AROUND"
+      ],
+      "title": "NumericPreferenceDirection",
+      "type": "string"
+    },
+    "Preference": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "preference": {
+          "$ref": "#/$defs/PreferenceValue"
+        },
+        "expected": {
+          "default": true,
+          "title": "Expected"
+        },
+        "candidate_filter": {
+          "const": false,
+          "default": false,
+          "title": "Candidate Filter",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field",
+        "preference"
+      ],
+      "title": "Preference",
+      "type": "object"
+    },
+    "PreferenceStrictness": {
+      "enum": [
+        "SOFT",
+        "HARD"
+      ],
+      "title": "PreferenceStrictness",
+      "type": "string"
+    },
+    "PreferenceValue": {
+      "enum": [
+        "PREFER_PRESENT",
+        "NEUTRAL",
+        "PREFER_ABSENT"
+      ],
+      "title": "PreferenceValue",
+      "type": "string"
+    },
+    "RankingObjective": {
+      "enum": [
+        "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_REALIZABLE_RATE",
+        "MIN_ACTION_BURDEN",
+        "BALANCED"
+      ],
+      "title": "RankingObjective",
+      "type": "string"
+    },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Patch semantics for follow-up user utterances.\n\nUpserts affect only matching keys; omitted categories remain untouched.\nExplicit removal is represented separately so a short follow-up does not\nsilently erase unrelated intent state.",
+  "properties": {
+    "upsert_product_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Upsert Product Types",
+      "type": "array"
+    },
+    "remove_product_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Product Types",
+      "type": "array"
+    },
+    "upsert_hard_constraints": {
+      "items": {
+        "$ref": "#/$defs/HardConstraint"
+      },
+      "title": "Upsert Hard Constraints",
+      "type": "array"
+    },
+    "remove_hard_constraint_keys": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Hard Constraint Keys",
+      "type": "array"
+    },
+    "upsert_preferences": {
+      "items": {
+        "$ref": "#/$defs/Preference"
+      },
+      "title": "Upsert Preferences",
+      "type": "array"
+    },
+    "remove_preference_keys": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Preference Keys",
+      "type": "array"
+    },
+    "upsert_capabilities": {
+      "items": {
+        "$ref": "#/$defs/Capability"
+      },
+      "title": "Upsert Capabilities",
+      "type": "array"
+    },
+    "remove_capability_keys": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Capability Keys",
+      "type": "array"
+    },
+    "upsert_numeric_preferences": {
+      "items": {
+        "$ref": "#/$defs/NumericPreference"
+      },
+      "title": "Upsert Numeric Preferences",
+      "type": "array"
+    },
+    "remove_numeric_preference_keys": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Numeric Preference Keys",
+      "type": "array"
+    },
+    "contribution_plan_patch": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContributionPlanPatch"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "ranking_objective_patch": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RankingObjective"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "requested_top_k_patch": {
+      "anyOf": [
+        {
+          "maximum": 20,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Requested Top K Patch"
+    }
+  },
+  "title": "IntentPatch",
+  "type": "object"
+}

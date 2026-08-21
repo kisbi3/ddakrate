@@ -1,0 +1,10 @@
+flowchart LR
+    U["사용자\nU-FUTURE-001"]
+    F0["WILL_TRACK_SHINHAN_SALARY_ENVELOPE_6M<br/>value=True<br/>source=USER_DECLARED<br/>semantic=FUTURE_INTENT<br/>valid=2026-08-19~OPEN"]
+    U --> F0
+    FPV0_0["provenance<br/>fixture/user-answer/future-intent"]
+    F0 -. source .-> FPV0_0
+    F1["SHINHAN_GOLDEN_ELIGIBLE<br/>value=True<br/>source=INSTITUTION_VERIFIED<br/>semantic=OBSERVED_FACT<br/>valid=2026-08-19~OPEN"]
+    U --> F1
+    FPV1_0["provenance<br/>fixture/shinhan/golden-eligibility"]
+    F1 -. source .-> FPV1_0

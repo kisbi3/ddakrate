@@ -1,0 +1,425 @@
+{
+  "product_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026",
+  "institution_id": "WOORI_BANK",
+  "name": "우리은행 장병내일준비적금(15개월)",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": null,
+  "contract_term": {
+    "value": 15,
+    "unit": "MONTH"
+  },
+  "base_rate": "5.0",
+  "advertised_max_rate": "6.0",
+  "preferential_rate_cap": "1.0",
+  "eligibility_rule": {
+    "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_ELIG",
+    "name": "공식 가입대상 충족",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": {
+      "document": "우리은행 장병내일준비적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": null,
+      "page": null,
+      "section": "가입대상",
+      "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+      "source_text": null
+    },
+    "type": "FACT_COMPARE",
+    "fact_type": "WOORI_ARMY_ELIGIBILITY_VERIFIED",
+    "value_path": null,
+    "effective_at": null,
+    "subject_selector": null,
+    "operator": "EQ",
+    "expected": true,
+    "on_true_status": "SATISFIED",
+    "on_false_status": "UNSATISFIABLE",
+    "on_missing_status": "UNKNOWN",
+    "true_reason_code": "OFFICIAL_ELIGIBILITY_MATCH",
+    "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
+    "missing_reason_code": "REQUIRED_FACT_MISSING",
+    "missing_fact": {
+      "resolution_strategy": "QUERY_INSTITUTION",
+      "impact": null,
+      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
+      "question": null,
+      "expected_semantic_type": null,
+      "action_id": null,
+      "reward_id": null,
+      "grounding_terms": []
+    },
+    "action": null,
+    "required_semantic_type": null,
+    "fact_acceptance_policy": null
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_R01",
+        "name": "우리계좌 자동이체 실적 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "WOORI_ARMY_AUTO_TRANSFER_HALF",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.4"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.4",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_R02",
+        "name": "우리카드 결제 실적 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "WOORI_ARMY_CARD_PERFORMANCE",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.2"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_R03",
+        "name": "우리은행 주택청약 보유 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "WOORI_ARMY_HOUSING_HELD",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.2"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_R04",
+        "name": "공식 문서상 기타 우대금리 entitlement",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "BOTH",
+        "description": null,
+        "source": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대금리",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "OFFICIAL_OTHER_PREFERENTIAL_WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026",
+        "value_path": null,
+        "effective_at": null,
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": true,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "FACT_COMPARISON_MATCH",
+        "false_reason_code": "FACT_COMPARISON_MISMATCH",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": {
+          "resolution_strategy": "QUERY_INSTITUTION",
+          "impact": {
+            "rate_pp": "0.2"
+          },
+          "required_source": "INSTITUTION_SERVICE_OR_OFFICIAL_LEDGER",
+          "question": null,
+          "expected_semantic_type": null,
+          "action_id": null,
+          "reward_id": null,
+          "grounding_terms": []
+        },
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026_MATURITY_GUARD",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "BOTH",
+      "description": null,
+      "source": {
+        "document": "우리은행 장병내일준비적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": null,
+        "page": null,
+        "section": "만기/중도해지",
+        "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION",
+      "missing_reason_code": "MATURITY_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "WOORI_BANK",
+    "product_id": "WOORI_SOLDIER_TOMORROW_SAVINGS_15M_2026",
+    "product_name": "우리은행 장병내일준비적금(15개월)",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 15,
+      "unit": "MONTH"
+    },
+    "max_term": {
+      "value": 15,
+      "unit": "MONTH"
+    },
+    "available_terms": [
+      {
+        "value": 15,
+        "unit": "MONTH"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": "0",
+      "periodic_amount_max": "300000",
+      "contribution_frequency": "MONTHLY",
+      "contribution_mode": "FLEXIBLE",
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "5.0",
+    "advertised_max_rate": "6.0",
+    "preferential_rate_cap": "1.0",
+    "allowed_channels": [
+      "MOBILE"
+    ],
+    "features": [
+      {
+        "feature_id": "AUTO_TRANSFER_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "CARD_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "HOUSING_SUBSCRIPTION_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대조건",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "INSTITUTION_SERVICE_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "우리은행 장병내일준비적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": null,
+          "page": null,
+          "section": "우대금리",
+          "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "장병내일준비적금 가입자격 확인서 발급 대상",
+    "one_account_per_person": true,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": "우대금리는 원칙적으로 만기해지 시 적용하며 중도해지 시 상품별 중도해지이율을 적용.",
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": null,
+    "effective_to": null,
+    "source_reference": {
+      "document": "우리은행 장병내일준비적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": null,
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://spot.wooribank.com/pot/Dream?PRD_CD=P010002283&PRD_YN=Y&cc=c007095%3Ac009166%3Bc012263%3Ac012399&withyou=PODEP0019",
+      "source_text": null
+    }
+  }
+}

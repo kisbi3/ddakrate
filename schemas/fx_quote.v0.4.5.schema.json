@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "quote_id": {
+      "title": "Quote Id",
+      "type": "string"
+    },
+    "base_currency": {
+      "title": "Base Currency",
+      "type": "string"
+    },
+    "quote_currency": {
+      "title": "Quote Currency",
+      "type": "string"
+    },
+    "rate": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Rate"
+    },
+    "provider": {
+      "title": "Provider",
+      "type": "string"
+    },
+    "quoted_at": {
+      "format": "date-time",
+      "title": "Quoted At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "quote_id",
+    "base_currency",
+    "quote_currency",
+    "rate",
+    "provider",
+    "quoted_at"
+  ],
+  "title": "FxQuote",
+  "type": "object"
+}

@@ -1,0 +1,51 @@
+{
+  "institution_id": "HANA_BANK",
+  "service_id": "HANA_HEALTH_ASSET_MANAGEMENT",
+  "name": "하나 건강자산관리",
+  "description": "건강데이터 동의와 허용된 달리기 기록 연동을 관리하고, 하나 서비스 화면에서 인정된 누적거리를 권위 있는 Fact로 제공",
+  "effective_from": "2026-04-29",
+  "effective_to": null,
+  "facts": [
+    {
+      "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+      "description": "건강자산관리 가입 및 필수 동의가 유효함",
+      "authoritative_source": "Hana Health Asset Management service",
+      "derivation_chain": [
+        "SERVICE_ENROLLED",
+        "HEALTH_DATA_CONSENT_ACTIVE",
+        "MEASUREMENT_PERMISSION_ACTIVE"
+      ]
+    },
+    {
+      "fact_type": "HANA_RUNNING_DATA_LINKED",
+      "description": "허용된 앱·기기에서 생성된 달리기 기록이 연동됨",
+      "authoritative_source": "Hana Health Asset Management service",
+      "derivation_chain": [
+        "SUPPORTED_MEASUREMENT_SOURCE",
+        "NOT_MANUAL_INPUT",
+        "RUNNING_RECORD_LINKED"
+      ]
+    },
+    {
+      "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+      "description": "하나 건강자산관리 화면에서 상품 실적으로 인정된 누적 달리기 거리",
+      "authoritative_source": "Hana Health Asset Management service",
+      "derivation_chain": [
+        "HEALTH_DATA_CONSENT_ACTIVE",
+        "RUNNING_RECORD_LINKED",
+        "SUPPORTED_MEASUREMENT_SOURCE",
+        "HANA_SERVICE_CONFIRMATION_BEFORE_DEADLINE",
+        "CONFIRMED_RUNNING_DISTANCE_KM"
+      ]
+    }
+  ],
+  "source_provenance": [
+    {
+      "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+      "version_date": "2026-04-29",
+      "page": null,
+      "section": "건강자산관리 및 달리기 누적거리 우대",
+      "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp"
+    }
+  ]
+}

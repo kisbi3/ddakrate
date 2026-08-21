@@ -1,0 +1,364 @@
+{
+  "intent": {
+    "search_intent_id": "INTENT-2b2fb8e6a7c73b54",
+    "user_id": "U001",
+    "product_types": [
+      "INSTALLMENT_SAVINGS"
+    ],
+    "ranking_objective": "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+    "hard_constraints": [],
+    "preferences": [],
+    "capabilities": [],
+    "numeric_preferences": [
+      {
+        "field": "MONTHLY_CONTRIBUTION",
+        "value": "300000",
+        "direction": "AROUND",
+        "strictness": "SOFT",
+        "currency": "KRW"
+      },
+      {
+        "field": "TERM_MONTHS",
+        "value": "12",
+        "direction": "AROUND",
+        "strictness": "SOFT",
+        "currency": null
+      }
+    ],
+    "contribution_plan": {
+      "desired_periodic_amount": "300000",
+      "maximum_affordable_periodic_amount": null,
+      "frequency": "MONTHLY",
+      "selected_term_value": 1,
+      "selected_term_unit": "YEAR",
+      "preferred_start_amount": null,
+      "incremental_amount": null,
+      "currency": "KRW",
+      "tax_rate": "0.154"
+    },
+    "requested_top_k": 5,
+    "source_utterances": [
+      "1년 정도 월 30만원을 넣을 적금 중 나에게 가장 좋은 상품 5개를 찾아줘."
+    ],
+    "created_at": "2026-08-20T04:34:53.519613Z",
+    "updated_at": "2026-08-20T04:34:53.519613Z"
+  },
+  "session": {
+    "search_session_id": "SEARCH-4773bc0c6d60d009",
+    "user_id": "U001",
+    "intent_version": 1,
+    "status": "QUESTIONING",
+    "candidate_product_ids": [
+      "SHINHAN_YOUTH_FIRST_SAVINGS_20260722",
+      "KAKAOBANK_26_WEEK_SAVINGS_20260819",
+      "IBK_PARENT_BENEFIT_SAVINGS_20260220",
+      "HANA_RUN_SAVINGS_20260429"
+    ],
+    "active_question_id": "QUESTION-5bf82f94c64911c3",
+    "answered_question_ids": [],
+    "ranking_run_id": "RANK-3eaae760febeba3f",
+    "recommendation_id": "REC-7aa1d4191904b3de",
+    "top_k": 5,
+    "created_at": "2026-08-20T04:34:53.519754Z",
+    "updated_at": "2026-08-20T04:34:53.547079Z"
+  },
+  "next_question": {
+    "question_id": "QUESTION-5bf82f94c64911c3",
+    "request": {
+      "fact_type": "SPECIAL_RATE_COUPON_VALID",
+      "status": "UNRESOLVED",
+      "resolution_strategy": "ASK_USER",
+      "impact": {
+        "rate_pp": "1.0"
+      },
+      "required_source": "SHINHAN_EVENT_ENTITLEMENT",
+      "question": "청년 처음적금에 적용되는 특별금리 우대쿠폰을 보유하고 있나요?",
+      "requested_by_rule_id": "RATE_EVENT_BRANCH",
+      "expected_semantic_type": "SELF_REPORTED_FACT",
+      "action_id": null,
+      "reward_id": "REWARD_RATE_FIRST_OR_EVENT",
+      "grounding_terms": [
+        "특별금리",
+        "쿠폰"
+      ],
+      "missing_fact_id": "MFR-b7afcbc5c4da0960"
+    },
+    "question": "청년 처음적금에 적용되는 특별금리 우대쿠폰을 보유하고 있나요?",
+    "affected_product_ids": [
+      "SHINHAN_YOUTH_FIRST_SAVINGS_20260722"
+    ],
+    "score": "25856.0"
+  },
+  "recommendations": {
+    "recommendation_id": "REC-7aa1d4191904b3de",
+    "search_session_id": "SEARCH-4773bc0c6d60d009",
+    "ranking_objective": "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+    "generated_at": "2026-08-20T04:34:53.545875Z",
+    "top_products": [
+      {
+        "rank": 1,
+        "product_id": "SHINHAN_YOUTH_FIRST_SAVINGS_20260722",
+        "institution_name": "신한은행",
+        "product_name": "청년 처음적금",
+        "product_type": "INSTALLMENT_SAVINGS",
+        "realizable_rate": "4.55",
+        "advertised_max_rate": "6.05",
+        "term_summary": "12개월",
+        "contribution_summary": "월 자유적립 납입",
+        "maximum_deposit_summary": "월 최대 300,000원",
+        "planned_contribution_summary": "월 300,000원 납입 계획",
+        "estimated_total_principal": "3600000",
+        "estimated_after_tax_interest": "75061",
+        "eligibility_badge": "ELIGIBLE",
+        "verification_badge": "ADDITIONAL_VERIFICATION_REQUIRED",
+        "material_unknown_count": 2
+      },
+      {
+        "rank": 2,
+        "product_id": "IBK_PARENT_BENEFIT_SAVINGS_20260220",
+        "institution_name": "IBK기업은행",
+        "product_name": "IBK부모급여우대적금",
+        "product_type": "INSTALLMENT_SAVINGS",
+        "realizable_rate": "2.5",
+        "advertised_max_rate": "6.5",
+        "term_summary": "12개월",
+        "contribution_summary": "월 납입",
+        "maximum_deposit_summary": "월 최대 500,000원",
+        "planned_contribution_summary": "월 300,000원 납입 계획",
+        "estimated_total_principal": "3600000",
+        "estimated_after_tax_interest": "41242",
+        "eligibility_badge": "VERIFICATION_REQUIRED",
+        "verification_badge": "ADDITIONAL_VERIFICATION_REQUIRED",
+        "material_unknown_count": 1
+      },
+      {
+        "rank": 3,
+        "product_id": "HANA_RUN_SAVINGS_20260429",
+        "institution_name": "하나은행",
+        "product_name": "달려라 하나 적금",
+        "product_type": "INSTALLMENT_SAVINGS",
+        "realizable_rate": "1.8",
+        "advertised_max_rate": "6.0",
+        "term_summary": "12개월",
+        "contribution_summary": "월 납입",
+        "maximum_deposit_summary": "월 최대 300,000원",
+        "planned_contribution_summary": "월 300,000원 납입 계획",
+        "estimated_total_principal": "3600000",
+        "estimated_after_tax_interest": "29695",
+        "eligibility_badge": "VERIFICATION_REQUIRED",
+        "verification_badge": "FINANCIAL_DATA_VERIFIED",
+        "material_unknown_count": 0
+      },
+      {
+        "rank": 4,
+        "product_id": "KAKAOBANK_26_WEEK_SAVINGS_20260819",
+        "institution_name": "카카오뱅크",
+        "product_name": "26주적금",
+        "product_type": "INSTALLMENT_SAVINGS",
+        "realizable_rate": "2.0",
+        "advertised_max_rate": "5.0",
+        "term_summary": "26주",
+        "contribution_summary": "주간 점증 납입",
+        "maximum_deposit_summary": "시작금액 1,000원, 2,000원, 3,000원, 5,000원, 10,000원",
+        "planned_contribution_summary": "WEEKLY 기준 납입금액 입력 필요",
+        "estimated_total_principal": null,
+        "estimated_after_tax_interest": null,
+        "eligibility_badge": "VERIFICATION_REQUIRED",
+        "verification_badge": "ADDITIONAL_VERIFICATION_REQUIRED",
+        "material_unknown_count": 2
+      }
+    ],
+    "unresolved_global_assumptions": [],
+    "ranking_explanation_refs": [
+      "RANK-3eaae760febeba3f"
+    ]
+  },
+  "top_product_detail": {
+    "recommendation_id": "REC-7aa1d4191904b3de",
+    "search_session_id": "SEARCH-4773bc0c6d60d009",
+    "product_id": "SHINHAN_YOUTH_FIRST_SAVINGS_20260722",
+    "product_name": "청년 처음적금",
+    "institution_name": "신한은행",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "rank": 1,
+    "realizable_rate": "4.55",
+    "confirmed_rate": "3.05",
+    "advertised_max_rate": "6.05",
+    "term_summary": "12개월",
+    "contribution_summary": "월 자유적립 납입",
+    "maximum_deposit_summary": "월 최대 300,000원",
+    "planned_contribution_summary": "월 300,000원 납입 계획",
+    "estimated_total_principal": "3600000",
+    "estimated_pre_tax_interest": "88725",
+    "estimated_after_tax_interest": "75061",
+    "rate_breakdown": [
+      {
+        "rule_id": "RATE_SALARY",
+        "rule_label": "주거래 우대",
+        "nominal_reward_pp": "1.0",
+        "status": "ACHIEVABLE",
+        "verification_level": "USER_INTENT",
+        "evidence_basis": "계획대로 달성 시 적용 가능",
+        "action_summary": "급여 수령계좌를 신한은행으로 변경하고 6개월의 인정 실적을 만든다.",
+        "reason_code": "SALARY_MONTHS_CAN_BE_COMPLETED",
+        "source_reference": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-07-22",
+          "page": 2,
+          "section": "[1] 주거래 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF",
+          "source_text": null
+        }
+      },
+      {
+        "rule_id": "RATE_CARD",
+        "rule_label": "신한카드 결제 우대",
+        "nominal_reward_pp": "0.5",
+        "status": "ACHIEVABLE",
+        "verification_level": "MIXED",
+        "evidence_basis": "계획대로 달성 시 적용 가능",
+        "action_summary": "신한카드 결제계좌를 본인 신한은행 계좌로 변경하고 6개월에 1원 이상 결제한다.",
+        "reason_code": "CARD_MONTHS_CAN_BE_COMPLETED",
+        "source_reference": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-07-22",
+          "page": 2,
+          "section": "[2] 신한카드 결제 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF",
+          "source_text": null
+        }
+      },
+      {
+        "rule_id": "RATE_SUPERSOL",
+        "rule_label": "신한 슈퍼SOL 우대",
+        "nominal_reward_pp": "0.5",
+        "status": "UNKNOWN",
+        "verification_level": "UNKNOWN",
+        "evidence_basis": "추가 확인 필요",
+        "action_summary": "SuperSOL 정회원 가입, 최초 로그인, 회원 유지를 완료한다.",
+        "reason_code": "SUPER_SOL_INTENT_UNRESOLVED",
+        "source_reference": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-07-22",
+          "page": 2,
+          "section": "[3] 신한 슈퍼SOL 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF",
+          "source_text": null
+        }
+      },
+      {
+        "rule_id": "RATE_FIRST_OR_EVENT",
+        "rule_label": "첫거래 또는 이벤트 우대",
+        "nominal_reward_pp": "1.0",
+        "status": "UNKNOWN",
+        "verification_level": "MYDATA_VERIFIED",
+        "evidence_basis": "추가 확인 필요",
+        "action_summary": null,
+        "reason_code": "OR_CHILD_UNKNOWN",
+        "source_reference": {
+          "document": "신한은행 청년 처음적금 상품설명서",
+          "document_id": null,
+          "version_date": "2026-07-22",
+          "page": 3,
+          "section": "[4] 첫거래 또는 이벤트 우대",
+          "source_url": "https://img.shinhan.com/sbank2016/seol/20240202000000990012LC000030.PDF",
+          "source_text": null
+        }
+      }
+    ],
+    "rate_contributions": [
+      {
+        "rule_id": "RATE_SALARY",
+        "nominal_reward_pp": "1.0",
+        "status": "ACHIEVABLE",
+        "evidence_bucket": "FUTURE_ACTION",
+        "included_in_confirmed": false,
+        "included_in_realizable": true,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_CARD",
+        "nominal_reward_pp": "0.5",
+        "status": "ACHIEVABLE",
+        "evidence_bucket": "FUTURE_ACTION",
+        "included_in_confirmed": false,
+        "included_in_realizable": true,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_SUPERSOL",
+        "nominal_reward_pp": "0.5",
+        "status": "UNKNOWN",
+        "evidence_bucket": "UNKNOWN",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_conditional_upper": true
+      },
+      {
+        "rule_id": "RATE_FIRST_OR_EVENT",
+        "nominal_reward_pp": "1.0",
+        "status": "UNKNOWN",
+        "evidence_bucket": "UNKNOWN",
+        "included_in_confirmed": false,
+        "included_in_realizable": false,
+        "included_in_conditional_upper": true
+      }
+    ],
+    "rate_cap_adjustment": {
+      "cap_pp": "3.0",
+      "pre_cap_total_pp": "1.5",
+      "cap_reduction_pp": "0",
+      "post_cap_total_pp": "1.50"
+    },
+    "recommendation_reason": {
+      "positives": [
+        "상품 기간 12개월이 희망 기간 조건에 반영됨",
+        "계획대로 달성 시 사용자 기준 예상금리 4.55%",
+        "사용자 납입계획 기준 총 원금 3,600,000원",
+        "예상 세후이자 75,061원",
+        "사용자 선호조건과의 적합도가 높음"
+      ],
+      "limitations": [],
+      "actions": [
+        "급여 수령계좌를 신한은행으로 변경하고 6개월의 인정 실적을 만든다.",
+        "신한카드 결제계좌를 본인 신한은행 계좌로 변경하고 6개월에 1원 이상 결제한다."
+      ],
+      "unknowns": [
+        "신한 슈퍼SOL 우대: 추가 확인 필요",
+        "첫거래 또는 이벤트 우대: 추가 확인 필요"
+      ]
+    },
+    "explanation": "청년 처음적금은 현재 추천 1위입니다. 계획대로 우대조건을 달성할 경우 예상금리는 4.55%이며, 예상 세후이자는 75,061원입니다. 주요 추천 근거: 상품 기간 12개월이 희망 기간 조건에 반영됨; 계획대로 달성 시 사용자 기준 예상금리 4.55%; 사용자 납입계획 기준 총 원금 3,600,000원. 필요한 행동: 급여 수령계좌를 신한은행으로 변경하고 6개월의 인정 실적을 만든다; 신한카드 결제계좌를 본인 신한은행 계좌로 변경하고 6개월에 1원 이상 결제한다. 추가 확인 항목: 신한 슈퍼SOL 우대: 추가 확인 필요; 첫거래 또는 이벤트 우대: 추가 확인 필요."
+  },
+  "audit_event_count": 217,
+  "audit_event_types": [
+    "AGGREGATION_EXECUTED",
+    "CANDIDATE_EVALUATED",
+    "CANDIDATE_RETAINED",
+    "COMPARISON_EXECUTED",
+    "DATE_EXPRESSION_RESOLVED",
+    "EXPLANATION_GENERATED",
+    "FACT_CANDIDATES_FOUND",
+    "FACT_REQUESTED",
+    "FACT_SOURCE_SELECTED",
+    "FUTURE_CAPACITY_CHECKED",
+    "MISSING_FACT_CREATED",
+    "OPTIMISTIC_BOUND_CALCULATED",
+    "PRODUCT_DETAIL_OPENED",
+    "QUESTION_CANDIDATE_SCORED",
+    "QUESTION_SELECTED",
+    "RANKING_CALCULATED",
+    "RATE_SUMMARY_CREATED",
+    "RECOMMENDATION_CREATED",
+    "REQUEST_RECEIVED",
+    "REWARD_APPLIED",
+    "RULE_LOADED",
+    "SEARCH_INTENT_PARSED",
+    "SEARCH_SESSION_CREATED",
+    "STATUS_DERIVED",
+    "TOP_K_STABILITY_CHECKED"
+  ]
+}

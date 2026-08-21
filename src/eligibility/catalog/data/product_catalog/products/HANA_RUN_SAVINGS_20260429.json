@@ -1,0 +1,469 @@
+{
+  "product_id": "HANA_RUN_SAVINGS_20260429",
+  "institution_id": "HANA_BANK",
+  "name": "달려라 하나 적금",
+  "product_type": "INSTALLMENT_SAVINGS",
+  "contract_months": 12,
+  "contract_term": null,
+  "base_rate": "1.8",
+  "advertised_max_rate": "6.0",
+  "preferential_rate_cap": "4.2",
+  "eligibility_rule": {
+    "rule_id": "HANA_RUN_ELIGIBILITY",
+    "name": "달려라 하나 적금 가입자격",
+    "purpose": "ELIGIBILITY",
+    "evaluation_phase": "PRE_SUBSCRIPTION",
+    "description": null,
+    "source": null,
+    "type": "AND",
+    "children": [
+      {
+        "rule_id": "HANA_RUN_AGE",
+        "name": "만 19세 이상",
+        "purpose": "SUPPORTING",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "가입대상",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        },
+        "type": "DERIVED_COMPARE",
+        "derivation": "AGE_AT",
+        "input_fact_type": "BIRTH_DATE",
+        "reference_date": {
+          "type": "CONTEXT",
+          "value": null,
+          "context_field": "subscription_date",
+          "expression": null,
+          "amount": null
+        },
+        "operator": "GTE",
+        "expected": 19,
+        "true_reason_code": "AGE_AT_LEAST_19",
+        "false_reason_code": "AGE_UNDER_19",
+        "missing_reason_code": "DERIVATION_INPUT_MISSING",
+        "missing_fact": null
+      },
+      {
+        "rule_id": "HANA_RUN_ONE_ACCOUNT",
+        "name": "1인 1계좌",
+        "purpose": "SUPPORTING",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "1인 1계좌",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        },
+        "type": "FACT_COMPARE",
+        "fact_type": "HANA_RUN_ACTIVE_ACCOUNT_COUNT",
+        "value_path": null,
+        "effective_at": {
+          "type": "CONTEXT",
+          "value": null,
+          "context_field": "subscription_date",
+          "expression": null,
+          "amount": null
+        },
+        "subject_selector": null,
+        "operator": "EQ",
+        "expected": 0,
+        "on_true_status": "SATISFIED",
+        "on_false_status": "UNSATISFIABLE",
+        "on_missing_status": "UNKNOWN",
+        "true_reason_code": "NO_EXISTING_SAME_PRODUCT_ACCOUNT",
+        "false_reason_code": "SAME_PRODUCT_ACCOUNT_ALREADY_EXISTS",
+        "missing_reason_code": "REQUIRED_FACT_MISSING",
+        "missing_fact": null,
+        "action": null,
+        "required_semantic_type": null,
+        "fact_acceptance_policy": null
+      }
+    ]
+  },
+  "preferential_rules": [
+    {
+      "rule": {
+        "rule_id": "HANA_RUN_RATE_100KM",
+        "name": "누적거리 100km 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "누적거리 100km 구간",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        },
+        "type": "AND",
+        "children": [
+          {
+            "rule_id": "HANA_RUN_RATE_100KM_SERVICE",
+            "name": "하나 건강자산관리 서비스 활성",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+            "false_reason_code": "HANA_HEALTH_SERVICE_INACTIVE",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          },
+          {
+            "rule_id": "HANA_RUN_RATE_100KM_DISTANCE",
+            "name": "하나 인정 누적거리 100km 이상",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "GTE",
+            "expected": 100,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+            "false_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_NOT_REACHED",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          }
+        ]
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "1.5",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "HANA_RUN_RATE_200KM_INCREMENT",
+        "name": "누적거리 200km 추가 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "누적거리 200km 구간",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        },
+        "type": "AND",
+        "children": [
+          {
+            "rule_id": "HANA_RUN_RATE_200KM_INCREMENT_SERVICE",
+            "name": "하나 건강자산관리 서비스 활성",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+            "false_reason_code": "HANA_HEALTH_SERVICE_INACTIVE",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          },
+          {
+            "rule_id": "HANA_RUN_RATE_200KM_INCREMENT_DISTANCE",
+            "name": "하나 인정 누적거리 200km 이상",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "GTE",
+            "expected": 200,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+            "false_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_NOT_REACHED",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          }
+        ]
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    {
+      "rule": {
+        "rule_id": "HANA_RUN_RATE_500KM_INCREMENT",
+        "name": "누적거리 500km 추가 우대",
+        "purpose": "PREFERENTIAL_RATE",
+        "evaluation_phase": "PRE_SUBSCRIPTION",
+        "description": null,
+        "source": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "누적거리 500km 구간",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        },
+        "type": "AND",
+        "children": [
+          {
+            "rule_id": "HANA_RUN_RATE_500KM_INCREMENT_SERVICE",
+            "name": "하나 건강자산관리 서비스 활성",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_HEALTH_ASSET_MANAGEMENT_ACTIVE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_HEALTH_SERVICE_ACTIVE",
+            "false_reason_code": "HANA_HEALTH_SERVICE_INACTIVE",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          },
+          {
+            "rule_id": "HANA_RUN_RATE_500KM_INCREMENT_DISTANCE",
+            "name": "하나 인정 누적거리 500km 이상",
+            "purpose": "SUPPORTING",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": null,
+            "type": "FACT_COMPARE",
+            "fact_type": "HANA_CONFIRMED_RUNNING_DISTANCE_KM",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "GTE",
+            "expected": 500,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_REACHED",
+            "false_reason_code": "HANA_CONFIRMED_DISTANCE_THRESHOLD_NOT_REACHED",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": null,
+            "action": null,
+            "required_semantic_type": null,
+            "fact_acceptance_policy": null
+          }
+        ]
+      },
+      "reward": {
+        "type": "INTEREST_RATE",
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT"
+      }
+    }
+  ],
+  "global_guards": [
+    {
+      "rule_id": "HANA_RUN_GUARD_MATURITY",
+      "name": "만기해지",
+      "purpose": "GLOBAL_GUARD",
+      "evaluation_phase": "PRE_SUBSCRIPTION",
+      "description": null,
+      "source": {
+        "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+        "document_id": null,
+        "version_date": "2026-04-29",
+        "page": null,
+        "section": "만기해지",
+        "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+        "source_text": null
+      },
+      "type": "FACT_COMPARE",
+      "fact_type": "TERMINATION_TYPE",
+      "value_path": null,
+      "effective_at": {
+        "type": "CONTEXT",
+        "value": null,
+        "context_field": "maturity_date",
+        "expression": null,
+        "amount": null
+      },
+      "subject_selector": null,
+      "operator": "EQ",
+      "expected": "MATURED",
+      "on_true_status": "SATISFIED",
+      "on_false_status": "UNSATISFIABLE",
+      "on_missing_status": "ACHIEVABLE",
+      "true_reason_code": "MATURED_NORMALLY",
+      "false_reason_code": "EARLY_TERMINATION_BLOCKS_PREFERENTIAL_RATE",
+      "missing_reason_code": "MATURITY_GUARD_PENDING",
+      "missing_fact": null,
+      "action": null,
+      "required_semantic_type": null,
+      "fact_acceptance_policy": null
+    }
+  ],
+  "metadata": {
+    "institution_id": "HANA_BANK",
+    "product_id": "HANA_RUN_SAVINGS_20260429",
+    "product_name": "달려라 하나 적금",
+    "product_type": "INSTALLMENT_SAVINGS",
+    "sale_status": "ON_SALE",
+    "min_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "max_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "available_terms": [
+      {
+        "value": 12,
+        "unit": "MONTH"
+      }
+    ],
+    "contribution_policy": {
+      "initial_amount_min": null,
+      "initial_amount_max": null,
+      "initial_amount_options": [],
+      "periodic_amount_min": null,
+      "periodic_amount_max": "300000",
+      "contribution_frequency": "MONTHLY",
+      "contribution_mode": null,
+      "increment_amount": null,
+      "increment_amount_options": [],
+      "total_principal_limit": null,
+      "currency": "KRW"
+    },
+    "base_rate": "1.8",
+    "advertised_max_rate": "6.0",
+    "preferential_rate_cap": "4.2",
+    "allowed_channels": [],
+    "features": [
+      {
+        "feature_id": "HEALTH_DATA_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "건강자산관리 달리기 실적",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "MYDATA_SERVICE_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "건강자산관리 MyData 동의",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        }
+      },
+      {
+        "feature_id": "APP_SERVICE_BENEFIT",
+        "present": true,
+        "required_for_subscription": false,
+        "required_capabilities": [],
+        "source_reference": {
+          "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+          "document_id": null,
+          "version_date": "2026-04-29",
+          "page": null,
+          "section": "하나원큐 건강자산관리",
+          "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+          "source_text": null
+        }
+      }
+    ],
+    "target_customer_summary": "만 19세 이상, 1인 1계좌",
+    "one_account_per_person": true,
+    "sale_start": null,
+    "sale_end": null,
+    "quantity_limit": null,
+    "early_termination_policy": null,
+    "partial_withdrawal_policy": null,
+    "interest_payment_method": "UNKNOWN",
+    "tax_treatment": {},
+    "effective_from": "2026-04-29",
+    "effective_to": null,
+    "source_reference": {
+      "document": "하나은행 달려라 하나 적금 공식 상품페이지",
+      "document_id": null,
+      "version_date": "2026-04-29",
+      "page": null,
+      "section": "상품 기본조건",
+      "source_url": "https://hanabank.com/cont/mall/mall08/mall0801/mall080102/1524394_115157.jsp",
+      "source_text": null
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "description": "One product-scoped answer required to complete that product's cashflow.\n\nIdentity is semantic and product scoped: ``(product_id, field)``.  This is\ndeliberately not part of ``ProductSearchIntent.contribution_plan`` because a\nstart amount or product-specific term selection must never leak into other\ncandidates.",
+  "properties": {
+    "choice_id": {
+      "title": "Choice Id",
+      "type": "string"
+    },
+    "product_id": {
+      "title": "Product Id",
+      "type": "string"
+    },
+    "field": {
+      "title": "Field",
+      "type": "string"
+    },
+    "value": {
+      "title": "Value"
+    },
+    "unit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Unit"
+    },
+    "source_question_id": {
+      "title": "Source Question Id",
+      "type": "string"
+    },
+    "answered_at": {
+      "format": "date-time",
+      "title": "Answered At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "choice_id",
+    "product_id",
+    "field",
+    "value",
+    "source_question_id"
+  ],
+  "title": "ProductContributionChoice",
+  "type": "object"
+}

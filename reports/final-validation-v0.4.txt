@@ -1,0 +1,34 @@
+Financial Eligibility Engine v0.4 — Final Validation
+Generated: 2026-08-20T04:36:28.440485+00:00
+
+BASELINE
+- v0.3.2 pytest before modification: 176 passed
+- v0.3.2 compileall before modification: PASS
+
+FINAL TESTS
+- Full suite: 226 passed, 0 failed
+- Existing v0.3.2 regression subset: 176 passed
+- v0.4 acceptance subset: 50 passed
+- Kakao late 7-week/manual-fill targeted regression: 9 passed
+
+BUILD / IMPORT
+- compileall src/tests/scripts: PASS
+- package version: 0.4.0
+- schema export: 29 v0.4 schemas
+- wheel build: PASS (financial_eligibility_engine-0.4.0-py3-none-any.whl)
+- wheel install/import: PASS
+- installed-wheel ApplicationService smoke: PASS
+
+END-TO-END / ADVERSARIAL
+- question rate-unit rebinding rejected: PASS
+- new financial-condition hallucination rejected: PASS
+- answer False→True supersession: PASS
+- shared Fact multi-product re-evaluation: PASS
+- synthetic 6+ Top 5 frontier and 5th/6th boundary: PASS
+- contribution-plan reranking: PASS
+- optimistic UNKNOWN isolated from final realizable ranking: PASS
+- List/Detail/rate-cap/Audit chain: PASS
+- official four-fixture search/detail demo: PASS
+
+FINAL READINESS
+READY_FOR_WEB_APPLICATION

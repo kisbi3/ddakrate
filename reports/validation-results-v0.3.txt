@@ -1,0 +1,23 @@
+compileall:
+PASS
+
+schema export:
+/mnt/data/financial-eligibility-engine-v0.3/schemas/rule_ast.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/user_fact_store.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/product_evaluation.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/institution_service.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/audit_event.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/product_knowledge_draft.v0.3.schema.json
+/mnt/data/financial-eligibility-engine-v0.3/schemas/goal_instance.v0.3.schema.json
+
+mock LLM health:
+{
+  "healthy": true,
+  "provider": "MOCK",
+  "model": "mock-model",
+  "detail": "Mock adapter is available",
+  "latency_ms": 0
+}
+
+wheel build:
+financial_eligibility_engine-0.3.0-py3-none-any.whl: PASS
