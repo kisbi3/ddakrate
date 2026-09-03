@@ -21,6 +21,7 @@ from eligibility.llm.models import (
 )
 from eligibility.llm.openai_compatible_adapter import OpenAICompatibleAdapter
 from eligibility.llm.openai_responses_adapter import OpenAIResponsesAdapter
+from eligibility.llm.json_schema import openai_strict_json_schema
 from eligibility.llm.profiles import DEFAULT_PROFILES
 
 
@@ -171,13 +172,28 @@ class LLMGateway:
     def _debug_started(self, request: TextGenerationRequest) -> None:
         if self.debug_observer is None:
             return
+        request_payload = request.model_dump(mode="json")
+        response_schema = request_payload.get("response_json_schema")
+        if isinstance(response_schema, dict):
+            transport_schema = (
+                openai_strict_json_schema(response_schema)
+                if getattr(self.client, "provider", None) == "OPENAI"
+                else response_schema
+            )
+            request_payload["domain_response_json_schema"] = response_schema
+            request_payload["transport_response_json_schema"] = transport_schema
+            # Backward-compatible field now reflects what is actually sent.
+            request_payload["response_json_schema"] = transport_schema
+        debug_payload_builder = getattr(self.client, "debug_payload", None)
+        if callable(debug_payload_builder):
+            request_payload["transport_payload"] = debug_payload_builder(request)
         self.debug_observer(
             "started",
             {
                 "purpose": request.purpose.value,
                 "provider": getattr(self.client, "provider", type(self.client).__name__),
                 "model": getattr(self.client, "model", "unknown"),
-                "request": request.model_dump(mode="json"),
+                "request": request_payload,
             },
         )
 

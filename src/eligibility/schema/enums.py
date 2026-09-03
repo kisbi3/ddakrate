@@ -301,6 +301,37 @@ class RankingInputStatus(StrEnum):
     DECLINED = "DECLINED"
 
 
+class UserConditionStatus(StrEnum):
+    """Session-local lifecycle of a canonical user variable."""
+
+    NOT_ASKED = "NOT_ASKED"
+    DECLINED = "DECLINED"
+    DECLARED_FEASIBLE = "DECLARED_FEASIBLE"
+    WILLING_UNSPECIFIED = "WILLING_UNSPECIFIED"
+    ACKNOWLEDGED_UNKNOWN = "ACKNOWLEDGED_UNKNOWN"
+    VERIFIED = "VERIFIED"
+
+
+class PreSearchAnswerStatus(StrEnum):
+    """Lifecycle state of one deterministic pre-search question.
+
+    ``NOT_ASKED`` is deliberately distinct from a user explicitly answering
+    that they do not know.  The latter closes the question for this session and
+    is represented by ``ACKNOWLEDGED_UNKNOWN``.
+    """
+
+    NOT_ASKED = "NOT_ASKED"
+    ANSWERED = "ANSWERED"
+    ACKNOWLEDGED_UNKNOWN = "ACKNOWLEDGED_UNKNOWN"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+
+class PreSearchWillingness(StrEnum):
+    WILLING = "WILLING"
+    UNWILLING = "UNWILLING"
+    CONDITIONAL = "CONDITIONAL"
+
+
 class SearchSessionStatus(StrEnum):
     INTENT_COLLECTION = "INTENT_COLLECTION"
     CLARIFICATION_REQUIRED = "CLARIFICATION_REQUIRED"

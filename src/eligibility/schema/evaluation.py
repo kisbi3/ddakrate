@@ -103,7 +103,7 @@ class AppliedReward(StrictModel):
 
 
 class RateEvidenceBreakdown(StrictModel):
-    base_rate: Decimal
+    base_rate: Decimal | None = None
     verified_reward_pp: Decimal = Decimal("0")
     self_reported_reward_pp: Decimal = Decimal("0")
     future_action_reward_pp: Decimal = Decimal("0")
@@ -111,17 +111,19 @@ class RateEvidenceBreakdown(StrictModel):
 
 
 class RateSummary(StrictModel):
-    advertised_max_rate: Decimal
-    confirmed_rate: Decimal
-    realizable_rate: Decimal
-    user_specific_conditional_upper_rate: Decimal
-    preferential_cap: Decimal
+    advertised_max_rate: Decimal | None = None
+    confirmed_rate: Decimal | None = None
+    realizable_rate: Decimal | None = None
+    user_specific_conditional_upper_rate: Decimal | None = None
+    preferential_cap: Decimal | None = None
+    calculation_status: Literal["CALCULATED", "UNSUPPORTED", "UNKNOWN"] = "CALCULATED"
+    calculation_reason: str | None = None
     guard_status: EvaluationStatus
     applied_rewards: list[AppliedReward] = Field(default_factory=list)
     evidence_breakdown: RateEvidenceBreakdown
 
     @property
-    def conditional_upper_rate(self) -> Decimal:
+    def conditional_upper_rate(self) -> Decimal | None:
         """v0.1 compatibility accessor."""
 
         return self.user_specific_conditional_upper_rate

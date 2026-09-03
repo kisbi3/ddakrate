@@ -16,7 +16,12 @@ from eligibility.llm.grounding import (
     build_question_payload,
     validate_grounded_text,
 )
-from eligibility.schema.enums import FactRecordStatus, FactSemanticType, FactSourceType
+from eligibility.schema.enums import (
+    FactRecordStatus,
+    FactSemanticType,
+    FactSourceType,
+    ResolutionStrategy,
+)
 from eligibility.schema.evaluation import MissingFactRequest
 from eligibility.schema.user_fact import FactProvenance, UserFact, UserFactStore
 
@@ -47,13 +52,33 @@ class QuestionGenerator:
 
     def __init__(self, gateway: LLMGateway | None = None) -> None:
         self.gateway = gateway
+        self._cache: dict[str, str] = {}
 
     def generate(self, request: MissingFactRequest) -> str:
         fallback = self.deterministic_fallback(request)
         if self.gateway is None:
             return fallback
+        # ApplicationService supplies grounded, product-aware wording and
+        # explanation payloads for these known question families. Calling an LLM
+        # first would add several seconds only to discard that wording afterward.
+        if request.fact_type in {
+            "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+            "CARD_SETTLEMENT_ACCOUNT_CHANGE_POSSIBLE",
+            "SPECIAL_RATE_COUPON_VALID",
+            "WILL_KAKAO_M1_MANUAL_DEPOSIT_DAY",
+            "WILL_KN_TOUCH_DEPOSIT_DAY",
+            "WILL_TOSS_MONTHLY_AUTO_TRANSFER_ALL",
+            "KBANK_MYKIDS_ELIGIBLE",
+        } or request.resolution_strategy in {
+            ResolutionStrategy.QUERY_INSTITUTION,
+            ResolutionStrategy.QUERY_MYDATA,
+        }:
+            return fallback
         canonical_payload = build_question_payload(request, fallback)
         payload = canonical_payload.model_dump(mode="json")
+        cache_key = canonical_hash(payload)
+        if cache_key in self._cache:
+            return self._cache[cache_key]
         prompt = "CANONICAL_QUESTION_PAYLOAD:\n" + json.dumps(
             payload, ensure_ascii=False, indent=2
         )
@@ -63,7 +88,7 @@ class QuestionGenerator:
                 prompt,
                 GeneratedQuestion,
                 system_prompt=QUESTION_GENERATION_SYSTEM_PROMPT,
-                metadata={"missing_fact_request_hash": canonical_hash(payload)},
+                metadata={"missing_fact_request_hash": cache_key},
             )
         except Exception:
             return fallback
@@ -71,12 +96,39 @@ class QuestionGenerator:
             return fallback
         if self._contains_rate(response.data.question):
             return fallback
-        return self._add_brand_context(response.data.question)
+        rendered = self._add_brand_context(response.data.question)
+        if request.fact_type.startswith("NORMALIZED_ELIGIBILITY::"):
+            rendered_compact = re.sub(r"\s+", "", rendered).casefold()
+            required_details = [
+                re.sub(r"\s+", "", term).casefold()
+                for term in request.grounding_terms
+                if term and term != "공식 가입대상"
+            ]
+            # Eligibility is a mandatory gate, so a fluent summary that drops
+            # one of the published target conditions is less useful than the
+            # exact deterministic wording. The LLM call remains observable and
+            # may be accepted when it preserves every structured condition.
+            if any(term not in rendered_compact for term in required_details):
+                return fallback
+        self._cache[cache_key] = rendered
+        return rendered
 
     @staticmethod
     def deterministic_fallback(request: MissingFactRequest) -> str:
         if request.question:
             question = QuestionGenerator._strip_rate_wording(request.question)
+            if "인터넷/모바일뱅킹에서 가입" in request.question:
+                return "인터넷뱅킹이나 모바일뱅킹으로 가입할 예정인가요?"
+            if "주택담보대출 또는 전세자금대출" in request.question:
+                return (
+                    "해당 은행의 주택담보대출이나 전세자금대출을 이미 이용 중이거나, "
+                    "적금 가입 기간 중 이용해 만기까지 유지할 계획이 있나요?"
+                )
+            if "교차거래 우대이율" in request.question:
+                return (
+                    "가입 3개월이 지난 달에 급여이체 실적을 만들거나, "
+                    "KB국민카드를 30만원 이상 사용할 수 있나요?"
+                )
             if request.fact_type == "SALARY_ACCOUNT_CHANGE_POSSIBLE":
                 return (
                     "현재 급여를 어느 은행 계좌로 받고 계신가요? 다른 은행 상품이 더 "
@@ -141,7 +193,13 @@ class QuestionGenerator:
                 "할 수 있으세요?",
                 question,
             )
-            return QuestionGenerator._add_brand_context(question.strip())
+            rendered = QuestionGenerator._add_brand_context(question.strip())
+            if (
+                request.expected_semantic_type == FactSemanticType.FUTURE_INTENT
+                and not re.search(r"가입\s*(?:후|기간)|앞으로", rendered)
+            ):
+                rendered = f"가입 후 {rendered}"
+            return rendered
 
         if request.expected_semantic_type == FactSemanticType.FUTURE_INTENT:
             action = request.action_id or request.fact_type

@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import re
 from datetime import datetime, timezone
-from decimal import Decimal
-from typing import Any, Literal
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -28,7 +27,6 @@ from eligibility.schema.enums import (
     PreferenceStrictness,
     PreferenceValue,
     RankingObjective,
-    TermUnit,
 )
 from eligibility.schema.search import (
     ClarificationRequest,
@@ -39,24 +37,8 @@ from eligibility.schema.search import (
     ProductSearchIntent,
 )
 
-
-class ProductSearchIntentDraft(BaseModel):
-    model_config = ConfigDict(extra="forbid", frozen=True)
-
-    product_types: list[Literal["INSTALLMENT_SAVINGS", "TIME_DEPOSIT"]] = Field(
-        default_factory=list
-    )
-    ranking_objective: RankingObjective = RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST
-    hard_constraints: list[HardConstraint] = Field(default_factory=list)
-    preferences: list[Preference] = Field(default_factory=list)
-    capabilities: list[Capability] = Field(default_factory=list)
-    numeric_preferences: list[NumericPreference] = Field(default_factory=list)
-    contribution_plan: ContributionPlan | None = None
-    requested_top_k: int = Field(default=5, ge=1, le=20)
-
-
 class IntentParser:
-    """LLM interface with a deterministic parser fallback for the MVP flow."""
+    """LLM intent boundary; natural-language parsing never uses a keyword fallback."""
 
     def __init__(self, gateway: LLMGateway | None = None) -> None:
         self.gateway = gateway
@@ -73,13 +55,9 @@ class IntentParser:
             created_at=now,
             updated_at=now,
         )
-        patch = (
-            self._parse_patch_with_llm(utterance, current=baseline, initial=True)
-            if self.gateway is not None
-            else None
-        )
-        if patch is None:
-            patch = self._parse_patch_deterministically(utterance)
+        if self.gateway is None:
+            raise RuntimeError("Natural-language intent parsing requires an LLM gateway")
+        patch = self._parse_patch_with_llm(utterance, current=baseline, initial=True)
         return self.apply_patch(baseline, patch, source_utterance=utterance)
 
     def update(
@@ -89,13 +67,9 @@ class IntentParser:
     ) -> ProductSearchIntent:
         """Apply a follow-up utterance as an IntentPatch, never category replacement."""
 
-        patch = (
-            self._parse_patch_with_llm(utterance, current=current)
-            if self.gateway is not None
-            else None
-        )
-        if patch is None:
-            patch = self._parse_patch_deterministically(utterance)
+        if self.gateway is None:
+            raise RuntimeError("Natural-language intent parsing requires an LLM gateway")
+        patch = self._parse_patch_with_llm(utterance, current=current)
         return self.apply_patch(current, patch, source_utterance=utterance)
 
     @staticmethod
@@ -112,6 +86,16 @@ class IntentParser:
             if item not in product_types:
                 product_types.append(item)
         payload["product_types"] = product_types
+
+        excluded_institution_ids = [
+            item
+            for item in current.excluded_institution_ids
+            if item not in set(patch.remove_excluded_institution_ids)
+        ]
+        for item in patch.upsert_excluded_institution_ids:
+            if item not in excluded_institution_ids:
+                excluded_institution_ids.append(item)
+        payload["excluded_institution_ids"] = excluded_institution_ids
 
         payload["hard_constraints"] = IntentParser._merge_keyed(
             current.hard_constraints,
@@ -137,7 +121,8 @@ class IntentParser:
             patch.remove_numeric_preference_keys,
         )
 
-        if patch.contribution_plan_patch is not None:
+        contribution_plan_changed = patch.contribution_plan_patch is not None
+        if contribution_plan_changed:
             plan_payload = (
                 current.contribution_plan.model_dump(mode="python")
                 if current.contribution_plan is not None
@@ -149,14 +134,29 @@ class IntentParser:
             delta = patch.contribution_plan_patch.model_dump(
                 mode="python", exclude_none=True, exclude={"remove_fields"}
             )
+            if delta.get("term_strictness") == "ANY":
+                plan_payload["selected_term_value"] = None
+                plan_payload["selected_term_unit"] = None
+            elif (
+                ("selected_term_value" in delta or "selected_term_unit" in delta)
+                and plan_payload.get("term_strictness") == "ANY"
+                and "term_strictness" not in delta
+            ):
+                delta["term_strictness"] = "PREFERRED"
             plan_payload.update(delta)
             # Keep the plan object only when it still carries a user-specific value.
             payload["contribution_plan"] = ContributionPlan.model_validate(plan_payload)
 
+        # Amount and term make the displayed interest calculable, but they do
+        # not express a request to change how products are ordered. Preserve
+        # the current objective unless the user explicitly changes it (for
+        # example, by asking for "이자금순").
         if patch.ranking_objective_patch is not None:
             payload["ranking_objective"] = patch.ranking_objective_patch
         if patch.requested_top_k_patch is not None:
             payload["requested_top_k"] = patch.requested_top_k_patch
+        if patch.application_capacity_patch is not None:
+            payload["application_capacity"] = patch.application_capacity_patch
 
         if source_utterance:
             payload["source_utterances"] = [*current.source_utterances, source_utterance]
@@ -223,295 +223,99 @@ class IntentParser:
     ) -> IntentPatch | None:
         assert self.gateway is not None
         prompt = (
-            "CURRENT_SEARCH_INTENT:\n"
+            (
+                "TASK_MODE: INITIAL_PRODUCT_TYPE_REQUIRED\n"
+                if initial
+                else "TASK_MODE: UPDATE_EXISTING_SEARCH\n"
+            )
+            + "CURRENT_SEARCH_INTENT:\n"
             + current.model_dump_json(indent=2)
             + "\n\nUSER_UTTERANCE:\n<user_utterance>\n"
             + utterance
             + "\n</user_utterance>"
         )
-        try:
-            generated = self.gateway.generate_structured(
-                LLMPurpose.INTENT_PARSING,
-                prompt,
-                IntentPatch,
-                system_prompt=INTENT_PARSING_SYSTEM_PROMPT,
-                metadata={
-                    "utterance_hash": canonical_hash(utterance),
-                    "operation": "INITIAL_PATCH" if initial else "PATCH",
-                },
-            ).data
-            patch = IntentPatch.model_validate(
-                generated.model_dump(mode="python")
-                if isinstance(generated, BaseModel)
-                else generated
-            )
-            return patch.model_copy(
-                update={
-                    "requested_top_k_patch": self._explicit_requested_top_k(utterance)
-                },
-                deep=True,
-            )
-        except Exception:
-            return None
+        generated = self.gateway.generate_structured(
+            LLMPurpose.INTENT_PARSING,
+            prompt,
+            IntentPatch,
+            system_prompt=INTENT_PARSING_SYSTEM_PROMPT,
+            metadata={
+                "utterance_hash": canonical_hash(utterance),
+                "operation": "INITIAL_PATCH" if initial else "PATCH",
+            },
+        ).data
+        patch = IntentPatch.model_validate(
+            generated.model_dump(mode="python")
+            if isinstance(generated, BaseModel)
+            else generated
+        )
+        return self._hydrate_initial_contribution_plan(patch) if initial else patch
 
     @staticmethod
-    def _explicit_requested_top_k(utterance: str) -> int | None:
-        count_match = re.search(r"(?:top|상위)\s*(\d+)|(\d+)\s*개", utterance, re.I)
-        if count_match:
-            return max(1, min(20, int(count_match.group(1) or count_match.group(2))))
-        if re.search(r"하나만|한\s*개", utterance):
-            return 1
-        return None
+    def _hydrate_initial_contribution_plan(patch: IntentPatch) -> IntentPatch:
+        """Bridge an extracted search amount into the cashflow plan.
 
-    @staticmethod
-    def _parse_patch_deterministically(utterance: str) -> IntentPatch:
-        draft = IntentParser._parse_deterministically(utterance)
-        compact = re.sub(r"\s+", "", utterance)
+        Structured models sometimes place a clearly stated amount only in
+        NumericPreference. The deterministic pre-search flow and calculator
+        read ContributionPlan, so retaining the amount in only one of those two
+        representations would make the app ask for it a second time.
+        """
 
-        remove_hard: list[str] = []
-        remove_pref: list[str] = []
-        remove_cap: list[str] = []
-        remove_numeric: list[str] = []
-        remove_plan_fields: list[str] = []
+        current_plan = patch.contribution_plan_patch or ContributionPlanPatch()
+        if (
+            current_plan.desired_periodic_amount is not None
+            or current_plan.maximum_affordable_periodic_amount is not None
+            or current_plan.preferred_start_amount is not None
+        ):
+            return patch
 
-        neutral = any(marker in compact for marker in ("상관없", "신경안", "조건빼", "조건제거", "취소"))
-        if neutral and "영업점" in utterance:
-            remove_hard.append("SUBSCRIPTION_CHANNEL")
-            remove_cap.append("BRANCH_VISIT")
-        if neutral and "카드" in utterance:
-            remove_pref.append("NEW_CARD_REQUIRED")
-            remove_cap.append("NEW_CARD_ISSUANCE")
-        if neutral and "급여계좌" in utterance:
-            remove_cap.append("CHANGE_SALARY_ACCOUNT")
-        if neutral and "첫거래" in utterance:
-            remove_hard.append("FIRST_TRANSACTION_BENEFIT")
-            remove_pref.append("FIRST_TRANSACTION_BENEFIT")
-        if neutral and any(marker in compact for marker in ("월납입", "납입금액", "금액")):
-            remove_numeric.append("MONTHLY_CONTRIBUTION")
-            remove_plan_fields.extend(["desired_periodic_amount", "maximum_affordable_periodic_amount"])
-
-        # Explicit-neutral language means removal, not a contradictory upsert inferred
-        # from generic negative words in the normal deterministic parser.
-        upsert_hard = [] if neutral and "영업점" in utterance else draft.hard_constraints
-        upsert_pref = [] if neutral and ("카드" in utterance or "첫거래" in utterance) else draft.preferences
-        upsert_caps = [
-            item for item in draft.capabilities
-            if item.capability_id.upper() not in {value.upper() for value in remove_cap}
-        ]
-
-        contribution_patch = None
-        if draft.contribution_plan is not None or remove_plan_fields:
-            plan_values = (
-                draft.contribution_plan.model_dump(mode="python", exclude_none=True)
-                if draft.contribution_plan is not None
-                else {}
-            )
-            contribution_patch = ContributionPlanPatch(
-                **plan_values,
-                remove_fields=list(dict.fromkeys(remove_plan_fields)),
-            )
-
-        objective_patch = None
-        if any(marker in compact for marker in ("금리", "관리", "이자", "편한", "쉬운")):
-            objective_patch = draft.ranking_objective
-
-        return IntentPatch(
-            upsert_product_types=draft.product_types,
-            upsert_hard_constraints=upsert_hard,
-            remove_hard_constraint_keys=list(dict.fromkeys(remove_hard)),
-            upsert_preferences=upsert_pref,
-            remove_preference_keys=list(dict.fromkeys(remove_pref)),
-            upsert_capabilities=upsert_caps,
-            remove_capability_keys=list(dict.fromkeys(remove_cap)),
-            upsert_numeric_preferences=([] if remove_numeric else draft.numeric_preferences),
-            remove_numeric_preference_keys=list(dict.fromkeys(remove_numeric)),
-            contribution_plan_patch=contribution_patch,
-            ranking_objective_patch=objective_patch,
-            requested_top_k_patch=IntentParser._explicit_requested_top_k(utterance),
+        amount_preference = next(
+            (
+                item
+                for item in reversed(patch.upsert_numeric_preferences)
+                if item.currency in {None, "KRW"}
+                and item.field.upper()
+                in {
+                    "AMOUNT",
+                    "BALANCE",
+                    "DEPOSIT_AMOUNT",
+                    "MONTHLY_CONTRIBUTION",
+                }
+            ),
+            None,
         )
+        if amount_preference is None:
+            return patch
 
-    @staticmethod
-    def _parse_deterministically(utterance: str) -> ProductSearchIntentDraft:
-        compact = re.sub(r"\s+", "", utterance)
-        product_types: list[str] = []
-        if "적금" in utterance:
-            product_types.append("INSTALLMENT_SAVINGS")
-        if "예금" in utterance and "적금" not in utterance:
-            product_types.append("TIME_DEPOSIT")
-
-        objective = RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST
-        if "세전이자" in compact or "이자금순" in compact:
-            objective = RankingObjective.MAX_ESTIMATED_PRE_TAX_INTEREST
-        elif re.search(r"금리.*(높|최고|제일)|(?:높|최고|제일).*금리", compact):
-            objective = RankingObjective.MAX_REALIZABLE_RATE
-        elif re.search(r"(관리|조건).*(쉽|편)|(?:쉽|편).*(관리|조건)", compact):
-            objective = RankingObjective.MIN_ACTION_BURDEN
-
-        term_value: int | None = None
-        term_unit: TermUnit | None = None
-        term_match = re.search(r"(\d+)\s*(년|개월|주|일)", utterance)
-        if term_match:
-            term_value = int(term_match.group(1))
-            term_unit = {
-                "년": TermUnit.YEAR,
-                "개월": TermUnit.MONTH,
-                "주": TermUnit.WEEK,
-                "일": TermUnit.DAY,
-            }[term_match.group(2)]
-
-        amount_match = re.search(r"월\s*(\d+(?:\.\d+)?)\s*(만원|원)", utterance)
-        amount: Decimal | None = None
-        if amount_match:
-            amount = Decimal(amount_match.group(1))
-            if amount_match.group(2) == "만원":
-                amount *= Decimal("10000")
-
-        explicit_maximum = amount is not None and any(
-            marker in compact
-            for marker in ("월최대", "월한도", "까지가능", "까지만", "초과불가", "이상못")
+        product_types = set(patch.upsert_product_types)
+        lump_or_balance = bool(product_types) and product_types <= {
+            "TIME_DEPOSIT",
+            "PARKING_ACCOUNT",
+            "CMA",
+        }
+        update: dict[str, Any] = {
+            "frequency": (
+                current_plan.frequency
+                or (
+                    ContributionFrequency.FLEXIBLE
+                    if lump_or_balance
+                    else ContributionFrequency.MONTHLY
+                )
+            )
+        }
+        if amount_preference.direction == NumericPreferenceDirection.AT_MOST:
+            update["maximum_affordable_periodic_amount"] = amount_preference.value
+        else:
+            update["desired_periodic_amount"] = amount_preference.value
+        return patch.model_copy(
+            update={
+                "contribution_plan_patch": current_plan.model_copy(
+                    update=update,
+                    deep=True,
+                )
+            },
+            deep=True,
         )
-        explicit_desire = amount is not None and (
-            not explicit_maximum
-            or any(marker in compact for marker in ("넣고싶", "생각", "납입계획", "기준"))
-        )
-        desired = amount if explicit_desire else None
-        maximum = amount if explicit_maximum else None
-
-        contribution_plan = None
-        if desired is not None or maximum is not None or term_value is not None:
-            contribution_plan = ContributionPlan(
-                desired_periodic_amount=desired,
-                maximum_affordable_periodic_amount=maximum,
-                frequency=(
-                    ContributionFrequency.MONTHLY
-                    if desired is not None or maximum is not None
-                    else None
-                ),
-                selected_term_value=term_value,
-                selected_term_unit=term_unit,
-            )
-
-        numeric_preferences: list[NumericPreference] = []
-        if amount is not None:
-            requires_capacity = any(
-                marker in compact
-                for marker in (
-                    "납입이불가능한상품제외",
-                    "넣을수없는상품제외",
-                    "넣을수없는상품은제외",
-                    "수용못하는상품제외",
-                    "월납입한도미만제외",
-                )
-            )
-            numeric_preferences.append(
-                NumericPreference(
-                    field="MONTHLY_CONTRIBUTION",
-                    value=amount,
-                    direction=(
-                        NumericPreferenceDirection.AT_LEAST
-                        if requires_capacity
-                        else NumericPreferenceDirection.AROUND
-                    ),
-                    strictness=(
-                        PreferenceStrictness.HARD
-                        if requires_capacity
-                        else PreferenceStrictness.SOFT
-                    ),
-                    currency="KRW",
-                )
-            )
-
-        if term_value is not None and term_unit is not None:
-            term_months = {
-                TermUnit.YEAR: Decimal(term_value * 12),
-                TermUnit.MONTH: Decimal(term_value),
-                TermUnit.WEEK: Decimal(term_value * 7) / Decimal("30.4375"),
-                TermUnit.DAY: Decimal(term_value) / Decimal("30.4375"),
-            }[term_unit]
-            if any(marker in compact for marker in ("이하만", "넘는상품제외", "초과제외")):
-                direction = NumericPreferenceDirection.AT_MOST
-                strictness = PreferenceStrictness.HARD
-            elif any(marker in compact for marker in ("이상만", "미만제외")):
-                direction = NumericPreferenceDirection.AT_LEAST
-                strictness = PreferenceStrictness.HARD
-            else:
-                direction = NumericPreferenceDirection.AROUND
-                strictness = PreferenceStrictness.SOFT
-            numeric_preferences.append(
-                NumericPreference(
-                    field="TERM_MONTHS",
-                    value=term_months,
-                    direction=direction,
-                    strictness=strictness,
-                )
-            )
-
-        hard_constraints: list[HardConstraint] = []
-        preferences: list[Preference] = []
-        capabilities: list[Capability] = []
-
-        if "영업점" in utterance and any(word in compact for word in ("제외", "싫", "안가", "방문불가")):
-            hard_constraints.append(
-                HardConstraint(
-                    field="SUBSCRIPTION_CHANNEL",
-                    constraint=HardConstraintValue.EXCLUDE,
-                    expected="BRANCH",
-                )
-            )
-            capabilities.append(
-                Capability(capability_id="BRANCH_VISIT", state=CapabilityState.CANNOT)
-            )
-
-        if "카드" in utterance and any(word in compact for word in ("새로만들기싫", "발급싫", "신규카드싫", "카드새로")):
-            preferences.append(
-                Preference(
-                    field="NEW_CARD_REQUIRED",
-                    preference=PreferenceValue.PREFER_ABSENT,
-                )
-            )
-            capabilities.append(
-                Capability(capability_id="NEW_CARD_ISSUANCE", state=CapabilityState.CANNOT)
-            )
-
-        if "급여계좌" in utterance and "변경" in utterance:
-            salary_match = re.search(r"급여계좌.{0,20}변경.{0,20}", compact)
-            salary_context = salary_match.group(0) if salary_match else "급여계좌변경"
-            state = (
-                CapabilityState.CANNOT
-                if any(word in salary_context for word in ("불가", "못", "싫", "안됨"))
-                else CapabilityState.CAN
-            )
-            capabilities.append(
-                Capability(capability_id="CHANGE_SALARY_ACCOUNT", state=state)
-            )
-
-        if "첫거래" in utterance:
-            if any(word in compact for word in ("있는상품만", "필수", "반드시")):
-                hard_constraints.append(
-                    HardConstraint(
-                        field="FIRST_TRANSACTION_BENEFIT",
-                        constraint=HardConstraintValue.REQUIRE,
-                    )
-                )
-            elif any(word in compact for word in ("없는게좋", "없으면좋", "없는상품선호")):
-                preferences.append(
-                    Preference(
-                        field="FIRST_TRANSACTION_BENEFIT",
-                        preference=PreferenceValue.PREFER_ABSENT,
-                    )
-                )
-
-        return ProductSearchIntentDraft(
-            product_types=product_types,
-            ranking_objective=objective,
-            hard_constraints=hard_constraints,
-            preferences=preferences,
-            capabilities=capabilities,
-            numeric_preferences=numeric_preferences,
-            contribution_plan=contribution_plan,
-            requested_top_k=5,
-        )
-
 
 class GeneratedClarification(BaseModel):
     """LLM wording envelope bound to deterministic conflict resolutions."""

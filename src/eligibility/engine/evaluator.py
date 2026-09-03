@@ -2637,7 +2637,12 @@ class FinancialEligibilityEngine:
                 [eligibility, *preferential_results, *guard_results]
             )
             interest_estimates = {}
-            if contribution_plan is not None:
+            if (
+                contribution_plan is not None
+                and rates.confirmed_rate is not None
+                and rates.realizable_rate is not None
+                and rates.user_specific_conditional_upper_rate is not None
+            ):
                 estimator = (
                     InterestEngine.estimate_installment_savings
                     if isinstance(contribution_plan, MonthlyContributionPlan)

@@ -117,15 +117,7 @@ class OpenAIResponsesAdapter:
         request: StructuredGenerationRequest,
         response_model: type[T],
     ) -> StructuredGenerationResponse[T]:
-        payload = self._base_payload(request)
-        payload["text"] = {
-            "format": {
-                "type": "json_schema",
-                "name": request.response_schema_name,
-                "schema": openai_strict_json_schema(request.response_json_schema),
-                "strict": True,
-            }
-        }
+        payload = self.debug_payload(request)
         started = time.perf_counter()
         response, retry_count = self._request_with_retry(
             "POST",
@@ -156,6 +148,26 @@ class OpenAIResponsesAdapter:
             token_usage=parsed.get("token_usage"),
             raw_metadata=parsed.get("metadata", {}),
         )
+
+    def debug_payload(
+        self,
+        request: TextGenerationRequest | StructuredGenerationRequest,
+    ) -> dict[str, Any]:
+        """Build the credential-free payload exactly as sent to Responses API."""
+
+        payload = self._base_payload(request)
+        if isinstance(request, StructuredGenerationRequest):
+            payload["text"] = {
+                "format": {
+                    "type": "json_schema",
+                    "name": request.response_schema_name,
+                    "schema": openai_strict_json_schema(
+                        request.response_json_schema
+                    ),
+                    "strict": True,
+                }
+            }
+        return payload
 
     def health_check(self) -> LLMHealthStatus:
         started = time.perf_counter()

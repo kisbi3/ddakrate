@@ -7,6 +7,7 @@ from typing import Iterable
 from eligibility.audit import AuditEventType, AuditSession, canonical_hash
 from eligibility.engine.evaluator import FinancialEligibilityEngine
 from eligibility.schema.enums import (
+    ContributionFrequency,
     EvaluationStatus,
     PreferenceValue,
     RankingComparability,
@@ -20,6 +21,7 @@ from eligibility.schema.search import (
 )
 from eligibility.schema.user_fact import UserFactStore
 from eligibility.search.contribution import (
+    PlannedContributionResult,
     ContributionPlanner,
     ContributionFeasibilityEvaluator,
     apply_product_contribution_choices,
@@ -28,6 +30,7 @@ from eligibility.search.contribution import (
     terms_equivalent,
 )
 from eligibility.search.retrieval import CandidateRetriever
+from eligibility.search.rate_strategy import ProductFamilyRateStrategy
 
 
 class MultiProductEvaluator:
@@ -38,12 +41,14 @@ class MultiProductEvaluator:
         engine: FinancialEligibilityEngine | None = None,
         contribution_planner: ContributionPlanner | None = None,
         contribution_feasibility: ContributionFeasibilityEvaluator | None = None,
+        rate_strategy: ProductFamilyRateStrategy | None = None,
     ) -> None:
         self.engine = engine or FinancialEligibilityEngine()
         self.contribution_planner = contribution_planner or ContributionPlanner()
         self.contribution_feasibility = (
             contribution_feasibility or ContributionFeasibilityEvaluator()
         )
+        self.rate_strategy = rate_strategy or ProductFamilyRateStrategy()
 
     def evaluate(
         self,
@@ -66,6 +71,18 @@ class MultiProductEvaluator:
             )
             planned = self.contribution_planner.build(
                 product, effective_plan, subscription_date=subscription_date
+            )
+            projection = self._with_plan_match(
+                product,
+                planned.projection,
+                intent,
+                product_choice_override=bool(choice_map.get(product.product_id)),
+            )
+            planned = PlannedContributionResult(
+                projection=projection,
+                core_plan=planned.core_plan,
+                missing_ranking_inputs=planned.missing_ranking_inputs,
+                not_comparable_reason=planned.not_comparable_reason,
             )
             filtered_inputs = []
             option_feasibilities = []
@@ -206,8 +223,15 @@ class MultiProductEvaluator:
                 as_of=as_of,
                 subscription_date=subscription_date,
             )
-            evaluation = self.engine.evaluate_product(
+            prepared_rate = self.rate_strategy.prepare(
                 product,
+                term=resolve_term(product, effective_plan),
+                principal=planned.projection.estimated_total_principal,
+                customer_scope=intent.application_capacity,
+                as_of=as_of,
+            )
+            evaluation = self.engine.evaluate_product(
+                prepared_rate.product,
                 fact_store,
                 context,
                 contribution_plan=planned.core_plan,
@@ -232,6 +256,12 @@ class MultiProductEvaluator:
                 ranking_comparability = RankingComparability.MISSING_CONTRIBUTION_INPUT
             else:
                 ranking_comparability = RankingComparability.NOT_COMPARABLE
+            rate_evaluation = self.rate_strategy.result(
+                prepared_rate,
+                evaluation,
+                ranking_comparability=ranking_comparability,
+                missing_fact_ids=sorted(set(unresolved)),
+            )
             candidate = CandidateEvaluation(
                 product_id=product.product_id,
                 product_evaluation=evaluation,
@@ -260,6 +290,7 @@ class MultiProductEvaluator:
                 missing_ranking_inputs=list(filtered_inputs),
                 contribution_option_feasibilities=option_feasibilities,
                 contribution_feasibility_clarification=feasibility_clarification,
+                rate_evaluation=rate_evaluation,
             )
             results[product.product_id] = candidate
             if audit is not None:
@@ -350,6 +381,114 @@ class MultiProductEvaluator:
                     },
                 )
         return results
+
+    @staticmethod
+    def _with_plan_match(
+        product,
+        projection,
+        intent,
+        *,
+        product_choice_override: bool = False,
+    ):
+        """Annotate target-amount/term fit without silently presenting a clamp as a match."""
+
+        plan = intent.contribution_plan
+        updates = {}
+        if product_choice_override:
+            updates["product_choice_override"] = True
+        if plan is not None and plan.desired_periodic_amount is not None:
+            target = plan.desired_periodic_amount
+            comparison = None
+            if (
+                projection.frequency
+                in {ContributionFrequency.MONTHLY, ContributionFrequency.FLEXIBLE}
+                and projection.planned_periodic_amount is not None
+            ):
+                comparison = projection.planned_periodic_amount
+            elif projection.estimated_total_principal is not None:
+                actual_term = resolve_term(product, plan)
+                term_days = {
+                    "DAY": Decimal(actual_term.value),
+                    "WEEK": Decimal(actual_term.value * 7),
+                    "MONTH": Decimal(actual_term.value) * Decimal("30.4375"),
+                    "YEAR": Decimal(actual_term.value) * Decimal("365"),
+                }[actual_term.unit.value]
+                if term_days > 0:
+                    comparison = (
+                        projection.estimated_total_principal
+                        / (term_days / Decimal("30.4375"))
+                    ).quantize(Decimal("1"))
+
+            updates["requested_periodic_amount"] = target
+            updates["monthly_equivalent_amount"] = comparison
+            if comparison is None:
+                updates["amount_match_status"] = "INPUT_REQUIRED"
+            else:
+                difference = comparison - target
+                ratio = (abs(difference) / target).quantize(Decimal("0.0001"))
+                status = (
+                    "EXACT"
+                    if difference == 0
+                    else "WITHIN_TOLERANCE"
+                    if ratio <= Decimal("0.05")
+                    else "OUTSIDE_TOLERANCE"
+                )
+                updates.update(
+                    {
+                        "amount_difference": difference,
+                        "amount_difference_ratio": ratio,
+                        "amount_match_status": status,
+                    }
+                )
+                if status == "OUTSIDE_TOLERANCE":
+                    qualifier = (
+                        "실제 월"
+                        if projection.frequency
+                        in {ContributionFrequency.MONTHLY, ContributionFrequency.FLEXIBLE}
+                        else "실제 월 환산"
+                    )
+                    updates["planned_contribution_summary"] = (
+                        f"목표 월 {int(target):,}원 · {qualifier} {int(comparison):,}원 "
+                        f"(차이 {ratio * Decimal('100'):.1f}%)"
+                    )
+                elif status == "WITHIN_TOLERANCE":
+                    updates["planned_contribution_summary"] = (
+                        f"목표 월 {int(target):,}원 · 실제 월 환산 {int(comparison):,}원"
+                    )
+
+        if (
+            plan is not None
+            and plan.selected_term_value is not None
+            and plan.selected_term_unit is not None
+        ):
+            requested = ContractTerm(
+                value=plan.selected_term_value,
+                unit=plan.selected_term_unit,
+            )
+            actual = resolve_term(product, plan)
+            core = resolve_term(product, None)
+            if terms_equivalent(actual, requested):
+                updates["term_match_status"] = (
+                    "EXACT" if terms_equivalent(core, requested) else "SELECTABLE_EXACT"
+                )
+            else:
+                actual_days = {
+                    "DAY": actual.value,
+                    "WEEK": actual.value * 7,
+                    "MONTH": actual.value * 30.4375,
+                    "YEAR": actual.value * 365,
+                }[actual.unit.value]
+                requested_days = {
+                    "DAY": requested.value,
+                    "WEEK": requested.value * 7,
+                    "MONTH": requested.value * 30.4375,
+                    "YEAR": requested.value * 365,
+                }[requested.unit.value]
+                updates["term_match_status"] = (
+                    "ALTERNATIVE_SHORTER" if actual_days < requested_days else "MISMATCH"
+                )
+
+        return projection.model_copy(update=updates, deep=True)
 
     def validate_product_contribution_choice(
         self,

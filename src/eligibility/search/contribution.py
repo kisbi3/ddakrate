@@ -3,9 +3,10 @@ from __future__ import annotations
 import calendar
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
-from decimal import Decimal
+from decimal import ROUND_CEILING, Decimal
 
 from eligibility.audit import canonical_hash
+from eligibility.catalog.normalized_loader import select_base_rate
 from eligibility.schema.enums import ContributionFrequency, ContributionMode, TermUnit
 from eligibility.schema.evaluation import EvaluationContext
 from eligibility.schema.product import (
@@ -97,10 +98,20 @@ def resolve_term(product: ProductDefinition, plan: ContributionPlan | None) -> C
 
     core = _product_core_term(product)
     if plan is None or plan.selected_term_value is None:
+        # The catalog loader has already selected a representative term for a
+        # range (normally 12 months when available).  Comparing only the two
+        # endpoints here used the 1-month lower bound whenever the upper bound
+        # had no matching rate tier.  That made a 1~24-month product appear as
+        # though its maturity were fixed at one month.
         return core
 
     assert plan.selected_term_unit is not None
     requested = ContractTerm(value=plan.selected_term_value, unit=plan.selected_term_unit)
+    if (
+        product.normalized is not None
+        and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
+    ):
+        return requested
     metadata = product.metadata
     if metadata is None:
         return core
@@ -665,6 +676,97 @@ class ContributionPlanner:
             )
 
         desired = plan.desired_periodic_amount
+        if policy.funding_type == "CHALLENGE_TARGET":
+            return self._challenge_target(
+                product,
+                plan,
+                term,
+                desired,
+                subscription_date,
+            )
+        if policy.funding_type in {"LUMP_SUM", "ON_DEMAND"}:
+            minimum = policy.initial_amount_min
+            maximum = policy.initial_amount_max or policy.total_principal_limit
+            label = "일시 예치" if policy.funding_type == "LUMP_SUM" else "수시입출금 잔액"
+            if minimum is not None and desired < minimum:
+                projection = ContributionProjection(
+                    frequency=ContributionFrequency.FLEXIBLE,
+                    planned_periodic_amount=desired,
+                    maximum_periodic_amount=maximum,
+                    term_summary=term_summary(term),
+                    contribution_summary=label,
+                    maximum_deposit_summary=self._maximum_summary(policy),
+                    planned_contribution_summary=f"희망 {_money(desired)}은 상품 최소 {_money(minimum)} 미만",
+                    assumptions=["A missing/invalid deposit amount was not replaced by a product default."],
+                )
+                return PlannedContributionResult(
+                    projection=projection,
+                    core_plan=None,
+                    not_comparable_reason="PRODUCT_INITIAL_MIN_VIOLATION",
+                )
+            if maximum is not None and desired > maximum:
+                projection = ContributionProjection(
+                    frequency=ContributionFrequency.FLEXIBLE,
+                    planned_periodic_amount=desired,
+                    maximum_periodic_amount=maximum,
+                    term_summary=term_summary(term),
+                    contribution_summary=label,
+                    maximum_deposit_summary=self._maximum_summary(policy),
+                    planned_contribution_summary=f"희망 {_money(desired)}은 상품 최대 {_money(maximum)} 초과",
+                    assumptions=["The requested amount was not silently clamped to the product maximum."],
+                )
+                return PlannedContributionResult(
+                    projection=projection,
+                    core_plan=None,
+                    not_comparable_reason="PRODUCT_INITIAL_MAX_VIOLATION",
+                )
+            days = max(1, int(_term_days(term)))
+            core = ContributionSchedulePlan(
+                cashflows=[ContributionCashflow(amount=desired, days_held=days)],
+                tax_rate=plan.tax_rate,
+                schedule_label=(
+                    "LUMP_SUM_DEPOSIT"
+                    if policy.funding_type == "LUMP_SUM"
+                    else "ON_DEMAND_BALANCE_SCENARIO"
+                ),
+            )
+            open_ended = (
+                product.normalized is not None
+                and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
+            )
+            projection = ContributionProjection(
+                frequency=ContributionFrequency.FLEXIBLE,
+                contribution_count=1,
+                planned_periodic_amount=desired,
+                maximum_periodic_amount=maximum,
+                estimated_total_principal=desired,
+                term_summary=(
+                    f"수시입출금 · {term_summary(term)} 비교기간"
+                    if open_ended
+                    else term_summary(term)
+                ),
+                contribution_summary=label,
+                maximum_deposit_summary=self._maximum_summary(policy),
+                planned_contribution_summary=(
+                    f"{_money(desired)} 일시 예치"
+                    if policy.funding_type == "LUMP_SUM"
+                    else f"{_money(desired)} 잔액 유지 가정"
+                ),
+                cashflows=[
+                    PlannedCashflow(
+                        sequence_no=1,
+                        amount=desired,
+                        days_held=days,
+                        contribution_date=subscription_date,
+                    )
+                ],
+                assumptions=[
+                    "Open-ended products use the user's selected horizon only for comparison."
+                    if open_ended
+                    else "Single principal cashflow uses the selected contract term."
+                ],
+            )
+            return PlannedContributionResult(projection=projection, core_plan=core)
         # A monthly amount must not silently become a daily or weekly amount.
         # Product-specific frequencies require an explicitly matching plan or,
         # for incremental products, an explicit preferred_start_amount.
@@ -996,6 +1098,144 @@ class ContributionPlanner:
         return PlannedContributionResult(projection=projection, core_plan=core)
 
     @staticmethod
+    def _challenge_target(
+        product: ProductDefinition,
+        plan: ContributionPlan,
+        term: ContractTerm,
+        target: Decimal,
+        subscription_date: date | None,
+    ) -> PlannedContributionResult:
+        """Build the weekly schedule for target-based challenge accounts.
+
+        ``desired_periodic_amount`` is the user's desired total amount for
+        lump-sum/on-demand searches. For this subtype it is therefore the
+        challenge target, not an amount that may be repeated every week.
+        """
+
+        policy = product.metadata.contribution_policy  # type: ignore[union-attr]
+        assert policy is not None
+        minimum = policy.target_amount_min
+        per_account_max = policy.target_amount_max_per_account
+        aggregate_max = policy.target_amount_aggregate_max
+        increment = policy.target_amount_increment
+
+        reason: str | None = None
+        if minimum is not None and target < minimum:
+            reason = "PRODUCT_CHALLENGE_TARGET_MIN_VIOLATION"
+        elif aggregate_max is not None and target > aggregate_max:
+            reason = "PRODUCT_CHALLENGE_TARGET_AGGREGATE_MAX_VIOLATION"
+        elif increment is not None and target % increment != 0:
+            reason = "PRODUCT_CHALLENGE_TARGET_INCREMENT_VIOLATION"
+        elif per_account_max is None or minimum is None or increment is None:
+            reason = "PRODUCT_CHALLENGE_TARGET_RULES_INCOMPLETE"
+
+        maximum_summary = (
+            f"계좌당 최대 {_money(per_account_max)} · 합산 최대 {_money(aggregate_max)}"
+            if per_account_max is not None and aggregate_max is not None
+            else "도전금액 한도 확인 필요"
+        )
+        if reason is not None:
+            projection = ContributionProjection(
+                frequency=ContributionFrequency.WEEKLY,
+                term_summary=term_summary(term),
+                contribution_summary="도전금액을 기간으로 나눈 주간 납입",
+                maximum_deposit_summary=maximum_summary,
+                planned_contribution_summary=f"희망 도전금액 {_money(target)}은 상품 규칙과 불일치",
+                assumptions=[reason],
+            )
+            return PlannedContributionResult(
+                projection=projection,
+                core_plan=None,
+                not_comparable_reason=reason,
+            )
+
+        assert per_account_max is not None and minimum is not None and increment is not None
+        account_count = int((target / per_account_max).to_integral_value(rounding=ROUND_CEILING))
+        target_units = int(target / increment)
+        base_units, extra_accounts = divmod(target_units, account_count)
+        account_targets = [
+            Decimal(base_units + (1 if index < extra_accounts else 0)) * increment
+            for index in range(account_count)
+        ]
+        if any(amount < minimum or amount > per_account_max for amount in account_targets):
+            reason = "PRODUCT_CHALLENGE_ACCOUNT_SPLIT_INFEASIBLE"
+            projection = ContributionProjection(
+                frequency=ContributionFrequency.WEEKLY,
+                term_summary=term_summary(term),
+                contribution_summary="도전금액을 기간으로 나눈 주간 납입",
+                maximum_deposit_summary=maximum_summary,
+                planned_contribution_summary="계좌별 도전금액 배분 불가",
+                assumptions=[reason],
+            )
+            return PlannedContributionResult(
+                projection=projection,
+                core_plan=None,
+                not_comparable_reason=reason,
+            )
+
+        count = _term_count(term, ContributionFrequency.WEEKLY)
+        per_account_weekly = [
+            (amount / Decimal(count)).to_integral_value(rounding=ROUND_CEILING)
+            for amount in account_targets
+        ]
+        weekly_amount = sum(per_account_weekly)
+        maturity = term_end(subscription_date, term) if subscription_date is not None else None
+        dated_rows: list[tuple[date | None, Decimal, int]] = []
+        for index in range(1, count + 1):
+            contribution_at = (
+                subscription_date + timedelta(weeks=index - 1)
+                if subscription_date is not None
+                else None
+            )
+            days_held = (
+                max(0, (maturity - contribution_at).days)
+                if maturity is not None and contribution_at is not None
+                else max(0, (count - index + 1) * 7)
+            )
+            dated_rows.append((contribution_at, weekly_amount, days_held))
+
+        cashflows = [
+            ContributionCashflow(amount=amount, days_held=days_held)
+            for _, amount, days_held in dated_rows
+        ]
+        core = ContributionSchedulePlan(
+            cashflows=cashflows,
+            tax_rate=plan.tax_rate,
+            schedule_label="WEEKLY_CHALLENGE_TARGET",
+        )
+        account_summary = " + ".join(_money(amount) for amount in account_targets)
+        projection = ContributionProjection(
+            frequency=ContributionFrequency.WEEKLY,
+            contribution_count=count,
+            planned_periodic_amount=weekly_amount,
+            maximum_periodic_amount=None,
+            estimated_total_principal=weekly_amount * count,
+            term_summary=term_summary(term),
+            contribution_summary="도전금액 ÷ 도전기간(원 미만 올림)",
+            maximum_deposit_summary=maximum_summary,
+            planned_contribution_summary=(
+                f"총 {_money(target)} 도전 · {account_count}계좌({account_summary}) · "
+                f"주 {_money(weekly_amount)}"
+            ),
+            cashflows=[
+                PlannedCashflow(
+                    sequence_no=index,
+                    amount=amount,
+                    days_held=days_held,
+                    contribution_date=contribution_at,
+                )
+                for index, (contribution_at, amount, days_held) in enumerate(dated_rows, start=1)
+            ],
+            assumptions=[
+                "Each account's weekly amount is its target divided by the selected week count and rounded up to a whole won.",
+                "The challenge target cannot be changed after it is set."
+                if policy.target_amount_immutable
+                else "Challenge target mutability was not confirmed.",
+            ],
+        )
+        return PlannedContributionResult(projection=projection, core_plan=core)
+
+    @staticmethod
     def _daily(
         plan: ContributionPlan,
         term: ContractTerm,
@@ -1104,6 +1344,13 @@ class ContributionPlanner:
             ContributionMode.INCREMENTAL: "점증",
             None: "",
         }[policy.contribution_mode]
+        if (
+            policy.contribution_mode == ContributionMode.FIXED
+            and policy.periodic_amount_min is not None
+            and policy.periodic_amount_max is not None
+            and policy.periodic_amount_min == policy.periodic_amount_max
+        ):
+            return f"{frequency} {_money(policy.periodic_amount_min)} 정액 납입"
         if policy.contribution_mode == ContributionMode.INCREMENTAL:
             return f"{frequency}간 {mode} 납입"
         parts = [item for item in (frequency, mode, "납입") if item]
@@ -1148,6 +1395,12 @@ class ContributionPlanner:
         product: ProductDefinition,
         frequency: ContributionFrequency | None,
     ) -> str:
+        if product.metadata is not None and product.metadata.contribution_policy is not None:
+            funding_type = product.metadata.contribution_policy.funding_type
+            if funding_type == "LUMP_SUM":
+                return f"{product.name}에 한 번에 얼마를 예치할 계획인가요?"
+            if funding_type == "ON_DEMAND":
+                return f"{product.name}에 비교 기준으로 얼마의 잔액을 둘 계획인가요?"
         label = {
             ContributionFrequency.MONTHLY: "월",
             ContributionFrequency.WEEKLY: "주",

@@ -11,6 +11,7 @@ from eligibility.engine.fact_acceptance import (
     accept_records,
     verification_for_record,
 )
+from eligibility.question_policy import is_future_action_fact
 from eligibility.schema.enums import (
     EvaluationTrustMode,
     FactSemanticType,
@@ -126,17 +127,32 @@ class FactResolver:
             and fact.effective_subject_person_id in subjects
             and fact.is_effective_at(effective_at)
         ]
+        legacy_future_action = (
+            required_semantic_type == FactSemanticType.SELF_REPORTED_FACT
+            and is_future_action_fact(fact_type)
+        )
         semantic_candidates = [
             fact
             for fact in all_candidates
             if required_semantic_type is None
             or fact.semantic_type == required_semantic_type
+            # Some normalized legacy conditions still declare an after-opening
+            # action as a current self-reported fact.  The question layer writes
+            # it as FUTURE_INTENT; accept that exact fact family without opening
+            # future-intent acceptance to unrelated eligibility facts.
+            or (
+                legacy_future_action
+                and fact.semantic_type == FactSemanticType.FUTURE_INTENT
+            )
         ]
         acceptance = accept_records(
             semantic_candidates,
             policy=acceptance_policy,
             trust_mode=self.trust_mode,
-            allow_future_intent=(required_semantic_type == FactSemanticType.FUTURE_INTENT),
+            allow_future_intent=(
+                required_semantic_type == FactSemanticType.FUTURE_INTENT
+                or legacy_future_action
+            ),
         )
         candidates = list(acceptance.accepted)
         rejected = list(acceptance.rejected)

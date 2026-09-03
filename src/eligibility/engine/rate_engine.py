@@ -25,6 +25,49 @@ class RateEngine:
     """Calculate rate layers while preserving evidence semantics."""
 
     @staticmethod
+    def _has_unmodeled_preferential_rules(product: ProductDefinition) -> bool:
+        """Whether published source-first rate rules lack executable adapters.
+
+        Non-deterministic rewards such as an official prize draw are valid
+        possible outcomes even though the customer cannot assert the draw
+        result and the legacy rule evaluator cannot execute the cumulative
+        reward. They must stay in the possible maximum until a product feature
+        policy excludes the product.
+        """
+
+        if product.normalized is None:
+            return False
+        policy = product.normalized.return_policy.get("preferential_policy") or {}
+        published_rule_ids = {
+            str(rule.get("rule_id"))
+            for rule in policy.get("rules") or []
+            if rule.get("rule_id")
+        }
+        executable_rule_ids = {
+            str(item.canonical_rule_id or item.rule.rule_id)
+            for item in product.preferential_rules
+        }
+        return bool(published_rule_ids - executable_rule_ids)
+
+    @staticmethod
+    def _relation_type(relation: dict) -> str:
+        """Return the canonical relation operator across published schema aliases."""
+
+        return str(relation.get("type") or relation.get("operator") or "").upper()
+
+    @staticmethod
+    def _relation_rule_ids(relation: dict) -> list[str]:
+        """Return member rule ids across legacy and source-first field names."""
+
+        values = (
+            relation.get("rule_ids")
+            or relation.get("member_rule_ids")
+            or relation.get("members")
+            or []
+        )
+        return [str(value) for value in values if value]
+
+    @staticmethod
     def calculate(
         product: ProductDefinition,
         preferential_results: list[RuleEvaluation],
@@ -36,15 +79,16 @@ class RateEngine:
         rewards_blocked = guard_status == EvaluationStatus.UNSATISFIABLE
         guard_unknown = guard_status == EvaluationStatus.UNKNOWN
 
-        verified_reward = Decimal("0")
-        self_reported_reward = Decimal("0")
-        future_action_reward = Decimal("0")
-        unknown_reward = Decimal("0")
+        verified_rule_ids: set[str] = set()
+        realizable_rule_ids: set[str] = set()
+        upper_rule_ids: set[str] = set()
+        effective_rewards: dict[str, Decimal] = {}
         applied: list[AppliedReward] = []
 
         for preferential_rule in product.preferential_rules:
             result = result_by_rule_id[preferential_rule.rule.rule_id]
-            reward = preferential_rule.reward.value
+            reward = RateEngine._effective_reward(preferential_rule, result)
+            effective_rewards[preferential_rule.rule.rule_id] = reward
             bucket = RateEngine._evidence_bucket(result)
 
             include_confirmed = (
@@ -72,13 +116,11 @@ class RateEngine:
             )
 
             if include_confirmed:
-                verified_reward += reward
-            elif include_realizable and bucket == "SELF_REPORTED":
-                self_reported_reward += reward
-            elif include_realizable and result.status == EvaluationStatus.ACHIEVABLE:
-                future_action_reward += reward
-            if include_upper and not include_realizable:
-                unknown_reward += reward
+                verified_rule_ids.add(preferential_rule.rule.rule_id)
+            if include_realizable:
+                realizable_rule_ids.add(preferential_rule.rule.rule_id)
+            if include_upper:
+                upper_rule_ids.add(preferential_rule.rule.rule_id)
 
             applied.append(
                 AppliedReward(
@@ -95,25 +137,100 @@ class RateEngine:
                 )
             )
 
-        cap = product.preferential_rate_cap
-        capped_verified = min(verified_reward, cap)
-        remaining = max(Decimal("0"), cap - capped_verified)
-        capped_self = min(self_reported_reward, remaining)
-        remaining -= capped_self
-        capped_future = min(future_action_reward, remaining)
-        remaining -= capped_future
-        capped_unknown = min(unknown_reward, remaining)
+        declared_cap = product.preferential_rate_cap
+        confirmed_total = RateEngine._aggregate_canonical_rewards(
+            product, verified_rule_ids, effective_rewards, declared_cap
+        )
+        realizable_total = RateEngine._aggregate_canonical_rewards(
+            product, realizable_rule_ids, effective_rewards, declared_cap
+        )
+        upper_total = RateEngine._aggregate_canonical_rewards(
+            product, upper_rule_ids, effective_rewards, declared_cap
+        )
+        if (
+            not rewards_blocked
+            and product.base_rate is not None
+            and product.advertised_max_rate is not None
+            and RateEngine._has_unmodeled_preferential_rules(product)
+        ):
+            # Keep source-first rules that cannot be executed deterministically
+            # (for example a bank-authoritative random draw) in the candidate
+            # upper bound. This value affects provisional rank/frontier only;
+            # it is never promoted to the user's realizable expected rate.
+            published_possible_reward = max(
+                Decimal("0"),
+                product.advertised_max_rate - product.base_rate,
+            )
+            if declared_cap is not None:
+                published_possible_reward = min(
+                    published_possible_reward,
+                    declared_cap,
+                )
+            upper_total = max(upper_total, published_possible_reward)
+        realizable_increment = max(Decimal("0"), realizable_total - confirmed_total)
+        upper_increment = max(Decimal("0"), upper_total - realizable_total)
 
-        confirmed_total = capped_verified
-        realizable_total = capped_verified + capped_self + capped_future
-        upper_total = realizable_total + capped_unknown
+        raw_self = sum(
+            effective_rewards[item.rule_id]
+            for item in applied
+            if item.included_in_realizable
+            and not item.included_in_confirmed
+            and item.evidence_bucket == "SELF_REPORTED"
+        )
+        capped_self = min(raw_self, realizable_increment)
+        capped_future = realizable_increment - capped_self
+        capped_verified = confirmed_total
+        capped_unknown = upper_increment
+
+        return_kind = (
+            product.normalized.return_policy.get("return_kind")
+            if product.normalized is not None
+            else None
+        )
+        if return_kind == "PERFORMANCE_LINKED":
+            calculation_status = "UNSUPPORTED"
+            calculation_reason = "PERFORMANCE_LINKED_RETURN_IS_NOT_A_GUARANTEED_RATE"
+        elif product.base_rate is None:
+            calculation_status = "UNKNOWN"
+            calculation_reason = "APPLICABLE_BASE_RATE_NOT_AVAILABLE"
+        else:
+            calculation_status = "CALCULATED"
+            calculation_reason = None
+
+        confirmed_rate = (
+            product.base_rate + confirmed_total
+            if product.base_rate is not None and calculation_status == "CALCULATED"
+            else None
+        )
+        realizable_rate = (
+            product.base_rate + realizable_total
+            if product.base_rate is not None and calculation_status == "CALCULATED"
+            else None
+        )
+        upper_rate = (
+            product.base_rate + upper_total
+            if product.base_rate is not None and calculation_status == "CALCULATED"
+            else None
+        )
+        # The catalog's published maximum is an externally displayed ceiling.
+        # Rule extraction can contain mutually-exclusive alternatives or a
+        # source sentence that states a total rate (rather than an increment),
+        # so an optimistic rule sum must never advertise more than that ceiling.
+        if (
+            upper_rate is not None
+            and product.advertised_max_rate is not None
+            and upper_rate > product.advertised_max_rate
+        ):
+            upper_rate = product.advertised_max_rate
 
         return RateSummary(
             advertised_max_rate=product.advertised_max_rate,
-            confirmed_rate=product.base_rate + confirmed_total,
-            realizable_rate=product.base_rate + realizable_total,
-            user_specific_conditional_upper_rate=product.base_rate + upper_total,
-            preferential_cap=cap,
+            confirmed_rate=confirmed_rate,
+            realizable_rate=realizable_rate,
+            user_specific_conditional_upper_rate=upper_rate,
+            preferential_cap=declared_cap,
+            calculation_status=calculation_status,
+            calculation_reason=calculation_reason,
             guard_status=guard_status,
             applied_rewards=applied,
             evidence_breakdown=RateEvidenceBreakdown(
@@ -163,3 +280,157 @@ class RateEngine:
         if EvaluationStatus.ACHIEVABLE in statuses:
             return EvaluationStatus.ACHIEVABLE
         return EvaluationStatus.SATISFIED
+
+    @staticmethod
+    def _fact_actual(result: RuleEvaluation, fact_type: str) -> Decimal | None:
+        evidence = result.evidence or {}
+        if evidence.get("fact_type") == fact_type and evidence.get("actual") is not None:
+            try:
+                return Decimal(str(evidence["actual"]))
+            except Exception:
+                return None
+        for child in result.children:
+            actual = RateEngine._fact_actual(child, fact_type)
+            if actual is not None:
+                return actual
+        return None
+
+    @staticmethod
+    def _effective_reward(preferential_rule, result: RuleEvaluation) -> Decimal:
+        reward = preferential_rule.reward.value
+        payload = preferential_rule.reward_payload
+        kind = preferential_rule.reward_kind
+        if kind == "ADD_RATE_FROM_FACT":
+            fact_type = str(payload.get("fact_key") or "").replace(".", "_")
+            actual = RateEngine._fact_actual(result, fact_type)
+            if actual is not None:
+                minimum = Decimal(str(payload.get("min_value", actual)))
+                maximum = Decimal(str(payload.get("max_value", actual)))
+                reward = min(maximum, max(minimum, actual))
+        elif kind == "REPEATABLE_ADD_RATE":
+            fact_type = str(payload.get("count_fact_key") or "").replace(".", "_")
+            count = RateEngine._fact_actual(result, fact_type)
+            if count is not None:
+                maximum_count = Decimal(str(payload.get("max_count", count)))
+                per_count = Decimal(
+                    str(payload.get("value_per_count") or payload.get("value") or "0")
+                )
+                reward = min(count, maximum_count) * per_count
+                maximum_reward = payload.get("maximum_reward")
+                if maximum_reward is not None:
+                    reward = min(reward, Decimal(str(maximum_reward)))
+        return max(Decimal("0"), reward)
+
+    @staticmethod
+    def _aggregate_canonical_rewards(
+        product: ProductDefinition,
+        included_runtime_rule_ids: set[str],
+        reward_by_runtime_rule_id: dict[str, Decimal],
+        declared_cap: Decimal | None,
+    ) -> Decimal:
+        if not included_runtime_rule_ids:
+            return Decimal("0")
+        canonical_by_runtime = {
+            item.rule.rule_id: item.canonical_rule_id or item.rule.rule_id
+            for item in product.preferential_rules
+        }
+        values = {
+            canonical_by_runtime[runtime_id]: reward_by_runtime_rule_id[runtime_id]
+            for runtime_id in included_runtime_rule_ids
+        }
+        policy = (
+            product.normalized.return_policy.get("preferential_policy", {})
+            if product.normalized is not None
+            else {}
+        )
+        relations = list(policy.get("relations") or [])
+
+        parent = {rule_id: rule_id for rule_id in values}
+
+        def find(rule_id: str) -> str:
+            parent.setdefault(rule_id, rule_id)
+            while parent[rule_id] != rule_id:
+                parent[rule_id] = parent[parent[rule_id]]
+                rule_id = parent[rule_id]
+            return rule_id
+
+        def union(left: str, right: str) -> None:
+            left_root, right_root = find(left), find(right)
+            if left_root != right_root:
+                parent[right_root] = left_root
+
+        exclusive_types = {
+            "MAX_OF",
+            "EXCLUSIVE_ONE",
+            "MUTUALLY_EXCLUSIVE",
+            "MUTUALLY_EXCLUSIVE_MAX",
+            "MUTUALLY_EXCLUSIVE_BY_ACCOUNT_AGE",
+            "MUTUALLY_EXCLUSIVE_HIGHEST_THRESHOLD",
+            "MUTUALLY_EXCLUSIVE_HIGHEST_SPECIFICITY",
+            "TIER_SELECT",
+            "CONDITION_PRIORITY_OVERRIDE",
+            "FINAL_RATE_NOT_ADDITIVE",
+        }
+        for relation in relations:
+            if RateEngine._relation_type(relation) not in exclusive_types:
+                continue
+            members = [
+                rule
+                for rule in RateEngine._relation_rule_ids(relation)
+                if rule in values
+            ]
+            for member in members[1:]:
+                union(members[0], member)
+
+        groups: dict[str, list[str]] = {}
+        for rule_id in values:
+            groups.setdefault(find(rule_id), []).append(rule_id)
+        group_values = {
+            root: max(values[rule_id] for rule_id in members)
+            for root, members in groups.items()
+        }
+        total = sum(group_values.values(), Decimal("0"))
+
+        # Component caps are applied after mutually-exclusive choices within
+        # the component.  This prevents double counting while retaining truly
+        # independent rewards outside the capped relation.
+        for relation in relations:
+            if RateEngine._relation_type(relation) not in {
+                "SUM_WITH_CAP",
+                "CUMULATIVE_WITH_GLOBAL_CAP",
+            }:
+                continue
+            member_ids = set(RateEngine._relation_rule_ids(relation))
+            if not member_ids:
+                continue
+            roots = {find(rule_id) for rule_id in member_ids if rule_id in values}
+            component = sum((group_values[root] for root in roots), Decimal("0"))
+            cap_row = relation.get("cap") or {}
+            cap_value = (
+                cap_row.get("value")
+                or relation.get("cap_value")
+                or (policy.get("global_cap") or {}).get("value")
+            )
+            if cap_value is not None:
+                total -= max(Decimal("0"), component - Decimal(str(cap_value)))
+
+        if declared_cap is not None:
+            total = min(total, declared_cap)
+        replacement_scopes: dict[str, Decimal] = {}
+        for item in product.preferential_rules:
+            canonical_id = item.canonical_rule_id or item.rule.rule_id
+            if canonical_id not in values or item.reward_kind != "ADD_RATE":
+                continue
+            interaction = str(item.application.get("base_interaction") or "")
+            if not interaction.startswith("REPLACE_BASE"):
+                continue
+            scope_key = str(item.application.get("principal_scope") or "GLOBAL")
+            factor = Decimal(
+                str(item.application.get("_scenario_principal_factor", "1"))
+            )
+            replacement_scopes[scope_key] = max(
+                replacement_scopes.get(scope_key, Decimal("0")), factor
+            )
+        if product.base_rate is not None:
+            total -= product.base_rate * sum(replacement_scopes.values(), Decimal("0"))
+        return max(Decimal("0"), total)

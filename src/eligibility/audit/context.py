@@ -105,6 +105,7 @@ class AuditSession:
         trace_id: str | None = None,
         evaluation_id: str | None = None,
         llm_payload_mode: LLMPayloadMode = LLMPayloadMode.REDACTED,
+        captured_event_types: frozenset[AuditEventType] | None = None,
     ) -> None:
         self.sink = sink
         self.request_id = request_id or f"REQ-{uuid.uuid4().hex[:16]}"
@@ -116,6 +117,7 @@ class AuditSession:
         self.question_id: str | None = None
         self.recommendation_id: str | None = None
         self.llm_payload_mode = llm_payload_mode
+        self.captured_event_types = captured_event_types
         self._span_stack: list[str] = []
         self._span_counter = 0
 
@@ -175,7 +177,15 @@ class AuditSession:
         span_id: str | None = None,
         parent_span_id: str | None = None,
         payload_mode: LLMPayloadMode | None = None,
-    ) -> AuditEvent:
+    ) -> AuditEvent | None:
+        # Large recommendation sessions can emit several rule-level records per
+        # product. Summary-mode callers skip those events before model creation,
+        # redaction, and hashing while preserving orchestration history.
+        if (
+            self.captured_event_types is not None
+            and event_type not in self.captured_event_types
+        ):
+            return None
         chosen_mode = payload_mode
         prepared_payload = self._prepare_payload(payload or {}, chosen_mode)
         event = AuditEvent(

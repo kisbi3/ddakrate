@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import date
 from decimal import Decimal
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -32,6 +32,15 @@ class Reward(StrictModel):
 class PreferentialRateRule(StrictModel):
     rule: RuleNode
     reward: Reward
+    # Canonical normalized products carry richer reward/application semantics
+    # than the legacy additive evaluator.  Keeping these fields on the runtime
+    # rule lets the scenario selector apply balance scopes and lets the rate
+    # engine honor canonical aggregation relations without creating a second
+    # source of truth.
+    canonical_rule_id: str | None = None
+    reward_kind: str = "ADD_RATE"
+    reward_payload: dict[str, Any] = Field(default_factory=dict)
+    application: dict[str, Any] = Field(default_factory=dict)
 
 
 class ContractTerm(StrictModel):
@@ -40,6 +49,7 @@ class ContractTerm(StrictModel):
 
 
 class ContributionPolicy(StrictModel):
+    funding_type: str | None = None
     initial_amount_min: Decimal | None = Field(default=None, ge=0)
     initial_amount_max: Decimal | None = Field(default=None, ge=0)
     initial_amount_options: list[Decimal] = Field(default_factory=list)
@@ -50,6 +60,11 @@ class ContributionPolicy(StrictModel):
     increment_amount: Decimal | None = Field(default=None, gt=0)
     increment_amount_options: list[Decimal] = Field(default_factory=list)
     total_principal_limit: Decimal | None = Field(default=None, gt=0)
+    target_amount_min: Decimal | None = Field(default=None, gt=0)
+    target_amount_max_per_account: Decimal | None = Field(default=None, gt=0)
+    target_amount_aggregate_max: Decimal | None = Field(default=None, gt=0)
+    target_amount_increment: Decimal | None = Field(default=None, gt=0)
+    target_amount_immutable: bool = False
     currency: str = "KRW"
 
     @model_validator(mode="after")
@@ -106,9 +121,14 @@ class ProductFeature(StrictModel):
 
 class ProductMetadata(StrictModel):
     institution_id: str
+    institution_name: str | None = None
+    institution_sector: Literal[
+        "BANK", "SAVINGS_BANK", "SECURITIES", "OTHER", "UNKNOWN"
+    ] = "UNKNOWN"
     product_id: str
     product_name: str
     product_type: str
+    product_subtype: str | None = None
     sale_status: SaleStatus = SaleStatus.UNKNOWN
 
     min_term: ContractTerm | None = None
@@ -117,9 +137,9 @@ class ProductMetadata(StrictModel):
 
     contribution_policy: ContributionPolicy | None = None
 
-    base_rate: Decimal = Field(ge=0)
-    advertised_max_rate: Decimal = Field(ge=0)
-    preferential_rate_cap: Decimal = Field(ge=0)
+    base_rate: Decimal | None = Field(default=None, ge=0)
+    advertised_max_rate: Decimal | None = Field(default=None, ge=0)
+    preferential_rate_cap: Decimal | None = Field(default=None, ge=0)
 
     allowed_channels: list[SubscriptionChannel] = Field(default_factory=list)
     features: list[ProductFeature] = Field(default_factory=list)
@@ -144,8 +164,16 @@ class ProductMetadata(StrictModel):
             raise ValueError("sale_start must not be after sale_end")
         if self.effective_from and self.effective_to and self.effective_from > self.effective_to:
             raise ValueError("effective_from must not be after effective_to")
-        theoretical = self.base_rate + self.preferential_rate_cap
-        if self.advertised_max_rate > theoretical:
+        theoretical = (
+            self.base_rate + self.preferential_rate_cap
+            if self.base_rate is not None and self.preferential_rate_cap is not None
+            else None
+        )
+        if (
+            theoretical is not None
+            and self.advertised_max_rate is not None
+            and self.advertised_max_rate > theoretical
+        ):
             raise ValueError(
                 "advertised_max_rate cannot exceed base_rate + preferential_rate_cap"
             )
@@ -153,6 +181,41 @@ class ProductMetadata(StrictModel):
             if self.min_term.unit == self.max_term.unit and self.min_term.value > self.max_term.value:
                 raise ValueError("min_term must not exceed max_term")
         return self
+
+
+class NormalizedProductData(StrictModel):
+    """Lossless runtime envelope for one published canonical product version.
+
+    The existing evaluator still consumes ``ProductDefinition``.  This envelope
+    keeps every new policy, reference, and explicit data gap available to APIs
+    without flattening unsupported CMA/tier/custom semantics into legacy fields.
+    """
+
+    version: int = Field(gt=0)
+    institution_name: str
+    product_subtype: str | None = None
+    sale_status: str
+    eligibility_policy: dict[str, Any] = Field(default_factory=dict)
+    term_policy: dict[str, Any] = Field(default_factory=dict)
+    cash_flow_policy: dict[str, Any] = Field(default_factory=dict)
+    investment_policy: dict[str, Any] = Field(default_factory=dict)
+    return_policy: dict[str, Any] = Field(default_factory=dict)
+    fee_policy: dict[str, Any] = Field(default_factory=dict)
+    tax_policy: dict[str, Any] = Field(default_factory=dict)
+    liquidity_policy: dict[str, Any] = Field(default_factory=dict)
+    protection_policy: dict[str, Any] = Field(default_factory=dict)
+    standard_conditions: list[dict[str, Any]] = Field(default_factory=list)
+    custom_bindings: list[dict[str, Any]] = Field(default_factory=list)
+    custom_definitions: list[dict[str, Any]] = Field(default_factory=list)
+    data_gaps: list[dict[str, Any]] = Field(default_factory=list)
+    # Listing display truth (for example a Naver rate-list snapshot) is kept
+    # separate from the contractual rate model used for eligibility/ranking.
+    listing_snapshot: dict[str, Any] = Field(default_factory=dict)
+    # A non-mutating, source-preserving view of subscription and preferential
+    # conditions.  Text-only rows must never be treated as evaluator rules.
+    condition_snapshot: dict[str, Any] = Field(default_factory=dict)
+    official_sources: list[dict[str, Any]] = Field(default_factory=list)
+    raw_product: dict[str, Any]
 
 
 class ProductDefinition(StrictModel):
@@ -164,17 +227,22 @@ class ProductDefinition(StrictModel):
     # optional, identity-checked envelope rather than an alternative truth.
     contract_months: int | None = Field(default=None, gt=0)
     contract_term: ContractTerm | None = None
-    base_rate: Decimal = Field(ge=0)
-    advertised_max_rate: Decimal = Field(ge=0)
-    preferential_rate_cap: Decimal = Field(ge=0)
+    base_rate: Decimal | None = Field(default=None, ge=0)
+    advertised_max_rate: Decimal | None = Field(default=None, ge=0)
+    preferential_rate_cap: Decimal | None = Field(default=None, ge=0)
     eligibility_rule: RuleNode
     preferential_rules: list[PreferentialRateRule] = Field(default_factory=list)
     global_guards: list[RuleNode] = Field(default_factory=list)
     metadata: ProductMetadata | None = None
+    normalized: NormalizedProductData | None = None
 
     @model_validator(mode="after")
     def validate_product(self) -> "ProductDefinition":
-        if self.contract_months is None and self.contract_term is None:
+        if (
+            self.contract_months is None
+            and self.contract_term is None
+            and self.normalized is None
+        ):
             raise ValueError("Either contract_months or contract_term is required")
         if (
             self.contract_months is not None
@@ -184,8 +252,16 @@ class ProductDefinition(StrictModel):
         ):
             raise ValueError("contract_months and contract_term disagree")
 
-        theoretical = self.base_rate + self.preferential_rate_cap
-        if self.advertised_max_rate > theoretical:
+        theoretical = (
+            self.base_rate + self.preferential_rate_cap
+            if self.base_rate is not None and self.preferential_rate_cap is not None
+            else None
+        )
+        if (
+            theoretical is not None
+            and self.advertised_max_rate is not None
+            and self.advertised_max_rate > theoretical
+        ):
             raise ValueError(
                 "advertised_max_rate cannot exceed base_rate + preferential_rate_cap"
             )

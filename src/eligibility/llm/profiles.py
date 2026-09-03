@@ -52,6 +52,14 @@ DEFAULT_PROFILES: dict[LLMPurpose, LLMProfile] = {
         temperature=0.0,
         timeout_seconds=20.0,
     ),
+    LLMPurpose.ELIGIBILITY_TEXT_REVIEW: LLMProfile(
+        purpose=LLMPurpose.ELIGIBILITY_TEXT_REVIEW,
+        prompt_template_id="top-ranked-eligibility-text-review",
+        prompt_template_version="1.0.0",
+        response_schema_version="1.0.0",
+        temperature=0.0,
+        timeout_seconds=30.0,
+    ),
     LLMPurpose.RESULT_EXPLANATION: LLMProfile(
         purpose=LLMPurpose.RESULT_EXPLANATION,
         prompt_template_id="evaluation-trace-explanation",

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from decimal import Decimal
+from typing import Mapping
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -19,11 +20,14 @@ from eligibility.llm.grounding import (
     validate_grounded_text,
 )
 from eligibility.schema.enums import (
+    EligibilityBadge,
     EvaluationStatus,
     RankingComparability,
     RankingObjective,
+    UserConditionStatus,
     VerificationLevel,
 )
+from eligibility.schema.condition_requirement import UserConditionState
 from eligibility.schema.product import ProductDefinition
 from eligibility.schema.search import (
     CandidateEvaluation,
@@ -38,8 +42,37 @@ from eligibility.schema.search import (
     RateContribution,
 )
 from eligibility.search.contribution import resolve_term, terms_equivalent
-from eligibility.search.ranking import _institution_name
+from eligibility.search.product_facts import project_product_search_facts
+from eligibility.search.ranking import _institution_name, _published_rate_reference
 from eligibility.search.retrieval import CandidateRetriever
+
+
+def _rate_snapshot_as_of(entry: dict) -> str | None:
+    value = entry.get("as_of") or (entry.get("calculation") or {}).get(
+        "snapshot_as_of"
+    )
+    return str(value) if value else None
+
+
+def _canonical_preferential_conditions(return_policy: dict) -> list[dict]:
+    policy = return_policy.get("preferential_policy") or {}
+    conditions: list[dict] = []
+    for rule in policy.get("rules") or []:
+        conditions.append(
+            {
+                "kind": "CANONICAL",
+                "rule_id": rule.get("rule_id"),
+                "title": rule.get("title"),
+                "condition": rule.get("condition") or {},
+                "reward": rule.get("reward") or {},
+                "application": rule.get("application") or {},
+                "display": rule.get("display") or {},
+                "structuring_status": rule.get("structuring_status"),
+                "executable": rule.get("executable", policy.get("executable", True)),
+                "source_ref_ids": rule.get("source_ref_ids") or [],
+            }
+        )
+    return conditions
 
 
 class GeneratedExplanation(BaseModel):
@@ -90,7 +123,16 @@ class GroundedResultExplainer:
     @staticmethod
     def deterministic_fallback(detail: ProductRecommendationDetail) -> str:
         sentences = [f"{detail.product_name}은 현재 추천 {detail.rank}위입니다."]
-        if detail.estimated_pre_tax_interest is not None:
+        if detail.realizable_rate is None:
+            if detail.return_kind == "PERFORMANCE_LINKED":
+                sentences.append(
+                    "실적배당 상품이므로 확정금리나 확정수익으로 계산하지 않았습니다."
+                )
+            else:
+                sentences.append(
+                    "현재 공식 데이터만으로 적용 금리를 확정할 수 없어 금리 계산을 보류했습니다."
+                )
+        elif detail.estimated_pre_tax_interest is not None:
             sentences.append(
                 "계획대로 우대조건을 달성할 경우 예상금리는 "
                 f"{detail.realizable_rate}%이며, 예상 세전이자는 "
@@ -127,7 +169,7 @@ class GroundedResultExplainer:
             )
         if detail.recommendation_reason.unknowns:
             sentences.append(
-                "가입 시 최종 확인 항목: "
+                "아직 확인 전인 항목: "
                 + join_items(detail.recommendation_reason.unknowns, 2)
                 + "."
             )
@@ -237,6 +279,7 @@ class RecommendationService:
             ranking_objective=ranking.ranking_objective,
             generated_at=ranking.generated_at,
             top_products=ranking.items,
+            ranked_products=ranking.display_items or ranking.items,
             unresolved_global_assumptions=[],
             ranking_explanation_refs=[ranking.ranking_run_id],
         )
@@ -263,17 +306,48 @@ class RecommendationService:
         rank: int,
         intent: ProductSearchIntent | None = None,
         ranking: RankingResult | None = None,
+        condition_states: Mapping[str, UserConditionState] | None = None,
         audit: AuditSession | None = None,
         include_explanation: bool = True,
     ) -> ProductRecommendationDetail:
+        condition_states = condition_states or {}
         result_by_id = {
             result.rule_id: result
             for result in candidate.product_evaluation.preferential_rule_results
         }
+        presentation_by_rate_id: dict[str, dict] = {}
+        if product.normalized is not None:
+            return_policy = product.normalized.return_policy
+            disclosures_by_text = {
+                str(row.get("condition_text") or ""): row
+                for row in return_policy.get("preferential_condition_disclosures", [])
+                if row.get("presentation") and row.get("condition_text")
+            }
+            for entry in return_policy.get("rate_entries", []):
+                disclosure = disclosures_by_text.get(str(entry.get("condition_text") or ""))
+                if disclosure is not None and entry.get("rate_id"):
+                    presentation_by_rate_id[str(entry["rate_id"])] = disclosure
         breakdown: list[RateBreakdownItem] = []
         for preferential in product.preferential_rules:
             rule = preferential.rule
             result = result_by_id[rule.rule_id]
+            variable_ids = self._condition_variable_ids(rule)
+            condition_state = next(
+                (
+                    condition_states[variable_id]
+                    for variable_id in variable_ids
+                    if variable_id in condition_states
+                ),
+                None,
+            )
+            disclosure = next(
+                (
+                    row
+                    for rate_id, row in presentation_by_rate_id.items()
+                    if rule.rule_id.endswith(f":{rate_id}")
+                ),
+                None,
+            )
             breakdown.append(
                 RateBreakdownItem(
                     rule_id=rule.rule_id,
@@ -285,6 +359,16 @@ class RecommendationService:
                     action_summary=self._action_summary(result),
                     reason_code=result.reason_code,
                     source_reference=rule.source,
+                    disclosure_id=(disclosure or {}).get("disclosure_id"),
+                    presentation=(disclosure or {}).get("presentation"),
+                    disclosure_verification_status=(disclosure or {}).get("verification_status"),
+                    user_condition_status=(
+                        condition_state.status if condition_state is not None else None
+                    ),
+                    display_status=self._condition_display_status(
+                        result,
+                        condition_state,
+                    ),
                     children=self._meaningful_breakdown_children(rule, result),
                 )
             )
@@ -308,13 +392,19 @@ class RecommendationService:
             for item in candidate.product_evaluation.rates.applied_rewards
             if item.included_in_realizable
         )
+        evaluated_base_rate = candidate.product_evaluation.rates.evidence_breakdown.base_rate
         post_cap = (
-            candidate.realizable_rate - product.base_rate
+            candidate.realizable_rate - evaluated_base_rate
+            if candidate.realizable_rate is not None and evaluated_base_rate is not None
+            else None
+        )
+        cap_reduction = (
+            max(Decimal("0"), pre_cap - post_cap) if post_cap is not None else None
         )
         cap_adjustment = RateCapAdjustment(
-            cap_pp=product.preferential_rate_cap,
+            cap_pp=candidate.product_evaluation.rates.preferential_cap,
             pre_cap_total_pp=pre_cap,
-            cap_reduction_pp=max(Decimal("0"), pre_cap - post_cap),
+            cap_reduction_pp=cap_reduction,
             post_cap_total_pp=post_cap,
         )
         reason = self._reason(
@@ -324,18 +414,177 @@ class RecommendationService:
             intent=intent,
             ranking=ranking,
         )
+        confirmed_or_achievable_products_ahead = 0
+        if ranking is not None:
+            for ranked_item in ranking.display_items:
+                if ranked_item.product_id == product.product_id:
+                    break
+                if ranked_item.eligibility_badge in {
+                    EligibilityBadge.ELIGIBLE,
+                    EligibilityBadge.PLAN_REQUIRED,
+                }:
+                    confirmed_or_achievable_products_ahead += 1
         projection = candidate.contribution_projection
+        normalized = product.normalized
+        performance_linked_cma = (
+            product.product_type == "CMA"
+            and normalized is not None
+            and normalized.return_policy.get("return_kind") == "PERFORMANCE_LINKED"
+        )
+        rate_entries = (
+            []
+            if performance_linked_cma
+            else normalized.return_policy.get("rate_entries", [])
+            if normalized is not None
+            else []
+        )
+        rate_as_of_values = sorted(
+            {
+                value
+                for item in rate_entries
+                if (value := _rate_snapshot_as_of(item)) is not None
+            }
+        )
+        published_label, published_summary, published_as_of = (
+            _published_rate_reference(product)
+        )
+        preferential_conditions: list[dict] = []
+        if normalized is not None:
+            preferential_conditions.extend(
+                normalized.return_policy.get("preferential_condition_disclosures", [])
+            )
+            preferential_conditions.extend(
+                _canonical_preferential_conditions(normalized.return_policy)
+            )
+
+            def condition_source(identifier: str | None) -> dict | None:
+                if not identifier:
+                    return None
+                for preferential in product.preferential_rules:
+                    if identifier not in preferential.rule.rule_id:
+                        continue
+                    source = preferential.rule.source
+                    if source is not None:
+                        return source.model_dump(mode="json")
+                return None
+
+            preferential_conditions.extend(
+                {
+                    "kind": "STANDARD",
+                    **item,
+                    "official_source": condition_source(item.get("condition_id")),
+                }
+                for item in normalized.standard_conditions
+                if item.get("purpose") == "PREFERENTIAL_RETURN"
+            )
+            custom_by_key = {
+                (item.get("custom_code"), item.get("version")): item
+                for item in normalized.custom_definitions
+            }
+            for binding in normalized.custom_bindings:
+                if binding.get("purpose") != "PREFERENTIAL_RETURN":
+                    continue
+                definition = custom_by_key.get(
+                    (binding.get("custom_code"), binding.get("custom_version")), {}
+                )
+                preferential_conditions.append(
+                    {
+                        "kind": "CUSTOM",
+                        **binding,
+                        "title": definition.get("title"),
+                        "evaluation_mode": definition.get("evaluation_mode"),
+                        "content_blocks": definition.get("content_blocks", []),
+                        "official_source": condition_source(
+                            binding.get("custom_code")
+                        ),
+                    }
+                )
         detail = ProductRecommendationDetail(
             recommendation_id=recommendation_id,
             search_session_id=search_session_id,
             product_id=product.product_id,
             product_name=product.name,
-            institution_name=_institution_name(product.institution_id),
+            institution_name=(
+                normalized.institution_name
+                if normalized is not None
+                else _institution_name(product.institution_id)
+            ),
             product_type=product.product_type,
+            ranking_objective=(
+                ranking.ranking_objective
+                if ranking is not None
+                else RankingObjective.MAX_REALIZABLE_RATE
+            ),
+            eligibility_status=candidate.eligibility_status,
+            material_unknown_count=candidate.material_unknown_count,
+            confirmed_or_achievable_products_ahead=(
+                confirmed_or_achievable_products_ahead
+            ),
+            product_subtype=(normalized.product_subtype if normalized is not None else None),
+            sale_status=(normalized.sale_status if normalized is not None else None),
+            return_kind=(
+                normalized.return_policy.get("return_kind")
+                if normalized is not None
+                else "INTEREST"
+            ),
+            published_rate_label=published_label,
+            published_rate_summary=published_summary,
+            published_rate_as_of=published_as_of,
+            calculation_method=(
+                normalized.return_policy.get("calculation_method")
+                if normalized is not None
+                else None
+            ),
+            rate_calculation_status=(
+                candidate.product_evaluation.rates.calculation_status
+            ),
+            rate_calculation_reason=(
+                candidate.product_evaluation.rates.calculation_reason
+            ),
+            rate_as_of=(
+                None
+                if performance_linked_cma
+                else rate_as_of_values[-1] if rate_as_of_values else None
+            ),
+            target_customer_summary=(
+                product.metadata.target_customer_summary
+                if product.metadata is not None
+                else None
+            ),
+            protection_status=(
+                normalized.protection_policy.get("coverage_status")
+                if normalized is not None
+                else None
+            ),
+            search_facts=project_product_search_facts(product),
+            rate_evaluation=candidate.rate_evaluation,
+            term_policy=(normalized.term_policy if normalized is not None else {}),
+            cash_flow_policy=(normalized.cash_flow_policy if normalized is not None else {}),
+            fee_policy=(normalized.fee_policy if normalized is not None else {}),
+            tax_policy=(normalized.tax_policy if normalized is not None else {}),
+            liquidity_policy=(normalized.liquidity_policy if normalized is not None else {}),
+            rate_entries=rate_entries,
+            preferential_conditions=preferential_conditions,
+            data_gaps=(normalized.data_gaps if normalized is not None else []),
+            official_sources=(normalized.official_sources if normalized is not None else []),
             rank=rank,
             realizable_rate=candidate.realizable_rate,
             confirmed_rate=candidate.confirmed_rate,
-            advertised_max_rate=product.advertised_max_rate,
+            advertised_max_rate=(
+                None
+                if performance_linked_cma
+                else candidate.product_evaluation.rates.advertised_max_rate
+            ),
+            additional_possible_rate_pp=(
+                max(
+                    Decimal("0"),
+                    candidate.user_specific_conditional_upper_rate
+                    - candidate.realizable_rate,
+                )
+                if candidate.user_specific_conditional_upper_rate is not None
+                and candidate.realizable_rate is not None
+                else None
+            ),
             term_summary=projection.term_summary,
             contribution_summary=projection.contribution_summary,
             maximum_deposit_summary=projection.maximum_deposit_summary,
@@ -373,13 +622,70 @@ class RecommendationService:
         return detail
 
     @staticmethod
+    def _condition_variable_ids(rule) -> list[str]:
+        """Collect canonical question families without depending on rule type."""
+
+        identifiers: list[str] = []
+        missing = getattr(rule, "missing_fact", None)
+        if missing is not None:
+            identifier = getattr(missing, "action_id", None) or getattr(
+                rule, "fact_type", None
+            )
+            if identifier:
+                identifiers.append(str(identifier))
+        for child in getattr(rule, "children", None) or []:
+            identifiers.extend(RecommendationService._condition_variable_ids(child))
+        child = getattr(rule, "child", None)
+        if child is not None:
+            identifiers.extend(RecommendationService._condition_variable_ids(child))
+        return list(dict.fromkeys(identifiers))
+
+    @staticmethod
+    def _condition_display_status(
+        result,
+        state: UserConditionState | None,
+    ) -> str:
+        if state is not None:
+            if state.status in {
+                UserConditionStatus.WILLING_UNSPECIFIED,
+                UserConditionStatus.ACKNOWLEDGED_UNKNOWN,
+                UserConditionStatus.NOT_ASKED,
+            }:
+                return "확인 전"
+            if state.status == UserConditionStatus.DECLINED:
+                return "적용 안 함"
+            if state.status == UserConditionStatus.VERIFIED:
+                return "확인 완료"
+            if state.status == UserConditionStatus.DECLARED_FEASIBLE:
+                return (
+                    "적용 안 함"
+                    if result.status == EvaluationStatus.UNSATISFIABLE
+                    else "확인 전"
+                    if result.status == EvaluationStatus.UNKNOWN
+                    else "적용 예상"
+                )
+        if result.status == EvaluationStatus.UNKNOWN:
+            return "확인 전"
+        if result.status == EvaluationStatus.UNSATISFIABLE:
+            return "적용 안 함"
+        if result.status == EvaluationStatus.ACHIEVABLE:
+            return "적용 예상"
+        if result.verification_level in {
+            VerificationLevel.INSTITUTION_VERIFIED,
+            VerificationLevel.MYDATA_VERIFIED,
+            VerificationLevel.VERIFIED,
+        }:
+            return "확인 완료"
+        return "적용 예상"
+
+    @staticmethod
     def _evidence_basis(result) -> str:
         if result.status == EvaluationStatus.ACHIEVABLE:
             return "계획대로 달성 시 적용 가능"
         if result.status == EvaluationStatus.UNSATISFIABLE:
             return "현재 정보로 받을 수 없음"
         if result.status == EvaluationStatus.UNKNOWN:
-            return "가입 시 최종 확인 필요"
+            return "아직 확인 전"
         if VerificationLevel.SELF_REPORTED in result.evidence_levels:
             return "사용자 응답 기준 충족"
         return "금융데이터로 확인"
@@ -415,6 +721,10 @@ class RecommendationService:
                     evidence_basis=cls._evidence_basis(child_result),
                     action_summary=cls._action_summary(child_result),
                     reason_code=child_result.reason_code,
+                    display_status=cls._condition_display_status(
+                        child_result,
+                        None,
+                    ),
                     source_reference=getattr(child_rule, "source", None),
                     children=cls._meaningful_breakdown_children(child_rule, child_result),
                 )
@@ -558,7 +868,7 @@ class RecommendationService:
                 unknown_entries.append(
                     RecommendationReasonEntry(
                         code="RULE_UNKNOWN",
-                        text=f"{result.rule_name}: 가입 시 최종 확인 필요",
+                        text=f"{result.rule_name}: 아직 확인 전",
                         evidence={"rule_id": result.rule_id, "reason_code": result.reason_code},
                     )
                 )
@@ -573,6 +883,25 @@ class RecommendationService:
                         "missing_input_ids": [
                             item.input_id for item in candidate.missing_ranking_inputs
                         ],
+                    },
+                )
+            )
+
+        if candidate.eligibility_status == EvaluationStatus.UNKNOWN:
+            unknown_entries.append(
+                RecommendationReasonEntry(
+                    code="ELIGIBILITY_UNCONFIRMED",
+                    text=(
+                        "가입대상 관련 확인이 아직 끝나지 않음"
+                        + (
+                            f" ({candidate.material_unknown_count}건)"
+                            if candidate.material_unknown_count
+                            else ""
+                        )
+                    ),
+                    evidence={
+                        "eligibility_status": candidate.eligibility_status.value,
+                        "material_unknown_count": candidate.material_unknown_count,
                     },
                 )
             )

@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import os
+import json
 from pathlib import Path
 
 from eligibility.schema.product import ProductDefinition
+from eligibility.catalog.normalized_loader import load_normalized_product_catalog
 
 
 CATALOG_PATH_ENV = "ELIGIBILITY_PRODUCT_CATALOG_PATH"
+CATALOG_MODE_ENV = "ELIGIBILITY_CATALOG_MODE"
 
 
 def load_product_definition(path: str | Path) -> ProductDefinition:
@@ -56,4 +59,33 @@ def default_product_catalog_root() -> Path:
 
 
 def load_default_product_catalog() -> list[ProductDefinition]:
-    return load_product_catalog(default_product_catalog_root())
+    configured = os.environ.get(CATALOG_PATH_ENV)
+    if configured:
+        path = Path(configured).expanduser().resolve()
+        if not path.exists():
+            raise FileNotFoundError(f"{CATALOG_PATH_ENV} points to a missing path: {path}")
+        index_path = path / "index.json" if path.is_dir() else path
+        if index_path.is_file():
+            try:
+                payload = json.loads(index_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid catalog JSON: {index_path}") from exc
+            if isinstance(payload, dict) and isinstance(payload.get("products"), list):
+                return load_normalized_product_catalog(index_path)
+            if path.is_file():
+                raise ValueError(
+                    f"{CATALOG_PATH_ENV} file is not a normalized published index: {path}"
+                )
+        # Historical directory overrides remain explicit legacy mode. Strict
+        # ProductDefinition validation prevents a normalized schema directory
+        # from being silently interpreted as the old flat catalog.
+        return load_product_catalog(path)
+
+    mode = os.environ.get(CATALOG_MODE_ENV, "NORMALIZED").strip().upper()
+    if mode == "NORMALIZED":
+        return load_normalized_product_catalog()
+    if mode == "LEGACY":
+        return load_product_catalog(default_product_catalog_root())
+    raise ValueError(
+        f"Unsupported {CATALOG_MODE_ENV}={mode!r}; expected NORMALIZED or LEGACY"
+    )

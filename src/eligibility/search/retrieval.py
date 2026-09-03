@@ -16,6 +16,7 @@ from eligibility.schema.enums import (
 from eligibility.schema.product import ContractTerm, ProductDefinition
 from eligibility.schema.search import CandidateFilterDecision, ProductSearchIntent
 from eligibility.search.contribution import terms_equivalent
+from eligibility.search.product_facts import project_product_search_facts
 
 
 _CLOSED_STATUSES = {SaleStatus.SOLD_OUT, SaleStatus.ENDED, SaleStatus.SUSPENDED}
@@ -48,6 +49,7 @@ class CandidateRetriever:
         as_of: date,
     ) -> CandidateFilterDecision:
         metadata = product.metadata
+        search_facts = project_product_search_facts(product)
         if metadata is not None:
             if metadata.sale_status in _CLOSED_STATUSES:
                 return self._remove(product, "SALE_STATUS_CLOSED", sale_status=metadata.sale_status.value)
@@ -62,11 +64,38 @@ class CandidateRetriever:
                 requested=intent.product_types,
             )
 
+        if product.institution_id in set(intent.excluded_institution_ids):
+            return self._remove(
+                product,
+                "EXCLUDED_INSTITUTION",
+                institution_id=product.institution_id,
+            )
+
+        # Customer capacity is a cross-family catalog fact, not an LLM
+        # eligibility judgment.  Exclude only when the product explicitly
+        # declares scopes and the requested capacity is absent; unknown scope
+        # remains a candidate for later verification.
+        if (
+            intent.application_capacity is not None
+            and search_facts.customer_scopes
+            and intent.application_capacity not in search_facts.customer_scopes
+        ):
+            return self._remove(
+                product,
+                "HARD_CUSTOMER_SCOPE_VIOLATION",
+                expected=intent.application_capacity,
+                actual=search_facts.customer_scopes,
+            )
+
         contribution_plan = intent.contribution_plan
         if (
             contribution_plan is not None
             and contribution_plan.selected_term_value is not None
             and contribution_plan.selected_term_unit is not None
+            # MAXIMUM/MINIMUM are ranges, not requests for a product that
+            # offers the boundary term itself.  Their hard numeric constraint
+            # below decides whether any available term lies inside the range.
+            and contribution_plan.term_strictness not in {"MAXIMUM", "MINIMUM"}
             and not self._supports_requested_term(
                 product,
                 ContractTerm(
@@ -82,8 +111,40 @@ class CandidateRetriever:
                 requested_unit=contribution_plan.selected_term_unit.value,
             )
 
+        if (
+            contribution_plan is not None
+            and contribution_plan.selected_term_value is not None
+            and contribution_plan.selected_term_unit is not None
+            and contribution_plan.term_strictness in {"MAXIMUM", "MINIMUM"}
+        ):
+            bounds = self._term_bounds_months(product)
+            if bounds is not None:
+                boundary = self._term_to_months(
+                    ContractTerm(
+                        value=contribution_plan.selected_term_value,
+                        unit=contribution_plan.selected_term_unit,
+                    )
+                )
+                minimum, maximum = bounds
+                violates_range = (
+                    contribution_plan.term_strictness == "MAXIMUM"
+                    and minimum > boundary
+                ) or (
+                    contribution_plan.term_strictness == "MINIMUM"
+                    and maximum < boundary
+                )
+                if violates_range:
+                    return self._remove(
+                        product,
+                        "HARD_TERM_VIOLATION",
+                        minimum_months=str(minimum),
+                        maximum_months=str(maximum),
+                        boundary_months=str(boundary),
+                        term_strictness=contribution_plan.term_strictness,
+                    )
+
         for hard in intent.hard_constraints:
-            outcome = self._hard_constraint(product, hard)
+            outcome = self._hard_constraint(product, hard, search_facts=search_facts)
             if outcome is not None:
                 reason, evidence = outcome
                 return self._remove(product, reason, **evidence)
@@ -119,14 +180,128 @@ class CandidateRetriever:
         self,
         product: ProductDefinition,
         hard: HardConstraint,
+        *,
+        search_facts=None,
     ) -> tuple[str, dict] | None:
         field = hard.field.upper()
         metadata = product.metadata
+        facts = search_facts or project_product_search_facts(product)
+
+        if field == "INSTITUTION_SECTOR":
+            if metadata is None:
+                return None
+            expected_sectors = {
+                item.strip().upper()
+                for item in str(hard.expected).split("|")
+                if item.strip()
+            }
+            matches = metadata.institution_sector in expected_sectors
+            if self._violates(matches, hard.constraint):
+                return "HARD_INSTITUTION_SECTOR_VIOLATION", {
+                    "expected": sorted(expected_sectors),
+                    "actual": metadata.institution_sector,
+                }
+            return None
 
         if field == "PRODUCT_TYPE":
             matches = product.product_type == str(hard.expected)
             if self._violates(matches, hard.constraint):
                 return "HARD_PRODUCT_TYPE_VIOLATION", {"expected": hard.expected}
+            return None
+
+        scalar_fact_fields = {
+            "PRODUCT_SUBTYPE": "product_subtype",
+            "RETURN_KIND": "return_kind",
+            "PROTECTION_STATUS": "protection_status",
+            "REINVESTMENT_MODE": "reinvestment_mode",
+            "BALANCE_TIER_METHOD": "balance_tier_method",
+            "FUNDING_TYPE": "funding_type",
+            "CONTRIBUTION_FREQUENCY": "contribution_frequency",
+            "INTEREST_PAYMENT_METHOD": "interest_payment_method",
+        }
+        if field in scalar_fact_fields:
+            actual = getattr(facts, scalar_fact_fields[field])
+            if actual is None:
+                return None
+            expected = {
+                item.strip().upper()
+                for item in str(hard.expected).split("|")
+                if item.strip()
+            }
+            matches = str(actual).upper() in expected
+            if self._violates(matches, hard.constraint):
+                return "HARD_PRODUCT_FACT_VIOLATION", {
+                    "field": field,
+                    "expected": sorted(expected),
+                    "actual": actual,
+                }
+            return None
+
+        if field in {"CUSTOMER_SCOPE", "APPLICATION_CAPACITY"}:
+            if not facts.customer_scopes:
+                return None
+            expected = str(hard.expected).strip().upper()
+            matches = expected in set(facts.customer_scopes)
+            if self._violates(matches, hard.constraint):
+                return "HARD_CUSTOMER_SCOPE_VIOLATION", {
+                    "expected": expected,
+                    "actual": facts.customer_scopes,
+                }
+            return None
+
+        if field in {"DEPOSIT_PROTECTION", "DEPOSIT_PROTECTED"}:
+            if facts.protection_status is None:
+                return None
+            expected = self._as_bool(hard.expected)
+            if expected is None:
+                return None
+            protected = facts.protection_status == "PROTECTED"
+            matches = protected == expected
+            if self._violates(matches, hard.constraint):
+                return "HARD_PROTECTION_VIOLATION", {
+                    "expected": expected,
+                    "actual": facts.protection_status,
+                }
+            return None
+
+        if field == "FEE_WAIVER_AVAILABLE":
+            if facts.fee_waiver_available is None:
+                return None
+            expected = self._as_bool(hard.expected)
+            if expected is None:
+                return None
+            matches = facts.fee_waiver_available == expected
+            if self._violates(matches, hard.constraint):
+                return "HARD_FEE_WAIVER_VIOLATION", {
+                    "expected": expected,
+                    "actual": facts.fee_waiver_available,
+                }
+            return None
+
+        if field == "OPEN_ENDED":
+            if facts.open_ended is None:
+                return None
+            expected = self._as_bool(hard.expected)
+            if expected is None:
+                return None
+            matches = facts.open_ended == expected
+            if self._violates(matches, hard.constraint):
+                return "HARD_OPEN_ENDED_VIOLATION", {
+                    "expected": expected,
+                    "actual": facts.open_ended,
+                }
+            return None
+
+        if field in {"CLASSIFICATION", "PRODUCT_TRAIT"}:
+            if not facts.classifications:
+                return None
+            expected = str(hard.expected).strip().upper()
+            matches = expected in set(facts.classifications)
+            if self._violates(matches, hard.constraint):
+                return "HARD_CLASSIFICATION_VIOLATION", {
+                    "expected": expected,
+                    "actual": facts.classifications,
+                }
             return None
 
         if field in {"SUBSCRIPTION_CHANNEL", "CHANNEL"}:
@@ -259,6 +434,17 @@ class CandidateRetriever:
         return present_or_matches
 
     @staticmethod
+    def _as_bool(value) -> bool | None:
+        if isinstance(value, bool):
+            return value
+        normalized = str(value).strip().upper()
+        if normalized in {"TRUE", "YES", "Y", "1", "REQUIRED", "PROTECTED"}:
+            return True
+        if normalized in {"FALSE", "NO", "N", "0", "NOT_PROTECTED"}:
+            return False
+        return None
+
+    @staticmethod
     def _term_to_months(term: ContractTerm) -> Decimal:
         if term.unit == TermUnit.MONTH:
             return Decimal(term.value)
@@ -275,6 +461,11 @@ class CandidateRetriever:
         requested: ContractTerm,
     ) -> bool:
         metadata = product.metadata
+        if (
+            product.normalized is not None
+            and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
+        ):
+            return True
         requested_months = cls._term_to_months(requested)
         if metadata is not None:
             if metadata.available_terms:
@@ -302,6 +493,11 @@ class CandidateRetriever:
         return True
 
     def _term_bounds_months(self, product: ProductDefinition) -> tuple[Decimal, Decimal] | None:
+        if (
+            product.normalized is not None
+            and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
+        ):
+            return None
         metadata = product.metadata
         if metadata is not None:
             if metadata.available_terms:

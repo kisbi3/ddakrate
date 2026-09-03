@@ -13,10 +13,10 @@
   "preferential_rate_cap": "0.0",
   "eligibility_rule": {
     "rule_id": "IBK_LOVE_SHARING_SAVINGS_20260805_ELIG",
-    "name": "공식 가입대상 충족",
+    "name": "IBK사랑나눔적금 사회배려 가입대상",
     "purpose": "ELIGIBILITY",
     "evaluation_phase": "PRE_SUBSCRIPTION",
-    "description": null,
+    "description": "장애인, 기초생활수급자, 소년소녀가장, 북한이탈주민, 결혼이민자, 한부모가족 자녀양육 지원 대상자 또는 차상위계층 이하 만 65세 이상인 실명의 개인(개인사업자 제외)",
     "source": {
       "document": "IBK기업은행 IBK사랑나눔적금 공식 상품안내",
       "document_id": null,
@@ -27,7 +27,7 @@
       "source_text": null
     },
     "type": "FACT_COMPARE",
-    "fact_type": "IBK_LOVE_SHARING_ELIGIBILITY_VERIFIED",
+    "fact_type": "IBK_LOVE_SHARING_ELIGIBLE",
     "value_path": null,
     "effective_at": null,
     "subject_selector": null,
@@ -40,14 +40,23 @@
     "false_reason_code": "OFFICIAL_ELIGIBILITY_MISMATCH",
     "missing_reason_code": "REQUIRED_FACT_MISSING",
     "missing_fact": {
-      "resolution_strategy": "QUERY_INSTITUTION",
+      "resolution_strategy": "ASK_USER",
       "impact": null,
-      "required_source": "OFFICIAL_ELIGIBILITY_AND_USER_PROFILE",
-      "question": null,
-      "expected_semantic_type": null,
+      "required_source": null,
+      "question": "장애인, 기초생활수급자, 소년소녀가장, 북한이탈주민, 결혼이민자, 한부모가족 자녀양육 지원 대상자 또는 차상위계층 이하 만 65세 이상 중 하나에 해당하시나요? 개인사업자는 가입할 수 없어요.",
+      "expected_semantic_type": "SELF_REPORTED_FACT",
       "action_id": null,
       "reward_id": null,
-      "grounding_terms": []
+      "grounding_terms": [
+        "장애인",
+        "기초생활수급자",
+        "소년소녀가장",
+        "북한이탈주민",
+        "결혼이민자",
+        "한부모가족",
+        "차상위계층 이하 만 65세 이상",
+        "개인사업자 제외"
+      ]
     },
     "action": null,
     "required_semantic_type": null,

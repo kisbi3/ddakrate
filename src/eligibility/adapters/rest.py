@@ -51,6 +51,21 @@ class RestApplicationAdapter:
                         else None
                     ),
                 )
+                initial_question_id = payload.get("initial_pre_search_question_id")
+                if (
+                    initial_question_id
+                    and utterance
+                    and session.active_question_id == initial_question_id
+                ):
+                    # The Web UI displays the backend-owned first pre-search
+                    # question before a SearchSession exists. If the general
+                    # initial intent parser did not resolve that field, route
+                    # the same utterance through the focused active-question
+                    # interpreter so the user never sees a duplicate question.
+                    session = self.service.handle_user_message(
+                        session.search_session_id,
+                        message=utterance,
+                    ).session
                 return RestResponse(status_code=201, body=session.model_dump(mode="json"))
 
 
@@ -147,7 +162,7 @@ class RestApplicationAdapter:
             )
             if method == "GET" and match:
                 detail = self.service.get_product_recommendation_detail(
-                    match.group(1), match.group(2)
+                    match.group(1), match.group(2), include_explanation=False
                 )
                 return RestResponse(status_code=200, body=detail.model_dump(mode="json"))
 
