@@ -10,6 +10,16 @@
       "title": "EligibilityBadge",
       "type": "string"
     },
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
+      "type": "string"
+    },
     "RankingComparability": {
       "description": "Whether a candidate can participate in the active ranking metric.\n\nFor the default interest objective, COMPARABLE means the candidate has a\ndeterministic KRW after-tax-interest value.  A rate percentage is never a\nsubstitute for a missing KRW amount.",
       "enum": [
@@ -23,6 +33,7 @@
     "RankingObjective": {
       "enum": [
         "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
         "MAX_REALIZABLE_RATE",
         "MIN_ACTION_BURDEN",
         "BALANCED"
@@ -42,8 +53,25 @@
           "title": "Product Id",
           "type": "string"
         },
+        "institution_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Id"
+        },
         "institution_name": {
           "title": "Institution Name",
+          "type": "string"
+        },
+        "institution_sector": {
+          "default": "UNKNOWN",
+          "title": "Institution Sector",
           "type": "string"
         },
         "product_name": {
@@ -62,9 +90,45 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "base_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Rate"
         },
         "advertised_max_rate": {
           "anyOf": [
@@ -74,9 +138,61 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Advertised Max Rate"
+        },
+        "return_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return Kind"
+        },
+        "published_rate_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate Label"
+        },
+        "published_rate_summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate Summary"
+        },
+        "published_rate_as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate As Of"
         },
         "term_summary": {
           "title": "Term Summary",
@@ -92,6 +208,101 @@
         },
         "planned_contribution_summary": {
           "title": "Planned Contribution Summary",
+          "type": "string"
+        },
+        "requested_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Requested Periodic Amount"
+        },
+        "planned_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Planned Periodic Amount"
+        },
+        "monthly_equivalent_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Monthly Equivalent Amount"
+        },
+        "amount_difference": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference"
+        },
+        "amount_difference_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference Ratio"
+        },
+        "amount_match_status": {
+          "default": "NOT_SPECIFIED",
+          "title": "Amount Match Status",
+          "type": "string"
+        },
+        "product_choice_override": {
+          "default": false,
+          "title": "Product Choice Override",
+          "type": "boolean"
+        },
+        "term_match_status": {
+          "default": "NOT_SPECIFIED",
+          "title": "Term Match Status",
           "type": "string"
         },
         "estimated_total_principal": {
@@ -110,6 +321,22 @@
           "default": null,
           "title": "Estimated Total Principal"
         },
+        "estimated_pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Pre Tax Interest"
+        },
         "estimated_after_tax_interest": {
           "anyOf": [
             {
@@ -125,6 +352,38 @@
           ],
           "default": null,
           "title": "Estimated After Tax Interest"
+        },
+        "conditional_upper_pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conditional Upper Pre Tax Interest"
+        },
+        "conditional_upper_after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conditional Upper After Tax Interest"
         },
         "ranking_comparability": {
           "$ref": "#/$defs/RankingComparability",
@@ -146,6 +405,41 @@
           "minimum": 0,
           "title": "Material Unknown Count",
           "type": "integer"
+        },
+        "eligibility_text_review_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvaluationStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "eligibility_text_review_reason_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligibility Text Review Reason Code"
+        },
+        "eligibility_text_review_fingerprint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligibility Text Review Fingerprint"
         }
       },
       "required": [
@@ -154,8 +448,6 @@
         "institution_name",
         "product_name",
         "product_type",
-        "realizable_rate",
-        "advertised_max_rate",
         "term_summary",
         "contribution_summary",
         "maximum_deposit_summary",
@@ -203,6 +495,48 @@
       "title": "Top Products",
       "type": "array"
     },
+    "ranked_products": {
+      "items": {
+        "$ref": "#/$defs/RecommendationListItem"
+      },
+      "title": "Ranked Products",
+      "type": "array"
+    },
+    "recommendation_status": {
+      "default": "PROVISIONAL",
+      "enum": [
+        "PROVISIONAL",
+        "CONFIRMED"
+      ],
+      "title": "Recommendation Status",
+      "type": "string"
+    },
+    "provisional_candidates": {
+      "items": {
+        "$ref": "#/$defs/RecommendationListItem"
+      },
+      "title": "Provisional Candidates",
+      "type": "array"
+    },
+    "confirmed_top_products": {
+      "items": {
+        "$ref": "#/$defs/RecommendationListItem"
+      },
+      "title": "Confirmed Top Products",
+      "type": "array"
+    },
+    "unresolved_question_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Unresolved Question Count",
+      "type": "integer"
+    },
+    "acknowledged_unknown_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Acknowledged Unknown Count",
+      "type": "integer"
+    },
     "unresolved_global_assumptions": {
       "items": {
         "type": "string"
@@ -216,6 +550,30 @@
       },
       "title": "Ranking Explanation Refs",
       "type": "array"
+    },
+    "eligibility_text_review_state": {
+      "default": "DISABLED",
+      "enum": [
+        "DISABLED",
+        "DEFERRED",
+        "COMPLETE",
+        "PROVISIONAL",
+        "FAILED"
+      ],
+      "title": "Eligibility Text Review State",
+      "type": "string"
+    },
+    "eligibility_text_review_rounds": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Eligibility Text Review Rounds",
+      "type": "integer"
+    },
+    "eligibility_text_review_pending_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Eligibility Text Review Pending Count",
+      "type": "integer"
     }
   },
   "required": [

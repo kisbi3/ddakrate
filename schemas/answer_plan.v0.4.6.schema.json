@@ -1,0 +1,229 @@
+{
+  "$defs": {
+    "ActiveQuestionAnswer": {
+      "additionalProperties": false,
+      "description": "Answer to the exact backend-owned active condition question.",
+      "properties": {
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/UserConditionStatus"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/$defs/QuantitativeConditionValue"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "question_id",
+        "state"
+      ],
+      "title": "ActiveQuestionAnswer",
+      "type": "object"
+    },
+    "AnswerPlanUpdate": {
+      "additionalProperties": false,
+      "description": "One allowlisted side effect extracted alongside the active answer.",
+      "properties": {
+        "kind": {
+          "enum": [
+            "INSTITUTION_EXCLUSION",
+            "USER_CONDITION"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "institution_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Id"
+        },
+        "excluded": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Excluded"
+        },
+        "variable_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Variable Id"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UserConditionStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/$defs/QuantitativeConditionValue"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "AnswerPlanUpdate",
+      "type": "object"
+    },
+    "QuantitativeConditionValue": {
+      "additionalProperties": false,
+      "description": "Strict amount value for threshold-based user conditions.",
+      "properties": {
+        "amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "currency": {
+          "const": "KRW",
+          "default": "KRW",
+          "title": "Currency",
+          "type": "string"
+        },
+        "period": {
+          "anyOf": [
+            {
+              "enum": [
+                "DAY",
+                "WEEK",
+                "MONTH",
+                "YEAR"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Period"
+        }
+      },
+      "required": [
+        "amount"
+      ],
+      "title": "QuantitativeConditionValue",
+      "type": "object"
+    },
+    "UserConditionStatus": {
+      "description": "Session-local lifecycle of a canonical user variable.",
+      "enum": [
+        "NOT_ASKED",
+        "DECLINED",
+        "DECLARED_FEASIBLE",
+        "WILLING_UNSPECIFIED",
+        "ACKNOWLEDGED_UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "UserConditionStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Narrow LLM output; backend validates IDs and performs every mutation.",
+  "properties": {
+    "active_question_answer": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ActiveQuestionAnswer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "additional_updates": {
+      "items": {
+        "$ref": "#/$defs/AnswerPlanUpdate"
+      },
+      "title": "Additional Updates",
+      "type": "array"
+    },
+    "unresolved_fragments": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Fragments",
+      "type": "array"
+    }
+  },
+  "title": "AnswerPlan",
+  "type": "object"
+}

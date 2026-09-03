@@ -70,13 +70,54 @@ def test_application_service_catalog_top5_smoke():
     assert 1 <= len(rec.top_products) <= 5
     assert all(x.product_id in {p.product_id for p in products} for x in rec.top_products)
 
-def test_default_web_runtime_loads_catalog50(monkeypatch):
+
+def test_monthly_target_is_exact_or_explicitly_marked_as_unsupported():
+    products = {product.product_id: product for product in _catalog()}
+    selected = [
+        products["HANA_CUSTOMER_CARE_SAVINGS_2026"],
+        products["IBK_LOVE_SHARING_SAVINGS_20260805"],
+    ]
+    user_id = "TARGET-AMOUNT-USER"
+    service = ApplicationService(
+        selected,
+        user_fact_stores={user_id: UserFactStore(user_id=user_id)},
+    )
+    intent = ProductSearchIntent(
+        search_intent_id="INTENT-TARGET-AMOUNT",
+        user_id=user_id,
+        product_types=["INSTALLMENT_SAVINGS"],
+        contribution_plan=ContributionPlan(
+            desired_periodic_amount=Decimal("300000"),
+            frequency="MONTHLY",
+            selected_term_value=12,
+            selected_term_unit="MONTH",
+        ),
+    )
+    session = service.create_search_session(
+        user_id=user_id,
+        intent=intent,
+        as_of=date(2026, 8, 20),
+        subscription_date=date(2026, 8, 20),
+    )
+    evaluations = service.evaluate_candidates(session.search_session_id)
+    limited = evaluations["HANA_CUSTOMER_CARE_SAVINGS_2026"].contribution_projection
+    exact = evaluations["IBK_LOVE_SHARING_SAVINGS_20260805"].contribution_projection
+
+    assert limited.requested_periodic_amount == Decimal("300000")
+    assert limited.planned_periodic_amount == Decimal("200000")
+    assert limited.amount_match_status == "OUTSIDE_TOLERANCE"
+    assert "목표 월 300,000원" in limited.planned_contribution_summary
+    assert exact.planned_periodic_amount == Decimal("300000")
+    assert exact.amount_match_status == "EXACT"
+    assert exact.estimated_total_principal == Decimal("3600000")
+
+def test_default_web_runtime_loads_normalized_on_sale_catalog(monkeypatch):
     from eligibility.web.runtime import build_web_runtime
 
     monkeypatch.setenv("LLM_PROVIDER", "MOCK")
     runtime = build_web_runtime()
-    assert runtime.product_count == 50
-    assert len(runtime.service.products) == 50
+    assert runtime.product_count == 4304
+    assert len(runtime.service.products) == 4304
     assert runtime.sample_user_id is None
     assert runtime.user_data_mode == "CONVERSATIONAL_INPUT"
     assert runtime.service.user_fact_stores == {}
@@ -91,7 +132,7 @@ def test_packaged_catalog_mirror_is_loadable(monkeypatch):
     products = load_default_product_catalog()
     assert len(products) == 50
 
-def test_default_web_api_uses_catalog50_and_returns_top5(monkeypatch):
+def test_default_web_api_uses_normalized_catalog_and_returns_top5(monkeypatch):
     from fastapi.testclient import TestClient
     from eligibility.web.app import create_app
 
@@ -100,7 +141,7 @@ def test_default_web_api_uses_catalog50_and_returns_top5(monkeypatch):
 
     runtime = client.get("/api/runtime")
     assert runtime.status_code == 200
-    assert runtime.json()["product_count"] == 50
+    assert runtime.json()["product_count"] == 4304
 
     session = client.post(
         "/api/search-sessions",
@@ -221,7 +262,7 @@ def test_equivalent_toss_auto_transfer_questions_are_grouped_once():
         and question.request is not None
         and question.request.fact_type
         in {
-            "TOSS_CHILD_ELIGIBLE",
+            "TOSS_CHILD_AGE_AND_ACCOUNT_ELIGIBLE",
             "ELIGIBLE_TOSS_FREE_SAVINGS_12M_20260508",
         }
     ):

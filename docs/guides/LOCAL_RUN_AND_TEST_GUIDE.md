@@ -4,7 +4,7 @@
 
 현재 패키지는 별도의 Node.js / npm / React build가 필요하지 않다. Web UI 정적 파일은 Python 패키지에 포함되어 있고 FastAPI가 같은 origin에서 UI와 API를 함께 제공한다.
 
-현재 기본 Product Catalog는 **50개 상품**이며, 샘플 사용자 `U001` 금융데이터가 Web runtime에 자동으로 연결된다.
+현재 기본 Product Catalog는 normalized 발행본의 **ON_SALE 155개 상품**이며, 저장된 샘플 사용자 금융데이터 없이 대화에서 조건을 확인한다. `ENDED` 2개는 데이터에 보존되지만 기본 검색·추천에서는 제외된다.
 
 ---
 
@@ -147,15 +147,15 @@ http://localhost:8000
 
 을 연다.
 
-정상이라면 Web UI가 보이고 50개 상품 Catalog를 기반으로 검색/추천 화면을 사용할 수 있다.
+정상이라면 Web UI가 보이고 적금·예금·파킹통장·CMA 155개 판매 중 상품 Catalog를 기반으로 검색/추천 화면을 사용할 수 있다.
 
 MOCK 모드에서 가능한 것:
 
 - 화면 렌더링
-- 샘플 사용자 `U001` 기반 초기 검색
+- 자연어 입력 기반 초기 검색
 - deterministic 질문과 선택형 응답
 - 상품 후보 평가
-- 예상금리 / 세후이자 계산
+- 계산 가능한 상품의 예상금리 / 세전이자 계산
 - Ranking / Top 5
 - 상품 상세 / 판정 근거
 
@@ -313,7 +313,7 @@ Invoke-RestMethod http://127.0.0.1:8000/api/llm/health
 
 1. `http://127.0.0.1:8000` 접속
 2. 첫 화면이 정상 렌더링되는지 확인
-3. 샘플 사용자 기반 추천 검색 시작
+3. 원하는 상품·기간·납입액을 자연어로 입력해 추천 검색 시작
 4. 왼쪽 대화/질문 영역과 오른쪽 추천 영역이 동시에 보이는지 확인
 5. 현재 AI가 이해한 검색 기준이 표시되는지 확인
 6. 질문에 답하면 추천 결과가 재계산되는지 확인
@@ -322,7 +322,7 @@ Invoke-RestMethod http://127.0.0.1:8000/api/llm/health
    - 내 예상금리
    - 현재 확인된 금리
    - 광고 최고금리
-   - 예상 세전/세후이자
+   - 예상 세전이자
    - 우대조건별 상태
    - 필요한 행동
    - 미확인 조건
@@ -362,7 +362,7 @@ OpenAI health가 `healthy=true`가 된 뒤 아래 순서를 그대로 테스트�
 기대:
 
 - 현재 납입계획이 20만원으로 수정
-- 상품별 예상 원금/세후이자 재계산
+- 상품별 예상 원금/세전이자 재계산
 - Top 5가 필요하면 재정렬
 
 ### 2. `급여계좌는 바꿀 수 있어.`
@@ -426,11 +426,7 @@ OpenAI health가 `healthy=true`가 된 뒤 아래 순서를 그대로 테스트�
 python -m pytest
 ```
 
-현재 전달본의 기준 결과:
-
-```text
-400 passed
-```
+테스트 개수는 구현에 따라 증가하므로 고정 숫자보다 실행 결과의 전체 통과 여부를 확인한다.
 
 빠른 Python compile 확인:
 
@@ -692,3 +688,16 @@ http://127.0.0.1:8000
 ```
 
 이 체크리스트까지 통과하면 다음 단계는 UI 미세조정보다 **실제 자연어 adversarial QA와 배포환경 검증**이다.
+
+---
+
+## 17. 실제 OpenAI Acceptance 자동 검증
+
+OpenAI 모드 Web 서버가 실행 중일 때 다음 명령으로 월 30만원·12개월 계산, 세전이자 정렬, active question 유지, LLM 미호출 정렬, 실제 transport schema와 debug bundle 크기를 한 번에 확인할 수 있다.
+
+```bash
+.venv/bin/python scripts/acceptance_test_web_openai.py \
+  --base-url http://127.0.0.1:57949
+```
+
+성공하면 `"status": "PASS"`와 세션 id, 지연시간, debug bundle byte 수가 출력된다. `/debug`의 기본 bundle에는 요약만 포함되며, 전체 audit payload와 상품별 전체 평가는 해당 탭이나 상품을 선택할 때 별도로 불러온다.

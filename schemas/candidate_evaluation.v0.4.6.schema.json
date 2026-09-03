@@ -311,6 +311,22 @@
           "title": "Contribution Count",
           "type": "integer"
         },
+        "requested_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Requested Periodic Amount"
+        },
         "planned_periodic_amount": {
           "anyOf": [
             {
@@ -326,6 +342,83 @@
           ],
           "default": null,
           "title": "Planned Periodic Amount"
+        },
+        "monthly_equivalent_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Monthly Equivalent Amount"
+        },
+        "amount_difference": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference"
+        },
+        "amount_difference_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference Ratio"
+        },
+        "amount_match_status": {
+          "default": "NOT_SPECIFIED",
+          "enum": [
+            "NOT_SPECIFIED",
+            "EXACT",
+            "WITHIN_TOLERANCE",
+            "OUTSIDE_TOLERANCE",
+            "INPUT_REQUIRED"
+          ],
+          "title": "Amount Match Status",
+          "type": "string"
+        },
+        "product_choice_override": {
+          "default": false,
+          "title": "Product Choice Override",
+          "type": "boolean"
+        },
+        "term_match_status": {
+          "default": "NOT_SPECIFIED",
+          "enum": [
+            "NOT_SPECIFIED",
+            "EXACT",
+            "SELECTABLE_EXACT",
+            "ALTERNATIVE_SHORTER",
+            "MISMATCH"
+          ],
+          "title": "Term Match Status",
+          "type": "string"
         },
         "maximum_periodic_amount": {
           "anyOf": [
@@ -1027,6 +1120,251 @@
       "title": "RankingInputStatus",
       "type": "string"
     },
+    "RateEvaluationResult": {
+      "additionalProperties": false,
+      "description": "Family-neutral financial result consumed by search and ranking.\n\nThe legacy flattened fields on :class:`CandidateEvaluation` remain available\nfor API compatibility. New search/ranking code should use this contract so a\ndeposit, savings account, parking account, and CMA expose the same outcome\nwithout pretending that their internal calculations are identical.",
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "product_family": {
+          "title": "Product Family",
+          "type": "string"
+        },
+        "calculation_mode": {
+          "enum": [
+            "INSTALLMENT_CASHFLOW",
+            "LUMP_SUM_TERM",
+            "ON_DEMAND_BALANCE",
+            "CMA_POSTED_YIELD",
+            "CMA_PERFORMANCE_LINKED",
+            "GENERIC_RATE"
+          ],
+          "title": "Calculation Mode",
+          "type": "string"
+        },
+        "return_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return Kind"
+        },
+        "calculation_status": {
+          "enum": [
+            "CALCULATED",
+            "UNSUPPORTED",
+            "UNKNOWN"
+          ],
+          "title": "Calculation Status",
+          "type": "string"
+        },
+        "calculation_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calculation Reason"
+        },
+        "eligibility_status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "confirmed_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confirmed Rate"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Advertised Max Rate"
+        },
+        "rate_as_of": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rate As Of"
+        },
+        "selected_term_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Term Value"
+        },
+        "selected_term_unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TermUnit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "scenario_principal": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scenario Principal"
+        },
+        "customer_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Customer Scope"
+        },
+        "comparison_basis": {
+          "default": "UNKNOWN",
+          "enum": [
+            "ANNUAL_PERCENT_RATE",
+            "PERFORMANCE_LINKED_RETURN",
+            "UNKNOWN"
+          ],
+          "title": "Comparison Basis",
+          "type": "string"
+        },
+        "rate_comparable": {
+          "default": false,
+          "title": "Rate Comparable",
+          "type": "boolean"
+        },
+        "interest_comparable": {
+          "default": false,
+          "title": "Interest Comparable",
+          "type": "boolean"
+        },
+        "ranking_comparability": {
+          "$ref": "#/$defs/RankingComparability",
+          "default": "NOT_COMPARABLE"
+        },
+        "applied_condition_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Condition Ids",
+          "type": "array"
+        },
+        "missing_fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Fact Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "product_family",
+        "calculation_mode",
+        "calculation_status",
+        "eligibility_status"
+      ],
+      "title": "RateEvaluationResult",
+      "type": "object"
+    },
     "RateEvidenceBreakdown": {
       "additionalProperties": false,
       "properties": {
@@ -1038,8 +1376,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Base Rate"
         },
         "verified_reward_pp": {
@@ -1095,9 +1437,6 @@
           "title": "Unknown Conditional Reward Pp"
         }
       },
-      "required": [
-        "base_rate"
-      ],
       "title": "RateEvidenceBreakdown",
       "type": "object"
     },
@@ -1112,8 +1451,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Advertised Max Rate"
         },
         "confirmed_rate": {
@@ -1124,8 +1467,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Confirmed Rate"
         },
         "realizable_rate": {
@@ -1136,8 +1483,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Realizable Rate"
         },
         "user_specific_conditional_upper_rate": {
@@ -1148,8 +1499,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "User Specific Conditional Upper Rate"
         },
         "preferential_cap": {
@@ -1160,9 +1515,35 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Preferential Cap"
+        },
+        "calculation_status": {
+          "default": "CALCULATED",
+          "enum": [
+            "CALCULATED",
+            "UNSUPPORTED",
+            "UNKNOWN"
+          ],
+          "title": "Calculation Status",
+          "type": "string"
+        },
+        "calculation_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calculation Reason"
         },
         "guard_status": {
           "$ref": "#/$defs/EvaluationStatus"
@@ -1179,11 +1560,6 @@
         }
       },
       "required": [
-        "advertised_max_rate",
-        "confirmed_rate",
-        "realizable_rate",
-        "user_specific_conditional_upper_rate",
-        "preferential_cap",
         "guard_status",
         "evidence_breakdown"
       ],
@@ -1303,6 +1679,16 @@
       "title": "RuleEvaluation",
       "type": "object"
     },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    },
     "VerificationLevel": {
       "description": "User-facing evidence classification for an evaluated rule/result.",
       "enum": [
@@ -1336,8 +1722,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Confirmed Rate"
     },
     "realizable_rate": {
@@ -1348,8 +1738,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Realizable Rate"
     },
     "user_specific_conditional_upper_rate": {
@@ -1360,8 +1754,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "User Specific Conditional Upper Rate"
     },
     "confirmed_after_tax_interest": {
@@ -1411,6 +1809,38 @@
       ],
       "default": null,
       "title": "Conditional Upper After Tax Interest"
+    },
+    "confirmed_pre_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confirmed Pre Tax Interest"
+    },
+    "conditional_upper_pre_tax_interest": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Conditional Upper Pre Tax Interest"
     },
     "estimated_total_principal": {
       "anyOf": [
@@ -1500,6 +1930,17 @@
       ],
       "default": null
     },
+    "rate_evaluation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RateEvaluationResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "rank_interval": {
       "anyOf": [
         {
@@ -1510,14 +1951,46 @@
         }
       ],
       "default": null
+    },
+    "eligibility_text_review_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "eligibility_text_review_reason_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Eligibility Text Review Reason Code"
+    },
+    "eligibility_text_review_fingerprint": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Eligibility Text Review Fingerprint"
     }
   },
   "required": [
     "product_id",
     "product_evaluation",
-    "confirmed_rate",
-    "realizable_rate",
-    "user_specific_conditional_upper_rate",
     "contribution_projection"
   ],
   "title": "CandidateEvaluation",

@@ -1,0 +1,222 @@
+{
+  "$defs": {
+    "ConditionRequirement": {
+      "additionalProperties": false,
+      "description": "One reviewed, machine-evaluable condition attached to a product.",
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "ELIGIBILITY",
+            "RATE_BENEFIT",
+            "INFORMATION_ONLY"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "variable_id": {
+          "title": "Variable Id",
+          "type": "string"
+        },
+        "subject_scope": {
+          "default": "USER",
+          "enum": [
+            "USER",
+            "ACCOUNT",
+            "INSTITUTION",
+            "PRODUCT"
+          ],
+          "title": "Subject Scope",
+          "type": "string"
+        },
+        "institution_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Id"
+        },
+        "operator": {
+          "title": "Operator",
+          "type": "string"
+        },
+        "threshold": {
+          "additionalProperties": true,
+          "title": "Threshold",
+          "type": "object"
+        },
+        "rate_effect": {
+          "additionalProperties": true,
+          "title": "Rate Effect",
+          "type": "object"
+        },
+        "relationship": {
+          "additionalProperties": true,
+          "title": "Relationship",
+          "type": "object"
+        },
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "coverage_status": {
+          "default": "COMPLETE",
+          "enum": [
+            "COMPLETE",
+            "PARTIAL",
+            "UNAVAILABLE"
+          ],
+          "title": "Coverage Status",
+          "type": "string"
+        },
+        "review_status": {
+          "default": "REVIEW_REQUIRED",
+          "enum": [
+            "VERIFIED",
+            "REVIEW_REQUIRED",
+            "REJECTED"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "product_id",
+        "scope",
+        "variable_id",
+        "operator"
+      ],
+      "title": "ConditionRequirement",
+      "type": "object"
+    },
+    "RequirementCompilationMetrics": {
+      "additionalProperties": false,
+      "description": "Auditable coverage counters emitted by :mod:`requirement_compiler`.",
+      "properties": {
+        "product_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Product Count",
+          "type": "integer"
+        },
+        "source_condition_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Source Condition Count",
+          "type": "integer"
+        },
+        "compiled_requirement_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Compiled Requirement Count",
+          "type": "integer"
+        },
+        "verified_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Verified Count",
+          "type": "integer"
+        },
+        "review_required_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Review Required Count",
+          "type": "integer"
+        },
+        "rejected_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Rejected Count",
+          "type": "integer"
+        },
+        "complete_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Complete Count",
+          "type": "integer"
+        },
+        "partial_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Partial Count",
+          "type": "integer"
+        },
+        "unavailable_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Unavailable Count",
+          "type": "integer"
+        },
+        "unmapped_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Unmapped Count",
+          "type": "integer"
+        },
+        "unmapped_requirement_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unmapped Requirement Ids",
+          "type": "array"
+        },
+        "scope_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Scope Counts",
+          "type": "object"
+        },
+        "variable_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Variable Counts",
+          "type": "object"
+        }
+      },
+      "title": "RequirementCompilationMetrics",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Pure compiler output; no catalog files are written by the compiler.",
+  "properties": {
+    "compiler_version": {
+      "title": "Compiler Version",
+      "type": "string"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/ConditionRequirement"
+      },
+      "title": "Requirements",
+      "type": "array"
+    },
+    "metrics": {
+      "$ref": "#/$defs/RequirementCompilationMetrics"
+    }
+  },
+  "required": [
+    "compiler_version",
+    "metrics"
+  ],
+  "title": "RequirementCompilationResult",
+  "type": "object"
+}

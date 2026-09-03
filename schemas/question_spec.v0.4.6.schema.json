@@ -1,0 +1,61 @@
+{
+  "additionalProperties": false,
+  "description": "Backend-owned question plan consumed by a renderer.",
+  "properties": {
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "variable_id": {
+      "title": "Variable Id",
+      "type": "string"
+    },
+    "value_schema": {
+      "additionalProperties": true,
+      "title": "Value Schema",
+      "type": "object"
+    },
+    "scope": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Scope",
+      "type": "object"
+    },
+    "bound_requirement_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Bound Requirement Ids",
+      "type": "array"
+    },
+    "affected_product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Affected Product Ids",
+      "type": "array"
+    },
+    "options": {
+      "items": {},
+      "title": "Options",
+      "type": "array"
+    },
+    "prompt_template_id": {
+      "title": "Prompt Template Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question_id",
+    "family_id",
+    "variable_id",
+    "prompt_template_id"
+  ],
+  "title": "QuestionSpec",
+  "type": "object"
+}

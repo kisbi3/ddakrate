@@ -7,8 +7,32 @@ dist/
 build/
 archive/
 .runtime/
+docs/private/
 
 # Local secrets
 .env
 .env.*
 !.env.example
+
+# One-off data build / audit artifacts
+scripts/_row*_build.py
+scripts/_row*_publish.py
+scripts/_row*_correct_v004.py
+audit_output/
+create_row121_audit.py
+rec16.json
+
+# Generated / bulk financial product data
+data/financial_products/raw/
+data/financial_products/staging/
+data/financial_products/work/
+data/financial_products/rebuild/
+data/financial_products/normalized/
+data/naver_savings_output/
+data/financial_product_model_examples/
+data/20260829-cma-01/
+data/20260829-time-deposit-01-source-first-final/
+data/ddakrate_installment_savings_shard_v015_20260831/
+data/ddakrate_parking_account_latest_full_20260830/
+data/institutions/
+data/multi_product_catalog/

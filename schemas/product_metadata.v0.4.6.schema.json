@@ -41,6 +41,18 @@
     "ContributionPolicy": {
       "additionalProperties": false,
       "properties": {
+        "funding_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Funding Type"
+        },
         "initial_amount_min": {
           "anyOf": [
             {
@@ -194,6 +206,79 @@
           ],
           "default": null,
           "title": "Total Principal Limit"
+        },
+        "target_amount_min": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Amount Min"
+        },
+        "target_amount_max_per_account": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Amount Max Per Account"
+        },
+        "target_amount_aggregate_max": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Amount Aggregate Max"
+        },
+        "target_amount_increment": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Amount Increment"
+        },
+        "target_amount_immutable": {
+          "default": false,
+          "title": "Target Amount Immutable",
+          "type": "boolean"
         },
         "currency": {
           "default": "KRW",
@@ -386,6 +471,30 @@
       "title": "Institution Id",
       "type": "string"
     },
+    "institution_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Institution Name"
+    },
+    "institution_sector": {
+      "default": "UNKNOWN",
+      "enum": [
+        "BANK",
+        "SAVINGS_BANK",
+        "SECURITIES",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "title": "Institution Sector",
+      "type": "string"
+    },
     "product_id": {
       "title": "Product Id",
       "type": "string"
@@ -397,6 +506,18 @@
     "product_type": {
       "title": "Product Type",
       "type": "string"
+    },
+    "product_subtype": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Product Subtype"
     },
     "sale_status": {
       "$ref": "#/$defs/SaleStatus",
@@ -451,8 +572,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Base Rate"
     },
     "advertised_max_rate": {
@@ -464,8 +589,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Advertised Max Rate"
     },
     "preferential_rate_cap": {
@@ -477,8 +606,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Preferential Rate Cap"
     },
     "allowed_channels": {
@@ -633,10 +766,7 @@
     "institution_id",
     "product_id",
     "product_name",
-    "product_type",
-    "base_rate",
-    "advertised_max_rate",
-    "preferential_rate_cap"
+    "product_type"
   ],
   "title": "ProductMetadata",
   "type": "object"

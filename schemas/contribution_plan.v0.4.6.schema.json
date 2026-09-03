@@ -93,6 +93,25 @@
       ],
       "default": null
     },
+    "term_strictness": {
+      "anyOf": [
+        {
+          "enum": [
+            "PREFERRED",
+            "EXACT",
+            "MAXIMUM",
+            "MINIMUM",
+            "ANY"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Term Strictness"
+    },
     "preferred_start_amount": {
       "anyOf": [
         {

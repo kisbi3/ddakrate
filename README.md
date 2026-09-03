@@ -18,7 +18,7 @@
 - structured backend state 기반 **현재 AI가 이해한 검색 기준** chips
 - active question의 typed quick-answer UI + 자연어 `/messages` entrypoint
 - 질문이 남아 있어도 **현재 결과 먼저 보기**
-- Top 5/가용 후보 카드: realizable rate, 광고 최고금리, 납입계획, 예상 세후이자, 검증 badge
+- Top 5/가용 후보 카드: realizable rate, 광고 최고금리, 목표/실제 납입계획, 예상 세전이자, 검증 badge
 - 상품 상세 drawer: confirmed/realizable/advertised rate, 예상 이자, 추천 이유, 우대조건 breakdown, 공식 source, grounded AI 설명
 - 같은 origin의 FastAPI runtime; 별도 SPA build toolchain 없음
 
@@ -33,22 +33,23 @@ eligibility-web
 
 기본 `LLM_PROVIDER=MOCK`에서는 초기 검색, deterministic 질문/선택형 답변, Ranking/List/Detail은 동작하지만, mock이 자연어를 이해한 것처럼 가장하지 않기 위해 free-form 후속 `/messages` 해석은 비활성화한다.
 
-### Product Catalog 50 통합
+### Published normalized catalog 통합
 
-Web runtime의 기본 상품 집합은 더 이상 4개 golden fixture에 한정되지 않는다. `data/product_catalog/products/`의 **50개 strict `ProductDefinition` JSON**을 generic loader로 읽어 동일한 `ApplicationService`의 Candidate Retrieval → Evaluation → Ranking → Top 5 흐름에 투입한다. 기존 4개 Python golden fixture는 회귀테스트용으로 그대로 유지하며, catalog 안의 동일 4개 상품과 semantic equivalence를 검증한다.
+Web runtime은 `data/financial_products/normalized/index.json`을 진입점으로 사용해 발행 파일의 sha256과 manifest를 검증한다. 확정 157개 버전 가운데 기본 후보는 `sale_policy.status=ON_SALE`인 **155개**이며, 적금·예금·파킹통장·CMA를 같은 `ApplicationService` 흐름에 투입한다. `ENDED` 2개는 발행 데이터에 보존하되 기본 후보에서 제외한다. 기관명은 현재 Institution snapshot을 `institution_id`로 조인한다.
 
 ```text
-data/product_catalog/
-├─ products/                 # 50 ProductDefinition JSON
-├─ manifests/                # source/resolver/service/validation manifests
-├─ catalog_summary.csv
-└─ README.md
+data/financial_products/normalized/
+├─ index.json                # published product entrypoint + product sha256
+├─ products/                 # 155 canonical version JSON
+├─ definitions/              # CustomDefinition 등
+└─ manifests/                # published manifest
 
 src/eligibility/catalog/
-└─ loader.py                 # generic strict ProductDefinition loader
+├─ normalized_loader.py      # integrity/reference validation + runtime adapter
+└─ loader.py                 # normalized default / explicit legacy compatibility
 ```
 
-기본 경로는 bundled catalog다. 다른 catalog를 검증할 때만 `ELIGIBILITY_PRODUCT_CATALOG_PATH`로 디렉터리를 덮어쓸 수 있다. source-tree 실행뿐 아니라 일반 package install에서도 catalog가 포함되도록 package-data mirror를 함께 제공한다.
+기본 모드는 `NORMALIZED`다. 기존 50개 catalog는 회귀용으로 유지하며 `ELIGIBILITY_CATALOG_MODE=LEGACY` 또는 기존 `ELIGIBILITY_PRODUCT_CATALOG_PATH` 디렉터리 override에서만 사용한다. 새 발행 index를 override할 때는 index 파일 또는 index를 포함한 디렉터리를 지정한다.
 
 ### OpenAI 연결
 
@@ -149,16 +150,16 @@ LLM은 다음을 결정하지 않는다.
 ### 탐색 상한과 최종 추천의 분리
 
 - **탐색:** favorable `UNKNOWN` branch를 포함한 optimistic upper bound
-- **최종 순위:** 사용자 납입계획 기준 deterministic 세후이자와 realizable result
+- **최종 순위:** 사용자 납입계획 기준 deterministic 세전이자와 realizable result
 
-기본 `MAX_ESTIMATED_AFTER_TAX_INTEREST` objective에서는 직접 비교하는 값의 단위를 반드시 통일한다.
+기본 `MAX_ESTIMATED_PRE_TAX_INTEREST` objective에서는 직접 비교하는 값의 단위를 반드시 통일한다.
 
 ```text
-realizable_after_tax_interest: KRW ↔ KRW
-conditional_upper_after_tax_interest: KRW ↔ KRW
+realizable_pre_tax_interest: KRW ↔ KRW
+conditional_upper_pre_tax_interest: KRW ↔ KRW
 ```
 
-Contribution input이 부족해 세후이자를 계산할 수 없으면 `%`를 KRW 대신 sort key에 넣지 않는다. `MissingRankingInput`을 만들고 `ranking_comparability=MISSING_CONTRIBUTION_INPUT`으로 남긴 뒤 Question Planner가 사용자에게 필요한 납입 입력을 묻는다. Optimistic upper도 동일한 원칙을 따른다.
+Contribution input이 부족해 세전이자를 계산할 수 없으면 `%`를 KRW 대신 sort key에 넣지 않는다. `MissingRankingInput`을 만들고 `ranking_comparability=MISSING_CONTRIBUTION_INPUT`으로 남긴 뒤 Question Planner가 사용자에게 필요한 납입 입력을 묻는다. Optimistic upper도 동일한 원칙을 따른다.
 
 ### 답변 수정
 
@@ -397,7 +398,7 @@ Planner는 두 종류의 unresolved input을 하나의 flow에서 다룬다.
 
 기본 lexicographic ordering:
 
-1. **비교 가능한 후보끼리** 실제 납입계획 기준 예상 세후이자(KRW)
+1. **비교 가능한 후보끼리** 실제 납입계획 기준 예상 세전이자(KRW)
 2. realizable rate는 같은 KRW metric 안에서 tie-breaker
 3. Preference 적합도
 4. Action burden 낮은 순
@@ -413,7 +414,7 @@ List에는 최소 다음을 제공한다.
 - 순위, 기관, 상품명, 상품유형
 - 사용자 기준 realizable rate, 광고 최고금리
 - 기간, 납입방식, 최대 납입, 사용자 계획
-- 예상 총 원금, 예상 세후이자
+- 예상 총 원금, 예상 세전이자
 - eligibility / verification badge
 - material unknown 수
 - `ranking_comparability`, missing ranking input 수

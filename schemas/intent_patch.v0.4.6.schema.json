@@ -115,6 +115,25 @@
           ],
           "default": null
         },
+        "term_strictness": {
+          "anyOf": [
+            {
+              "enum": [
+                "PREFERRED",
+                "EXACT",
+                "MAXIMUM",
+                "MINIMUM",
+                "ANY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Term Strictness"
+        },
         "preferred_start_amount": {
           "anyOf": [
             {
@@ -201,6 +220,20 @@
           "$ref": "#/$defs/HardConstraintValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -294,6 +327,20 @@
           "$ref": "#/$defs/PreferenceValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -331,6 +378,7 @@
     "RankingObjective": {
       "enum": [
         "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
         "MAX_REALIZABLE_RATE",
         "MIN_ACTION_BURDEN",
         "BALANCED"
@@ -354,6 +402,12 @@
   "properties": {
     "upsert_product_types": {
       "items": {
+        "enum": [
+          "INSTALLMENT_SAVINGS",
+          "TIME_DEPOSIT",
+          "PARKING_ACCOUNT",
+          "CMA"
+        ],
         "type": "string"
       },
       "title": "Upsert Product Types",
@@ -361,9 +415,29 @@
     },
     "remove_product_types": {
       "items": {
+        "enum": [
+          "INSTALLMENT_SAVINGS",
+          "TIME_DEPOSIT",
+          "PARKING_ACCOUNT",
+          "CMA"
+        ],
         "type": "string"
       },
       "title": "Remove Product Types",
+      "type": "array"
+    },
+    "upsert_excluded_institution_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Upsert Excluded Institution Ids",
+      "type": "array"
+    },
+    "remove_excluded_institution_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remove Excluded Institution Ids",
       "type": "array"
     },
     "upsert_hard_constraints": {
@@ -457,6 +531,23 @@
       ],
       "default": null,
       "title": "Requested Top K Patch"
+    },
+    "application_capacity_patch": {
+      "anyOf": [
+        {
+          "enum": [
+            "INDIVIDUAL",
+            "SOLE_PROPRIETOR",
+            "CORPORATION"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Application Capacity Patch"
     }
   },
   "title": "IntentPatch",

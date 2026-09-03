@@ -16,6 +16,7 @@ from eligibility.schema.application_input import (
 from eligibility.schema.enums import (
     CapabilityState,
     ComparisonOperator,
+    ContributionFrequency,
     HardConstraintValue,
     IntentConflictType,
     NumericPreferenceDirection,
@@ -24,46 +25,55 @@ from eligibility.schema.enums import (
     SaleStatus,
     SearchSessionStatus,
     RulePurpose,
+    RankingObjective,
+    TermUnit,
 )
 from eligibility.schema.rule import FactComparisonRule
-from eligibility.schema.search import IntentPatch
+from eligibility.schema.search import ContributionPlan, IntentPatch
 from eligibility.search.intent import (
     IntentConflictValidator,
     IntentParser,
-    ProductSearchIntentDraft,
 )
 from eligibility.search.retrieval import CandidateRetriever
 
 from tests.v04_helpers import AS_OF, base_store, make_intent, make_product
 
 
-def test_parse_hard_preference_capability_numeric_input():
-    utterance = (
-        "1년 적금 중 월 30만원을 넣을 수 없는 상품은 제외하고, "
-        "영업점 필수 상품은 제외해 줘. 카드 새로 만드는 건 싫고 "
-        "급여계좌 변경은 가능해."
+def test_natural_language_intent_requires_an_llm_gateway():
+    with pytest.raises(RuntimeError, match="requires an LLM gateway"):
+        IntentParser().parse("1년 동안 월 30만원씩 적금하고 싶어요", user_id="NO-GATEWAY")
+
+
+def test_institution_exclusion_patch_is_scoped_to_the_institution():
+    retained, decisions = CandidateRetriever().retrieve(
+        [
+            make_product("SUHYUP", institution_id="BK_SH"),
+            make_product("OTHER", institution_id="OTHER_BANK"),
+        ],
+        IntentParser.apply_patch(
+            make_intent(),
+            IntentPatch(upsert_excluded_institution_ids=["BK_SH"]),
+        ),
+        as_of=AS_OF,
     )
 
-    intent = IntentParser().parse(utterance, user_id="V04-USER")
+    assert [product.product_id for product in retained] == ["OTHER"]
+    decision = next(item for item in decisions if item.product_id == "SUHYUP")
+    assert decision.reason_code == "EXCLUDED_INSTITUTION"
 
-    assert intent.product_types == ["INSTALLMENT_SAVINGS"]
-    assert intent.contribution_plan is not None
-    assert intent.contribution_plan.desired_periodic_amount == Decimal("300000")
-    assert intent.contribution_plan.maximum_affordable_periodic_amount is None
-    assert any(item.field == "SUBSCRIPTION_CHANNEL" for item in intent.hard_constraints)
-    amount = next(
-        item for item in intent.numeric_preferences if item.field == "MONTHLY_CONTRIBUTION"
+
+def test_institution_exclusion_can_be_removed_without_erasing_other_intent():
+    current = IntentParser.apply_patch(
+        make_intent(),
+        IntentPatch(upsert_excluded_institution_ids=["BK_SH", "TEST_BANK"]),
     )
-    assert amount.strictness == PreferenceStrictness.HARD
-    assert amount.direction == NumericPreferenceDirection.AT_LEAST
-    assert any(
-        item.field == "NEW_CARD_REQUIRED"
-        and item.preference == PreferenceValue.PREFER_ABSENT
-        for item in intent.preferences
+
+    updated = IntentParser.apply_patch(
+        current,
+        IntentPatch(remove_excluded_institution_ids=["BK_SH"]),
     )
-    states = {item.capability_id: item.state for item in intent.capabilities}
-    assert states["NEW_CARD_ISSUANCE"] == CapabilityState.CANNOT
-    assert states["CHANGE_SALARY_ACCOUNT"] == CapabilityState.CAN
+
+    assert updated.excluded_institution_ids == ["TEST_BANK"]
 
 
 class _IntentPatchGateway:
@@ -72,15 +82,39 @@ class _IntentPatchGateway:
 
     def generate_structured(self, *_args, **_kwargs):
         self.calls.append((_args, _kwargs))
+        prompt = _args[1]
         return SimpleNamespace(
             data=IntentPatch(
                 upsert_product_types=["INSTALLMENT_SAVINGS"],
-                requested_top_k_patch=1,
+                requested_top_k_patch=3 if "상위 3개" in prompt else None,
             )
         )
 
 
-def test_llm_intent_uses_default_top5_unless_user_explicitly_requests_count():
+class _FailingIntentGateway:
+    def generate_structured(self, *_args, **_kwargs):
+        raise RuntimeError("intent LLM unavailable")
+
+
+class _LiquidAmountOnlyGateway:
+    def generate_structured(self, *_args, **_kwargs):
+        return SimpleNamespace(
+            data=IntentPatch(
+                upsert_product_types=["PARKING_ACCOUNT", "CMA"],
+                upsert_numeric_preferences=[
+                    NumericPreference(
+                        field="amount",
+                        value=Decimal("5000000"),
+                        direction=NumericPreferenceDirection.AROUND,
+                        strictness=PreferenceStrictness.SOFT,
+                        currency="KRW",
+                    )
+                ],
+            )
+        )
+
+
+def test_llm_intent_is_the_sole_owner_of_requested_top_k():
     gateway = _IntentPatchGateway()
     parser = IntentParser(gateway)
 
@@ -97,9 +131,24 @@ def test_llm_intent_uses_default_top5_unless_user_explicitly_requests_count():
     assert "ProductSearchIntentDraft" not in gateway.calls[0][0][1]
 
 
-def test_llm_intent_schema_rejects_localized_product_type():
-    with pytest.raises(ValueError):
-        ProductSearchIntentDraft(product_types=["적금"])
+def test_initial_llm_numeric_amount_is_bridged_into_cashflow_plan() -> None:
+    intent = IntentParser(_LiquidAmountOnlyGateway()).parse(
+        "500만원 정도 수시입출금",
+        user_id="LIQUID-AMOUNT-USER",
+    )
+
+    assert intent.product_types == ["PARKING_ACCOUNT", "CMA"]
+    assert intent.contribution_plan is not None
+    assert intent.contribution_plan.desired_periodic_amount == Decimal("5000000")
+    assert intent.contribution_plan.frequency == ContributionFrequency.FLEXIBLE
+
+
+def test_configured_intent_llm_failure_is_not_hidden_by_deterministic_fallback():
+    with pytest.raises(RuntimeError, match="intent LLM unavailable"):
+        IntentParser(_FailingIntentGateway()).parse(
+            "파킹통장만 금리순으로 보여줘",
+            user_id="LLM-FAILURE-USER",
+        )
 
 
 def test_cross_category_hard_soft_conflict():
@@ -216,6 +265,42 @@ def test_unknown_sale_status_not_removed_as_certain_failure():
     assert decisions[0].retained is True
 
 
+def test_multi_sector_hard_scope_keeps_bank_and_securities_only():
+    def with_sector(product_id: str, sector: str):
+        product = make_product(product_id)
+        return product.model_copy(
+            update={
+                "metadata": product.metadata.model_copy(
+                    update={"institution_sector": sector},
+                    deep=True,
+                )
+            },
+            deep=True,
+        )
+
+    products = [
+        with_sector("BANK-PRODUCT", "BANK"),
+        with_sector("SAVINGS-PRODUCT", "SAVINGS_BANK"),
+        with_sector("SECURITIES-PRODUCT", "SECURITIES"),
+    ]
+    intent = make_intent(
+        hard_constraints=[
+            HardConstraint(
+                field="INSTITUTION_SECTOR",
+                constraint=HardConstraintValue.REQUIRE,
+                expected="BANK|SECURITIES",
+            )
+        ]
+    )
+
+    retained, _ = CandidateRetriever().retrieve(products, intent, as_of=AS_OF)
+
+    assert {item.product_id for item in retained} == {
+        "BANK-PRODUCT",
+        "SECURITIES-PRODUCT",
+    }
+
+
 def test_hard_term_violation_is_removed():
     product = make_product("TERM-12M", term_value=12)
     intent = make_intent(
@@ -233,6 +318,29 @@ def test_hard_term_violation_is_removed():
 
     assert retained == []
     assert decisions[0].reason_code == "HARD_TERM_VIOLATION"
+
+
+def test_maximum_one_year_keeps_six_month_product_and_removes_longer_product():
+    six_month = make_product("TERM-6M", term_value=6)
+    eighteen_month = make_product("TERM-18M", term_value=18)
+    intent = make_intent(selected_term_value=None, selected_term_unit=None).model_copy(
+        update={
+            "contribution_plan": ContributionPlan(
+                selected_term_value=1,
+                selected_term_unit=TermUnit.YEAR,
+                term_strictness="MAXIMUM",
+            )
+        },
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve(
+        [six_month, eighteen_month], intent, as_of=AS_OF
+    )
+
+    assert [product.product_id for product in retained] == ["TERM-6M"]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+    assert decisions[1].reason_code == "HARD_TERM_VIOLATION"
 
 
 def test_product_whose_minimum_term_exceeds_preferred_horizon_is_removed():

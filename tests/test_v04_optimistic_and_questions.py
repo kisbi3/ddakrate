@@ -9,6 +9,7 @@ from eligibility.schema.enums import (
     EvaluationStatus,
     FactSemanticType,
     FactSourceType,
+    RankingObjective,
     ResolutionStrategy,
 )
 from eligibility.schema.product import MonthlyContributionPlan
@@ -122,7 +123,7 @@ def test_upper_interest_uses_contribution_plan():
     assert candidate.conditional_upper_after_tax_interest < maxed.after_tax_interest
 
 
-def test_candidate_frontier_includes_possible_top5_entry():
+def test_offscreen_challenger_is_asked_when_upper_can_enter_top5():
     products = [
         make_product(f"FRONT-{i}", base_rate=str(rate))
         for i, rate in enumerate((5.0, 4.8, 4.6, 4.4, 4.2), start=1)
@@ -166,6 +167,90 @@ def test_question_selected_by_top5_ranking_impact():
 
     assert question is not None
     assert question.request.fact_type == "HIGH_IMPACT_FACT"
+
+
+def test_product_questions_follow_highest_conditional_upper():
+    higher_rate = make_product(
+        "RATE-FIRST-HIGH",
+        base_rate="5.0",
+        reward_pp="0.1",
+        bonus_fact_type="HIGH_RATE_FACT",
+    )
+    lower_rate = make_product(
+        "RATE-FIRST-LOW",
+        base_rate="1.0",
+        reward_pp="10.0",
+        bonus_fact_type="LOW_RATE_LARGE_IMPACT_FACT",
+    )
+    intent = make_intent(top_k=2)
+    evaluations = _evaluate([higher_rate, lower_rate], intent=intent)
+
+    question = RankingAwareQuestionPlanner().select_next(evaluations, intent)
+
+    assert question is not None
+    assert question.affected_product_ids == ["RATE-FIRST-LOW"]
+    assert question.request is not None
+    assert question.request.fact_type == "LOW_RATE_LARGE_IMPACT_FACT"
+
+
+def test_unknown_high_rate_product_enters_question_top5_before_known_lower_rates():
+    high_unknown_product = make_product(
+        "UNKNOWN-HIGH-RATE",
+        base_rate="2.9",
+        reward_pp="0.1",
+        bonus_fact_type="UNKNOWN_HIGH_RATE_FACT",
+    )
+    known_products = [
+        make_product(f"KNOWN-{index}", base_rate=rate)
+        for index, rate in enumerate(
+            ("2.65", "2.60", "2.55", "2.50", "2.45"),
+            start=1,
+        )
+    ]
+    intent = make_intent(top_k=5)
+    evaluations = _evaluate([high_unknown_product, *known_products], intent=intent)
+    high = evaluations[high_unknown_product.product_id]
+    evaluations[high_unknown_product.product_id] = high.model_copy(
+        update={"eligibility_status": EvaluationStatus.UNKNOWN},
+        deep=True,
+    )
+
+    question = RankingAwareQuestionPlanner().select_next(evaluations, intent)
+
+    assert question is not None
+    assert question.affected_product_ids == [high_unknown_product.product_id]
+    assert question.request is not None
+    assert question.request.fact_type == "UNKNOWN_HIGH_RATE_FACT"
+
+
+def test_missing_fixed_rate_sentinels_do_not_crash_question_scoring():
+    product = make_product(
+        "NO-FIXED-RATE",
+        base_rate="1.0",
+        reward_pp="0.5",
+        bonus_fact_type="NO_FIXED_RATE_FACT",
+    )
+    intent = make_intent(
+        top_k=1,
+        objective=RankingObjective.MAX_REALIZABLE_RATE,
+    )
+    candidate = _evaluate([product], intent=intent)[product.product_id].model_copy(
+        update={
+            "realizable_rate": None,
+            "user_specific_conditional_upper_rate": None,
+        },
+        deep=True,
+    )
+
+    questions = RankingAwareQuestionPlanner().score_candidates(
+        {product.product_id: candidate}, intent
+    )
+
+    assert questions
+    # A missing scenario rate keeps the published possible maximum as a
+    # provisional upper bound, so the product remains question-worthy instead
+    # of being silently dropped from the candidate frontier.
+    assert questions[0].ranking_impact == Decimal("1.5")
 
 
 def test_shared_fact_updates_multiple_products():
@@ -222,7 +307,7 @@ def test_or_short_circuit_suppresses_irrelevant_question():
     assert RankingAwareQuestionPlanner().select_next(evaluations, intent) is None
 
 
-def test_no_fixed_question_budget_in_mvp():
+def test_questions_stop_when_remaining_product_cannot_enter_top_three():
     products = [
         make_product(
             f"BUDGET-{index}",
@@ -254,8 +339,10 @@ def test_no_fixed_question_budget_in_mvp():
         answered += 1
         assert answered <= 10
 
-    assert answered == 6
-    assert len(service.get_search_status(session.search_session_id).answered_question_ids) == 6
+    # The final product's optimistic rate cannot reach the resolved third
+    # place, so it must not prolong the interview.
+    assert answered == 5
+    assert len(service.get_search_status(session.search_session_id).answered_question_ids) == 5
 
 
 def test_irrelevant_lower_candidate_question_not_asked():
@@ -277,7 +364,7 @@ def test_irrelevant_lower_candidate_question_not_asked():
     assert all(item.fact_type != "LOW_CANDIDATE_FACT" for item in questions)
 
 
-def test_conversational_exploration_can_include_plausible_lower_candidate():
+def test_exploration_depth_can_surface_offscreen_product_questions():
     top = [
         make_product(f"EXPLORE-SAFE-{i}", base_rate=str(rate))
         for i, rate in enumerate((5.0, 4.8, 4.6, 4.4, 4.2), start=1)

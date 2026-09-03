@@ -116,6 +116,25 @@
           ],
           "default": null
         },
+        "term_strictness": {
+          "anyOf": [
+            {
+              "enum": [
+                "PREFERRED",
+                "EXACT",
+                "MAXIMUM",
+                "MINIMUM",
+                "ANY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Term Strictness"
+        },
         "preferred_start_amount": {
           "anyOf": [
             {
@@ -185,6 +204,20 @@
           "$ref": "#/$defs/HardConstraintValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -278,6 +311,20 @@
           "$ref": "#/$defs/PreferenceValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -315,6 +362,7 @@
     "RankingObjective": {
       "enum": [
         "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
         "MAX_REALIZABLE_RATE",
         "MIN_ACTION_BURDEN",
         "BALANCED"
@@ -345,14 +393,27 @@
     },
     "product_types": {
       "items": {
+        "enum": [
+          "INSTALLMENT_SAVINGS",
+          "TIME_DEPOSIT",
+          "PARKING_ACCOUNT",
+          "CMA"
+        ],
         "type": "string"
       },
       "title": "Product Types",
       "type": "array"
     },
+    "excluded_institution_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Excluded Institution Ids",
+      "type": "array"
+    },
     "ranking_objective": {
       "$ref": "#/$defs/RankingObjective",
-      "default": "MAX_ESTIMATED_AFTER_TAX_INTEREST"
+      "default": "MAX_REALIZABLE_RATE"
     },
     "hard_constraints": {
       "items": {
@@ -392,6 +453,23 @@
         }
       ],
       "default": null
+    },
+    "application_capacity": {
+      "anyOf": [
+        {
+          "enum": [
+            "INDIVIDUAL",
+            "SOLE_PROPRIETOR",
+            "CORPORATION"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Application Capacity"
     },
     "requested_top_k": {
       "default": 5,

@@ -133,6 +133,18 @@ def _single_detail():
     return detail
 
 
+def test_detail_exposes_common_search_and_rate_contracts():
+    detail = _single_detail()
+
+    assert detail.search_facts is not None
+    assert detail.search_facts.product_family == "INSTALLMENT_SAVINGS"
+    assert detail.rate_evaluation is not None
+    assert detail.rate_evaluation.calculation_mode == "INSTALLMENT_CASHFLOW"
+    assert detail.rate_evaluation.realizable_rate == detail.realizable_rate
+    assert detail.fee_policy == {}
+    assert detail.tax_policy == {}
+
+
 def test_explainer_rejects_new_non_numeric_condition():
     detail = _single_detail()
     hallucination = (
@@ -264,7 +276,7 @@ def test_web_can_answer_ranking_input_question():
         "/search-sessions",
         {
             "user_id": KAKAO_USER_ID,
-            "natural_language_query": "26주 적금에 월 30만원 정도 생각하고 있어",
+            "natural_language_query": "26주 적금에 월 30만원 정도 생각하고 있어. 이자금순으로 보여줘",
             "as_of": "2026-08-19",
             "subscription_date": "2026-08-20",
         },

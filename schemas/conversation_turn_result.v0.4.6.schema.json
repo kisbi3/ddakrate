@@ -137,8 +137,16 @@
         "REVISE_USER_ANSWER",
         "REVISE_USER_DECLARED_FACT",
         "SUBMIT_ACTIVE_QUESTION_ANSWER",
+        "PROPOSE_ACTIVE_QUESTION_ANSWER",
+        "SKIP_ACTIVE_QUESTION",
+        "EXPLAIN_ACTIVE_QUESTION",
         "EXCLUDE_PRODUCT",
-        "NO_OP"
+        "NO_OP",
+        "SUBMIT_PRE_SEARCH_ANSWER",
+        "ACKNOWLEDGE_PRE_SEARCH_UNKNOWN",
+        "SET_PRODUCT_FEATURE_POLICY",
+        "CLEAR_PRODUCT_FEATURE_POLICY",
+        "REVERT_DECISIONS"
       ],
       "title": "ConversationOperation",
       "type": "string"
@@ -151,6 +159,16 @@
         "INELIGIBLE"
       ],
       "title": "EligibilityBadge",
+      "type": "string"
+    },
+    "EvaluationStatus": {
+      "enum": [
+        "SATISFIED",
+        "ACHIEVABLE",
+        "UNSATISFIABLE",
+        "UNKNOWN"
+      ],
+      "title": "EvaluationStatus",
       "type": "string"
     },
     "FactSemanticType": {
@@ -368,9 +386,11 @@
         "question_kind": {
           "default": "FINANCIAL_FACT",
           "enum": [
+            "PRE_SEARCH_PROFILE",
             "FINANCIAL_FACT",
             "RANKING_INPUT",
-            "CONTRIBUTION_FEASIBILITY"
+            "CONTRIBUTION_FEASIBILITY",
+            "PROMOTION_RISK_PREFERENCE"
           ],
           "title": "Question Kind",
           "type": "string"
@@ -430,6 +450,93 @@
             }
           ],
           "title": "Score"
+        },
+        "product_context": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Context"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation"
+        },
+        "explanation_details": {
+          "additionalProperties": true,
+          "title": "Explanation Details",
+          "type": "object"
+        },
+        "question_stage": {
+          "anyOf": [
+            {
+              "const": "PRE_SEARCH",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Stage"
+        },
+        "pre_search_key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pre Search Key"
+        },
+        "answer_mode": {
+          "default": "BINARY",
+          "enum": [
+            "BINARY",
+            "FREE_TEXT",
+            "OPTIONS"
+          ],
+          "title": "Answer Mode",
+          "type": "string"
+        },
+        "confirmation_required": {
+          "default": false,
+          "title": "Confirmation Required",
+          "type": "boolean"
+        },
+        "answer_examples": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Answer Examples",
+          "type": "array"
+        },
+        "question_spec": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -545,6 +652,48 @@
           "title": "Top Products",
           "type": "array"
         },
+        "ranked_products": {
+          "items": {
+            "$ref": "#/$defs/RecommendationListItem"
+          },
+          "title": "Ranked Products",
+          "type": "array"
+        },
+        "recommendation_status": {
+          "default": "PROVISIONAL",
+          "enum": [
+            "PROVISIONAL",
+            "CONFIRMED"
+          ],
+          "title": "Recommendation Status",
+          "type": "string"
+        },
+        "provisional_candidates": {
+          "items": {
+            "$ref": "#/$defs/RecommendationListItem"
+          },
+          "title": "Provisional Candidates",
+          "type": "array"
+        },
+        "confirmed_top_products": {
+          "items": {
+            "$ref": "#/$defs/RecommendationListItem"
+          },
+          "title": "Confirmed Top Products",
+          "type": "array"
+        },
+        "unresolved_question_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Unresolved Question Count",
+          "type": "integer"
+        },
+        "acknowledged_unknown_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Acknowledged Unknown Count",
+          "type": "integer"
+        },
         "unresolved_global_assumptions": {
           "items": {
             "type": "string"
@@ -558,6 +707,30 @@
           },
           "title": "Ranking Explanation Refs",
           "type": "array"
+        },
+        "eligibility_text_review_state": {
+          "default": "DISABLED",
+          "enum": [
+            "DISABLED",
+            "DEFERRED",
+            "COMPLETE",
+            "PROVISIONAL",
+            "FAILED"
+          ],
+          "title": "Eligibility Text Review State",
+          "type": "string"
+        },
+        "eligibility_text_review_rounds": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Eligibility Text Review Rounds",
+          "type": "integer"
+        },
+        "eligibility_text_review_pending_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Eligibility Text Review Pending Count",
+          "type": "integer"
         }
       },
       "required": [
@@ -568,6 +741,67 @@
         "top_products"
       ],
       "title": "ProductRecommendationResult",
+      "type": "object"
+    },
+    "QuestionSpec": {
+      "additionalProperties": false,
+      "description": "Backend-owned question plan consumed by a renderer.",
+      "properties": {
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "family_id": {
+          "title": "Family Id",
+          "type": "string"
+        },
+        "variable_id": {
+          "title": "Variable Id",
+          "type": "string"
+        },
+        "value_schema": {
+          "additionalProperties": true,
+          "title": "Value Schema",
+          "type": "object"
+        },
+        "scope": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Scope",
+          "type": "object"
+        },
+        "bound_requirement_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Bound Requirement Ids",
+          "type": "array"
+        },
+        "affected_product_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Affected Product Ids",
+          "type": "array"
+        },
+        "options": {
+          "items": {},
+          "title": "Options",
+          "type": "array"
+        },
+        "prompt_template_id": {
+          "title": "Prompt Template Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "family_id",
+        "variable_id",
+        "prompt_template_id"
+      ],
+      "title": "QuestionSpec",
       "type": "object"
     },
     "RankingComparability": {
@@ -592,6 +826,7 @@
     "RankingObjective": {
       "enum": [
         "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
         "MAX_REALIZABLE_RATE",
         "MIN_ACTION_BURDEN",
         "BALANCED"
@@ -611,8 +846,25 @@
           "title": "Product Id",
           "type": "string"
         },
+        "institution_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Id"
+        },
         "institution_name": {
           "title": "Institution Name",
+          "type": "string"
+        },
+        "institution_sector": {
+          "default": "UNKNOWN",
+          "title": "Institution Sector",
           "type": "string"
         },
         "product_name": {
@@ -631,9 +883,45 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "base_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Rate"
         },
         "advertised_max_rate": {
           "anyOf": [
@@ -643,9 +931,61 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Advertised Max Rate"
+        },
+        "return_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return Kind"
+        },
+        "published_rate_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate Label"
+        },
+        "published_rate_summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate Summary"
+        },
+        "published_rate_as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published Rate As Of"
         },
         "term_summary": {
           "title": "Term Summary",
@@ -661,6 +1001,101 @@
         },
         "planned_contribution_summary": {
           "title": "Planned Contribution Summary",
+          "type": "string"
+        },
+        "requested_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Requested Periodic Amount"
+        },
+        "planned_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Planned Periodic Amount"
+        },
+        "monthly_equivalent_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Monthly Equivalent Amount"
+        },
+        "amount_difference": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference"
+        },
+        "amount_difference_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Difference Ratio"
+        },
+        "amount_match_status": {
+          "default": "NOT_SPECIFIED",
+          "title": "Amount Match Status",
+          "type": "string"
+        },
+        "product_choice_override": {
+          "default": false,
+          "title": "Product Choice Override",
+          "type": "boolean"
+        },
+        "term_match_status": {
+          "default": "NOT_SPECIFIED",
+          "title": "Term Match Status",
           "type": "string"
         },
         "estimated_total_principal": {
@@ -679,6 +1114,22 @@
           "default": null,
           "title": "Estimated Total Principal"
         },
+        "estimated_pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Estimated Pre Tax Interest"
+        },
         "estimated_after_tax_interest": {
           "anyOf": [
             {
@@ -694,6 +1145,38 @@
           ],
           "default": null,
           "title": "Estimated After Tax Interest"
+        },
+        "conditional_upper_pre_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conditional Upper Pre Tax Interest"
+        },
+        "conditional_upper_after_tax_interest": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conditional Upper After Tax Interest"
         },
         "ranking_comparability": {
           "$ref": "#/$defs/RankingComparability",
@@ -715,6 +1198,41 @@
           "minimum": 0,
           "title": "Material Unknown Count",
           "type": "integer"
+        },
+        "eligibility_text_review_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvaluationStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "eligibility_text_review_reason_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligibility Text Review Reason Code"
+        },
+        "eligibility_text_review_fingerprint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligibility Text Review Fingerprint"
         }
       },
       "required": [
@@ -723,8 +1241,6 @@
         "institution_name",
         "product_name",
         "product_type",
-        "realizable_rate",
-        "advertised_max_rate",
         "term_summary",
         "contribution_summary",
         "maximum_deposit_summary",
@@ -857,6 +1373,31 @@
           "format": "date-time",
           "title": "Updated At",
           "type": "string"
+        },
+        "condition_states": {
+          "items": {
+            "$ref": "#/$defs/UserConditionState"
+          },
+          "title": "Condition States",
+          "type": "array"
+        },
+        "completion_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "STABLE_TOP3",
+                "PROVISIONAL_USER_STOPPED",
+                "PROVISIONAL_DATA_INCOMPLETE",
+                "INSUFFICIENT_ELIGIBLE_PRODUCTS"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completion Reason"
         }
       },
       "required": [
@@ -876,6 +1417,89 @@
         "COMPLETED"
       ],
       "title": "SearchSessionStatus",
+      "type": "string"
+    },
+    "UserConditionState": {
+      "additionalProperties": false,
+      "description": "Latest session-local state for a canonical user variable.\n\n``WILLING_UNSPECIFIED`` and ``ACKNOWLEDGED_UNKNOWN`` deliberately remain\nnon-negative evidence.  The evaluator may use them for an optimistic bound,\nbut never for the displayed/realizable rate.",
+      "properties": {
+        "variable_id": {
+          "title": "Variable Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/UserConditionStatus",
+          "default": "NOT_ASKED"
+        },
+        "value": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_turn_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Turn Id"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "interpreter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Interpreter Version"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id"
+      ],
+      "title": "UserConditionState",
+      "type": "object"
+    },
+    "UserConditionStatus": {
+      "description": "Session-local lifecycle of a canonical user variable.",
+      "enum": [
+        "NOT_ASKED",
+        "DECLINED",
+        "DECLARED_FEASIBLE",
+        "WILLING_UNSPECIFIED",
+        "ACKNOWLEDGED_UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "UserConditionStatus",
       "type": "string"
     },
     "VerificationBadge": {
@@ -948,6 +1572,18 @@
       ],
       "default": null,
       "title": "Unresolved Warning"
+    },
+    "assistant_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Assistant Message"
     }
   },
   "required": [

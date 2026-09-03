@@ -9,6 +9,7 @@ from eligibility.schema.enums import (
     PreferenceValue,
 )
 from eligibility.schema.product import ProductFeature
+from eligibility.schema.search import ContributionPlanPatch, IntentPatch
 from eligibility.search.intent import IntentParser
 from eligibility.search.retrieval import CandidateRetriever
 
@@ -28,7 +29,17 @@ def test_intent_patch_preserves_unmentioned_capabilities():
         ]
     )
 
-    updated = IntentParser().update(current, "카드 새로 만드는 건 싫어.")
+    updated = IntentParser.apply_patch(
+        current,
+        IntentPatch(
+            upsert_capabilities=[
+                Capability(
+                    capability_id="NEW_CARD_ISSUANCE",
+                    state=CapabilityState.CANNOT,
+                )
+            ]
+        ),
+    )
 
     assert _capability_map(updated) == {
         "CHANGE_SALARY_ACCOUNT": CapabilityState.CAN,
@@ -45,7 +56,17 @@ def test_intent_patch_updates_single_capability():
         ]
     )
 
-    updated = IntentParser().update(current, "급여계좌 변경 가능해요.")
+    updated = IntentParser.apply_patch(
+        current,
+        IntentPatch(
+            upsert_capabilities=[
+                Capability(
+                    capability_id="CHANGE_SALARY_ACCOUNT",
+                    state=CapabilityState.CAN,
+                )
+            ]
+        ),
+    )
 
     assert _capability_map(updated)["CHANGE_SALARY_ACCOUNT"] == CapabilityState.CAN
     assert _capability_map(updated)["BRANCH_VISIT"] == CapabilityState.CAN
@@ -72,7 +93,13 @@ def test_intent_patch_removes_only_explicit_target():
         ],
     )
 
-    updated = IntentParser().update(current, "영업점 방문 조건은 이제 상관없어.")
+    updated = IntentParser.apply_patch(
+        current,
+        IntentPatch(
+            remove_hard_constraint_keys=["SUBSCRIPTION_CHANNEL"],
+            remove_capability_keys=["BRANCH_VISIT"],
+        ),
+    )
 
     assert all(item.field != "SUBSCRIPTION_CHANNEL" for item in updated.hard_constraints)
     assert "BRANCH_VISIT" not in _capability_map(updated)
@@ -87,7 +114,14 @@ def test_contribution_plan_patch_preserves_other_fields():
         selected_term_value=12,
     )
 
-    updated = IntentParser().update(current, "월 20만원 기준으로 다시 보여줘.")
+    updated = IntentParser.apply_patch(
+        current,
+        IntentPatch(
+            contribution_plan_patch=ContributionPlanPatch(
+                desired_periodic_amount=Decimal("200000"),
+            )
+        ),
+    )
 
     assert updated.contribution_plan is not None
     assert updated.contribution_plan.desired_periodic_amount == Decimal("200000")

@@ -128,6 +128,191 @@
       "title": "PersonalizedRecommendationReason",
       "type": "object"
     },
+    "ProductSearchFacts": {
+      "additionalProperties": false,
+      "description": "Stable search projection shared by every financial-product family.\n\nCategory-specific canonical policies remain lossless in ``NormalizedProductData``.\nThis projection exposes only typed facts that deterministic retrieval may safely\ncompare; missing facts stay ``None`` and never become negative evidence.",
+      "properties": {
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "product_family": {
+          "title": "Product Family",
+          "type": "string"
+        },
+        "product_subtype": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Subtype"
+        },
+        "institution_sector": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution Sector"
+        },
+        "sale_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sale Status"
+        },
+        "open_ended": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Open Ended"
+        },
+        "customer_scopes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Customer Scopes",
+          "type": "array"
+        },
+        "subscription_channels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Subscription Channels",
+          "type": "array"
+        },
+        "funding_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Funding Type"
+        },
+        "contribution_frequency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contribution Frequency"
+        },
+        "return_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return Kind"
+        },
+        "protection_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Protection Status"
+        },
+        "reinvestment_mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reinvestment Mode"
+        },
+        "balance_tier_method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Balance Tier Method"
+        },
+        "fee_waiver_available": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fee Waiver Available"
+        },
+        "interest_payment_method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Interest Payment Method"
+        },
+        "classifications": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Classifications",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "product_family"
+      ],
+      "title": "ProductSearchFacts",
+      "type": "object"
+    },
     "RankingComparability": {
       "description": "Whether a candidate can participate in the active ranking metric.\n\nFor the default interest objective, COMPARABLE means the candidate has a\ndeterministic KRW after-tax-interest value.  A rate percentage is never a\nsubstitute for a missing KRW amount.",
       "enum": [
@@ -145,6 +330,17 @@
         "DECLINED"
       ],
       "title": "RankingInputStatus",
+      "type": "string"
+    },
+    "RankingObjective": {
+      "enum": [
+        "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
+        "MAX_REALIZABLE_RATE",
+        "MIN_ACTION_BURDEN",
+        "BALANCED"
+      ],
+      "title": "RankingObjective",
       "type": "string"
     },
     "RateBreakdownItem": {
@@ -211,6 +407,64 @@
           ],
           "default": null
         },
+        "disclosure_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Disclosure Id"
+        },
+        "presentation": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presentation"
+        },
+        "disclosure_verification_status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Disclosure Verification Status"
+        },
+        "user_condition_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UserConditionStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "display_status": {
+          "enum": [
+            "적용 예상",
+            "확인 전",
+            "적용 안 함",
+            "확인 완료"
+          ],
+          "title": "Display Status",
+          "type": "string"
+        },
         "children": {
           "items": {
             "$ref": "#/$defs/RateBreakdownItem"
@@ -225,7 +479,8 @@
         "status",
         "verification_level",
         "evidence_basis",
-        "reason_code"
+        "reason_code",
+        "display_status"
       ],
       "title": "RateBreakdownItem",
       "type": "object"
@@ -241,8 +496,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Cap Pp"
         },
         "pre_cap_total_pp": {
@@ -253,8 +512,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Pre Cap Total Pp"
         },
         "cap_reduction_pp": {
@@ -265,8 +528,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Cap Reduction Pp"
         },
         "post_cap_total_pp": {
@@ -277,17 +544,15 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Post Cap Total Pp"
         }
       },
-      "required": [
-        "cap_pp",
-        "pre_cap_total_pp",
-        "cap_reduction_pp",
-        "post_cap_total_pp"
-      ],
       "title": "RateCapAdjustment",
       "type": "object"
     },
@@ -340,6 +605,251 @@
         "included_in_conditional_upper"
       ],
       "title": "RateContribution",
+      "type": "object"
+    },
+    "RateEvaluationResult": {
+      "additionalProperties": false,
+      "description": "Family-neutral financial result consumed by search and ranking.\n\nThe legacy flattened fields on :class:`CandidateEvaluation` remain available\nfor API compatibility. New search/ranking code should use this contract so a\ndeposit, savings account, parking account, and CMA expose the same outcome\nwithout pretending that their internal calculations are identical.",
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "string"
+        },
+        "product_family": {
+          "title": "Product Family",
+          "type": "string"
+        },
+        "calculation_mode": {
+          "enum": [
+            "INSTALLMENT_CASHFLOW",
+            "LUMP_SUM_TERM",
+            "ON_DEMAND_BALANCE",
+            "CMA_POSTED_YIELD",
+            "CMA_PERFORMANCE_LINKED",
+            "GENERIC_RATE"
+          ],
+          "title": "Calculation Mode",
+          "type": "string"
+        },
+        "return_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Return Kind"
+        },
+        "calculation_status": {
+          "enum": [
+            "CALCULATED",
+            "UNSUPPORTED",
+            "UNKNOWN"
+          ],
+          "title": "Calculation Status",
+          "type": "string"
+        },
+        "calculation_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calculation Reason"
+        },
+        "eligibility_status": {
+          "$ref": "#/$defs/EvaluationStatus"
+        },
+        "confirmed_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confirmed Rate"
+        },
+        "realizable_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Realizable Rate"
+        },
+        "user_specific_conditional_upper_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Specific Conditional Upper Rate"
+        },
+        "advertised_max_rate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Advertised Max Rate"
+        },
+        "rate_as_of": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rate As Of"
+        },
+        "selected_term_value": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Term Value"
+        },
+        "selected_term_unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TermUnit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "scenario_principal": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scenario Principal"
+        },
+        "customer_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Customer Scope"
+        },
+        "comparison_basis": {
+          "default": "UNKNOWN",
+          "enum": [
+            "ANNUAL_PERCENT_RATE",
+            "PERFORMANCE_LINKED_RETURN",
+            "UNKNOWN"
+          ],
+          "title": "Comparison Basis",
+          "type": "string"
+        },
+        "rate_comparable": {
+          "default": false,
+          "title": "Rate Comparable",
+          "type": "boolean"
+        },
+        "interest_comparable": {
+          "default": false,
+          "title": "Interest Comparable",
+          "type": "boolean"
+        },
+        "ranking_comparability": {
+          "$ref": "#/$defs/RankingComparability",
+          "default": "NOT_COMPARABLE"
+        },
+        "applied_condition_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Applied Condition Ids",
+          "type": "array"
+        },
+        "missing_fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Fact Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "product_family",
+        "calculation_mode",
+        "calculation_status",
+        "eligibility_status"
+      ],
+      "title": "RateEvaluationResult",
       "type": "object"
     },
     "RecommendationReasonEntry": {
@@ -453,6 +963,29 @@
       "title": "SourceReference",
       "type": "object"
     },
+    "TermUnit": {
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "title": "TermUnit",
+      "type": "string"
+    },
+    "UserConditionStatus": {
+      "description": "Session-local lifecycle of a canonical user variable.",
+      "enum": [
+        "NOT_ASKED",
+        "DECLINED",
+        "DECLARED_FEASIBLE",
+        "WILLING_UNSPECIFIED",
+        "ACKNOWLEDGED_UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "UserConditionStatus",
+      "type": "string"
+    },
     "VerificationLevel": {
       "description": "User-facing evidence classification for an evaluated rule/result.",
       "enum": [
@@ -499,6 +1032,26 @@
       "title": "Rank",
       "type": "integer"
     },
+    "ranking_objective": {
+      "$ref": "#/$defs/RankingObjective",
+      "default": "MAX_REALIZABLE_RATE"
+    },
+    "eligibility_status": {
+      "$ref": "#/$defs/EvaluationStatus",
+      "default": "UNKNOWN"
+    },
+    "material_unknown_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Material Unknown Count",
+      "type": "integer"
+    },
+    "confirmed_or_achievable_products_ahead": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Confirmed Or Achievable Products Ahead",
+      "type": "integer"
+    },
     "realizable_rate": {
       "anyOf": [
         {
@@ -507,8 +1060,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Realizable Rate"
     },
     "confirmed_rate": {
@@ -519,8 +1076,12 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Confirmed Rate"
     },
     "advertised_max_rate": {
@@ -531,9 +1092,253 @@
         {
           "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
           "type": "string"
+        },
+        {
+          "type": "null"
         }
       ],
+      "default": null,
       "title": "Advertised Max Rate"
+    },
+    "additional_possible_rate_pp": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Additional Possible Rate Pp"
+    },
+    "product_subtype": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Product Subtype"
+    },
+    "sale_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sale Status"
+    },
+    "return_kind": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Return Kind"
+    },
+    "published_rate_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published Rate Label"
+    },
+    "published_rate_summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published Rate Summary"
+    },
+    "published_rate_as_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published Rate As Of"
+    },
+    "calculation_method": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Calculation Method"
+    },
+    "rate_calculation_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rate Calculation Status"
+    },
+    "rate_calculation_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rate Calculation Reason"
+    },
+    "rate_as_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rate As Of"
+    },
+    "target_customer_summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Customer Summary"
+    },
+    "protection_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Protection Status"
+    },
+    "search_facts": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProductSearchFacts"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "rate_evaluation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RateEvaluationResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "term_policy": {
+      "additionalProperties": true,
+      "title": "Term Policy",
+      "type": "object"
+    },
+    "cash_flow_policy": {
+      "additionalProperties": true,
+      "title": "Cash Flow Policy",
+      "type": "object"
+    },
+    "fee_policy": {
+      "additionalProperties": true,
+      "title": "Fee Policy",
+      "type": "object"
+    },
+    "tax_policy": {
+      "additionalProperties": true,
+      "title": "Tax Policy",
+      "type": "object"
+    },
+    "liquidity_policy": {
+      "additionalProperties": true,
+      "title": "Liquidity Policy",
+      "type": "object"
+    },
+    "rate_entries": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Rate Entries",
+      "type": "array"
+    },
+    "preferential_conditions": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Preferential Conditions",
+      "type": "array"
+    },
+    "data_gaps": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Data Gaps",
+      "type": "array"
+    },
+    "official_sources": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Official Sources",
+      "type": "array"
     },
     "term_summary": {
       "title": "Term Summary",
@@ -651,9 +1456,6 @@
     "institution_name",
     "product_type",
     "rank",
-    "realizable_rate",
-    "confirmed_rate",
-    "advertised_max_rate",
     "term_summary",
     "contribution_summary",
     "maximum_deposit_summary",

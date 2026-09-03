@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "description": "Deterministic result returned when the planner has no next question.",
+  "properties": {
+    "reason": {
+      "enum": [
+        "STABLE_TOP3",
+        "PROVISIONAL_USER_STOPPED",
+        "PROVISIONAL_DATA_INCOMPLETE",
+        "INSUFFICIENT_ELIGIBLE_PRODUCTS"
+      ],
+      "title": "Reason",
+      "type": "string"
+    },
+    "visible_top3_product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Visible Top3 Product Ids",
+      "type": "array"
+    },
+    "frontier_product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Frontier Product Ids",
+      "type": "array"
+    },
+    "unresolved_question_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Unresolved Question Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "reason"
+  ],
+  "title": "CompletionResult",
+  "type": "object"
+}

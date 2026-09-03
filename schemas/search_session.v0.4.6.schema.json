@@ -89,6 +89,89 @@
       ],
       "title": "SearchSessionStatus",
       "type": "string"
+    },
+    "UserConditionState": {
+      "additionalProperties": false,
+      "description": "Latest session-local state for a canonical user variable.\n\n``WILLING_UNSPECIFIED`` and ``ACKNOWLEDGED_UNKNOWN`` deliberately remain\nnon-negative evidence.  The evaluator may use them for an optimistic bound,\nbut never for the displayed/realizable rate.",
+      "properties": {
+        "variable_id": {
+          "title": "Variable Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/UserConditionStatus",
+          "default": "NOT_ASKED"
+        },
+        "value": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_turn_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Turn Id"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "interpreter_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Interpreter Version"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id"
+      ],
+      "title": "UserConditionState",
+      "type": "object"
+    },
+    "UserConditionStatus": {
+      "description": "Session-local lifecycle of a canonical user variable.",
+      "enum": [
+        "NOT_ASKED",
+        "DECLINED",
+        "DECLARED_FEASIBLE",
+        "WILLING_UNSPECIFIED",
+        "ACKNOWLEDGED_UNKNOWN",
+        "VERIFIED"
+      ],
+      "title": "UserConditionStatus",
+      "type": "string"
     }
   },
   "additionalProperties": false,
@@ -191,6 +274,31 @@
       "format": "date-time",
       "title": "Updated At",
       "type": "string"
+    },
+    "condition_states": {
+      "items": {
+        "$ref": "#/$defs/UserConditionState"
+      },
+      "title": "Condition States",
+      "type": "array"
+    },
+    "completion_reason": {
+      "anyOf": [
+        {
+          "enum": [
+            "STABLE_TOP3",
+            "PROVISIONAL_USER_STOPPED",
+            "PROVISIONAL_DATA_INCOMPLETE",
+            "INSUFFICIENT_ELIGIBLE_PRODUCTS"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Completion Reason"
     }
   },
   "required": [

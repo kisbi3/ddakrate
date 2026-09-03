@@ -16,9 +16,22 @@ if [[ ! -x "${PROJECT_DIR}/.venv/bin/eligibility-web" ]]; then
 fi
 
 if [[ -f "${PROJECT_DIR}/.env" ]]; then
-  set -a
-  source "${PROJECT_DIR}/.env"
-  set +a
+  # Treat dotenv values as data, not shell source. Encoded service keys can
+  # legitimately contain '&' and other shell metacharacters.
+  while IFS= read -r dotenv_line || [[ -n "${dotenv_line}" ]]; do
+    [[ -z "${dotenv_line}" || "${dotenv_line}" == \#* ]] && continue
+    [[ "${dotenv_line}" != *=* ]] && continue
+    dotenv_key="${dotenv_line%%=*}"
+    dotenv_value="${dotenv_line#*=}"
+    if [[ ! "${dotenv_key}" =~ '^[A-Za-z_][A-Za-z0-9_]*$' ]]; then
+      print -u2 "Ignoring invalid dotenv key"
+      continue
+    fi
+    if [[ "${dotenv_value}" == \"*\" || "${dotenv_value}" == \'*\' ]]; then
+      dotenv_value="${dotenv_value:1:-1}"
+    fi
+    export "${dotenv_key}=${dotenv_value}"
+  done < "${PROJECT_DIR}/.env"
 fi
 
 # app.main gives PORT precedence over WEB_PORT. A stale PORT in .env would make

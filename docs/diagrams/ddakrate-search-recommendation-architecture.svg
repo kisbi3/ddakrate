@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100" role="img" aria-labelledby="title desc">
+  <title id="title">개인화 금융상품 검색·추천 구조</title>
+  <desc id="desc">사용자 의도, 상품 지식, 사용자 금융 맥락이 중앙의 온톨로지 탐색과 결정적 계산 엔진에서 교차 검증되어 추천 결과와 다음 질문으로 이어지는 구조도</desc>
+
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#15213B" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#2B6CB0"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#6B5DD3"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#C97A20"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#2F855A"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#7B8494"/>
+    </marker>
+    <style>
+      .font { font-family: Apple SD Gothic Neo, Noto Sans KR, Pretendard, Arial, sans-serif; fill: #15213B; }
+      .title { font-size: 36px; font-weight: 700; letter-spacing: -1.2px; }
+      .subtitle { font-size: 17px; font-weight: 400; fill: #687386; }
+      .panel-title { font-size: 19px; font-weight: 700; }
+      .node-title { font-size: 20px; font-weight: 700; }
+      .node-sub { font-size: 15px; font-weight: 400; fill: #687386; }
+      .core-title { font-size: 22px; font-weight: 700; fill: #FFFFFF; }
+      .core-sub { font-size: 15px; font-weight: 400; fill: #E4EBFF; }
+      .label { font-size: 14px; font-weight: 600; fill: #687386; }
+      .legend { font-size: 14px; font-weight: 500; fill: #687386; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1100" fill="#F7F8FC"/>
+
+  <text x="80" y="76" class="font title">개인화 금융상품 검색·추천 구조</text>
+  <text x="80" y="112" class="font subtitle">사용자 의도 · 상품 지식 · 금융 증거를 교차 검증하는 AI Search Architecture</text>
+  <rect x="1510" y="48" width="210" height="38" rx="19" fill="#E9EEF8"/>
+  <text x="1615" y="73" text-anchor="middle" class="font label" fill="#3A5A98">기획서용 개념도</text>
+
+  <!-- Cross connections are drawn first so the domain cards remain readable. -->
+  <path d="M400 360 C480 360, 500 360, 625 360" fill="none" stroke="#2B6CB0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <path d="M400 730 C510 730, 530 505, 625 505" fill="none" stroke="#6B5DD3" stroke-width="3" marker-end="url(#arrow-purple)"/>
+  <path d="M1260 360 C1210 360, 1200 420, 1115 420" fill="none" stroke="#C97A20" stroke-width="3" marker-end="url(#arrow-orange)"/>
+  <path d="M1260 420 C1210 500, 1200 720, 1260 775" fill="none" stroke="#C97A20" stroke-width="2.5" stroke-dasharray="8 8" marker-end="url(#arrow-orange)"/>
+  <path d="M1115 745 C1190 745, 1205 665, 1260 665" fill="none" stroke="#2F855A" stroke-width="3" marker-end="url(#arrow-green)"/>
+  <path d="M1115 575 C1190 575, 1205 700, 1260 700" fill="none" stroke="#2F855A" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <path d="M400 865 C760 1015, 1080 1000, 1260 865" fill="none" stroke="#7B8494" stroke-width="2.5" stroke-dasharray="8 9" marker-end="url(#arrow-gray)"/>
+  <path d="M1115 470 C1175 520, 1190 845, 1260 865" fill="none" stroke="#7B8494" stroke-width="2.5" stroke-dasharray="8 9" marker-end="url(#arrow-gray)"/>
+  <path d="M1260 865 C1080 1040, 610 1045, 250 505" fill="none" stroke="#7B8494" stroke-width="2.5" stroke-dasharray="8 9" marker-end="url(#arrow-gray)"/>
+  <path d="M1260 865 C1160 950, 990 930, 865 855" fill="none" stroke="#7B8494" stroke-width="2.5" stroke-dasharray="8 9" marker-end="url(#arrow-gray)"/>
+
+  <!-- Panels -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="190" width="390" height="310" rx="28" fill="#EDF4FF" stroke="#B7D3F7" stroke-width="2"/>
+    <rect x="70" y="540" width="390" height="390" rx="28" fill="#F3F0FF" stroke="#C9BFF3" stroke-width="2"/>
+    <rect x="570" y="190" width="590" height="740" rx="32" fill="#EAF0FF" stroke="#3A5A98" stroke-width="2.5"/>
+    <rect x="1260" y="190" width="450" height="310" rx="28" fill="#FFF6E9" stroke="#F0C98F" stroke-width="2"/>
+    <rect x="1260" y="540" width="450" height="390" rx="28" fill="#ECF8F0" stroke="#A6D9B6" stroke-width="2"/>
+  </g>
+
+  <!-- Panel headings -->
+  <circle cx="105" cy="235" r="17" fill="#2B6CB0"/>
+  <text x="105" y="241" text-anchor="middle" class="font" font-size="15" font-weight="700" fill="#FFFFFF">01</text>
+  <text x="135" y="242" class="font panel-title" fill="#2B6CB0">사용자 입력</text>
+
+  <circle cx="105" cy="585" r="17" fill="#6B5DD3"/>
+  <text x="105" y="591" text-anchor="middle" class="font" font-size="15" font-weight="700" fill="#FFFFFF">02</text>
+  <text x="135" y="592" class="font panel-title" fill="#6B5DD3">상품 지식</text>
+
+  <circle cx="610" cy="235" r="17" fill="#3A5A98"/>
+  <text x="610" y="241" text-anchor="middle" class="font" font-size="15" font-weight="700" fill="#FFFFFF">03</text>
+  <text x="640" y="242" class="font panel-title" fill="#3A5A98">AI 검색·추천 허브</text>
+
+  <circle cx="1295" cy="235" r="17" fill="#C97A20"/>
+  <text x="1295" y="241" text-anchor="middle" class="font" font-size="15" font-weight="700" fill="#FFFFFF">04</text>
+  <text x="1325" y="242" class="font panel-title" fill="#C97A20">사용자 금융 맥락</text>
+
+  <circle cx="1295" cy="585" r="17" fill="#2F855A"/>
+  <text x="1295" y="591" text-anchor="middle" class="font" font-size="15" font-weight="700" fill="#FFFFFF">05</text>
+  <text x="1325" y="592" class="font panel-title" fill="#2F855A">사용자에게 보이는 결과</text>
+
+  <!-- Input nodes -->
+  <rect x="105" y="275" width="320" height="82" rx="18" fill="#FFFFFF" stroke="#B7D3F7" stroke-width="1.5"/>
+  <text x="265" y="310" text-anchor="middle" class="font node-title">사용자 자연어</text>
+  <text x="265" y="337" text-anchor="middle" class="font node-sub">목표 · 조건 · 선호 · 수정 요청</text>
+  <path d="M265 357 L265 392" stroke="#2B6CB0" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+
+  <rect x="105" y="395" width="320" height="82" rx="18" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+  <text x="265" y="430" text-anchor="middle" class="font node-title">AI 의도 해석</text>
+  <text x="265" y="457" text-anchor="middle" class="font node-sub">상품군 · 금액 · 기간 · 정렬 기준</text>
+
+  <!-- Knowledge nodes -->
+  <rect x="105" y="625" width="320" height="82" rx="18" fill="#FFFFFF" stroke="#C9BFF3" stroke-width="1.5"/>
+  <text x="265" y="660" text-anchor="middle" class="font node-title">상품 카탈로그</text>
+  <text x="265" y="687" text-anchor="middle" class="font node-sub">상품 · 기관 · 기간 · 금리 · 정책</text>
+  <path d="M265 707 L265 742" stroke="#6B5DD3" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+
+  <rect x="105" y="745" width="320" height="82" rx="18" fill="#FFFFFF" stroke="#6B5DD3" stroke-width="2"/>
+  <text x="265" y="780" text-anchor="middle" class="font node-title">조건 그래프</text>
+  <text x="265" y="807" text-anchor="middle" class="font node-sub">가입 · 우대 · 제한 · 행동 경로</text>
+  <path d="M265 827 L265 862" stroke="#6B5DD3" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#arrow-purple)"/>
+
+  <rect x="105" y="865" width="320" height="42" rx="14" fill="#FFFFFF" stroke="#C9BFF3" stroke-width="1.5"/>
+  <text x="265" y="892" text-anchor="middle" class="font node-sub">공식 근거 · 문서 · 버전 · 출처</text>
+
+  <!-- Core nodes -->
+  <rect x="625" y="300" width="490" height="138" rx="22" fill="#243B6B"/>
+  <circle cx="675" cy="345" r="23" fill="#5D7FD0"/>
+  <text x="675" y="352" text-anchor="middle" class="font" font-size="17" font-weight="700" fill="#FFFFFF">A</text>
+  <text x="720" y="343" class="font core-title">온톨로지 Traversal</text>
+  <text x="720" y="374" class="font core-sub">조건 노드 → 사용자 사실 → 판정 상태</text>
+  <text x="720" y="400" class="font core-sub">FactResolver · Rule AST · 근거 추적</text>
+  <path d="M870 438 L870 492" stroke="#3A5A98" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <rect x="625" y="500" width="490" height="138" rx="22" fill="#2F4F91"/>
+  <circle cx="675" cy="545" r="23" fill="#6F94E1"/>
+  <text x="675" y="552" text-anchor="middle" class="font" font-size="17" font-weight="700" fill="#FFFFFF">B</text>
+  <text x="720" y="543" class="font core-title">결정적 계산 엔진</text>
+  <text x="720" y="574" class="font core-sub">가입 가능성 · 적용 금리 · 현금흐름</text>
+  <text x="720" y="600" class="font core-sub">확정값 · 실현가능값 · 미확인값 분리</text>
+  <path d="M870 638 L870 692" stroke="#3A5A98" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <rect x="625" y="700" width="490" height="138" rx="22" fill="#365FA8"/>
+  <circle cx="675" cy="745" r="23" fill="#8DAAE8"/>
+  <text x="675" y="752" text-anchor="middle" class="font" font-size="17" font-weight="700" fill="#FFFFFF">C</text>
+  <text x="720" y="743" class="font core-title">개인화 Ranking</text>
+  <text x="720" y="774" class="font core-sub">사용자 목적 기반 Top K 정렬</text>
+  <text x="720" y="800" class="font core-sub">순위 안정성 · 비교 가능성 · 질문 우선순위</text>
+
+  <!-- Context nodes -->
+  <rect x="1295" y="275" width="380" height="82" rx="18" fill="#FFFFFF" stroke="#F0C98F" stroke-width="1.5"/>
+  <text x="1485" y="310" text-anchor="middle" class="font node-title">사용자 금융 데이터</text>
+  <text x="1485" y="337" text-anchor="middle" class="font node-sub">보유 상품 · 거래 이력 · 행동 가능성</text>
+  <path d="M1485 357 L1485 392" stroke="#C97A20" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+
+  <rect x="1295" y="395" width="380" height="82" rx="18" fill="#FFFFFF" stroke="#C97A20" stroke-width="2"/>
+  <text x="1485" y="430" text-anchor="middle" class="font node-title">확인 상태</text>
+  <text x="1485" y="457" text-anchor="middle" class="font node-sub">확인됨 · 미확인 · 충돌 · 추가 질문</text>
+
+  <!-- Output nodes -->
+  <rect x="1295" y="625" width="380" height="82" rx="18" fill="#FFFFFF" stroke="#A6D9B6" stroke-width="1.5"/>
+  <text x="1485" y="660" text-anchor="middle" class="font node-title">추천 상품</text>
+  <text x="1485" y="687" text-anchor="middle" class="font node-sub">순위 · 예상 이자 · 적용 금리 · 상태</text>
+  <path d="M1485 707 L1485 742" stroke="#2F855A" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+  <rect x="1295" y="745" width="380" height="82" rx="18" fill="#FFFFFF" stroke="#2F855A" stroke-width="2"/>
+  <text x="1485" y="780" text-anchor="middle" class="font node-title">추천 이유</text>
+  <text x="1485" y="807" text-anchor="middle" class="font node-sub">근거 · 충족 조건 · 한계 · 데이터 공백</text>
+
+  <rect x="1295" y="850" width="380" height="58" rx="16" fill="#F8FFFA" stroke="#A6D9B6" stroke-width="1.5"/>
+  <text x="1485" y="885" text-anchor="middle" class="font node-title" font-size="17">다음 질문 · 재평가</text>
+
+  <!-- Relationship labels -->
+  <text x="490" y="345" class="font label" fill="#2B6CB0">탐색 의도</text>
+  <text x="485" y="684" class="font label" fill="#6B5DD3">조건 노드</text>
+  <text x="1165" y="338" class="font label" fill="#C97A20">사용자 증거</text>
+  <text x="1165" y="730" class="font label" fill="#2F855A">Top K</text>
+  <text x="960" y="970" class="font label" fill="#7B8494">질문 답변 → 상태 갱신 → 조건 재평가</text>
+
+  <!-- Legend -->
+  <line x1="80" y1="1010" x2="130" y2="1010" stroke="#3A5A98" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="145" y="1015" class="font legend">결정적 처리 흐름</text>
+  <line x1="310" y1="1010" x2="360" y2="1010" stroke="#7B8494" stroke-width="2.5" stroke-dasharray="8 9" marker-end="url(#arrow-gray)"/>
+  <text x="375" y="1015" class="font legend">근거 · 질문 · 재평가 연결</text>
+  <text x="1720" y="1015" text-anchor="end" class="font legend">ddakrate / AI Search Architecture</text>
+</svg>

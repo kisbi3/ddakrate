@@ -22,6 +22,18 @@
   },
   "additionalProperties": false,
   "properties": {
+    "funding_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Funding Type"
+    },
     "initial_amount_min": {
       "anyOf": [
         {
@@ -175,6 +187,79 @@
       ],
       "default": null,
       "title": "Total Principal Limit"
+    },
+    "target_amount_min": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Amount Min"
+    },
+    "target_amount_max_per_account": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Amount Max Per Account"
+    },
+    "target_amount_aggregate_max": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Amount Aggregate Max"
+    },
+    "target_amount_increment": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Amount Increment"
+    },
+    "target_amount_immutable": {
+      "default": false,
+      "title": "Target Amount Immutable",
+      "type": "boolean"
     },
     "currency": {
       "default": "KRW",

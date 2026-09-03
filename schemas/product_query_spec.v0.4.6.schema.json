@@ -1,0 +1,84 @@
+{
+  "$defs": {
+    "ProductFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "operator": {
+          "title": "Operator",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value"
+        }
+      },
+      "required": [
+        "field",
+        "operator",
+        "value"
+      ],
+      "title": "ProductFilter",
+      "type": "object"
+    },
+    "ProductOrder": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "direction": {
+          "default": "ASC",
+          "enum": [
+            "ASC",
+            "DESC"
+          ],
+          "title": "Direction",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "title": "ProductOrder",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Allowlisted query shape; no SQL or expression fields are accepted.",
+  "properties": {
+    "fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Fields",
+      "type": "array"
+    },
+    "filters": {
+      "items": {
+        "$ref": "#/$defs/ProductFilter"
+      },
+      "title": "Filters",
+      "type": "array"
+    },
+    "order": {
+      "items": {
+        "$ref": "#/$defs/ProductOrder"
+      },
+      "title": "Order",
+      "type": "array"
+    },
+    "limit": {
+      "default": 100,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Limit",
+      "type": "integer"
+    }
+  },
+  "title": "ProductQuerySpec",
+  "type": "object"
+}

@@ -4,6 +4,7 @@ import json
 from collections import deque
 from typing import Any
 
+import pytest
 from fastapi.testclient import TestClient
 from pydantic import BaseModel, ConfigDict
 
@@ -178,6 +179,49 @@ def test_debug_trace_records_exact_messages_schema_and_output() -> None:
     ]
     assert captured["request"]["response_schema_name"] == "ConversationPlan"
     assert captured["request"]["response_json_schema"]
+    schemas = trace.schema_registry()
+    transport_ref = captured["request"]["transport_schema_ref"]
+    domain_ref = captured["request"]["domain_schema_ref"]
+    assert transport_ref in schemas
+    assert domain_ref in schemas
+
+
+def test_openai_debug_trace_shows_normalized_transport_schema() -> None:
+    trace = DebugTraceStore()
+    transport = FakeTransport(
+        [responses_success('{"actions":[{"operation":"NO_OP"}]}')]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-terra",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        ),
+        debug_observer=trace.observer(),
+    )
+    with trace.request(
+        method="POST",
+        path="/api/search-sessions/SEARCH-OPENAI/messages",
+        payload={"message": "이자금순"},
+        search_session_id="SEARCH-OPENAI",
+    ):
+        gateway.generate_structured(
+            LLMPurpose.CONVERSATION_ORCHESTRATION,
+            "CURRENT_CONTEXT: {}\nUSER_MESSAGE: 이자금순",
+            ConversationPlan,
+        )
+
+    captured = trace.requests_for_session("SEARCH-OPENAI")[0]["llm_calls"][0]
+    schemas = trace.schema_registry()
+    actual = schemas[captured["request"]["transport_schema_ref"]]
+    domain = schemas[captured["request"]["domain_schema_ref"]]
+    assert "(?!" not in json.dumps(actual, ensure_ascii=False)
+    assert "(?!" in json.dumps(domain, ensure_ascii=False)
+    payload = captured["request"]["transport_payload"]
+    assert payload["store"] is False
+    assert payload["text"]["format"]["strict"] is True
     assert captured["output"]["actions"][0]["operation"] == "NO_OP"
 
 
@@ -202,6 +246,8 @@ def test_runtime_intent_and_conversation_calls_separate_system_and_user_messages
     assert intent_request.response_schema_name == "IntentPatch"
     assert [message.role.value for message in intent_request.messages] == ["system", "user"]
     assert "구조화 추출기" in intent_request.messages[0].content
+    assert "INITIAL_PRODUCT_TYPE_REQUIRED" in intent_request.messages[0].content
+    assert "TASK_MODE: INITIAL_PRODUCT_TYPE_REQUIRED" in intent_request.messages[1].content
     assert "CURRENT_SEARCH_INTENT" in intent_request.messages[1].content
     assert intent.capabilities == []
     assert intent.hard_constraints == []
@@ -213,6 +259,229 @@ def test_runtime_intent_and_conversation_calls_separate_system_and_user_messages
     ]
     assert "구조화 라우터" in conversation_request.messages[0].content
     assert "CURRENT_CONTEXT" in conversation_request.messages[1].content
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        "금리순으로 보여줘",
+        "질문은 그만하고 지금 결과를 보여줘",
+        "계속 물어봐도 돼",
+        "모르겠어요",
+        "그게 뭐예요?",
+    ],
+)
+def test_natural_language_shortcuts_always_reach_the_llm(message: str) -> None:
+    transport = FakeTransport(
+        [responses_success('{"actions":[{"operation":"NO_OP"}]}')]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-luna",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        )
+    )
+
+    ConversationOrchestrator(gateway).interpret(message, context={})
+
+    assert len(transport.calls) == 1
+    payload = transport.calls[0]["json_body"]
+    assert payload["text"]["format"]["name"] == "ConversationPlan"
+    assert message in payload["input"][1]["content"]
+
+
+def test_pre_search_unknown_answer_reaches_the_llm() -> None:
+    transport = FakeTransport(
+        [responses_success('{"resolution":"ACKNOWLEDGED_UNKNOWN"}')]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-luna",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        )
+    )
+
+    result = ConversationOrchestrator(gateway).interpret_pre_search(
+        "모르겠어요",
+        context={
+            "ACTIVE_QUESTION": {
+                "question_id": "PRESEARCH-1",
+                "pre_search_key": "INSTITUTION_SCOPE",
+                "question": "어떤 금융기관까지 비교할까요?",
+            },
+            "CURRENT_SEARCH_INTENT": {},
+            "PRE_SEARCH_PROFILE": {},
+        },
+    )
+
+    assert result.resolution == "ACKNOWLEDGED_UNKNOWN"
+    assert len(transport.calls) == 1
+    assert (
+        transport.calls[0]["json_body"]["text"]["format"]["name"]
+        == "PreSearchAnswerPlan"
+    )
+
+
+def test_openai_active_fact_reply_uses_single_conversation_plan_schema() -> None:
+    transport = FakeTransport(
+        [
+            responses_success(
+                json.dumps(
+                    {
+                        "actions": [
+                            {
+                                "operation": "SUBMIT_ACTIVE_QUESTION_ANSWER",
+                                "fact_type": "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+                                "answer": True,
+                                "rationale": "현재 국민은행이며 유리하면 변경 가능",
+                            }
+                        ]
+                    },
+                    ensure_ascii=False,
+                )
+            )
+        ]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-luna",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        )
+    )
+
+    plan = ConversationOrchestrator(gateway).interpret(
+        "현재 국민은행이고 더 유리하면 옮길 수 있어.",
+        context={
+            "ACTIVE_QUESTION": {
+                "question_id": "QUESTION-1",
+                "question_kind": "FINANCIAL_FACT",
+                "fact_type": "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+                "question": "현재 급여 은행과 변경 의향을 알려주세요.",
+            }
+        },
+    )
+
+    assert plan.actions[0].operation.value == "SUBMIT_ACTIVE_QUESTION_ANSWER"
+    assert plan.actions[0].answer is True
+    payload = transport.calls[0]["json_body"]
+    assert payload["text"]["format"]["name"] == "ConversationPlan"
+    assert len(transport.calls) == 1
+
+
+def test_active_fact_and_search_revision_share_one_general_state_router_call() -> None:
+    transport = FakeTransport(
+        [
+            responses_success(
+                json.dumps(
+                    {
+                        "actions": [
+                            {
+                                "operation": "UPDATE_SEARCH_INTENT",
+                                "intent_patch": {
+                                    "upsert_product_types": ["PARKING_ACCOUNT"],
+                                    "remove_product_types": ["TIME_DEPOSIT"],
+                                },
+                                "product_id": None,
+                                "field": None,
+                                "new_value": None,
+                                "request_reference": None,
+                                "fact_type": None,
+                                "answer": None,
+                                "excluded": None,
+                                "rationale": "정기예금을 제외하고 파킹통장만 요청",
+                                "confirmation_question": None,
+                            }
+                        ]
+                    },
+                    ensure_ascii=False,
+                )
+            ),
+        ]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-luna",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        )
+    )
+
+    plan = ConversationOrchestrator(gateway).interpret(
+        "정기예금은 빼고 파킹통장만 보여줘.",
+        context={
+            "ACTIVE_QUESTION": {
+                "question_id": "QUESTION-1",
+                "question_kind": "FINANCIAL_FACT",
+                "fact_type": "ELIGIBLE",
+                "question": "가입 대상에 해당하시나요?",
+            },
+            "PRODUCT_CATALOG_SUMMARY": [],
+        },
+    )
+
+    assert len(transport.calls) == 1
+    assert transport.calls[0]["json_body"]["text"]["format"]["name"] == "ConversationPlan"
+    assert plan.actions[0].operation.value == "UPDATE_SEARCH_INTENT"
+    assert plan.actions[0].intent_patch.remove_product_types == ["TIME_DEPOSIT"]
+
+
+def test_tentative_negative_becomes_a_confirmation_proposal() -> None:
+    transport = FakeTransport(
+        [
+            responses_success(
+                json.dumps(
+                    {
+                        "actions": [
+                            {
+                                "operation": "PROPOSE_ACTIVE_QUESTION_ANSWER",
+                                "fact_type": "ELIGIBLE",
+                                "answer": False,
+                                "rationale": "사용자가 해당하지 않을 가능성을 표현함",
+                                "confirmation_question": "그렇다면, 없다고 가정해 볼까요?",
+                            }
+                        ]
+                    },
+                    ensure_ascii=False,
+                )
+            )
+        ]
+    )
+    gateway = LLMGateway(
+        OpenAIResponsesAdapter(
+            base_url="https://api.openai.com/v1",
+            model="gpt-5.6-luna",
+            api_key="secret",
+            max_retries=0,
+            transport=transport,
+        )
+    )
+
+    plan = ConversationOrchestrator(gateway).interpret(
+        "아닐 것 같은데, 처음 들어봐요.",
+        context={
+            "ACTIVE_QUESTION": {
+                "question_id": "QUESTION-1",
+                "question_kind": "FINANCIAL_FACT",
+                "fact_type": "ELIGIBLE",
+                "question": "이 조건에 해당하시나요?",
+            }
+        },
+    )
+
+    assert plan.actions[0].operation.value == "PROPOSE_ACTIVE_QUESTION_ANSWER"
+    assert plan.actions[0].answer is False
+    assert plan.actions[0].confirmation_question == "그렇다면, 없다고 가정해 볼까요?"
 
 
 def test_openai_responses_gpt56_luna_omits_unsupported_temperature() -> None:
@@ -393,5 +662,8 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
 
     assert result.status_code == 200
     assert result.json()["current_results_requested"] is True
-    assert transport.calls[0]["url"].endswith("/responses")
-    assert transport.calls[0]["json_body"]["text"]["format"]["strict"] is True
+    assert len(transport.calls) == 1
+    assert (
+        transport.calls[0]["json_body"]["text"]["format"]["name"]
+        == "FlexibleConversationTurnPlan"
+    )

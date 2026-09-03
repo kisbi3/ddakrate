@@ -9,7 +9,21 @@ from eligibility.fx import FxEstimate, FxQuote, PlannedMonetaryAmount
 from eligibility.goal import GoalInstance
 from eligibility.ingestion import ProductKnowledgeDraft
 from eligibility.schema.application_input import QuickInputProfile
-from eligibility.schema.conversation import ConversationAction, ConversationPlan, ConversationTurnResult
+from eligibility.schema.conversation import (
+    AnswerPlan,
+    ConversationAction,
+    ConversationPlan,
+    ConversationTurnResult,
+    QuantitativeConditionValue,
+)
+from eligibility.schema.condition_requirement import (
+    CompletionResult,
+    ConditionRequirement,
+    QuestionSpec,
+    RequirementCompilationMetrics,
+    RequirementCompilationResult,
+    UserConditionState,
+)
 from eligibility.schema.evaluation import ProductEvaluation
 from eligibility.schema.institution_service import InstitutionServiceDefinition
 from eligibility.schema.product import ContributionPolicy, ProductFeature, ProductMetadata
@@ -38,6 +52,7 @@ from eligibility.schema.search import (
 )
 from eligibility.schema.user_fact import RecurringPaymentEvent, UserFactStore
 from eligibility.llm.grounding import CanonicalQuestionPayload
+from eligibility.search.query_tools import ProductQuerySpec
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -140,6 +155,24 @@ def main() -> None:
     write_schema(versioned("conversation_action"), ConversationAction.model_json_schema())
     write_schema(versioned("conversation_plan"), ConversationPlan.model_json_schema())
     write_schema(versioned("conversation_turn_result"), ConversationTurnResult.model_json_schema())
+    write_schema(versioned("answer_plan"), AnswerPlan.model_json_schema())
+    write_schema(
+        versioned("quantitative_condition_value"),
+        QuantitativeConditionValue.model_json_schema(),
+    )
+    write_schema(versioned("product_query_spec"), ProductQuerySpec.model_json_schema())
+    write_schema(versioned("condition_requirement"), ConditionRequirement.model_json_schema())
+    write_schema(versioned("user_condition_state"), UserConditionState.model_json_schema())
+    write_schema(versioned("question_spec"), QuestionSpec.model_json_schema())
+    write_schema(versioned("completion_result"), CompletionResult.model_json_schema())
+    write_schema(
+        versioned("requirement_compilation_metrics"),
+        RequirementCompilationMetrics.model_json_schema(),
+    )
+    write_schema(
+        versioned("requirement_compilation_result"),
+        RequirementCompilationResult.model_json_schema(),
+    )
 
 
 if __name__ == "__main__":

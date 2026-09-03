@@ -115,6 +115,25 @@
           ],
           "default": null
         },
+        "term_strictness": {
+          "anyOf": [
+            {
+              "enum": [
+                "PREFERRED",
+                "EXACT",
+                "MAXIMUM",
+                "MINIMUM",
+                "ANY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Term Strictness"
+        },
         "preferred_start_amount": {
           "anyOf": [
             {
@@ -203,11 +222,81 @@
         "REVISE_USER_ANSWER",
         "REVISE_USER_DECLARED_FACT",
         "SUBMIT_ACTIVE_QUESTION_ANSWER",
+        "PROPOSE_ACTIVE_QUESTION_ANSWER",
+        "SKIP_ACTIVE_QUESTION",
+        "EXPLAIN_ACTIVE_QUESTION",
         "EXCLUDE_PRODUCT",
-        "NO_OP"
+        "NO_OP",
+        "SUBMIT_PRE_SEARCH_ANSWER",
+        "ACKNOWLEDGE_PRE_SEARCH_UNKNOWN",
+        "SET_PRODUCT_FEATURE_POLICY",
+        "CLEAR_PRODUCT_FEATURE_POLICY",
+        "REVERT_DECISIONS"
       ],
       "title": "ConversationOperation",
       "type": "string"
+    },
+    "ConversationStructuredAnswer": {
+      "additionalProperties": false,
+      "description": "Typed shape for active questions that need a resolution object.\n\nFree-form JSON is intentionally not allowed through the LLM boundary. The\ndeterministic ApplicationService still validates the resolution against the\nactive question and allowed options.",
+      "properties": {
+        "resolution": {
+          "enum": [
+            "CHANGE_PRODUCT_CONTRIBUTION_CHOICE",
+            "ADJUST_GLOBAL_AFFORDABILITY",
+            "EXCLUDE_PRODUCT"
+          ],
+          "title": "Resolution",
+          "type": "string"
+        },
+        "new_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "New Value"
+        },
+        "maximum_affordable_periodic_amount": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Affordable Periodic Amount"
+        }
+      },
+      "required": [
+        "resolution"
+      ],
+      "title": "ConversationStructuredAnswer",
+      "type": "object"
     },
     "HardConstraint": {
       "additionalProperties": false,
@@ -220,6 +309,20 @@
           "$ref": "#/$defs/HardConstraintValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -251,6 +354,12 @@
       "properties": {
         "upsert_product_types": {
           "items": {
+            "enum": [
+              "INSTALLMENT_SAVINGS",
+              "TIME_DEPOSIT",
+              "PARKING_ACCOUNT",
+              "CMA"
+            ],
             "type": "string"
           },
           "title": "Upsert Product Types",
@@ -258,9 +367,29 @@
         },
         "remove_product_types": {
           "items": {
+            "enum": [
+              "INSTALLMENT_SAVINGS",
+              "TIME_DEPOSIT",
+              "PARKING_ACCOUNT",
+              "CMA"
+            ],
             "type": "string"
           },
           "title": "Remove Product Types",
+          "type": "array"
+        },
+        "upsert_excluded_institution_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Upsert Excluded Institution Ids",
+          "type": "array"
+        },
+        "remove_excluded_institution_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Remove Excluded Institution Ids",
           "type": "array"
         },
         "upsert_hard_constraints": {
@@ -354,6 +483,23 @@
           ],
           "default": null,
           "title": "Requested Top K Patch"
+        },
+        "application_capacity_patch": {
+          "anyOf": [
+            {
+              "enum": [
+                "INDIVIDUAL",
+                "SOLE_PROPRIETOR",
+                "CORPORATION"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Application Capacity Patch"
         }
       },
       "title": "IntentPatch",
@@ -427,6 +573,20 @@
           "$ref": "#/$defs/PreferenceValue"
         },
         "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
           "default": true,
           "title": "Expected"
         },
@@ -461,9 +621,19 @@
       "title": "PreferenceValue",
       "type": "string"
     },
+    "ProductFeaturePolicy": {
+      "enum": [
+        "EXCLUDE",
+        "PREFER_ABSENT",
+        "ALLOW"
+      ],
+      "title": "ProductFeaturePolicy",
+      "type": "string"
+    },
     "RankingObjective": {
       "enum": [
         "MAX_ESTIMATED_AFTER_TAX_INTEREST",
+        "MAX_ESTIMATED_PRE_TAX_INTEREST",
         "MAX_REALIZABLE_RATE",
         "MIN_ACTION_BURDEN",
         "BALANCED"
@@ -524,7 +694,18 @@
     },
     "new_value": {
       "anyOf": [
-        {},
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
         {
           "type": "null"
         }
@@ -558,7 +739,21 @@
     },
     "answer": {
       "anyOf": [
-        {},
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/$defs/ConversationStructuredAnswer"
+        },
         {
           "type": "null"
         }
@@ -589,6 +784,60 @@
       ],
       "default": null,
       "title": "Rationale"
+    },
+    "confirmation_question": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confirmation Question"
+    },
+    "assistant_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Assistant Message"
+    },
+    "feature_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Feature Id"
+    },
+    "feature_policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProductFeaturePolicy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "decision_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Decision Ids",
+      "type": "array"
     }
   },
   "required": [

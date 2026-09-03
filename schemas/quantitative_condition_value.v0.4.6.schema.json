@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "description": "Strict amount value for threshold-based user conditions.",
+  "properties": {
+    "amount": {
+      "anyOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Amount"
+    },
+    "currency": {
+      "const": "KRW",
+      "default": "KRW",
+      "title": "Currency",
+      "type": "string"
+    },
+    "period": {
+      "anyOf": [
+        {
+          "enum": [
+            "DAY",
+            "WEEK",
+            "MONTH",
+            "YEAR"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Period"
+    }
+  },
+  "required": [
+    "amount"
+  ],
+  "title": "QuantitativeConditionValue",
+  "type": "object"
+}

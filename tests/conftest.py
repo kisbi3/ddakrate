@@ -9,6 +9,16 @@ from eligibility.schema.user_fact import UserFact, UserFactStore
 from eligibility.schema.enums import FactSourceType
 
 
+@pytest.fixture(autouse=True)
+def isolate_debug_history(monkeypatch, tmp_path) -> None:
+    """Keep TestClient traces out of the developer's persistent inspector."""
+
+    monkeypatch.setenv(
+        "ELIGIBILITY_DEBUG_HISTORY_DIR",
+        str(tmp_path / "debug-history"),
+    )
+
+
 @pytest.fixture
 def basic_context() -> EvaluationContext:
     return EvaluationContext(

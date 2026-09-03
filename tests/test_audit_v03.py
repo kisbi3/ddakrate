@@ -37,6 +37,36 @@ def test_audit_events_are_append_only():
         first.event_id = "MUTATED"  # type: ignore[misc]
 
 
+def test_summary_capture_skips_unselected_events_before_hashing():
+    sink = InMemoryAuditSink()
+    audit = AuditSession(
+        sink,
+        request_id="REQ-SUMMARY",
+        trace_id="TRACE-SUMMARY",
+        captured_event_types=frozenset(
+            {
+                AuditEventType.SEARCH_SESSION_CREATED,
+                AuditEventType.RANKING_CALCULATED,
+            }
+        ),
+    )
+
+    skipped = audit.emit(
+        "RULE_EVALUATOR",
+        AuditEventType.RULE_LOADED,
+        input_data={"large": ["payload"] * 100},
+    )
+    kept = audit.emit(
+        "RANKING_SERVICE",
+        AuditEventType.RANKING_CALCULATED,
+        payload={"candidate_count": 4300},
+    )
+
+    assert skipped is None
+    assert kept is not None
+    assert sink.events == (kept,)
+
+
 def test_trace_ids_propagate():
     sink = InMemoryAuditSink()
     audit = AuditSession(

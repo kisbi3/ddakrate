@@ -412,8 +412,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Base Rate"
         },
         "verified_reward_pp": {
@@ -469,9 +473,6 @@
           "title": "Unknown Conditional Reward Pp"
         }
       },
-      "required": [
-        "base_rate"
-      ],
       "title": "RateEvidenceBreakdown",
       "type": "object"
     },
@@ -486,8 +487,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Advertised Max Rate"
         },
         "confirmed_rate": {
@@ -498,8 +503,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Confirmed Rate"
         },
         "realizable_rate": {
@@ -510,8 +519,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Realizable Rate"
         },
         "user_specific_conditional_upper_rate": {
@@ -522,8 +535,12 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "User Specific Conditional Upper Rate"
         },
         "preferential_cap": {
@@ -534,9 +551,35 @@
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
               "type": "string"
+            },
+            {
+              "type": "null"
             }
           ],
+          "default": null,
           "title": "Preferential Cap"
+        },
+        "calculation_status": {
+          "default": "CALCULATED",
+          "enum": [
+            "CALCULATED",
+            "UNSUPPORTED",
+            "UNKNOWN"
+          ],
+          "title": "Calculation Status",
+          "type": "string"
+        },
+        "calculation_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Calculation Reason"
         },
         "guard_status": {
           "$ref": "#/$defs/EvaluationStatus"
@@ -553,11 +596,6 @@
         }
       },
       "required": [
-        "advertised_max_rate",
-        "confirmed_rate",
-        "realizable_rate",
-        "user_specific_conditional_upper_rate",
-        "preferential_cap",
         "guard_status",
         "evidence_breakdown"
       ],
