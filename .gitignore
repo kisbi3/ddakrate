@@ -15,9 +15,8 @@ docs/private/
 !.env.example
 
 # One-off data build / audit artifacts
-scripts/_row*_build.py
-scripts/_row*_publish.py
-scripts/_row*_correct_v004.py
+scripts/migrations/*
+!scripts/migrations/README.md
 audit_output/
 create_row121_audit.py
 rec16.json
@@ -33,5 +32,8 @@ data/20260829-cma-01/
 data/20260829-time-deposit-01-source-first-final/
 data/ddakrate_installment_savings_shard_v015_20260831/
 data/ddakrate_parking_account_latest_full_20260830/
-data/institutions/
+# normalized/ is a runtime dependency (normalized_loader.py joins institution
+# names through it), so it is tracked; only the build inputs are ignored.
+data/institutions/raw/
+data/institutions/staging/
 data/multi_product_catalog/

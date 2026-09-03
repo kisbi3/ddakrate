@@ -35,12 +35,12 @@ eligibility-web
 
 ### Published normalized catalog 통합
 
-Web runtime은 `data/financial_products/normalized/index.json`을 진입점으로 사용해 발행 파일의 sha256과 manifest를 검증한다. 확정 157개 버전 가운데 기본 후보는 `sale_policy.status=ON_SALE`인 **155개**이며, 적금·예금·파킹통장·CMA를 같은 `ApplicationService` 흐름에 투입한다. `ENDED` 2개는 발행 데이터에 보존하되 기본 후보에서 제외한다. 기관명은 현재 Institution snapshot을 `institution_id`로 조인한다.
+Web runtime은 `data/financial_products/normalized/index.json`을 진입점으로 사용해 발행 파일의 sha256과 manifest를 검증한다. 전체 발행 버전 수와 `sale_policy.status=ON_SALE` 기본 후보 수는 index의 `product_count`와 `publication_status`를 기준으로 하며(고정 숫자가 아니라 계속 늘어난다), 적금·예금·파킹통장·CMA를 같은 `ApplicationService` 흐름에 투입한다. `ENDED` 상품은 발행 데이터에 보존하되 기본 후보에서 제외한다. 기관명은 현재 Institution snapshot을 `institution_id`로 조인한다. 이 catalog 디렉터리는 git에 커밋되어 있으며 로컬에서 별도로 생성할 필요가 없다.
 
 ```text
 data/financial_products/normalized/
-├─ index.json                # published product entrypoint + product sha256
-├─ products/                 # 155 canonical version JSON
+├─ index.json                # published product entrypoint + product_count/sha256 (source of truth)
+├─ products/                 # canonical version JSON (index.json의 product_count 기준)
 ├─ definitions/              # CustomDefinition 등
 └─ manifests/                # published manifest
 
@@ -49,7 +49,7 @@ src/eligibility/catalog/
 └─ loader.py                 # normalized default / explicit legacy compatibility
 ```
 
-기본 모드는 `NORMALIZED`다. 기존 50개 catalog는 회귀용으로 유지하며 `ELIGIBILITY_CATALOG_MODE=LEGACY` 또는 기존 `ELIGIBILITY_PRODUCT_CATALOG_PATH` 디렉터리 override에서만 사용한다. 새 발행 index를 override할 때는 index 파일 또는 index를 포함한 디렉터리를 지정한다.
+기본 모드는 `NORMALIZED`다. 기존 50개 legacy fixture catalog(`data/product_catalog/products`)는 회귀용으로 유지하며 `ELIGIBILITY_CATALOG_MODE=LEGACY` 또는 기존 `ELIGIBILITY_PRODUCT_CATALOG_PATH` 디렉터리 override에서만 사용한다. 새 발행 index를 override할 때는 index 파일 또는 index를 포함한 디렉터리를 지정한다.
 
 ### OpenAI 연결
 
