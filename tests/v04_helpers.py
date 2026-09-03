@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 from decimal import Decimal
+from types import SimpleNamespace
 from typing import Iterable
 
 from eligibility.engine.evaluator import FinancialEligibilityEngine
@@ -40,8 +41,9 @@ from eligibility.schema.rule import (
     RateImpact,
     SourceReference,
 )
-from eligibility.schema.search import ContributionPlan, ProductSearchIntent
+from eligibility.schema.search import ContributionPlan, IntentPatch, ProductSearchIntent
 from eligibility.schema.user_fact import UserFact, UserFactStore
+from eligibility.search.intent import IntentParser
 
 
 USER_ID = "V04-USER"
@@ -324,3 +326,61 @@ def evaluate_product(
         context,
         contribution_plan=planned.core_plan,
     )
+
+
+class ScriptedIntentPatchGateway:
+    """Stub LLM gateway for ``IntentParser`` that returns caller-supplied patches.
+
+    Real natural-language understanding is deliberately unavailable without a
+    configured LLM gateway (see ``IntentParser.parse``/``update``). Tests that
+    only care about the deterministic behavior *after* an intent change (
+    re-ranking, exclusion, adapter parity, etc.) can use this stub to stand in
+    for the LLM: queue up the ``IntentPatch`` each expected utterance should
+    produce, and each call to ``generate_structured`` pops the next one.
+
+    This does not simulate natural-language understanding itself -- it lets a
+    scripted patch flow through the real ``IntentParser``/``ApplicationService``
+    code path so the deterministic assertions downstream still exercise real
+    code.
+    """
+
+    def __init__(self, patches: Iterable[IntentPatch] = (), *, default: IntentPatch | None = None):
+        self._queue: list[IntentPatch] = list(patches)
+        self._default = default
+        self.calls: list[tuple[tuple, dict]] = []
+
+    def queue(self, patch: IntentPatch) -> None:
+        self._queue.append(patch)
+
+    def generate_structured(self, *args, **kwargs):
+        self.calls.append((args, kwargs))
+        if not self._queue and self._default is not None:
+            return SimpleNamespace(data=self._default)
+        if not self._queue:
+            raise AssertionError(
+                "ScriptedIntentPatchGateway received a generate_structured call "
+                "with no queued IntentPatch left"
+            )
+        return SimpleNamespace(data=self._queue.pop(0))
+
+
+def intent_from_patch(
+    patch: IntentPatch,
+    *,
+    user_id: str = USER_ID,
+    base: ProductSearchIntent | None = None,
+) -> ProductSearchIntent:
+    """Deterministically build a ``ProductSearchIntent`` from a patch.
+
+    Equivalent to what ``IntentParser.parse``/``update`` would produce given an
+    LLM that returned exactly ``patch``, without requiring a gateway. Useful
+    wherever a test's intent change can be expressed as a structured call
+    (``create_search_session(intent=...)`` / ``update_search_intent(patch=...)``)
+    instead of a natural-language utterance.
+    """
+
+    baseline = base or ProductSearchIntent(
+        search_intent_id="INTENT-FROM-PATCH",
+        user_id=user_id,
+    )
+    return IntentParser.apply_patch(baseline, patch)

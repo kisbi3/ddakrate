@@ -6,13 +6,17 @@ new turn-plan schema and ledger workflow are integrated.
 """
 from __future__ import annotations
 
+from decimal import Decimal
 from typing import Any
 
 from eligibility.application_service import ApplicationService
 from eligibility.catalog import load_default_product_catalog
 from eligibility.conversation import ConversationOrchestrator
 from eligibility.llm import LLMGateway, MockLLMAdapter, LLMPurpose
-from eligibility.schema.enums import PreSearchAnswerStatus
+from eligibility.schema.enums import ContributionFrequency, PreSearchAnswerStatus
+from eligibility.schema.search import ContributionPlanPatch, IntentPatch
+
+from tests.v04_helpers import intent_from_patch
 
 
 def _service(*plans: dict[str, Any]):
@@ -22,9 +26,20 @@ def _service(*plans: dict[str, Any]):
         conversation_orchestrator=ConversationOrchestrator(LLMGateway(adapter)),
         pre_search_enabled=True,
     )
-    session = service.create_search_session(
-        user_id="FLEXIBLE-USER", utterance="월 30만원씩 적금 찾아줘"
+    # "월 30만원씩 적금 찾아줘" (monthly 300,000 KRW installment savings) expressed
+    # as a structured intent -- no LLM gateway is configured for intent parsing
+    # in this test, only for conversation orchestration.
+    intent = intent_from_patch(
+        IntentPatch(
+            upsert_product_types=["INSTALLMENT_SAVINGS"],
+            contribution_plan_patch=ContributionPlanPatch(
+                desired_periodic_amount=Decimal("300000"),
+                frequency=ContributionFrequency.MONTHLY,
+            ),
+        ),
+        user_id="FLEXIBLE-USER",
     )
+    session = service.create_search_session(user_id="FLEXIBLE-USER", intent=intent)
     return service, session, adapter
 
 

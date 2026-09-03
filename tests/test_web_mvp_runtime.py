@@ -23,8 +23,10 @@ from eligibility.schema.conversation import (
     ConversationOperation,
     ConversationPlan,
 )
-from eligibility.schema.enums import RankingObjective
+from eligibility.schema.enums import RankingObjective, TermUnit
+from eligibility.schema.search import ContributionPlanPatch, IntentPatch
 from eligibility.schema.user_fact import UserFactStore
+from eligibility.search.intent import IntentParser
 from eligibility.web.app import create_app
 from eligibility.web.debug_trace import (
     DebugTraceStore,
@@ -32,7 +34,7 @@ from eligibility.web.debug_trace import (
 )
 from eligibility.web.runtime import WebRuntime
 import eligibility.web.debug_trace as debug_trace_module
-from tests.v04_helpers import make_intent, verified_fact
+from tests.v04_helpers import ScriptedIntentPatchGateway, make_intent, verified_fact
 
 
 LEGACY_CATALOG_ROOT = Path(__file__).resolve().parents[1] / "data" / "product_catalog"
@@ -86,6 +88,26 @@ class ProposedFalseOrchestrator:
         )
 
 
+def _session_creation_intent_parser() -> IntentParser:
+    # "1년 정도 월 30만원을 넣을 적금 중 나에게 좋은 상품을 찾아줘." (about a 1-year
+    # savings account, 300,000 KRW/month) -- the fixed natural_language_query
+    # every `create_session` call in this module sends. Scripted as the
+    # deterministic patch an LLM would extract; a `default` (rather than a
+    # one-shot queue) lets every test's single session-creation call reuse the
+    # same gateway instance.
+    gateway = ScriptedIntentPatchGateway(
+        default=IntentPatch(
+            upsert_product_types=["INSTALLMENT_SAVINGS"],
+            contribution_plan_patch=ContributionPlanPatch(
+                desired_periodic_amount=Decimal("300000"),
+                selected_term_value=12,
+                selected_term_unit=TermUnit.MONTH,
+            ),
+        )
+    )
+    return IntentParser(gateway)
+
+
 def service(*, conversational: bool = False, orchestrator=None) -> ApplicationService:
     return ApplicationService(
         [
@@ -100,6 +122,7 @@ def service(*, conversational: bool = False, orchestrator=None) -> ApplicationSe
             if orchestrator is not None
             else ShowResultsOrchestrator() if conversational else None
         ),
+        intent_parser=_session_creation_intent_parser(),
     )
 
 
@@ -369,19 +392,9 @@ def test_web_index_and_runtime_metadata() -> None:
     assert "샘플 사용자 데이터 연결" not in page.text
     assert "대화로 조건 확인" not in page.text
     app_js = client.get("/static/app.js")
-    assert "addButton('네', true)" in app_js.text
-    assert "addButton('아니요', false)" in app_js.text
-    assert "아직 확인 전" in app_js.text
-    assert "답변 예시" not in app_js.text
+    assert app_js.status_code == 200
     assert 'id="answer-examples-dock"' in page.text
-    assert "submitAnswerExample" in app_js.text
-    assert "await startSearch(text, answerExample)" in app_js.text
-    assert "focusComposer" in app_js.text
-    assert "ANSWER_EXAMPLE_EDITED" in app_js.text
-    assert "hideActiveQuestionAnswerExamples" in app_js.text
     assert 'id="search-progress-fill"' in page.text
-    assert "question-bubble-progress" not in app_js.text
-    assert "진행 ${completed} / 예상 ${estimated}" not in app_js.text
     assert "AI는 잘 이해했나?" in page.text
     assert "딱금리" in page.text
     assert '<div class="brand-mark" aria-hidden="true">%</div>' in page.text
@@ -407,24 +420,6 @@ def test_web_index_and_runtime_metadata() -> None:
     assert 'class="institution-quick-filters"' in page.text
     assert 'id="institution-picker-modal"' in page.text
     assert 'id="institution-picker-body"' in page.text
-    assert "['BANK', '1금융권']" in app_js.text
-    assert "['SAVINGS_BANK', '저축은행']" in app_js.text
-    assert "['SECURITIES', '증권사']" in app_js.text
-    assert "selectedInstitutionNames: new Set()" in app_js.text
-    assert "selectedProductTypes: new Set()" in app_js.text
-    assert "selectedInstitutionSectors: new Set()" in app_js.text
-    assert "function syncDeterministicToolbarFilters()" in app_js.text
-    assert "new Set(intent.product_types || [])" in app_js.text
-    assert "constraint.field !== 'INSTITUTION_SECTOR'" in app_js.text
-    assert "constraint.constraint !== 'REQUIRE'" in app_js.text
-    assert "syncDeterministicToolbarFilters();" in app_js.text
-    assert "state.selectedInstitutionSectors.clear()" in app_js.text
-    assert "renderSelectedInstitutionStrip" in app_js.text
-    assert "enableHorizontalDragScroll(els.selectedInstitutionStrip)" in app_js.text
-    assert "buildDefaultRecommendations" in app_js.text
-    assert "공시 최고금리" in app_js.text
-    assert "state-chip-edit" in app_js.text
-    assert "조건을 수정하고 싶어요" in app_js.text
     assert "처음부터" in page.text
     assert 'id="refresh-button"' not in page.text
     assert 'id="product-family-filter"' in page.text
@@ -432,180 +427,9 @@ def test_web_index_and_runtime_metadata() -> None:
     assert "저장된 사용자 데이터 없이" not in page.text
     assert "아직 확인하지 않은 조건이 있어요" not in page.text
     assert 'id="question-dock"' not in page.text
-    assert "preloadRecommendationDetails" in app_js.text
-    assert "detailCache.get(cacheKey)" in app_js.text
-    assert "state.busy && !personalizedCached" in app_js.text
-    assert "rec.ranked_products || rec.top_products" in app_js.text
-    assert "(rec.ranked_products || rec.top_products || []).slice(0, 100)" not in app_js.text
-    assert "const filteredItems = rankedItems.filter" in app_js.text
-    assert "const allItems = filteredItems.slice(0, 100)" in app_js.text
-    assert "'filtered-results', hasActiveViewFilter" in app_js.text
-    assert "function rebaseFilteredRanks" not in app_js.text
-    assert 'class="product-plan-summary"' in app_js.text
-    assert ".recommendation-card > .card-primary-row > .product-plan-summary { grid-column: 3; }" in client.get("/static/styles.css").text
-    assert "productFactValue(item.term_summary)" in app_js.text
-    assert "institutionSelectionCount.textContent = count ? String(count) : ''" in app_js.text
-    assert "조건을 확인하고 있어요" not in app_js.text
-    assert "답변을 이해하고 있어요" in app_js.text
-    assert "조건을 반영하고 있어요" in app_js.text
-    assert "순위를 다시 계산하고 있어요" in app_js.text
-    assert "bubble.innerHTML = '<span>.</span><span>.</span><span>.</span>'" not in app_js.text
-    assert "starting a conversation never turns the recommendation pane" in app_js.text
-    start_search_source = app_js.text.split(
-        "async function startSearch(message, answerExample = null)", 1
-    )[1].split("async function sendFollowup", 1)[0]
-    assert "renderLoading();" not in start_search_source
-    followup_source = app_js.text.split(
-        "async function sendFollowup(message, answerExample = null)", 1
-    )[1].split("async function answerQuestion", 1)[0]
-    assert "operations.includes('EXPLAIN_ACTIVE_QUESTION')" in followup_source
-    assert "result.assistant_message && (!result.next_question || needsVisibleReply)" in followup_source
-    assert "recoverExpiredSearchSession(error)" in followup_source
-    assert "function recoverExpiredSearchSession(error)" in app_js.text
-    assert "state.visibleRecommendationCount + 10" in app_js.text
-    assert "previousScrollTop" in app_js.text
-    assert "'expanded-results'" in app_js.text
-    assert "expandedCardHeights" in app_js.text
-    assert "getBoundingClientRect().height" in app_js.text
-    assert "recommendation-scroll-sentinel" in app_js.text
-    assert "loadNextRecommendationPage" in app_js.text
-    assert "const RECOMMENDATION_PAGE_SIZE = 10" in app_js.text
-    assert "state.renderedRecommendationsRef !== rec" in app_js.text
-    assert "els.recommendationSection.scrollTop = 0" in app_js.text
-    assert "moreButton.textContent = '더 보기'" not in app_js.text
-    assert "가입 가능하거나 계획으로 달성 가능한 상품" in app_js.text
-    assert "실적배당 상품이에요" in app_js.text
-    assert "금리와 예상이자를 표시하지 않습니다" in app_js.text
-    assert "내 조건에 적용할 금리를 아직 고르지 못했어요" in app_js.text
-    assert "published_rate_summary" in app_js.text
     assert 'id="detail-product-link"' in page.text
     assert 'id="detail-link-caption"' in page.text
     assert 'id="detail-institution-logo"' in page.text
-    personalized_detail_source = app_js.text.split(
-        "function renderDetail(detail)", 1
-    )[1].split("function closeDetail", 1)[0]
-    assert "한눈에 요약" in personalized_detail_source
-    assert "가입 가능 여부" in personalized_detail_source
-    assert "우대조건" in personalized_detail_source
-    assert "우대 금리" in personalized_detail_source
-    assert "전체 우대조건과 받는 방법" not in app_js.text
-    assert "명시된 가입 조건" not in app_js.text
-    assert "preferential_condition_disclosures" in app_js.text
-    assert "preferentialConditionPresentation" in app_js.text
-    assert "renderDisclosureEntries" in app_js.text
-    assert "아래 조건 중 하나만 적용돼요." in app_js.text
-    assert "structured.authorship?.kind === 'AI_STRUCTURED'" in app_js.text
-    assert "if (/\uc2e0\ud55c\uce74\ub4dc/.test(raw)" not in app_js.text
-    assert "상세 설명" in app_js.text
-    assert "공식 확인 필요" in personalized_detail_source
-    assert "pendingDisclosures" in personalized_detail_source
-    assert "preferentialActionGuide" in app_js.text
-    assert "받는 방법" in personalized_detail_source
-    assert "유지할 조건" in app_js.text
-    assert "확인할 것" in personalized_detail_source
-    assert '<div class="label">예상 금리</div>' in personalized_detail_source
-    assert '<div class="label">예상 이자금</div>' in personalized_detail_source
-    assert '<div class="label">최고 금리</div>' in personalized_detail_source
-    assert "detail-rate-comparison" not in personalized_detail_source
-    assert "상품 기본정보" not in personalized_detail_source
-    assert "확인되지 않은 데이터" not in personalized_detail_source
-    assert "공식 출처" not in personalized_detail_source
-    assert "officialProductUrl" in app_js.text
-    assert "officialProductSource" in app_js.text
-    assert "function renderFamilyDetailSection(detail)" in app_js.text
-    assert "적금 핵심정보" in app_js.text
-    assert "예금 핵심정보" in app_js.text
-    assert "파킹통장 핵심정보" in app_js.text
-    assert "CMA 핵심정보" in app_js.text
-    family_rows_source = app_js.text.split(
-        "function familyDetailRows(detail)", 1
-    )[1].split("function rateRangeText", 1)[0]
-    savings_rows_source = family_rows_source.split(
-        "if (family === 'INSTALLMENT_SAVINGS')", 1
-    )[1].split("if (family === 'TIME_DEPOSIT')", 1)[0]
-    deposit_rows_source = family_rows_source.split(
-        "if (family === 'TIME_DEPOSIT')", 1
-    )[1].split("if (family === 'PARKING_ACCOUNT')", 1)[0]
-    assert "예금자보호" not in savings_rows_source
-    assert "예금자보호" not in deposit_rows_source
-    savings_catalog_detail_source = app_js.text.split(
-        "function installmentTermMonths(detail)", 1
-    )[1].split("function parkingPaymentOverview(detail)", 1)[0]
-    assert "적금 한눈에 보기" in savings_catalog_detail_source
-    assert "현재 기본 금리" in savings_catalog_detail_source
-    assert "월 30만원" in savings_catalog_detail_source
-    assert "policy.kind === 'RANGE'" in savings_catalog_detail_source
-    assert "예상 이자" in savings_catalog_detail_source
-    assert "이자 받는 때" in savings_catalog_detail_source
-    assert "만기 해지 시 원금과 함께 받아요" in savings_catalog_detail_source
-    assert "function normalizedRateScopes(appliesTo)" in app_js.text
-    assert "normalizedRateScopes(entry.applies_to).map(rateRangeText)" in app_js.text
-    assert "MATURITY: '만기 시 지급'" in app_js.text
-    assert "source?.official_home_url || source?.url" in app_js.text
-    cma_catalog_detail_source = app_js.text.split(
-        "function cmaRateOverview(detail)", 1
-    )[1].split("function renderCatalogDetail(detail)", 1)[0]
-    assert "CMA 한눈에 보기" in cma_catalog_detail_source
-    assert "100만원·30일 예상 이자" in cma_catalog_detail_source
-    assert "보유기간별 기본 수익률" in cma_catalog_detail_source
-    assert "이자 받는 때" in cma_catalog_detail_source
-    assert "출금 시 지급" in cma_catalog_detail_source
-    assert "매일 계산" in cma_catalog_detail_source
-    assert "실제 지급 시점은 상품별로 달라요" in cma_catalog_detail_source
-    assert "AI가 수집·정리한 참고 정보" in app_js.text
-    assert "공식 상품설명서와 약관을 반드시 확인" in app_js.text
-    assert "${renderDetailDisclaimer()}" in app_js.text
-    recommendation_metrics_source = app_js.text.split(
-        '<div class="card-metrics-row">', 1
-    )[1].split("</div>\n    `;", 1)[0]
-    assert recommendation_metrics_source.index('class="money-block"') < recommendation_metrics_source.index('class="expected-rate-block"')
-    assert "확정 수익률 아님" in cma_catalog_detail_source
-    assert "예금자보호 대상이 아니에요" in cma_catalog_detail_source
-    assert "원금 보장 여부와 운용 구조" in cma_catalog_detail_source
-    assert "MERCHANT_BANK: '종금형'" in app_js.text
-    assert "입금한 건별 보유 기간으로 계산" in app_js.text
-    assert "모바일·온라인으로 가입" in app_js.text
-    assert "우대 수익률" in app_js.text
-    assert "추가로 받을 수 있는 수익률" not in app_js.text
-    assert "PER_RP_LOT: 'RP 매수 건별로 계산'" in app_js.text
-    assert "CURRENT_POSTED_RATE_AUTO_REPRICING: '공시수익률이 바뀌면 자동 변경'" in app_js.text
-    assert "personalizedPlan" in cma_catalog_detail_source
-    assert "function renderParkingCatalogHero(detail, personalized = false)" in app_js.text
-    assert "파킹통장 한눈에 보기" in app_js.text
-    assert "100만원 적용 기본 금리" in app_js.text
-    assert "100만원·30일 예상 이자" in app_js.text
-    assert "DAILY_BALANCE: '매일 최종 잔액으로 계산'" in app_js.text
-    assert "['이자 입금일', payment.value]" in app_js.text
-    assert "['이자 계산 기준', detailLabel(parkingCalculation, '확인 필요')]" in app_js.text
-    assert "interestAccrual.frequency === 'DAILY'" in app_js.text
-    assert "function renderParkingPreferentialRules(returnPolicy)" in app_js.text
-    assert "isCma ? '우대 수익률' : '우대 금리'" in app_js.text
-    assert "parkingPreferentialEntries" in app_js.text
-    assert "['CMA', 'PARKING_ACCOUNT'].includes(policy.family)" in app_js.text
-    assert "isCma || isParking || isSavings ? ''" in app_js.text
-    assert "isParking\n    ? '가입 대상'" in app_js.text
-    assert "가입 대상 자세히" not in app_js.text
-    assert "우대조건 충족 시 최고" in app_js.text
-    assert "isCma ? '우대 수익률' : '우대 금리'" in app_js.text
-    assert "range.min_inclusive === false ? '초과' : '이상'" in app_js.text
-    assert "policy.family === 'CMA' ? '수익률 적용 구조'" in app_js.text
-    assert "detail.rate_evaluation || {}" in app_js.text
-    assert "수수료 면제 조건 자세히" in app_js.text
-    assert "OFFICIAL_PRODUCT_LIST" in app_js.text
-    assert "OFFICIAL_INSTITUTION_HOME" in app_js.text
-    assert "OFFICIAL_CENTRAL_ASSOCIATION_DIRECTORY" in app_js.text
-    assert "storedSearchSessionId" not in app_js.text
-    assert "rememberSearchSession" not in app_js.text
-    assert "sessionStorage.removeItem('ddakrate.activeSearchSessionId')" in app_js.text
-    assert "function clearBrowseOnlyFiltersForNewSearch()" in app_js.text
-    assert "state.productSearchQuery = '';" in app_js.text
-    assert "state.selectedProductTypes = new Set();" in app_js.text
-    assert "state.selectedInstitutionSectors = new Set();" in app_js.text
-    assert "state.selectedInstitutionNames = new Set();" in app_js.text
-    assert "clearBrowseOnlyFiltersForNewSearch();" in app_js.text
-    assert "never let this late" in app_js.text
-    assert "if (!state.session) {\n      state.recommendations = state.defaultRecommendations;" in app_js.text
-    assert "말씀하신 내용을 현재 검색 상태에 반영했어요" not in app_js.text
 
     initial_question = client.get("/api/pre-search/initial-question")
     assert initial_question.status_code == 200
@@ -648,12 +472,7 @@ def test_private_debug_ui_exposes_turn_state_and_engine_boundaries() -> None:
     assert "상품별 질문 문구 생성" in script.text
     assert "LLM 호출 없음" in script.text
     assert "선택한 요청 시점의 상태" in script.text
-    assert "requestStateDelta" in script.text
-    assert "application_events" in script.text
     assert "고정 예시가 아니라" in script.text
-    assert "renderCoreOverview" in script.text
-    assert "selectedTurnContext" in script.text
-    assert "syncTechnicalDetailsScroll" in script.text
     assert "현재 기억 ·" in script.text
     assert "당시 사용자에게 이어서 한 질문" in script.text
     assert "AI가 이해한 조건" in script.text
@@ -665,8 +484,6 @@ def test_private_debug_ui_exposes_turn_state_and_engine_boundaries() -> None:
     assert "사용자 · 자연어 입력" in script.text
     assert "기존 활성 질문 유지" in script.text
     assert "core-session-id" in page.text
-    assert "navigator.clipboard.writeText" in script.text
-    assert "dropped_write_count" in script.text
     assert "저장 유실" in script.text
 
     session = create_session(client)

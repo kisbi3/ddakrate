@@ -19,14 +19,21 @@ from eligibility.fixtures.kakao_26_week import (
 from eligibility.fixtures.shinhan_youth_first import golden_context, shinhan_youth_first_product
 from eligibility.fixtures.user_001 import USER_ID as SHINHAN_USER_ID, user_001
 from eligibility.llm import LLMGateway, LLMPurpose, MockLLMAdapter
-from eligibility.schema.application_input import Preference
-from eligibility.schema.enums import PreferenceValue, RankingObjective
-from eligibility.schema.search import ContributionPlan, ProductSearchIntent
+from eligibility.schema.application_input import HardConstraint, NumericPreference, Preference
+from eligibility.schema.enums import (
+    HardConstraintValue,
+    NumericPreferenceDirection,
+    PreferenceStrictness,
+    PreferenceValue,
+    RankingObjective,
+)
+from eligibility.schema.search import ContributionPlan, IntentPatch, ProductSearchIntent
 from eligibility.search.evaluation import MultiProductEvaluator
+from eligibility.search.intent import IntentParser
 from eligibility.search.ranking import RankingService
 from eligibility.search.recommendation import GroundedResultExplainer, RecommendationService
 
-from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, base_store, make_product
+from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, ScriptedIntentPatchGateway, base_store, make_product
 
 
 def _salary_request():
@@ -201,7 +208,16 @@ def test_invalid_claim_uses_deterministic_fallback():
 
 def test_web_search_session_accepts_quick_input():
     product = make_product("WEB-QUICK")
-    service = ApplicationService([product], user_fact_stores={"WEB-U": base_store(user_id="WEB-U")})
+    # "적금 찾아줘" (find me a savings account) -- scripted as the deterministic
+    # patch an LLM would extract; no real gateway is under test here.
+    gateway = ScriptedIntentPatchGateway(
+        [IntentPatch(upsert_product_types=["INSTALLMENT_SAVINGS"])]
+    )
+    service = ApplicationService(
+        [product],
+        user_fact_stores={"WEB-U": base_store(user_id="WEB-U")},
+        intent_parser=IntentParser(gateway),
+    )
     rest = RestApplicationAdapter(service)
 
     response = rest.handle(
@@ -230,7 +246,29 @@ def test_web_search_session_accepts_quick_input():
 
 def test_web_can_fetch_current_clarification():
     product = make_product("WEB-CLARIFY")
-    service = ApplicationService([product], user_fact_stores={"WEB-C": base_store(user_id="WEB-C")})
+    # "첫거래 우대가 있는 상품만 보여줘" (only show products WITH a first-transaction
+    # benefit) -- scripted as the deterministic patch an LLM would extract. The
+    # utterance's hard REQUIRE contradicts the request's quick_input soft
+    # PREFER_ABSENT for the same field, which is exactly what is expected to
+    # surface as a CLARIFICATION_REQUIRED conflict below.
+    gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                upsert_hard_constraints=[
+                    HardConstraint(
+                        field="FIRST_TRANSACTION_BENEFIT",
+                        constraint=HardConstraintValue.REQUIRE,
+                    )
+                ],
+            )
+        ]
+    )
+    service = ApplicationService(
+        [product],
+        user_fact_stores={"WEB-C": base_store(user_id="WEB-C")},
+        intent_parser=IntentParser(gateway),
+    )
     rest = RestApplicationAdapter(service)
 
     created = rest.handle(
@@ -266,9 +304,33 @@ def test_web_can_fetch_current_clarification():
 
 
 def test_web_can_answer_ranking_input_question():
+    # "26주 적금에 월 30만원 정도 생각하고 있어. 이자금순으로 보여줘" (26-week savings,
+    # around 300,000 KRW/month, sort by interest amount) -- scripted as the
+    # deterministic patch an LLM would extract. The amount is a soft "정도"
+    # (around) mention, so it becomes a numeric preference rather than a
+    # committed contribution amount, which is what leaves desired_periodic_amount
+    # missing and triggers the RANKING_INPUT question under test.
+    gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                ranking_objective_patch=RankingObjective.MAX_ESTIMATED_AFTER_TAX_INTEREST,
+                upsert_numeric_preferences=[
+                    NumericPreference(
+                        field="amount",
+                        value=Decimal("300000"),
+                        direction=NumericPreferenceDirection.AROUND,
+                        strictness=PreferenceStrictness.SOFT,
+                        currency="KRW",
+                    )
+                ],
+            )
+        ]
+    )
     service = ApplicationService(
         [kakao_26_week_product()],
         user_fact_stores={KAKAO_USER_ID: kakao_pre_subscription_user(intent=True)},
+        intent_parser=IntentParser(gateway),
     )
     rest = RestApplicationAdapter(service)
     created = rest.handle(

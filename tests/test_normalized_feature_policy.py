@@ -1,9 +1,8 @@
-from eligibility.catalog.normalized_loader import load_normalized_product_catalog
 from eligibility.search.feature_policy import FeaturePolicy, apply_feature_policy
 
 
-def test_cumulative_lottery_projects_to_typed_feature_and_excludes_woori():
-    products = load_normalized_product_catalog()
+def test_cumulative_lottery_projects_to_typed_feature_and_excludes_woori(normalized_catalog_session):
+    products = normalized_catalog_session
     lottery = [p for p in products if p.normalized and p.normalized.return_policy.get("preferential_application", {}).get("mode") == "CUMULATIVE_LOTTERY"]
     assert lottery
     assert any(p.institution_id == "INST-KR-000424" for p in lottery)
@@ -12,8 +11,8 @@ def test_cumulative_lottery_projects_to_typed_feature_and_excludes_woori():
     assert not any(p in lottery for p in filtered)
 
 
-def test_variable_rate_and_similar_name_do_not_trigger_lottery_feature():
-    products = load_normalized_product_catalog()
+def test_variable_rate_and_similar_name_do_not_trigger_lottery_feature(normalized_catalog_session):
+    products = normalized_catalog_session
     ordinary = [
         p
         for p in products

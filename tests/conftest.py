@@ -4,7 +4,9 @@ from datetime import date, datetime, timezone
 
 import pytest
 
+from eligibility.catalog.normalized_loader import load_normalized_product_catalog
 from eligibility.schema.evaluation import EvaluationContext
+from eligibility.schema.product import ProductDefinition
 from eligibility.schema.user_fact import UserFact, UserFactStore
 from eligibility.schema.enums import FactSourceType
 
@@ -47,3 +49,19 @@ def fact_factory():
 @pytest.fixture
 def empty_store() -> UserFactStore:
     return UserFactStore(user_id="TEST_USER")
+
+
+@pytest.fixture(scope="session")
+def normalized_catalog_session() -> list[ProductDefinition]:
+    """The default (ON_SALE) published normalized catalog, loaded once per test session.
+
+    ``load_normalized_product_catalog`` itself caches the expensive disk
+    read/parse/hash work and hands back a fresh deep copy on every call, so
+    this fixture is a cheap, discoverable way for tests to share that same
+    default-argument load. A test that needs to mutate its products should
+    still call ``load_normalized_product_catalog()`` directly (or
+    ``model_copy(deep=True)`` items from this fixture) rather than mutate the
+    shared list in place, since other tests in the session reuse it.
+    """
+
+    return load_normalized_product_catalog(verify_hashes=False)

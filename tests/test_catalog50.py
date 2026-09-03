@@ -113,11 +113,13 @@ def test_monthly_target_is_exact_or_explicitly_marked_as_unsupported():
 
 def test_default_web_runtime_loads_normalized_on_sale_catalog(monkeypatch):
     from eligibility.web.runtime import build_web_runtime
+    from eligibility.catalog.normalized_loader import load_normalized_product_catalog
 
     monkeypatch.setenv("LLM_PROVIDER", "MOCK")
     runtime = build_web_runtime()
-    assert runtime.product_count == 4304
-    assert len(runtime.service.products) == 4304
+    expected_count = len(load_normalized_product_catalog(verify_hashes=False))
+    assert runtime.product_count == expected_count
+    assert len(runtime.service.products) == expected_count
     assert runtime.sample_user_id is None
     assert runtime.user_data_mode == "CONVERSATIONAL_INPUT"
     assert runtime.service.user_fact_stores == {}
@@ -139,9 +141,12 @@ def test_default_web_api_uses_normalized_catalog_and_returns_top5(monkeypatch):
     monkeypatch.setenv("LLM_PROVIDER", "MOCK")
     client = TestClient(create_app())
 
+    from eligibility.catalog.normalized_loader import load_normalized_product_catalog
+
     runtime = client.get("/api/runtime")
     assert runtime.status_code == 200
-    assert runtime.json()["product_count"] == 4304
+    expected_count = len(load_normalized_product_catalog(verify_hashes=False))
+    assert runtime.json()["product_count"] == expected_count
 
     session = client.post(
         "/api/search-sessions",

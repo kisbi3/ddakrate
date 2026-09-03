@@ -5,6 +5,7 @@ import json
 import re
 from datetime import date
 from decimal import Decimal, ROUND_HALF_UP
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -2150,6 +2151,45 @@ def _adapt_product(
 
 
 def load_normalized_product_catalog(
+    index_path: str | Path | None = None,
+    *,
+    include_sale_statuses: set[str] | None = None,
+    verify_hashes: bool = True,
+) -> list[ProductDefinition]:
+    """Load the published normalized catalog.
+
+    The underlying read/parse/hash work is cached per distinct
+    ``(index_path, include_sale_statuses, verify_hashes)`` combination -- the
+    full catalog is ~6,900 files / ~134MB and callers (tests especially) load
+    it repeatedly with the same arguments within one process. Each call still
+    returns an independent deep copy so a caller that mutates its result
+    cannot leak state into another caller's copy.
+    """
+
+    cache_key = (
+        str(index_path) if index_path is not None else None,
+        frozenset(include_sale_statuses) if include_sale_statuses is not None else None,
+        verify_hashes,
+    )
+    cached = _load_normalized_product_catalog_cached(cache_key)
+    return [product.model_copy(deep=True) for product in cached]
+
+
+@lru_cache(maxsize=None)
+def _load_normalized_product_catalog_cached(
+    cache_key: tuple[str | None, frozenset[str] | None, bool],
+) -> tuple[ProductDefinition, ...]:
+    index_path, include_sale_statuses, verify_hashes = cache_key
+    return tuple(
+        _load_normalized_product_catalog_uncached(
+            index_path,
+            include_sale_statuses=include_sale_statuses,
+            verify_hashes=verify_hashes,
+        )
+    )
+
+
+def _load_normalized_product_catalog_uncached(
     index_path: str | Path | None = None,
     *,
     include_sale_statuses: set[str] | None = None,

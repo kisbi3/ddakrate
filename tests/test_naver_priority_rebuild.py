@@ -26,15 +26,15 @@ def test_naver_priority_ledger_has_lossless_source_coverage() -> None:
         (REBUILD_DIR / "coverage_report.json").read_text(encoding="utf-8")
     )
 
-    assert len(ledger) == 4306
-    assert report["counts"] == {
-        "catalog_products": 4306,
-        "naver_raw_records": 4233,
-        "naver_primary_products": 4233,
-        "internal_original_fallback_products": 73,
-        "unresolved_naver_records": 0,
-        "duplicate_source_assignments": 0,
-    }
+    assert len(ledger) == report["counts"]["catalog_products"]
+    assert (
+        report["counts"]["naver_primary_products"]
+        + report["counts"]["internal_original_fallback_products"]
+        == report["counts"]["catalog_products"]
+    )
+    assert report["counts"]["naver_raw_records"] == report["counts"]["naver_primary_products"]
+    assert report["counts"]["unresolved_naver_records"] == 0
+    assert report["counts"]["duplicate_source_assignments"] == 0
     assert all(report["invariants"].values())
     assert {row["source_priority"] for row in ledger} == {
         "NAVER_PRIMARY",
@@ -47,14 +47,12 @@ def test_clean_rebuild_inputs_keep_only_the_selected_source_material() -> None:
     input_module = _module_for(INPUT_SCRIPT, "naver_first_rebuild_inputs")
     rows, report = input_module.build_inputs()
 
-    assert len(rows) == 4306
+    assert len(rows) == report["counts"]["naver_primary"] + report["counts"]["internal_original_fallback"]
     assert all(report["invariants"].values())
-    assert report["counts"]["naver_primary"] == 4233
-    assert report["counts"]["internal_original_fallback"] == 73
     assert (
         report["counts"]["internal_fallback_original_text_ready"]
         + report["counts"]["internal_fallback_source_recollection_required"]
-        == 73
+        == report["counts"]["internal_original_fallback"]
     )
     assert all(
         "naver_raw_record" in row

@@ -8,12 +8,15 @@ from eligibility.application import UserAnswerMapper
 from eligibility.application_service import ApplicationService
 from eligibility.audit import AuditEventType
 from eligibility.schema.application_input import Capability
-from eligibility.schema.enums import CapabilityState, FactRecordStatus
+from eligibility.schema.enums import CapabilityState, FactRecordStatus, TermUnit
+from eligibility.schema.search import ContributionPlanPatch, IntentPatch
+from eligibility.search.intent import IntentParser
 
 from tests.v04_helpers import (
     AS_OF,
     SUBSCRIPTION_DATE,
     USER_ID,
+    ScriptedIntentPatchGateway,
     base_store,
     make_intent,
     make_product,
@@ -58,7 +61,11 @@ def test_user_changes_monthly_contribution_and_reranks():
 
     updated = service.update_search_intent(
         session.search_session_id,
-        utterance="월 10만원 기준으로 다시 보여줘.",
+        patch=IntentPatch(
+            contribution_plan_patch=ContributionPlanPatch(
+                desired_periodic_amount=Decimal("100000"),
+            )
+        ),
     )
     reranked = service.get_top_recommendations(session.search_session_id)
 
@@ -97,7 +104,14 @@ def test_user_excludes_new_card_and_reranks():
 
     service.update_search_intent(
         session.search_session_id,
-        utterance="카드 새로 만드는 건 싫어.",
+        patch=IntentPatch(
+            upsert_capabilities=[
+                Capability(
+                    capability_id="NEW_CARD_ISSUANCE",
+                    state=CapabilityState.CANNOT,
+                )
+            ]
+        ),
     )
     updated = service.get_top_recommendations(session.search_session_id)
     evaluations = service.evaluate_candidates(session.search_session_id)
@@ -200,7 +214,26 @@ def test_prior_versions_remain_auditable():
 
 def test_rest_and_mcp_adapters_share_application_service():
     product = make_product("ADAPTER-PRODUCT", base_rate="4.2")
-    service = ApplicationService([product], user_fact_stores={USER_ID: base_store()})
+    # "1년 동안 월 30만원 넣을 적금 찾아줘." (1-year savings, 300,000 KRW/month) --
+    # scripted as the deterministic patch an LLM would extract; this test is
+    # about adapter parity, not natural-language understanding.
+    gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                contribution_plan_patch=ContributionPlanPatch(
+                    desired_periodic_amount=Decimal("300000"),
+                    selected_term_value=12,
+                    selected_term_unit=TermUnit.MONTH,
+                ),
+            )
+        ]
+    )
+    service = ApplicationService(
+        [product],
+        user_fact_stores={USER_ID: base_store()},
+        intent_parser=IntentParser(gateway),
+    )
     rest = RestApplicationAdapter(service)
     mcp = MCPToolAdapter(service)
 

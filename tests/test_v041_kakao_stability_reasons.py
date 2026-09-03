@@ -12,12 +12,22 @@ from eligibility.fixtures.kakao_26_week import (
 )
 from eligibility.schema.application_input import Capability, QuickInputProfile
 from eligibility.schema.enums import CapabilityState, EvaluationStatus, RankingObjective
+from eligibility.schema.search import IntentPatch
 from eligibility.search.evaluation import MultiProductEvaluator
+from eligibility.search.intent import IntentParser
 from eligibility.search.questions import RankingAwareQuestionPlanner
 from eligibility.search.ranking import RankingService
 from eligibility.search.recommendation import RecommendationService
 
-from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, USER_ID, base_store, make_intent, make_product
+from tests.v04_helpers import (
+    AS_OF,
+    SUBSCRIPTION_DATE,
+    USER_ID,
+    ScriptedIntentPatchGateway,
+    base_store,
+    make_intent,
+    make_product,
+)
 
 
 def test_kakao_26_week_decline_does_not_close_7_week_future_intent():
@@ -147,7 +157,28 @@ def test_recommendation_reason_term_match_has_structured_evidence_when_true():
 
 def test_quick_input_overrides_same_key_llm_or_natural_inference():
     product = make_product("QUICK-PRIORITY")
-    service = ApplicationService([product], user_fact_stores={USER_ID: base_store()})
+    # "카드 새로 만드는 건 싫어. 적금 찾아줘." (don't want to open a new card, find me
+    # savings) -- scripted as the deterministic patch an LLM would extract for
+    # NEW_CARD_ISSUANCE=CANNOT, so the test can assert quick_input (CAN) wins
+    # over this LLM-derived value for the same key.
+    gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                upsert_capabilities=[
+                    Capability(
+                        capability_id="NEW_CARD_ISSUANCE",
+                        state=CapabilityState.CANNOT,
+                    )
+                ],
+            )
+        ]
+    )
+    service = ApplicationService(
+        [product],
+        user_fact_stores={USER_ID: base_store()},
+        intent_parser=IntentParser(gateway),
+    )
 
     session = service.create_search_session(
         user_id=USER_ID,
