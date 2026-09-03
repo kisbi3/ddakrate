@@ -16,6 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from eligibility.adapters.rest import RestApplicationAdapter
 from eligibility.application_service import ApplicationService
 from eligibility.web.runtime import WebRuntime, build_web_runtime
+from eligibility.web.eval_routes import mount_eval_routes
 from eligibility.web.debug_trace import (
     DebugTraceStore,
     assemble_conversation_turns,
@@ -812,6 +813,11 @@ def create_app(
             status_code=response.status_code,
             content=public_value(response.body),
         )
+
+    # Opt-in eval harness: drives the real conversation service from an
+    # external client, so it stays off unless a token is explicitly supplied.
+    if os.environ.get("ELIGIBILITY_EVAL_TOKEN"):
+        mount_eval_routes(app, adapter)
 
     return app
 

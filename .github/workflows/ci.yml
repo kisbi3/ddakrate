@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[web,dev]"
+
+      # The published catalog is committed, so the runtime must load it here
+      # exactly as it does locally. A drift between index.json and what the
+      # loader accepts should fail CI, not surface later in the web runtime.
+      - name: Verify published catalog loads
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          from eligibility.catalog.normalized_loader import (
+              load_normalized_product_catalog,
+          )
+
+          index = json.loads(
+              pathlib.Path(
+                  "data/financial_products/normalized/index.json"
+              ).read_text()
+          )
+          products = load_normalized_product_catalog()
+          print(f"index declares {index['product_count']}, loader returned {len(products)}")
+          assert products, "loader returned an empty catalog"
+          PY
+
+      - name: Test
+        run: pytest -q
