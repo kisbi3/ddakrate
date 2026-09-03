@@ -1,0 +1,727 @@
+{
+  "product_code": "INST-KR-000010-2-C780D40ADF0",
+  "version": 3,
+  "institution_id": "INST-KR-000010",
+  "name": "BNK더조은정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": ["MOBILE_APP", "WEB", "MOBILE_WEB"],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인",
+    "eligibility_text": "실명의 개인",
+    "display_text": "실명의 개인",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "source_text": "3개월이상 24개월 이내(월단위)",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 3,
+    "max_value": 24,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+    ],
+    "source_amount_text": "1백만원 ~ 5억원 이하(고객당)",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW",
+        "max_value": "500000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "interest_payment_policy": {"contexts": [{"context_id": "MATURITY_PAYMENT", "payment_timing": "AT_MATURITY"}], "multiple_contexts": false, "default_context_id": "MATURITY_PAYMENT", "source_text": "만기일시지급식"},
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월 이상 ~ 6개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "3개월 이상 ~ 6개월 미만",
+          "raw_cell": "2.000%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "3개월 이상 ~ 6개월 미만"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월 이상 ~ 12개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "6개월 이상 ~ 12개월 미만",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "6개월 이상 ~ 12개월 미만"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월 이상 ~ 24개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "12개월 이상 ~ 24개월 미만",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "12개월 이상 ~ 24개월 미만"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-CTX-04-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": true
+            },
+            "source_term_text": "24개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "24개월",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "24개월"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월 이상 ~ 6개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "3개월 이상 ~ 6개월 미만",
+          "raw_cell": "2.000%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "3개월 이상 ~ 6개월 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월 이상 ~ 12개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "6개월 이상 ~ 12개월 미만",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "6개월 이상 ~ 12개월 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월 이상 ~ 24개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "12개월 이상 ~ 24개월 미만",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "12개월 이상 ~ 24개월 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C780D40ADF0-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": true
+            },
+            "source_term_text": "24개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "24개월",
+          "raw_cell": "2.050%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+        ],
+        "source_rate_row_text": "24개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 금리\n3개월 이상 ~ 6개월 미만\n2.000%\n6개월 이상 ~ 12개월 미만\n2.050%\n12개월 이상 ~ 24개월 미만\n2.050%\n24개월\n2.050%",
+      "header_lines": [
+        "기본 금리",
+        "기간 금리"
+      ],
+      "rows": [
+        {
+          "term_text": "3개월 이상 ~ 6개월 미만",
+          "cell_lines": [
+            "2.000%"
+          ],
+          "rate_values": [
+            "2"
+          ]
+        },
+        {
+          "term_text": "6개월 이상 ~ 12개월 미만",
+          "cell_lines": [
+            "2.050%"
+          ],
+          "rate_values": [
+            "2.05"
+          ]
+        },
+        {
+          "term_text": "12개월 이상 ~ 24개월 미만",
+          "cell_lines": [
+            "2.050%"
+          ],
+          "rate_values": [
+            "2.05"
+          ]
+        },
+        {
+          "term_text": "24개월",
+          "cell_lines": [
+            "2.050%"
+          ],
+          "rate_values": [
+            "2.05"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.AUTO_RENEWAL_SELECTED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.MARKETING_CONSENT",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.INITIAL_DEPOSIT_AMOUNT",
+          "value_type": "NUMBER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "ACCOUNT.OPEN_BANKING_REGISTERED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "- 금리우대쿠폰은 BNK모바일입출금통장 개설, 비대면 정기예·적금 만기 예정, 이벤트 진행시, 전자명함 등을 통해 제공됩니다. : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "- 금리우대쿠폰은 BNK모바일입출금통장 개설, 비대면 정기예·적금 만기 예정, 이벤트 진행시, 전자명함 등을 통해 제공됩니다. : 0.2%",
+            "reward_text": "+0.2%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "evidence": [
+            {
+              "text": "금리우대쿠폰 등록\n- 금리우대쿠폰은 BNK모바일입출금통장 개설, 비대면 정기예·적금 만기 예정, 이벤트 진행시, 전자명함 등을 통해 제공됩니다. : 0.2%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "- 금리우대쿠폰과 중복적용 불가 : 0.05%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AUTO_RENEWAL_SELECTED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "- 금리우대쿠폰과 중복적용 불가 : 0.05%",
+            "reward_text": "+0.05%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "evidence": [
+            {
+              "text": "자동재예치를 통한 가입\n- 금리우대쿠폰과 중복적용 불가 : 0.05%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B03-01",
+          "title": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.1%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.MARKETING_CONSENT",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "evidence": [
+            {
+              "text": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.1%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B04-01",
+          "title": "이 상품 가입금액이 2천만원 이상인 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.INITIAL_DEPOSIT_AMOUNT",
+              "operator": "GTE",
+              "expected_value": "20000000",
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "이 상품 가입금액이 2천만원 이상인 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "evidence": [
+            {
+              "text": "이 상품 가입금액이 2천만원 이상인 경우 : 0.1%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B05-01",
+          "title": "- 만기해지까지 해당서비스 유지하는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.OPEN_BANKING_REGISTERED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "- 만기해지까지 해당서비스 유지하는 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ],
+          "evidence": [
+            {
+              "text": "경남은행 오픈뱅킹 서비스 가입\n- 만기해지까지 해당서비스 유지하는 경우 : 0.1%"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-TOTAL-PREFERENTIAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B01-01",
+            "PREF-B02-01",
+            "PREF-B03-01",
+            "PREF-B04-01",
+            "PREF-B05-01"
+          ],
+          "cap": {
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+      ],
+      "structuring_status": "SUPPORTED",
+      "global_cap": {
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "우대이율(연, 세전, 최대 0.50%)\n우대이율은 만기해지 시 제공되며, 중도해지 시에는 제공하지 않습니다."
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.05",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.55",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+      ]
+    }
+  },
+  "protection_policy": {"coverage_status": "PROTECTED", "coverage_limit_krw": "100000000", "scheme_ref": {"scheme_code": "KDIC-DEPOSIT-PROTECTION", "version": 1}, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"]},
+  "liquidity_policy": {"renewal_policy": {"mode": "ROLLOVER", "automatic_redeposit": true, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"]}, "early_termination_allowed": true, "early_termination_policy": {"source_text": "가입일 당시 기본이율 × 적용률 × 경과일수/계약일수, 6개월 미만 50%, 6개월 이상~9개월 미만 70%, 9개월 이상~11개월 미만 80%, 11개월 이상 90%, 최저 0.01%, 우대이율 미제공"}, "after_maturity_policy": {"source_text": "만기 후 1개월 이내 만기시점 계약기간별 일반정기예금(만기지급식) 기본이율×50%; 1개월 초과 ×20%"}, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"]},
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000010-2-C780D40ADF0"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T14:47:54+09:00",
+    "previous_version": 2,
+    "correction_reason": "Naver·BNK 공식 페이지로 확정된 가입채널·만기지급·자동재예치·보호·중도해지 정책을 immutable version 3에 반영",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "data_gaps": []
+}

@@ -1,0 +1,698 @@
+{
+  "product_code": "INST-KR-000516-1-C9018AAAE2C",
+  "version": 8,
+  "institution_id": "INST-KR-000516",
+  "name": "KB상호부금(정액적립식)",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED"
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 72,
+    "source_expression": "6개월이상 ~ 72개월 이하",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 72,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "10000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 ~ 최고한도 없음 (※ 신규 시 약정한 저축금액을 매월 약정한 날짜에 동일하게 저축)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "월 1만원 ~ 최고한도 없음 (※ 신규 시 약정한 저축금액을 매월 약정한 날짜에 동일하게 저축)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-C9018AAAE2C-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.350",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9018AAAE2C-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9018AAAE2C-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.950",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9018AAAE2C-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.250",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 3,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "0.4",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03",
+          "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000516_1_C9018AAAE2C_PREF_02.COMPLETION_RATIO",
+          "type": "NUMBER",
+          "unit": "RATIO",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000516-1-C9018AAAE2C-PREF-02-QUALIFYING",
+            "operator": "COMPLETION_RATIO"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+          ],
+          "authority": "BANK_OR_APP_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "통장보유고객 우대이율: 직장인우대종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+        },
+        {
+          "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1_INST_KR_000516_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+          ],
+          "authority": "BANK_OR_APP_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "통장보유고객 우대이율: 명품여성종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000516-1-C9018AAAE2C-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "자동이체 우대이율: 전회차 저축한 계좌 중 자동이체, 자동화기기, KB스타뱅킹 및 인터넷뱅킹 등을 이용하여 2/3 이상 저축한 만기계좌에 대하여 상기 기본이율과는 별도로 연 0.1%p 추가지급\n(※ 계약기간에 해당하는 월차이상을 납입한 계좌 중 납입 회차의 2/3이상 창구 이외의 채널을 이용하여 입금할 경우 적용\no 단, 계약기간이 1년 미만인 경우에는 계약기간 해당 월차에 모두 자동이체할 경우 우대이율 적용)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "자동이체 우대이율: 전회차 저축한 계좌 중 자동이체, 자동화기기, KB스타뱅킹 및 인터넷뱅킹 등을 이용하여 2/3 이상 저축한 만기계좌에 대하여 상기 기본이율과는 별도로 연 0.1%p 추가지급\n(※ 계약기간에 해당하는 월차이상을 납입한 계좌 중 납입 회차의 2/3이상 창구 이외의 채널을 이용하여 입금할 경우 적용\no 단, 계약기간이 1년 미만인 경우에는 계약기간 해당 월차에 모두 자동이체할 경우 우대이율 적용)"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-C9018AAAE2C-PREF-02",
+          "title": "자동이체 우대이율: 전회차 저축한 계좌 중 자동이체, 자동화기기, KB스타뱅킹 및 인터넷뱅킹 등을 이용하여 2/3 이상 저축한 만기계좌에 대하여 상기 기본이율과는 별도로 연 0.1%p 추가지급",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000516_1_C9018AAAE2C_PREF_02.COMPLETION_RATIO",
+              "operator": "EQUALS",
+              "expected_value": 1.0,
+              "unit": "RATIO",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자동이체 우대이율: 전회차 저축한 계좌 중 자동이체, 자동화기기, KB스타뱅킹 및 인터넷뱅킹 등을 이용하여 2/3 이상 저축한 만기계좌에 대하여 상기 기본이율과는 별도로 연 0.1%p 추가지급"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "자동이체 우대이율: 전회차 저축한 계좌 중 자동이체, 자동화기기, KB스타뱅킹 및 인터넷뱅킹 등을 이용하여 2/3 이상 저축한 만기계좌에 대하여 상기 기본이율과는 별도로 연 0.1%p 추가지급\n(※ 계약기간에 해당하는 월차이상을 납입한 계좌 중 납입 회차의 2/3이상 창구 이외의 채널을 이용하여 입금할 경우 적용\no 단, 계약기간이 1년 미만인 경우에는 계약기간 해당 월차에 모두 자동이체할 경우 우대이율 적용)"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C9018AAAE2C-PREF-03",
+          "title": "통장보유고객 우대이율: 직장인우대종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "통장보유고객 우대이율: 직장인우대종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "통장보유고객 우대이율: 직장인우대종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C9018AAAE2C-PREF-04",
+          "title": "통장보유고객 우대이율: 명품여성종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "통장보유고객 우대이율: 명품여성종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "통장보유고객 우대이율: 명품여성종합통장 보유고객이 인터넷뱅킹(KB스타뱅킹 포함)으로 가입시 연 0.3%p 적용"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000516-1-C9018AAAE2C-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000516-1-C9018AAAE2C-PREF-02",
+            "INST-KR-000516-1-C9018AAAE2C-PREF-03",
+            "INST-KR-000516-1-C9018AAAE2C-PREF-04"
+          ],
+          "cap": {
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01",
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02",
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03",
+              "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01",
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02",
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03",
+            "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01",
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02",
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03",
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04",
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE",
+      "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.95",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d6f7df56747d4c2f0b2cc6120cd7b20b"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO",
+    "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE",
+    "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "d6f7df56747d4c2f0b2cc6120cd7b20b",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-D6F7DF56747D4C2F0B2CC6120CD7B20B-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

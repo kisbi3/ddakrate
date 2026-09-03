@@ -1,0 +1,268 @@
+{
+  "product_code": "INST-KR-000782-3-CA71DA1DB19",
+  "version": 3,
+  "institution_id": "INST-KR-000782",
+  "name": "WELCOME 비대면 보통예금",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인고객(1인 1계좌)",
+    "eligibility_text": "개인고객(1인 1계좌)",
+    "display_text": "개인고객(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000782-3-CA71DA1DB19-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.3",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+        ],
+        "source_clause": "5천만원 이하분 | 연 1.3%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하분",
+              "max_value": "50000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000782-3-CA71DA1DB19-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.5",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+        ],
+        "source_clause": "5천만원 초과분 | 연 0.5%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과분",
+              "min_value": "50000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 셋째주(토요일 기준) 토요일의 직전 영업일에 결산 후 익일에 지급",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000782-3-CA71DA1DB19-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL",
+    "advertised_max_rate": {
+      "value": "1.30",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000782-3-CA71DA1DB19",
+        "product_name": "WELCOME 비대면 보통예금",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000782-3-CA71DA1DB19",
+    "source_record_id": "ed447ca6023c07a7e6ac585f7f06053f",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 183,
+    "reviewed_source_record_id": "ed447ca6023c07a7e6ac585f7f06053f",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000782-3-CA71DA1DB19"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 1
+  }
+}

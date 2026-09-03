@@ -1,0 +1,286 @@
+{
+  "product_code": "INST-KR-000408-1-0002",
+  "version": 7,
+  "institution_id": "INST-KR-000408",
+  "name": "한화가족사랑 정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한 없음",
+    "eligibility_text": "제한 없음",
+    "display_text": "제한 없음",
+    "source_ref_ids": [
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED"
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_expression": "6개월 이상 60개월 이하(월 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+    ],
+    "contribution_mode": "MULTI_OPTION",
+    "contribution_mode_options": [
+      "FIXED",
+      "FREE"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "contribution_option_rules": [
+      {
+        "mode": "FIXED",
+        "amount_rules": [
+          {
+            "scope": "PER_MONTH",
+            "currency": "KRW",
+            "min_value": "10000"
+          }
+        ]
+      },
+      {
+        "mode": "FREE",
+        "amount_rules": [
+          {
+            "scope": "PER_CONTRIBUTION",
+            "currency": "KRW"
+          }
+        ],
+        "period_limit_formula": {
+          "scope": "PER_MONTH",
+          "formula": "0.10 * CONTRACT_AMOUNT"
+        }
+      }
+    ],
+    "source_amount_text": "정액식 : 1만원 이상\n자유식 : 고객이 정한 계약금액의 매월 10% 이내 횟수에 관계없이 자유롭게 불입",
+    "source_contribution_text": "정액적립식, 자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "정액식 : 1만원 이상\n자유식 : 고객이 정한 계약금액의 매월 10% 이내 횟수에 관계없이 자유롭게 불입"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000408-1-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000408-1-0002-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000408-1-0002-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000408-1-0002-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE",
+      "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "47fdc84c59863e14ac4cfaef92d391a4"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO",
+    "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE",
+    "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "47fdc84c59863e14ac4cfaef92d391a4",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_policy",
+        "reason": "max>base이나 조건별 원문 없음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL_ABSENT",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_SIMPLE",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-47FDC84C59863E14AC4CFAEF92D391A4-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

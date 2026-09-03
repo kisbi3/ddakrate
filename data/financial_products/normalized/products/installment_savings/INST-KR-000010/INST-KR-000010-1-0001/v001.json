@@ -1,0 +1,219 @@
+{
+  "product_code": "INST-KR-000010-1-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000010",
+  "name": "오늘도세이브적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000010-1-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000010-1-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      3,
+      6
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000010-1-0001"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "min_value": "1000",
+        "currency": "KRW",
+        "max_value": "100000"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000010-1-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.750",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000010-1-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000010-1-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000010-1-0001-01",
+        "title": "우대이율(연, 세전, 최대 1.75% 우대금리 제공)",
+        "condition_text": "우대이율(연, 세전, 최대 1.75% 우대금리 제공)",
+        "structured_steps": [
+          "우대이율(연, 세전, 최대 1.75% 우대금리 제공)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.75",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000010-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대이율(연, 세전, 최대 1.75% 우대금리 제공)",
+          "summary_text": "우대이율(연, 세전, 최대 1.75% 우대금리 제공)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.75",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000010-1-0001-02",
+        "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+        "condition_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+        "structured_steps": [
+          "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.25",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000010-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+          "summary_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.25",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000010-1-0001-03",
+        "title": "목돈마련 축하금리: 최대 1.50%",
+        "condition_text": "목돈마련 축하금리: 최대 1.50%\n- 만기시 납입원금잔액 100만원이상~200만원미만: 0.50%\n- 만기시 납입원금잔액 200만원이상: 1.50%",
+        "structured_steps": [
+          "목돈마련 축하금리: 최대 1.50%",
+          "- 만기시 납입원금잔액 100만원이상~200만원미만: 0.50%",
+          "- 만기시 납입원금잔액 200만원이상: 1.50%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.50",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000010-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "목돈마련 축하금리: 최대 1.50%",
+          "summary_text": "목돈마련 축하금리: 최대 1.50%",
+          "detail_texts": [
+            "- 만기시 납입원금잔액 100만원이상~200만원미만: 0.50%",
+            "- 만기시 납입원금잔액 200만원이상: 1.50%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.50",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000010-1-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "4.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000010-1-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000010-1-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.086003+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

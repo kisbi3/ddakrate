@@ -1,0 +1,237 @@
+{
+  "product_code": "INST-KR-001106-3-0002",
+  "version": 4,
+  "institution_id": "INST-KR-001106",
+  "name": "토스뱅크 나눠모으기 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002",
+        "EVD-OFFICIAL-212",
+        "EVD-OFFICIAL-212-BLOG"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002",
+        "EVD-OFFICIAL-212",
+        "EVD-OFFICIAL-212-BLOG"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002",
+      "EVD-OFFICIAL-212",
+      "EVD-OFFICIAL-212-BLOG"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "토스뱅크 통장을 보유한 실명의 개인(토스뱅크 모으기와 중복 가입 불가)\n※ 1인 최대 30계좌까지 가입 가능",
+    "eligibility_text": "토스뱅크 통장을 보유한 실명의 개인(토스뱅크 모으기와 중복 가입 불가)\n※ 1인 최대 30계좌까지 가입 가능",
+    "display_text": "토스뱅크 통장을 보유한 실명의 개인(토스뱅크 모으기와 중복 가입 불가)\n※ 1인 최대 30계좌까지 가입 가능",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002",
+      "EVD-OFFICIAL-212-BLOG"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-001106-3-0002-REL-88E3222C8B99",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "토스뱅크 통장을 보유한 실명의 개인(토스뱅크 모으기와 중복 가입 불가)",
+        "fact_key": "SOURCE_RELATIONSHIP.88E3222C8B99.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-0002"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-001106-3-0002-REL-A99B23912D57",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "• 이 통장은 양도에 의한 명의변경이 불가하나, 상속에 의한 명의변경은 가능합니다. 다만, 상속에 의한 명의 변경은 상속인이 토스뱅크 통장을 보유한 경우에 한하여 가능합니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.A99B23912D57.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-0002"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001106-3-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.4",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-0002",
+          "EVD-OFFICIAL-212-BLOG"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 1.4%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002",
+      "EVD-OFFICIAL-212",
+      "EVD-OFFICIAL-212-BLOG"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002",
+        "EVD-OFFICIAL-212-BLOG"
+      ],
+      "structuring_status": "SUPPORTED",
+      "day_count_denominator": 365,
+      "rounding": {
+        "method": "TRUNCATE_BELOW_1_WON",
+        "currency": "KRW"
+      }
+    },
+    "interest_crediting": {
+      "raw_text": "매일의 최종 잔액에 약정된 기본 금리를 적용하여 계산한 이자를 이자지급일(매일)에 지급(원 미만은 절사)\n• 매일의 이자 : 매일의 최종 잔액 x 적용 이율 / 365\n• 단, 이자지급일에 지급할 이자가 1원 미만인 경우 이자를 지급하지 않고 누적하며, 누적된 이자가 1원 이상되는 날 이자를 지급",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002",
+        "EVD-OFFICIAL-212",
+        "EVD-OFFICIAL-212-BLOG"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-001106-3-0002-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-0002"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "DAY"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.40",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-0002"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-0002",
+      "EVD-OFFICIAL-212-BLOG"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001106-3-0002",
+    "EVD-OFFICIAL-212",
+    "EVD-OFFICIAL-212-BLOG"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_OFFICIAL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_TOSS_OFFICIAL_PRODUCT_PAGE_AND_BLOG_VALIDATION",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001106-3-0002",
+    "source_record_id": "bf84a65719d1b8b59cf7ed7118d862db",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 212,
+    "reviewed_source_record_id": "SRC-OFFICIAL-212-BLOG",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_OFFICIAL_DATE_CONFLICT",
+    "resolved_audit_findings": [
+      "CROSS_PRODUCT_EXCLUSION_UNSTRUCTURED",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "product_by_product_changes": [
+      "토스뱅크 공식 나눠모으기 상품 페이지에서 상품명·365일 자동복리 설명·심의필을 확인",
+      "토스뱅크 공식 2026.07.13 안내문에서 1.4%·30계좌·매일지급·365일식 계산을 확인; 상품 페이지 최신 2026.08.18 심의필은 금리 placeholder라 날짜 conflict 기록"
+    ]
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

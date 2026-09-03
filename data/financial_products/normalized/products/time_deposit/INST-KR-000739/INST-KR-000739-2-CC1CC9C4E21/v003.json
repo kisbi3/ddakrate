@@ -1,0 +1,962 @@
+{
+  "product_code": "INST-KR-000739-2-CC1CC9C4E21",
+  "version": 3,
+  "institution_id": "INST-KR-000739",
+  "name": "NH내가Green초록세상예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "OTHER"
+    ],
+    "subscription_channel_source_text": "Naver 가입방법: 영업점, 비대면 채널"
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(1인 1계좌)",
+    "eligibility_text": "개인(1인 1계좌)",
+    "display_text": "개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "source_text": "1년 이상 ~ 3년이하(월단위)\n※ 계약기간 변경 불가",
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 3,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "YEAR"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ],
+    "source_amount_text": "100만원 이상",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.85",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.450% 2.350%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-01-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.35",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.450% 2.350%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.35",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.350% 2.250%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-02-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.350% 2.250%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "36개월"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-CTX-03-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "36개월"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.450% 2.350%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.35",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.450% 2.350%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.35",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.350% 2.250%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.350% 2.250%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "36개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-CC1CC9C4E21-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+        ],
+        "source_rate_row_text": "36개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리\n12개월이상 ~ 24개월미만\n2.450% 2.350%\n24개월이상 ~ 36개월미만\n2.350% 2.250%\n36개월\n2.300% 2.200%",
+      "header_lines": [
+        "기본 금리",
+        "기간 만기일시지급식 인터넷가입시기본금리 이자지급식 인터넷가입시기본금리"
+      ],
+      "rows": [
+        {
+          "term_text": "12개월이상 ~ 24개월미만",
+          "cell_lines": [
+            "2.450% 2.350%"
+          ],
+          "rate_values": [
+            "2.45",
+            "2.35"
+          ]
+        },
+        {
+          "term_text": "24개월이상 ~ 36개월미만",
+          "cell_lines": [
+            "2.350% 2.250%"
+          ],
+          "rate_values": [
+            "2.35",
+            "2.25"
+          ]
+        },
+        {
+          "term_text": "36개월",
+          "cell_lines": [
+            "2.300% 2.200%"
+          ],
+          "rate_values": [
+            "2.3",
+            "2.2"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B01-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "definition_text": "온실가스 줄이기 실천 서약서 제출 * 탄소포인트제 동참 등 친환경 활동 목록이 제시된 서약서에 동의 : 0.1%"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B02-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "definition_text": "통장 미발급 * 가입시점 통장 미발급 선택 시 우대금리적용 및 만기까지 통장 발급불가 : 0.1%"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B03-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "definition_text": "손하나로인증 서비스 등록 * 만기전전월말 기준 손하나로인증 서비스가 등록되어 있는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B04-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "definition_text": "적금과 예금 동시보유 * 이 예금의 만기시점에 「NH내가Green초록세상적금」의 유효계좌를 보유하거나 이 예금의 가입기간동안 「NH내가Green초록세상적금」의 만기해지내역이 있는 경우 : 0.1%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "* 탄소포인트제 동참 등 친환경 활동 목록이 제시된 서약서에 동의 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B01-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "* 탄소포인트제 동참 등 친환경 활동 목록이 제시된 서약서에 동의 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "evidence": [
+            {
+              "text": "온실가스 줄이기 실천 서약서 제출\n* 탄소포인트제 동참 등 친환경 활동 목록이 제시된 서약서에 동의 : 0.1%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "* 가입시점 통장 미발급 선택 시 우대금리적용 및 만기까지 통장 발급불가 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B02-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "* 가입시점 통장 미발급 선택 시 우대금리적용 및 만기까지 통장 발급불가 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "evidence": [
+            {
+              "text": "통장 미발급\n* 가입시점 통장 미발급 선택 시 우대금리적용 및 만기까지 통장 발급불가 : 0.1%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B03-01",
+          "title": "* 만기전전월말 기준 손하나로인증 서비스가 등록되어 있는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B03-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "* 만기전전월말 기준 손하나로인증 서비스가 등록되어 있는 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "evidence": [
+            {
+              "text": "손하나로인증 서비스 등록\n* 만기전전월말 기준 손하나로인증 서비스가 등록되어 있는 경우 : 0.1%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B04-01",
+          "title": "* 이 예금의 만기시점에 「NH내가Green초록세상적금」의 유효계좌를 보유하거나 이 예금의 가입기간동안 「NH내가Green초록세상적금」의 만기해지내역이 있는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000739-2-CC1CC9C4E21.PREF-B04-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "* 이 예금의 만기시점에 「NH내가Green초록세상적금」의 유효계좌를 보유하거나 이 예금의 가입기간동안 「NH내가Green초록세상적금」의 만기해지내역이 있는 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ],
+          "evidence": [
+            {
+              "text": "적금과 예금 동시보유\n* 이 예금의 만기시점에 「NH내가Green초록세상적금」의 유효계좌를 보유하거나 이 예금의 가입기간동안 「NH내가Green초록세상적금」의 만기해지내역이 있는 경우 : 0.1%"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-TOTAL-PREFERENTIAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B01-01",
+            "PREF-B02-01",
+            "PREF-B03-01",
+            "PREF-B04-01"
+          ],
+          "cap": {
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+      ],
+      "structuring_status": "SUPPORTED",
+      "global_cap": {
+        "value": "0.4",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "우대금리 최대 연 0.4%p\n• 우대조건을 충족하고 만기해지 시 기본이자율에 가산하여 우대이자율 적용"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.45",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.85",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000739-2-CC1CC9C4E21"
+      ]
+    },
+    "interest_payment_policy": {
+      "contexts": [
+        {
+          "context_id": "MONTHLY_PAYMENT",
+          "payment_timing": "MONTHLY"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "payment_timing": "MATURITY"
+        }
+      ],
+      "multiple_contexts": true,
+      "default_context_id": "MONTHLY_PAYMENT",
+      "default_context_derivation": "LISTING_BASE_VALUE_MATCH"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+    "EVD-MANUAL-BANK-0516-NH-PRODUCT",
+    "EVD-MANUAL-BANK-0516-NH-RATE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02T18:28:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL_PLUS_NH_OFFICIAL",
+    "publication_gate": "PUBLISHED",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "data_gaps": [
+      {
+        "field": "liquidity_policy.renewal_policy",
+        "reason_code": "AUTOMATIC_REDEPOSIT_NOT_STATED",
+        "message": "자동재예치 여부 미기재"
+      },
+      {
+        "field": "liquidity_policy.partial_withdrawal",
+        "reason_code": "PARTIAL_WITHDRAWAL_NOT_STATED",
+        "message": "분할인출 여부 미기재"
+      }
+    ]
+  },
+  "data_gaps": [
+    {
+      "code": "AUTOMATIC_REDEPOSIT_NOT_STATED",
+      "field": "liquidity_policy.renewal_policy",
+      "reason": "자동재예치 여부 미기재"
+    },
+    {
+      "code": "PARTIAL_WITHDRAWAL_NOT_STATED",
+      "field": "liquidity_policy.partial_withdrawal",
+      "reason": "분할인출 여부 미기재"
+    }
+  ],
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MATURITY_PAYMENT",
+        "payment_timing": "MATURITY",
+        "compounding": "SIMPLE",
+        "source_text": "만기일시지급식"
+      },
+      {
+        "context_id": "MONTHLY_PAYMENT",
+        "payment_timing": "MONTHLY",
+        "compounding": "SIMPLE",
+        "source_text": "월이자지급식"
+      }
+    ],
+    "multiple_contexts": true,
+    "default_context_id": "MATURITY_PAYMENT",
+    "source_text": "Naver에 만기·월지급 병기",
+    "source_ref_ids": [
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme": "KDIC",
+    "aggregation_scope_text": "NH농협은행 여타 보호상품과 합산",
+    "source_text": "예금자보호법에 따라 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "renewal_policy": {
+      "mode": "NOT_STATED",
+      "source_text": "자동재예치 여부 상품 본문 미기재",
+      "source_ref_ids": [
+        "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+        "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+      ]
+    },
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "basis": "RATE_POSTED_AT_ORIGIN",
+      "source_text": "만기 전 해지 시 계약이율보다 낮은 중도해지이율 적용",
+      "source_ref_ids": [
+        "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+        "EVD-MANUAL-BANK-0516-NH-PRODUCT",
+        "EVD-MANUAL-BANK-0516-NH-RATE"
+      ]
+    },
+    "after_maturity_policy": {
+      "basis": "POSTED_RATE_AT_MATURITY",
+      "source_text": "만기후 이율 세부값 미기재",
+      "source_ref_ids": [
+        "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+        "EVD-MANUAL-BANK-0516-NH-PRODUCT",
+        "EVD-MANUAL-BANK-0516-NH-RATE"
+      ]
+    },
+    "partial_withdrawal": {
+      "allowed": null,
+      "source_text": "분할인출 여부 미기재",
+      "source_ref_ids": [
+        "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+        "EVD-MANUAL-BANK-0516-NH-PRODUCT"
+      ]
+    },
+    "maturity_options": [
+      "MANUAL_CLOSE"
+    ],
+    "source_text": "자동재예치·분할인출은 추정하지 않음",
+    "source_ref_ids": [
+      "EVD-TD-ROW0516-INST-KR-000739-2-CC1CC9C4E21",
+      "EVD-MANUAL-BANK-0516-NH-PRODUCT",
+      "EVD-MANUAL-BANK-0516-NH-RATE"
+    ]
+  }
+}

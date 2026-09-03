@@ -1,0 +1,520 @@
+{
+  "product_code": "INST-KR-000216-1-CD30CE49C37",
+  "version": 7,
+  "institution_id": "INST-KR-000216",
+  "name": "100투더 퓨쳐 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 5계좌)",
+    "eligibility_text": "실명의 개인 (1인 5계좌)",
+    "display_text": "실명의 개인 (1인 5계좌)",
+    "source_ref_ids": [
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 5
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "DAY",
+    "min_value": 31,
+    "max_value": 100,
+    "source_expression": "31일 이상 100일 이하\n자유롭게 선택 가능",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "IRREGULAR",
+    "contribution_frequency_options": [
+      "DAILY",
+      "WEEKLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "10000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "최소 1,000원 이상 최대 1만원 이하 (1원 단위)\n- 직접 납입을 통해 횟수 제한 없이 입금 가능\n- 자동이체(매일/매주)를 통해 납입 가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1,000원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 1만원 이하 (1원 단위)\n- 직접 납입을 통해 횟수 제한 없이 입금 가능\n- 자동이체"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_WEEK",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 1만원 이하 (1원 단위)\n- 직접 납입을 통해 횟수 제한 없이 입금 가능\n- 자동이체(매일/매주)를 통"
+      },
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "PER_WEEK",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 1만원 이하 (1원 단위)\n- 직접 납입을 통해 횟수 제한 없이 입금 가능\n- 자동이체(매일/매주)를 통해 납입 가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-CD30CE49C37-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "min_value": 31,
+          "max_value": 100,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000216_1_CD30CE49C37_PREF_03.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000216-1-CD30CE49C37-PREF-03-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규가입 당시 마케팅 수신 동의 조건을 모두 충족하여 만기까지 유지한 고객에 한해 우대금리 제공 (기존 마케팅 수신 동의 거래고객 포함)\n단, 다음의 가, 나 항목을 모두 충족한 경우에 한함.\n가. 문자메세지 동의(필수)\n나. 앱푸시, 이메일, 전화, 우편 중 하나 이상 동의 (1개 선택 필수) : 1%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000216-1-CD30CE49C37-PREF-03-SUCCESS",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "qualifying_definition": {
+            "source_text": "최고 5.00% (100일 만기 기준)\n입금 일수 우대금리 1일당 0.05%, 휴일포함\n[입금 횟수에 관계 없이 1일 1회만 인정]\n* 입금 일수에 따른 우대금리 적용되어 만기일에 따라 금리 차등 적용"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW",
+            "end": "MATURITY"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "maximum_count_per_period": {
+            "period": "DAY",
+            "count": 1
+          },
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "최고 5.00% (100일 만기 기준)\n입금 일수 우대금리 1일당 0.05%, 휴일포함\n[입금 횟수에 관계 없이 1일 1회만 인정]\n* 입금 일수에 따른 우대금리 적용되어 만기일에 따라 금리 차등 적용",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000216-1-CD30CE49C37-PREF-02",
+          "title": "신규가입 당시 마케팅 수신 동의 조건을 모두 충족하여 만기까지 유지한 고객에 한해 우대금리 제공 (기존 마케팅 수신 동의 거래고객 포함)",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규가입 당시 마케팅 수신 동의 조건을 모두 충족하여 만기까지 유지한 고객에 한해 우대금리 제공 (기존 마케팅 수신 동의 거래고객 포함)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "신규가입 당시 마케팅 수신 동의 조건을 모두 충족하여 만기까지 유지한 고객에 한해 우대금리 제공 (기존 마케팅 수신 동의 거래고객 포함)\n단, 다음의 가, 나 항목을 모두 충족한 경우에 한함.\n가. 문자메세지 동의(필수)\n나. 앱푸시, 이메일, 전화, 우편 중 하나 이상 동의 (1개 선택 필수) : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-CD30CE49C37-PREF-03",
+          "title": "최고 5.00% (100일 만기 기준)",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000216_1_CD30CE49C37_PREF_03.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000216-1-CD30CE49C37-PREF-03-SUCCESS",
+            "value_per_occurrence": "0.05",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+              }
+            ],
+            "cap_value": "5.00",
+            "max_qualifying_units": 100
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "최고 5.00% (100일 만기 기준)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "최고 5.00% (100일 만기 기준)\n입금 일수 우대금리 1일당 0.05%, 휴일포함\n[입금 횟수에 관계 없이 1일 1회만 인정]\n* 입금 일수에 따른 우대금리 적용되어 만기일에 따라 금리 차등 적용"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000216-1-CD30CE49C37-PREF-02-SOURCE",
+          "operator": "ALL_OR_NOTHING",
+          "member_rule_ids": [
+            "INST-KR-000216-1-CD30CE49C37-PREF-02"
+          ],
+          "component_source_rows": [
+            "나. 앱푸시, 이메일, 전화, 우편 중 하나 이상 동의 (1개 선택 필수) : 1%"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000216-1-CD30CE49C37-PREF-03-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000216-1-CD30CE49C37-PREF-03"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000216-1-CD30CE49C37-PREF-03-SUCCESS",
+          "value_per_occurrence": "0.05",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "5.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-01",
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02",
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03",
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-RATE",
+      "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d1a34c707d99e6f0f0efbca6c508254d"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO",
+    "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-RATE",
+    "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "d1a34c707d99e6f0f0efbca6c508254d",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "DAILY",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "WEEKLY",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-D1A34C707D99E6F0F0EFBCA6C508254D-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

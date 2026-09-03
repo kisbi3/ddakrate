@@ -1,0 +1,642 @@
+{
+  "product_code": "INST-KR-000865-1-0004",
+  "version": 8,
+  "institution_id": "INST-KR-000865",
+  "name": "주거래우대 자유적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "eligibility_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "display_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "source_ref_ids": [
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 3
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_expression": "6개월 ~ 36개월",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "3000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1천원 이상 3백만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상 3백만원 이하"
+      },
+      {
+        "value": "3000000",
+        "currency": "KRW",
+        "source_expression": "3백만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상 3백만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0004-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0004-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0004-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0004-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01",
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02",
+          "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01",
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02",
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000865_1_0004_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000865-1-0004-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000865_1_0004_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000865-1-0004-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000865-1-0004-PREF-02-SUCCESS",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우\n∙ 급여이체: 건당 50만원 이상, 급여이체 인정 기준에 해당하는 경우\n∙ 통신비 자동이체: 케이뱅크 입출금통장 또는 케이뱅크 체크카드로 통신비(통신3사 KT, SKT, LGU+만 인정) 자동이체 실적이 있는 경우 : 0.3%"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          }
+        },
+        {
+          "event_id": "EVENT-INST-KR-000865-1-0004-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 200000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "20만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000865-1-0004-PREF-02",
+          "title": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000865_1_0004_PREF_02.SUCCESS_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000865-1-0004-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.3",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우\n∙ 급여이체: 건당 50만원 이상, 급여이체 인정 기준에 해당하는 경우\n∙ 통신비 자동이체: 케이뱅크 입출금통장 또는 케이뱅크 체크카드로 통신비(통신3사 KT, SKT, LGU+만 인정) 자동이체 실적이 있는 경우 : 0.3%"
+        },
+        {
+          "rule_id": "INST-KR-000865-1-0004-PREF-03",
+          "title": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000865_1_0004_PREF_03.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000865-1-0004-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000865-1-0004-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000865-1-0004-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.3",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01",
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02",
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03",
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE",
+      "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.2",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "18cbd067fc9c20452a9a4fade5c0d34e"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO",
+    "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE",
+    "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "18cbd067fc9c20452a9a4fade5c0d34e",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-18CBD067FC9C20452A9A4FADE5C0D34E-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

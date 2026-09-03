@@ -1,0 +1,745 @@
+{
+  "product_code": "INST-KR-000424-2-C783A7697F3",
+  "version": 3,
+  "institution_id": "INST-KR-000424",
+  "name": "두루두루정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": [
+      "INTERNET",
+      "BRANCH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "source_text": "1년 이상 연단위 가입",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "selection_units": [
+      "YEAR"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ],
+    "advertised_rate_period": {
+      "value": 6,
+      "unit": "MONTH"
+    },
+    "rollover_period_policy": {
+      "kind": "DISCRETE",
+      "unit": "MONTH",
+      "values": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "source_text": "Naver와 우리은행 정확한 상품설명은 1/2/3/6개월 회전주기를 명시; 현재 공식 금리탭의 12개월 행은 상품설명과 불일치하여 선택가능 집합에서 제외",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+      ]
+    },
+    "min_value": 12,
+    "max_value": null,
+    "min_inclusive": true,
+    "max_inclusive": null,
+    "selection_step": 12,
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "EXISTING_SELECTABLE_REPRESENTATIVE"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ],
+    "source_amount_text": "제한없음"
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 0,
+              "min_inclusive": true,
+              "max_value": 50000000,
+              "max_inclusive": false
+            },
+            "source_term_text": "5천만원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "LT50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 50000000,
+              "min_inclusive": true,
+              "max_value": null,
+              "max_inclusive": null
+            },
+            "source_term_text": "5천만원 이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "GE50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "2개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 0,
+              "min_inclusive": true,
+              "max_value": 50000000,
+              "max_inclusive": false
+            },
+            "source_term_text": "5천만원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "LT50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "2개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 50000000,
+              "min_inclusive": true,
+              "max_value": null,
+              "max_inclusive": null
+            },
+            "source_term_text": "5천만원 이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "GE50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "3개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 0,
+              "min_inclusive": true,
+              "max_value": 50000000,
+              "max_inclusive": false
+            },
+            "source_term_text": "5천만원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "LT50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "3개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 50000000,
+              "min_inclusive": true,
+              "max_value": null,
+              "max_inclusive": null
+            },
+            "source_term_text": "5천만원 이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "GE50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-007",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "6개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 0,
+              "min_inclusive": true,
+              "max_value": 50000000,
+              "max_inclusive": false
+            },
+            "source_term_text": "5천만원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "LT50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      },
+      {
+        "rate_id": "INST-KR-000424-2-C783A7697F3-BASE-008",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "6개월 회전주기"
+          },
+          {
+            "basis": "INITIAL_DEPOSIT_AMOUNT",
+            "range": {
+              "unit": "KRW",
+              "min_value": 50000000,
+              "min_inclusive": true,
+              "max_value": null,
+              "max_inclusive": null
+            },
+            "source_term_text": "5천만원 이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "AMOUNT_BAND_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_band": "GE50M",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+          "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+        ],
+        "derivation": "NAVER_AND_EXACT_ISSUER_PRODUCT_DESCRIPTION_RATE_GRID"
+      }
+    ],
+    "advertised_max_rate": {
+      "value": "2.10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3"
+      ]
+    },
+    "listing_base_rate_reference": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "representative_term_text": "6개월 회전주기, 5천만원 미만",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+      ],
+      "representative_rate_period_basis": "ROLLOVER_PERIOD",
+      "contract_term_representative": {
+        "value": 12,
+        "unit": "MONTH"
+      }
+    },
+    "balance_tier_method": "SINGLE_BRACKET_BY_INITIAL_DEPOSIT_AMOUNT",
+    "amount_rate_tiering_source": {
+      "threshold_value": "50000000",
+      "currency": "KRW",
+      "lower_band": "< 50,000,000",
+      "upper_band": ">= 50,000,000",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+      ]
+    },
+    "rate_table_snapshot": {
+      "raw_text": "1개월 1.90/2.00%, 2개월 1.90/2.00%, 3개월 1.95/2.05%, 6개월 2.00/2.10% (5천만원 미만/이상)",
+      "rows": [
+        {
+          "term_text": "1개월 회전주기",
+          "rate_values": [
+            "1.9",
+            "2.0"
+          ]
+        },
+        {
+          "term_text": "2개월 회전주기",
+          "rate_values": [
+            "1.9",
+            "2.0"
+          ]
+        },
+        {
+          "term_text": "3개월 회전주기",
+          "rate_values": [
+            "1.95",
+            "2.05"
+          ]
+        },
+        {
+          "term_text": "6개월 회전주기",
+          "rate_values": [
+            "2.0",
+            "2.1"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "AMOUNT_TIER_1",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_label": "5천만원 미만"
+        },
+        {
+          "context_id": "AMOUNT_TIER_2",
+          "semantic_role": "CONTRACT_RATE",
+          "amount_label": "5천만원 이상"
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+            "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-BANK-0458-INTERNET",
+          "title": "인터넷뱅킹으로 신규 시 연 0.1%p 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "인터넷뱅킹으로 신규 시 연 0.1%p 우대금리",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+            "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+          ],
+          "evidence": [
+            {
+              "text": "인터넷뱅킹을 이용한 신규 시 연 0.1%p"
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+    "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+    "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02T12:00:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_EXACT_WOORI_PRODUCT_AND_RATE_TABS",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "field": "term_policy.rollover_period_policy.current_12_month_rate_row",
+        "reason_code": "ISSUER_PRODUCT_DESCRIPTION_RATE_TAB_CONFLICT",
+        "message": "2026-09-02 우리은행 정확한 상품설명과 Naver는 1·2·3·6개월만 회전주기로 명시하지만 동일 공식 동적 금리탭은 12개월 연 2.25% 행을 추가로 노출함; 12개월 회전 선택가능성을 추정하지 않음"
+      },
+      {
+        "field": "return_policy.advertised_max_rate",
+        "reason_code": "NAVER_HEADLINE_MAX_VS_ISSUER_COMPONENTS_CONFLICT",
+        "message": "Naver 광고 최고금리는 2.10%이지만 우리은행 정확한 상품설명은 6개월·5천만원 이상 기본 2.10%와 인터넷 신규 +0.10%p를 별도로 명시함; 광고 최고 2.10%을 스택 상한으로 해석하지 않고 충돌을 보존"
+      },
+      {
+        "field": "liquidity_policy.partial_withdrawal",
+        "reason_code": "PARTIAL_WITHDRAWAL_NOT_STATED",
+        "message": "Naver 전체 원문과 우리은행 P010000361 정확한 상품설명에 분할인출 허용 여부가 명시되지 않아 추정하지 않음"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_NAVER_SOURCE_RECORD_PLUS_EXACT_WOORI_P010000361_PRODUCT_DESCRIPTION_AND_RATE_TAB",
+    "supersedes_version": 2
+  },
+  "data_gaps": [
+    {
+      "field": "term_policy.rollover_period_policy.current_12_month_rate_row",
+      "reason_code": "ISSUER_PRODUCT_DESCRIPTION_RATE_TAB_CONFLICT",
+      "message": "2026-09-02 우리은행 정확한 상품설명과 Naver는 1·2·3·6개월만 회전주기로 명시하지만 동일 공식 동적 금리탭은 12개월 연 2.25% 행을 추가로 노출함; 12개월 회전 선택가능성을 추정하지 않음"
+    },
+    {
+      "field": "return_policy.advertised_max_rate",
+      "reason_code": "NAVER_HEADLINE_MAX_VS_ISSUER_COMPONENTS_CONFLICT",
+      "message": "Naver 광고 최고금리는 2.10%이지만 우리은행 정확한 상품설명은 6개월·5천만원 이상 기본 2.10%와 인터넷 신규 +0.10%p를 별도로 명시함; 광고 최고 2.10%을 스택 상한으로 해석하지 않고 충돌을 보존"
+    },
+    {
+      "field": "liquidity_policy.partial_withdrawal",
+      "reason_code": "PARTIAL_WITHDRAWAL_NOT_STATED",
+      "message": "Naver 전체 원문과 우리은행 P010000361 정확한 상품설명에 분할인출 허용 여부가 명시되지 않아 추정하지 않음"
+    }
+  ],
+  "liquidity_policy": {
+    "access_mode": "ROLLOVER_OR_MATURITY",
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "basis": "POSTED_RATE_AT_LAST_RATE_RESET",
+      "source_text": "회전주기 경과분은 회전주기별 약정율, 미경과분은 최종 이자율변동일 당시 고시 중도해지이율 적용",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+      ]
+    },
+    "post_maturity_rate_policy": {
+      "basis": "GENERAL_TIME_DEPOSIT_POST_MATURITY_RATE_POSTED_AT_MATURITY",
+      "source_text": "만기일 당시 영업점 및 홈페이지에 고시한 일반정기예금 만기후이율 적용",
+      "source_ref_ids": [
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+      ]
+    },
+    "renewal_policy": {
+      "mode": "ROLLOVER",
+      "rate_reset": "REFRESH_AT_EACH_ROLLOVER",
+      "original_contract_term_preserved": true,
+      "interest_capitalized_at_rollover": true,
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+        "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-RATE"
+    ]
+  },
+  "supplemental_source_ref_ids": [
+    "EVD-TD-SUP-20260831-WOORI-DURUDURU"
+  ],
+  "manual_unresolved": {
+    "preferential_amount_tier_interaction": "UNRESOLVED"
+  },
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MONTHLY",
+        "payment_timing": "MONTHLY",
+        "interest_method": "SIMPLE",
+        "rate_adjustment": {
+          "kind": "SUBTRACT_RATE",
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        }
+      },
+      {
+        "context_id": "EVERY_THREE_MONTHS",
+        "payment_timing": "EVERY_THREE_MONTHS",
+        "interest_method": "SIMPLE"
+      },
+      {
+        "context_id": "ANNUAL",
+        "payment_timing": "ANNUAL",
+        "interest_method": "SIMPLE"
+      },
+      {
+        "context_id": "MATURITY",
+        "payment_timing": "MATURITY",
+        "interest_method": "ROLLOVER_COMPOUND"
+      }
+    ],
+    "multiple_contexts": true,
+    "source_text": "월·3개월·연·만기일시지급식 중 선택; 월이자지급식은 표시율에서 0.1%p 차감, 회전시점에 이자 원금 가산",
+    "source_ref_ids": [
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme": "KDIC",
+    "source_text": "원금과 소정의 이자를 합하여 우리은행의 여타 보호상품과 합산해 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000424-2-C783A7697F3",
+      "EVD-MANUAL-BANK-0458-INST-KR-000424-2-C783A7697F3-WOORI-PRODUCT"
+    ]
+  }
+}

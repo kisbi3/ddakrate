@@ -1,0 +1,555 @@
+{
+  "product_code": "INST-KR-000732-1-C974C2A8624",
+  "version": 8,
+  "institution_id": "INST-KR-000732",
+  "name": "NH올원더풀 시니어 정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "• 만 50세 이상 개인(내국인에 한함, 본인 명의의 휴대폰 보유자)\n• 1인 1계좌만 개설 가능(활동좌 기준)",
+    "eligibility_text": "• 만 50세 이상 개인(내국인에 한함, 본인 명의의 휴대폰 보유자)\n• 1인 1계좌만 개설 가능(활동좌 기준)",
+    "display_text": "• 만 50세 이상 개인(내국인에 한함, 본인 명의의 휴대폰 보유자)\n• 1인 1계좌만 개설 가능(활동좌 기준)",
+    "source_ref_ids": [
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "age_range": {
+      "min_age": 50
+    },
+    "nationality_scope": "KOREAN_ONLY",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "1만원 이상 ~ 50만원이하(매월 동일금액, 원단위)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 50만원이하(매월 동일금액, 원단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 50만원이하(매월 동일금액, 원단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000732-1-C974C2A8624-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01",
+          "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02",
+          "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03",
+          "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000732_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "가입당시 만 50세 이상 고객\n예시) 만 50세 : 1975년 5월 2일 이전 출생(2025년 5월 2일 기준) : 1.3%"
+        },
+        {
+          "fact_key": "BUSINESS_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000732_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+          ],
+          "authority": "DOCUMENT_OR_BANK_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "상품 가입단계에서 나오는 ESG관련 퀴즈풀기 : 0.2%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "당 저축은행과 계열사 개인(신용)정보 관련 동의 및 상품서비스 안내 수단으로 문자 포함 채널 1개 이상 동의시\n* 동의서 양식 : 개인(신용)정보 수집ᆞ이용 동의서(상품서비스 안내 등) 및 제공 동의서(상품서비스 안내 등) [계열사 정보제공용]\n* 동의는 적금 신규일로부터 한달 이내로 하며, 동의 유지 기간은 동의일로부터 만기 해지시 까지 유지 : 0.5%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000732-1-C974C2A8624-PREF-02",
+          "title": "가입당시 만 50세 이상 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000732_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입당시 만 50세 이상 고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "가입당시 만 50세 이상 고객\n예시) 만 50세 : 1975년 5월 2일 이전 출생(2025년 5월 2일 기준) : 1.3%"
+        },
+        {
+          "rule_id": "INST-KR-000732-1-C974C2A8624-PREF-03",
+          "title": "상품 가입단계에서 나오는 ESG관련 퀴즈풀기 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "BUSINESS_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000732_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "상품 가입단계에서 나오는 ESG관련 퀴즈풀기 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+            }
+          ],
+          "semantic_domain": "BUSINESS_STATUS",
+          "source_clause_text": "상품 가입단계에서 나오는 ESG관련 퀴즈풀기 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000732-1-C974C2A8624-PREF-04",
+          "title": "당 저축은행과 계열사 개인(신용)정보 관련 동의 및 상품서비스 안내 수단으로 문자 포함 채널 1개 이상 동의시",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "당 저축은행과 계열사 개인(신용)정보 관련 동의 및 상품서비스 안내 수단으로 문자 포함 채널 1개 이상 동의시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "당 저축은행과 계열사 개인(신용)정보 관련 동의 및 상품서비스 안내 수단으로 문자 포함 채널 1개 이상 동의시\n* 동의서 양식 : 개인(신용)정보 수집ᆞ이용 동의서(상품서비스 안내 등) 및 제공 동의서(상품서비스 안내 등) [계열사 정보제공용]\n* 동의는 적금 신규일로부터 한달 이내로 하며, 동의 유지 기간은 동의일로부터 만기 해지시 까지 유지 : 0.5%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01",
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02",
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03",
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04",
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+        }
+      ],
+      "semantic_audit_decisions": [
+        {
+          "issue_code": "TIER_OR_CUMULATIVE_SOURCE_WITHOUT_RELATION",
+          "decision": "NO_RELATION_REQUIRED",
+          "reason": "각 우대조건이 독립 고정금리이며 tier/cumulative 보상표가 없음",
+          "source_ref_ids": [
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01",
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02",
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03",
+            "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-04"
+            }
+          ]
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-RATE",
+      "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "a928d6126a4bb5b25012c04afaae6e64"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO",
+    "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-RATE",
+    "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "a928d6126a4bb5b25012c04afaae6e64",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-A928D6126A4BB5B25012C04AFAAE6E64-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

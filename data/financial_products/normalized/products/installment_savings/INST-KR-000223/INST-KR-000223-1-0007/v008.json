@@ -1,0 +1,819 @@
+{
+  "product_code": "INST-KR-000223-1-0007",
+  "version": 8,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK모으기통장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH",
+      "PHONE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "eligibility_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "display_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "source_ref_ids": [
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 5
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_expression": "6개월 이상 36개월 이내(일, 월 단위)",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 36,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "3000000",
+        "increment_value": "1000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "최소 1천원 이상 월 300만원 이내(천원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1천원 이상 월 300만원 이내(천원 단위)"
+      },
+      {
+        "value": "3000000",
+        "currency": "KRW",
+        "source_expression": "300만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1천원 이상 월 300만원 이내(천원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0007-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0007-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0007-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0007-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.AUTO_TRANSFER_QUALIFYING_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_TRANSACTION_RECORD",
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "ACCOUNT_CONTRACT",
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000223_1_0007_PREF_01.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-0007-PREF-01-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000223-1-0007-PREF-01-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%\n당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주\n6개월 이상 12개월 미만 : 3회\n12개월 이상 24개월 미만 : 6회\n24개월 이상 36개월 미만 : 12회\n36개월 : 18회"
+          },
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ],
+          "maximum_count_per_period": {
+            "period": "MONTH",
+            "count": 1
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%\n당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주\n6개월 이상 12개월 미만 : 3회\n12개월 이상 24개월 미만 : 6회\n24개월 이상 36개월 미만 : 12회\n36개월 : 18회"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-0007-PREF-01",
+          "title": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+                          "operator": "BETWEEN",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "unit": "MONTH",
+                          "lower": 6,
+                          "upper": 12,
+                          "lower_inclusive": true,
+                          "upper_inclusive": false
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.AUTO_TRANSFER_QUALIFYING_MONTH_COUNT",
+                          "operator": "GTE",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "expected_value": 3,
+                          "unit": "COUNT"
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+                          "operator": "BETWEEN",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "unit": "MONTH",
+                          "lower": 12,
+                          "upper": 24,
+                          "lower_inclusive": true,
+                          "upper_inclusive": false
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.AUTO_TRANSFER_QUALIFYING_MONTH_COUNT",
+                          "operator": "GTE",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "expected_value": 6,
+                          "unit": "COUNT"
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+                          "operator": "BETWEEN",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "unit": "MONTH",
+                          "lower": 24,
+                          "upper": 36,
+                          "lower_inclusive": true,
+                          "upper_inclusive": false
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.AUTO_TRANSFER_QUALIFYING_MONTH_COUNT",
+                          "operator": "GTE",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "expected_value": 12,
+                          "unit": "COUNT"
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+                          "operator": "BETWEEN",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "unit": "MONTH",
+                          "lower": 36,
+                          "upper": 37,
+                          "lower_inclusive": true,
+                          "upper_inclusive": false
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.AUTO_TRANSFER_QUALIFYING_MONTH_COUNT",
+                          "operator": "GTE",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                            }
+                          ],
+                          "expected_value": 18,
+                          "unit": "COUNT"
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000223_1_0007_PREF_01.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%\n당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주\n6개월 이상 12개월 미만 : 3회\n12개월 이상 24개월 미만 : 6회\n24개월 이상 36개월 미만 : 12회\n36개월 : 18회"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000223-1-0007-PREF-01-TERM-THRESHOLD",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000223-1-0007-PREF-01"
+          ],
+          "selector_fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+          "selection_target": "MINIMUM_QUALIFYING_EVENT_COUNT",
+          "tiers": [
+            {
+              "term_min_months": 6,
+              "term_max_exclusive_months": 12,
+              "required_count": 3
+            },
+            {
+              "term_min_months": 12,
+              "term_max_exclusive_months": 24,
+              "required_count": 6
+            },
+            {
+              "term_min_months": 24,
+              "term_max_exclusive_months": 36,
+              "required_count": 12
+            },
+            {
+              "term_min_months": 36,
+              "term_max_exclusive_months": 37,
+              "required_count": 18
+            }
+          ],
+          "source_ref_ids": [
+            "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01",
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE",
+      "EVD-IS-40BACDC40BC9E415F97EC14611C59054-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.75",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "40bacdc40bc9e415f97ec14611c59054"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO",
+    "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE",
+    "EVD-IS-40BACDC40BC9E415F97EC14611C59054-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "40bacdc40bc9e415f97ec14611c59054",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "PHONE",
+      "source_ref_ids": [
+        "EVD-IS-40BACDC40BC9E415F97EC14611C59054-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+{
+  "product_code": "INST-KR-001107-1-C7C57366ADC",
+  "version": 1,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국 가치모아적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      6,
+      12
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-1-C7C57366ADC-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-C7C57366ADC-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.90",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-01",
+        "title": "신규 가입일로부터 만기 시 까지 다음의 우대조건을 충족하는 경우 만기해지 계좌에 한하여 최고 연 0.8%p 제공",
+        "condition_text": "신규 가입일로부터 만기 시 까지 다음의 우대조건을 충족하는 경우 만기해지 계좌에 한하여 최고 연 0.8%p 제공",
+        "structured_steps": [
+          "신규 가입일로부터 만기 시 까지 다음의 우대조건을 충족하는 경우 만기해지 계좌에 한하여 최고 연 0.8%p 제공"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.8",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규 가입일로부터 만기 시 까지 다음의 우대조건을 충족하는 경우 만기해지 계좌에 한하여 최고 연 0.8%p 제공",
+          "summary_text": "신규 가입일로부터 만기 시 까지 다음의 우대조건을 충족하는 경우 만기해지 계좌에 한하여 최고 연 0.8%p 제공",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.8",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-02",
+        "title": "우체국 수시입출식 예금에서 이 적금으로 자동이체 약정(최대 10명)을 하고 자동이체 실적 횟수를 달성한 인원수에 따라 제공",
+        "condition_text": "우체국 수시입출식 예금에서 이 적금으로 자동이체 약정(최대 10명)을 하고 자동이체 실적 횟수를 달성한 인원수에 따라 제공\n- 1명 : 연 0.1%p / 2명 : 연 0.2%p / 3~10명 : 연 0.3%p\n* 자동이체 약정 1명당 실적 횟수\n- 가입기간 개월수 : 6개월~7개월, 3회 / 8개월~9개월, 4회 / 10개월~11개월, 5회 / 12개월, 6회",
+        "structured_steps": [
+          "우체국 수시입출식 예금에서 이 적금으로 자동이체 약정(최대 10명)을 하고 자동이체 실적 횟수를 달성한 인원수에 따라 제공",
+          "- 1명 : 연 0.1%p / 2명 : 연 0.2%p / 3~10명 : 연 0.3%p",
+          "* 자동이체 약정 1명당 실적 횟수",
+          "- 가입기간 개월수 : 6개월~7개월, 3회 / 8개월~9개월, 4회 / 10개월~11개월, 5회 / 12개월, 6회"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우체국 수시입출식 예금에서 이 적금으로 자동이체 약정(최대 10명)을 하고 자동이체 실적 횟수를 달성한 인원수에 따라 제공",
+          "summary_text": "우체국 수시입출식 예금에서 이 적금으로 자동이체 약정(최대 10명)을 하고 자동이체 실적 횟수를 달성한 인원수에 따라 제공",
+          "detail_texts": [
+            "- 1명 : 연 0.1%p / 2명 : 연 0.2%p / 3~10명 : 연 0.3%p",
+            "* 자동이체 약정 1명당 실적 횟수",
+            "- 가입기간 개월수 : 6개월~7개월, 3회 / 8개월~9개월, 4회 / 10개월~11개월, 5회 / 12개월, 6회"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-03",
+        "title": "이 적금의 가입기간 중 동일한 모임추천번호를 등록하여 이 적금에 가입한 인원이 최초 3명 이상 5명 이하인 실적이 있는 경우",
+        "condition_text": "이 적금의 가입기간 중 동일한 모임추천번호를 등록하여 이 적금에 가입한 인원이 최초 3명 이상 5명 이하인 실적이 있는 경우\n※ 가입 시 생성된 본인의 모임추천번호는 타인 4명까지 사용등록 가능 (모임추천번호 생성과 사용등록은 중복되지 않음)\n※ 가입 당일해지, 가입취소 시 모임추천번호 등록인원에서 제외\n※ 단, 동일한 모임추천번호는 재가입 시 입력 불가 : 0.2%",
+        "structured_steps": [
+          "이 적금의 가입기간 중 동일한 모임추천번호를 등록하여 이 적금에 가입한 인원이 최초 3명 이상 5명 이하인 실적이 있는 경우",
+          "※ 가입 시 생성된 본인의 모임추천번호는 타인 4명까지 사용등록 가능 (모임추천번호 생성과 사용등록은 중복되지 않음)",
+          "※ 가입 당일해지, 가입취소 시 모임추천번호 등록인원에서 제외",
+          "※ 단, 동일한 모임추천번호는 재가입 시 입력 불가 : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 적금의 가입기간 중 동일한 모임추천번호를 등록하여 이 적금에 가입한 인원이 최초 3명 이상 5명 이하인 실적이 있는 경우",
+          "summary_text": "이 적금의 가입기간 중 동일한 모임추천번호를 등록하여 이 적금에 가입한 인원이 최초 3명 이상 5명 이하인 실적이 있는 경우",
+          "detail_texts": [
+            "※ 가입 시 생성된 본인의 모임추천번호는 타인 4명까지 사용등록 가능 (모임추천번호 생성과 사용등록은 중복되지 않음)",
+            "※ 가입 당일해지, 가입취소 시 모임추천번호 등록인원에서 제외",
+            "※ 단, 동일한 모임추천번호는 재가입 시 입력 불가 : 0.2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-04",
+        "title": "신규 가입시 목표저축액을 설정하고 달성한 경우",
+        "condition_text": "신규 가입시 목표저축액을 설정하고 달성한 경우\n- 100만원 이상 500만원 미만 : 연 0.1%p / 500만원 이상 : 연 0.2%p",
+        "structured_steps": [
+          "신규 가입시 목표저축액을 설정하고 달성한 경우",
+          "- 100만원 이상 500만원 미만 : 연 0.1%p / 500만원 이상 : 연 0.2%p"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규 가입시 목표저축액을 설정하고 달성한 경우",
+          "summary_text": "신규 가입시 목표저축액을 설정하고 달성한 경우",
+          "detail_texts": [
+            "- 100만원 이상 500만원 미만 : 연 0.1%p / 500만원 이상 : 연 0.2%p"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-05",
+        "title": "적금 가입 시에 우체국 상품 · 서비스 마케팅 동의한 경우 : 0.1%",
+        "condition_text": "적금 가입 시에 우체국 상품 · 서비스 마케팅 동의한 경우 : 0.1%",
+        "structured_steps": [
+          "적금 가입 시에 우체국 상품 · 서비스 마케팅 동의한 경우 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "적금 가입 시에 우체국 상품 · 서비스 마케팅 동의한 경우 : 0.1%",
+          "summary_text": "적금 가입 시에 우체국 상품 · 서비스 마케팅 동의한 경우 : 0.1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-06",
+        "title": "적금 신규일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 여행특화 체크카드* 이용 실적이 있는 경우",
+        "condition_text": "적금 신규일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 여행특화 체크카드* 이용 실적이 있는 경우\n* 우체국go캐시백글로벌체크카드, 우체국 브라보 체크카드, 우체국 우리동네 플러스 체크카드(III-Type), 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드\n※ 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드 신규발급중단\n※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크 카드 사용금액만 실적으로 인정(신용결제 제외) : 0.1%",
+        "structured_steps": [
+          "적금 신규일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 여행특화 체크카드* 이용 실적이 있는 경우",
+          "* 우체국go캐시백글로벌체크카드, 우체국 브라보 체크카드, 우체국 우리동네 플러스 체크카드(III-Type), 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드",
+          "※ 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드 신규발급중단",
+          "※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크 카드 사용금액만 실적으로 인정(신용결제 제외) : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "적금 신규일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 여행특화 체크카드* 이용 실적이 있는 경우",
+          "summary_text": "적금 신규일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 여행특화 체크카드* 이용 실적이 있는 경우",
+          "detail_texts": [
+            "* 우체국go캐시백글로벌체크카드, 우체국 브라보 체크카드, 우체국 우리동네 플러스 체크카드(III-Type), 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드",
+            "※ 우체국 드림플러스 아시아나 체크카드, 우체국 하이브리드여행체크카드 신규발급중단",
+            "※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크 카드 사용금액만 실적으로 인정(신용결제 제외) : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-07",
+        "title": "적금을 인터넷 또는 스마트폰뱅킹을 통해 가입한 경우 : 0.1%",
+        "condition_text": "적금을 인터넷 또는 스마트폰뱅킹을 통해 가입한 경우 : 0.1%",
+        "structured_steps": [
+          "적금을 인터넷 또는 스마트폰뱅킹을 통해 가입한 경우 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "적금을 인터넷 또는 스마트폰뱅킹을 통해 가입한 경우 : 0.1%",
+          "summary_text": "적금을 인터넷 또는 스마트폰뱅킹을 통해 가입한 경우 : 0.1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-1-C7C57366ADC-08",
+        "title": "적금 만기일부터 1년 경과한 월의 말일까지 재가입하는 경우 재가입 시점에 적용 : 0.1%",
+        "condition_text": "적금 만기일부터 1년 경과한 월의 말일까지 재가입하는 경우 재가입 시점에 적용 : 0.1%",
+        "structured_steps": [
+          "적금 만기일부터 1년 경과한 월의 말일까지 재가입하는 경우 재가입 시점에 적용 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "적금 만기일부터 1년 경과한 월의 말일까지 재가입하는 경우 재가입 시점에 적용 : 0.1%",
+          "summary_text": "적금 만기일부터 1년 경과한 월의 말일까지 재가입하는 경우 재가입 시점에 적용 : 0.1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+    ],
+    "advertised_max_rate": {
+      "value": "3.90",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-001107-1-C7C57366ADC"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.551426+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

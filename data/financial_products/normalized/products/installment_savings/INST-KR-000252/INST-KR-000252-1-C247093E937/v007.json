@@ -1,0 +1,1180 @@
+{
+  "product_code": "INST-KR-000252-1-C247093E937",
+  "version": 7,
+  "institution_id": "INST-KR-000252",
+  "name": "(K리그) 우승 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-02-27",
+      "end_date": "2026-09-30",
+      "end_inclusive": true
+    },
+    "offering_type": "SEASONAL",
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DERIVED_FIXED_MATURITY",
+    "derivation": {
+      "start_event": "SUBSCRIPTION_DATE",
+      "end_date": "2027-01-11",
+      "duration_rule": "END_DATE_MINUS_SUBSCRIPTION_DATE"
+    },
+    "source_expression": "가입자별 상이 [가입일 ~ 2027.01.11(월)]\n※ 만기일 고정 상품으로 상품가입일에 따라 가입자별 계약기간이 상이함\n만기일 : 2027.01.11(월) [만기일 고정]",
+    "source_ref_ids": [
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "500000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1만원 이상 ~ 50만원 이하 (원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 50만원 이하 (원 단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 50만원 이하 (원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-C247093E937-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 3,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "5.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+          "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.SELECTED_SUPPORT_TEAM",
+          "type": "ENUM",
+          "immutable_after_subscription": true,
+          "authority": "ACCOUNT_CONTRACT_FACT",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "EXTERNAL.KLEAGUE.SEASON_CHAMPION_TEAM",
+          "type": "ENUM",
+          "authority": "OFFICIAL_EXTERNAL_RESULT",
+          "user_self_report_can_confirm": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD.CHUKDUK_APPROVAL_COUNT_WITH_HANA_PAYMENT_ACCOUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "period_axis": "SUBSCRIPTION_DATE_TO_SUBSCRIPTION_YEAR_END",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "HANA.FOOTBALL_PLAY_ITEM_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "period_axis": "SUBSCRIPTION_DATE_TO_SUBSCRIPTION_YEAR_END",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "detail_id": "INST-KR-000252-1-C247093E937-TEAM-IMMUTABILITY",
+          "applies_to": [
+            "INST-KR-000252-1-C247093E937-CHAMP"
+          ],
+          "requirement": "가입 시 선택한 응원팀은 변경 불가",
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            }
+          ]
+        },
+        {
+          "detail_id": "INST-KR-000252-1-C247093E937-PLAY-CONTENT-NOTE",
+          "applies_to": [
+            "INST-KR-000252-1-C247093E937-PLAY"
+          ],
+          "note": "축구Play 콘텐츠 종류와 아이템은 달라질 수 있으며 원문의 예시는 비한정 예시",
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-CARD",
+          "title": "축덕카드 사용",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD.CHUKDUK_APPROVAL_COUNT_WITH_HANA_PAYMENT_ACCOUNT",
+              "operator": "GTE",
+              "expected_value": 10,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "축덕카드 사용*\n이 예금 가입일로부터 가입연도말까지 하나 축덕카드(신용/체크)사용 실적을 10회 이상 보유한 경우\n* 카드사용실적 : 카드 사용(승인) 시점 본인 명의 하나은행 입출금통장이 카드 결제계좌로 등록된 경우에 한함 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-CHAMP",
+          "title": "응원팀 시즌 우승",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_SUPPORT_TEAM",
+                  "operator": "EXISTS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "EXTERNAL.KLEAGUE.SEASON_CHAMPION_TEAM",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "expected_fact_key": "ACCOUNT.SELECTED_SUPPORT_TEAM",
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "pre_result_rate_representation": "GUARANTEED_TO_POSSIBLE_RANGE",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+              }
+            ],
+            "fact_authority": "EXTERNAL_OFFICIAL_RESULT",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            }
+          ],
+          "semantic_domain": "EXTERNAL_EVENT_RESULT",
+          "source_clause_text": "성공한 덕후(응원팀 우승)*\n이 예금 가입시 선택한 나의 응원팀이 가입연도 해당 시즌 최종 우승한 경우\n* 응원팀 우승 : 가입시 선택한 응원팀은 변경 불가하며, 응원팀 소속리그 우승 포함 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-TEAM-2-5",
+          "title": "My팀 2~5명",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 2,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+                  "operator": "LTE",
+                  "expected_value": 5,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            }
+          ],
+          "semantic_domain": "REFERRAL_EVENT",
+          "source_clause_text": "너DO?나DO! (친구초대*), 최대 연 2.00%\n나의 초대코드로 친구가 같이 가입하여 My팀을 구성한 팀원 모두에게 우대금리 제공\n팀원수 11명 완성 : 우대금리 연 2.00%\n팀원수 6~10명 : 우대금리 연 1.00%\n팀원수 2~5명 : 우대금리 연 0.50%\n* 친구초대 : 동일한 초대코드를 이용해 가입한 모두에게 우대금리 적용(동일 초대코드는 해지 후 재사용 불가/팀원수별 우대금리는 중복적용 불가)"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-TEAM-6-10",
+          "title": "My팀 6~10명",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+                  "operator": "LTE",
+                  "expected_value": 10,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            }
+          ],
+          "semantic_domain": "REFERRAL_EVENT",
+          "source_clause_text": "너DO?나DO! (친구초대*), 최대 연 2.00%\n나의 초대코드로 친구가 같이 가입하여 My팀을 구성한 팀원 모두에게 우대금리 제공\n팀원수 11명 완성 : 우대금리 연 2.00%\n팀원수 6~10명 : 우대금리 연 1.00%\n팀원수 2~5명 : 우대금리 연 0.50%\n* 친구초대 : 동일한 초대코드를 이용해 가입한 모두에게 우대금리 적용(동일 초대코드는 해지 후 재사용 불가/팀원수별 우대금리는 중복적용 불가)"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-TEAM-11",
+          "title": "My팀 11명 완성",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.MYTEAM_MEMBER_COUNT",
+              "operator": "EQUALS",
+              "expected_value": 11,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            }
+          ],
+          "semantic_domain": "REFERRAL_EVENT",
+          "source_clause_text": "너DO?나DO! (친구초대*), 최대 연 2.00%\n나의 초대코드로 친구가 같이 가입하여 My팀을 구성한 팀원 모두에게 우대금리 제공\n팀원수 11명 완성 : 우대금리 연 2.00%\n팀원수 6~10명 : 우대금리 연 1.00%\n팀원수 2~5명 : 우대금리 연 0.50%\n* 친구초대 : 동일한 초대코드를 이용해 가입한 모두에게 우대금리 적용(동일 초대코드는 해지 후 재사용 불가/팀원수별 우대금리는 중복적용 불가)"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C247093E937-PLAY",
+          "title": "하나원큐 축구Play 11개 아이템 완성",
+          "condition": {
+            "predicate": {
+              "fact_key": "HANA.FOOTBALL_PLAY_ITEM_COUNT",
+              "operator": "EQUALS",
+              "expected_value": 11,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+              }
+            ],
+            "fact_authority": "EXTERNAL_OFFICIAL_RESULT",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ],
+          "semantic_domain": "EXTERNAL_EVENT_RESULT",
+          "source_clause_text": "하나원큐 축구Play 참여\n이 예금 가입일로부터 가입연도말까지 「하나원큐 축구Play*」콘텐츠 참여횟수에 따라 제공되는 총 11개 아이템을 모두 모은 경우\n* 하나원큐 축구Play : 하나원큐 앱 내 축구 콘텐츠 제공 서비스로 콘텐츠 종류 및 아이템은 달라질수 있음(콘텐츠 예시 : 퀴즈HANA, 응원HANA, 승리HANA, 아이템 예시 : 엠블럼 퍼즐조각) : 1%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000252-1-C247093E937-REL-MYTEAM",
+          "members": [
+            "INST-KR-000252-1-C247093E937-TEAM-2-5",
+            "INST-KR-000252-1-C247093E937-TEAM-6-10",
+            "INST-KR-000252-1-C247093E937-TEAM-11"
+          ],
+          "select_exactly_one_matching_tier": true,
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ],
+          "operator": "TIER_SELECT"
+        },
+        {
+          "relation_id": "INST-KR-000252-1-C247093E937-REL-TOTAL",
+          "members": [
+            "INST-KR-000252-1-C247093E937-CARD",
+            "INST-KR-000252-1-C247093E937-CHAMP",
+            "INST-KR-000252-1-C247093E937-REL-MYTEAM",
+            "INST-KR-000252-1-C247093E937-PLAY"
+          ],
+          "cap": {
+            "value": "5.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+              "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+            "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+            }
+          ],
+          "operator": "SUM_WITH_CAP"
+        }
+      ],
+      "variant_dimensions": [
+        {
+          "dimension_id": "SUPPORT_TEAM",
+          "immutable_after_subscription": true,
+          "fact_key": "ACCOUNT.SELECTED_SUPPORT_TEAM",
+          "does_not_create_new_canonical_product": true
+        }
+      ],
+      "display_name_rule": {
+        "base_name": "(K리그) 우승 적금",
+        "depends_on_variant_dimension": "SUPPORT_TEAM",
+        "canonical_product_code_unchanged": true
+      },
+      "offering": {
+        "offering_id": "KLEAGUE-2026",
+        "season": "2026",
+        "effective_sale_period": {
+          "start_date": "2026-02-27",
+          "end_date": "2026-09-30"
+        },
+        "fixed_maturity_date": "2027-01-11",
+        "versioned_by_offering": true
+      },
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01",
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02",
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03",
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04",
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05",
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-RATE",
+      "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "962af8e9472d2cd58cce3b0ecea65b30"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO",
+    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-RATE",
+    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-LISTING",
+    "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "962af8e9472d2cd58cce3b0ecea65b30",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 0,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-962AF8E9472D2CD58CCE3B0ECEA65B30-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "variant_policy": {
+    "dimensions": [
+      {
+        "dimension_id": "SUPPORT_TEAM",
+        "immutable_after_subscription": true,
+        "fact_key": "ACCOUNT.SELECTED_SUPPORT_TEAM",
+        "does_not_create_new_canonical_product": true
+      }
+    ],
+    "display_name_rule": {
+      "base_name": "(K리그) 우승 적금",
+      "depends_on_variant_dimension": "SUPPORT_TEAM",
+      "canonical_product_code_unchanged": true
+    }
+  },
+  "offering_policy": {
+    "offering_id": "KLEAGUE-2026",
+    "season": "2026",
+    "effective_sale_period": {
+      "start_date": "2026-02-27",
+      "end_date": "2026-09-30"
+    },
+    "fixed_maturity_date": "2027-01-11",
+    "versioned_by_offering": true
+  }
+}

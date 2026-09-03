@@ -1,0 +1,719 @@
+{
+  "product_code": "INST-KR-000142-1-C39E1C573FA",
+  "version": 9,
+  "institution_id": "INST-KR-000142",
+  "name": "The 희망나눔 정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "max_accounts_per_customer": 1,
+    "source_ref_ids": [
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "차상위계층 중 본인부담경감대상자, 자활근로자, 장애인연금/장애(아동)수당 대상자, 만65세이상 차상위계층, 기초생활수급자, 한부모가족지원 보호대상자, 소년소녀가장, 북한이탈주민",
+    "eligibility_text": "차상위계층 중 본인부담경감대상자, 자활근로자, 장애인연금/장애(아동)수당 대상자, 만65세이상 차상위계층, 기초생활수급자, 한부모가족지원 보호대상자, 소년소녀가장, 북한이탈주민",
+    "display_text": "차상위계층 중 본인부담경감대상자, 자활근로자, 장애인연금/장애(아동)수당 대상자, 만65세이상 차상위계층, 기초생활수급자, 한부모가족지원 보호대상자, 소년소녀가장, 북한이탈주민",
+    "mode": "RESTRICTED",
+    "structured_conditions": {
+      "operator": "OR",
+      "conditions": [
+        {
+          "criterion": "LOW_INCOME_MEDICAL_COPAY_REDUCTION_BENEFICIARY",
+          "document": "차상위 본인부담경감대상자 증명서",
+          "issuer": "국민건강보험공단"
+        },
+        {
+          "criterion": "LOW_INCOME_SELF_RELIANCE_WORKER",
+          "document": "차상위 자활근로자확인서",
+          "issuer": "동주민센터"
+        },
+        {
+          "criterion": "LOW_INCOME_DISABILITY_PENSION_OR_ALLOWANCE_BENEFICIARY",
+          "document": "차상위 장애연금·장애수당·장애아동수당 대상자확인서",
+          "issuer": "동주민센터"
+        },
+        {
+          "criterion": "LOW_INCOME_CLASS_AGE_65_PLUS",
+          "age_range": {
+            "min_age": 65,
+            "inclusive": true
+          },
+          "document": "차상위계층 확인서",
+          "issuer": "동주민센터"
+        },
+        {
+          "criterion": "BASIC_LIVELIHOOD_SECURITY_RECIPIENT",
+          "document": "기초생활수급자증명서",
+          "issuer": "동주민센터 또는 정부민원 인터넷 발급"
+        },
+        {
+          "criterion": "SINGLE_PARENT_FAMILY_SUPPORT_PROTECTED_PERSON",
+          "document": "한부모가족증명서",
+          "issuer": "동주민센터 또는 정부민원 인터넷 발급"
+        },
+        {
+          "criterion": "CHILD_HEADED_HOUSEHOLD",
+          "document": "소년소녀가장확인서",
+          "issuer": "동주민센터"
+        },
+        {
+          "criterion": "NORTH_KOREAN_DEFECTOR",
+          "document": "북한이탈주민등록확인서",
+          "issuer": "동주민센터 또는 정부민원 인터넷 발급"
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+        }
+      ]
+    },
+    "documentation": {
+      "required_for_subscription": true,
+      "document_validity": {
+        "duration_value": 1,
+        "duration_unit": "MONTH",
+        "anchor": "ISSUE_DATE"
+      },
+      "verification_channel": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+        }
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "options": [
+      12,
+      24
+    ],
+    "source_ref_ids": [
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+    ],
+    "source_expression": "12개월, 24개월",
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+      }
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "200000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "20만원 이내(1인 1계좌)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "월 정액 납입금액 20만원 이내; 1인 1계좌"
+      }
+    ],
+    "late_contribution_policy": {
+      "applies_to": "MONTHLY_SCHEDULED_CONTRIBUTION",
+      "if_contribution_after_agreed_date": {
+        "alternatives": [
+          "DEDUCT_DELAY_INTEREST_FROM_MATURITY_PAYMENT",
+          "DEFER_MATURITY_BY_AVERAGE_DELAY_DAYS"
+        ],
+        "delay_interest_formula": "(total_delay_days - total_advance_days) / 365 * (contract_rate + 2.00%p) * monthly_contribution_amount",
+        "average_delay_days_formula": "(total_delay_days - total_advance_days) / contract_month_count"
+      },
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT"
+        }
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000142-1-C39E1C573FA-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.10",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-2A77CC5A74980818B94541A57BAFC218-LISTING",
+          "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-LISTING"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+          }
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000142-1-C39E1C573FA-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.20",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+          }
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "ordinary_early_termination_eligible": false,
+        "special_early_termination_override": "SEE_TERMINATION_POLICY",
+        "source_ref_ids": [
+          "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+          "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.THE_HOPE_SHARING_ELIGIBILITY_CONFIRMED",
+          "type": "BOOLEAN",
+          "authority": "BANK_DOCUMENT_VERIFICATION",
+          "self_report_eligible": true,
+          "self_report_effect": "ELIGIBILITY_ESTIMATE_ONLY",
+          "bank_verification_required_for_subscription": true,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+            "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+            }
+          ]
+        },
+        {
+          "fact_key": "CONTRACT.TERM_MONTHS",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "BANK_CONTRACT_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+            "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "INST-KR-000142-1-C39E1C573FA-ELIGIBILITY-DOCUMENTS",
+          "kind": "DOCUMENT_VERIFICATION",
+          "document_validity": {
+            "duration_value": 1,
+            "duration_unit": "MONTH",
+            "anchor": "ISSUE_DATE"
+          },
+          "submission_channel": "BRANCH",
+          "source_ref_ids": [
+            "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000142-1-C39E1C573FA-PREF-01",
+          "title": "사회적취약계층 가입자 12개월 이상 계약 우대",
+          "condition": {
+            "operator": "AND",
+            "conditions": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.THE_HOPE_SHARING_ELIGIBILITY_CONFIRMED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ]
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONTRACT.TERM_MONTHS",
+                  "operator": "GTE",
+                  "expected_value": 12,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ]
+                }
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+              "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "3.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "ORDINARY_EARLY_TERMINATION"
+            ],
+            "special_early_termination": "SEE_TERMINATION_POLICY",
+            "source_ref_ids": [
+              "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+              "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+              }
+            ]
+          },
+          "display": {
+            "summary": "가입대상 증빙 후 12개월 이상 계약을 만기 유지하면 일반 정기적금 기본이율에 +3.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+            "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "ELIGIBILITY_AND_CONTRACT_TERM",
+          "source_clause_text": "12개월 이상 정기적금 기본이율 + 3.50%p 우대이율 적용(중도해지 시 우대이율은 적용 불가)"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-SECTION",
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY",
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-SECTION"
+    },
+    "maturity_rate_summary": [
+      {
+        "contract_term_months": 12,
+        "base_rate": "3.10",
+        "preferential_rate": "3.50",
+        "effective_rate": "6.60",
+        "unit": "PERCENT",
+        "source_ref_ids": [
+          "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE",
+          "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES",
+          "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+        ]
+      },
+      {
+        "contract_term_months": 24,
+        "base_rate": "3.20",
+        "preferential_rate": "3.50",
+        "effective_rate": "6.70",
+        "unit": "PERCENT",
+        "source_ref_ids": [
+          "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE",
+          "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES",
+          "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+        ]
+      }
+    ],
+    "official_max_rate": {
+      "value": "6.70",
+      "unit": "PERCENT",
+      "contract_term_months": 24,
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+      ]
+    },
+    "advertised_max_rate": {
+      "value": "6.6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-LISTING"
+      ],
+      "context": "NAVER_LISTING_12_MONTH_REPRESENTATIVE"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "2a77cc5a74980818b94541a57bafc218"
+    },
+    "source_ref_ids": [
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE",
+      "EVD-IS-2A77CC5A74980818B94541A57BAFC218-LISTING",
+      "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES",
+      "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES"
+      }
+    ]
+  },
+  "standard_conditions": [
+    {
+      "condition": "NO_INTEREST_ON_ADVANCE_INSTALLMENTS",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY"
+      ]
+    },
+    {
+      "condition": "LATE_INSTALLMENTS_MAY_REDUCE_MATURITY_PAYMENT_OR_DELAY_MATURITY",
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT"
+      ]
+    }
+  ],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO",
+    "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE",
+    "EVD-IS-2A77CC5A74980818B94541A57BAFC218-LISTING",
+    "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-ELIGIBILITY",
+    "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES",
+    "EVD-IS-OFFICIAL-THEK-REGULAR-SAVINGS-BASE-RATES",
+    "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION",
+    "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-LATE-PAYMENT",
+    "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-MATURITY-AFTER-RATE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T09:51:35+09:00",
+    "data_authority": "NAVER_PRIMARY_PLUS_ISSUER_OFFICIAL_ENRICHMENT",
+    "publication_gate": "TARGETED_PRODUCT_OFFICIAL_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "source_reason": "NAVER_DIRECT_RECORD_PLUS_THEK_OFFICIAL_PRODUCT_PAGES",
+    "source_record_id": "2a77cc5a74980818b94541a57bafc218",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-11",
+      "reviewed_at": "2026-08-31T09:51:35+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_PLUS_THEK_OFFICIAL_PRODUCT_AND_BASE_RATE_PAGE",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "THEK_OFFICIAL_PRODUCT_PAGE",
+        "THEK_OFFICIAL_REGULAR_SAVINGS_RATE_PAGE"
+      ],
+      "correction_count": 9,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED_OFFICIAL_ENRICHED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "termination_policy": {
+    "ordinary_early_termination": {
+      "preferential_rate_eligible": false,
+      "rate_basis": {
+        "elapsed_less_than_6_months": "GENERAL_REGULAR_SAVINGS_EARLY_TERMINATION_RATE",
+        "elapsed_6_months_or_more": "GENERAL_REGULAR_SAVINGS_BASE_RATE_POSTED_AT_SUBSCRIPTION"
+      },
+      "source_ref_ids": [
+        "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01",
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2A77CC5A74980818B94541A57BAFC218-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-RATES"
+        }
+      ]
+    },
+    "special_early_termination": {
+      "eligible_party": [
+        "ACCOUNT_HOLDER",
+        "ACCOUNT_HOLDER_SPOUSE"
+      ],
+      "qualifying_reasons": [
+        {
+          "reason": "HOUSING_PURCHASE_OR_LEASE",
+          "documents_any_of": [
+            "주택매매계약서",
+            "주택임대차계약서"
+          ]
+        },
+        {
+          "reason": "MARRIAGE",
+          "documents_any_of": [
+            "청첩장",
+            "예식장 계약서",
+            "혼인신고서",
+            "혼인관계증명서"
+          ]
+        },
+        {
+          "reason": "CHILDBIRTH",
+          "documents_any_of": [
+            "의사소견서",
+            "출생증명서"
+          ]
+        },
+        {
+          "reason": "HOSPITALIZATION",
+          "minimum_hospitalization_days": 7,
+          "documents_any_of": [
+            "입원확인서"
+          ]
+        },
+        {
+          "reason": "DEATH",
+          "documents_any_of": [
+            "사망진단서",
+            "사망자의 기본증명서"
+          ]
+        }
+      ],
+      "if_party_is_spouse": {
+        "additional_document": "가족관계증명서"
+      },
+      "submission_channel": "BRANCH",
+      "effect": {
+        "rate": "SUBSCRIPTION_AGREED_RATE"
+      },
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-SPECIAL-EARLY-TERMINATION"
+        }
+      ],
+      "qualifying_event_window": {
+        "start": "SUBSCRIPTION_DATE",
+        "end": "ORIGINAL_MATURITY_DATE",
+        "bounds": "INCLUSIVE"
+      }
+    },
+    "maturity_after_rate": {
+      "within_1_month_after_maturity": "LOWER_OF_ORIGINAL_BASE_RATE_AND_CURRENT_SAME_PRODUCT_SAME_TERM_NEW_BASE_RATE",
+      "after_1_month": "ORDINARY_DEPOSIT_RATE",
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-MATURITY-AFTER-RATE"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-THEK-HOPE-SHARING-MATURITY-AFTER-RATE"
+        }
+      ]
+    }
+  }
+}

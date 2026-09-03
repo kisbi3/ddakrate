@@ -1,0 +1,434 @@
+{
+  "product_code": "INST-KR-000204-1-C044E4A06FB",
+  "version": 8,
+  "institution_id": "INST-KR-000204",
+  "name": "도전 루틴 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-05-13",
+      "end_date": "2026-11-30",
+      "end_inclusive": true
+    },
+    "quantity_limit": {
+      "max_count": 10000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE"
+    },
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "당행 적금 첫거래 고객(실명의 개인 및 개인사업자, 1인 1계좌)\n※ 적금 첫거래 고객 : 가입시점 정상인 당행 적립식예금이 없는 고객",
+    "eligibility_text": "당행 적금 첫거래 고객(실명의 개인 및 개인사업자, 1인 1계좌)\n※ 적금 첫거래 고객 : 가입시점 정상인 당행 적립식예금이 없는 고객",
+    "display_text": "당행 적금 첫거래 고객(실명의 개인 및 개인사업자, 1인 1계좌)\n※ 적금 첫거래 고객 : 가입시점 정상인 당행 적립식예금이 없는 고객",
+    "source_ref_ids": [
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "DAY",
+    "min_value": 31,
+    "max_value": 100,
+    "source_expression": "31일 이상 100일 이내 (일단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "PER_DAY",
+        "max_count": 1
+      }
+    ],
+    "source_amount_text": "초회 불입금 1만원\n※ 초회 불입금을 입금하지 않고 신규한 경우에는 쏙뱅크 「도전 루틴 적금」 전용화면에서 연결계좌를 등록 후 납입이 가능합니다.\n- 납입방법 : 1일 1회에 한하여 연결된 전북은행 입출금계좌를 통한 납입만 가능\n※ 연결된 입출금계좌를 제외한 당행 및 타행계좌 또는 무통장입금을 통한 납입 불가\n※ 자동이체를 통한 입금 불가\n- 1회 납입한도 : 1일 1만원",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "INITIAL",
+        "role": "MENTION",
+        "context": "초회 불입금 1만원\n※ 초회 불입금을 입금하지 않고 신규한 경우에는 쏙뱅크 「도전 루틴 적금」 전용화면에서 연결계좌를"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_CONTRIBUTION",
+        "role": "MAXIMUM",
+        "context": "행계좌 또는 무통장입금을 통한 납입 불가\n※ 자동이체를 통한 입금 불가\n- 1회 납입한도 : 1일 1만원"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "초회 불입금 1만원",
+      "mentioned_values": [
+        "10000"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000204-1-C044E4A06FB-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "min_value": 31,
+          "max_value": 100,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "10.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.SUCCESSFUL_CONTRIBUTION_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "min_value": 0,
+          "max_value": 100,
+          "repeated_dimension": {
+            "axis": "CONTRACT_DAY",
+            "aggregation": "COUNT_SUCCESSFUL_EVENTS"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000204-1-C044E4A06FB-PREF-SUCCESS-CONTRIBUTION",
+          "title": "납입 성공 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.SUCCESSFUL_CONTRIBUTION_COUNT",
+              "operator": "GT",
+              "expected_value": 0,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "per_unit_value": "0.10",
+            "per_unit": "SUCCESSFUL_CONTRIBUTION",
+            "unit": "PERCENTAGE_POINT",
+            "max_units": 100,
+            "max_value": "10.00",
+            "source_ref_ids": [
+              "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "basis": "CONTRACT_RATE",
+            "source_ref_ids": [
+              "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "성공 납입 1회당 연 0.10%p, 최대 100회·10.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "아래 우대조건 충족 시 최고 연 10.0% 제공 (단, 우대이율은 만기해지시 적용)\n- 납입 성공 우대 : 본 적금 납입 시 1회당 연 0.10% 제공 (최대 연 10.0%)\n※ 납입한 횟수만큼 만기시 우대금리 적용\n※ 100일 중 66회 납입 후 만기시 우대금리 6.6%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000204-1-C044E4A06FB-REL-CUMULATIVE",
+          "members": [
+            "INST-KR-000204-1-C044E4A06FB-PREF-SUCCESS-CONTRIBUTION"
+          ],
+          "cap": {
+            "value": "10.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+            }
+          ],
+          "operator": "CUMULATIVE"
+        }
+      ],
+      "examples": [
+        {
+          "successful_contribution_count": 66,
+          "preferential_rate": "6.60",
+          "unit": "PERCENTAGE_POINT",
+          "non_normative": true
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01",
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-RATE",
+      "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "11",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "043badb3830795c0d316bda8b4b8d6f7"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO",
+    "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-RATE",
+    "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-LISTING",
+    "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "043badb3830795c0d316bda8b4b8d6f7",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "DAILY",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-043BADB3830795C0D316BDA8B4B8D6F7-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

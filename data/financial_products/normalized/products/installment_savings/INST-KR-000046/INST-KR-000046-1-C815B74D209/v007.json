@@ -1,0 +1,646 @@
+{
+  "product_code": "INST-KR-000046-1-C815B74D209",
+  "version": 7,
+  "institution_id": "INST-KR-000046",
+  "name": "세븐적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(가입계좌수 제한없음)\n• 이 적금은 실명 확인된 본인 명의의 당행 입출금이 자유로운 예금(이하 “근거계좌”라 함)을 통한 신규만 가능",
+    "eligibility_text": "실명의 개인(가입계좌수 제한없음)\n• 이 적금은 실명 확인된 본인 명의의 당행 입출금이 자유로운 예금(이하 “근거계좌”라 함)을 통한 신규만 가능",
+    "display_text": "실명의 개인(가입계좌수 제한없음)\n• 이 적금은 실명 확인된 본인 명의의 당행 입출금이 자유로운 예금(이하 “근거계좌”라 함)을 통한 신규만 가능",
+    "source_ref_ids": [
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 7,
+    "source_expression": "7개월",
+    "source_ref_ids": [
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+    ],
+    "representative_value": 7
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "increment_value": "1000",
+        "max_value": "300000"
+      },
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "max_value": "300000",
+        "increment_value": "1000"
+      }
+    ],
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "가입금액 : 매회 1천원 이상, 월 최대 30만원 이내(천원 단위)",
+      "min_value": "1000",
+      "max_value": "300000"
+    },
+    "source_amount_text": "0원\n추가입금액 : 매회 1천원 이상, 월 최대 30만원 이내(천원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "0원\n추가입금액 : 매회 1천원 이상, 월 최대 30만원 이내(천원 단위)"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "0원\n추가입금액 : 매회 1천원 이상, 월 최대 30만원 이내(천원 단위)"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "0원\n추가입금액 : 매회 1천원 이상, 월 최대 30만원 이내(천원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000046-1-C815B74D209-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 7
+        },
+        "source_ref_ids": [
+          "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000046_1_C815B74D209_PREF_04.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000046-1-C815B74D209-PREF-04-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "상품 가입 전 마케팅 활용[개인(신용)정보 수집ᆞ이용 동의] 상품서비스 안내수단 전체 동의한 경우(우대이자율결정일 : 가입일) : 0.2%"
+        },
+        {
+          "fact_key": "DONATION_OR_DECLARATION.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+          ],
+          "authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+          "self_report_eligible": true,
+          "source_recognition_text": "나만의 저축 목표 설정 시(우대이자율결정일 : 가입일) : 0.1%"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "모바일뱅킹에서 가입 시 비대면우대이자율(연0.05%p)이 추가 적용됩니다.\n단, 중도에 통장 발행 등 일반예금으로 전환하는 경우에는 전체 예금기간에 대해 비대면우대이자율(연0.05%p)이 적용되지 않습니다."
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000046-1-C815B74D209-PREF-04-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "이 예금 가입기간 중 당행 계좌에서 21회 이상 자동이체 입금된 경우(우대이자율결정일 : 만기일) : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 가입기간 중 당행 계좌에서 21회 이상 자동이체 입금된 경우(우대이자율결정일 : 만기일) : 0.2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000046-1-C815B74D209-PREF-02",
+          "title": "상품 가입 전 마케팅 활용[개인(신용)정보 수집ㆍ이용 동의] 상품서비스 안내수단 전체 동의한 경우(우대이자율결정일 : 가입일) : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "상품 가입 전 마케팅 활용[개인(신용)정보 수집ㆍ이용 동의] 상품서비스 안내수단 전체 동의한 경우(우대이자율결정일 : 가입일) : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "상품 가입 전 마케팅 활용[개인(신용)정보 수집ᆞ이용 동의] 상품서비스 안내수단 전체 동의한 경우(우대이자율결정일 : 가입일) : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C815B74D209-PREF-03",
+          "title": "나만의 저축 목표 설정 시(우대이자율결정일 : 가입일) : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DONATION_OR_DECLARATION.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+              }
+            ],
+            "fact_authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "나만의 저축 목표 설정 시(우대이자율결정일 : 가입일) : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+            }
+          ],
+          "semantic_domain": "DONATION_OR_DECLARATION",
+          "source_clause_text": "나만의 저축 목표 설정 시(우대이자율결정일 : 가입일) : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C815B74D209-PREF-04",
+          "title": "이 예금 가입기간 중 당행 계좌에서 21회 이상 자동이체 입금된 경우(우대이자율결정일 : 만기일) : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000046_1_C815B74D209_PREF_04.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 21,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입기간 중 당행 계좌에서 21회 이상 자동이체 입금된 경우(우대이자율결정일 : 만기일) : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "이 예금 가입기간 중 당행 계좌에서 21회 이상 자동이체 입금된 경우(우대이자율결정일 : 만기일) : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C815B74D209-PREF-05",
+          "title": "모바일뱅킹에서 가입 시 비대면우대이자율(연0.05%p)이 추가 적용됩니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "모바일뱅킹에서 가입 시 비대면우대이자율(연0.05%p)이 추가 적용됩니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "모바일뱅킹에서 가입 시 비대면우대이자율(연0.05%p)이 추가 적용됩니다.\n단, 중도에 통장 발행 등 일반예금으로 전환하는 경우에는 전체 예금기간에 대해 비대면우대이자율(연0.05%p)이 적용되지 않습니다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-01",
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02",
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03",
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04",
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05",
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-RATE",
+      "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.05",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "77fe182b0a8d6ff9ae36adfb1eb10cf7"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO",
+    "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-RATE",
+    "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "77fe182b0a8d6ff9ae36adfb1eb10cf7",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-77FE182B0A8D6FF9AE36ADFB1EB10CF7-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "product_code": "INST-KR-000219-1-C17C232E652",
+  "version": 8,
+  "institution_id": "INST-KR-000219",
+  "name": "SOL모임적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "모임장을 포함한 모임원이 2인 이상 100인 이하로 구성된 모임의 모임장으로 만 17세 이상 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n- 한 모임에는 한 개의 계좌만 연결 가능합니다.\n- SOL모임통장 또는 SOL모임적금이 연결되어 있는 모임에는 계좌를 추가로 연결할 수 없습니다.",
+    "eligibility_text": "모임장을 포함한 모임원이 2인 이상 100인 이하로 구성된 모임의 모임장으로 만 17세 이상 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n- 한 모임에는 한 개의 계좌만 연결 가능합니다.\n- SOL모임통장 또는 SOL모임적금이 연결되어 있는 모임에는 계좌를 추가로 연결할 수 없습니다.",
+    "display_text": "모임장을 포함한 모임원이 2인 이상 100인 이하로 구성된 모임의 모임장으로 만 17세 이상 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n- 한 모임에는 한 개의 계좌만 연결 가능합니다.\n- SOL모임통장 또는 SOL모임적금이 연결되어 있는 모임에는 계좌를 추가로 연결할 수 없습니다.",
+    "source_ref_ids": [
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 5
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 3,
+    "max_value": 12,
+    "source_expression": "3개월 이상 12개월 이내, 월단위",
+    "source_bounds": {
+      "min": {
+        "value": 3,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 12,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "1000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "1만원 이상 월 100만원 이내\n※ 입금 시 1인당 월 납입금액만 입금이 가능한 것은 아니며, 월 납입 한도 내 자유롭게 납입 가능합니다.\n※ 단, 월 납입 한도를 초과하여 입금을 할 수 없습니다.",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 월 100만원 이내\n※ 입금 시 1인당 월 납입금액만 입금이 가능한 것은 아니며, 월 납입"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 월 100만원 이내\n※ 입금 시 1인당 월 납입금액만 입금이 가능한 것은 아니며, 월 납입 한도 내 자유롭게 납"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-C17C232E652-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 3,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-2A57F7E3BEB933FC0D36711121328660-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-01",
+          "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02",
+          "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "GROUP_SUBSCRIPTION.AMOUNT.ACCOUNT_CONTRIBUTION_FULFILLME",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_OR_BRANCH_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "목표 금액* 90% 이상달성\n* 목표금액\n1 목표금액은 이 예금 만기까지 전체 모임원이 납입하는 총 납입원금을 합친 금액으로, 가입 시 설정 가능합니다.\n2 목표금액은 '이 예금 신규 시점 연결된 모임의 총 인원 수(모임장포함)’ x ‘1인당 월 납입 금액’ x ‘가입 개월’로 계산됩니다.\n3 1인당 월 납입 금액은 1만원 이상의 금액으로 설정되어야 하며, 모든 모임원이 동일한 금액으로 설정됩니다.\n4 전체 모임원의 월 납입금액의 합계가 이 예금의 월별 납입금액 이내가 되도록 모임원 별 월 납입금액을 설정할 수 있습니다.\n5 목표금액을 30만원 이상 설정하시는 경우에 우대이자율을 적용합니다.\n6 목표금액의 90% 계산 시 소수점 이하는 절사합니다.",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000219_1_C17C232E652-INST_KR_000219_1_C17C2-ACCOUNT_CONTRIBUTION_FULFILLME",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.ACCOUNT_CONTRIBUTION_FULFILLME",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "2인 이상이 함께 적금 납입"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000219_1_C17C232E652-INST_KR_000219_1_C17C2-ACCOUNT_CONTRIBUTION_FULFILLME",
+          "source_ref_ids": [
+            "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_GROUP_SUBSCRIPTION_RECORDED",
+          "authority": "BANK_OR_BRANCH_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "목표 금액* 90% 이상달성\n* 목표금액\n1 목표금액은 이 예금 만기까지 전체 모임원이 납입하는 총 납입원금을 합친 금액으로, 가입 시 설정 가능합니다.\n2 목표금액은 '이 예금 신규 시점 연결된 모임의 총 인원 수(모임장포함)’ x ‘1인당 월 납입 금액’ x ‘가입 개월’로 계산됩니다.\n3 1인당 월 납입 금액은 1만원 이상의 금액으로 설정되어야 하며, 모든 모임원이 동일한 금액으로 설정됩니다.\n4 전체 모임원의 월 납입금액의 합계가 이 예금의 월별 납입금액 이내가 되도록 모임원 별 월 납입금액을 설정할 수 있습니다.\n5 목표금액을 30만원 이상 설정하시는 경우에 우대이자율을 적용합니다.\n6 목표금액의 90% 계산 시 소수점 이하는 절사합니다.",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-C17C232E652-PREF-02",
+          "title": "목표 금액* 90% 이상달성",
+          "condition": {
+            "predicate": {
+              "fact_key": "GROUP_SUBSCRIPTION.AMOUNT.ACCOUNT_CONTRIBUTION_FULFILLME",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OR_BRANCH_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "목표 금액* 90% 이상달성"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+            }
+          ],
+          "semantic_domain": "GROUP_SUBSCRIPTION",
+          "source_clause_text": "목표 금액* 90% 이상달성\n* 목표금액\n1 목표금액은 이 예금 만기까지 전체 모임원이 납입하는 총 납입원금을 합친 금액으로, 가입 시 설정 가능합니다.\n2 목표금액은 '이 예금 신규 시점 연결된 모임의 총 인원 수(모임장포함)’ x ‘1인당 월 납입 금액’ x ‘가입 개월’로 계산됩니다.\n3 1인당 월 납입 금액은 1만원 이상의 금액으로 설정되어야 하며, 모든 모임원이 동일한 금액으로 설정됩니다.\n4 전체 모임원의 월 납입금액의 합계가 이 예금의 월별 납입금액 이내가 되도록 모임원 별 월 납입금액을 설정할 수 있습니다.\n5 목표금액을 30만원 이상 설정하시는 경우에 우대이자율을 적용합니다.\n6 목표금액의 90% 계산 시 소수점 이하는 절사합니다."
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C17C232E652-PREF-03",
+          "title": "2인 이상이 함께 적금 납입",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.ACCOUNT_CONTRIBUTION_FULFILLME",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "2인 이상이 함께 적금 납입"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "2인 이상이 함께 적금 납입"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-01",
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02",
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03",
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-RATE",
+      "EVD-IS-2A57F7E3BEB933FC0D36711121328660-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "2a57f7e3beb933fc0d36711121328660"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO",
+    "EVD-IS-2A57F7E3BEB933FC0D36711121328660-RATE",
+    "EVD-IS-2A57F7E3BEB933FC0D36711121328660-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "2a57f7e3beb933fc0d36711121328660",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-2A57F7E3BEB933FC0D36711121328660-RATE"
+      ]
+    }
+  ]
+}

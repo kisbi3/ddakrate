@@ -1,0 +1,1401 @@
+{
+  "product_code": "INST-KR-000120-1-CE2291C5DAA",
+  "version": 7,
+  "institution_id": "INST-KR-000120",
+  "name": "챌린지적금 with 현대자동차",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-04-10",
+      "end_date": "2026-09-30",
+      "end_inclusive": true
+    },
+    "quantity_limit": {
+      "max_count": 5000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE"
+    },
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "500000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1만원 이상 50만원 이하 (원단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 50만원 이하 (원단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 50만원 이하 (원단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-CE2291C5DAA-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "7.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+          "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT_EXCLUDING_MATURITY_MONTH",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_RATIO",
+          "type": "DECIMAL",
+          "unit": "RATIO",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.CARD_CUMULATIVE_SPEND_KRW",
+          "type": "MONEY",
+          "unit": "KRW",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.INCLUSIVE_FINANCE_VULNERABLE_STATUS",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION",
+          "type": "INTEGER",
+          "unit": "YEAR",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "HYUNDAI.ELIGIBLE_VEHICLE_CONTRACT",
+          "type": "BOOLEAN",
+          "authority": "DOCUMENT_VERIFIED",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "HYUNDAI.CONTRACT_POWERTRAIN",
+          "type": "ENUM",
+          "allowed_values": [
+            "BEV",
+            "HYDROGEN_FCEV",
+            "HYBRID",
+            "OTHER",
+            "UNKNOWN"
+          ],
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "detail_id": "INST-KR-000120-1-CE2291C5DAA-DOC-INCLUSIVE",
+          "applies_to": [
+            "INST-KR-000120-1-CE2291C5DAA-INCL-VULN"
+          ],
+          "requirement": "가입기간 중 영업점에 기초생활수급자 증명서 또는 차상위계층 확인서 제출",
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            }
+          ]
+        },
+        {
+          "detail_id": "INST-KR-000120-1-CE2291C5DAA-DOC-HYUNDAI",
+          "applies_to": [
+            "INST-KR-000120-1-CE2291C5DAA-HY-CONTRACT",
+            "INST-KR-000120-1-CE2291C5DAA-HY-EV"
+          ],
+          "requirement": "현대자동차 지점/대리점 발급 계약사실확인서를 모바일뱅킹으로 만기일 기준 7영업일 전까지 제출",
+          "deadline": {
+            "relative_to": "MATURITY_DATE",
+            "business_days_before": 7
+          },
+          "registration_path": "모바일뱅킹>금융자산>예금>입출금내역>차량계약서등록",
+          "contract_date_min": "2026-04-01",
+          "note": "승인 처리에는 최대 7영업일 소요될 수 있음(조건 기한과 분리)",
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-SALARY",
+          "title": "급여이체",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT_EXCLUDING_MATURITY_MONTH",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "급여이체 우대이율\n- 급여입금 실적이 가입기간 중 3개월 이상인 경우 (만기월 제외)\n※ 예) 만기일이 2026.10.31인 경우, 만기일이 속한 만기월(10월) 급여 입금 실적은 인정 불가\n※ 만기월 직전 월까지 급여입금 실적 인정 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-AUTO",
+          "title": "자동이체",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_RATIO",
+              "operator": "GTE",
+              "expected_value": "0.6666666667",
+              "unit": "RATIO",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+                }
+              ]
+            },
+            "event_filter": "BNK_INTERNAL_AUTO_TRANSFER_CONTRIBUTION",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "자동이체 우대이율\n- 적금 전체 불입 회차중 2/3 이상 자동이체를 통해 불입한 경우\n- 부산은행 간 자동이체만 인정 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-CARD",
+          "title": "신용(체크)카드",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.CARD_CUMULATIVE_SPEND_KRW",
+              "operator": "GTE",
+              "expected_value": 500000,
+              "unit": "KRW",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신용(체크)카드 우대이율\n- 가입기간 중 신용(체크)카드 누적 이용금액이 50만원 이상 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-INCL-VULN",
+          "title": "포용금융-취약계층",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.INCLUSIVE_FINANCE_VULNERABLE_STATUS",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                }
+              ]
+            },
+            "fulfillment_detail_id": "INST-KR-000120-1-CE2291C5DAA-DOC-INCLUSIVE",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "포용금융 우대이율 : 최대 2.00%p\n- 아래 2개 항목 중 높은 이율 적용 (중복 적용 불가)\n1 기초생활수급자 또는 차상위 계층 : 2.00%p\n※ 가입기간 중(가입일~만기일)까지아래의 증빙서류를 영업점에 제출한 경우\n※ 제출서류 : 국민기초생활수급자 증명서 또는 차상위계층 확인서\n2 청년층(만19세~만39세) : 1.00%p\n※ 가입 시점 만 19세~39세에 해당하는 경우 적용"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-INCL-YOUTH",
+          "title": "포용금융-청년층",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION",
+                  "operator": "GTE",
+                  "expected_value": 19,
+                  "unit": "YEAR",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION",
+                  "operator": "LTE",
+                  "expected_value": 39,
+                  "unit": "YEAR",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "포용금융 우대이율 : 최대 2.00%p\n- 아래 2개 항목 중 높은 이율 적용 (중복 적용 불가)\n1 기초생활수급자 또는 차상위 계층 : 2.00%p\n※ 가입기간 중(가입일~만기일)까지아래의 증빙서류를 영업점에 제출한 경우\n※ 제출서류 : 국민기초생활수급자 증명서 또는 차상위계층 확인서\n2 청년층(만19세~만39세) : 1.00%p\n※ 가입 시점 만 19세~39세에 해당하는 경우 적용"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-HY-CONTRACT",
+          "title": "현대자동차 차량 계약",
+          "condition": {
+            "predicate": {
+              "fact_key": "HYUNDAI.ELIGIBLE_VEHICLE_CONTRACT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                }
+              ]
+            },
+            "fulfillment_detail_id": "INST-KR-000120-1-CE2291C5DAA-DOC-HYUNDAI",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이벤트 우대이율 (현대자동차 차량 계약 우대이율) : 최대 3.00%p\n- 아래 2개 항목 모두 충족 시 중복 적용 가능\n1 현대자동차 차량 계약 우대이율 : 2.50%p\n2 현대자동차 전기차 계약 우대이율 : 0.50%p\n※ 차량 계약의 범위 : 차량의 소유권이 본인에게 귀속되는 계약에 한하지 않고, 차량 이용을 목적으로 한 본인 명의 계약 일체를 대상으로 함.\n※ 「환경친화적자동차의 개발 및 보급 촉진에 관한 법률」 제2조에 따른 “전기자동차” 및 “수소전기자동차”를 대상으로 하며, “하이브리드자동차”는 포함되지 않음.\n※ 본적금 판매와 함께 진행되는 [부산은행x현대자동차 이벤트] 내 계약금 할인 혜택 대상 차종 계약 시 적용\n※ 가입기간 중 만기일 기준 7영업일 전까지 \"모바일뱅킹\"을 통해 현대자동차 지점 또는 대리점에서 발급 받은 \"계약사실확인서\"(2026.04.01 이후 계약건)를 제출한 경우\n※ 계약서 사진 촬영 제출(인증)을 통해 우대이율 지급 (모바일뱅킹 제출)\n※ 서류제출경로 : 모바일뱅킹>금융자산>예금>입출금내역>차량계약서등록\n※ 서류 제출시, 우대이율 승인 처리까지 최대 7영업일 소요"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-CE2291C5DAA-HY-EV",
+          "title": "현대자동차 전기·수소전기차 추가",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "HYUNDAI.ELIGIBLE_VEHICLE_CONTRACT",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "HYUNDAI.CONTRACT_POWERTRAIN",
+                  "operator": "IN",
+                  "expected_value": [
+                    "BEV",
+                    "HYDROGEN_FCEV"
+                  ],
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+                  }
+                ]
+              }
+            ],
+            "depends_on_rule_id": "INST-KR-000120-1-CE2291C5DAA-HY-CONTRACT",
+            "fulfillment_detail_id": "INST-KR-000120-1-CE2291C5DAA-DOC-HYUNDAI",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이벤트 우대이율 (현대자동차 차량 계약 우대이율) : 최대 3.00%p\n- 아래 2개 항목 모두 충족 시 중복 적용 가능\n1 현대자동차 차량 계약 우대이율 : 2.50%p\n2 현대자동차 전기차 계약 우대이율 : 0.50%p\n※ 차량 계약의 범위 : 차량의 소유권이 본인에게 귀속되는 계약에 한하지 않고, 차량 이용을 목적으로 한 본인 명의 계약 일체를 대상으로 함.\n※ 「환경친화적자동차의 개발 및 보급 촉진에 관한 법률」 제2조에 따른 “전기자동차” 및 “수소전기자동차”를 대상으로 하며, “하이브리드자동차”는 포함되지 않음.\n※ 본적금 판매와 함께 진행되는 [부산은행x현대자동차 이벤트] 내 계약금 할인 혜택 대상 차종 계약 시 적용\n※ 가입기간 중 만기일 기준 7영업일 전까지 \"모바일뱅킹\"을 통해 현대자동차 지점 또는 대리점에서 발급 받은 \"계약사실확인서\"(2026.04.01 이후 계약건)를 제출한 경우\n※ 계약서 사진 촬영 제출(인증)을 통해 우대이율 지급 (모바일뱅킹 제출)\n※ 서류제출경로 : 모바일뱅킹>금융자산>예금>입출금내역>차량계약서등록\n※ 서류 제출시, 우대이율 승인 처리까지 최대 7영업일 소요"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000120-1-CE2291C5DAA-REL-INCLUSIVE",
+          "members": [
+            "INST-KR-000120-1-CE2291C5DAA-INCL-VULN",
+            "INST-KR-000120-1-CE2291C5DAA-INCL-YOUTH"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ],
+          "operator": "MAX_OF"
+        },
+        {
+          "relation_id": "INST-KR-000120-1-CE2291C5DAA-REL-HYUNDAI",
+          "members": [
+            "INST-KR-000120-1-CE2291C5DAA-HY-CONTRACT",
+            "INST-KR-000120-1-CE2291C5DAA-HY-EV"
+          ],
+          "cap": {
+            "value": "3.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "dependencies": [
+            {
+              "child_rule_id": "INST-KR-000120-1-CE2291C5DAA-HY-EV",
+              "requires_rule_id": "INST-KR-000120-1-CE2291C5DAA-HY-CONTRACT"
+            }
+          ],
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ],
+          "operator": "SUM_WITH_CAP"
+        },
+        {
+          "relation_id": "INST-KR-000120-1-CE2291C5DAA-REL-TOTAL",
+          "members": [
+            "INST-KR-000120-1-CE2291C5DAA-SALARY",
+            "INST-KR-000120-1-CE2291C5DAA-AUTO",
+            "INST-KR-000120-1-CE2291C5DAA-CARD",
+            "INST-KR-000120-1-CE2291C5DAA-REL-INCLUSIVE",
+            "INST-KR-000120-1-CE2291C5DAA-REL-HYUNDAI"
+          ],
+          "cap": {
+            "value": "7.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+              "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+            "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+            }
+          ],
+          "operator": "SUM_WITH_CAP"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06",
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-RATE",
+      "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "9",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "eff0b68247efcb1971a19c8a823e76f5"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO",
+    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-RATE",
+    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-LISTING",
+    "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "eff0b68247efcb1971a19c8a823e76f5",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 0,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-EFF0B68247EFCB1971A19C8A823E76F5-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

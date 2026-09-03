@@ -1,0 +1,342 @@
+{
+  "product_code": "INST-KR-000018-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000018",
+  "name": "한투 ACE 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "(영업점)실명의 개인\n(비대면)만19세 이상, 실명의 내국인(개인)\n※ 1인1계좌 제한",
+    "eligibility_text": "(영업점)실명의 개인\n(비대면)만19세 이상, 실명의 내국인(개인)\n※ 1인1계좌 제한",
+    "display_text": "(영업점)실명의 개인\n(비대면)만19세 이상, 실명의 내국인(개인)\n※ 1인1계좌 제한",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ],
+    "real_name_required": true,
+    "nationality_scope": "KOREAN_ONLY",
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "channel_specific_eligibility": [
+      {
+        "channel": "BRANCH",
+        "source_text": "실명의 개인",
+        "allowed_customer_types": [
+          "INDIVIDUAL"
+        ]
+      },
+      {
+        "channel": "NON_BRANCH_DIGITAL",
+        "source_text": "만19세 이상, 실명의 내국인(개인)",
+        "age_range": {
+          "age_basis": "FULL_AGE",
+          "reference_date": "SUBSCRIPTION_DATE",
+          "min_age": 19
+        },
+        "allowed_customer_types": [
+          "INDIVIDUAL"
+        ],
+        "nationality_scope": "KOREAN_ONLY"
+      }
+    ],
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000018-3-0001-REL-8005CE9B65E2",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "- 최근(20영업일 이내) 타금융회사(저축은행 포함) 입출금예금을 개설한 경우 서비스 가입이 제한됩니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.8005CE9B65E2.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000018-3-0001"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000018-3-0001-REL-8EB14924F439",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "- 예금잔액증명서 발급 기준일 잔액 변동이 불가합니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.8EB14924F439.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000018-3-0001"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000018-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "3.000",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000018-3-0001"
+        ],
+        "source_clause": "1억원 이하 분 | 3.000%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "1억원 이하 분",
+              "max_value": "100000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000018-3-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.200",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000018-3-0001"
+        ],
+        "source_clause": "1억원 초과 분 | 0.200%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "1억원 초과 분",
+              "min_value": "100000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "rate_application": "BALANCE_TIER_RATE",
+      "period_start": "DEPOSIT_DATE_OR_DAY_AFTER_LAST_INTEREST_CREDIT",
+      "period_end": "SETTLEMENT_DATE_OR_DAY_BEFORE_ON_REQUEST_CREDIT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    },
+    "interest_crediting": {
+      "raw_text": "· 매분기 마지막월 셋째주 토요일을 결산 기준일로 하여 다음날 원금에 가산\n· 고객이 비대면 채널을 통해 이자지급을 요청할 경우 수시로 이자지급 가능 (단, 수시이자지급은 '비대면 채널'에서만 신청 가능함)\n· 이자계산기간은 예금일(또는 최종 이자지급일)로부터 결산기준일(또는 이자지급요청일 전일)까지를 기간으로 하여 매일의 잔액을 기준으로 영업점 및 인터넷 홈페이지에 게시한 예치금액별 이율을 적용하여 계산",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000018-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000018-3-0001"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000018-3-0001-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "· 매분기 마지막월 셋째주 토요일을 결산 기준일로 하여 다음날 원금에 가산\n· 고객이 비대면 채널을 통해 이자지급을 요청할 경우 수시로 이자지급 가능 (단, 수시이자지급은 '비대면 채널'에서만 신청 가능함)\n· 이자계산기간은 예금일(또는 최종 이자지급일)로부터 결산기준일(또는 이자지급요청일 전일)까지를 기간으로 하여 매일의 잔액을 기준으로 영업점 및 인터넷 홈페이지에 게시한 예치금액별 이율을 적용하여 계산",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000018-3-0001"
+          ]
+        }
+      ]
+    },
+    "payment_timing": "MULTI_EVENT",
+    "balance_calculation_methods": [
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL_TRANCHE",
+    "advertised_max_rate": {
+      "value": "3.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000018-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000018-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000018-3-0001",
+    "source_record_id": "4afc714207d88bdbe9399a51306fb3ae",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "resolved_audit_findings": [
+      "CHANNEL_SPECIFIC_AGE_CONFLATED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED"
+    ],
+    "review_sequence": 5,
+    "reviewed_source_record_id": "4afc714207d88bdbe9399a51306fb3ae",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000018-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

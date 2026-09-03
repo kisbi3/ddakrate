@@ -1,0 +1,406 @@
+{
+  "product_code": "INST-KR-000120-1-0001",
+  "version": 7,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK지역사랑자유적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED"
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_expression": "6개월 ~ 60개월",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "contribution_limit_alternatives": [
+      {
+        "option_id": "MONTHLY_LIMIT",
+        "amount_rule": {
+          "scope": "PER_MONTH",
+          "currency": "KRW",
+          "max_value": "5000000"
+        }
+      },
+      {
+        "option_id": "THREE_MONTH_LIMIT",
+        "amount_rule": {
+          "scope": "PER_3_MONTHS",
+          "currency": "KRW",
+          "max_value": "15000000"
+        }
+      }
+    ],
+    "limit_alternative_relation": "SOURCE_OR",
+    "limit_alternative_selection_basis": "SOURCE_NOT_EXPLICIT",
+    "source_amount_text": "매회 1만원이상, 매월 500만원 또는 3개월간 1500만원 범위내",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_QUARTER",
+        "role": "MINIMUM",
+        "context": "매회 1만원이상, 매월 500만원 또는 3개월간 1500만원 범위내"
+      },
+      {
+        "value": "5000000",
+        "currency": "KRW",
+        "source_expression": "500만원",
+        "scope": "PER_QUARTER",
+        "role": "MINIMUM",
+        "context": "매회 1만원이상, 매월 500만원 또는 3개월간 1500만원 범위내"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1500만원",
+        "scope": "PER_QUARTER",
+        "role": "MINIMUM",
+        "context": "매회 1만원이상, 매월 500만원 또는 3개월간 1500만원 범위내"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-0001-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-0001-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 3,
+          "max_value": 5,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000120_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "인터넷 신규시 추가 우대이율 제공\n-1년 미만 : 0.20%p\n-1년 이상 : 0.10%p"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000120-1-0001-PREF-01",
+          "title": "인터넷 신규시 추가 우대이율 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000120_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "candidate_values": [
+              "0.20",
+              "0.10"
+            ],
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "인터넷 신규시 추가 우대이율 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "인터넷 신규시 추가 우대이율 제공\n-1년 미만 : 0.20%p\n-1년 이상 : 0.10%p"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01",
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE",
+      "EVD-IS-13EC8B0003A58049A29A5B820A79565F-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "13ec8b0003a58049a29a5b820a79565f"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO",
+    "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE",
+    "EVD-IS-13EC8B0003A58049A29A5B820A79565F-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "13ec8b0003a58049a29a5b820a79565f",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-13EC8B0003A58049A29A5B820A79565F-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

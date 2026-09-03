@@ -1,0 +1,458 @@
+{
+  "product_code": "INST-KR-000219-3-C172BADF58B",
+  "version": 3,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 SOL메이트 연금 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 100000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "10만좌"
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-3-C172BADF58B-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+        ],
+        "source_clause": "기본금리",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.PUBLIC_PENSION_RECEIVED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ],
+          "qualifying_pensions": [
+            "NATIONAL",
+            "PUBLIC_SERVANT",
+            "PRIVATE_SCHOOL",
+            "MILITARY",
+            "VETERANS"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.SHINHAN_PRIVATE_PENSION_MONTHLY_AMOUNT",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.PUBLIC_PENSION_RECEIVED_IN_SECOND_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.PUBLIC_PENSION_RECEIVED_WITHIN_SIX_MONTHS_OF_OPENING",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-3-C172BADF58B-PREF-01",
+          "title": "공적연금 또는 신한 사적연금",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.PUBLIC_PENSION_RECEIVED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SHINHAN_PRIVATE_PENSION_MONTHLY_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 200000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "1000000",
+                "max_inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000219-3-C172BADF58B-PREF-02",
+          "title": "공적연금 웰컴",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SHINHAN.PUBLIC_PENSION_RECEIVED_IN_SECOND_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.PUBLIC_PENSION_RECEIVED_WITHIN_SIX_MONTHS_OF_OPENING",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "1000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "RELATIVE_DURATION_FROM_QUALIFYING_EVENT",
+              "trigger": "FIRST_QUALIFYING_PUBLIC_PENSION_DEPOSIT_WITHIN_DEADLINE",
+              "duration": {
+                "value": 1,
+                "unit": "YEAR"
+              }
+            },
+            "qualification_deadline": {
+              "start": "ACCOUNT_OPEN_DATE",
+              "end": {
+                "kind": "END_OF_CALENDAR_MONTH_CONTAINING_OFFSET_DATE",
+                "offset": {
+                  "value": 6,
+                  "unit": "MONTH"
+                }
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "2.9",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "예금의 이자는 매월 셋째주 마지막 영업일에 계산하여 그 익일(원가일)에 원금에 더함\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000219-3-C172BADF58B-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000219-3-C172BADF58B-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "3.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000219-3-C172BADF58B",
+    "source_record_id": "b81d71bbcadddabb908bbcf24b6286b1",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 80,
+    "reviewed_source_record_id": "b81d71bbcadddabb908bbcf24b6286b1",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "EFFECTIVE_WINDOW_NOT_COMPILED",
+      "EXPLICIT_REWARD_LEFT_NON_EXECUTABLE_SECOND_PASS",
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "2.4%p/0.5%p 실행화 및 100만원 scope 복원",
+      "공적·사적 연금 +2.4%p 실행 구조 확인",
+      "공적연금 첫 입금 기한과 최초 입금 후 최대 1년 우대기간을 분리"
+    ],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C172BADF58B"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

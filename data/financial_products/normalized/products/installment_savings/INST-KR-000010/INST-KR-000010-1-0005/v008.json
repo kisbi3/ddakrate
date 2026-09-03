@@ -1,0 +1,804 @@
+{
+  "product_code": "INST-KR-000010-1-0005",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "BNK 위더스WithUs 자유적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인 1좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인 1좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인 1좌)",
+    "source_ref_ids": [
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 36,
+    "source_expression": "1개월 이상 ~ 3년 이내 (월 단위)",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 3,
+        "unit": "YEAR"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "1000000",
+        "increment_value": "1000"
+      },
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "max_value": "1000000",
+        "increment_value": "1000"
+      }
+    ],
+    "source_amount_text": "▪ 매월 최소 1만원 이상 ~ 최고 100만원 이하 (천원 단위)\n▪ 월별 저축한도 100만원 이내 자유적립",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 매월 최소 1만원 이상 ~ 최고 100만원 이하 (천원 단위)\n▪ 월별 저축한도 100만원 이내 자유적립"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 매월 최소 1만원 이상 ~ 최고 100만원 이하 (천원 단위)\n▪ 월별 저축한도 100만원 이내 자유적립"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 매월 최소 1만원 이상 ~ 최고 100만원 이하 (천원 단위)\n▪ 월별 저축한도 100만원 이내 자유적립"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-0005-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0005-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0005-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0005-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0005-BASE-05",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-01",
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02",
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03",
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000010_1_0005_PREF_02.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "ESG_ACTIVITY.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1_0005",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "(중복제공 불가) ESG 우대금리\n가. 우대금리: 1.00%\n나. 제공조건: 전입,봉사활동,기부,헌혈*, 한국전력 에너지캐시백 이벤트 신청**, 탄소중립포인트제 가입***\n* 가입일 기준 직전 6개월부터 만기일 전 일까지 전입,봉사,기부,헌혈, 한국전력 에너지캐시백 이벤트를 실시(및 참여) 하고 상품 가입일로 부터 만기일 전 일까지 경남은행 영업점 방문하여 인증 서류 제출 시 제공.\n전입은 경남, 울산, 부산, 서울, 경기, 경북, 대구로 전입 사실이 확인 되어야 하며 증빙서류(초본 등) 제출은 필수. 봉사, 기부, 헌혈은 대상, 금액, 시간 등의 최소 기준은 없음\n** 가입일 기준 직전 6개월부터 만기일 전일까지 한국전력에서 시행하는 에너지캐시백 이벤트 신청(https://en-ter.co.kr) 하고 상품 가입일부터 만기일 전 일까지 경남은행 영업점 방문하여 이벤트 신청 사실을 인증\n※ 에너지 캐시백: 가정의 에너지 소비절약 의식을 높이고 전기요금 부담을 완하하기 위해 2022년부터 한국전력에서 시행하고 있는 사업으로 전력 사용량 절감이 확인 될 시 현금 캐시백 제공(☎한국전력고객센터:123)\n*** 탄소중립포인트제란 온실가스 감축을 위해 에너지를 절약하거나 친환경 소비를 실천하면 포인트를 적립해주는 제도로 확인 서류는 탄소 중립포인트 가입 확인서(에너지ᆞ자동차ᆞ녹색생활 중 1개 이상 가입)이며 홈페이지(www.cpoint.or.kr), 모바일(탄소중립포인트 모바일 앱 카본페이) 및 구청 환경과에서 발급 가능합니다."
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규 고객\n가. 우대금리 : 1.00%\n나. 제공조건 : 가입일 기준 직전 1년간 경남은행 예ᆞ적금(주택청약 포함) 미 보유 고객"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "마케팅 동의 고객\n가. 우대금리 : 0.50%\n나. 제공조건 : 가입일 이전 경남은행 마케팅 동의가 되어 있는 경우"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000010_1_0005-INST_KR_000010_1_0005_-SOURCE_CLAUSE_INST_KR_000010_1",
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "PROMOTION_COUPON_ISSUED_OR_APPLIED",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "(중복제공 불가) ESG 우대금리\n가. 우대금리: 1.00%\n나. 제공조건: 전입,봉사활동,기부,헌혈*, 한국전력 에너지캐시백 이벤트 신청**, 탄소중립포인트제 가입***\n* 가입일 기준 직전 6개월부터 만기일 전 일까지 전입,봉사,기부,헌혈, 한국전력 에너지캐시백 이벤트를 실시(및 참여) 하고 상품 가입일로 부터 만기일 전 일까지 경남은행 영업점 방문하여 인증 서류 제출 시 제공.\n전입은 경남, 울산, 부산, 서울, 경기, 경북, 대구로 전입 사실이 확인 되어야 하며 증빙서류(초본 등) 제출은 필수. 봉사, 기부, 헌혈은 대상, 금액, 시간 등의 최소 기준은 없음\n** 가입일 기준 직전 6개월부터 만기일 전일까지 한국전력에서 시행하는 에너지캐시백 이벤트 신청(https://en-ter.co.kr) 하고 상품 가입일부터 만기일 전 일까지 경남은행 영업점 방문하여 이벤트 신청 사실을 인증\n※ 에너지 캐시백: 가정의 에너지 소비절약 의식을 높이고 전기요금 부담을 완하하기 위해 2022년부터 한국전력에서 시행하고 있는 사업으로 전력 사용량 절감이 확인 될 시 현금 캐시백 제공(☎한국전력고객센터:123)\n*** 탄소중립포인트제란 온실가스 감축을 위해 에너지를 절약하거나 친환경 소비를 실천하면 포인트를 적립해주는 제도로 확인 서류는 탄소 중립포인트 가입 확인서(에너지ᆞ자동차ᆞ녹색생활 중 1개 이상 가입)이며 홈페이지(www.cpoint.or.kr), 모바일(탄소중립포인트 모바일 앱 카본페이) 및 구청 환경과에서 발급 가능합니다.",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000010-1-0005-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000010-1-0005-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "COMPLETE_APPLICATION",
+            "COMPLETE_VERIFICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "(중복제공 불가) ESG 우대금리\n가. 우대금리: 1.00%\n나. 제공조건: 전입,봉사활동,기부,헌혈*, 한국전력 에너지캐시백 이벤트 신청**, 탄소중립포인트제 가입***\n* 가입일 기준 직전 6개월부터 만기일 전 일까지 전입,봉사,기부,헌혈, 한국전력 에너지캐시백 이벤트를 실시(및 참여) 하고 상품 가입일로 부터 만기일 전 일까지 경남은행 영업점 방문하여 인증 서류 제출 시 제공.\n전입은 경남, 울산, 부산, 서울, 경기, 경북, 대구로 전입 사실이 확인 되어야 하며 증빙서류(초본 등) 제출은 필수. 봉사, 기부, 헌혈은 대상, 금액, 시간 등의 최소 기준은 없음\n** 가입일 기준 직전 6개월부터 만기일 전일까지 한국전력에서 시행하는 에너지캐시백 이벤트 신청(https://en-ter.co.kr) 하고 상품 가입일부터 만기일 전 일까지 경남은행 영업점 방문하여 이벤트 신청 사실을 인증\n※ 에너지 캐시백: 가정의 에너지 소비절약 의식을 높이고 전기요금 부담을 완하하기 위해 2022년부터 한국전력에서 시행하고 있는 사업으로 전력 사용량 절감이 확인 될 시 현금 캐시백 제공(☎한국전력고객센터:123)\n*** 탄소중립포인트제란 온실가스 감축을 위해 에너지를 절약하거나 친환경 소비를 실천하면 포인트를 적립해주는 제도로 확인 서류는 탄소 중립포인트 가입 확인서(에너지ㆍ자동차ㆍ녹색생활 중 1개 이상 가입)이며 홈페이지(www.cpoint.or.kr), 모바일(탄소중립포인트 모바일 앱 카본페이) 및 구청 환경과에서 발급 가능합니다.",
+          "accepted_documents": [
+            "가입 확인서",
+            "탄소 중립포인트 가입 확인서",
+            "인증 서류",
+            "증빙서류"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE",
+          "submission_channels": [
+            "BRANCH"
+          ],
+          "submission_deadline_source_expressions": [
+            "* 가입일 기준 직전 6개월부터 만기일 전 일까지 전입,봉사,기부,헌혈, 한국전력 에너지캐시백 이벤트를 실시(및 참여) 하고 상품 가입일로",
+            "부터 만기일 전 일까지 경남은행 영업점 방문하여 인증 서류 제출 시 제공",
+            "** 가입일 기준 직전 6개월부터 만기일 전일까지 한국전력에서 시행하는 에너지캐시백 이벤트 신청(https://en-ter",
+            "kr) 하고 상품 가입일부터 만기일 전 일까지 경남은행 영업점 방문하여 이벤트 신청 사실을 인증"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "가입일 기준 직전 6개월부터 만기일 전 일까지",
+              "가입일로 부터 만기일 전 일까지",
+              "가입일 기준 직전 6개월부터 만기일 전일까지",
+              "가입일부터 만기일 전 일까지",
+              "만기일 전 일까지",
+              "만기일 전일까지"
+            ]
+          },
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000010_1_0005_PREF_02.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-0005-PREF-02",
+          "title": "(중복제공 불가) ESG 우대금리",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ESG_ACTIVITY.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1_0005",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_semantics": "SOURCE_CLAUSE_GATE",
+                  "source_ref_ids": [
+                    "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000010_1_0005_PREF_02.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "(중복제공 불가) ESG 우대금리"
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "(중복제공 불가) ESG 우대금리\n가. 우대금리: 1.00%\n나. 제공조건: 전입,봉사활동,기부,헌혈*, 한국전력 에너지캐시백 이벤트 신청**, 탄소중립포인트제 가입***\n* 가입일 기준 직전 6개월부터 만기일 전 일까지 전입,봉사,기부,헌혈, 한국전력 에너지캐시백 이벤트를 실시(및 참여) 하고 상품 가입일로 부터 만기일 전 일까지 경남은행 영업점 방문하여 인증 서류 제출 시 제공.\n전입은 경남, 울산, 부산, 서울, 경기, 경북, 대구로 전입 사실이 확인 되어야 하며 증빙서류(초본 등) 제출은 필수. 봉사, 기부, 헌혈은 대상, 금액, 시간 등의 최소 기준은 없음\n** 가입일 기준 직전 6개월부터 만기일 전일까지 한국전력에서 시행하는 에너지캐시백 이벤트 신청(https://en-ter.co.kr) 하고 상품 가입일부터 만기일 전 일까지 경남은행 영업점 방문하여 이벤트 신청 사실을 인증\n※ 에너지 캐시백: 가정의 에너지 소비절약 의식을 높이고 전기요금 부담을 완하하기 위해 2022년부터 한국전력에서 시행하고 있는 사업으로 전력 사용량 절감이 확인 될 시 현금 캐시백 제공(☎한국전력고객센터:123)\n*** 탄소중립포인트제란 온실가스 감축을 위해 에너지를 절약하거나 친환경 소비를 실천하면 포인트를 적립해주는 제도로 확인 서류는 탄소 중립포인트 가입 확인서(에너지ᆞ자동차ᆞ녹색생활 중 1개 이상 가입)이며 홈페이지(www.cpoint.or.kr), 모바일(탄소중립포인트 모바일 앱 카본페이) 및 구청 환경과에서 발급 가능합니다."
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0005-PREF-03",
+          "title": "신규 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "신규 고객\n가. 우대금리 : 1.00%\n나. 제공조건 : 가입일 기준 직전 1년간 경남은행 예ᆞ적금(주택청약 포함) 미 보유 고객"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0005-PREF-04",
+          "title": "마케팅 동의 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "마케팅 동의 고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "마케팅 동의 고객\n가. 우대금리 : 0.50%\n나. 제공조건 : 가입일 이전 경남은행 마케팅 동의가 되어 있는 경우"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000010-1-0005-PREF-02-SOURCE",
+          "operator": "MAX_OF",
+          "member_rule_ids": [
+            "INST-KR-000010-1-0005-PREF-02"
+          ],
+          "component_source_rows": [
+            "가. 우대금리: 1.00%"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-01",
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02",
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03",
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04",
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE",
+      "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "39114b5ca7c0030d2785b2bd312f9f27"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO",
+    "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE",
+    "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "39114b5ca7c0030d2785b2bd312f9f27",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T02:00:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_CORRECTED",
+      "reason_codes": [
+        "PREFERENCE_FACT_TYPE_CORRECTION",
+        "SEMANTIC_DOMAIN_CORRECTION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

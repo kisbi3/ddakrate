@@ -1,0 +1,828 @@
+{
+  "product_code": "INST-KR-000739-1-C8C90A0FFC6",
+  "version": 8,
+  "institution_id": "INST-KR-000739",
+  "name": "NH고향사랑기부적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "ONLINE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(1인1계좌)",
+    "eligibility_text": "개인(1인1계좌)",
+    "display_text": "개인(1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 36,
+    "source_expression": "12개월 이상 36개월",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "500000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "min_value": "10000",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+        }
+      ]
+    },
+    "conditional_amount_rules": [
+      {
+        "condition_type": "WITHIN_FINAL_MONTHS",
+        "final_months": 3,
+        "max_additional_amount_formula": "PRIOR_DEPOSIT_TOTAL",
+        "source_expression": "신규 시 1만원 이상, 매회 1천원 이상, 매월 최대 50만원 한도\n※ 단, 만기일 전 3개월 이내에는 그 이전에 적립한 금액의 합계액을 초과하여 적립불가",
+        "source_ref_ids": [
+          "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "신규 시 1만원 이상, 매회 1천원 이상, 매월 최대 50만원 한도\n※ 단, 만기일 전 3개월 이내에는 그 이전에 적립한 금액의 합계액을 초과하여 적립불가",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규 시 1만원 이상, 매회 1천원 이상, 매월 최대 50만원 한도\n※ 단, 만기일 전 3개월 이내에는 그 이전에"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규 시 1만원 이상, 매회 1천원 이상, 매월 최대 50만원 한도\n※ 단, 만기일 전 3개월 이내에는 그 이전에 적립한 금액의 합계"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규 시 1만원 이상, 매회 1천원 이상, 매월 최대 50만원 한도\n※ 단, 만기일 전 3개월 이내에는 그 이전에 적립한 금액의 합계액을 초과하여 적립불가"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000739-1-C8C90A0FFC6-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.850",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-1-C8C90A0FFC6-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.900",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 30,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-1-C8C90A0FFC6-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.900",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 30,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-1-C8C90A0FFC6-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.950",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 36,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000739_1_C8C90A0FFC6_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000739-1-C8C90A0FFC6-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000739_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "상품 가입일 기준 만 65세 이상 가입 자 : 0.1%"
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000739_1_INST_KR_000739_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "상품 가입일 기준 만 19세이상부터 만 34세 이하 가입자 : 0.3%\n고향사랑 특별금리"
+        },
+        {
+          "fact_key": "UNCONDITIONAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000739_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+          ],
+          "authority": "BANK_SUBSCRIPTION_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "가입고객 모두에게 적용 : 0.05%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000739-1-C8C90A0FFC6-PREF-02-SUCCESS",
+          "event_type": "DONATION_OR_DECLARATION_RECORDED",
+          "qualifying_definition": {
+            "source_text": "고향사랑기부금납부자(건당 5만원 이상)\n* 고향사랑기부 우대 적용 방법 및 고향사랑기부금 납부 증빙서류 제출에 대한 상세 내용은 상품페이지 및 상품설명서 참조 : 0.5%"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "amount_threshold": {
+            "value": 50000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "5만원 이상"
+          },
+          "authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+          "self_report_eligible": true,
+          "recognition_criteria": {
+            "source_text": "고향사랑기부금납부자(건당 5만원 이상)\n* 고향사랑기부 우대 적용 방법 및 고향사랑기부금 납부 증빙서류 제출에 대한 상세 내용은 상품페이지 및 상품설명서 참조 : 0.5%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000739-1-C8C90A0FFC6-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000739-1-C8C90A0FFC6-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "고향사랑기부금납부자(건당 5만원 이상)\n* 고향사랑기부 우대 적용 방법 및 고향사랑기부금 납부 증빙서류 제출에 대한 상세 내용은 상품페이지 및 상품설명서 참조 : 0.5%",
+          "accepted_documents": [
+            "증빙서류"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000739-1-C8C90A0FFC6-PREF-02",
+          "title": "고향사랑기부금납부자(건당 5만원 이상)",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000739_1_C8C90A0FFC6_PREF_02.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000739-1-C8C90A0FFC6-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.5",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+              }
+            ],
+            "fact_authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "고향사랑기부금납부자(건당 5만원 이상)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            }
+          ],
+          "semantic_domain": "DONATION_OR_DECLARATION",
+          "source_clause_text": "고향사랑기부금납부자(건당 5만원 이상)\n* 고향사랑기부 우대 적용 방법 및 고향사랑기부금 납부 증빙서류 제출에 대한 상세 내용은 상품페이지 및 상품설명서 참조 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C8C90A0FFC6-PREF-03",
+          "title": "상품 가입일 기준 만 65세 이상 가입 자 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000739_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "상품 가입일 기준 만 65세 이상 가입 자 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "상품 가입일 기준 만 65세 이상 가입 자 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C8C90A0FFC6-PREF-04",
+          "title": "상품 가입일 기준 만 19세이상부터 만 34세 이하 가입자 : 0.3%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000739_1_INST_KR_000739_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "상품 가입일 기준 만 19세이상부터 만 34세 이하 가입자 : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "상품 가입일 기준 만 19세이상부터 만 34세 이하 가입자 : 0.3%\n고향사랑 특별금리"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C8C90A0FFC6-PREF-05",
+          "title": "가입고객 모두에게 적용 : 0.05%",
+          "condition": {
+            "predicate": {
+              "fact_key": "UNCONDITIONAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000739_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_SUBSCRIPTION_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입고객 모두에게 적용 : 0.05%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+            }
+          ],
+          "semantic_domain": "UNCONDITIONAL",
+          "source_clause_text": "가입고객 모두에게 적용 : 0.05%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000739-1-C8C90A0FFC6-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000739-1-C8C90A0FFC6-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000739-1-C8C90A0FFC6-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.5",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "0.8",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-01",
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02",
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03",
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04",
+            "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-01",
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02",
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03",
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04",
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05",
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-474D2B267E730244419833DD5B8461DE-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE",
+      "EVD-IS-474D2B267E730244419833DD5B8461DE-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "474d2b267e730244419833dd5b8461de"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO",
+    "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE",
+    "EVD-IS-474D2B267E730244419833DD5B8461DE-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "474d2b267e730244419833dd5b8461de",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "ONLINE",
+      "source_ref_ids": [
+        "EVD-IS-474D2B267E730244419833DD5B8461DE-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

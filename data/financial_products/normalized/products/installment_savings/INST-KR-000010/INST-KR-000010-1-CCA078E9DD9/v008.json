@@ -1,0 +1,539 @@
+{
+  "product_code": "INST-KR-000010-1-CCA078E9DD9",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "버킷리스트 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-SALE"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    },
+    "sale_period": {
+      "start_date": "2024-11-22",
+      "end_date": "2026-12-31",
+      "start_inclusive": true,
+      "end_inclusive": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 36,
+    "source_expression": "12개월 ~ 36개월 (월 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "1000000",
+        "increment_value": "10000"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_count": 999
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 ~ 100만원 이하 (자유적립식)\n(1만원 단위, 가입기간 내 저축횟수 999회 이내, 만기일 전일까지 입금 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (자유적립식)\n(1만원 단위, 가입기간 내 저축횟수 999회 이내, 만기"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (자유적립식)\n(1만원 단위, 가입기간 내 저축횟수 999회 이내, 만기일 전일까지 입금 가"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (자유적립식)\n(1만원 단위, 가입기간 내 저축횟수 999회 이내, 만기일 전일까지 입금 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-CCA078E9DD9-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "2.85",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03",
+          "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+        },
+        {
+          "fact_key": "ACCOUNT.GOAL_AMOUNT_REACHED",
+          "type": "BOOLEAN",
+          "authority": "BANK_TRANSACTION_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_moment": "MATURITY_OR_AUTO_TERMINATION",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+            }
+          ],
+          "source_recognition_text": "목표금액 달성\n- 적금 납입원금(이자제외)이 목표금액 달성 시 : 2.6%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000010_1_CCA078E9DD9-INST_KR_000010_1_CCA07-ACCOUNT_CONTRIBUTION_FULFILLME",
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "CONTRIBUTION_POSTED",
+          "authority": "BANK_TRANSACTION_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "목표금액 달성\n- 적금 납입원금(이자제외)이 목표금액 달성 시 : 2.6%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-CCA078E9DD9-PREF-02",
+          "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.25",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CCA078E9DD9-PREF-03",
+          "title": "목표금액 달성",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.GOAL_AMOUNT_REACHED",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.6",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+              }
+            ],
+            "fact_authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "목표금액 달성"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "목표금액 달성\n- 적금 납입원금(이자제외)이 목표금액 달성 시 : 2.6%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01",
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02",
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03",
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04",
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+        }
+      ],
+      "ui_guidance": [
+        {
+          "guidance_id": "INST-KR-000010-1-CCA078E9DD9-PREF-04-UI",
+          "text": "※ 우대이율 충족여부 확인하기: 경남은행 모바일뱅킹 앱 → 전체계좌조회 → 거래내역조회 → 예상적용금리",
+          "source_ref_ids": [
+            "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-04"
+            }
+          ]
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-RATE",
+      "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "bf44d128ef471f46adf82e3099aa58cf"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO",
+    "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-RATE",
+    "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-LISTING",
+    "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "bf44d128ef471f46adf82e3099aa58cf",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-BF44D128EF471F46ADF82E3099AA58CF-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

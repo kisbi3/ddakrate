@@ -1,0 +1,112 @@
+{
+  "product_code": "INST-KR-000408-2-0007",
+  "version": 1,
+  "institution_id": "INST-KR-000408",
+  "name": "한화회전(3개월) 정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-2-0007"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-2-0007"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      3,
+      24
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-2-0007"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-2-0007"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000408-2-0007-BASE-TERM-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": true
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000408-2-0007"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000408-2-0007-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000408-2-0007"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-2-0007"
+    ],
+    "advertised_max_rate": {
+      "value": "3.55",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000408-2-0007"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000408-2-0007"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.867153+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.base_rate",
+        "reason": "네이버 원문에서 기본금리를 확정 추출하지 못함"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

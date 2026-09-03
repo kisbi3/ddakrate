@@ -1,0 +1,248 @@
+{
+  "product_code": "INST-KR-000227-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000227",
+  "name": "지니파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "비거주 외국인 및 기업 제외한 개인고객(1인1계좌)",
+    "eligibility_text": "비거주 외국인 및 기업 제외한 개인고객(1인1계좌)",
+    "display_text": "비거주 외국인 및 기업 제외한 개인고객(1인1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ],
+    "nationality_scope": "FOREIGNER_ONLY",
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000227-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.5",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000227-3-0001"
+        ],
+        "source_clause": "5천만원 이하 | 연2.5%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하",
+              "max_value": "50000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000227-3-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000227-3-0001"
+        ],
+        "source_clause": "5천만원 초과분 | 연1.0%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과분",
+              "min_value": "50000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ],
+    "interest_crediting": {
+      "raw_text": "매분기 마지막월(3,6,9,12) 셋째주 토요일을 결산기준일로 하여 다음날 원금에 가산",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000227-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000227-3-0001"
+          ]
+        }
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL",
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000227-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000227-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000227-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000227-3-0001",
+        "product_name": "지니파킹통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000227-3-0001",
+    "source_record_id": "d94db8eb4b0733b0ae8f8694bdcd4706",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 97,
+    "reviewed_source_record_id": "d94db8eb4b0733b0ae8f8694bdcd4706",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 1
+  }
+}

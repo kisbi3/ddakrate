@@ -1,0 +1,246 @@
+{
+  "product_code": "INST-KR-001106-3-C5D5D632916",
+  "version": 4,
+  "institution_id": "INST-KR-001106",
+  "name": "모임금고",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+        "EVD-OFFICIAL-213"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+        "EVD-OFFICIAL-213"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+      "EVD-OFFICIAL-213"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "토스뱅크 모임통장을 보유한 실명의 개인\n• 근거계좌별 1개만 개설할 수 있습니다.",
+    "eligibility_text": "토스뱅크 모임통장을 보유한 실명의 개인\n• 근거계좌별 1개만 개설할 수 있습니다.",
+    "display_text": "토스뱅크 모임통장을 보유한 실명의 개인\n• 근거계좌별 1개만 개설할 수 있습니다.",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+      "EVD-OFFICIAL-213"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-001106-3-C5D5D632916-REL-80569020368B",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "토스뱅크 모임통장을 보유한 실명의 개인",
+        "fact_key": "SOURCE_RELATIONSHIP.80569020368B.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+        ]
+      }
+    ],
+    "fact_definitions": [
+      {
+        "fact_key": "RELATIONSHIP.TOSS.GROUP_ACCOUNT_HELD",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+        ]
+      }
+    ],
+    "condition": {
+      "predicate": {
+        "fact_key": "RELATIONSHIP.TOSS.GROUP_ACCOUNT_HELD",
+        "operator": "EQUALS",
+        "expected_value": true
+      }
+    },
+    "linked_account_limit": {
+      "max_vaults_per_underlying_account": 1,
+      "subject_scope": "TOSS_GROUP_ACCOUNT"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001106-3-C5D5D632916-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.4",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 1.4%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+      "EVD-OFFICIAL-213"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+        "EVD-OFFICIAL-213"
+      ],
+      "structuring_status": "SUPPORTED",
+      "day_count_denominator": 365,
+      "rounding": {
+        "method": "TRUNCATE_BELOW_1_WON",
+        "currency": "KRW"
+      }
+    },
+    "interest_crediting": {
+      "raw_text": "매일의 최종 잔액에 약정된 기본금리를 적용하여 계산한 이자를 이자지급일(매일)에 지급합니다. (원 미만은 절사)\n매일의 이자: 매일의 최종잔액 x 적용 이율 / 365\n단, 이자지급일에 지급할 이자가 1원 미만인 경우 이자를 지급하지않고 누적하며, 누적된 이자가 1원 이상되는날 이자를 지급합니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+        "EVD-OFFICIAL-213"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-001106-3-C5D5D632916-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "DAY"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.40",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+      "EVD-OFFICIAL-213"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001106-3-C5D5D632916",
+    "EVD-OFFICIAL-213"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_PAGE_PARTIAL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_TOSS_OFFICIAL_MOIM_VAULT_PAGE; OFFICIAL_RATE_PLACEHOLDER",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001106-3-C5D5D632916",
+    "source_record_id": "7097dcb2a96afabc400d7b5cd89eef57",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 213,
+    "reviewed_source_record_id": "SRC-OFFICIAL-213",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_OFFICIAL_RATE_PLACEHOLDER",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "LINKED_TOSS_GROUP_ACCOUNT_PREREQUISITE_RAW_ONLY"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "토스뱅크 공식 모임금고 페이지에서 상품명·모임통장당 1금고·하루 예치 이자 문구 대조",
+      "공식 페이지 금리 placeholder로 Naver 1.4%를 공식값으로 승격하지 않음"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

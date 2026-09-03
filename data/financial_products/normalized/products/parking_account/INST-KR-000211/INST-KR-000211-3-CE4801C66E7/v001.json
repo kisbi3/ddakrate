@@ -1,0 +1,302 @@
+{
+  "product_code": "INST-KR-000211-3-CE4801C66E7",
+  "version": 1,
+  "institution_id": "INST-KR-000211",
+  "name": "내월급통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "eligibility_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "display_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "MONTH",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-CE4801C66E7-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.40",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-3-CE4801C66E7-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.90",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-CE4801C66E7-02",
+        "title": "은행 첫 거래고객 : 0.5% 우대금리 (1년간)",
+        "condition_text": "은행 첫 거래고객 : 0.5% 우대금리 (1년간)\n- 은행 최초 고객 신규일(주민등록번호 최초 등록일) 기준 31일 이내 계좌 신규 고객\n- 신규일로부터 1년 (응당일 -1일) 간 적용",
+        "structured_steps": [
+          "은행 첫 거래고객 : 0.5% 우대금리 (1년간)",
+          "- 은행 최초 고객 신규일(주민등록번호 최초 등록일) 기준 31일 이내 계좌 신규 고객",
+          "- 신규일로부터 1년 (응당일 -1일) 간 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "은행 첫 거래고객 : 0.5% 우대금리 (1년간)",
+          "summary_text": "은행 첫 거래고객 : 0.5% 우대금리 (1년간)",
+          "detail_texts": [
+            "- 은행 최초 고객 신규일(주민등록번호 최초 등록일) 기준 31일 이내 계좌 신규 고객",
+            "- 신규일로부터 1년 (응당일 -1일) 간 적용"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-CE4801C66E7-03",
+        "title": "급여이체 고객",
+        "condition_text": "급여이체 고객\n- 은행 첫 거래 고객이면서 급여이체 650만원 이상 : 1.0%\n- 은행 첫 거래 고객이면서 급여이체 400만원 이상 650만원 미만 : 0.7%\n- 은행 첫 거래 고객이면서 급여이체 400만원 미만 : 0.5%\n- 기존거래고객 급여이체 1원 이상 : 0.2%\n- 이 예금상품 계좌에 입금되는 급여이체에 한함\n- 급여이체에 관한 자세한 내용은 상품설명서 참조",
+        "structured_steps": [
+          "급여이체 고객",
+          "- 은행 첫 거래 고객이면서 급여이체 650만원 이상 : 1.0%",
+          "- 은행 첫 거래 고객이면서 급여이체 400만원 이상 650만원 미만 : 0.7%",
+          "- 은행 첫 거래 고객이면서 급여이체 400만원 미만 : 0.5%",
+          "- 기존거래고객 급여이체 1원 이상 : 0.2%",
+          "- 이 예금상품 계좌에 입금되는 급여이체에 한함",
+          "- 급여이체에 관한 자세한 내용은 상품설명서 참조"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "급여이체 고객",
+          "summary_text": "급여이체 고객",
+          "detail_texts": [
+            "- 은행 첫 거래 고객이면서 급여이체 650만원 이상 : 1.0%",
+            "- 은행 첫 거래 고객이면서 급여이체 400만원 이상 650만원 미만 : 0.7%",
+            "- 은행 첫 거래 고객이면서 급여이체 400만원 미만 : 0.5%",
+            "- 기존거래고객 급여이체 1원 이상 : 0.2%",
+            "- 이 예금상품 계좌에 입금되는 급여이체에 한함",
+            "- 급여이체에 관한 자세한 내용은 상품설명서 참조"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-CE4801C66E7-04",
+        "title": "상품보유 종류 수 : 0.1% ~ 0.2%",
+        "condition_text": "상품보유 종류 수 : 0.1% ~ 0.2%\n- 대상 상품 종류 : 원화 정기예금, 수익증권, 주택담보대출, 신용대출, 신용카드(BC, SC제일 현대)\n- 동일 상품종류의 상품을 여러 개 보유 시, 상품종류 별 1개만 인정 (예시) 정기예금 2계좌 보유 시 상품종류는 1개로 인정\n- 1개 이상 : 0.1%\n- 3개 이상 : 0.2%",
+        "structured_steps": [
+          "상품보유 종류 수 : 0.1% ~ 0.2%",
+          "- 대상 상품 종류 : 원화 정기예금, 수익증권, 주택담보대출, 신용대출, 신용카드(BC, SC제일 현대)",
+          "- 동일 상품종류의 상품을 여러 개 보유 시, 상품종류 별 1개만 인정 (예시) 정기예금 2계좌 보유 시 상품종류는 1개로 인정",
+          "- 1개 이상 : 0.1%",
+          "- 3개 이상 : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "상품보유 종류 수 : 0.1% ~ 0.2%",
+          "summary_text": "상품보유 종류 수 : 0.1% ~ 0.2%",
+          "detail_texts": [
+            "- 대상 상품 종류 : 원화 정기예금, 수익증권, 주택담보대출, 신용대출, 신용카드(BC, SC제일 현대)",
+            "- 동일 상품종류의 상품을 여러 개 보유 시, 상품종류 별 1개만 인정 (예시) 정기예금 2계좌 보유 시 상품종류는 1개로 인정",
+            "- 1개 이상 : 0.1%",
+            "- 3개 이상 : 0.2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-CE4801C66E7-05",
+        "title": "거래실적 우대이율",
+        "condition_text": "거래실적 우대이율\n- 이 예금상품 계좌에서 자동이체 실적 건수 1개 이상 : 0.1%\n- BC(신용, 체크)카드/SC제일 현대신용카드 월 이용실적 10만원 이상 : 0.1% (SC제일 삼성카드 제외/수수료, 연회비 제외)\n- 온라인뱅킹 로그인 실적 : 0.1%",
+        "structured_steps": [
+          "거래실적 우대이율",
+          "- 이 예금상품 계좌에서 자동이체 실적 건수 1개 이상 : 0.1%",
+          "- BC(신용, 체크)카드/SC제일 현대신용카드 월 이용실적 10만원 이상 : 0.1% (SC제일 삼성카드 제외/수수료, 연회비 제외)",
+          "- 온라인뱅킹 로그인 실적 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "거래실적 우대이율",
+          "summary_text": "거래실적 우대이율",
+          "detail_texts": [
+            "- 이 예금상품 계좌에서 자동이체 실적 건수 1개 이상 : 0.1%",
+            "- BC(신용, 체크)카드/SC제일 현대신용카드 월 이용실적 10만원 이상 : 0.1% (SC제일 삼성카드 제외/수수료, 연회비 제외)",
+            "- 온라인뱅킹 로그인 실적 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-CE4801C66E7-06",
+        "title": "이 예금상품 계좌의 전월 평잔 기준",
+        "condition_text": "이 예금상품 계좌의 전월 평잔 기준\n- 평잔 300만원 이상 : 0.5%\n- 평잔 100만원 이상 : 0.3%\n- 평잔 50만원 이상 : 0.1%",
+        "structured_steps": [
+          "이 예금상품 계좌의 전월 평잔 기준",
+          "- 평잔 300만원 이상 : 0.5%",
+          "- 평잔 100만원 이상 : 0.3%",
+          "- 평잔 50만원 이상 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금상품 계좌의 전월 평잔 기준",
+          "summary_text": "이 예금상품 계좌의 전월 평잔 기준",
+          "detail_texts": [
+            "- 평잔 300만원 이상 : 0.5%",
+            "- 평잔 100만원 이상 : 0.3%",
+            "- 평잔 50만원 이상 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+    ],
+    "advertised_max_rate": {
+      "value": "2.90",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000211-3-CE4801C66E7"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.438994+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

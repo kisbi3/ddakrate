@@ -1,0 +1,1506 @@
+{
+  "product_code": "INST-KR-000120-1-CDD602F25BD",
+  "version": 8,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK 금융사다리적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-06-29",
+      "end_date": "2027-06-28",
+      "end_inclusive": true
+    },
+    "subscription_channels": [
+      "APP"
+    ],
+    "offering_limit": {
+      "type": "ACCOUNT_COUNT",
+      "max_count": 1000,
+      "exhaustion_behavior": "EARLY_CLOSE_WHEN_EXHAUSTED",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-SALE"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-SALE"
+        }
+      ]
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "만14세이상 실명의개인(1인1계좌)",
+    "eligibility_text": "만14세이상 실명의개인(1인1계좌)",
+    "display_text": "만14세이상 실명의개인(1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "UNSPECIFIED",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "200000",
+        "increment_value": "1",
+        "source_expression": "1만원 이상 ~ 20만원 이하(원단위)",
+        "source_ref_ids": [
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "1만원 이상 ~ 20만원 이하(원단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 20만원 이하(원단위)"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 ~ 20만원 이하(원단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-CDD602F25BD-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_eligibility_gate": {
+        "operator": "AND",
+        "children": [
+          {
+            "predicate": {
+              "fact_key": "DOCUMENT.REGIONAL_INCLUSIVE_FINANCE_ELIGIBILITY_CERTIFICATE_VALID",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+              }
+            ]
+          },
+          {
+            "predicate": {
+              "fact_key": "DOCUMENT.REGIONAL_INCLUSIVE_FINANCE_ELIGIBILITY_CERTIFICATE_SUBMITTED_BY_DEADLINE",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+              }
+            ]
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          }
+        ]
+      },
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "reward_application_scope": "ENTIRE_CONTRACT_TERM",
+        "source_ref_ids": [
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01",
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02",
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "5.50",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01",
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02",
+          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "DOCUMENT.REGIONAL_INCLUSIVE_FINANCE_ELIGIBILITY_CERTIFICATE_VALID",
+          "type": "BOOLEAN",
+          "authority": "BUSAN_INCLUSIVE_FINANCE_CENTER_DOCUMENT",
+          "self_report_eligible": false,
+          "validity_days_from_issue": 30,
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "DOCUMENT.REGIONAL_INCLUSIVE_FINANCE_ELIGIBILITY_CERTIFICATE_SUBMITTED_BY_DEADLINE",
+          "type": "BOOLEAN",
+          "authority": "BANK_DOCUMENT_REGISTRY",
+          "self_report_eligible": false,
+          "submission_deadline": {
+            "relative_to": "MATURITY_DATE",
+            "offset": -7,
+            "unit": "BUSINESS_DAY",
+            "inclusive": true
+          },
+          "submission_channel": "MOBILE_BANKING",
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "INCLUSIVE_FINANCE.POLICY_MICROFINANCE_GOOD_REPAYER",
+          "type": "BOOLEAN",
+          "authority": "INCLUSIVE_FINANCE_CENTER_RECORD",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "INCLUSIVE_FINANCE.CENTER_RECOMMENDED",
+          "type": "BOOLEAN",
+          "authority": "BUSAN_INCLUSIVE_FINANCE_CENTER",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "INCLUSIVE_FINANCE.FINANCIAL_EDUCATION_COMPLETED_WITHIN_1Y",
+          "type": "BOOLEAN",
+          "authority": "FINANCIAL_EDUCATION_PORTAL",
+          "self_report_eligible": false,
+          "lookback": {
+            "value": 1,
+            "unit": "YEAR"
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "INCLUSIVE_FINANCE.CREDIT_DEBT_COUNSELING_COMPLETED",
+          "type": "BOOLEAN",
+          "authority": "KOREA_INCLUSIVE_FINANCE_AGENCY",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "EMPLOYMENT.HEALTH_INSURANCE_STATUS_AT_SUBSCRIPTION",
+          "type": "ENUM",
+          "allowed_values": [
+            "REGIONAL_INSURED",
+            "WORKPLACE_INSURED",
+            "UNKNOWN"
+          ],
+          "authority": "HEALTH_INSURANCE_CERTIFICATE",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "EMPLOYMENT.HEALTH_INSURANCE_STATUS_AT_MATURITY",
+          "type": "ENUM",
+          "allowed_values": [
+            "REGIONAL_INSURED",
+            "WORKPLACE_INSURED",
+            "UNKNOWN"
+          ],
+          "authority": "HEALTH_INSURANCE_CERTIFICATE",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "BUSINESS.STATUS_AT_SUBSCRIPTION",
+          "type": "ENUM",
+          "allowed_values": [
+            "CLOSED",
+            "SUSPENDED",
+            "ACTIVE",
+            "UNKNOWN"
+          ],
+          "authority": "GOVERNMENT_BUSINESS_CERTIFICATE",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "BUSINESS.STATUS_AT_MATURITY",
+          "type": "ENUM",
+          "allowed_values": [
+            "ACTIVE_REOPENED",
+            "SUSPENSION_ENDED",
+            "CLOSED",
+            "SUSPENDED",
+            "UNKNOWN"
+          ],
+          "authority": "GOVERNMENT_BUSINESS_CERTIFICATE",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "SAVINGS.QUALIFYING_100K_DEPOSIT_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "BANK_ACCOUNT_LEDGER",
+          "self_report_eligible": false,
+          "aggregation": {
+            "event_ref": "EVENT.BNK_LADDER_100K_DEPOSIT",
+            "operator": "COUNT_DISTINCT_MONTH",
+            "monthly_cap": 1
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEPOSIT_ACCOUNT.QUALIFYING_1M_AVG_BALANCE_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "BANK_DEPOSIT_LEDGER",
+          "self_report_eligible": false,
+          "aggregation": {
+            "event_ref": "EVENT.BNK_LADDER_MONTHLY_AVG_BALANCE",
+            "operator": "COUNT_DISTINCT_MONTH",
+            "exclude_maturity_month": true
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.CUMULATIVE_NET_SPEND_KRW",
+          "type": "NUMBER",
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "aggregation": {
+            "event_ref": "EVENT.BNK_LADDER_CARD_TRANSACTION",
+            "operator": "SUM_NET_OF_CANCELLATIONS",
+            "window": "SAVINGS_CONTRACT"
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT.BNK_LADDER_100K_DEPOSIT",
+          "event_type": "SAVINGS_CONTRIBUTION_POSTED",
+          "qualifying_definition": {
+            "amount_gte": "100000",
+            "currency": "KRW",
+            "recognition": "MONTH_HAS_AT_LEAST_ONE_QUALIFYING_DEPOSIT"
+          },
+          "authority": "BANK_ACCOUNT_LEDGER",
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ]
+        },
+        {
+          "event_id": "EVENT.BNK_LADDER_MONTHLY_AVG_BALANCE",
+          "event_type": "DEMAND_DEPOSIT_MONTHLY_AVERAGE_BALANCE_MEASURED",
+          "qualifying_definition": {
+            "average_balance_gte": "1000000",
+            "currency": "KRW",
+            "eligible_account_type": "DEMAND_DEPOSIT",
+            "excluded_account_types": [
+              "MMDA"
+            ],
+            "exclude_maturity_month": true
+          },
+          "authority": "BANK_DEPOSIT_LEDGER",
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ]
+        },
+        {
+          "event_id": "EVENT.BNK_LADDER_CARD_TRANSACTION",
+          "event_type": "CARD_APPROVAL_OR_BILLING_TRANSACTION",
+          "qualifying_definition": {
+            "card_types": [
+              "CREDIT",
+              "CHECK"
+            ],
+            "cancellations": "SUBTRACT_FROM_CUMULATIVE_AMOUNT",
+            "window": "SAVINGS_CONTRACT"
+          },
+          "authority": "BANK_CARD_LEDGER",
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL.BNK_LADDER_ELIGIBILITY_CERTIFICATE",
+          "applies_to": "ALL_PREFERENTIAL_RULES",
+          "required_document": "REGIONAL_SPECIALIZED_COMPOSITE_SUPPORT_FINANCIAL_PRODUCT_ELIGIBILITY_CERTIFICATE_SAVINGS",
+          "issuer": "BUSAN_INCLUSIVE_FINANCE_CENTER",
+          "validity": {
+            "days_from_issue": 30
+          },
+          "submission": {
+            "channel": "MOBILE_BANKING",
+            "deadline": {
+              "relative_to": "MATURITY_DATE",
+              "offset": -7,
+              "unit": "BUSINESS_DAY"
+            },
+            "path": "모바일뱅킹>금융자산>예금>입출금내역>확인서등록"
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "BNK-LADDER-PREF-A1",
+          "title": "정책서민금융 성실상환자",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "INCLUSIVE_FINANCE.POLICY_MICROFINANCE_GOOD_REPAYER",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "INCLUSIVE_FINANCE.CENTER_RECOMMENDED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "BNK-LADDER-PREF-A2",
+          "title": "금융교육 또는 신용·부채관리 컨설팅 수료",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "INCLUSIVE_FINANCE.FINANCIAL_EDUCATION_COMPLETED_WITHIN_1Y",
+                      "operator": "EQUALS",
+                      "expected_value": true,
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "INCLUSIVE_FINANCE.CREDIT_DEBT_COUNSELING_COMPLETED",
+                      "operator": "EQUALS",
+                      "expected_value": true,
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "INCLUSIVE_FINANCE.CENTER_RECOMMENDED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "BNK-LADDER-PREF-A3",
+          "title": "재취업·재창업 확인",
+          "condition": {
+            "operator": "OR",
+            "children": [
+              {
+                "operator": "AND",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "EMPLOYMENT.HEALTH_INSURANCE_STATUS_AT_SUBSCRIPTION",
+                      "operator": "EQUALS",
+                      "expected_value": "REGIONAL_INSURED",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "EMPLOYMENT.HEALTH_INSURANCE_STATUS_AT_MATURITY",
+                      "operator": "EQUALS",
+                      "expected_value": "WORKPLACE_INSURED",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              },
+              {
+                "operator": "AND",
+                "children": [
+                  {
+                    "operator": "OR",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "BUSINESS.STATUS_AT_SUBSCRIPTION",
+                          "operator": "EQUALS",
+                          "expected_value": "CLOSED",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "BUSINESS.STATUS_AT_SUBSCRIPTION",
+                          "operator": "EQUALS",
+                          "expected_value": "SUSPENDED",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "OR",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "BUSINESS.STATUS_AT_MATURITY",
+                          "operator": "EQUALS",
+                          "expected_value": "ACTIVE_REOPENED",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "BUSINESS.STATUS_AT_MATURITY",
+                          "operator": "EQUALS",
+                          "expected_value": "SUSPENSION_ENDED",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "BNK-LADDER-PREF-A4",
+          "title": "건당 10만원 이상 납입 월 8개월 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "SAVINGS.QUALIFYING_100K_DEPOSIT_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 8,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "unit": "MONTH",
+              "source_ref_ids": [
+                "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "BNK-LADDER-PREF-B1",
+          "title": "입출금통장 월평잔 100만원 이상 6개월",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEPOSIT_ACCOUNT.QUALIFYING_1M_AVG_BALANCE_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "unit": "MONTH",
+              "source_ref_ids": [
+                "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "BNK-LADDER-PREF-B2",
+          "title": "신용·체크카드 누적 순이용금액 100만원 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.CUMULATIVE_NET_SPEND_KRW",
+              "operator": "GTE",
+              "expected_value": 1000000,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "unit": "KRW",
+              "source_ref_ids": [
+                "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL.BNK_LADDER_INCLUSIVE_FINANCE",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "BNK-LADDER-PREF-A1",
+            "BNK-LADDER-PREF-A2",
+            "BNK-LADDER-PREF-A3",
+            "BNK-LADDER-PREF-A4"
+          ],
+          "cap": {
+            "value": "3.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL.BNK_LADDER_TRANSACTION",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "BNK-LADDER-PREF-B1",
+            "BNK-LADDER-PREF-B2"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL.BNK_LADDER_TOTAL",
+          "operator": "SUM_WITH_CAP",
+          "member_relation_ids": [
+            "REL.BNK_LADDER_INCLUSIVE_FINANCE",
+            "REL.BNK_LADDER_TRANSACTION"
+          ],
+          "cap": {
+            "value": "5.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01",
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02",
+              "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01",
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02",
+            "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01",
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02",
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-RATE",
+      "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "372e0fe50ed888d67f8a606dbb1c691a"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO",
+    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-RATE",
+    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-LISTING",
+    "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T01:35:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_ISSUER_EXISTENCE_CROSSCHECK",
+    "publication_gate": "TARGETED_SEMANTIC_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "372e0fe50ed888d67f8a606dbb1c691a",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy.amount_rules[0].scope",
+        "reason": "네이버는 1만~20만원 및 원단위만 명시하며 회차/월 적용범위를 명시하지 않아 UNSPECIFIED로 보존"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-08",
+      "reviewed_at": "2026-08-31T01:35:00+09:00",
+      "method": "NAVER_PRODUCT_GUIDE_PLUS_RATE_CONDITIONAL_CLAUSE_BY_CLAUSE_WITH_BUSAN_OFFICIAL_ACTIVE_PRODUCT_CROSSCHECK",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "BUSAN_BANK_OFFICIAL_PRODUCT_REGISTRY"
+      ],
+      "correction_count": 19,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [
+        "AMOUNT_SCOPE_SOURCE_UNSPECIFIED_PRESERVED"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-372E0FE50ED888D67F8A606DBB1C691A-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "product_code": "INST-KR-000865-1-0004",
+  "version": 1,
+  "institution_id": "INST-KR-000865",
+  "name": "주거래우대 자유적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0004"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "eligibility_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "display_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 3계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0004"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0004"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0004"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0004-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0004"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0004-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.20",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0004"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000865-1-0004-01",
+        "title": "최고 연 0.60% (우대조건을 충족하는 경우 만기 해지 시 우대금리를 적용)",
+        "condition_text": "최고 연 0.60% (우대조건을 충족하는 경우 만기 해지 시 우대금리를 적용)",
+        "structured_steps": [
+          "최고 연 0.60% (우대조건을 충족하는 경우 만기 해지 시 우대금리를 적용)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.60",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0004"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "최고 연 0.60% (우대조건을 충족하는 경우 만기 해지 시 우대금리를 적용)",
+          "summary_text": "최고 연 0.60% (우대조건을 충족하는 경우 만기 해지 시 우대금리를 적용)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.60",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000865-1-0004-02",
+        "title": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우",
+        "condition_text": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우\n∙ 급여이체: 건당 50만원 이상, 급여이체 인정 기준에 해당하는 경우\n∙ 통신비 자동이체: 케이뱅크 입출금통장 또는 케이뱅크 체크카드로 통신비(통신3사 KT, SKT, LGU+만 인정) 자동이체 실적이 있는 경우 : 0.3%",
+        "structured_steps": [
+          "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우",
+          "∙ 급여이체: 건당 50만원 이상, 급여이체 인정 기준에 해당하는 경우",
+          "∙ 통신비 자동이체: 케이뱅크 입출금통장 또는 케이뱅크 체크카드로 통신비(통신3사 KT, SKT, LGU+만 인정) 자동이체 실적이 있는 경우 : 0.3%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0004"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우",
+          "summary_text": "실적 인정 기간(예금 신규월 1일부터 예금 만기 전월 말일까지)동안 3개월 이상 급여이체 또는 통신비 자동이체 실적이 있는 경우",
+          "detail_texts": [
+            "∙ 급여이체: 건당 50만원 이상, 급여이체 인정 기준에 해당하는 경우",
+            "∙ 통신비 자동이체: 케이뱅크 입출금통장 또는 케이뱅크 체크카드로 통신비(통신3사 KT, SKT, LGU+만 인정) 자동이체 실적이 있는 경우 : 0.3%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000865-1-0004-03",
+        "title": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%",
+        "condition_text": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%",
+        "structured_steps": [
+          "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0004"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%",
+          "summary_text": "실적 인정 기간 동안 3개월 이상 케이뱅크 체크카드 월 20만원 이상 사용 실적이 있는 경우(월 산정기준 : 매월 1일부터 말일) : 0.3%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0004"
+    ],
+    "advertised_max_rate": {
+      "value": "4.20",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000865-1-0004"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000865-1-0004"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.534883+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

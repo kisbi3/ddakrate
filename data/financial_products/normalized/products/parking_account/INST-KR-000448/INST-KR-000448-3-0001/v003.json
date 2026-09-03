@@ -1,0 +1,436 @@
+{
+  "product_code": "INST-KR-000448-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000448",
+  "name": "KDB Hi 비대면 입출금통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ],
+    "special_sale": true,
+    "sale_period": {
+      "start": "2026-08-01",
+      "end": "2026-09-30",
+      "end_inclusive": true,
+      "source_text": "(금리) 기본이율 연 1.50%에 이벤트추가이율 최고 연 0.30% 적용시 최대 연 1.80% 금리 제공\n(조건) 이벤트 조건에 충족할 경우 이벤트추가이율 제공\n이벤트 기간 : 2026.08.01. ~ 2026.09.30. (2개월간)\n전화 문의\n공식홈에서 더 알아보기"
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "▪ 실명의 개인(개인사업자 및 임의단체 제외)으로 국민인 거주자\n(단, 만 17세 미만인 경우에는 비대면 자녀계좌 개설 서비스를 통해서만 가입이 가능)\n▪ 1인 1계좌",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "excluded_customer_types": [
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "nationality_scope": "KOREAN_ONLY",
+    "residency_scope": "RESIDENT_ONLY",
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT"
+    },
+    "conditional_subscription_routes": [
+      {
+        "condition": {
+          "age": {
+            "max_age": 16
+          }
+        },
+        "required_route": "KDB_NON_FACE_TO_FACE_CHILD_ACCOUNT_OPENING_SERVICE"
+      },
+      {
+        "condition": {
+          "age": {
+            "min_age": 17
+          }
+        },
+        "required_route": "KDB_NON_FACE_TO_FACE_REAL_NAME_VERIFICATION_SERVICE"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "opening_balance_rule": {
+      "required_value": "0",
+      "currency": "KRW"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000448-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.500",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000448-3-0001"
+        ],
+        "source_clause": "기본금리 | 기본금리 1.500%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "enrollment_window": {
+          "start_date": "2026-08-01",
+          "end_date": "2026-09-30",
+          "end_inclusive": true
+        },
+        "reward_window": {
+          "start_date": "2026-10-01",
+          "end_date": "2026-12-31",
+          "end_inclusive": true
+        }
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "EVENT.KDB.HI_OPENING_ENTRY_RANDOM_RATE",
+          "data_type": "RATE_PP",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        },
+        {
+          "fact_key": "EVENT.KDB.REFERRAL_QUALIFIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000448-3-0001-PREF-01",
+          "title": "이벤트 신규·응모 랜덤이율",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.OPEN_DATE",
+                  "operator": "BETWEEN",
+                  "expected_value": {
+                    "start": "2026-08-01",
+                    "end": "2026-09-30"
+                  }
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "EVENT.KDB.ENTRY_COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE_FROM_FACT",
+            "fact_key": "EVENT.KDB.HI_OPENING_ENTRY_RANDOM_RATE",
+            "min_value": "0.10",
+            "max_value": "0.20",
+            "step": "0.01",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "start_date": "2026-10-01",
+              "end_date": "2026-12-31",
+              "end_inclusive": true
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000448-3-0001-PREF-02",
+          "title": "추천인코드 1회",
+          "condition": {
+            "predicate": {
+              "fact_key": "EVENT.KDB.REFERRAL_QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "start_date": "2026-10-01",
+              "end_date": "2026-12-31",
+              "end_inclusive": true
+            },
+            "occurrence_limit": {
+              "max_applications": 1,
+              "subject_scope": "CUSTOMER"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "0.30",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "event_interest_crediting": [
+        {
+          "accrual_window": {
+            "start_date": "2026-10-01",
+            "end_date": "2026-10-31"
+          },
+          "credit_date": "2026-11-02"
+        },
+        {
+          "accrual_window": {
+            "start_date": "2026-11-01",
+            "end_date": "2026-11-30"
+          },
+          "credit_date": "2026-12-01"
+        },
+        {
+          "accrual_window": {
+            "start_date": "2026-12-01",
+            "end_date": "2026-12-31"
+          },
+          "credit_date": "2027-01-04"
+        }
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ],
+    "interest_crediting": {
+      "raw_text": "▪ 월원가식\n▪ 매월 넷째주 금요일(영업일이 아닌 경우 전영업일)의 다음 영업일에 원금에 이자를 더함\n※ 최종거래일로부터 5년이 경과한 날부터는 원금에 이자를 더하지 않고 계좌해지일 , 또는 추가 입출금 거래 발생일에 일괄 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000448-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 4,
+              "weekday": "FRIDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "BUSINESS_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000448-3-0001-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000448-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.80",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000448-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000448-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000448-3-0001",
+        "product_name": "KDB Hi 비대면 입출금통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000448-3-0001",
+    "source_record_id": "7833e371d2fe5e468aa66ef3c591bff3",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 136,
+    "reviewed_source_record_id": "7833e371d2fe5e468aa66ef3c591bff3",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "CHANNEL_SPECIFIC_AGE_CONFLATED",
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "ENROLLMENT_WINDOW_AND_REWARD_WINDOW_CONFLATED",
+      "EXCLUDED_CUSTOMER_TYPE_ERRONEOUSLY_ALLOWED_SECOND_PASS",
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "FACT_TAXONOMY_MISMATCH",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "SPECIAL_SALE_WINDOW_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "가입·응모기간과 실제 3개월 적용기간 분리",
+      "이벤트 응모·랜덤이율·추천인코드를 PAYMENT가 아닌 EVENT taxonomy로 확정",
+      "2026-10-01~12-31 적용과 월별 정확한 지급일을 보존",
+      "미성년 자녀개설 route와 일반 비대면 실명확인 route를 분리"
+    ],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000448-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "SOURCE_SUPPORTED_EXECUTABLE_FIELDS_ONLY",
+    "declared_data_gap_count": 1
+  }
+}

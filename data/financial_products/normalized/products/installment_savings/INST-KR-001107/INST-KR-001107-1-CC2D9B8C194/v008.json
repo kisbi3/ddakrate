@@ -1,0 +1,1360 @@
+{
+  "product_code": "INST-KR-001107-1-CC2D9B8C194",
+  "version": 8,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국마미든든적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_expression": "6개월 ~ 36개월 (월 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "3000000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 300만원까지 자유적립",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 300만원까지 자유적립"
+      },
+      {
+        "value": "3000000",
+        "currency": "KRW",
+        "source_expression": "300만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 300만원까지 자유적립"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-1-CC2D9B8C194-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-CC2D9B8C194-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-CC2D9B8C194-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-CC2D9B8C194-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07",
+          "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+          },
+          {
+            "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07",
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+            },
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            }
+          ]
+        },
+        {
+          "fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "SUBMITTED_DOCUMENT_OR_BANK_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+          ],
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "나눔우대 : 신규 가입일 현재 예금주가 나눔 우대 대상자에 해당하고, 여성일 경우에 한하여 적용 : 0.4%p\n* 대상자\n- 결혼이민여성 : 혼인관계증명서 (단, 귀화한 경우 기본증명서 추가)\n- 한부모 가정의 여성 : 한부모가족증명서\n- 여성 장애인 : 장애인증명서 또는 장애인복지카드"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_COMPONENT_INST_KR_00110",
+          "type": "BOOLEAN",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "source_definition": "아이LOVE적금을 보유한 경우: 0.1%p",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "우체국 적금 가입 우대 (1 또는 2)\n1 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」을 보유한 경우: 0.1%p\n2 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」보유 및 ‘미래고객 우대이율’ 적용받는 경우: 0.3%p\n* 자녀 또는 손·자녀 확인방법 (제출서류 확인)\n- 주민등록등본 또는 가족관계증명서로 자녀, 손자, 손녀 확인이 가능한 경우"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_COMPONENT_INST_KR_00110_INST_KR_001107_1",
+          "type": "BOOLEAN",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "source_definition": "아이LOVE적금 보유 및 미래고객 우대이율 적용받는 경우: 0.3%p",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "우체국 적금 가입 우대 (1 또는 2)\n1 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」을 보유한 경우: 0.1%p\n2 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」보유 및 ‘미래고객 우대이율’ 적용받는 경우: 0.3%p\n* 자녀 또는 손·자녀 확인방법 (제출서류 확인)\n- 주민등록등본 또는 가족관계증명서로 자녀, 손자, 손녀 확인이 가능한 경우"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규 가입일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 체크카드 이용 실적이 총 60만원 이상인 경우 : 0.1%p\n* 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외 하며 체크카드 사용금액만 실적으로 인정(신용결제 제외)",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_001107_1_CC2D9B8C194-INST_KR_001107_1_CC2D9-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-001107-1-CC2D9B8C194-PREF-08-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            }
+          ],
+          "amount_threshold": {
+            "value": 300000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "30만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST_KR_001107_1_CC2D9B8C194-INST_KR_001107_1_CC2D9-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "신규 가입일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 체크카드 이용 실적이 총 60만원 이상인 경우 : 0.1%p\n* 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외 하며 체크카드 사용금액만 실적으로 인정(신용결제 제외)",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-001107-1-CC2D9B8C194-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-001107-1-CC2D9B8C194-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "자녀우대 : 계약기간(가입일~만기일) 중 예금주의 총 자녀수(태아 포함)에 따라 가입시점 또는 만기해지 시점에 확인 적용\n* 자녀수별 우대이자율\n- 자녀 수 1명 : 0.2%p / 자녀 수 2명 : 0.3%p / 자녀 수 3명 이상 : 0.4%p\n* 자녀수 확인방법(제출서류 확인)\n- 주민등록등본, 가족관계증명서, 출생증명서, 산모수첩 (출산예정 포함) 중 자녀 확인이 가능한 경우",
+          "accepted_documents": [
+            "가족관계증명서",
+            "주민등록등본",
+            "출생증명서",
+            "산모수첩"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE"
+        },
+        {
+          "fulfillment_id": "FULFILL-INST-KR-001107-1-CC2D9B8C194-PREF-03",
+          "applies_to_rule_ids": [
+            "INST-KR-001107-1-CC2D9B8C194-PREF-03"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "일하는 기혼 여성 우대 : 계약기간(가입일~만기일) 중 예금주가 ① 혼인 중인 여성이면서 ② 경제활동 사실이 있는 경우로 가입시점 또는 만기해지 시점에 확인 적용 : 0.2%p\n① 혼인 중인 여성 확인방법 (제출서류 또는 전산 조회)\n- 제출서류 : 주민등록등본, 혼인관계 증명서, 가족관계 증명서, 청첩장 중 결혼 확인이 가능한 경우\n- 전산조회 : 우체국 고객등록정보에 결혼기념일이 등록되어 있는 경우 (제출서류 불요)\n② 경제활동 여성 확인방법 (제출서류 또는 전산 조회)\n- 제출서류 : 사원증, 공무원증, 명함, 재직증명서, 사업자등록증, 국민 연금 가입자 가입증명, 근로계약서, 급여명세서, 소득금액 증명원, 급여입금 내역 통장사본, 4대 보험 가입내역 확인서 중 경제 활동 확인이 가능한 경우\n- 전산조회 : 우체국 급여이체 약정고객 또는「소상공인 정기예금」 가입자인 경우 (제출서류 불요)",
+          "accepted_documents": [
+            "주민등록등본",
+            "재직증명서"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE"
+        },
+        {
+          "fulfillment_id": "FULFILL-INST-KR-001107-1-CC2D9B8C194-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-001107-1-CC2D9B8C194-PREF-04"
+          ],
+          "required_actions": [
+            "COMPLETE_VERIFICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "나눔우대 : 신규 가입일 현재 예금주가 나눔 우대 대상자에 해당하고, 여성일 경우에 한하여 적용 : 0.4%p\n* 대상자\n- 결혼이민여성 : 혼인관계증명서 (단, 귀화한 경우 기본증명서 추가)\n- 한부모 가정의 여성 : 한부모가족증명서\n- 여성 장애인 : 장애인증명서 또는 장애인복지카드",
+          "accepted_documents": [
+            "복지카드"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-02",
+          "title": "자녀우대 : 계약기간(가입일~만기일) 중 예금주의 총 자녀수(태아 포함)에 따라 가입시점 또는 만기해지 시점에 확인 적용",
+          "condition": {
+            "predicate": {
+              "fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                      }
+                    ],
+                    "expected_value": 1,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.2",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "자녀 수 1명 : 0.2%p",
+                "source_ref_ids": [
+                  "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                      }
+                    ],
+                    "expected_value": 2,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.3",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "자녀 수 2명 : 0.3%p",
+                "source_ref_ids": [
+                  "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                      }
+                    ],
+                    "expected_value": 3,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.4",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "자녀 수 3명 이상 : 0.4%p",
+                "source_ref_ids": [
+                  "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+              }
+            ],
+            "cap_value": "0.4"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자녀우대 : 계약기간(가입일~만기일) 중 예금주의 총 자녀수(태아 포함)에 따라 가입시점 또는 만기해지 시점에 확인 적용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "자녀우대 : 계약기간(가입일~만기일) 중 예금주의 총 자녀수(태아 포함)에 따라 가입시점 또는 만기해지 시점에 확인 적용\n* 자녀수별 우대이자율\n- 자녀 수 1명 : 0.2%p / 자녀 수 2명 : 0.3%p / 자녀 수 3명 이상 : 0.4%p\n* 자녀수 확인방법(제출서류 확인)\n- 주민등록등본, 가족관계증명서, 출생증명서, 산모수첩 (출산예정 포함) 중 자녀 확인이 가능한 경우"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-03",
+          "title": "일하는 기혼 여성 우대 : 계약기간(가입일~만기일) 중 예금주가 ① 혼인 중인 여성이면서 ② 경제활동 사실이 있는 경우로 가입시점 또는 만기해지 시점에 확인 적용 : 0.2%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "일하는 기혼 여성 우대 : 계약기간(가입일~만기일) 중 예금주가 ① 혼인 중인 여성이면서 ② 경제활동 사실이 있는 경우로 가입시점 또는 만기해지 시점에 확인 적용 : 0.2%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "일하는 기혼 여성 우대 : 계약기간(가입일~만기일) 중 예금주가 1 혼인 중인 여성이면서 2 경제활동 사실이 있는 경우로 가입시점 또는 만기해지 시점에 확인 적용 : 0.2%p\n1 혼인 중인 여성 확인방법 (제출서류 또는 전산 조회)\n- 제출서류 : 주민등록등본, 혼인관계 증명서, 가족관계 증명서, 청첩장 중 결혼 확인이 가능한 경우\n- 전산조회 : 우체국 고객등록정보에 결혼기념일이 등록되어 있는 경우 (제출서류 불요)\n2 경제활동 여성 확인방법 (제출서류 또는 전산 조회)\n- 제출서류 : 사원증, 공무원증, 명함, 재직증명서, 사업자등록증, 국민 연금 가입자 가입증명, 근로계약서, 급여명세서, 소득금액 증명원, 급여입금 내역 통장사본, 4대 보험 가입내역 확인서 중 경제 활동 확인이 가능한 경우\n- 전산조회 : 우체국 급여이체 약정고객 또는「소상공인 정기예금」 가입자인 경우 (제출서류 불요)"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-04",
+          "title": "나눔우대 : 신규 가입일 현재 예금주가 나눔 우대 대상자에 해당하고, 여성일 경우에 한하여 적용 : 0.4%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "나눔우대 : 신규 가입일 현재 예금주가 나눔 우대 대상자에 해당하고, 여성일 경우에 한하여 적용 : 0.4%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "나눔우대 : 신규 가입일 현재 예금주가 나눔 우대 대상자에 해당하고, 여성일 경우에 한하여 적용 : 0.4%p\n* 대상자\n- 결혼이민여성 : 혼인관계증명서 (단, 귀화한 경우 기본증명서 추가)\n- 한부모 가정의 여성 : 한부모가족증명서\n- 여성 장애인 : 장애인증명서 또는 장애인복지카드"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-06-HOLD",
+          "title": "아이LOVE적금을 보유한 경우: 0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_COMPONENT_INST_KR_00110",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "아이LOVE적금을 보유한 경우: 0.1%p",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "아이LOVE적금을 보유한 경우: 0.1%p",
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "우체국 적금 가입 우대 (1 또는 2)\n1 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」을 보유한 경우: 0.1%p\n2 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」보유 및 ‘미래고객 우대이율’ 적용받는 경우: 0.3%p\n* 자녀 또는 손·자녀 확인방법 (제출서류 확인)\n- 주민등록등본 또는 가족관계증명서로 자녀, 손자, 손녀 확인이 가능한 경우"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-06-FUTURE",
+          "title": "아이LOVE적금 보유 및 미래고객 우대이율 적용받는 경우: 0.3%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_COMPONENT_INST_KR_00110_INST_KR_001107_1",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "아이LOVE적금 보유 및 미래고객 우대이율 적용받는 경우: 0.3%p",
+            "reward_text": "+0.3%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "아이LOVE적금 보유 및 미래고객 우대이율 적용받는 경우: 0.3%p",
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "우체국 적금 가입 우대 (1 또는 2)\n1 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」을 보유한 경우: 0.1%p\n2 신규 가입일 현재 예금주 본인, 자녀, 손자·손녀 중 우체국「 아이LOVE적금 」보유 및 ‘미래고객 우대이율’ 적용받는 경우: 0.3%p\n* 자녀 또는 손·자녀 확인방법 (제출서류 확인)\n- 주민등록등본 또는 가족관계증명서로 자녀, 손자, 손녀 확인이 가능한 경우"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-07",
+          "title": "신규 가입일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 체크카드 이용 실적이 총 60만원 이상인 경우 : 0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 가입일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 체크카드 이용 실적이 총 60만원 이상인 경우 : 0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신규 가입일이 속한 월의 1일부터 3개월이 경과한 월의 말일까지 우체국 체크카드 이용 실적이 총 60만원 이상인 경우 : 0.1%p\n* 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외 하며 체크카드 사용금액만 실적으로 인정(신용결제 제외)"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-CC2D9B8C194-PREF-08",
+          "title": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "계약기간 (가입일~만기일) 중 우체국 수시입출식 예금에서 이 적금으로 자동이체 약정을 (월 30만원 이상) 하고 자동이체 월납입 횟수가 80% 이상일 경우 : 0.2%p"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-001107-1-CC2D9B8C194-PREF-02-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-001107-1-CC2D9B8C194-PREF-02"
+          ],
+          "selector_fact_key": "HOUSEHOLD.TOTAL_CHILD_COUNT_INCLUDING_FETUS",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-001107-1-CC2D9B8C194-PREF-06-ILOVE-MAX",
+          "operator": "MAX_OF",
+          "member_rule_ids": [
+            "INST-KR-001107-1-CC2D9B8C194-PREF-06-HOLD",
+            "INST-KR-001107-1-CC2D9B8C194-PREF-06-FUTURE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08",
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-07"
+        },
+        {
+          "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-08"
+        }
+      ],
+      "interpretation_notes": [
+        {
+          "kind": "QUALIFYING_TIME_EXTENSION",
+          "text": "계약기간 중 결혼·출산으로 자녀우대/일하는 기혼 여성 조건을 충족한 경우에도 해당 기존 우대규칙 적용",
+          "applies_to_titles": [
+            "자녀우대",
+            "일하는 기혼 여성 우대"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-05"
+            }
+          ]
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE",
+      "EVD-IS-4FDBF7260280F3AE121DD13777F19133-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "4fdbf7260280f3ae121dd13777f19133"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO",
+    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE",
+    "EVD-IS-4FDBF7260280F3AE121DD13777F19133-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "4fdbf7260280f3ae121dd13777f19133",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-4FDBF7260280F3AE121DD13777F19133-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,774 @@
+{
+  "product_code": "INST-KR-000599-1-CA24532F6AF",
+  "version": 7,
+  "institution_id": "INST-KR-000599",
+  "name": "아이돌(iDoL) 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-SALE"
+    ],
+    "quantity_limit": {
+      "max_count": 1000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE"
+    },
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 19세 이상 개인(내국인) / 1인 1계좌",
+    "eligibility_text": "만 19세 이상 개인(내국인) / 1인 1계좌",
+    "display_text": "만 19세 이상 개인(내국인) / 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "age_range": {
+      "min_age": 19
+    },
+    "nationality_scope": "KOREAN_ONLY",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1만원~30만원(원단위)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MENTION",
+        "context": "1만원~30만원(원단위)"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "MENTION",
+        "context": "1만원~30만원(원단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000599-1-CA24532F6AF-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "global_cap": {
+        "value": "7.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01",
+          "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02",
+          "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03",
+          "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.SATISFIED.SOURCE_CLAUSE_INST_KR_000599_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "임신 또는 당해연도 출산\n- 임신의 경우 본인에 한하여 적용되며, 출산의 경우 증빙서류상 부모에게 각각 적용됩니다. : 4%"
+        },
+        {
+          "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000599_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "한부모가족 지원대상자\n- 한부모가족 지원대상자의 경우 한부모가족증명서 발급 기준에 따라 적용됩니다.\n* 가입 시 우대조건 확인이 가능한 증빙서류를 제출해야 합니다.(임신확인서, 가족관계증명서 또는 주민등록등본, 한부모가족증명서 등) : 1%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000599-1-CA24532F6AF-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-000599-1-CA24532F6AF-PREF-04"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "한부모가족 지원대상자\n- 한부모가족 지원대상자의 경우 한부모가족증명서 발급 기준에 따라 적용됩니다.\n* 가입 시 우대조건 확인이 가능한 증빙서류를 제출해야 합니다.(임신확인서, 가족관계증명서 또는 주민등록등본, 한부모가족증명서 등) : 1%",
+          "accepted_documents": [
+            "가족관계증명서",
+            "주민등록등본",
+            "증빙서류"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000599-1-CA24532F6AF-PREF-02",
+          "title": "임신 또는 당해연도 출산",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.SATISFIED.SOURCE_CLAUSE_INST_KR_000599_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "임신 또는 당해연도 출산"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "임신 또는 당해연도 출산\n- 임신의 경우 본인에 한하여 적용되며, 출산의 경우 증빙서류상 부모에게 각각 적용됩니다. : 4%"
+        },
+        {
+          "rule_id": "INST-KR-000599-1-CA24532F6AF-PREF-03",
+          "title": "미취학 자녀",
+          "condition": {
+            "predicate": {
+              "fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                      }
+                    ],
+                    "expected_value": 1,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "1명 : 1.00%p",
+                "source_ref_ids": [
+                  "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                      }
+                    ],
+                    "expected_value": 2,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.50",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "2명 : 1.50%p",
+                "source_ref_ids": [
+                  "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                      }
+                    ],
+                    "expected_value": 3,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "2.00",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "3명 : 2.00%p",
+                "source_ref_ids": [
+                  "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              }
+            ],
+            "cap_value": "2.00"
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "미취학 자녀"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "미취학 자녀\n- 1명 : 1.00%p, 2명 : 1.50%p, 3명 : 2.00%p\n- 미취학 자녀 수에 따라 차등 적용되며, 가입일 기준 만 1세 이상 만 6세 미만 자녀를 최대 3명까지 인정합니다."
+        },
+        {
+          "rule_id": "INST-KR-000599-1-CA24532F6AF-PREF-04",
+          "title": "한부모가족 지원대상자",
+          "condition": {
+            "predicate": {
+              "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000599_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "한부모가족 지원대상자"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            }
+          ],
+          "semantic_domain": "ELIGIBILITY_STATUS",
+          "source_clause_text": "한부모가족 지원대상자\n- 한부모가족 지원대상자의 경우 한부모가족증명서 발급 기준에 따라 적용됩니다.\n* 가입 시 우대조건 확인이 가능한 증빙서류를 제출해야 합니다.(임신확인서, 가족관계증명서 또는 주민등록등본, 한부모가족증명서 등) : 1%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000599-1-CA24532F6AF-PREF-03-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000599-1-CA24532F6AF-PREF-03"
+          ],
+          "selector_fact_key": "HOUSEHOLD.PRESCHOOL_CHILD_COUNT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000599-1-CA24532F6AF-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000599-1-CA24532F6AF-PREF-02",
+            "INST-KR-000599-1-CA24532F6AF-PREF-03",
+            "INST-KR-000599-1-CA24532F6AF-PREF-04"
+          ],
+          "cap": {
+            "value": "7.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01",
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02",
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03",
+              "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01",
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02",
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03",
+            "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01",
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02",
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03",
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04",
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-RATE",
+      "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "a9fef0b02f229d5e7919d9935986eda9"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO",
+    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-RATE",
+    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-LISTING",
+    "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "a9fef0b02f229d5e7919d9935986eda9",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-A9FEF0B02F229D5E7919D9935986EDA9-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "product_code": "INST-KR-000176-1-CC43B05CC44",
+  "version": 7,
+  "institution_id": "INST-KR-000176",
+  "name": "정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인",
+    "eligibility_text": "개인",
+    "display_text": "개인",
+    "source_ref_ids": [
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 36,
+    "source_expression": "12 - 36개월 월단위",
+    "source_bounds": {
+      "min": {
+        "value": 12,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 36,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "source_amount_text": "1만원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1만원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000176-1-CC43B05CC44-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000176-1-CC43B05CC44-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000176-1-CC43B05CC44-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CONTRACT_TERM.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000176_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_CONTRACT_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "충청권에 거주하는 가입자에 한하여 12개월 이상 우대 1.2%"
+        },
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000176_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "충청권에 거주하는 가입자에 한하여 24개월 우대 1.5%"
+        },
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000176_1_INST_KR_000176_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "충청권에 거주하는 가입자에 한하여 24개월 초과 우대 1.0%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000176-1-CC43B05CC44-PREF-01",
+          "title": "충청권에 거주하는 가입자에 한하여 12개월 이상 우대 1.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRACT_TERM.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000176_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_CONTRACT_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "충청권에 거주하는 가입자에 한하여 12개월 이상 우대 1.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+            }
+          ],
+          "semantic_domain": "CONTRACT_TERM",
+          "source_clause_text": "충청권에 거주하는 가입자에 한하여 12개월 이상 우대 1.2%"
+        },
+        {
+          "rule_id": "INST-KR-000176-1-CC43B05CC44-PREF-02",
+          "title": "충청권에 거주하는 가입자에 한하여 24개월 우대 1.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000176_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "충청권에 거주하는 가입자에 한하여 24개월 우대 1.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "충청권에 거주하는 가입자에 한하여 24개월 우대 1.5%"
+        },
+        {
+          "rule_id": "INST-KR-000176-1-CC43B05CC44-PREF-03",
+          "title": "충청권에 거주하는 가입자에 한하여 24개월 초과 우대 1.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000176_1_INST_KR_000176_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "충청권에 거주하는 가입자에 한하여 24개월 초과 우대 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "충청권에 거주하는 가입자에 한하여 24개월 초과 우대 1.0%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01",
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02",
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03",
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE",
+      "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.2",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c0e8bae38025ffc325fedfc04ef891ff"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO",
+    "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE",
+    "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c0e8bae38025ffc325fedfc04ef891ff",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-C0E8BAE38025FFC325FEDFC04EF891FF-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

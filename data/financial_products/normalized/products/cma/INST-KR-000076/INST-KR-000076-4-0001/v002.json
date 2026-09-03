@@ -1,0 +1,239 @@
+{
+  "product_code": "INST-KR-000076-4-0001",
+  "version": 2,
+  "institution_id": "INST-KR-000076",
+  "name": "하나CMA (RP형)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000076-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000076-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+    ],
+    "subscription_method_disclosure": "영업점, 온라인(홈페이지, 스마트폰)"
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000076-4-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000076-4-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_RP_CYCLE_ELAPSED_TERM",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000076-4-0001-1-90",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_FOR_CYCLE",
+          "value": "2.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+        ],
+        "as_of": "2026-08-28",
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "DAY",
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_value": "1",
+              "max_value": "90"
+            }
+          }
+        ],
+        "rate_context": {
+          "kind": "POSTED_FIXED_FOR_RP_CYCLE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_COMPARISON_SERVICE",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000076-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+    ],
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 90,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1"
+    },
+    "rate_fixing_policy": {
+      "kind": "FIXED_FOR_CURRENT_RP_CYCLE",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000076-4-0001",
+    "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "publication_gate": "READY",
+    "data_gaps": [
+      {
+        "input_line": 10,
+        "product_code": "INST-KR-000076-4-0001",
+        "product_name": "하나CMA (RP형)",
+        "source_priority": "NAVER_PRIMARY",
+        "path": "return_policy.advertised_max_rate",
+        "reason": "네이버 CMA 카드 표시 수익률을 계약상 최고수익률로 승격하지 않음; listing_snapshot에서만 보존",
+        "status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000076-4-0001"
+        ],
+        "usage_impact": "NO_ADVERTISED_MAX_RANKING"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "usage_restrictions": [
+      "NO_NAVER_LISTING_RATE_AS_CONTRACT_MAX"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000076/INST-KR-000076-4-0001/v001.json",
+    "previous_sha256": "sha256:a20e46471e345921d431c3f83cdebecdcd7bf02696125d7ac486d1e0fac37dfb",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_FOR_CURRENT_RP_CYCLE",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "EXPLICIT_NONOVERLAP"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 90,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": null,
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  },
+  "fee_policy": {
+    "disclosure_text": "이체 수수료 혜택\n\n온라인 타행송금 수수료 면제 기준 (아래 조건중 1 충족시)\n-CMA 신규 등록 계좌(고객별 최초 서비스 등록 계좌, 신규 익일부터 익월말일까지 면제)\n-급여이체 등록 CMA 계좌(급여이체를 당사 CMA계좌로 등록 후 당사에 급여이체 입금된 경우. 단, 급여이체는 은행 대량입금 방식이어야 함)\n-CMA 전용상품에서 당사 적립식 및 임의식계좌로 월 10만원이상 자동이체 계좌\n-CMA 전용상품 월 평잔 500만원 이상 계좌\n-CMA 계좌가 공과금 등 결제계좌로 지정된 계좌\n-CMA 전용상품으로 월 10만원 이상 이용기관 CMS 입금\n*수수료 면제 계좌는 매월 말일 당월 기준으로 산정하여 산정일 익월 초일부터 말까지 1개월간 수수료 우대 적용\n\nCD/ATM기 수수료 혜택\n\n이체, CD기 수수료 면제 대상계좌 : 은행 연결계좌가 없는 계좌 (당사 종합카드 하단에 은행 입금 번호가 없는 계좌)\n- 3가지 조건 중 1가지 이상 충족시 면제\n1. 총 자산의 평잔이 1,000만원 이상(전전월기준)\n2. 최근 6개월간의 수수료 합산금액이 5만원 이상(전전월 기준)\n3. 전월 CMA전용상품에서 당사 적립식 또는 임의식계좌로 월 10만원 이상 자동이체 또는 전월 타기관에서 당사 CMA전용상품으로 월 10만원 이상 CMS입금을 할 경우\n*은행 CD기 외에 사설 CD/VAN기(노틸러스 효성, 한네트, 비지에프캐시넷 등)에서 이체/출금하는 경우는 면제대상에 해당되지 않습니다.",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"
+    ],
+    "disclosure_semantics": "STRUCTURED_CONDITIONAL_WAIVER_WITH_SOURCE_DISCLOSURE",
+    "waiver_policies": [
+      {
+        "waiver_id": "HANA-CMA-ONLINE-INTERBANK-TRANSFER",
+        "fee_type": "ONLINE_INTERBANK_TRANSFER",
+        "relation": "ANY_OF",
+        "conditions": [
+          {"fact_key": "ACCOUNT.IS_CUSTOMERS_FIRST_CMA_SERVICE_REGISTRATION", "operator": "EQUALS", "expected_value": true, "benefit_window": {"start": "DAY_AFTER_REGISTRATION", "end": "END_OF_MONTH_AFTER_REGISTRATION"}},
+          {"relation": "AND", "predicates": [{"fact_key": "ACCOUNT.SALARY_TRANSFER_REGISTERED", "operator": "EQUALS", "expected_value": true}, {"fact_key": "ACCOUNT.SALARY_RECEIVED_BY_BANK_BULK_DEPOSIT", "operator": "EQUALS", "expected_value": true}]},
+          {"fact_key": "ACCOUNT.MONTHLY_TRANSFER_TO_HANA_INSTALLMENT_OR_DISCRETIONARY_ACCOUNT", "operator": "GTE", "expected_value": "100000", "unit": "KRW"},
+          {"fact_key": "ACCOUNT.MONTHLY_AVERAGE_CMA_BALANCE", "operator": "GTE", "expected_value": "5000000", "unit": "KRW"},
+          {"fact_key": "ACCOUNT.DESIGNATED_FOR_UTILITY_PAYMENT", "operator": "EQUALS", "expected_value": true},
+          {"fact_key": "ACCOUNT.MONTHLY_INSTITUTION_CMS_DEPOSIT", "operator": "GTE", "expected_value": "100000", "unit": "KRW"}
+        ],
+        "assessment": {"on": "MONTH_END", "benefit_period": "FOLLOWING_CALENDAR_MONTH"},
+        "source_ref_ids": ["EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"]
+      },
+      {
+        "waiver_id": "HANA-CMA-TRANSFER-AND-CD",
+        "fee_types": ["TRANSFER", "BANK_CD_WITHDRAWAL"],
+        "gate": {"fact_key": "ACCOUNT.HAS_BANK_LINKED_ACCOUNT_NUMBER", "operator": "EQUALS", "expected_value": false},
+        "relation": "ANY_OF",
+        "conditions": [
+          {"fact_key": "CUSTOMER.TOTAL_ASSET_AVERAGE_BALANCE_TWO_MONTHS_PRIOR", "operator": "GTE", "expected_value": "10000000", "unit": "KRW"},
+          {"fact_key": "CUSTOMER.FEE_TOTAL_LAST_6_MONTHS_AS_OF_TWO_MONTHS_PRIOR", "operator": "GTE", "expected_value": "50000", "unit": "KRW"},
+          {"relation": "ANY_OF", "predicates": [{"fact_key": "ACCOUNT.PREVIOUS_MONTH_TRANSFER_TO_HANA_INSTALLMENT_OR_DISCRETIONARY_ACCOUNT", "operator": "GTE", "expected_value": "100000", "unit": "KRW"}, {"fact_key": "ACCOUNT.PREVIOUS_MONTH_EXTERNAL_CMS_DEPOSIT", "operator": "GTE", "expected_value": "100000", "unit": "KRW"}]}
+        ],
+        "excluded_networks": ["PRIVATE_CD_VAN_NOTILUS_HYOSUNG", "HANNET", "BGF_CASHNET", "OTHER_PRIVATE_CD_VAN"],
+        "source_ref_ids": ["EVD-CMA-LIVE-NAVER-INST-KR-000076-4-0001-20260829"]
+      }
+    ]
+  }
+}

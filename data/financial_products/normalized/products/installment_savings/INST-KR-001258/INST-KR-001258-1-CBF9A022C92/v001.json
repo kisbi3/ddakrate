@@ -1,0 +1,109 @@
+{
+  "product_code": "INST-KR-001258-1-CBF9A022C92",
+  "version": 1,
+  "institution_id": "INST-KR-001258",
+  "name": "e-파란적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자",
+    "eligibility_text": "개인 및 개인사업자",
+    "display_text": "개인 및 개인사업자",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "min_value": "10000",
+        "currency": "KRW"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001258-1-CBF9A022C92-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001258-1-CBF9A022C92-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.60",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+    ],
+    "advertised_max_rate": {
+      "value": "4.60",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-001258-1-CBF9A022C92"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.753857+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

@@ -1,0 +1,770 @@
+{
+  "product_code": "INST-KR-000216-1-C61525AC6C1",
+  "version": 8,
+  "institution_id": "INST-KR-000216",
+  "name": "행복을 가꾸는 통장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)\n자녀 본인 및 부모 연령에 제한을 두지 않고 가입가능",
+    "eligibility_text": "실명의 개인 (1인 1계좌)\n자녀 본인 및 부모 연령에 제한을 두지 않고 가입가능",
+    "display_text": "실명의 개인 (1인 1계좌)\n자녀 본인 및 부모 연령에 제한을 두지 않고 가입가능",
+    "source_ref_ids": [
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      1,
+      2,
+      3
+    ],
+    "source_ref_ids": [
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+    ],
+    "source_expression": "1년, 2년, 3년"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "1000000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "1000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "source_amount_text": "최소 1,000원 이상 최대 100만원 이하\n매 납입금액 최소 1천원 이상\n월 납입액최고 100만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1,000원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 100만원 이하\n매 납입금액 최소 1천원 이상\n월 납입액최고 100만원 이하"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 100만원 이하\n매 납입금액 최소 1천원 이상\n월 납입액최고 100만원 이하"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 100만원 이하\n매 납입금액 최소 1천원 이상\n월 납입액최고 100만원 이하"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1,000원 이상 최대 100만원 이하\n매 납입금액 최소 1천원 이상\n월 납입액최고 100만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-C61525AC6C1-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C61525AC6C1-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C61525AC6C1-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021",
+          "type": "INTEGER",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "매 저축 건별로 자동이체 거래 시 0.1p% 우대",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "unit": "MONTH",
+          "self_report_eligible": false,
+          "source_recognition_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000216_1",
+          "type": "INTEGER",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "unit": "MONTH",
+          "self_report_eligible": false,
+          "source_recognition_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "인터넷뱅킹 등 비대면매체로 신규 가입시 : 0.1%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000216-1-C61525AC6C1-PREF-02-AUTO-PER-CONTRIB",
+          "title": "매 저축 건별로 자동이체 거래 시 0.1p% 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ],
+            "principal_scope": "QUALIFYING_CONTRIBUTIONS_ONLY",
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "매 저축 건별로 자동이체 거래 시 0.1p% 우대",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "매 저축 건별로 자동이체 거래 시 0.1p% 우대",
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C61525AC6C1-PREF-02-RENEW",
+          "title": "자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대",
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C61525AC6C1-PREF-02-ZODIAC",
+          "title": "신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대",
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C61525AC6C1-PREF-02-FIRST",
+          "title": "신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ],
+            "principal_scope": "FIRST_CONTRIBUTION_ONLY",
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)",
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "교차 우대이자율 적용 거래형태 및 거래조건에 따라 최고 연 0.3%p까지 우대금리 적용\n1 매 저축 건별로 자동이체 거래 시 0.1p% 우대\n2 자동재신규 2백만원이상(세금납부 후)인 계좌 0.1%p 우대\n3 신규년도 해당띠에 태어난 만 18세 이하의 고객, 신규 후 첫 번째 계약기간 동안 0.1%p 우대\n4 신규 첫 회 저축 건 0.1%p 일괄 우대(자동재신규 제외)"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C61525AC6C1-PREF-03",
+          "title": "인터넷뱅킹 등 비대면매체로 신규 가입시 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "인터넷뱅킹 등 비대면매체로 신규 가입시 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "인터넷뱅킹 등 비대면매체로 신규 가입시 : 0.1%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000216-1-C61525AC6C1-PREF-02-CROSS-CAP",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000216-1-C61525AC6C1-PREF-02-AUTO-PER-CONTRIB",
+            "INST-KR-000216-1-C61525AC6C1-PREF-02-RENEW",
+            "INST-KR-000216-1-C61525AC6C1-PREF-02-ZODIAC",
+            "INST-KR-000216-1-C61525AC6C1-PREF-02-FIRST"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-01",
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02",
+            "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-01",
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02",
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03",
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE",
+      "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c3fffe5382c0ad2420b7601242747a93"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO",
+    "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE",
+    "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c3fffe5382c0ad2420b7601242747a93",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-C3FFFE5382C0AD2420B7601242747A93-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

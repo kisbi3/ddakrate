@@ -1,0 +1,422 @@
+{
+  "product_code": "INST-KR-000010-1-CC3E2F85D65",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "경남은행 장병내일준비적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인으로서 가입시점 기준으로 남은 의무복무기간이 1개월 이상인 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한하며, 역종변경자의 가입자격은 “사회복무요원”으로 한다. (경남은행 기준 1인 1좌)",
+    "eligibility_text": "실명의 개인으로서 가입시점 기준으로 남은 의무복무기간이 1개월 이상인 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한하며, 역종변경자의 가입자격은 “사회복무요원”으로 한다. (경남은행 기준 1인 1좌)",
+    "display_text": "실명의 개인으로서 가입시점 기준으로 남은 의무복무기간이 1개월 이상인 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한하며, 역종변경자의 가입자격은 “사회복무요원”으로 한다. (경남은행 기준 1인 1좌)",
+    "source_ref_ids": [
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_accounts": 1,
+      "scope": "PER_CUSTOMER"
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 24,
+    "source_expression": "1개월 이상 24개월 이내 일 단위\n※ 가입 시 '가입자격확인서' 를 제출하여야 하며 가입자격 확인서 상 기재된 전역(예정)일이 만기일이 됩니다.",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "월부금 1만원 이상 ~ 30만원 이내 (원단위로 자유롭게 납입가능)\n단, 장병내일준비적금의 취급은행의 한도를 합산하여 매월 55만원을 초과하여 적립 불가합니다.",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월부금 1만원 이상 ~ 30만원 이내 (원단위로 자유롭게 납입가능)\n단, 장병내일준비적금의 취급은행의 한도를 합"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월부금 1만원 이상 ~ 30만원 이내 (원단위로 자유롭게 납입가능)\n단, 장병내일준비적금의 취급은행의 한도를 합산하여 매월 55만"
+      },
+      {
+        "value": "550000",
+        "currency": "KRW",
+        "source_expression": "55만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "0만원 이내 (원단위로 자유롭게 납입가능)\n단, 장병내일준비적금의 취급은행의 한도를 합산하여 매월 55만원을 초과하여 적립 불가합니다."
+      }
+    ],
+    "aggregate_limit_rules": [
+      {
+        "scope": "CROSS_INSTITUTION_PER_MONTH",
+        "currency": "KRW",
+        "max_value": "550000",
+        "source_ref_ids": [
+          "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+          }
+        ]
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-CC3E2F85D65-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-CC3E2F85D65-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-CC3E2F85D65-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 15,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-CC3E2F85D65-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "5.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 15,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT_HOLDING.KYONGNAM_HOUSING_SAVINGS_ACCOUNT_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_moment": "SUBSCRIPTION",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-CC3E2F85D65-PREF-01",
+          "title": "▪ 가입일 현재 예금주 본인명의 당행 “주택청약종합저축(청년주택드림 청약통장 포함)”을 보유중인 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.KYONGNAM_HOUSING_SAVINGS_ACCOUNT_AT_SUBSCRIPTION",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "▪ 가입일 현재 예금주 본인명의 당행 “주택청약종합저축(청년주택드림 청약통장 포함)”을 보유중인 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "▪ 가입일 현재 예금주 본인명의 당행 “주택청약종합저축(청년주택드림 청약통장 포함)”을 보유중인 경우\n▪ 중도해지시 우대이율은 제공되지 않습니다. : 0.1%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01",
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE",
+      "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "4af25112855b62812fa3cb6f64ca72f1"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO",
+    "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE",
+    "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "4af25112855b62812fa3cb6f64ca72f1",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-4AF25112855B62812FA3CB6F64CA72F1-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

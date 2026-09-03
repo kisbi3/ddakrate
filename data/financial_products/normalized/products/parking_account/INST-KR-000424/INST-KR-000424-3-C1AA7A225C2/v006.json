@@ -1,0 +1,508 @@
+{
+  "product_code": "INST-KR-000424-3-C1AA7A225C2",
+  "version": 6,
+  "institution_id": "INST-KR-000424",
+  "name": "우리 원더라이프 연금 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2",
+      "EVD-OFFICIAL-WOORI-WONDERLIFE-PENSION-20260830"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 100000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "10만좌"
+    },
+    "account_quota": 100000,
+    "may_close_on_quota_exhaustion": true,
+    "subscription_channel_details": [
+      {
+        "channel": "BRANCH",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2",
+          "EVD-OFFICIAL-WOORI-WONDERLIFE-PENSION-20260830"
+        ]
+      },
+      {
+        "channel": "MOBILE_APP",
+        "platform": "WOORI_WON_BANKING",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2",
+          "EVD-OFFICIAL-WOORI-WONDERLIFE-PENSION-20260830"
+        ]
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-3-C1AA7A225C2-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+        ],
+        "source_clause": "기본금리(우대조건 미충족) 0.10%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.QUALIFYING_PENSION_TRANSFER_EVENT_COUNT_PREVIOUS_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+          ],
+          "unit": "COUNT",
+          "qualifying_branches": [
+            {
+              "type": "PUBLIC_PENSION",
+              "providers": [
+                "NATIONAL_PENSION",
+                "GOVERNMENT_EMPLOYEE_PENSION",
+                "PRIVATE_SCHOOL_TEACHERS_PENSION",
+                "MILITARY_PENSION",
+                "VETERANS_PENSION",
+                "BASIC_OLD_AGE_PENSION"
+              ]
+            },
+            {
+              "type": "WOORI_PENSION_PRODUCT_PAYMENT",
+              "products": [
+                "HOUSING_PENSION_LOAN",
+                "PENSION_TRUST",
+                "PENSION_FUND",
+                "IMMEDIATE_ANNUITY_DEPOSIT"
+              ]
+            },
+            {
+              "type": "TRANSFER_MEMO_AND_AMOUNT",
+              "memo_contains_any": [
+                "연금",
+                "보험"
+              ],
+              "minimum_amount_per_event": 200000,
+              "unit": "KRW"
+            }
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.WOORI.QUALIFYING_PENSION_TRANSFER_EVENT_COUNT_PREVIOUS_6M",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.FIRST_QUALIFYING_PENSION_TRANSFER_EVENT_OCCURRED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-3-C1AA7A225C2-PREF-01",
+          "title": "전월 연금이체 실적 보유",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.QUALIFYING_PENSION_TRANSFER_EVENT_COUNT_PREVIOUS_MONTH",
+              "operator": "GTE",
+              "expected_value": 1
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": {
+              "type": "SETTLEMENT_TO_SETTLEMENT",
+              "start": "PREVIOUS_REGULAR_SETTLEMENT_DATE",
+              "end": "DAY_BEFORE_CURRENT_REGULAR_SETTLEMENT_DATE"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000424-3-C1AA7A225C2-PREF-02",
+          "title": "직전 6개월 우리은행 연금이체가 없던 고객의 첫연금 이체",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.WOORI.QUALIFYING_PENSION_TRANSFER_EVENT_COUNT_PREVIOUS_6M",
+                  "operator": "EQUALS",
+                  "expected_value": 0
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.FIRST_QUALIFYING_PENSION_TRANSFER_EVENT_OCCURRED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "fact_window": {
+              "type": "PREVIOUS_SIX_CALENDAR_MONTHS_BEFORE_FIRST_PENSION_EVENT"
+            },
+            "effective_window": {
+              "type": "EVENT_ACTIVATED_WITH_ACCOUNT_AGE_EXPIRY",
+              "activation": "FIRST_QUALIFYING_PENSION_TRANSFER_DATE",
+              "expiry": {
+                "relative_to": "ACCOUNT_OPEN_DATE",
+                "duration": {
+                  "value": 1,
+                  "unit": "YEAR"
+                },
+                "end_inclusive": false
+              },
+              "semantics": "첫연금 이체 조건이 충족된 시점부터 적용하되, 가입일로부터 1년이 되는 시점을 넘겨 우대기간을 연장하지 않음"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2",
+            "EVD-OFFICIAL-WOORI-WONDERLIFE-PENSION-20260830"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "3.0",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "opening_grace_policy": {
+        "source_text": "가입후 2개월간(연금이체 변경후 실적체크 불가 기간)은 우대금리 기본 제공",
+        "effective_window": {
+          "start": "ACCOUNT_OPEN_DATE",
+          "duration": {
+            "value": 2,
+            "unit": "MONTH"
+          }
+        },
+        "applies_to_rule_ids": [
+          "INST-KR-000424-3-C1AA7A225C2-PREF-01",
+          "INST-KR-000424-3-C1AA7A225C2-PREF-02"
+        ],
+        "reward_cap": {
+          "value": "3.0",
+          "unit": "PERCENTAGE_POINT"
+        }
+      },
+      "settlement_period_semantics": {
+        "type": "SETTLEMENT_TO_SETTLEMENT",
+        "start": "PREVIOUS_REGULAR_SETTLEMENT_DATE",
+        "end": "DAY_BEFORE_CURRENT_REGULAR_SETTLEMENT_DATE"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "FRIDAY",
+              "holiday_adjustment": "PREVIOUS_BUSINESS_DAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+          ]
+        }
+      ],
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settle_on": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL"
+          ]
+        }
+      },
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL_TRANCHE",
+    "advertised_max_rate": {
+      "value": "3.10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2",
+    "EVD-OFFICIAL-WOORI-WONDERLIFE-PENSION-20260830"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_WOORI_OFFICIAL_ENRICHMENT",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY_OFFICIAL_ENRICHMENT",
+    "source_reason": "네이버 상세의 금리·조건별 원문을 primary로 유지하고, 우리은행 공식 상품페이지로 가입채널과 상품 현재성을 교차확인",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000424-3-C1AA7A225C2",
+    "source_record_id": "7a3d7652e256d905135ca929d5d21d34",
+    "supersedes_version": 5,
+    "restructured_at": "2026-08-30T21:13:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 130,
+    "reviewed_source_record_id": "7a3d7652e256d905135ca929d5d21d34",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "CONDITIONAL_RATE_ROW_MISCLASSIFIED_AS_BASE",
+      "DERIVED_LISTING_ARITHMETIC_INCONSISTENCY",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "SUBSCRIPTION_CHANNEL_INCOMPLETE",
+      "FIRST_PENSION_REWARD_EXPIRY_ANCHORED_TO_EVENT_INSTEAD_OF_ACCOUNT_OPEN",
+      "BALANCE_METHOD_ENUM_ABBREVIATED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "전월 연금 실적→전월 결산일부터 이번달 결산일 전일까지 적용기간을 구조화",
+      "직전 6개월 무실적 첫연금 +1.0%p와 가입 후 2개월 grace, 첫 200만원 및 3.0%p cap 보존",
+      "셋째 주 금요일 결산·휴일 조정·익일 지급과 판매한도 10만좌 구조화"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "final_review_changes": [
+      "원문 특판 표시를 상품 trait로 보존"
+    ],
+    "final_reviewed_at": "2026-08-30T17:37:00+09:00",
+    "final_review_mode": "PRODUCT_BY_PRODUCT_SOURCE_RECONCILIATION",
+    "patch_reason": [
+      "가입채널을 BRANCH 단독에서 BRANCH + MOBILE_APP으로 교정",
+      "첫연금 +1.0%p 우대의 만료점을 첫연금일+1년이 아니라 가입일+1년으로 교정",
+      "balance_tier_method를 MARGINAL에서 MARGINAL_TRANCHE로 정규화"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000424-3-C1AA7A225C2"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  },
+  "traits": [
+    "SPECIAL_SALE"
+  ]
+}

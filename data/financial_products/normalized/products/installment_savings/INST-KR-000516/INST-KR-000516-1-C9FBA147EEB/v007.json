@@ -1,0 +1,695 @@
+{
+  "product_code": "INST-KR-000516-1-C9FBA147EEB",
+  "version": 7,
+  "institution_id": "INST-KR-000516",
+  "name": "KB가맹점우대적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상의 실명의 개인(개인사업자 포함), 법인, 임의단체 (단, 금융기관은 제외)\n※ 1인(업체)당 최대 5계좌까지 가입 가능",
+    "eligibility_text": "만 14세 이상의 실명의 개인(개인사업자 포함), 법인, 임의단체 (단, 금융기관은 제외)\n※ 1인(업체)당 최대 5계좌까지 가입 가능",
+    "display_text": "만 14세 이상의 실명의 개인(개인사업자 포함), 법인, 임의단체 (단, 금융기관은 제외)\n※ 1인(업체)당 최대 5계좌까지 가입 가능",
+    "source_ref_ids": [
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR",
+      "CORPORATION",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_expression": "6개월 ~ 36개월 이내 (월 또는 일단위)",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 36,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "increment_value": "1"
+      },
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "10000000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "신규금액 1만원 이상\n2회차 이후 1천원 ~ 1천만원 (원단위)\n※ 단, 계약기간의 2/3가 경과한 이후에는 기 적립한 금액의 2/3를 초과하여 입금불가",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "INITIAL",
+        "role": "MINIMUM",
+        "context": "신규금액 1만원 이상\n2회차 이후 1천원 ~ 1천만원 (원단위)\n※ 단, 계약기간의 2/3가 경과한 이후에는 기"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "INITIAL",
+        "role": "MINIMUM",
+        "context": "신규금액 1만원 이상\n2회차 이후 1천원 ~ 1천만원 (원단위)\n※ 단, 계약기간의 2/3가 경과한 이후에는 기 적립한 금액의 2/3를 초"
+      },
+      {
+        "value": "10000000",
+        "currency": "KRW",
+        "source_expression": "1천만원",
+        "scope": "INITIAL",
+        "role": "MINIMUM",
+        "context": "신규금액 1만원 이상\n2회차 이후 1천원 ~ 1천만원 (원단위)\n※ 단, 계약기간의 2/3가 경과한 이후에는 기 적립한 금액의 2/3를 초과하여 입금불"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "신규금액 1만원 이상",
+      "min_value": "10000"
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-C9FBA147EEB-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.950",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9FBA147EEB-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.250",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9FBA147EEB-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-1-C9FBA147EEB-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03",
+          "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "MERCHANT_SETTLEMENT.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "가맹점결제계좌 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 KB국민은행계좌로 KB국민카드(KB국민BC카드 포함) 가맹점 대금 이체실적(공동망 가맹점 매입분 포함)이 있는 경우: 연0.3%p"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "KB국민카드 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 30만원 이상의 KB국민카드 (신용/체크, 개인/기업, KB국민BC카드 포함) 이용실적(매입전표만 인정)이 있는 경우: 연0.1%p\n※ 가족카드 이용실적은 본인회원의 실적에 합산하고, 본인회원 적금 가입시만 우대이율을 적용함",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000516_1_C9FBA147EEB-INST_KR_000516_1_C9FBA-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.AMOUNT.SOURCE_CLAUSE_INST_KR_000516_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "사업성공 우대이율: 만기 해지 시 적립원금(이자금액 제외)이 1천만원 이상인 경우: 연0.1%p",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000516_1_C9FBA147EEB-INST_KR_000516_1_C9FBA-SOURCE_CLAUSE_INST_KR_000516_1",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000516_1_C9FBA147EEB-INST_KR_000516_1_C9FBA-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "KB국민카드 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 30만원 이상의 KB국민카드 (신용/체크, 개인/기업, KB국민BC카드 포함) 이용실적(매입전표만 인정)이 있는 경우: 연0.1%p\n※ 가족카드 이용실적은 본인회원의 실적에 합산하고, 본인회원 적금 가입시만 우대이율을 적용함",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000516_1_C9FBA147EEB-INST_KR_000516_1_C9FBA-SOURCE_CLAUSE_INST_KR_000516_1",
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "사업성공 우대이율: 만기 해지 시 적립원금(이자금액 제외)이 1천만원 이상인 경우: 연0.1%p",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-C9FBA147EEB-PREF-02",
+          "title": "가맹점결제계좌 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 KB국민은행계좌로 KB국민카드(KB국민BC카드 포함) 가맹점 대금 이체실적(공동망 가맹점 매입분 포함)이 있는 경우: 연0.3%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "MERCHANT_SETTLEMENT.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가맹점결제계좌 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 KB국민은행계좌로 KB국민카드(KB국민BC카드 포함) 가맹점 대금 이체실적(공동망 가맹점 매입분 포함)이 있는 경우: 연0.3%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+            }
+          ],
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "가맹점결제계좌 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 KB국민은행계좌로 KB국민카드(KB국민BC카드 포함) 가맹점 대금 이체실적(공동망 가맹점 매입분 포함)이 있는 경우: 연0.3%p"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C9FBA147EEB-PREF-03",
+          "title": "KB국민카드 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 30만원 이상의 KB국민카드 (신용/체크, 개인/기업, KB국민BC카드 포함) 이용실적(매입전표만 인정)이 있는 경우: 연0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "KB국민카드 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 30만원 이상의 KB국민카드 (신용/체크, 개인/기업, KB국민BC카드 포함) 이용실적(매입전표만 인정)이 있는 경우: 연0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "KB국민카드 우대이율: 신규일로부터 3개월이 경과한 날이 속한 달에 30만원 이상의 KB국민카드 (신용/체크, 개인/기업, KB국민BC카드 포함) 이용실적(매입전표만 인정)이 있는 경우: 연0.1%p\n※ 가족카드 이용실적은 본인회원의 실적에 합산하고, 본인회원 적금 가입시만 우대이율을 적용함"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C9FBA147EEB-PREF-04",
+          "title": "사업성공 우대이율: 만기 해지 시 적립원금(이자금액 제외)이 1천만원 이상인 경우: 연0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.AMOUNT.SOURCE_CLAUSE_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "사업성공 우대이율: 만기 해지 시 적립원금(이자금액 제외)이 1천만원 이상인 경우: 연0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "사업성공 우대이율: 만기 해지 시 적립원금(이자금액 제외)이 1천만원 이상인 경우: 연0.1%p"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01",
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02",
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03",
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04",
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE",
+      "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.75",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "4b1fdf67feeb9d49d36a25069a8b2a3a"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO",
+    "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE",
+    "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "4b1fdf67feeb9d49d36a25069a8b2a3a",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-4B1FDF67FEEB9D49D36A25069A8B2A3A-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

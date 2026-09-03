@@ -1,0 +1,1004 @@
+{
+  "product_code": "INST-KR-000252-1-C4C75725C9E",
+  "version": 8,
+  "institution_id": "INST-KR-000252",
+  "name": "하나 장병내일준비 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "아래 항목을 모두 충족하는 현역병, 상근예비역, 사회복무요원, 대체복무요원\n1 1인 1계좌 (단, 만기해지 후 사회복무요원, 대체복무요원 자격으로 재가입 불가)\n2 가입일로부터 남은 의무복무기간이 1개월 이상인 장병\n3 「장병내일준비적금 가입자격확인서」 원본을 제출한 장병\n※비대면 신규시 자격검증서비스로 검증된 「장병내일준비적금 가입자격확인서」를 제출한 장병",
+    "eligibility_text": "아래 항목을 모두 충족하는 현역병, 상근예비역, 사회복무요원, 대체복무요원\n1 1인 1계좌 (단, 만기해지 후 사회복무요원, 대체복무요원 자격으로 재가입 불가)\n2 가입일로부터 남은 의무복무기간이 1개월 이상인 장병\n3 「장병내일준비적금 가입자격확인서」 원본을 제출한 장병\n※비대면 신규시 자격검증서비스로 검증된 「장병내일준비적금 가입자격확인서」를 제출한 장병",
+    "display_text": "아래 항목을 모두 충족하는 현역병, 상근예비역, 사회복무요원, 대체복무요원\n1 1인 1계좌 (단, 만기해지 후 사회복무요원, 대체복무요원 자격으로 재가입 불가)\n2 가입일로부터 남은 의무복무기간이 1개월 이상인 장병\n3 「장병내일준비적금 가입자격확인서」 원본을 제출한 장병\n※비대면 신규시 자격검증서비스로 검증된 「장병내일준비적금 가입자격확인서」를 제출한 장병",
+    "source_ref_ids": [
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 24,
+    "source_expression": "1개월 ~ 24개월 (일단위) 이내로, 만기일은 전역(또는 소집해제) 예정일과 일치\n(단, 대체복무요원의 경우 24개월 초과시 최대 24개월까지 가입 가능)",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 24,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "currency": "KRW",
+        "min_value": "10",
+        "max_value": "300000",
+        "increment_value": "1",
+        "period_basis": null
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "550000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "가입금액: 30만원 이하 (0원 신규 가능)",
+      "max_value": "300000"
+    },
+    "aggregate_limit_rules": [
+      {
+        "scope": "CROSS_INSTITUTION_PER_MONTH",
+        "currency": "KRW",
+        "max_value": "550000",
+        "source_ref_ids": [
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "가입금액: 30만원 이하 (0원 신규 가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산 월 최대 불입한도는 55만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "INITIAL",
+        "role": "MAXIMUM",
+        "context": "가입금액: 30만원 이하 (0원 신규 가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산"
+      },
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "가입금액: 30만원 이하 (0원 신규 가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산 월 최대 불입"
+      },
+      {
+        "value": "10",
+        "currency": "KRW",
+        "source_expression": "10원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "가입금액: 30만원 이하 (0원 신규 가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산 월 최대 불입한도는 55만원 이하"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "가입금액: 30만원 이하 (0원 신규 가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산 월 최대 불입한도는 55만원 이하"
+      },
+      {
+        "value": "550000",
+        "currency": "KRW",
+        "source_expression": "55만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "가능)\n적립금액: 월 10원 ~ 30만원(원단위)\n※동상품 판매 금융기관 합산 월 최대 불입한도는 55만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-C4C75725C9E-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-C4C75725C9E-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 15,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-C4C75725C9E-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "5.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 15,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01",
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02",
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03",
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04",
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05",
+          "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01",
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02",
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03",
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04",
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05",
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_C4C75725C9E_PREF_02.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-C4C75725C9E-PREF-02-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_C4C75725C9E_PREF_06.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-C4C75725C9E-PREF-06-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입일로부터 3개월이 되는 달의 말일 기준으로 당행 주택청약종합저축을 보유한 경우 : 0.5%"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%"
+        },
+        {
+          "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입후 만기 전전월의 말일을 기준으로 군인공제회 병(兵) 회원 저축 상품 가입 (초회납 완료)을 통해 회원 자격을 취득한 경우 : 0.2%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000252-1-C4C75725C9E-PREF-02-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "이 예금 가입 후 만기 전전월의 말일 기준으로 당행 입출금통장에 12회 이상 군급여가 입금된 경우\n※ 군급여이체 실적은 월1회만 인정하며, 국군재정관리단을 통한 이체에 한함 : 1.6%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 가입 후 만기 전전월의 말일 기준으로 당행 입출금통장에 12회 이상 군급여가 입금된 경우\n※ 군급여이체 실적은 월1회만 인정하며, 국군재정관리단을 통한 이체에 한함 : 1.6%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000252-1-C4C75725C9E-PREF-06-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "이 예금 가입 후 만기 전전월의 말일 기준으로 하나카드 체크(신용)카드 결제실적이 3회 이상 있을 경우\n※ 하나카드 결제실적은 월 1회만 인정 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 가입 후 만기 전전월의 말일 기준으로 하나카드 체크(신용)카드 결제실적이 3회 이상 있을 경우\n※ 하나카드 결제실적은 월 1회만 인정 : 0.2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000252-1-C4C75725C9E-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-000252-1-C4C75725C9E-PREF-04"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%",
+          "submission_channels": [
+            "BRANCH"
+          ],
+          "submission_deadline_source_expressions": [
+            "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-C4C75725C9E-PREF-02",
+          "title": "이 예금 가입 후 만기 전전월의 말일 기준으로 당행 입출금통장에 12회 이상 군급여가 입금된 경우",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 12,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000252_1_C4C75725C9E_PREF_02.QUALIFYING_EVENT_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 12,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.6",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입 후 만기 전전월의 말일 기준으로 당행 입출금통장에 12회 이상 군급여가 입금된 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금 가입 후 만기 전전월의 말일 기준으로 당행 입출금통장에 12회 이상 군급여가 입금된 경우\n※ 군급여이체 실적은 월1회만 인정하며, 국군재정관리단을 통한 이체에 한함 : 1.6%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C4C75725C9E-PREF-03",
+          "title": "이 예금 가입일로부터 3개월이 되는 달의 말일 기준으로 당행 주택청약종합저축을 보유한 경우 : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입일로부터 3개월이 되는 달의 말일 기준으로 당행 주택청약종합저축을 보유한 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "이 예금 가입일로부터 3개월이 되는 달의 말일 기준으로 당행 주택청약종합저축을 보유한 경우 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C4C75725C9E-PREF-04",
+          "title": "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "이 예금 가입후 만기 전일까지 하나은행 영업점을 방문하여 '기초생활수급자'임을 증빙하는 서류를 제출하는 경우 : 3%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C4C75725C9E-PREF-05",
+          "title": "이 예금 가입후 만기 전전월의 말일을 기준으로 군인공제회 병(兵) 회원 저축 상품 가입 (초회납 완료)을 통해 회원 자격을 취득한 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입후 만기 전전월의 말일을 기준으로 군인공제회 병(兵) 회원 저축 상품 가입 (초회납 완료)을 통해 회원 자격을 취득한 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+            }
+          ],
+          "semantic_domain": "ELIGIBILITY_STATUS",
+          "source_clause_text": "이 예금 가입후 만기 전전월의 말일을 기준으로 군인공제회 병(兵) 회원 저축 상품 가입 (초회납 완료)을 통해 회원 자격을 취득한 경우 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C4C75725C9E-PREF-06",
+          "title": "이 예금 가입 후 만기 전전월의 말일 기준으로 하나카드 체크(신용)카드 결제실적이 3회 이상 있을 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000252_1_C4C75725C9E_PREF_06.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입 후 만기 전전월의 말일 기준으로 하나카드 체크(신용)카드 결제실적이 3회 이상 있을 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "이 예금 가입 후 만기 전전월의 말일 기준으로 하나카드 체크(신용)카드 결제실적이 3회 이상 있을 경우\n※ 하나카드 결제실적은 월 1회만 인정 : 0.2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06",
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE",
+      "EVD-IS-CC9B3609887BFE4301864F37BBE15993-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "10.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "cc9b3609887bfe4301864f37bbe15993"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO",
+    "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE",
+    "EVD-IS-CC9B3609887BFE4301864F37BBE15993-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "cc9b3609887bfe4301864f37bbe15993",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-CC9B3609887BFE4301864F37BBE15993-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

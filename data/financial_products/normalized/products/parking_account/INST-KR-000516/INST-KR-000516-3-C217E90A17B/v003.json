@@ -1,0 +1,361 @@
+{
+  "product_code": "INST-KR-000516-3-C217E90A17B",
+  "version": 3,
+  "institution_id": "INST-KR-000516",
+  "name": "KB모임금고",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "KB모임통장 서비스에 등록된 통장을 보유한 실명의 개인",
+    "eligibility_text": "KB모임통장 서비스에 등록된 통장을 보유한 실명의 개인",
+    "display_text": "KB모임통장 서비스에 등록된 통장을 보유한 실명의 개인",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000516-3-C217E90A17B-REL-304063E8A75B",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "KB모임통장 서비스에 등록된 통장을 보유한 실명의 개인",
+        "fact_key": "SOURCE_RELATIONSHIP.304063E8A75B.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+        ]
+      }
+    ],
+    "fact_definitions": [
+      {
+        "fact_key": "RELATIONSHIP.KB.GROUP_ACCOUNT_SERVICE_REGISTERED_UNDERLYING_ACCOUNT_HELD",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+        ]
+      }
+    ],
+    "condition": {
+      "predicate": {
+        "fact_key": "RELATIONSHIP.KB.GROUP_ACCOUNT_SERVICE_REGISTERED_UNDERLYING_ACCOUNT_HELD",
+        "operator": "EQUALS",
+        "expected_value": true
+      }
+    },
+    "linked_account_limit": {
+      "max_vaults_per_underlying_group_account": 1
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ],
+    "amount_rules": [
+      {
+        "scope": "BALANCE",
+        "currency": "KRW",
+        "source_text": "입금한도 : 1천만원\n※ 단, 잔액이 1천만원을 초과한 경우에도 이자는 입금 가능\n▪ 0원계좌로만 개설 가능",
+        "max_value": "10000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-3-C217E90A17B-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 0.1%(세금공제 전)",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RELATIONSHIP.KB.GROUP_ACCOUNT_SERVICE_REGISTERED_UNDERLYING_ACCOUNT_HELD",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.KB.LINKED_GROUP_ACCOUNT.NON_OWNER_ACTIVE_MEMBER_COUNT_AT_SETTLEMENT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ],
+          "unit": "COUNT"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-3-C217E90A17B-PREF-01",
+          "title": "결산일 기준 연결 모임에 참여 중인 모임원 존재",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.KB.GROUP_ACCOUNT_SERVICE_REGISTERED_UNDERLYING_ACCOUNT_HELD",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.KB.LINKED_GROUP_ACCOUNT.NON_OWNER_ACTIVE_MEMBER_COUNT_AT_SETTLEMENT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "MONTHLY_SETTLEMENT_DATE",
+            "reward_window": {
+              "start": "DAY_AFTER_SETTLEMENT_DATE",
+              "end": "NEXT_MONTH_SETTLEMENT_DATE"
+            },
+            "first_settlement_grace": true
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ],
+      "linked_account_relation": {
+        "type": "ONE_VAULT_PER_UNDERLYING_KB_GROUP_ACCOUNT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "이자는 결산일(매월 둘째 금요일)에 결산하여 다음날(원가일) 원금에 더함\n※ 단, 고객이 이자받기를 요청한 경우 요청일에 원금에 더함\n※ 예금의 이자는 최종거래일로부터 5 년이 경과한 날부터는 이자를 원금에 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000516-3-C217E90A17B-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 2,
+              "weekday": "FRIDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000516-3-C217E90A17B-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "이자는 결산일(매월 둘째 금요일)에 결산하여 다음날(원가일) 원금에 더함\n※ 단, 고객이 이자받기를 요청한 경우 요청일에 원금에 더함\n※ 예금의 이자는 최종거래일로부터 5 년이 경과한 날부터는 이자를 원금에 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000516-3-C217E90A17B-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000516-3-C217E90A17B",
+    "source_record_id": "7593669391f5fdef5a5874728d768f78",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 141,
+    "reviewed_source_record_id": "7593669391f5fdef5a5874728d768f78",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "LINKED_GROUP_ACCOUNT_PREREQUISITE_RAW_ONLY",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "KB모임통장 서비스 등록 근거계좌 보유를 가입 prerequisite로 승격",
+      "결산일 참여 모임원 수와 근거계좌별 1금고 scope, 최초 결산일까지 grace를 구조화"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C217E90A17B"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

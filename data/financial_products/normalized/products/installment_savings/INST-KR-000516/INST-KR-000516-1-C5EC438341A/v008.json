@@ -1,0 +1,979 @@
+{
+  "product_code": "INST-KR-000516-1-C5EC438341A",
+  "version": 8,
+  "institution_id": "INST-KR-000516",
+  "name": "KB 특★한 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인3계좌)\n※ 개인사업자, 임의단체 및 공동명의 가입불가(서류 미제출 임의단체 가입 불가)",
+    "eligibility_text": "실명의 개인(1인3계좌)\n※ 개인사업자, 임의단체 및 공동명의 가입불가(서류 미제출 임의단체 가입 불가)",
+    "display_text": "실명의 개인(1인3계좌)\n※ 개인사업자, 임의단체 및 공동명의 가입불가(서류 미제출 임의단체 가입 불가)",
+    "source_ref_ids": [
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 3
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 6,
+    "source_expression": "1개월 이상 ~ 6개월 이하 (월단위/일단위)",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 6,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY",
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "300000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1천원 ~ 30만원 (원단위)\n※ 매월(1일에서 말일까지) 자유롭게 저축 (만기일 전일까지 저축 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "MENTION",
+        "context": "월 1천원 ~ 30만원 (원단위)\n※ 매월(1일에서 말일까지) 자유롭게 저축 (만기일 전일까지 저축 가능)"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "MENTION",
+        "context": "월 1천원 ~ 30만원 (원단위)\n※ 매월(1일에서 말일까지) 자유롭게 저축 (만기일 전일까지 저축 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-C5EC438341A-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "4.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04",
+          "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "KB_APP_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000516_1_C5EC438341A_PREF_04.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000516-1-C5EC438341A-PREF-04-REFERRAL",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+          "type": "NUMBER",
+          "unit": "KRW",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금의 신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 최종이율에 가산\n※ 금리우대쿠폰 우대금리는 신규 당시 적용한 쿠폰의 우대금리를 따르며, 세부 사항 (적용방법, 유의사항 등)은 금리우대쿠폰에서 확인 가능\n※ 금리우대쿠폰은 신규 시에만 사용 가능하며 중도해지시 미적용"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000516-1-C5EC438341A-PREF-04-REFERRAL",
+          "event_type": "REFERRAL_SUBSCRIPTION",
+          "qualifying_definition": {
+            "source_text": "함께해요 우대이율 (최고 연 2.0%p)\n- 만기일까지 신규 시 생성된 추천번호를 다른사람이 신규시 입력하는 경우 추천번호를 제공한 계좌 및 입력한 계좌 모두에게 연0.5%p씩 제공\nㅇ 예금주 본인의 추천번호 입력 불가\nㅇ 제공한 계좌의 우대이율은 최대3회(최고 연1.5%p)까지 가능\n단, 총3회 적용된 제공 계좌에 한해 0.5%p 추가제공\n금리우대쿠폰"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-C5EC438341A-PREF-02",
+          "title": "목표달성 축하 우대이율 (최고 연 1.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+                    "operator": "LTE",
+                    "expected_value": 500000,
+                    "unit": "KRW"
+                  }
+                },
+                "rate_value": "0.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "ㅇ 목표금액 50만원 이하 : 연0.5%p"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+                    "operator": "GT",
+                    "expected_value": 500000,
+                    "unit": "KRW"
+                  }
+                },
+                "rate_value": "1",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "ㅇ 목표금액 50만원 초과 : 연1.0%p"
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              }
+            ],
+            "cap_value": "1.0"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "목표달성 축하 우대이율 (최고 연 1.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "목표달성 축하 우대이율 (최고 연 1.0%p)\n- 만기 전일까지 신규시 설정(또는 신규가입 후 1개월 이전까지 변경)한 목표금액을 달성한 경우\nᄋ 목표금액 50만원 이하 : 연0.5%p\nᄋ 목표금액 50만원 초과 : 연1.0%p\n※ 목표금액 : 최소1천원 이상 최대210만원 이내 설정 가능\n※ 목표금액 변경 관련 유의사항\nᄋ 목표금액은 만기일 변경시에만 동시 변경 가능\nᄋ 목표금액 변경은 KB스타뱅킹 내 적금 [전용화면]에서 가능"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C5EC438341A-PREF-03",
+          "title": "별 모으기 우대이율 (최고 연 1.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                      }
+                    ],
+                    "unit": "COUNT",
+                    "lower": 10,
+                    "upper": 20,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "별 모으기 달성 개수 10개 : 연 0.5%p",
+                "source_ref_ids": [
+                  "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                      }
+                    ],
+                    "expected_value": 20,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.0",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "별 모으기 달성 개수 20개 : 연 1.0%p",
+                "source_ref_ids": [
+                  "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              }
+            ],
+            "cap_value": "1.0"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              }
+            ],
+            "fact_authority": "APP_OR_DEVICE_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "별 모으기 우대이율 (최고 연 1.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            }
+          ],
+          "semantic_domain": "ACTIVITY_OR_MISSION",
+          "source_clause_text": "별 모으기 우대이율 (최고 연 1.0%p)\n- 만기일까지 적금의 [전용화면]에서 정해진 개수만큼 별 모으기를 달성한 경우\nᄋ 별 모으기 달성 개수 10개 : 연 0.5%p\nᄋ 별 모으기 달성 개수 20개 : 연 1.0%p\n※ 별 모으기 관련 유의사항\nᄋ 별 모으기는 1일1회만 가능 (주말 및 휴일에도 가능)\nᄋ 만기일 변경시에도 이미 모은 별은 그대로 유지"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C5EC438341A-PREF-04",
+          "title": "함께해요 우대이율 (최고 연 2.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000516_1_C5EC438341A_PREF_04.SUCCESS_COUNT",
+              "operator": "GTE",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+                }
+              ],
+              "expected_value": 1,
+              "unit": "COUNT"
+            },
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000516-1-C5EC438341A-PREF-04-REFERRAL",
+            "counter_fact_key": "RULE.INST_KR_000516_1_C5EC438341A_PREF_04.SUCCESS_COUNT",
+            "value_per_occurrence": "0.5",
+            "max_occurrences": 3,
+            "cap_value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              }
+            ],
+            "milestone_rewards": [
+              {
+                "threshold_count": 3,
+                "increment_value": "0.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "총3회 적용된 제공 계좌에 한해 0.5%p 추가제공"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "함께해요 우대이율 (최고 연 2.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "함께해요 우대이율 (최고 연 2.0%p)\n- 만기일까지 신규 시 생성된 추천번호를 다른사람이 신규시 입력하는 경우 추천번호를 제공한 계좌 및 입력한 계좌 모두에게 연0.5%p씩 제공\nᄋ 예금주 본인의 추천번호 입력 불가\nᄋ 제공한 계좌의 우대이율은 최대3회(최고 연1.5%p)까지 가능\n단, 총3회 적용된 제공 계좌에 한해 0.5%p 추가제공\n금리우대쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C5EC438341A-PREF-05",
+          "title": "이 적금의 신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 최종이율에 가산",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금의 신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 최종이율에 가산"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이 적금의 신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 최종이율에 가산\n※ 금리우대쿠폰 우대금리는 신규 당시 적용한 쿠폰의 우대금리를 따르며, 세부 사항 (적용방법, 유의사항 등)은 금리우대쿠폰에서 확인 가능\n※ 금리우대쿠폰은 신규 시에만 사용 가능하며 중도해지시 미적용"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000516-1-C5EC438341A-PREF-03-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000516-1-C5EC438341A-PREF-03"
+          ],
+          "selector_fact_key": "PROMOTION.STAR_COLLECTION_COUNT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000516-1-C5EC438341A-PREF-04-CUMULATIVE-EXACT",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000516-1-C5EC438341A-PREF-04"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000516-1-C5EC438341A-PREF-04-REFERRAL",
+          "counter_fact_key": "RULE.INST_KR_000516_1_C5EC438341A_PREF_04.SUCCESS_COUNT",
+          "value_per_occurrence": "0.5",
+          "max_occurrences": 3,
+          "cap": {
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "milestone_rewards": [
+            {
+              "threshold_count": 3,
+              "increment_value": "0.5",
+              "unit": "PERCENTAGE_POINT",
+              "source_text": "총3회 적용된 제공 계좌에 한해 0.5%p 추가제공"
+            }
+          ]
+        },
+        {
+          "relation_id": "REL-INST-KR-000516-1-C5EC438341A-PREF-02-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000516-1-C5EC438341A-PREF-02"
+          ],
+          "selector_fact_key": "ACCOUNT.TARGET_AMOUNT_KRW",
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000516-1-C5EC438341A-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000516-1-C5EC438341A-PREF-02",
+            "INST-KR-000516-1-C5EC438341A-PREF-03",
+            "INST-KR-000516-1-C5EC438341A-PREF-04",
+            "INST-KR-000516-1-C5EC438341A-PREF-05"
+          ],
+          "cap": {
+            "value": "4.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01",
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02",
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03",
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04",
+              "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01",
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02",
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03",
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04",
+            "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01",
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02",
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03",
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04",
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05",
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-RATE",
+      "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c9c5f241d67f4380fe2559e2404e8037"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO",
+    "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-RATE",
+    "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c9c5f241d67f4380fe2559e2404e8037",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C9C5F241D67F4380FE2559E2404E8037-RATE"
+      ]
+    }
+  ]
+}

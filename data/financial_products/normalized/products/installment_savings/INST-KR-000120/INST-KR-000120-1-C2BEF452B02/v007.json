@@ -1,0 +1,629 @@
+{
+  "product_code": "INST-KR-000120-1-C2BEF452B02",
+  "version": 7,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK내맘대로 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음 (단, 금융기관 및 시금고 등은 대상에서 제외)",
+    "eligibility_text": "제한없음 (단, 금융기관 및 시금고 등은 대상에서 제외)",
+    "display_text": "제한없음 (단, 금융기관 및 시금고 등은 대상에서 제외)",
+    "source_ref_ids": [
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED"
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_expression": "6개월 이상 60개월 이하 (일 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1천원 이상 (원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1천원 이상 (원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.900",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 18,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 18,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 30,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-05",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 30,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-06",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 36,
+          "max_value": 48,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-07",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 48,
+          "max_value": 60,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C2BEF452B02-BASE-08",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 60
+        },
+        "source_ref_ids": [
+          "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규시 적용 우대이율 : 신규 가입 채널에 따라 구분 적용되며, 변경이 불가합니다.\n(1) 비대면 채널 가입 또는 상품서비스안내 동의서 징구 우대이율 : 0.05%p\n- 비대면 채널을 통해 이 적금을 가입하거나, 신규시 영업점 창구에서 상품서비스안내 동의서 징구 후 신규하는 경우 적용\n- 비대면 채널 가입 우대이율과 상품서비스안내 동의서 징구 우대이율은 서로 중복하여 적용이 불가하며 신규 가입 시점에 우대이율이 적용되어 중도 변경이 불가"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AVERAGE_AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.\n(1) 입출금 평잔 우대이율 : 0.05%p\n- (개인) 보유한 입출금통장의 월 평균 잔액이 50만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- (개인 외) 보유한 입출금통장의 월 평균 잔액이 5백만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- 만기월은 평가제외\n(2) 대출 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신규대출 취급 실적이 존재하는 경우 적용\n- (개인 외) 이 적금 가입기간 중 신규대출 취급 실적이 누적 1억원 이상인 경우 적용\n(3) 외환 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 외화송금, 환전 누적 실적이 미화 1천불 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 외화송금, 환전, 수출입 누적 실적이 미화 1만불 이상인 경우 적용\n(4) 신용(체크)카드 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 50만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 5백만원 이상인 경우 적용\n(5) 정기예금 가입 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5백만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5천만원 이상인 경우 적용\n- 단, 신규 가입한 예금의 자동재예치 및 자동갱신 시에는 신규가입 누적 금액에서 제외",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000120_1_C2BEF452B02-INST_KR_000120_1_C2BEF-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000120-1-C2BEF452B02-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.\n(1) 입출금 평잔 우대이율 : 0.05%p\n- (개인) 보유한 입출금통장의 월 평균 잔액이 50만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- (개인 외) 보유한 입출금통장의 월 평균 잔액이 5백만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- 만기월은 평가제외\n(2) 대출 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신규대출 취급 실적이 존재하는 경우 적용\n- (개인 외) 이 적금 가입기간 중 신규대출 취급 실적이 누적 1억원 이상인 경우 적용\n(3) 외환 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 외화송금, 환전 누적 실적이 미화 1천불 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 외화송금, 환전, 수출입 누적 실적이 미화 1만불 이상인 경우 적용\n(4) 신용(체크)카드 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 50만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 5백만원 이상인 경우 적용\n(5) 정기예금 가입 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5백만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5천만원 이상인 경우 적용\n- 단, 신규 가입한 예금의 자동재예치 및 자동갱신 시에는 신규가입 누적 금액에서 제외"
+          },
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.\n(1) 입출금 평잔 우대이율 : 0.05%p\n- (개인) 보유한 입출금통장의 월 평균 잔액이 50만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- (개인 외) 보유한 입출금통장의 월 평균 잔액이 5백만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- 만기월은 평가제외\n(2) 대출 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신규대출 취급 실적이 존재하는 경우 적용\n- (개인 외) 이 적금 가입기간 중 신규대출 취급 실적이 누적 1억원 이상인 경우 적용\n(3) 외환 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 외화송금, 환전 누적 실적이 미화 1천불 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 외화송금, 환전, 수출입 누"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000120_1_C2BEF452B02-INST_KR_000120_1_C2BEF-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.\n(1) 입출금 평잔 우대이율 : 0.05%p\n- (개인) 보유한 입출금통장의 월 평균 잔액이 50만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- (개인 외) 보유한 입출금통장의 월 평균 잔액이 5백만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- 만기월은 평가제외\n(2) 대출 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신규대출 취급 실적이 존재하는 경우 적용\n- (개인 외) 이 적금 가입기간 중 신규대출 취급 실적이 누적 1억원 이상인 경우 적용\n(3) 외환 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 외화송금, 환전 누적 실적이 미화 1천불 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 외화송금, 환전, 수출입 누적 실적이 미화 1만불 이상인 경우 적용\n(4) 신용(체크)카드 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 50만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 5백만원 이상인 경우 적용\n(5) 정기예금 가입 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5백만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5천만원 이상인 경우 적용\n- 단, 신규 가입한 예금의 자동재예치 및 자동갱신 시에는 신규가입 누적 금액에서 제외",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_MONTH",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000120-1-C2BEF452B02-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000120-1-C2BEF452B02-PREF-02"
+          ],
+          "required_actions": [
+            "PROVIDE_CONSENT_FORM"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "신규시 적용 우대이율 : 신규 가입 채널에 따라 구분 적용되며, 변경이 불가합니다.\n(1) 비대면 채널 가입 또는 상품서비스안내 동의서 징구 우대이율 : 0.05%p\n- 비대면 채널을 통해 이 적금을 가입하거나, 신규시 영업점 창구에서 상품서비스안내 동의서 징구 후 신규하는 경우 적용\n- 비대면 채널 가입 우대이율과 상품서비스안내 동의서 징구 우대이율은 서로 중복하여 적용이 불가하며 신규 가입 시점에 우대이율이 적용되어 중도 변경이 불가",
+          "submission_channels": [
+            "BRANCH"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000120-1-C2BEF452B02-PREF-02",
+          "title": "신규시 적용 우대이율 : 신규 가입 채널에 따라 구분 적용되며, 변경이 불가합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규시 적용 우대이율 : 신규 가입 채널에 따라 구분 적용되며, 변경이 불가합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "신규시 적용 우대이율 : 신규 가입 채널에 따라 구분 적용되며, 변경이 불가합니다.\n(1) 비대면 채널 가입 또는 상품서비스안내 동의서 징구 우대이율 : 0.05%p\n- 비대면 채널을 통해 이 적금을 가입하거나, 신규시 영업점 창구에서 상품서비스안내 동의서 징구 후 신규하는 경우 적용\n- 비대면 채널 가입 우대이율과 상품서비스안내 동의서 징구 우대이율은 서로 중복하여 적용이 불가하며 신규 가입 시점에 우대이율이 적용되어 중도 변경이 불가"
+        },
+        {
+          "rule_id": "INST-KR-000120-1-C2BEF452B02-PREF-03",
+          "title": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AVERAGE_AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "해지시 적용 우대이율 : 가입 고객별로 아래 각 호의 5가지 우대이율 항목 중 3가지를 자유롭게 선택할 수 있으며, 신규 가입시 선택한 우대이율 항목 3가지는 만기 전일까지 자유롭게 변경이 가능합니다.\n(1) 입출금 평잔 우대이율 : 0.05%p\n- (개인) 보유한 입출금통장의 월 평균 잔액이 50만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- (개인 외) 보유한 입출금통장의 월 평균 잔액이 5백만원 이상인 횟수가 가입월수의 1/2 이상인 경우 적용\n- 만기월은 평가제외\n(2) 대출 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신규대출 취급 실적이 존재하는 경우 적용\n- (개인 외) 이 적금 가입기간 중 신규대출 취급 실적이 누적 1억원 이상인 경우 적용\n(3) 외환 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 외화송금, 환전 누적 실적이 미화 1천불 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 외화송금, 환전, 수출입 누적 실적이 미화 1만불 이상인 경우 적용\n(4) 신용(체크)카드 실적 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 50만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 신용(체크)카드 누적 이용금액이 5백만원 이상인 경우 적용\n(5) 정기예금 가입 우대이율 : 0.05%p\n- (개인) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5백만원 이상인 경우 적용\n- (개인 외) 이 적금 가입기간 중 부산은행 정기예금 신규가입 누적 금액이 5천만원 이상인 경우 적용\n- 단, 신규 가입한 예금의 자동재예치 및 자동갱신 시에는 신규가입 누적 금액에서 제외"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-01",
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02",
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03",
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE",
+      "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "9f308f2978cf4bff1f67f6db766a0627"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO",
+    "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE",
+    "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "9f308f2978cf4bff1f67f6db766a0627",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-9F308F2978CF4BFF1F67F6DB766A0627-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

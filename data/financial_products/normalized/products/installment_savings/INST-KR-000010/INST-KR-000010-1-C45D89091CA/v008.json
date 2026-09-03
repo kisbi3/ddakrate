@@ -1,0 +1,310 @@
+{
+  "product_code": "INST-KR-000010-1-C45D89091CA",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "주택청약종합저축",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "국민인 개인(국내에 거소가 있는 재외동포 포함) 또는 외국인 거주자로서 연령에 상관없이 가입가능\n(주택청약종합저축, 청약저축, 청약예금, 청약부금의 가입은 전 금융기관을 통해 1인 1계좌에 한함. 단, 주택청약종합저축은 주택도시기금 취급 금융기관에서만 가입 가능)",
+    "eligibility_text": "국민인 개인(국내에 거소가 있는 재외동포 포함) 또는 외국인 거주자로서 연령에 상관없이 가입가능\n(주택청약종합저축, 청약저축, 청약예금, 청약부금의 가입은 전 금융기관을 통해 1인 1계좌에 한함. 단, 주택청약종합저축은 주택도시기금 취급 금융기관에서만 가입 가능)",
+    "display_text": "국민인 개인(국내에 거소가 있는 재외동포 포함) 또는 외국인 거주자로서 연령에 상관없이 가입가능\n(주택청약종합저축, 청약저축, 청약예금, 청약부금의 가입은 전 금융기관을 통해 1인 1계좌에 한함. 단, 주택청약종합저축은 주택도시기금 취급 금융기관에서만 가입 가능)",
+    "source_ref_ids": [
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "derivation": {
+      "start_event": "SUBSCRIPTION_DATE",
+      "end_event": "HOUSING_SUBSCRIPTION_WIN_OR_ACCOUNT_TERMINATION"
+    },
+    "source_expression": "가입한 날로부터 국민주택과 민영주택의 입주자로 선정시까지\n(단, 분양전환 되지 않는 임대주택 입주자로 선정된 경우 제외)",
+    "source_ref_ids": [
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "20000",
+        "max_value": "500000",
+        "increment_value": "10"
+      }
+    ],
+    "conditional_amount_rules": [
+      {
+        "condition_type": "CUMULATIVE_BALANCE_BELOW_OR_REACHING_THRESHOLD",
+        "balance_threshold": "15000000",
+        "currency": "KRW",
+        "normal_cap_may_be_exceeded": true,
+        "source_expression": "납입잔액/납입누계액이 1,500만원에 도달하기 전에는 일반 회차·월 한도를 초과할 수 있음",
+        "source_ref_ids": [
+          "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "매월 정해진 날짜(신규가입일 해당일)에 2만원 이상 50만원 이하의 금액을 10원 단위로 자유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의 합이 1,500만원 이하인 경우에는 납입잔액 1,500만원까지 월 한도 50만원을 초과 하여 입금가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "20000",
+        "currency": "KRW",
+        "source_expression": "2만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 정해진 날짜(신규가입일 해당일)에 2만원 이상 50만원 이하의 금액을 10원 단위로 자유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 정해진 날짜(신규가입일 해당일)에 2만원 이상 50만원 이하의 금액을 10원 단위로 자유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의 합이 1,50"
+      },
+      {
+        "value": "10",
+        "currency": "KRW",
+        "source_expression": "10원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 정해진 날짜(신규가입일 해당일)에 2만원 이상 50만원 이하의 금액을 10원 단위로 자유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의 합이 1,500만원 이하인 경우에는"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "TOTAL_CONTRACT",
+        "role": "MAXIMUM",
+        "context": "50만원 이하의 금액을 10원 단위로 자유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의 합이 1,500만원 이하인 경우에는 납입잔액 1,500만원까지 월 한도 50만원을 초과 하여 입금가능"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "TOTAL_CONTRACT",
+        "role": "MAXIMUM",
+        "context": "유롭게 납입. 다만, 입금하려는 금액과 납입 누계액의 합이 1,500만원 이하인 경우에는 납입잔액 1,500만원까지 월 한도 50만원을 초과 하여 입금가능"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "려는 금액과 납입 누계액의 합이 1,500만원 이하인 경우에는 납입잔액 1,500만원까지 월 한도 50만원을 초과 하여 입금가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "VARIABLE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-C45D89091CA-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 12,
+          "min_inclusive": false,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-C45D89091CA-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-C45D89091CA-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE",
+      "EVD-IS-D2EBF754DDA115C72A11721980071A2F-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d2ebf754dda115c72a11721980071a2f"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO",
+    "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE",
+    "EVD-IS-D2EBF754DDA115C72A11721980071A2F-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T05:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "AUDIT_SEMANTIC_CORRECTION",
+    "source_record_id": "d2ebf754dda115c72a11721980071a2f",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T05:00:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL_ABSENT",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_SIMPLE",
+      "reason_codes": [
+        "CUMULATIVE_BALANCE_SCOPE_CORRECTION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-D2EBF754DDA115C72A11721980071A2F-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

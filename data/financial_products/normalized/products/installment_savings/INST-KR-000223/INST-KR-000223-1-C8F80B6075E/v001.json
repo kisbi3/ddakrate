@@ -1,0 +1,206 @@
+{
+  "product_code": "INST-KR-000223-1-C8F80B6075E",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK평생한가족통장[적금_정액적립식]",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (개인사업자 제외)",
+    "eligibility_text": "실명의 개인 (개인사업자 제외)",
+    "display_text": "실명의 개인 (개인사업자 제외)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      12,
+      24,
+      36
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-C8F80B6075E-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-C8F80B6075E-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.95",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-C8F80B6075E-01",
+        "title": "고객별 우대금리 : 최고 연 0.1%",
+        "condition_text": "고객별 우대금리 : 최고 연 0.1%\n① 가입일 당시 최초 실명등록을 한 고객, 연 0.1%\n② 당행 예·적금 만기해지일로부터 1개월 이내에 IBK평생한가족통장(적금) 가입한 고객. 단 만기일자 이후 해지한 예·적금만 인정, 연 0.1%\n③ 당행에 실명등록일로부터 3년 경과한 고객, 연 0.1%",
+        "structured_steps": [
+          "고객별 우대금리 : 최고 연 0.1%",
+          "① 가입일 당시 최초 실명등록을 한 고객, 연 0.1%",
+          "② 당행 예·적금 만기해지일로부터 1개월 이내에 IBK평생한가족통장(적금) 가입한 고객. 단 만기일자 이후 해지한 예·적금만 인정, 연 0.1%",
+          "③ 당행에 실명등록일로부터 3년 경과한 고객, 연 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "고객별 우대금리 : 최고 연 0.1%",
+          "summary_text": "고객별 우대금리 : 최고 연 0.1%",
+          "detail_texts": [
+            "① 가입일 당시 최초 실명등록을 한 고객, 연 0.1%",
+            "② 당행 예·적금 만기해지일로부터 1개월 이내에 IBK평생한가족통장(적금) 가입한 고객. 단 만기일자 이후 해지한 예·적금만 인정, 연 0.1%",
+            "③ 당행에 실명등록일로부터 3년 경과한 고객, 연 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-C8F80B6075E-02",
+        "title": "주거래 우대금리 : 연 0.3%",
+        "condition_text": "주거래 우대금리 : 연 0.3%\n- 제공조건 : 계약기간 중 다음 주거래 실적조건 중 2개 이상을 충족하고, 만기해지 하는 경우 제공\n① 급여이체 실적(월 50만원 이상) 또는 연금수급* 실적이 3개월 이상인 경우\n* 4대(국민, 공무원, 군인, 사학) 연금, 장해연금, 기초(노령)연금만 인정\n② 이 통장(적립식, 거치식) 만기해지일 직전월로부터 3개월 동안 아래 입출금식* 상품 평잔이 1백만원 이상인 경우\n* I PLAN급여통장, IBK급여통장, 新IBK급여통장, 新서민섬김통장(입출식), IBK생활비통장, IBK평생안심통장, IBK평생설계통장, IBK평생한가족통장(입출식), IBK W통장(입출식), IBK소확행통장(입출식), IBK간편한통장, IBK늘푸른하늘통장(입출식), IBK주거래생활금융통장에 한함\n③ (新)IBK아파트관리비 자동이체 또는 지로·공과금* 자동이체(월 3건 이상) 실적이 3개월 이상 있는 경우\n* 지로, CMS, 펌뱅킹\n④ 당행 신용(체크)카드 월 30만원 이상 이용실적*이 3개월 이상 있는 경우\n* 이용실적은 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한함. (단, 현금서비스 이용실적은 제외)\n⑤ 당행 개인대출을 보유한 이력이 있는 경우\n⑥ 당행 본인 적립식 상품(적금, 펀드, 주택청약, 적립식중금채)에 월 10만원 이상 자동이체 실적이 3개월 이상 있는 경우 (당행간 이체만 인정)\n⑦ ISA적립누계액이 100만원 이상인 경우*\n*해당 상품 만기 시 보유하고 있는 ISA적립누계액을 기준으로 함",
+        "structured_steps": [
+          "주거래 우대금리 : 연 0.3%",
+          "- 제공조건 : 계약기간 중 다음 주거래 실적조건 중 2개 이상을 충족하고, 만기해지 하는 경우 제공",
+          "① 급여이체 실적(월 50만원 이상) 또는 연금수급* 실적이 3개월 이상인 경우",
+          "* 4대(국민, 공무원, 군인, 사학) 연금, 장해연금, 기초(노령)연금만 인정",
+          "② 이 통장(적립식, 거치식) 만기해지일 직전월로부터 3개월 동안 아래 입출금식* 상품 평잔이 1백만원 이상인 경우",
+          "* I PLAN급여통장, IBK급여통장, 新IBK급여통장, 新서민섬김통장(입출식), IBK생활비통장, IBK평생안심통장, IBK평생설계통장, IBK평생한가족통장(입출식), IBK W통장(입출식), IBK소확행통장(입출식), IBK간편한통장, IBK늘푸른하늘통장(입출식), IBK주거래생활금융통장에 한함",
+          "③ (新)IBK아파트관리비 자동이체 또는 지로·공과금* 자동이체(월 3건 이상) 실적이 3개월 이상 있는 경우",
+          "* 지로, CMS, 펌뱅킹",
+          "④ 당행 신용(체크)카드 월 30만원 이상 이용실적*이 3개월 이상 있는 경우",
+          "* 이용실적은 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한함. (단, 현금서비스 이용실적은 제외)",
+          "⑤ 당행 개인대출을 보유한 이력이 있는 경우",
+          "⑥ 당행 본인 적립식 상품(적금, 펀드, 주택청약, 적립식중금채)에 월 10만원 이상 자동이체 실적이 3개월 이상 있는 경우 (당행간 이체만 인정)",
+          "⑦ ISA적립누계액이 100만원 이상인 경우*",
+          "*해당 상품 만기 시 보유하고 있는 ISA적립누계액을 기준으로 함"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "주거래 우대금리 : 연 0.3%",
+          "summary_text": "주거래 우대금리 : 연 0.3%",
+          "detail_texts": [
+            "- 제공조건 : 계약기간 중 다음 주거래 실적조건 중 2개 이상을 충족하고, 만기해지 하는 경우 제공",
+            "① 급여이체 실적(월 50만원 이상) 또는 연금수급* 실적이 3개월 이상인 경우",
+            "* 4대(국민, 공무원, 군인, 사학) 연금, 장해연금, 기초(노령)연금만 인정",
+            "② 이 통장(적립식, 거치식) 만기해지일 직전월로부터 3개월 동안 아래 입출금식* 상품 평잔이 1백만원 이상인 경우",
+            "* I PLAN급여통장, IBK급여통장, 新IBK급여통장, 新서민섬김통장(입출식), IBK생활비통장, IBK평생안심통장, IBK평생설계통장, IBK평생한가족통장(입출식), IBK W통장(입출식), IBK소확행통장(입출식), IBK간편한통장, IBK늘푸른하늘통장(입출식), IBK주거래생활금융통장에 한함",
+            "③ (新)IBK아파트관리비 자동이체 또는 지로·공과금* 자동이체(월 3건 이상) 실적이 3개월 이상 있는 경우",
+            "* 지로, CMS, 펌뱅킹",
+            "④ 당행 신용(체크)카드 월 30만원 이상 이용실적*이 3개월 이상 있는 경우",
+            "* 이용실적은 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한함. (단, 현금서비스 이용실적은 제외)",
+            "⑤ 당행 개인대출을 보유한 이력이 있는 경우",
+            "⑥ 당행 본인 적립식 상품(적금, 펀드, 주택청약, 적립식중금채)에 월 10만원 이상 자동이체 실적이 3개월 이상 있는 경우 (당행간 이체만 인정)",
+            "⑦ ISA적립누계액이 100만원 이상인 경우*",
+            "*해당 상품 만기 시 보유하고 있는 ISA적립누계액을 기준으로 함"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+    ],
+    "advertised_max_rate": {
+      "value": "2.95",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-1-C8F80B6075E"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.306210+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

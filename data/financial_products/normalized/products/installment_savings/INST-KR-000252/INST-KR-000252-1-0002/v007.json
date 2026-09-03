@@ -1,0 +1,713 @@
+{
+  "product_code": "INST-KR-000252-1-0002",
+  "version": 7,
+  "institution_id": "INST-KR-000252",
+  "name": "급여하나 월복리 적금\n네이버 페이",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(연금하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "eligibility_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(연금하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "display_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(연금하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "source_ref_ids": [
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      1,
+      2,
+      3
+    ],
+    "source_ref_ids": [
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+    ],
+    "source_expression": "1년, 2년, 3년"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "3000000",
+        "increment_value": "1"
+      },
+      {
+        "scope": "PER_QUARTER",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "1500000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1만원 이상 300만원 이하 (원단위)\n(단, 청년응원 특별금리 적용기간은 분기당 1만원이상 150만원 이하)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_QUARTER",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 300만원 이하 (원단위)\n(단, 청년응원 특별금리 적용기간은 분기당 1만원이상 150만원"
+      },
+      {
+        "value": "3000000",
+        "currency": "KRW",
+        "source_expression": "300만원",
+        "scope": "PER_QUARTER",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 300만원 이하 (원단위)\n(단, 청년응원 특별금리 적용기간은 분기당 1만원이상 150만원 이하)"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_QUARTER",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 300만원 이하 (원단위)\n(단, 청년응원 특별금리 적용기간은 분기당 1만원이상 150만원 이하)"
+      },
+      {
+        "value": "1500000",
+        "currency": "KRW",
+        "source_expression": "150만원",
+        "scope": "PER_QUARTER",
+        "role": "RANGE_BOUND",
+        "context": "1만원 이상 300만원 이하 (원단위)\n(단, 청년응원 특별금리 적용기간은 분기당 1만원이상 150만원 이하)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.950",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-0002-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 2
+        },
+        "source_ref_ids": [
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-0002-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01",
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02",
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03",
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04",
+          "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.AGE",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "YEAR",
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04",
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "금리우대쿠폰을 발급받을 경우 기본금리에 가산하여 우대금리를 지급하며, 금리우대쿠폰의 금리는 하나원큐 내 쿠폰함 또는 상품 가입시 제공되는 쿠폰의 우대금리를 따릅니다. 단, 신규 가입시에만 쿠폰사용이 가능하며, 재예치 또는 중도해지시에는 적용되지 않습니다."
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-0002-PREF-02",
+          "title": "이 예금 만기 전전월말 기준, 계약기간의 1/2 이상 본인명의 하나은행 입출금통장을 통해 급여 입금실적 보유한 경우 (월1회 이체만 인정) : 0.9%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.9",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 만기 전전월말 기준, 계약기간의 1/2 이상 본인명의 하나은행 입출금통장을 통해 급여 입금실적 보유한 경우 (월1회 이체만 인정) : 0.9%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금 만기 전전월말 기준, 계약기간의 1/2 이상 본인명의 하나은행 입출금통장을 통해 급여 입금실적 보유한 경우 (월1회 이체만 인정) : 0.9%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0002-PREF-03",
+          "title": "이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.AGE",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우 : 0.1%\n청년응원 특별금리 연 1.3%\n※ 가입일 기준 만 35세 이하만 가능"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0002-PREF-04",
+          "title": "이 예금을 1년제로 가입하고, 아래 항목을 모두 충족하는 경우 만기해지시 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금을 1년제로 가입하고, 아래 항목을 모두 충족하는 경우 만기해지시 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금을 1년제로 가입하고, 아래 항목을 모두 충족하는 경우 만기해지시 제공\n만기 전전월말 기준 6개월 이상 본인명의 하나은행 입출금통장을 통해,\n1 급여 입금실적 보유한 경우(월 1회 인정)\n2 하나카드 결제실적(신용/체크)을 월 30만원 이상 보유한 경우(하나머니* 충전방식 제외)\n*하나머니: 하나금융그룹의 통합 멤버십 포인트\n※ 고객별 1회에 한해 제공되는 특별금리로, 중도해지 및 재예치 기간은 미적용 : 1.3%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0002-PREF-05",
+          "title": "금리우대쿠폰을 발급받을 경우 기본금리에 가산하여 우대금리를 지급하며, 금리우대쿠폰의 금리는 하나원큐 내 쿠폰함 또는 상품 가입시 제공되는 쿠폰의 우대금리를 따릅니다. 단, 신규 가입시에만 쿠폰사용이 가능하며, 재예치 또는 중도해지시에는 적용되지 않습니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "금리우대쿠폰을 발급받을 경우 기본금리에 가산하여 우대금리를 지급하며, 금리우대쿠폰의 금리는 하나원큐 내 쿠폰함 또는 상품 가입시 제공되는 쿠폰의 우대금리를 따릅니다. 단, 신규 가입시에만 쿠폰사용이 가능하며, 재예치 또는 중도해지시에는 적용되지 않습니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "금리우대쿠폰을 발급받을 경우 기본금리에 가산하여 우대금리를 지급하며, 금리우대쿠폰의 금리는 하나원큐 내 쿠폰함 또는 상품 가입시 제공되는 쿠폰의 우대금리를 따릅니다. 단, 신규 가입시에만 쿠폰사용이 가능하며, 재예치 또는 중도해지시에는 적용되지 않습니다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01",
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02",
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03",
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04",
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05",
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE",
+      "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.25",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "13900d18ba6d470fa4ac9b1ca352210b"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO",
+    "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE",
+    "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "13900d18ba6d470fa4ac9b1ca352210b",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-13900D18BA6D470FA4AC9B1CA352210B-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

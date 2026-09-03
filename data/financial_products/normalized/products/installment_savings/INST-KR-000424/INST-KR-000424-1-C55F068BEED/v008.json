@@ -1,0 +1,650 @@
+{
+  "product_code": "INST-KR-000424-1-C55F068BEED",
+  "version": 8,
+  "institution_id": "INST-KR-000424",
+  "name": "우리 빙고 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ENDED",
+    "source_ref_ids": [
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-SALE"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    },
+    "status_basis": "USER_AND_OFFICIAL_PAGE_CONFIRMED_SALE_ENDED"
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인1계좌)",
+    "eligibility_text": "실명의 개인 (1인1계좌)",
+    "display_text": "실명의 개인 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "max_value": "500000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "50만원 이하(원단위 적립 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "50만원 이하(원단위 적립 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-C55F068BEED-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.750",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "7.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "MARKETING_CONSENT.CONTRACT_TERM_MONTHS.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "적금 가입시 총 9개의 칸으로 이루어진 빙고판(3X3)을 제공\n- 가로·세로·대각선 중 1줄 이상의 빙고 줄 완성시, 완성된 빙고 줄 수에 따라 우대금리 최대 연 7.5%p 차등 적용\n※ 단, 우대이율은 우리은행 상품·서비스 마케팅 동의 항목 중 전화(휴대폰)나 SMS 중 하나 이상 동의 후 만기해지 시점까지 유지한 경우(만14세 미만은 마케팅 동의여부 미확인) 제공되며, 계약기간 만료 전 중도 해지한 계좌에 대해서는 적용하지 않습니다.\n1 빙고 1줄 완성 - 연 1.0%p\n2 빙고 2줄 완성 – 연 2.5%p\n3 빙고 3줄 이상 완성 – 연 4.5%p\n4 빙고 9칸 전체 완성 – 연 7.5%p\n※ 신규가입시, 금리쿠폰* 적용이 가능하며, 중도해지시 쿠폰금리는 미적용됩니다.\n※ 각 빙고 칸의 제시된 빙고 미션의 상세 내용(달성 기준)은 상품설명서를 확인해주세요.\n* 금리쿠폰: 이벤트 진행 시 우리은행 영업점 및 인터넷(스마트) 홈페이지를 통해 적용 가능한 쿠폰금리 확인 및 지정된 계약기간으로 가입 가능"
+        },
+        {
+          "fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_APP_OFFICIAL_RESULT",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION.BINGO_ALL_NINE_CELLS_COMPLETED",
+          "type": "BOOLEAN",
+          "authority": "BANK_APP_OFFICIAL_RESULT",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.MARKETING_PHONE_OR_SMS_CONSENT_MAINTAINED",
+          "type": "BOOLEAN",
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION_YEARS",
+          "type": "INTEGER",
+          "unit": "YEAR",
+          "authority": "BANK_CUSTOMER_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-1-C55F068BEED-PREF-01",
+          "title": "적금 가입시 총 9개의 칸으로 이루어진 빙고판(3X3)을 제공",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION_YEARS",
+                      "operator": "LT",
+                      "expected_value": 14,
+                      "unit": "YEAR",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "CUSTOMER.AGE_AT_SUBSCRIPTION_YEARS",
+                          "operator": "GTE",
+                          "expected_value": 14,
+                          "unit": "YEAR",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "CUSTOMER.MARKETING_PHONE_OR_SMS_CONSENT_MAINTAINED",
+                          "operator": "EQUALS",
+                          "expected_value": true,
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "source_ref_ids": [
+                            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                  }
+                ]
+              },
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+                      "operator": "GTE",
+                      "expected_value": 1,
+                      "unit": "COUNT",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "PROMOTION.BINGO_ALL_NINE_CELLS_COMPLETED",
+                      "operator": "EQUALS",
+                      "expected_value": true,
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER_WITH_OVERRIDE",
+            "unit": "PERCENTAGE_POINT",
+            "cap_value": "7.50",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+                    "operator": "EQUALS",
+                    "expected_value": 1,
+                    "unit": "COUNT"
+                  }
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+                    "operator": "EQUALS",
+                    "expected_value": 2,
+                    "unit": "COUNT"
+                  }
+                },
+                "rate_value": "2.50",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+                    "operator": "GTE",
+                    "expected_value": 3,
+                    "unit": "COUNT"
+                  }
+                },
+                "rate_value": "4.50",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "PROMOTION.BINGO_ALL_NINE_CELLS_COMPLETED",
+                    "operator": "EQUALS",
+                    "expected_value": true
+                  }
+                },
+                "rate_value": "7.50",
+                "unit": "PERCENTAGE_POINT",
+                "override": true
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+              }
+            ]
+          },
+          "display": {
+            "summary": "적금 가입시 총 9개의 칸으로 이루어진 빙고판(3X3)을 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ],
+          "semantic_domain": "ACTIVITY_OR_MISSION",
+          "source_clause_text": "적금 가입시 총 9개의 칸으로 이루어진 빙고판(3X3)을 제공\n- 가로·세로·대각선 중 1줄 이상의 빙고 줄 완성시, 완성된 빙고 줄 수에 따라 우대금리 최대 연 7.5%p 차등 적용\n※ 단, 우대이율은 우리은행 상품·서비스 마케팅 동의 항목 중 전화(휴대폰)나 SMS 중 하나 이상 동의 후 만기해지 시점까지 유지한 경우(만14세 미만은 마케팅 동의여부 미확인) 제공되며, 계약기간 만료 전 중도 해지한 계좌에 대해서는 적용하지 않습니다.\n1 빙고 1줄 완성 - 연 1.0%p\n2 빙고 2줄 완성 – 연 2.5%p\n3 빙고 3줄 이상 완성 – 연 4.5%p\n4 빙고 9칸 전체 완성 – 연 7.5%p\n※ 신규가입시, 금리쿠폰* 적용이 가능하며, 중도해지시 쿠폰금리는 미적용됩니다.\n※ 각 빙고 칸의 제시된 빙고 미션의 상세 내용(달성 기준)은 상품설명서를 확인해주세요.\n* 금리쿠폰: 이벤트 진행 시 우리은행 영업점 및 인터넷(스마트) 홈페이지를 통해 적용 가능한 쿠폰금리 확인 및 지정된 계약기간으로 가입 가능"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-WOORI-BINGO-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000424-1-C55F068BEED-PREF-01"
+          ],
+          "selector_fact_key": "PROMOTION.BINGO_COMPLETED_LINE_COUNT",
+          "override_fact_key": "PROMOTION.BINGO_ALL_NINE_CELLS_COMPLETED",
+          "cap": {
+            "value": "7.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+            }
+          ]
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01",
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-RATE",
+      "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "10.25",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "38957b2f097d6eb62ce606f2f4197d11"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PRODUCT-INFO",
+    "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-RATE",
+    "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-LISTING",
+    "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "38957b2f097d6eb62ce606f2f4197d11",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      },
+      {
+        "path": "return_policy.preferential_policy.event_definitions.BINGO_MISSION_CRITERIA",
+        "reason": "네이버 조건별 원문은 미션별 달성기준을 상품설명서에서 확인하도록 안내하며 상세 9개 미션은 원문에 없음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    },
+    "previous_version": 7,
+    "correction_batch": "20260902-woori-bingo-ended-02",
+    "correction_reason": "우리은행 공식 상품 페이지 판매 종료 확인",
+    "last_verified_at": "2026-09-02T16:30:00+09:00"
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-38957B2F097D6EB62CE606F2F4197D11-SALE"
+      ]
+    }
+  ]
+}

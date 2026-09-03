@@ -1,0 +1,419 @@
+{
+  "product_code": "INST-KR-000252-3-C19ABBF3841",
+  "version": 3,
+  "institution_id": "INST-KR-000252",
+  "name": "네이버페이 머니 하나 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "WEB"
+    ],
+    "subscription_channel_details": [
+      {
+        "channel": "PARTNER_EMBEDDED_ACCOUNT_OPENING",
+        "platform": "NAVER_PAY",
+        "service": "HANA_NON_FACE_TO_FACE_ACCOUNT_OPENING"
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상의 실명의 개인 또는 개인사업자 (1인 1계좌)",
+    "eligibility_text": "만 17세 이상의 실명의 개인 또는 개인사업자 (1인 1계좌)",
+    "display_text": "만 17세 이상의 실명의 개인 또는 개인사업자 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 17
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000252-3-C19ABBF3841-REL-DCF35BE4E558",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "네이버파이낸셜 주식회사의 웹 또는 앱페이지에 연계된 『하나은행 비대면계좌개설서비스』를 통해서만 가입 가능",
+        "fact_key": "SOURCE_RELATIONSHIP.DCF35BE4E558.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-3-C19ABBF3841-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+        ],
+        "source_clause": "기본금리 0.100%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "SERVICE.NAVER_PAY_MONEY_HANA_LINK_ACTIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-3-C19ABBF3841-PREF-01",
+          "title": "서비스 이용 및 가입 후 1년 이내",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE.NAVER_PAY_MONEY_HANA_LINK_ACTIVE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000252-3-C19ABBF3841-PREF-02",
+          "title": "서비스 이용 및 가입 후 1년 초과 5년 이내",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE.NAVER_PAY_MONEY_HANA_LINK_ACTIVE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": false
+              },
+              "end": {
+                "value": 5,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "MUTUALLY_EXCLUSIVE_BY_ACCOUNT_AGE",
+          "rule_ids": [
+            "INST-KR-000252-3-C19ABBF3841-PREF-01",
+            "INST-KR-000252-3-C19ABBF3841-PREF-02"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ],
+      "rejoin_policy": {
+        "applies_to_accounts_opened_on_or_after": "2023-09-04",
+        "reward_after_rejoin": false,
+        "exception": {
+          "rejoin_within": {
+            "value": 1,
+            "unit": "MONTH"
+          },
+          "measured_from": "ORIGINAL_FIRST_OPEN_DATE"
+        }
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "• 이자결산일 : 매월 제3금요일 (단, 가입후 5년 초과시 매년 3,6,9,12월의 제 3 금요일)\n• 이자지급(원가)일 : 이자결산일 익영업일 (단, 가입후 5년초과시 이자결산일 익일)",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000252-3-C19ABBF3841-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "calendar_months": [
+              3,
+              6,
+              9,
+              12
+            ],
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "FRIDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "calendar_months": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "3.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000252-3-C19ABBF3841",
+    "source_record_id": "02e9bed10fb1ba2e09032ad8f8738222",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 99,
+    "reviewed_source_record_id": "02e9bed10fb1ba2e09032ad8f8738222",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "EFFECTIVE_WINDOW_NOT_COMPILED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_MONTHS_MISMATCH",
+      "INTEREST_CREDITING_MONTH_SET_MISMATCH_SECOND_PASS",
+      "INTEREST_CREDITING_QUARTERLY_INTERVAL_WRONG",
+      "MULTI_YEAR_REWARD_PERIODS_NOT_COMPILED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "가입 후 1년/1~5년 우대기간을 상호배타적인 account-age window로 컴파일",
+      "2023-09-04 이후 재가입 제한과 최초 가입 후 1개월 이내 예외 보존"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C19ABBF3841"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

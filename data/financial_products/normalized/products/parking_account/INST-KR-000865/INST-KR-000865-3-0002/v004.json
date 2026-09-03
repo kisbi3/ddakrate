@@ -1,0 +1,306 @@
+{
+  "product_code": "INST-KR-000865-3-0002",
+  "version": 4,
+  "institution_id": "INST-KR-000865",
+  "name": "기분통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002",
+      "EVD-OFFICIAL-210"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "당행 입출금통장을 보유한 실명의 개인 및 개인사업자(1인 최대 10계좌)",
+    "eligibility_text": "당행 입출금통장을 보유한 실명의 개인 및 개인사업자(1인 최대 10계좌)",
+    "display_text": "당행 입출금통장을 보유한 실명의 개인 및 개인사업자(1인 최대 10계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002",
+      "EVD-OFFICIAL-210"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000865-3-0002-REL-C5430A1DAFF2",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "당행 입출금통장을 보유한 실명의 개인 및 개인사업자(1인 최대 10계좌)",
+        "fact_key": "SOURCE_RELATIONSHIP.C5430A1DAFF2.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000865-3-0002"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-3-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.700",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000865-3-0002",
+          "EVD-OFFICIAL-210"
+        ],
+        "source_clause": "5천만원 이하 금액 | 1.700%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하 금액",
+              "max_value": "50000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000865-3-0002-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.200",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000865-3-0002",
+          "EVD-OFFICIAL-210"
+        ],
+        "source_clause": "5천만원 초과분 | 2.200%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과분",
+              "min_value": "50000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002",
+      "EVD-OFFICIAL-210"
+    ],
+    "interest_crediting": {
+      "raw_text": "• 이자지급일 : 매월 넷째주 토요일\n• 「바로 이자받기」 이용 시 이자지급일이 도래하기 전이라도 최초 예금일(또는 지난 이자지급일)부터 「바로 이자받기」 신청 전일까지의 이자를 바로 받을 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002",
+        "EVD-OFFICIAL-210"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000865-3-0002-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 4,
+              "weekday": "SATURDAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000865-3-0002",
+            "EVD-OFFICIAL-210"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000865-3-0002-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "• 이자지급일 : 매월 넷째주 토요일\n• 「바로 이자받기」 이용 시 이자지급일이 도래하기 전이라도 최초 예금일(또는 지난 이자지급일)부터 「바로 이자받기」 신청 전일까지의 이자를 바로 받을 수 있습니다.",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000865-3-0002",
+            "EVD-OFFICIAL-210"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL",
+    "advertised_max_rate": {
+      "value": "2.20",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000865-3-0002"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002",
+      "EVD-OFFICIAL-210"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000865-3-0002",
+    "EVD-OFFICIAL-210"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_OFFICIAL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000865-3-0002",
+        "product_name": "기분통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_KBANK_OFFICIAL_PRODUCT_PAGE_VALIDATION",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000865-3-0002",
+    "source_record_id": "e7dc267e2e52b13983a4b7e87a786c5d",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 210,
+    "reviewed_source_record_id": "SRC-OFFICIAL-210",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "product_by_product_changes": [
+      "케이뱅크 공식 기분통장 본문에서 상품명·금리·가입대상·계좌수·금리구간·일별 이자·지급일·보호를 대조"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000865-3-0002",
+      "EVD-OFFICIAL-210"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 1
+  }
+}

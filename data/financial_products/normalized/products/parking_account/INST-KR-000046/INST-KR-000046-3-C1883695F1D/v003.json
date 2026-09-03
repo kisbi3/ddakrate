@@ -1,0 +1,395 @@
+{
+  "product_code": "INST-KR-000046-3-C1883695F1D",
+  "version": 3,
+  "institution_id": "INST-KR-000046",
+  "name": "착착통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(1인 1계좌)",
+    "eligibility_text": "개인(1인 1계좌)",
+    "display_text": "개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000046-3-C1883695F1D-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.01",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+        ],
+        "source_clause": "기본금리 | 연 0.01%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_PREVIOUS_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.QUALIFYING_SALARY_MONTH_COUNT_PREVIOUS_3M",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ],
+          "unit": "CALENDAR_MONTH",
+          "derivation": {
+            "kind": "COUNT_CALENDAR_MONTHS_WITH_AT_LEAST_ONE_EVENT",
+            "event_type": "SALARY_TRANSFER",
+            "window": "PREVIOUS_THREE_CALENDAR_MONTHS"
+          }
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.OPENED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000046-3-C1883695F1D-PREF-01",
+          "title": "지난달 1회 또는 최근 3개월 중 2개월 이상 급여이체",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_PREVIOUS_MONTH",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.QUALIFYING_SALARY_MONTH_COUNT_PREVIOUS_3M",
+                  "operator": "GTE",
+                  "expected_value": 2
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "3000000",
+                "max_inclusive": true
+              }
+            },
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "fact_window": [
+              "PREVIOUS_CALENDAR_MONTH",
+              "PREVIOUS_THREE_CALENDAR_MONTHS"
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000046-3-C1883695F1D-PREF-02",
+          "title": "신규 가입 초기 무조건 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.OPENED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "3000000",
+                "max_inclusive": true
+              }
+            },
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "effective_window": {
+              "type": "RELATIVE_CALENDAR_WINDOW",
+              "start": "ACCOUNT_OPEN_DATE",
+              "end": {
+                "kind": "END_OF_CALENDAR_MONTH_CONTAINING_OFFSET_DATE",
+                "offset": {
+                  "value": 3,
+                  "unit": "MONTH"
+                }
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "MUTUALLY_EXCLUSIVE_MAX",
+          "rule_ids": [
+            "INST-KR-000046-3-C1883695F1D-PREF-01",
+            "INST-KR-000046-3-C1883695F1D-PREF-02"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "• 이자 결산 기준일 : 매월 마지막 영업일 전일\n• 이자 입금일 : 매월 마지막 영업일\n• 이자 계산 기간 : 예금일(또는 직전 이자 입금일)로부터 이자 입금일 전일까지의 기간\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자를 원금에 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000046-3-C1883695F1D-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "settlement_reference": {
+              "kind": "CALENDAR_DAY_BEFORE",
+              "reference": "LAST_BUSINESS_DAY_OF_MONTH"
+            },
+            "credit_day": "LAST_BUSINESS_DAY_OF_MONTH"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "2.01",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000046-3-C1883695F1D",
+    "source_record_id": "5c6662d045b98679b230d87bd45b5835",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 15,
+    "reviewed_source_record_id": "5c6662d045b98679b230d87bd45b5835",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "EFFECTIVE_WINDOW_NOT_COMPILED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "급여 실적의 1개월/3개월 대안과 신규 3개월 포함월 말일까지의 무조건 우대를 분리",
+      "동일 2.00%p가 중복 가산되지 않도록 MAX 관계 적용"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000046-3-C1883695F1D"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

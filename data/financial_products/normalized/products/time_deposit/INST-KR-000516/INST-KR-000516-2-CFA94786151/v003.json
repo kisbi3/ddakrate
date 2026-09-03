@@ -1,0 +1,120 @@
+{
+  "product_code": "INST-KR-000516-2-CFA94786151",
+  "version": 3,
+  "institution_id": "INST-KR-000516",
+  "name": "국민수퍼정기예금(CD금리연동형)",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": ["BRANCH", "CALL_CENTER"],
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "mode": "UNRESTRICTED",
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "term_policy": {
+    "source_text": "6개월, 1년, 2년, 3년",
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [6, 12, 24, 36],
+    "selection_units": ["MONTH"],
+    "representative_term": {"value": 12, "unit": "MONTH"},
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM",
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_amount_text": "100만원 이상 (건별 10만원이상 원단위로 추가입금 가능)",
+    "amount_rules": [
+      {"scope": "INITIAL_DEPOSIT", "min_value": "1000000", "currency": "KRW", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+      {"scope": "PER_CONTRIBUTION", "min_value": "100000", "currency": "KRW", "max_count_including_initial": 30, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]}
+    ],
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "VARIABLE_LINKED",
+    "rate_linkage_policy": {
+      "index_name": "CD_91_DAY_DISTRIBUTION_YIELD",
+      "spread_pp": "-0.50",
+      "reset_interval": {"value": 3, "unit": "MONTH"},
+      "reset_basis": "금융투자협회 CD 91일물 유통수익률에 따라 매 3개월마다 변경",
+      "new_deposit_rate_lock": "신규 시 적용 스프레드는 만기까지 불변",
+      "initial_naver_snapshot": {"value": "2.43", "index_value": "2.93", "spread_pp": "-0.50", "as_of": "2026-08-29"},
+      "official_current_snapshot": {"value": "2.62", "index_value": "3.12", "spread_pp": "-0.50", "as_of": "2026-09-02"},
+      "snapshot_conflict_policy": "NAVER_PRIMARY_DISPLAYED_SNAPSHOT; official current quote is retained as a dated verification value and does not overwrite the Naver snapshot"
+    },
+    "rate_entries": [
+      {"rate_id": "INST-KR-000516-2-CFA94786151-BASE-006", "role": "BASE", "application_event": "MATURITY", "calculation": {"type": "INDEX_LINKED_SNAPSHOT", "value": "2.43", "unit": "PERCENT"}, "applies_to": [{"basis": "CONTRACT_TERM", "range": {"unit": "MONTH", "min_value": 6, "min_inclusive": true, "max_value": 6, "max_inclusive": true}, "source_term_text": "6개월"}], "source_rate_row_text": "6개월: 만기이율 연 2.43% (CD수익률 2.93% - 0.50%p)", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+      {"rate_id": "INST-KR-000516-2-CFA94786151-BASE-012", "role": "BASE", "application_event": "MATURITY", "calculation": {"type": "INDEX_LINKED_SNAPSHOT", "value": "2.43", "unit": "PERCENT"}, "applies_to": [{"basis": "CONTRACT_TERM", "range": {"unit": "MONTH", "min_value": 12, "min_inclusive": true, "max_value": 12, "max_inclusive": true}, "source_term_text": "1년"}], "source_rate_row_text": "1년: 만기이율 연 2.43% (CD수익률 2.93% - 0.50%p)", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+      {"rate_id": "INST-KR-000516-2-CFA94786151-BASE-024", "role": "BASE", "application_event": "MATURITY", "calculation": {"type": "INDEX_LINKED_SNAPSHOT", "value": "2.43", "unit": "PERCENT"}, "applies_to": [{"basis": "CONTRACT_TERM", "range": {"unit": "MONTH", "min_value": 24, "min_inclusive": true, "max_value": 24, "max_inclusive": true}, "source_term_text": "2년"}], "source_rate_row_text": "2년: 만기이율 연 2.43% (CD수익률 2.93% - 0.50%p)", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+      {"rate_id": "INST-KR-000516-2-CFA94786151-BASE-036", "role": "BASE", "application_event": "MATURITY", "calculation": {"type": "INDEX_LINKED_SNAPSHOT", "value": "2.43", "unit": "PERCENT"}, "applies_to": [{"basis": "CONTRACT_TERM", "range": {"unit": "MONTH", "min_value": 36, "min_inclusive": true, "max_value": 36, "max_inclusive": true}, "source_term_text": "3년"}], "source_rate_row_text": "3년: 만기이율 연 2.43% (CD수익률 2.93% - 0.50%p)", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+      {"rate_id": "INST-KR-000516-2-CFA94786151-MAX", "role": "ADVERTISED_MAXIMUM", "application_event": "MATURITY", "calculation": {"type": "DISPLAYED_MAXIMUM", "value": "2.43", "unit": "PERCENT"}, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]}
+    ],
+    "rate_table_snapshot": {"raw_text": "기본 금리: 6개월·1년·2년·3년 만기이율 연 2.43% (CD수익률 2.93% - 0.50%p)", "header_lines": ["기본 금리"], "rows": [{"term_text": "6개월", "rate_values": ["2.43"]}, {"term_text": "1년", "rate_values": ["2.43"]}, {"term_text": "2년", "rate_values": ["2.43"]}, {"term_text": "3년", "rate_values": ["2.43"]}], "column_descriptors": [{"context_id": "CONTRACT_RATE", "semantic_role": "CONTRACT_RATE"}]},
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {"required_termination_event": "MATURITY", "early_termination_eligible": false},
+      "fact_definitions": [{"fact_key": "PRODUCT.INST-KR-000516-2-CFA94786151.PREF-B01-01.QUALIFIED", "value_type": "BOOLEAN", "actual_or_expected": "ACTUAL_OR_EXPECTED", "definition_text": "신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 기본이율에 가산하며, 쿠폰은 신규 시에만 사용 가능하고 중도해지시 미적용", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]}],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [{"rule_id": "PREF-B01-01", "title": "신규 시 금리우대쿠폰 적용", "condition": {"predicate": {"fact_key": "PRODUCT.INST-KR-000516-2-CFA94786151.PREF-B01-01.QUALIFIED", "operator": "EQUALS", "expected_value": true}}, "reward": {"kind": "COUPON_VARIABLE", "value": null, "unit": "PERCENTAGE_POINT", "value_status": "EXTERNAL_SOURCE_REQUIRED"}, "application": {"event": "MATURITY", "excluded_events": ["EARLY_TERMINATION"]}, "display": {"summary": "신규 시 금리우대쿠폰을 적용한 경우 쿠폰 우대금리를 기본이율에 가산"}, "structuring_status": "REQUIRES_EXTERNAL_VALUE", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]}],
+      "relations": [],
+      "structuring_status": "PARTIAL_EXTERNAL_DEPENDENCY",
+      "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+    },
+    "listing_base_rate_reference": {"value": "2.43", "unit": "PERCENT", "representative_term_text": "12개월", "executable_base_supported_by_detail": true, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+    "advertised_max_rate": {"value": "2.43", "unit": "PERCENT", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "interest_payment_policy": {
+    "contexts": [
+      {"context_id": "CD_MATURITY_COMPOUND", "payment_timing": "MATURITY", "compounding": "COMPOUND_QUARTERLY", "contract_mode": "CD_RATE_LINKED", "source_text": "만기이자지급식: 매 3개월마다 기간별 이자를 복리 계산해 만기에 지급"},
+      {"context_id": "CD_QUARTERLY_PAYMENT", "payment_timing": "QUARTERLY", "compounding": "SIMPLE", "contract_mode": "CD_RATE_LINKED", "source_text": "3개월이자지급식: 매 3개월 경과 약정일 지급"},
+      {"context_id": "CD_MONTHLY_PAYMENT", "payment_timing": "MONTHLY", "compounding": "SIMPLE", "contract_mode": "CD_RATE_LINKED", "source_text": "월이자지급식: 매월 약정일 지급"}
+    ],
+    "multiple_contexts": true,
+    "default_context_id": "CD_MATURITY_COMPOUND",
+    "source_text": "만기이자지급식, 3개월이자지급식, 월이자지급식 중 신규 시 선택하며 중도 변경 불가",
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "protection_policy": {"coverage_status": "PROTECTED", "coverage_limit_krw": "100000000", "scheme": "KDIC", "source_text": "예금자 보호 대상; 원금과 소정이자를 합하여 1인당 1억원까지 보호", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+  "liquidity_policy": {
+    "early_termination_allowed": true,
+    "early_termination_rate_refs": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"],
+    "early_termination_policy": {"tiers": [{"elapsed_term": {"unit": "DAY", "max_value": 15, "max_inclusive": false}, "rate": {"type": "FIXED", "value": "0.1", "unit": "PERCENT"}, "source_range_text": "15일 미만"}, {"elapsed_term": {"unit": "DAY", "min_value": 15, "min_inclusive": true, "max_value": 30, "max_inclusive": false}, "rate": {"type": "FIXED", "value": "0.1", "unit": "PERCENT"}, "source_range_text": "15일 이상~1개월 미만"}, {"elapsed_term": {"unit": "MONTH", "min_value": 1, "min_inclusive": true, "max_value": 3, "max_inclusive": false}, "rate": {"type": "FIXED", "value": "0.1", "unit": "PERCENT"}, "source_range_text": "1개월 이상~3개월 미만"}, {"elapsed_term": {"unit": "MONTH", "min_value": 3, "min_inclusive": true}, "rate": {"type": "FIXED", "value": "0.1", "unit": "PERCENT"}, "source_range_text": "3개월 이상"}], "source_text": "중도해지이율 4구간 모두 연 0.1%", "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+    "after_maturity_policy": {"tiers": [{"elapsed_term": {"unit": "MONTH", "max_value": 3, "max_inclusive": true}, "rate": {"type": "FIXED", "value": "0.2", "unit": "PERCENT"}, "source_range_text": "만기 후 3개월 이내"}, {"elapsed_term": {"unit": "MONTH", "min_value": 3, "min_inclusive": false}, "rate": {"type": "FIXED", "value": "0.1", "unit": "PERCENT"}, "source_range_text": "만기 후 3개월 초과"}], "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]},
+    "partial_withdrawal": {"allowed": false, "scope": "CD_RATE_LINKED_ONLY", "source_text": "분할인출은 1개월 경과 고정금리형에 한하며 CD 연동형에는 적용하지 않음"},
+    "source_text": "신규 영업점; 해지 영업점·인터넷뱅킹·KB스타뱅킹; 중도해지 및 만기후 이율은 공식 표 기준",
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": ["EVD-TD-20260829-INST-KR-000516-2-CFA94786151"],
+  "version_metadata": {
+    "captured_at": "2026-09-02T00:00:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_EXACT_KB_OFFICIAL_CORROBORATION",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "Naver full raw record independently compared with current KB HTML and official special terms PDF",
+    "supersedes_version": 2,
+    "official_review": {"url": "https://obank.kbstar.com/quics?cc=b061761%3Ab061770&isNew=N&page=C020702&prcode=DP01000214", "terms_url": "https://img2.kbstar.com/obj/ocommon/221114_kbsuper_terms2.pdf", "title": "국민수퍼정기예금 (CD금리연동형)", "checked_at": "2026-09-02T00:00:00+09:00", "excerpt": "KB 공식 본문은 가입가능경로 영업점, 기간 6개월·1년·2년·3년, 가입대상 제한없음, 가입금액 100만원 이상(건별 10만원 이상 원단위 추가입금), CD수익률에 따라 매 3개월마다 변경, 만기·3개월·월이자지급식을 명시한다. 조회시점 만기이율은 연 2.62%(CD수익률 3.12%-스프레드 0.50%p)이다. 특약은 최초 100만원 이상·추가입금 10만원 이상 및 총 30회, CD 연동형의 3개월 재설정과 3종 지급방식을 확인한다.", "approval": "준법감시인 심의필 제2025-4024-2호; 유효기간 2025.10.01~2027.08.31"},
+    "data_gaps": [
+      {"path": "return_policy.preferential_policy.rules.PREF-B01-01.reward.value", "reason_code": "REQUIRES_EXTERNAL_VALUE", "message": "금리우대쿠폰의 신규 당시 우대금리 수치와 발급 조건은 쿠폰 원문 없이는 확정할 수 없음"},
+      {"path": "return_policy.rate_linkage_policy.initial_naver_snapshot", "reason_code": "NAVER_OFFICIAL_CURRENT_SNAPSHOT_CONFLICT", "message": "Naver 2026-08-29 표시 2.43%(CD 2.93%-0.50%p)와 KB 2026-09-02 현재 조회 2.62%(CD 3.12%-0.50%p)는 조회일이 달라 Naver-primary 표시값을 유지하고 두 날짜를 병기함"},
+      {"path": "liquidity_policy.renewal_policy", "reason_code": "NOT_STATED", "message": "확인한 Naver와 KB 현재 본문·특약에서 자동재예치 허용 여부를 확인하지 못함"}
+    ]
+  },
+  "data_gaps": [
+    {"field": "return_policy.preferential_policy.rules.PREF-B01-01.reward.value", "reason_code": "REQUIRES_EXTERNAL_VALUE", "message": "금리우대쿠폰 수치는 외부 쿠폰 원문 필요"},
+    {"field": "return_policy.rate_linkage_policy.initial_naver_snapshot", "reason_code": "NAVER_OFFICIAL_CURRENT_SNAPSHOT_CONFLICT", "message": "Naver 2026-08-29 2.43%와 KB 2026-09-02 2.62%의 날짜별 현재값 충돌; Naver 표시값 우선"},
+    {"field": "liquidity_policy.renewal_policy", "reason_code": "NOT_STATED", "message": "자동재예치 여부가 확인 원문에 없음"}
+  ]
+}

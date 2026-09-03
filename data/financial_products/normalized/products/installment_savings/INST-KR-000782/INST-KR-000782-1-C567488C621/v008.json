@@ -1,0 +1,703 @@
+{
+  "product_code": "INST-KR-000782-1-C567488C621",
+  "version": 8,
+  "institution_id": "INST-KR-000782",
+  "name": "웰뱅 워킹 적금\n네이버 페이",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인고객 (1인 1계좌 가입 가능)",
+    "eligibility_text": "개인고객 (1인 1계좌 가입 가능)",
+    "display_text": "개인고객 (1인 1계좌 가입 가능)",
+    "source_ref_ids": [
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "200000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상~20만원 이하(매월 동일금액)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상~20만원 이하(매월 동일금액)"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상~20만원 이하(매월 동일금액)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000782-1-C567488C621-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01",
+          "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000782_1_C567488C621_PREF_02.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000782-1-C567488C621-PREF-02-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+          "type": "INTEGER",
+          "unit": "STEP",
+          "aggregation": {
+            "event_ref": "EVENT-WELBANK-WALKING-STEP-MEASUREMENT",
+            "operator": "SUM"
+          },
+          "authority": "WELBANK_APP_AND_DEVICE_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE.WELBANK_WALKING_ENROLLED_AND_ACTIVE",
+          "type": "BOOLEAN",
+          "authority": "WELBANK_APP_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.OWN_NAME_MOBILE_PHONE_VERIFIED",
+          "type": "BOOLEAN",
+          "authority": "BANK_CUSTOMER_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000782-1-C567488C621-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "6회 이상 당행 입출금통장을 통한 자동이체로 납입 (연 1.00%p)\n※ 계약기간 이내 입금된 실적에 한하며, 첫회 납입액은 실적 인정 기준에서 제외"
+          },
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "6회 이상 당행 입출금통장을 통한 자동이체로 납입 (연 1.00%p)\n※ 계약기간 이내 입금된 실적에 한하며, 첫회 납입액은 실적 인정 기준에서 제외"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-WELBANK-WALKING-STEP-MEASUREMENT",
+          "event_type": "APP_ACTIVITY_MEASUREMENT_POSTED",
+          "service": "WELBANK_WALKING",
+          "measurement": "STEP_COUNT",
+          "count_window": {
+            "start": "DAY_AFTER_SUBSCRIPTION",
+            "end": "DAY_BEFORE_CONTRACTUAL_MATURITY",
+            "alternate_early_maturity_end": "DAY_BEFORE_ACTUAL_MATURITY_TERMINATION"
+          },
+          "exclusions": [
+            "PRE_SUBSCRIPTION_STEPS",
+            "CONTRACTUAL_MATURITY_DATE_STEPS"
+          ],
+          "authority": "WELBANK_APP_AND_DEVICE_RECORD",
+          "self_report_eligible": false,
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-WELBANK-WALKING-SERVICE",
+          "required_actions": [
+            "ENROLL_WELBANK_WALKING_SERVICE",
+            "USE_OWN_NAME_MOBILE_PHONE",
+            "KEEP_SERVICE_ACTIVE_FOR_MEASUREMENT"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000782-1-C567488C621-PREF-01",
+          "title": "연간 걸음수 달성 여부에 따른 우대금리 적용 (최대 연 6.00%p)",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "SERVICE.WELBANK_WALKING_ENROLLED_AND_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.OWN_NAME_MOBILE_PHONE_VERIFIED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1000000,
+                  "unit": "STEP",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "cap_value": "6.00",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+                    "operator": "BETWEEN",
+                    "lower": 1000000,
+                    "upper": 2000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+                    "operator": "BETWEEN",
+                    "lower": 2000000,
+                    "upper": 3000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "2.00",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+                    "operator": "BETWEEN",
+                    "lower": 3000000,
+                    "upper": 4000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "3.00",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+                    "operator": "GTE",
+                    "expected_value": 4000000,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "6.00",
+                "unit": "PERCENTAGE_POINT"
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "service_must_remain_measurable": true,
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+              }
+            ]
+          },
+          "display": {
+            "summary": "연간 걸음수 달성 여부에 따른 우대금리 적용 (최대 연 6.00%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ],
+          "semantic_domain": "ACTIVITY_OR_MISSION",
+          "source_clause_text": "연간 걸음수 달성 여부에 따른 우대금리 적용 (최대 연 6.00%p)\n1 걸음수에 따른 우대금리 적용 구간\n- 1백만보 이상 : 연 1.00%p\n- 2백만보 이상 : 연 2.00%p\n- 3백만보 이상 : 연 3.00%p\n- 4백만보 이상 : 연 6.00%p\n2 웰컴저축은행 모바일뱅킹 어플리케이션에서 제공하는 걸음수 산정 서비스인 \"웰뱅 워킹 서비스\" 가입이 필요\n- 해당 서비스는 본인명의 휴대폰일 경우에만 이용 가능\n- 적금 가입기간 내 웰뱅 워킹 서비스에 가입하지 않거나 서비스에서 탈회하여 실적 집계가 불가한 경우 우대이율 적용 불가\n- 적금 가입 이전 및 만기일 당일 달성한 실적은 제외\n3 실적 인정기간(만기해지 기준)\n- 계약상 만기일 또는 만기일 경과 후 해지하는 경우 : 계약상 만기일 전일까지의 실적\n- 만기 앞당김 해지 또는 계약상만기일이 주말 및 공휴일로 직전 영업일 해지하는 경우 : 신규일로부터 만기해지전일까지의 실적"
+        },
+        {
+          "rule_id": "INST-KR-000782-1-C567488C621-PREF-02",
+          "title": "6회 이상 당행 입출금통장을 통한 자동이체로 납입 (연 1.00%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000782_1_C567488C621_PREF_02.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "6회 이상 당행 입출금통장을 통한 자동이체로 납입 (연 1.00%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "6회 이상 당행 입출금통장을 통한 자동이체로 납입 (연 1.00%p)\n※ 계약기간 이내 입금된 실적에 한하며, 첫회 납입액은 실적 인정 기준에서 제외"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000782-1-C567488C621-PREF-01-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000782-1-C567488C621-PREF-01"
+          ],
+          "selector_fact_key": "ACTIVITY.WELBANK_WALKING_STEP_COUNT",
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "6.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "6.00",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01",
+            "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01",
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02",
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-02"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-RATE",
+      "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "829a8a6ae5603ccbefe9ca001a9ef99a"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO",
+    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-RATE",
+    "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "829a8a6ae5603ccbefe9ca001a9ef99a",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-829A8A6AE5603CCBEFE9CA001A9EF99A-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

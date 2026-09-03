@@ -1,0 +1,1319 @@
+{
+  "product_code": "INST-KR-000796-1-C8A2BCE01F7",
+  "version": 8,
+  "institution_id": "INST-KR-000796",
+  "name": "여행스케치_남도투어적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 실명의 개인(1인 1계좌)",
+    "eligibility_text": "만 14세 이상 실명의 개인(1인 1계좌)",
+    "display_text": "만 14세 이상 실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "options": [
+      12,
+      18
+    ],
+    "source_ref_ids": [
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+    ],
+    "source_expression": "12개월제, 18개월제"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+    ],
+    "contribution_mode": "MULTI_OPTION",
+    "contribution_mode_options": [
+      "FIXED",
+      "FREE"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "1000000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "contribution_option_rules": [
+      {
+        "mode": "FIXED",
+        "amount_rules": [
+          {
+            "scope": "PER_MONTH",
+            "currency": "KRW",
+            "min_value": "50000",
+            "max_value": "1000000"
+          }
+        ]
+      },
+      {
+        "mode": "FREE",
+        "initial_contribution_rule": {
+          "currency": "KRW",
+          "min_value": "50000"
+        },
+        "amount_rules": [
+          {
+            "scope": "PER_CONTRIBUTION",
+            "currency": "KRW",
+            "min_value": "1000",
+            "increment_value": "1"
+          },
+          {
+            "scope": "PER_MONTH",
+            "currency": "KRW",
+            "max_value": "1000000"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "▪ 정액적립식 : 월 5만원 이상 100만원 이하\n▪ 자유적립식 : 최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1일부터 말일까지) 최소 1천원 이상 원단위로 자유롭게 납입이 가능하되 월 적립한도는 100만원 이내",
+    "source_contribution_text": "정액적립식, 자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "50000",
+        "currency": "KRW",
+        "source_expression": "5만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 정액적립식 : 월 5만원 이상 100만원 이하\n▪ 자유적립식 : 최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 정액적립식 : 월 5만원 이상 100만원 이하\n▪ 자유적립식 : 최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1일부터 말일까지)"
+      },
+      {
+        "value": "50000",
+        "currency": "KRW",
+        "source_expression": "5만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 정액적립식 : 월 5만원 이상 100만원 이하\n▪ 자유적립식 : 최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1일부터 말일까지) 최소 1천원 이상 원단위로 자유롭게 납입이"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "▪ 자유적립식 : 최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1일부터 말일까지) 최소 1천원 이상 원단위로 자유롭게 납입이 가능하되 월 적립한도는 100만원 이내"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월(해당월의 1일부터 말일까지) 최소 1천원 이상 원단위로 자유롭게 납입이 가능하되 월 적립한도는 100만원 이내"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "최초 가입금액 5만원 이상 추가 적립액은 매월(해당월의 1일부터 말일까지) 최소 1천원 이상 원단위로 자유롭게 납입이 가능하되 월 적립한도는 100만원 이내",
+      "min_value": "50000",
+      "max_value": "1000"
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-1-C8A2BCE01F7-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000796-1-C8A2BCE01F7-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 18
+        },
+        "source_ref_ids": [
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "1.9",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05",
+          "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+          "type": "MONEY",
+          "unit": "KRW",
+          "authority": "BANK_CARD_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACTIVITY.NAMDO_UNIQUE_VERIFIED_SITE_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_MOBILE_LOCATION_VERIFICATION",
+          "aggregation": {
+            "event_ref": "EVENT-KJ-NAMDO-LOCATION-VERIFICATION",
+            "operator": "COUNT_DISTINCT_LOCATION"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000796_1_C8A2BCE01F7_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000796-1-C8A2BCE01F7-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000796_1_C8A2BCE01F7_PREF_02.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "\"함께하GO\" 우대금리 : 연 0.1%p\n- 이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내수단에 전체 동의 하는 경우\n추가 우대금리 이벤트 또는 쿠폰발급"
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n* 이벤트 조건은 이 예금의 이벤트기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됨."
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 만기해지 계좌에 한해 추가 우대금리를 제공합니다.\n* ‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됨."
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-KJ-NAMDO-LOCATION-VERIFICATION",
+          "event_type": "LOCATION_VERIFICATION",
+          "unique_key": "TOURIST_SITE",
+          "maximum_count_per_location": 1,
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY_DATE_EXCLUSIVE"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000796-1-C8A2BCE01F7-PREF-02-SUCCESS",
+          "event_type": "APP_LOGIN",
+          "qualifying_definition": {
+            "source_text": "\"어서오GO\" 우대금리 : 최고 연 1.5%p\n- 이 예금 가입일로부터 만기일 전일까지 당행이 선정한 전라남도 관광지 방문 인증 시\n관광지 위치인증방법 : 당행 스마트뱅킹 앱을 통해 가입자 본인 위치인증 (스마트뱅킹 로그인 > 전체메뉴 > 상품관리 > 입출금/예적금 > 우대금리 인증/조회)\n① 전남지역 관광지* 방문 인증**시 건당 0.2%p, 최고 우대금리 연 1.2%p 제공\n② 전남지역 관광지* 방문 인증** 6회 이상, 최고 우대금리 연 0.3%p 제공\n* 광주은행 홈페이지 또는 스마트뱅킹·모바일웹뱅킹 여행스케치_남도투어적금 상품설명에 게시한 전라남도 관광지\n** 스마트뱅킹을 통한 위치인증, 1개 관광지 당 1회만 인증 가능. 위치인증은 당행의 위치기반 서비스를 활용하며, 반드시 당행의 ‘위치기반서비스 이용약관’에 동의하셔야 합니다."
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000796-1-C8A2BCE01F7-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-02"
+          ],
+          "required_actions": [
+            "COMPLETE_VERIFICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "\"어서오GO\" 우대금리 : 최고 연 1.5%p\n- 이 예금 가입일로부터 만기일 전일까지 당행이 선정한 전라남도 관광지 방문 인증 시\n관광지 위치인증방법 : 당행 스마트뱅킹 앱을 통해 가입자 본인 위치인증 (스마트뱅킹 로그인 > 전체메뉴 > 상품관리 > 입출금/예적금 > 우대금리 인증/조회)\n① 전남지역 관광지* 방문 인증**시 건당 0.2%p, 최고 우대금리 연 1.2%p 제공\n② 전남지역 관광지* 방문 인증** 6회 이상, 최고 우대금리 연 0.3%p 제공\n* 광주은행 홈페이지 또는 스마트뱅킹·모바일웹뱅킹 여행스케치_남도투어적금 상품설명에 게시한 전라남도 관광지\n** 스마트뱅킹을 통한 위치인증, 1개 관광지 당 1회만 인증 가능. 위치인증은 당행의 위치기반 서비스를 활용하며, 반드시 당행의 ‘위치기반서비스 이용약관’에 동의하셔야 합니다.",
+          "submission_channels": [
+            "MOBILE_APP"
+          ],
+          "submission_deadline_source_expressions": [
+            "- 이 예금 가입일로부터 만기일 전일까지 당행이 선정한 전라남도 관광지 방문 인증 시"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "가입일로부터 만기일 전일까지",
+              "만기일 전일까지"
+            ]
+          },
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000796_1_C8A2BCE01F7_PREF_02.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000796-1-C8A2BCE01F7-PREF-02",
+          "title": "\"어서오GO\" 우대금리 : 최고 연 1.5%p",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "operator": "AND",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACTIVITY.NAMDO_UNIQUE_VERIFIED_SITE_COUNT",
+                      "operator": "GTE",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                        }
+                      ],
+                      "expected_value": 1,
+                      "unit": "COUNT"
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "RULE.INST_KR_000796_1_C8A2BCE01F7_PREF_02.SUCCESS_COUNT",
+                      "operator": "GTE",
+                      "expected_value": 1,
+                      "unit": "COUNT",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "source_ref_ids": [
+                        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000796_1_C8A2BCE01F7_PREF_02.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000796-1-C8A2BCE01F7-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.2",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              }
+            ],
+            "cap_value": "1.5"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "\"어서오GO\" 우대금리 : 최고 연 1.5%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "\"어서오GO\" 우대금리 : 최고 연 1.5%p\n- 이 예금 가입일로부터 만기일 전일까지 당행이 선정한 전라남도 관광지 방문 인증 시\n관광지 위치인증방법 : 당행 스마트뱅킹 앱을 통해 가입자 본인 위치인증 (스마트뱅킹 로그인 > 전체메뉴 > 상품관리 > 입출금/예적금 > 우대금리 인증/조회)\n1 전남지역 관광지* 방문 인증**시 건당 0.2%p, 최고 우대금리 연 1.2%p 제공\n2 전남지역 관광지* 방문 인증** 6회 이상, 최고 우대금리 연 0.3%p 제공\n* 광주은행 홈페이지 또는 스마트뱅킹·모바일웹뱅킹 여행스케치_남도투어적금 상품설명에 게시한 전라남도 관광지\n** 스마트뱅킹을 통한 위치인증, 1개 관광지 당 1회만 인증 가능. 위치인증은 당행의 위치기반 서비스를 활용하며, 반드시 당행의 ‘위치기반서비스 이용약관’에 동의하셔야 합니다."
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C8A2BCE01F7-PREF-03",
+          "title": "\"쓰고보GO\" 우대금리 : 최고 연 0.3%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                      }
+                    ],
+                    "unit": "KRW",
+                    "lower": 1000000,
+                    "upper": 3000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.10",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "100만원 이상 0.10%p",
+                "source_ref_ids": [
+                  "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                      }
+                    ],
+                    "expected_value": 3000000,
+                    "unit": "KRW"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.30",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "300만원 이상 0.30%p",
+                "source_ref_ids": [
+                  "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              }
+            ],
+            "cap_value": "0.30"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "\"쓰고보GO\" 우대금리 : 최고 연 0.3%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "\"쓰고보GO\" 우대금리 : 최고 연 0.3%p\n- 광주은행 신용(체크)카드 사용실적*이 100만원 이상 우대금리 연 0.1%p, 300만원 이상 우대금리 연 0.3%p 제공\n* 사용실적 산정기준 : 이 예금의 신규일부터 만기일 전일까지 가입자 본인의 광주은행 신용(체크)카드 사용금액(매입기준) 합계금액으로 하며, 가족회원 사용금액 포함."
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C8A2BCE01F7-PREF-04",
+          "title": "\"함께하GO\" 우대금리 : 연 0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "\"함께하GO\" 우대금리 : 연 0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "\"함께하GO\" 우대금리 : 연 0.1%p\n- 이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내수단에 전체 동의 하는 경우\n추가 우대금리 이벤트 또는 쿠폰발급"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C8A2BCE01F7-PREF-05",
+          "title": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n* 이벤트 조건은 이 예금의 이벤트기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됨."
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C8A2BCE01F7-PREF-06",
+          "title": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 만기해지 계좌에 한해 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 만기해지 계좌에 한해 추가 우대금리를 제공합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 만기해지 계좌에 한해 추가 우대금리를 제공합니다.\n* ‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됨."
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000796-1-C8A2BCE01F7-PREF-03-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-03"
+          ],
+          "selector_fact_key": "CUSTOMER.KJ_BANK_CARD_CUMULATIVE_SPEND_KRW",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.30",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C8A2BCE01F7-PREF-02-VISIT-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-KJ-NAMDO-LOCATION-VERIFICATION",
+          "counter_fact_key": "ACTIVITY.NAMDO_UNIQUE_VERIFIED_SITE_COUNT",
+          "value_per_occurrence": "0.20",
+          "max_occurrences": 6,
+          "milestone_rewards": [
+            {
+              "threshold_count": 6,
+              "increment_value": "0.30"
+            }
+          ],
+          "cap": {
+            "value": "1.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C8A2BCE01F7-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000796-1-C8A2BCE01F7-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.2",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C8A2BCE01F7-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-02",
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-03",
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-04",
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-05",
+            "INST-KR-000796-1-C8A2BCE01F7-PREF-06"
+          ],
+          "cap": {
+            "value": "1.9",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01",
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02",
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03",
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04",
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05",
+              "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01",
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02",
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03",
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04",
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05",
+            "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06",
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-RATE",
+      "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "ba9dbaaf20de60760f62dd8a9872ee2d"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO",
+    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-RATE",
+    "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "ba9dbaaf20de60760f62dd8a9872ee2d",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-BA9DBAAF20DE60760F62DD8A9872EE2D-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "product_code": "INST-KR-000211-1-CBC0AB2BC9C",
+  "version": 8,
+  "institution_id": "INST-KR-000211",
+  "name": "SC행복적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n1 기초생활수급자\n2 소년소녀 가장\n3 북한이탈주민\n4 결혼이민자\n5 근로장려금 수급자\n6 한부모가족지원 보호대상자\n7 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "eligibility_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n1 기초생활수급자\n2 소년소녀 가장\n3 북한이탈주민\n4 결혼이민자\n5 근로장려금 수급자\n6 한부모가족지원 보호대상자\n7 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "display_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n1 기초생활수급자\n2 소년소녀 가장\n3 북한이탈주민\n4 결혼이민자\n5 근로장려금 수급자\n6 한부모가족지원 보호대상자\n7 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "source_ref_ids": [
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "age_range": {
+      "min_age": 65
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "매월 1만원 이상 30만원 이내\n※ 예금을 가입하는 때에 정하며, 계약기간 중에 변경할 수 없음",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 1만원 이상 30만원 이내\n※ 예금을 가입하는 때에 정하며, 계약기간 중에 변경할 수 없음"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 1만원 이상 30만원 이내\n※ 예금을 가입하는 때에 정하며, 계약기간 중에 변경할 수 없음"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-1-CBC0AB2BC9C-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.650",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-4A930427820EEB64590947C83345D4AD-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000211_1_CBC0AB2BC9C_PREF_02.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000211-1-CBC0AB2BC9C-PREF-02-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000211_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "고령자 우대이율\n- 예금을 가입할 때 65세 이상이면서 이 예금을 만기에 해약하는 경우 (특별중도해지 포함)\n- 2024. 1.15 이후 가입자만 적용 : 0.2%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000211-1-CBC0AB2BC9C-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "자동이체 우대이율\n- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "자동이체 우대이율\n- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000211-1-CBC0AB2BC9C-PREF-02",
+          "title": "자동이체 우대이율",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000211_1_CBC0AB2BC9C_PREF_02.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 5,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자동이체 우대이율"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "자동이체 우대이율\n- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%"
+        },
+        {
+          "rule_id": "INST-KR-000211-1-CBC0AB2BC9C-PREF-03",
+          "title": "고령자 우대이율",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000211_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "고령자 우대이율"
+          },
+          "source_ref_ids": [
+            "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "고령자 우대이율\n- 예금을 가입할 때 65세 이상이면서 이 예금을 만기에 해약하는 경우 (특별중도해지 포함)\n- 2024. 1.15 이후 가입자만 적용 : 0.2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-01",
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02",
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03",
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-4A930427820EEB64590947C83345D4AD-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-RATE",
+      "EVD-IS-4A930427820EEB64590947C83345D4AD-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.15",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "4a930427820eeb64590947c83345d4ad"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO",
+    "EVD-IS-4A930427820EEB64590947C83345D4AD-RATE",
+    "EVD-IS-4A930427820EEB64590947C83345D4AD-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "4a930427820eeb64590947c83345d4ad",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-4A930427820EEB64590947C83345D4AD-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "product_code": "INST-KR-000010-1-C3921508A1F",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "모다드림 청년통장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "도내에 거주.재직중인 만 18세 이상 만 39세 이하의 청년으로 경상남도에서 경남은행으로 가입승인을 통보한 실명의 개인에 한합니다. (1인1좌)",
+    "eligibility_text": "도내에 거주.재직중인 만 18세 이상 만 39세 이하의 청년으로 경상남도에서 경남은행으로 가입승인을 통보한 실명의 개인에 한합니다. (1인1좌)",
+    "display_text": "도내에 거주.재직중인 만 18세 이상 만 39세 이하의 청년으로 경상남도에서 경남은행으로 가입승인을 통보한 실명의 개인에 한합니다. (1인1좌)",
+    "source_ref_ids": [
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 18,
+      "max_age": 39
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 2,
+    "source_expression": "2년",
+    "source_ref_ids": [
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+    ],
+    "representative_value": 2
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "200000",
+        "max_value": "200000"
+      }
+    ],
+    "source_amount_text": "20만원으로만 입금 가능하며 계좌에 불입 가능한 최종 금액은 480만원까지로 합니다.\n- 이 예금의 신규 시 자동이체 등록은 필수입니다.\n- 자동이체일은 1일 ~ 20일 이내로만 가능하며 자동이체 금액은 20만원으로만 가능합니다.",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "TOTAL_CONTRACT",
+        "role": "FIXED_OR_SELECTED",
+        "context": "20만원으로만 입금 가능하며 계좌에 불입 가능한 최종 금액은 480만원까지로 합니다.\n- 이 예금의 신규"
+      },
+      {
+        "value": "4800000",
+        "currency": "KRW",
+        "source_expression": "480만원",
+        "scope": "TOTAL_CONTRACT",
+        "role": "FIXED_OR_SELECTED",
+        "context": "20만원으로만 입금 가능하며 계좌에 불입 가능한 최종 금액은 480만원까지로 합니다.\n- 이 예금의 신규 시 자동이체 등록은 필수입니다.\n- 자동이체일은 1일 ~ 20일"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "시 자동이체 등록은 필수입니다.\n- 자동이체일은 1일 ~ 20일 이내로만 가능하며 자동이체 금액은 20만원으로만 가능합니다."
+      }
+    ],
+    "aggregate_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_value": "4800000",
+        "currency": "KRW",
+        "source_text": "최종 금액은 480만원까지로 합니다."
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-C3921508A1F-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01",
+          "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금을 만기해지하는 경우 우대이율 제공 (중도해지 시에는 제공되지 않습니다.) : 2%"
+        },
+        {
+          "fact_key": "EXTERNAL_SUPPORT.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "지자체 지원금\n가. 의의 : 지원금이란 본인 적립금과 별도로 지자체 예산으로 지급하는 장려금을 말합니다.\n나. 적립방법 : 본인 적립금과 동일한 금액을 경상남도에서 매월 별도로 적립합니다. 단, 입금 회차별 매월 20만원까지만 적립하며 납부유예 기간 중에는 지원금을 적립하지 않습니다. 선납이 있을시에는 순차적으로 지원금 적립 대상으로 합니다.\n다. 지급방법 : 이 예금을 만기 해지 또는 특별중도해지 시에 상기 '나'에 따라 별도로 적립한 금액을 본인 적립금에 더하여 지급하며 지원금에 대해서는 이자를 적용하지 않습니다.\n라. 지급한도 : 지원금 지급 한도는 최고 480만원을 초과할 수 없습니다.\n마. 지급시기 : 만기 해지 또는 특별중도해지일이 속한 월의 익월 중 지급 처리합니다.\n바. 지급주체 : 경상남도 (경남투자경제진흥원)\n사. 지급제한 : 가입자 본인이 중도해지 하거나,경상남도에서 정한 자격상실 사유에 해당하는 경우에는 지원금을 지급하지 않습니다. 다만, 특별중도해지 사유에 해당하여 해지하는 경우에는 특별중도해지 전까지 적립한 지원금은 지급하는것으로 합니다."
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000010-1-C3921508A1F-PREF-02-QUALIFYING",
+          "event_type": "CONTRIBUTION_SUCCESS",
+          "qualifying_definition": {
+            "source_text": "지자체 지원금\n가. 의의 : 지원금이란 본인 적립금과 별도로 지자체 예산으로 지급하는 장려금을 말합니다.\n나. 적립방법 : 본인 적립금과 동일한 금액을 경상남도에서 매월 별도로 적립합니다. 단, 입금 회차별 매월 20만원까지만 적립하며 납부유예 기간 중에는 지원금을 적립하지 않습니다. 선납이 있을시에는 순차적으로 지원금 적립 대상으로 합니다.\n다. 지급방법 : 이 예금을 만기 해지 또는 특별중도해지 시에 상기 '나'에 따라 별도로 적립한 금액을 본인 적립금에 더하여 지급하며 지원금에 대해서는 이자를 적용하지 않습니다.\n라. 지급한도 : 지원금 지급 한도는 최고 480만원을 초과할 수 없습니다.\n마. 지급시기 : 만기 해지 또는 특별중도해지일이 속한 월의 익월 중 지급 처리합니다.\n바. 지급주체 : 경상남도 (경남투자경제진흥원)\n사. 지급제한 : 가입자 본인이 중도해지 하거나,경상남도에서 정한 자격상실 사유에 해당하는 경우에는 지원금을 지급하지 않습니다. 다만, 특별중도해지 사유에 해당하여 해지하는 경우에는 특별중도해지 전까지 적립한 지원금은 지급하는것으로 합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "지자체 지원금\n가. 의의 : 지원금이란 본인 적립금과 별도로 지자체 예산으로 지급하는 장려금을 말합니다.\n나. 적립방법 : 본인 적립금과 동일한 금액을 경상남도에서 매월 별도로 적립합니다. 단, 입금 회차별 매월 20만원까지만 적립하며 납부유예 기간 중에는 지원금을 적립하지 않습니다. 선납이 있을시에는 순차적으로 지원금 적립 대상으로 합니다.\n다. 지급방법 : 이 예금을 만기 해지 또는 특별중도해지 시에 상기 '나'에 따라 별도로 적립한 금액을 본인 적립금에 더하여 지급하며 지원금에 대해서는 이자를 적용하지 않습니다.\n라. 지급한도 : 지원금 지급 한도는 최고 480만원을 초과할 수 없습니다.\n마. 지급시기 : 만기 해지 또는 특별중도해지일이 속한 월의 익월 중 지급 처리합니다.\n바. 지급주체 : 경상남도 (경남투자경제진흥원)\n사. 지급제한 : 가입자 본인이 중도해지 하거나,경상남도에서 정한 자격상실 사유에 해당하는 경우에는 지원금을 지급하지 않습니다. 다만, 특별중도해지 사유에 해"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000010_1_C3921508A1F-INST_KR_000010_1_C3921-SOURCE_CLAUSE_INST_KR_000010_1",
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "지자체 지원금\n가. 의의 : 지원금이란 본인 적립금과 별도로 지자체 예산으로 지급하는 장려금을 말합니다.\n나. 적립방법 : 본인 적립금과 동일한 금액을 경상남도에서 매월 별도로 적립합니다. 단, 입금 회차별 매월 20만원까지만 적립하며 납부유예 기간 중에는 지원금을 적립하지 않습니다. 선납이 있을시에는 순차적으로 지원금 적립 대상으로 합니다.\n다. 지급방법 : 이 예금을 만기 해지 또는 특별중도해지 시에 상기 '나'에 따라 별도로 적립한 금액을 본인 적립금에 더하여 지급하며 지원금에 대해서는 이자를 적용하지 않습니다.\n라. 지급한도 : 지원금 지급 한도는 최고 480만원을 초과할 수 없습니다.\n마. 지급시기 : 만기 해지 또는 특별중도해지일이 속한 월의 익월 중 지급 처리합니다.\n바. 지급주체 : 경상남도 (경남투자경제진흥원)\n사. 지급제한 : 가입자 본인이 중도해지 하거나,경상남도에서 정한 자격상실 사유에 해당하는 경우에는 지원금을 지급하지 않습니다. 다만, 특별중도해지 사유에 해당하여 해지하는 경우에는 특별중도해지 전까지 적립한 지원금은 지급하는것으로 합니다.",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-C3921508A1F-PREF-01",
+          "title": "이 예금을 만기해지하는 경우 우대이율 제공 (중도해지 시에는 제공되지 않습니다.) : 2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금을 만기해지하는 경우 우대이율 제공 (중도해지 시에는 제공되지 않습니다.) : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+            }
+          ],
+          "semantic_domain": "MATURITY_OR_RENEWAL",
+          "source_clause_text": "이 예금을 만기해지하는 경우 우대이율 제공 (중도해지 시에는 제공되지 않습니다.) : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-C3921508A1F-PREF-02",
+          "title": "지자체 지원금",
+          "condition": {
+            "predicate": {
+              "fact_key": "EXTERNAL_SUPPORT.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "지자체 지원금"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "지자체 지원금\n가. 의의 : 지원금이란 본인 적립금과 별도로 지자체 예산으로 지급하는 장려금을 말합니다.\n나. 적립방법 : 본인 적립금과 동일한 금액을 경상남도에서 매월 별도로 적립합니다. 단, 입금 회차별 매월 20만원까지만 적립하며 납부유예 기간 중에는 지원금을 적립하지 않습니다. 선납이 있을시에는 순차적으로 지원금 적립 대상으로 합니다.\n다. 지급방법 : 이 예금을 만기 해지 또는 특별중도해지 시에 상기 '나'에 따라 별도로 적립한 금액을 본인 적립금에 더하여 지급하며 지원금에 대해서는 이자를 적용하지 않습니다.\n라. 지급한도 : 지원금 지급 한도는 최고 480만원을 초과할 수 없습니다.\n마. 지급시기 : 만기 해지 또는 특별중도해지일이 속한 월의 익월 중 지급 처리합니다.\n바. 지급주체 : 경상남도 (경남투자경제진흥원)\n사. 지급제한 : 가입자 본인이 중도해지 하거나,경상남도에서 정한 자격상실 사유에 해당하는 경우에는 지원금을 지급하지 않습니다. 다만, 특별중도해지 사유에 해당하여 해지하는 경우에는 특별중도해지 전까지 적립한 지원금은 지급하는것으로 합니다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01",
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02",
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-02"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-RATE",
+      "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "8b109c700dbdec25b1fda703e6dea875"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO",
+    "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-RATE",
+    "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T04:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "AUDIT_SEMANTIC_CORRECTION",
+    "source_record_id": "8b109c700dbdec25b1fda703e6dea875",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T04:00:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION",
+        "FIXED_MONTHLY_AMOUNT_SCOPE_CORRECTION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-8B109C700DBDEC25B1FDA703E6DEA875-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

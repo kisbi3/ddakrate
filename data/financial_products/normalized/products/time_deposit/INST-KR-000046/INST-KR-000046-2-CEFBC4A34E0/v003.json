@@ -1,0 +1,1125 @@
+{
+  "product_code": "INST-KR-000046-2-CEFBC4A34E0",
+  "version": 3,
+  "institution_id": "INST-KR-000046",
+  "name": "iM스마트예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": ["WEB", "MOBILE_APP"],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인",
+    "eligibility_text": "개인",
+    "display_text": "개인",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "source_text": "1개월 이상 3년 이내(월단위)",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 36,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+    ],
+    "source_amount_text": "100만원 이상",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.400% - - 2.450%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-01-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.400% - - 2.450%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.950% - - 3.000%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-02-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.950% - - 3.000%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.950% - - 3.200%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-03-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.950% - - 3.200%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-04-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "3.300% 3.300% - 3.550%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-04-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "3.300% 3.300% - 3.550%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-04-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.55",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "3.300% 3.300% - 3.550%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-05-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.900% 2.860% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-05-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.86",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.900% 2.860% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-05-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.900% 2.860% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-06-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.900% 2.820% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "36개월"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-06-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.82",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.900% 2.820% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "36개월"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-CTX-06-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.900% 2.820% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "36개월"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.400% - - 2.450%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.950% - - 3.000%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.950% - - 3.200%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "3.300% 3.300% - 3.550%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.900% 2.860% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000046-2-CEFBC4A34E0-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월",
+          "raw_cell": "2.900% 2.820% - 3.150%",
+          "table_header": "기본 금리 | 기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+        ],
+        "source_rate_row_text": "36개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷\n1개월이상 ~ 3개월미만\n2.400%\n-\n-\n2.450%\n3개월이상 ~ 6개월미만\n2.950%\n-\n-\n3.000%\n6개월이상 ~ 12개월미만\n2.950%\n-\n-\n3.200%\n12개월이상 ~ 24개월미만\n3.300% 3.300%\n-\n3.550%\n24개월이상 ~ 36개월미만\n2.900% 2.860%\n-\n3.150%\n36개월\n2.900% 2.820%\n-\n3.150%",
+      "header_lines": [
+        "기본 금리",
+        "기간 기본 이자율 기본 연수익율 최고 ㈜영업점 최고 ㈜인터넷"
+      ],
+      "rows": [
+        {
+          "term_text": "1개월이상 ~ 3개월미만",
+          "cell_lines": [
+            "2.400%",
+            "-",
+            "-",
+            "2.450%"
+          ],
+          "rate_values": [
+            "2.4",
+            null,
+            null,
+            "2.45"
+          ]
+        },
+        {
+          "term_text": "3개월이상 ~ 6개월미만",
+          "cell_lines": [
+            "2.950%",
+            "-",
+            "-",
+            "3.000%"
+          ],
+          "rate_values": [
+            "2.95",
+            null,
+            null,
+            "3"
+          ]
+        },
+        {
+          "term_text": "6개월이상 ~ 12개월미만",
+          "cell_lines": [
+            "2.950%",
+            "-",
+            "-",
+            "3.200%"
+          ],
+          "rate_values": [
+            "2.95",
+            null,
+            null,
+            "3.2"
+          ]
+        },
+        {
+          "term_text": "12개월이상 ~ 24개월미만",
+          "cell_lines": [
+            "3.300% 3.300%",
+            "-",
+            "3.550%"
+          ],
+          "rate_values": [
+            "3.3",
+            "3.3",
+            null,
+            "3.55"
+          ]
+        },
+        {
+          "term_text": "24개월이상 ~ 36개월미만",
+          "cell_lines": [
+            "2.900% 2.860%",
+            "-",
+            "3.150%"
+          ],
+          "rate_values": [
+            "2.9",
+            "2.86",
+            null,
+            "3.15"
+          ]
+        },
+        {
+          "term_text": "36개월",
+          "cell_lines": [
+            "2.900% 2.820%",
+            "-",
+            "3.150%"
+          ],
+          "rate_values": [
+            "2.9",
+            "2.82",
+            null,
+            "3.15"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "BASE_CONTRACT_RATE",
+          "semantic_role": "BASE_RATE"
+        },
+        {
+          "context_id": "BASE_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD"
+        },
+        {
+          "context_id": "BRANCH_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "BRANCH"
+        },
+        {
+          "context_id": "INTERNET_MAXIMUM",
+          "semantic_role": "CONTEXTUAL_MAXIMUM",
+          "channel": "INTERNET"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+          ]
+        },
+        {
+          "fact_key": "CONTRACT.TERM_MONTHS",
+          "value_type": "INTEGER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+          ],
+          "unit": "MONTH"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "단, 중도에 통장 발행 등 일반예금으로 전환하는 경우 전체 예금기간에 대해 비대면우대이자율은 적용되지 않습니다. : 0.05%",
+          "condition": {
+            "predicate": {
+              "fact_key": "SUBSCRIPTION.DIGITAL_CHANNEL_USED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "단, 중도에 통장 발행 등 일반예금으로 전환하는 경우 전체 예금기간에 대해 비대면우대이자율은 적용되지 않습니다. : 0.05%",
+            "reward_text": "+0.05%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+          ],
+          "evidence": [
+            {
+              "text": "인터넷뱅킹,모바일뱅킹에서 가입 시 기본이자율에 비대면우대이자율이 추가 적용됩니다.\n단, 중도에 통장 발행 등 일반예금으로 전환하는 경우 전체 예금기간에 대해 비대면우대이자율은 적용되지 않습니다. : 0.05%\n우대이자율 : 최고 연 0.20%p"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "* 실적계산 기준일 : 신규가입일(재예치일) 또는 신규가입일(재예치일)로부터 3개월째 되는 날이 속한 달의 말일 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRACT.TERM_MONTHS",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "* 실적계산 기준일 : 신규가입일(재예치일) 또는 신규가입일(재예치일)로부터 3개월째 되는 날이 속한 달의 말일 : 0.2%",
+            "reward_text": "+0.2%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+          ],
+          "evidence": [
+            {
+              "text": "계약기간 6개월 이상 계좌로 아래 1가지 이상의 요건을 충족하는 경우\n① 주택청약종합저축을 보유한 경우\n② 지난 3개월 이내 당행 계좌를 통한 당행 신용(체크)카드 결제실적이 있는 경우\n* 결제금액 출금 기준, 승인 취소 건은 결제실적에서 제외\n* 실적계산 기준일 : 신규가입일(재예치일) 또는 신규가입일(재예치일)로부터 3개월째 되는 날이 속한 달의 말일 : 0.2%"
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+    ],
+    "listing_base_rate_reference": {
+      "value": "3.3",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "3.55",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+      ]
+    }
+  },
+  "interest_payment_policy": {
+    "contexts": [{"context_id":"MATURITY_PAYMENT","payment_timing":"MATURITY"}],
+    "multiple_contexts": false,
+    "default_context_id":"MATURITY_PAYMENT",
+    "source_text":"만기일시지급식: 만기(후) 또는 중도해지 요청 시 이자 지급",
+    "source_ref_ids":["EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"]
+  },
+  "protection_policy": {
+    "coverage_status":"PROTECTED",
+    "coverage_limit_krw":"100000000",
+    "scheme_ref":{"scheme_code":"KDIC-DEPOSIT-PROTECTION","version":1},
+    "source_ref_ids":["EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"]
+  },
+  "liquidity_policy": {
+    "automatic_renewal_allowed":true,
+    "early_termination_allowed":true,
+    "early_termination_policy":{"source_text":"경과기간별 차등 중도해지이율, 우대이율은 만기해지에만 적용"},
+    "partial_withdrawal_policy":{"allowed":true,"max_count":3,"includes_maturity":true,"minimum_remaining_amount_krw":"1000000","source_text":"일부해지 3회(만기해지 포함), 잔액 최소 100만원"},
+    "automatic_renewal_source_text":"원금과 세후 이자를 최초 계약기간과 동일한 기간으로 재예치, 재예치일 고시율 적용",
+    "source_ref_ids":["EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000046-2-CEFBC4A34E0"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T14:47:54+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "data_gaps": []
+}

@@ -1,0 +1,527 @@
+{
+  "product_code": "INST-KR-000223-3-0013",
+  "version": 3,
+  "institution_id": "INST-KR-000223",
+  "name": "머니박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 100000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "10만좌"
+    },
+    "sale_window": {
+      "start_date": "2024-07-02",
+      "end_date": "2026-12-31",
+      "end_inclusive": true,
+      "may_close_early_on_quota_exhaustion": true
+    },
+    "account_quota": {
+      "total": 100000,
+      "first_customer": 70000,
+      "existing_customer": 30000,
+      "current_existing_customer_availability": "EXHAUSTED"
+    },
+    "current_eligible_segment": "FIRST_CUSTOMER_ONLY_AT_SNAPSHOT"
+  },
+  "eligibility_policy": {
+    "raw_text": "『IBK개인입출통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외) ※ 1인 1계좌",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "excluded_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "excluded_residency_statuses": [
+      "NON_RESIDENT"
+    ],
+    "fact_definitions": [
+      {
+        "fact_key": "RELATIONSHIP.IBK.PERSONAL_DEMAND_DEPOSIT_ACCOUNT_HELD",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0013"
+        ]
+      }
+    ],
+    "condition": {
+      "operator": "AND",
+      "operands": [
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.TYPE",
+            "operator": "EQUALS",
+            "expected_value": "INDIVIDUAL"
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.IS_SOLE_PROPRIETOR",
+            "operator": "EQUALS",
+            "expected_value": false
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "RESIDENCY.IS_NONRESIDENT",
+            "operator": "EQUALS",
+            "expected_value": false
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "RELATIONSHIP.IBK.PERSONAL_DEMAND_DEPOSIT_ACCOUNT_HELD",
+            "operator": "EQUALS",
+            "expected_value": true
+          }
+        }
+      ]
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ],
+    "amount_rules": [
+      {
+        "scope": "FUNDING",
+        "limit_kind": "MAX_DEPOSITABLE_AMOUNT",
+        "max_value": "20000000",
+        "currency": "KRW",
+        "source_text": "최대 2천만원까지 입금 가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-3-0013-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.25",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0013"
+        ],
+        "source_clause": "2,000만원 이하 기본금리 0.250%",
+        "executable": true,
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "0",
+              "min_inclusive": false,
+              "max_value": "20000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        }
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_SALARY_TRANSFER_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_PENSION_DEPOSIT_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ],
+          "qualifying_pensions": [
+            "NATIONAL",
+            "PUBLIC_SERVANT",
+            "MILITARY",
+            "PRIVATE_SCHOOL",
+            "DISABILITY",
+            "BASIC_OLD_AGE"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_CARD_OR_PAY_DEBIT_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ],
+          "qualifying_pay_providers": [
+            "ZERO_PAY",
+            "SAMSUNG_PAY",
+            "KAKAO_PAY",
+            "NAVER_PAY",
+            "TOSS_PAY",
+            "COUPAY",
+            "PAYCO"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.IBK.REAL_NAME_REGISTRATION_AGE_AT_OPENING",
+          "data_type": "DURATION",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.IBK.TOTAL_DEPOSIT_AVERAGE_BALANCE_PREVIOUS_6M",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ],
+          "unit": "KRW"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-3-0013-PREF-01",
+          "title": "연결 IBK개인입출통장 전월 실적 중 하나 이상",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_SALARY_TRANSFER_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_PENSION_DEPOSIT_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.LINKED_IBK_PERSONAL_DEMAND.QUALIFYING_CARD_OR_PAY_DEBIT_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "conversion_clipping": {
+              "start": "LINKED_ACCOUNT_CONVERSION_DATE"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000223-3-0013-PREF-02",
+          "title": "최초고객 특별우대",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.IBK.REAL_NAME_REGISTRATION_AGE_AT_OPENING",
+                  "operator": "LTE",
+                  "expected_value": {
+                    "value": 3,
+                    "unit": "MONTH"
+                  }
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.IBK.TOTAL_DEPOSIT_AVERAGE_BALANCE_PREVIOUS_6M",
+                  "operator": "EQUALS",
+                  "expected_value": 0,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": {
+              "real_name_registration_age": "ACCOUNT_OPENING",
+              "average_balance": "SIX_CALENDAR_MONTHS_ENDING_PREVIOUS_MONTH"
+            },
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 6,
+                "unit": "MONTH",
+                "inclusive": true
+              }
+            },
+            "eligibility_window": {
+              "start_date": "2024-07-02",
+              "end_date": "2026-12-31",
+              "end_inclusive": true,
+              "may_close_early_on_quota_exhaustion": true
+            },
+            "occurrence_limit": {
+              "max_applications": 1,
+              "subject_scope": "CUSTOMER"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "2.0",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ],
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 2,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0013"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "2.25",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0013"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000223-3-0013"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000223-3-0013",
+        "product_name": "머니박스",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000223-3-0013",
+    "source_record_id": "104fc1efa0616d04daec529f19f8b5ec",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 89,
+    "reviewed_source_record_id": "104fc1efa0616d04daec529f19f8b5ec",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "EXCLUDED_CUSTOMER_TYPE_ERRONEOUSLY_ALLOWED_SECOND_PASS",
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "전월 연결계좌 실적 3종을 하나의 OR 우대 +1.0%p로 통합",
+      "최초고객 판정·이벤트 기간·7만좌·가입 후 6개월 특별우대 +1.0%p 실행 구조화",
+      "개인입출통장 연결 prerequisite와 2천만원 입금한도 교정"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0013"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

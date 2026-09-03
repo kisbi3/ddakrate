@@ -1,0 +1,260 @@
+{
+  "product_code": "INST-KR-000223-1-0006",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK중소기업재직자우대저축",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0006"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "eligibility_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "display_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0006"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      36,
+      60
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0006"
+    ],
+    "representative_value": 36
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0006"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0006-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0006-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0006-01",
+        "title": "최고 연 2.0%p (계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대이자율 제공)",
+        "condition_text": "최고 연 2.0%p (계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대이자율 제공)",
+        "structured_steps": [
+          "최고 연 2.0%p (계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대이자율 제공)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "최고 연 2.0%p (계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대이자율 제공)",
+          "summary_text": "최고 연 2.0%p (계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대이자율 제공)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0006-02",
+        "title": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%",
+        "condition_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%\n* (예시)2024.10.10. 가입, 계약기간 3년제(5년제)인 경우\n2024.10.01.~2027.08.31.까지 급여이체 실적이 18개월(30개월) 이상 있는 경우\n2024.10.01.~2027.08.31.까지 카드 이용 실적이 600만원(1,000만원) 이상 있는 경우\n[급여이체 실적인정 기준]\n※ 다음 중 1가지 이상 충족하는 경우 급여이체 실적으로 인정\n① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹 급여이체 시스템을 통해 월 50만원 이상 입금\n② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK 영업점 창구, 자동화기기 입금 분은 인정되지 않음)\n③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일 이내에 월 50만원 이상 입금",
+        "structured_steps": [
+          "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%",
+          "* (예시)2024.10.10. 가입, 계약기간 3년제(5년제)인 경우",
+          "2024.10.01.~2027.08.31.까지 급여이체 실적이 18개월(30개월) 이상 있는 경우",
+          "2024.10.01.~2027.08.31.까지 카드 이용 실적이 600만원(1,000만원) 이상 있는 경우",
+          "[급여이체 실적인정 기준]",
+          "※ 다음 중 1가지 이상 충족하는 경우 급여이체 실적으로 인정",
+          "① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹 급여이체 시스템을 통해 월 50만원 이상 입금",
+          "② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK 영업점 창구, 자동화기기 입금 분은 인정되지 않음)",
+          "③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일 이내에 월 50만원 이상 입금"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%",
+          "summary_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%",
+          "detail_texts": [
+            "* (예시)2024.10.10. 가입, 계약기간 3년제(5년제)인 경우",
+            "2024.10.01.~2027.08.31.까지 급여이체 실적이 18개월(30개월) 이상 있는 경우",
+            "2024.10.01.~2027.08.31.까지 카드 이용 실적이 600만원(1,000만원) 이상 있는 경우",
+            "[급여이체 실적인정 기준]",
+            "※ 다음 중 1가지 이상 충족하는 경우 급여이체 실적으로 인정",
+            "① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹 급여이체 시스템을 통해 월 50만원 이상 입금",
+            "② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK 영업점 창구, 자동화기기 입금 분은 인정되지 않음)",
+            "③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일 이내에 월 50만원 이상 입금"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0006-03",
+        "title": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%",
+        "condition_text": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%\n** 아파트관리비, 지로, CMS, 펌뱅킹",
+        "structured_steps": [
+          "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%",
+          "** 아파트관리비, 지로, CMS, 펌뱅킹"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%",
+          "summary_text": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%",
+          "detail_texts": [
+            "** 아파트관리비, 지로, CMS, 펌뱅킹"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0006-04",
+        "title": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%",
+        "condition_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외\n*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음",
+        "structured_steps": [
+          "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%",
+          "※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외",
+          "*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0006"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%",
+          "summary_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%",
+          "detail_texts": [
+            "※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외",
+            "*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0006"
+    ],
+    "advertised_max_rate": {
+      "value": "4.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-1-0006"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-1-0006"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.293544+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "product_code": "INST-KR-001107-3-0001",
+  "version": 1,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국매일이자파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-3-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-3-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 1,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-3-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.600",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-3-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-01",
+        "title": "아래 우대조건을 충족하는 경우 우대이자율 최고 연 0.4%p 제공",
+        "condition_text": "아래 우대조건을 충족하는 경우 우대이자율 최고 연 0.4%p 제공\n(단, 가입일로부터 최초 정기이자 결산일까지는 실적 체크 없이 최고 우대이율 제공)",
+        "structured_steps": [
+          "아래 우대조건을 충족하는 경우 우대이자율 최고 연 0.4%p 제공",
+          "(단, 가입일로부터 최초 정기이자 결산일까지는 실적 체크 없이 최고 우대이율 제공)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "아래 우대조건을 충족하는 경우 우대이자율 최고 연 0.4%p 제공",
+          "summary_text": "아래 우대조건을 충족하는 경우 우대이자율 최고 연 0.4%p 제공",
+          "detail_texts": [
+            "(단, 가입일로부터 최초 정기이자 결산일까지는 실적 체크 없이 최고 우대이율 제공)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-02",
+        "title": "이 예금 가입일에 우체국 수시입출식 예금을 처음 개설한 고객(※ 최초 정기이자 결산일의 다음날부터 1년간 우대이율 적용)",
+        "condition_text": "이 예금 가입일에 우체국 수시입출식 예금을 처음 개설한 고객(※ 최초 정기이자 결산일의 다음날부터 1년간 우대이율 적용)\n• 수시입출식 예금 첫 고객 제외 대상\n① 활동계좌, 거래중지계좌 예금을 1개 이상 보유한 고객\n② 가입일 이전 1년 이내* 해약된 우체국 수시입출식 예금 계좌가 있는 고객('26.08.10. 가입 시, '25.08.10.~'26.08.09.)\n③ 단, 국고 귀속된 수시입출식 예금을 보유한 첫 고객에 해당 : 0.4%",
+        "structured_steps": [
+          "이 예금 가입일에 우체국 수시입출식 예금을 처음 개설한 고객(※ 최초 정기이자 결산일의 다음날부터 1년간 우대이율 적용)",
+          "수시입출식 예금 첫 고객 제외 대상",
+          "① 활동계좌, 거래중지계좌 예금을 1개 이상 보유한 고객",
+          "② 가입일 이전 1년 이내* 해약된 우체국 수시입출식 예금 계좌가 있는 고객('26.08.10. 가입 시, '25.08.10.~'26.08.09.)",
+          "③ 단, 국고 귀속된 수시입출식 예금을 보유한 첫 고객에 해당 : 0.4%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 가입일에 우체국 수시입출식 예금을 처음 개설한 고객(※ 최초 정기이자 결산일의 다음날부터 1년간 우대이율 적용)",
+          "summary_text": "이 예금 가입일에 우체국 수시입출식 예금을 처음 개설한 고객(※ 최초 정기이자 결산일의 다음날부터 1년간 우대이율 적용)",
+          "detail_texts": [
+            "수시입출식 예금 첫 고객 제외 대상",
+            "① 활동계좌, 거래중지계좌 예금을 1개 이상 보유한 고객",
+            "② 가입일 이전 1년 이내* 해약된 우체국 수시입출식 예금 계좌가 있는 고객('26.08.10. 가입 시, '25.08.10.~'26.08.09.)",
+            "③ 단, 국고 귀속된 수시입출식 예금을 보유한 첫 고객에 해당 : 0.4%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-03",
+        "title": "정기이자 결산일 기준으로 결산기간 중 우체국 수시입출식 예금*의 평균 잔액이 30만원 이상인 경우 적용(*대상계좌 : 정상계좌, 거래중지계좌) : 0.2%",
+        "condition_text": "정기이자 결산일 기준으로 결산기간 중 우체국 수시입출식 예금*의 평균 잔액이 30만원 이상인 경우 적용(*대상계좌 : 정상계좌, 거래중지계좌) : 0.2%",
+        "structured_steps": [
+          "정기이자 결산일 기준으로 결산기간 중 우체국 수시입출식 예금*의 평균 잔액이 30만원 이상인 경우 적용(*대상계좌 : 정상계좌, 거래중지계좌) : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "정기이자 결산일 기준으로 결산기간 중 우체국 수시입출식 예금*의 평균 잔액이 30만원 이상인 경우 적용(*대상계좌 : 정상계좌, 거래중지계좌) : 0.2%",
+          "summary_text": "정기이자 결산일 기준으로 결산기간 중 우체국 수시입출식 예금*의 평균 잔액이 30만원 이상인 경우 적용(*대상계좌 : 정상계좌, 거래중지계좌) : 0.2%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-04",
+        "title": "정기이자 결산일 기준, 이 예금 고객이 50세 이상에 해당하는 경우(※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+        "condition_text": "정기이자 결산일 기준, 이 예금 고객이 50세 이상에 해당하는 경우(※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+        "structured_steps": [
+          "정기이자 결산일 기준, 이 예금 고객이 50세 이상에 해당하는 경우(※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "정기이자 결산일 기준, 이 예금 고객이 50세 이상에 해당하는 경우(※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+          "summary_text": "정기이자 결산일 기준, 이 예금 고객이 50세 이상에 해당하는 경우(※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-05",
+        "title": "정기이자 결산일 기준 이 예금 고객이 '통합멤버십(잇다머니)' 서비스에 가입* 되어 있는 경우 적용('우체국페이' 앱 설치 및 가입 시 '통합멤버십(잇다머니)' 서비스 자동 가입) : 0.2%",
+        "condition_text": "정기이자 결산일 기준 이 예금 고객이 '통합멤버십(잇다머니)' 서비스에 가입* 되어 있는 경우 적용('우체국페이' 앱 설치 및 가입 시 '통합멤버십(잇다머니)' 서비스 자동 가입) : 0.2%",
+        "structured_steps": [
+          "정기이자 결산일 기준 이 예금 고객이 '통합멤버십(잇다머니)' 서비스에 가입* 되어 있는 경우 적용('우체국페이' 앱 설치 및 가입 시 '통합멤버십(잇다머니)' 서비스 자동 가입) : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "정기이자 결산일 기준 이 예금 고객이 '통합멤버십(잇다머니)' 서비스에 가입* 되어 있는 경우 적용('우체국페이' 앱 설치 및 가입 시 '통합멤버십(잇다머니)' 서비스 자동 가입) : 0.2%",
+          "summary_text": "정기이자 결산일 기준 이 예금 고객이 '통합멤버십(잇다머니)' 서비스에 가입* 되어 있는 경우 적용('우체국페이' 앱 설치 및 가입 시 '통합멤버십(잇다머니)' 서비스 자동 가입) : 0.2%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-001107-3-0001-06",
+        "title": "신규 가입 시 기부를 신청하고 정기이자 결산일 기준 기부금이 이체된 이력(1회에 한함)이 있는 경우 (※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+        "condition_text": "신규 가입 시 기부를 신청하고 정기이자 결산일 기준 기부금이 이체된 이력(1회에 한함)이 있는 경우 (※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+        "structured_steps": [
+          "신규 가입 시 기부를 신청하고 정기이자 결산일 기준 기부금이 이체된 이력(1회에 한함)이 있는 경우 (※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-001107-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규 가입 시 기부를 신청하고 정기이자 결산일 기준 기부금이 이체된 이력(1회에 한함)이 있는 경우 (※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+          "summary_text": "신규 가입 시 기부를 신청하고 정기이자 결산일 기준 기부금이 이체된 이력(1회에 한함)이 있는 경우 (※ 최초 해당 결산일의 다음날부터 1년간 우대이율 적용) : 0.2%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-001107-3-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-001107-3-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-001107-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.549581+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

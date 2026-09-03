@@ -1,0 +1,366 @@
+{
+  "product_code": "INST-KR-000743-3-CCFC604D0E3",
+  "version": 4,
+  "institution_id": "INST-KR-000743",
+  "name": "kiwi입출금통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 또는 개인사업자",
+    "eligibility_text": "실명의 개인 또는 개인사업자",
+    "display_text": "실명의 개인 또는 개인사업자",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000743-3-CCFC604D0E3-REL-4FE4701177D0",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "￭ 2020.7.12부터 ‘KB착한모바일통장’의 상품명이 ‘kiwi입출금통장’으로 변경되었습니다. 기존에 ‘KB착한모바일통장’을 가입한 고객님께서도 상품명이 ‘kiwi입출금통장’으로 변경되며, ‘kiwi입출금통장’의 상품 내용을 적용받게 됩니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.4FE4701177D0.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000743-3-CCFC604D0E3-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.3",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+        ],
+        "source_clause": "2억원 이하 | 연 1.3%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "2억원 이하",
+              "max_value": "200000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000743-3-CCFC604D0E3-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.2",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+        ],
+        "source_clause": "2억원 초과 | 연 0.2%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "2억원 초과",
+              "min_value": "200000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_scope": {
+          "basis": "END_OF_DAY_BALANCE",
+          "method": "CAPPED_PORTION",
+          "range": {
+            "currency": "KRW",
+            "unit": "KRW",
+            "min_value": "0",
+            "min_inclusive": true,
+            "max_value": "1000000",
+            "max_inclusive": true,
+            "source_text": "이자계산기간 매일 최종잔액 100만원 이하 금액"
+          },
+          "source_text": "이자계산기간 매일 최종잔액 100만원 이하 금액"
+        },
+        "fact_window": "THREE_CALENDAR_MONTHS_ENDING_MONTH_BEFORE_SETTLEMENT_MONTH",
+        "reward_window": "CURRENT_SETTLEMENT_PERIOD",
+        "source_text": "1\n체크카드 우대이율 : 연 0.2%\n우대조건 : 이자 결산일이 속한 달의 전달(2월, 5월, 8월, 11월)말 기준 최근 3개월간 이 예금에 「KB국민 kiwibank 체크카드」 결제 실적이 1회 이상 있는 경우(금액상관없음)\n적용한도 : 이자계산기간동안의 매일의 최종예금잔액에 대하여 1백만원 이하 금액까지는 기본이율과 우대이율을 합산하여 적용하며, 1백만원을 초과하는 금액은 기본이율 적용"
+      },
+      "event_definitions": [
+        {
+          "event_id": "EV-INST-KR-000743-3-CCFC604D0E3-CARD",
+          "event_type": "CHECK_CARD_SETTLEMENT",
+          "card_product": "KB_KOOKMIN_KIWIBANK_CHECK_CARD",
+          "settlement_account": "THIS_ACCOUNT",
+          "amount_threshold": null,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+          ]
+        }
+      ],
+      "fact_definitions": [
+        {
+          "fact_key": "CARD.KIWIBANK_CHECK_CARD_SETTLEMENT_EVENT_COUNT_PREVIOUS_3M",
+          "data_type": "INTEGER",
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000743-3-CCFC604D0E3-CARD",
+          "aggregation": {
+            "period": "THREE_CALENDAR_MONTHS_ENDING_MONTH_BEFORE_SETTLEMENT_MONTH",
+            "snapshot_months": [
+              2,
+              5,
+              8,
+              11
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000743-3-CCFC604D0E3-PREF-01",
+          "title": "직전 3개월 kiwibank 체크카드 결제 1회 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD.KIWIBANK_CHECK_CARD_SETTLEMENT_EVENT_COUNT_PREVIOUS_3M",
+              "operator": "GTE",
+              "expected_value": 1
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "￭ 매분기 마지막월 19일(휴일인 경우 전 영업일)을 결산기준일로 하여 다음날 원금에 가산\n￭ 예금일 또는 전 결산기준일 익일부터 다음 결산기준일까지의 기간을 이자계산기간으로 하고, 매일의 최종잔액에 대하여 영업점에 고시한 이율로 계산",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000743-3-CCFC604D0E3-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+          ]
+        }
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "1.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000743-3-CCFC604D0E3",
+    "source_record_id": "59466dde7d09bdf19fb21d329635e250",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T16:10:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 171,
+    "reviewed_source_record_id": "59466dde7d09bdf19fb21d329635e250",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_MANUAL",
+      "PREFERENCE_LOOKBACK_AND_SETTLEMENT_EVALUATION_WINDOW_UNSTRUCTURED",
+      "CHECK_CARD_FACT_UNDERSTRUCTURED",
+      "THREE_MONTH_LOOKBACK_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reconciled_at": "2026-08-30T16:10:00+09:00",
+    "condition_section_reconciliation_pass": 2,
+    "condition_section_primary_source": "NAVER_RATE_INFO_CONDITION_SECTION",
+    "condition_section_sha256": "8e8a523181a41981c0643ecbaef8fd64c7058e5d9cdbfe1545073515955e9068",
+    "resolved_condition_findings": [
+      "CHECK_CARD_FACT_UNDERSTRUCTURED",
+      "THREE_MONTH_LOOKBACK_UNSTRUCTURED"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-CCFC604D0E3"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T16:10:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true,
+    "condition_section_reconciliation_pass": 2
+  }
+}

@@ -1,0 +1,933 @@
+{
+  "product_code": "INST-KR-000223-1-0008",
+  "version": 8,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK부모급여우대적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "PHONE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)\n※ 개인사업자 및 외국인 비거주자 제외",
+    "eligibility_text": "실명의 개인(1인 1계좌)\n※ 개인사업자 및 외국인 비거주자 제외",
+    "display_text": "실명의 개인(1인 1계좌)\n※ 개인사업자 및 외국인 비거주자 제외",
+    "source_ref_ids": [
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "500000",
+        "increment_value": "10000",
+        "period_basis": "CALENDAR_MONTH"
+      },
+      {
+        "scope": "TOTAL_PRINCIPAL",
+        "currency": "KRW",
+        "max_value": "6000000"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "신규금액 : 최소 1만원 이상",
+      "min_value": "10000"
+    },
+    "source_amount_text": "신규금액 : 최소 1만원 이상\n납입한도 : 매월 50만원 이하 (만원 단위)\n※ 총 적립금액 : 600만원",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규금액 : 최소 1만원 이상\n납입한도 : 매월 50만원 이하 (만원 단위)\n※ 총 적립금액 : 600만원"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규금액 : 최소 1만원 이상\n납입한도 : 매월 50만원 이하 (만원 단위)\n※ 총 적립금액 : 600만원"
+      },
+      {
+        "value": "6000000",
+        "currency": "KRW",
+        "source_expression": "600만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "신규금액 : 최소 1만원 이상\n납입한도 : 매월 50만원 이하 (만원 단위)\n※ 총 적립금액 : 600만원"
+      }
+    ],
+    "aggregate_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_value": "6000000",
+        "currency": "KRW",
+        "source_text": "총 적립금액 : 600만원"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "4.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+          "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000223_1_0008_PREF_02.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-0008-PREF-02-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0008_PREF_04.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "주택청약종합저축 신규하고 만기시점까지 보유한 경우(부모 or 자녀 명의 가입 시) : 1%"
+        },
+        {
+          "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "한부모가족 지원대상자(부모 or 자녀명의 '한부모가족 증명서' 제출한 경우) : 1%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 이자율우대쿠폰의 형식으로 제공되며 이자율우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 이자율우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.\n(이자율우대쿠폰 확인방법 : i-ONE Bank(개인) 쿠폰함, IBK고객센터, 영업점)"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000223-1-0008-PREF-02-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "부모급여/아동수당을 6개월 이상 입금 받는 경우 (부모 또는 자녀 명의 당행 입출금식 통장으로 입금 시)\n- 부모급여/아동수당 실적기준 : 매월 20일, 25일 '부모', '아동', '보육', '가족', '가정', '여성', '복지'의 용어(적요)로 10만원 이상 입금되는 경우에 한함.\n※ 단, 영업점 창구, 개인간 인터넷뱅킹, ATM 기 등에서 입금되는 실적은 제외 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            }
+          ],
+          "amount_threshold": {
+            "value": 100000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "10만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "부모급여/아동수당을 6개월 이상 입금 받는 경우 (부모 또는 자녀 명의 당행 입출금식 통장으로 입금 시)\n- 부모급여/아동수당 실적기준 : 매월 20일, 25일 '부모', '아동', '보육', '가족', '가정', '여성', '복지'의 용어(적요)로 10만원 이상 입금되는 경우에 한함.\n※ 단, 영업점 창구, 개인간 인터넷뱅킹, ATM 기 등에서 입금되는 실적은 제외 : 2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000223-1-0008-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-000223-1-0008-PREF-04"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "한부모가족 지원대상자(부모 or 자녀명의 '한부모가족 증명서' 제출한 경우) : 1%",
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0008_PREF_04.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-0008-PREF-02",
+          "title": "부모급여/아동수당을 6개월 이상 입금 받는 경우 (부모 또는 자녀 명의 당행 입출금식 통장으로 입금 시)",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000223_1_0008_PREF_02.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "부모급여/아동수당을 6개월 이상 입금 받는 경우 (부모 또는 자녀 명의 당행 입출금식 통장으로 입금 시)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            }
+          ],
+          "semantic_domain": "BENEFIT_OR_SCHOOL_CREDIT",
+          "source_clause_text": "부모급여/아동수당을 6개월 이상 입금 받는 경우 (부모 또는 자녀 명의 당행 입출금식 통장으로 입금 시)\n- 부모급여/아동수당 실적기준 : 매월 20일, 25일 '부모', '아동', '보육', '가족', '가정', '여성', '복지'의 용어(적요)로 10만원 이상 입금되는 경우에 한함.\n※ 단, 영업점 창구, 개인간 인터넷뱅킹, ATM 기 등에서 입금되는 실적은 제외 : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0008-PREF-03",
+          "title": "주택청약종합저축 신규하고 만기시점까지 보유한 경우(부모 or 자녀 명의 가입 시) : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "주택청약종합저축 신규하고 만기시점까지 보유한 경우(부모 or 자녀 명의 가입 시) : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "주택청약종합저축 신규하고 만기시점까지 보유한 경우(부모 or 자녀 명의 가입 시) : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0008-PREF-04",
+          "title": "한부모가족 지원대상자(부모 or 자녀명의 '한부모가족 증명서' 제출한 경우) : 1%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_semantics": "SOURCE_CLAUSE_GATE",
+                  "source_ref_ids": [
+                    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0008_PREF_04.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "한부모가족 지원대상자(부모 or 자녀명의 '한부모가족 증명서' 제출한 경우) : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            }
+          ],
+          "semantic_domain": "ELIGIBILITY_STATUS",
+          "source_clause_text": "한부모가족 지원대상자(부모 or 자녀명의 '한부모가족 증명서' 제출한 경우) : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0008-PREF-05",
+          "title": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 이자율우대쿠폰의 형식으로 제공되며 이자율우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 이자율우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 이자율우대쿠폰의 형식으로 제공되며 이자율우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 이자율우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 이자율우대쿠폰의 형식으로 제공되며 이자율우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 이자율우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.\n(이자율우대쿠폰 확인방법 : i-ONE Bank(개인) 쿠폰함, IBK고객센터, 영업점)"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000223-1-0008-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000223-1-0008-PREF-02",
+            "INST-KR-000223-1-0008-PREF-03",
+            "INST-KR-000223-1-0008-PREF-04",
+            "INST-KR-000223-1-0008-PREF-05"
+          ],
+          "cap": {
+            "value": "4.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+              "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+            "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01",
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02",
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03",
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04",
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05",
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-RATE",
+      "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "8ab5c864916eda2760a56f2e7a985def"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO",
+    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-RATE",
+    "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "8ab5c864916eda2760a56f2e7a985def",
+    "data_gaps": [
+      {
+        "path": "return_policy.rate_entries",
+        "reason": "기간별 계약금리 표 없음/파싱 실패"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "PHONE",
+      "source_ref_ids": [
+        "EVD-IS-8AB5C864916EDA2760A56F2E7A985DEF-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

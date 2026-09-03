@@ -1,0 +1,793 @@
+{
+  "product_code": "INST-KR-000219-1-C92882B36F8",
+  "version": 7,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 운동화 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-SALE"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "300000"
+      }
+    ],
+    "source_amount_text": "1원 부터 30만원 까지",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1원 부터 30만원 까지"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1원 부터 30만원 까지"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-C92882B36F8-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000219_1_C92882B36F8_PREF_04.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000219-1-C92882B36F8-PREF-04-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+          ],
+          "authority": "BANK_OR_APP_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "건강 플랫폼 우대 : 연 1.0%\n만기 전전영업일까지 ‘신한 20+ 뛰어요‘ 또는 ‘신한 50+ 걸어요‘ 서비스 가입을 완료한 경우\n※ 신한 SOL뱅크 > 전체메뉴 > 혜택 > 신한 20+ 뛰어요\n※ 신한 SOL뱅크 > 전체메뉴 > 혜택 > 신한 50+ 걸어요"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "첫 적금 우대 : 연 1.0%\n이 예금 신규 직전 6개월간 신한은행 정기예금, 정기적금을 보유하지 않은 경우\n※ 예금 신규직전 6개월 : 예금 신규일로부터 6개월 전 ~ 예금 신규 전월"
+        },
+        {
+          "fact_key": "CARD.SHINHAN_QUALIFYING_SETTLEMENT_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-SHINHAN-ATHLETIC-CARD-SETTLEMENT",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD.SHINHAN_NEW_OR_REACQUIRED_CREDIT_CUSTOMER_ELIGIBLE",
+          "type": "BOOLEAN",
+          "eligible_categories": [
+            "FIRST_EVER_CREDIT_CUSTOMER",
+            "THREE_MONTHS_AFTER_WITHDRAWAL",
+            "EXPIRED_CARD_CUSTOMER"
+          ],
+          "authority": "SHINHAN_CARD_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD.SHINHAN_CREDIT_CARD_OPENED_AFTER_SAVINGS_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "authority": "SHINHAN_CARD_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000219-1-C92882B36F8-PREF-04-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "카드 우대 : 다음 각 요건을 충족하는 경우 최고 연 3.0% (중복 적용 불가)\n① 이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우 연 1.0%\n② 신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 본인 명의 신한은행 입출금통장을 결제계좌로 결제 실적이 3개월 이상인 경우 연 3.0%\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "카드 우대 : 다음 각 요건을 충족하는 경우 최고 연 3.0% (중복 적용 불가)\n① 이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우 연 1.0%\n② 신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 본인 명의 신한은행 입출금통장을 결제계좌로 결제 실적이 3개월 이상인 경우 연 3.0%\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-SHINHAN-ATHLETIC-CARD-SETTLEMENT",
+          "event_type": "QUALIFYING_CARD_PAYMENT_SETTLEMENT_RECORDED",
+          "card_issuer": "SHINHAN_CARD",
+          "card_types": [
+            "CREDIT",
+            "CHECK"
+          ],
+          "payment_account": "CUSTOMER_OWNED_SHINHAN_BANK_DEMAND_DEPOSIT",
+          "count_window": {
+            "start": "SUBSCRIPTION_MONTH",
+            "end": "END_OF_SECOND_MONTH_BEFORE_MATURITY"
+          },
+          "maximum_count_per_period": {
+            "period": "MONTH",
+            "max_count": 1,
+            "aggregation": "QUALIFYING_MONTH_BOOLEAN"
+          },
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-C92882B36F8-PREF-02",
+          "title": "건강 플랫폼 우대 : 연 1.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "건강 플랫폼 우대 : 연 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "건강 플랫폼 우대 : 연 1.0%\n만기 전전영업일까지 ‘신한 20+ 뛰어요‘ 또는 ‘신한 50+ 걸어요‘ 서비스 가입을 완료한 경우\n※ 신한 SOL뱅크 > 전체메뉴 > 혜택 > 신한 20+ 뛰어요\n※ 신한 SOL뱅크 > 전체메뉴 > 혜택 > 신한 50+ 걸어요"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C92882B36F8-PREF-03",
+          "title": "첫 적금 우대 : 연 1.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "첫 적금 우대 : 연 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "첫 적금 우대 : 연 1.0%\n이 예금 신규 직전 6개월간 신한은행 정기예금, 정기적금을 보유하지 않은 경우\n※ 예금 신규직전 6개월 : 예금 신규일로부터 6개월 전 ~ 예금 신규 전월"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C92882B36F8-PREF-04-PAYMENT",
+          "title": "신한카드 결제실적 3개월 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD.SHINHAN_QUALIFYING_SETTLEMENT_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "카드 우대 : 다음 각 요건을 충족하는 경우 최고 연 3.0% (중복 적용 불가)\n1 이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우 연 1.0%\n2 신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 본인 명의 신한은행 입출금통장을 결제계좌로 결제 실적이 3개월 이상인 경우 연 3.0%\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지",
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C92882B36F8-PREF-04-NEW-CARD",
+          "title": "신용카드 신규·재취득 대상 및 결제실적 3개월 이상",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CARD.SHINHAN_NEW_OR_REACQUIRED_CREDIT_CUSTOMER_ELIGIBLE",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CARD.SHINHAN_CREDIT_CARD_OPENED_AFTER_SAVINGS_SUBSCRIPTION",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CARD.SHINHAN_QUALIFYING_SETTLEMENT_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "3.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "카드 우대 : 다음 각 요건을 충족하는 경우 최고 연 3.0% (중복 적용 불가)\n1 이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우 연 1.0%\n2 신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 본인 명의 신한은행 입출금통장을 결제계좌로 결제 실적이 3개월 이상인 경우 연 3.0%\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지",
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-SHINHAN-ATHLETIC-CARD-MAX",
+          "operator": "MAX_OF",
+          "member_rule_ids": [
+            "INST-KR-000219-1-C92882B36F8-PREF-04-PAYMENT",
+            "INST-KR-000219-1-C92882B36F8-PREF-04-NEW-CARD"
+          ],
+          "cap": {
+            "value": "3.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+            }
+          ]
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-01",
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02",
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03",
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04",
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-RATE",
+      "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "a2cfbf8fd419e31b8e8c90893865b622"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO",
+    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-RATE",
+    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-LISTING",
+    "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "a2cfbf8fd419e31b8e8c90893865b622",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-A2CFBF8FD419E31B8E8C90893865B622-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

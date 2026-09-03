@@ -1,0 +1,483 @@
+{
+  "product_code": "INST-KR-000211-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000211",
+  "name": "스마트박스통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "eligibility_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "display_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-0001-BASE-BASIC",
+        "role": "BASE",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.30",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29"
+        },
+        "applies_to": [
+          {
+            "basis": "BALANCE_COMPONENT",
+            "component_id": "BASIC_BOX"
+          }
+        ],
+        "executable": true,
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-3-0001-BASE-SMART",
+        "role": "BASE",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "3.00",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29"
+        },
+        "applies_to": [
+          {
+            "basis": "BALANCE_COMPONENT",
+            "component_id": "SMART_BOX"
+          }
+        ],
+        "executable": true,
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-0001"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_component": "SMART_BOX"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ],
+          "qualification": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SC.CRM_AGE_DAYS",
+                  "operator": "LTE",
+                  "expected_value": 31
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SC.DEPOSIT_ACCOUNT_HELD_DURING_PREOPEN_1Y",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fact_key": "BALANCE_COMPONENT.SMART_BOX.END_OF_DAY",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "CONSENT.SC.SMS_AND_ANY_PHONE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.MONTHLY_QUALIFYING_SALARY_AMOUNT",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ],
+          "unit": "KRW"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000211-3-0001-PREF-01",
+          "title": "SC제일은행 순신규 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            },
+            "principal_component": "SMART_BOX"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-0001-PREF-02",
+          "title": "스마트박스 잔액 1억원 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "BALANCE_COMPONENT.SMART_BOX.END_OF_DAY",
+              "operator": "GTE",
+              "expected_value": 100000000,
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_component": "SMART_BOX"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-0001-PREF-03",
+          "title": "SMS 및 전화 중 하나 이상 마케팅 동의",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONSENT.SC.SMS_AND_ANY_PHONE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "DAILY",
+            "principal_component": "SMART_BOX"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-0001-PREF-04",
+          "title": "급여이체 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.MONTHLY_QUALIFYING_SALARY_AMOUNT",
+              "operator": "GTE",
+              "expected_value": 700000,
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "CURRENT_CALENDAR_MONTH",
+            "principal_component": "SMART_BOX",
+            "opening_month_grace": true
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "basis": "END_OF_DAY_BALANCE",
+      "calculation_frequency": {
+        "value": 1,
+        "unit": "DAY"
+      }
+    },
+    "interest_crediting": {
+      "raw_text": "기본박스: 매월 첫 영업일(예금 신규시는 예금신규일)부터 매월 말일 (단, 말일이 금융휴무일 또는 법정공휴일인 경우에는 연속되는 휴일의 마지막 날)까지 일별로 이자계산하여 합산된 이자금액을 매월 첫 영업일에 원금에 더함\n스마트박스: 매월 첫 영업일(예금 신규시는 예금신규일)부터 매월 말일 (단, 말일이 금융휴무일 또는 법정공휴일인 경우에는 연속되는 휴일의 마지막 날)까지 일복리방식에 의한 이자계산을 적용하여 합산된 이자금액을 매월 첫 영업일에 원금에 더함",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000211-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "BUSINESS_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "5.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-0001"
+      ]
+    },
+    "balance_components": [
+      {
+        "component_id": "BASIC_BOX",
+        "derivation": {
+          "kind": "REMAINDER_AFTER_COMPONENT",
+          "subtract_component": "SMART_BOX"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-0001"
+        ]
+      },
+      {
+        "component_id": "SMART_BOX",
+        "derivation": {
+          "kind": "PERCENTAGE_OF_END_OF_DAY_BALANCE",
+          "percentage": "50",
+          "activation_condition": {
+            "fact_key": "BALANCE.END_OF_DAY",
+            "operator": "GTE",
+            "expected_value": 1000000,
+            "unit": "KRW"
+          }
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-0001"
+        ]
+      }
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000211-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000211-3-0001",
+    "source_record_id": "36e9aac8225695ade3ce11ec39efe0e9",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 69,
+    "reviewed_source_record_id": "36e9aac8225695ade3ce11ec39efe0e9",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "FIRST_CUSTOMER_LOOKBACK_CONFLATED_WITH_REWARD_WINDOW",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SMARTBOX_SUB_BALANCE_COMPONENT_SCOPE_LOST"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "스마트박스 50% sub-balance component 생성",
+      "첫거래 lookback과 1년 우대기간 분리"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

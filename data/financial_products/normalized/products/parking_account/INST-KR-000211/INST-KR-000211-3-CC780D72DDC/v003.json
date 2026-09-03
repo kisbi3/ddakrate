@@ -1,0 +1,620 @@
+{
+  "product_code": "INST-KR-000211-3-CC780D72DDC",
+  "version": 3,
+  "institution_id": "INST-KR-000211",
+  "name": "내지갑통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "eligibility_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "display_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-CC780D72DDC-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+        ],
+        "source_clause": "조건 미충족 및 50만원 이하 0.10%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "fact_window": "CURRENT_CALENDAR_MONTH",
+        "reward_window": "SAME_INTEREST_CALCULATION_MONTH"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.QUALIFYING_INCOMING_AMOUNT_CURRENT_MONTH",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "CARD.SC.CREDIT_AND_CHECK_BILLED_AMOUNT_CURRENT_MONTH",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.AUTOMATIC_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.ONLINE_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.TELECOM_OR_PHONE_AUTODEBIT_EVENT_COUNT_CURRENT_MONTH",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ],
+          "unit": "COUNT"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000211-3-CC780D72DDC-PREF-01",
+          "title": "조건1 충족: 50만원 초과~200만원 이하 최종 0.80%",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.QUALIFYING_INCOMING_AMOUNT_CURRENT_MONTH",
+                  "operator": "GTE",
+                  "expected_value": 700000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "SET_FINAL_RATE",
+            "value": "0.80",
+            "unit": "PERCENT"
+          },
+          "application": {
+            "fact_window": "CURRENT_CALENDAR_MONTH",
+            "reward_window": "SAME_INTEREST_CALCULATION_MONTH",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "MARGINAL_TRANCHE",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "500000",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-CC780D72DDC-PREF-02",
+          "title": "조건1 충족: 200만원 초과 최종 0.20%",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.QUALIFYING_INCOMING_AMOUNT_CURRENT_MONTH",
+                  "operator": "GTE",
+                  "expected_value": 700000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "SET_FINAL_RATE",
+            "value": "0.20",
+            "unit": "PERCENT"
+          },
+          "application": {
+            "fact_window": "CURRENT_CALENDAR_MONTH",
+            "reward_window": "SAME_INTEREST_CALCULATION_MONTH",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "MARGINAL_TRANCHE",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "2000000",
+                "min_inclusive": false
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-CC780D72DDC-PREF-03",
+          "title": "조건1·2 충족: 50만원 초과~200만원 이하 최종 1.80%",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 1
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.QUALIFYING_INCOMING_AMOUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 700000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              },
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "CARD.SC.CREDIT_AND_CHECK_BILLED_AMOUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 300000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.AUTOMATIC_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 3
+                    }
+                  },
+                  {
+                    "operator": "AND",
+                    "operands": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.THIS.ONLINE_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                          "operator": "GTE",
+                          "expected_value": 1
+                        }
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.THIS.TELECOM_OR_PHONE_AUTODEBIT_EVENT_COUNT_CURRENT_MONTH",
+                          "operator": "GTE",
+                          "expected_value": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "SET_FINAL_RATE",
+            "value": "1.80",
+            "unit": "PERCENT"
+          },
+          "application": {
+            "fact_window": "CURRENT_CALENDAR_MONTH",
+            "reward_window": "SAME_INTEREST_CALCULATION_MONTH",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "MARGINAL_TRANCHE",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "500000",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-CC780D72DDC-PREF-04",
+          "title": "조건1·2 충족: 200만원 초과 최종 0.30%",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SALARY_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 1
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.QUALIFYING_INCOMING_AMOUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 700000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              },
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "CARD.SC.CREDIT_AND_CHECK_BILLED_AMOUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 300000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.AUTOMATIC_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                      "operator": "GTE",
+                      "expected_value": 3
+                    }
+                  },
+                  {
+                    "operator": "AND",
+                    "operands": [
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.THIS.ONLINE_TRANSFER_EVENT_COUNT_CURRENT_MONTH",
+                          "operator": "GTE",
+                          "expected_value": 1
+                        }
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "ACCOUNT.THIS.TELECOM_OR_PHONE_AUTODEBIT_EVENT_COUNT_CURRENT_MONTH",
+                          "operator": "GTE",
+                          "expected_value": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "SET_FINAL_RATE",
+            "value": "0.30",
+            "unit": "PERCENT"
+          },
+          "application": {
+            "fact_window": "CURRENT_CALENDAR_MONTH",
+            "reward_window": "SAME_INTEREST_CALCULATION_MONTH",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "MARGINAL_TRANCHE",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "2000000",
+                "min_inclusive": false
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "CONDITION_PRIORITY_OVERRIDE",
+          "higher_priority_rule_ids": [
+            "INST-KR-000211-3-CC780D72DDC-PREF-03",
+            "INST-KR-000211-3-CC780D72DDC-PREF-04"
+          ],
+          "lower_priority_rule_ids": [
+            "INST-KR-000211-3-CC780D72DDC-PREF-01",
+            "INST-KR-000211-3-CC780D72DDC-PREF-02"
+          ]
+        },
+        {
+          "type": "FINAL_RATE_NOT_ADDITIVE",
+          "rule_ids": [
+            "INST-KR-000211-3-CC780D72DDC-PREF-01",
+            "INST-KR-000211-3-CC780D72DDC-PREF-02",
+            "INST-KR-000211-3-CC780D72DDC-PREF-03",
+            "INST-KR-000211-3-CC780D72DDC-PREF-04"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "credit_day": "FIRST_BUSINESS_DAY_OF_MONTH"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "1.80",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000211-3-CC780D72DDC",
+    "source_record_id": "6b259be5a81013887b9251c8875c583d",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 75,
+    "reviewed_source_record_id": "6b259be5a81013887b9251c8875c583d",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "CONDITIONAL_RATE_ROW_MISCLASSIFIED_AS_BASE",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "product_by_product_changes": [
+      "조건1·조건2를 각각 OR 그래프로 복원",
+      "잔액구간별 조건부 최종금리를 SET_FINAL_RATE로 구조화하여 UNKNOWN_REWARD 제거"
+    ],
+    "final_execution_leak_audit_status": "RESOLVED_BY_EXPLICIT_RECOMPILATION",
+    "final_execution_leak_audit_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-CC780D72DDC"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

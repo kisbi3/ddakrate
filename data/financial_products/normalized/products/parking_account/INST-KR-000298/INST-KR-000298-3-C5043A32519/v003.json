@@ -1,0 +1,275 @@
+{
+  "product_code": "INST-KR-000298-3-C5043A32519",
+  "version": 3,
+  "institution_id": "INST-KR-000298",
+  "name": "보통예금",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한 없음 (단, e보통예금은 개인만 가능)\n- 영업점 방문하여 계좌개설 시, 증빙서류 지참 필수",
+    "eligibility_text": "제한 없음 (단, e보통예금은 개인만 가능)\n- 영업점 방문하여 계좌개설 시, 증빙서류 지참 필수",
+    "display_text": "제한 없음 (단, e보통예금은 개인만 가능)\n- 영업점 방문하여 계좌개설 시, 증빙서류 지참 필수",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ],
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000298-3-C5043A32519-REL-A1780029D4D0",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "- 제한 사항 : 계좌에 압류, 가압류,질권설정 등이 등록될 경우 원금 및 이자지급 제한, 예금잔액증명서 발급당일은 잔액변동 불가",
+        "fact_key": "SOURCE_RELATIONSHIP.A1780029D4D0.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+        ]
+      }
+    ],
+    "history_requirements": [
+      {
+        "fact_key": "ACCOUNT_HISTORY.A85C728878FD.QUALIFIED",
+        "operator": "EQUALS",
+        "expected_value": true,
+        "lookback": {
+          "value": 20,
+          "unit": "BUSINESS_DAY"
+        },
+        "source_text": "- 최근 20영업일 이내 금융회사 수시입출금식예금을 개설한 경우 본 상품의 가입이 제한됩니다.",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000298-3-C5043A32519-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+        ],
+        "source_clause": "보통예금 : 제한없음 0.10%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "매월 이자지급\n- 매월 셋째주 토요일을 결산기준일로 하여 결산기준일 익일에 원금에 가산\n- 최초예금일 또는 지난 원가일부터 결산기준일까지의 기간을 이자계산 기간으로 하며, 매일의 최종잔액에 대하여 금리 적용",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000298-3-C5043A32519-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "1.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000298-3-C5043A32519",
+    "source_record_id": "77cb574881948851dfa37574fbd74745",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 119,
+    "reviewed_source_record_id": "77cb574881948851dfa37574fbd74745",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY",
+      "MULTIPLE_PRODUCT_VARIANTS_CONFLATED",
+      "VARIANT_SPECIFIC_ELIGIBILITY_CONFLATED"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "보통예금 정본에서 e보통예금 금리/가입대상 분리"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C5043A32519"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "product_variants": [
+    {
+      "variant_id": "DASOL_ORDINARY_DEPOSIT",
+      "name": "보통예금",
+      "selected": true,
+      "customer_scope": "UNRESTRICTED",
+      "rate_ref": "INST-KR-000298-3-C5043A32519-BASE-01"
+    },
+    {
+      "variant_id": "DASOL_E_ORDINARY_DEPOSIT",
+      "name": "e보통예금",
+      "selected": false,
+      "excluded_from_this_canonical_product": true,
+      "source_summary": "개인 전용, 1천만원 미만 0.50%, 1천만원 이상 1.00%"
+    }
+  ],
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

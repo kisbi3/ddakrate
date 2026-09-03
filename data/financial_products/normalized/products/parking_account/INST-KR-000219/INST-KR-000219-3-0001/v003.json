@@ -1,0 +1,304 @@
+{
+  "product_code": "INST-KR-000219-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000219",
+  "name": "Hey Young 머니박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만18세 ~ 만29세의 개인고객 (1인 1계좌)",
+    "eligibility_text": "만18세 ~ 만29세의 개인고객 (1인 1계좌)",
+    "display_text": "만18세 ~ 만29세의 개인고객 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ],
+    "age_range": {
+      "min_age": 18,
+      "max_age": 29,
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE"
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-0001"
+        ],
+        "source_clause": "0원이상 | 연 0.10%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "0원이상",
+              "min_value": "0",
+              "min_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "STRUCTURED",
+      "global_application": {
+        "source_text": "우대이자율 연 1.9%"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.AGE",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-0001"
+          ],
+          "unit": "YEAR",
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-3-0001-PREF-01",
+          "title": "이 예금의 예금주가 만 18세이상 만 29세 이하에 해당하는 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.AGE",
+              "operator": "GTE",
+              "expected_value": 18
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "timing": "AS_DEFINED_BY_SOURCE",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "display": {
+            "summary": "이 예금의 예금주가 만 18세이상 만 29세 이하에 해당하는 경우",
+            "reward_text": "+1.9%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-0001"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000219-3-0001",
+              "source_text": "이 예금의 예금주가 만 18세이상 만 29세 이하에 해당하는 경우"
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ],
+      "global_cap": {
+        "value": "1.9",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "우대이자율 연 1.9%"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 셋째 주 마지막 영업일을 기준으로 결산하여 다음날 연결계좌로 이자를 지급",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000219-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000219-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000219-3-0001",
+        "product_name": "Hey Young 머니박스",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000219-3-0001",
+    "source_record_id": "4beac9fd03a48a444c5280830375875d",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 79,
+    "reviewed_source_record_id": "4beac9fd03a48a444c5280830375875d",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "AGE_MAX_MISMATCH_SECOND_PASS",
+      "AGE_MIN_MISMATCH_SECOND_PASS",
+      "AGE_RANGE_MISMATCH",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

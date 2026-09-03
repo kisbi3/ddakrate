@@ -1,0 +1,395 @@
+{
+  "product_code": "INST-KR-000194-1-C6A88D4110B",
+  "version": 9,
+  "institution_id": "INST-KR-000194",
+  "name": "정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인, 권리능력이 인정되는 단체(법인)",
+    "eligibility_text": "실명의 개인, 권리능력이 인정되는 단체(법인)",
+    "display_text": "실명의 개인, 권리능력이 인정되는 단체(법인)",
+    "source_ref_ids": [
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "CORPORATION",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_expression": "6개월 이상 60개월 이하(월단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월10,000원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "10,000원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "월10,000원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-05",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 48
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000194-1-C6A88D4110B-BASE-06",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 60
+        },
+        "source_ref_ids": [
+          "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.PREGNANCY_OR_SPOUSE_STATUS.SOURCE_CLAUSE_INST_KR_000194_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+          ],
+          "authority": "DOCUMENT_VERIFICATION",
+          "self_report_eligible": false,
+          "source_recognition_text": "출산장려를 위해 임산부 및 배우자를 대상으로 우대금리 연1.0%p 적용\n- 가입대상 : 개설일 현재 임산부 및 임산부의 배우자\n- 가입기간 : 12개월 ~ 36개월 이내\n- 가입금액 : 월불입금 최대 30만원 (태아당 1계좌가능)\n- 적용금리(연, 세전) : 기본금리* + 우대금리(연1.0%p) 적용\n(* 신규가입일 당시 영업점에 고시한 계약기간별 기본금리)\n- 구비서류 : 임신확인서 (배우자의 경우 가족관계증명서 등)\n- 판매채널 : 영업점 내방, 창구전용 상품"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000194-1-C6A88D4110B-PREF-01",
+          "title": "출산장려를 위해 임산부 및 배우자를 대상으로 우대금리 연1.0%p 적용",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.PREGNANCY_OR_SPOUSE_STATUS.SOURCE_CLAUSE_INST_KR_000194_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "출산장려를 위해 임산부 및 배우자를 대상으로 우대금리 연1.0%p 적용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "출산장려를 위해 임산부 및 배우자를 대상으로 우대금리 연1.0%p 적용\n- 가입대상 : 개설일 현재 임산부 및 임산부의 배우자\n- 가입기간 : 12개월 ~ 36개월 이내\n- 가입금액 : 월불입금 최대 30만원 (태아당 1계좌가능)\n- 적용금리(연, 세전) : 기본금리* + 우대금리(연1.0%p) 적용\n(* 신규가입일 당시 영업점에 고시한 계약기간별 기본금리)\n- 구비서류 : 임신확인서 (배우자의 경우 가족관계증명서 등)\n- 판매채널 : 영업점 내방, 창구전용 상품"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01",
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE",
+      "EVD-IS-7936F636EAE32F35C1274A318AF067BD-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.2",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "7936f636eae32f35c1274a318af067bd"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO",
+    "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE",
+    "EVD-IS-7936F636EAE32F35C1274A318AF067BD-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "7936f636eae32f35c1274a318af067bd",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-7936F636EAE32F35C1274A318AF067BD-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

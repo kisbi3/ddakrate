@@ -1,0 +1,578 @@
+{
+  "product_code": "INST-KR-000211-2-C396E458F1F",
+  "version": 3,
+  "institution_id": "INST-KR-000211",
+  "name": "퍼스트정기예금(회전식)",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "subscription_channel_source_text": "영업점",
+    "subscription_channel_source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "source_text": "1개월~5년 (회전기간의 배수가 되는 월단위로 가입)",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "representative_term": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "representative_value": 1,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "EXISTING_SELECTABLE_REPRESENTATIVE",
+    "rollover_period_policy": {
+      "kind": "DISCRETE",
+      "unit": "MONTH",
+      "values": [
+        1,
+        3,
+        6
+      ],
+      "source_text": "회전기간마다(1개월, 3개월, 6개월)",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+      ]
+    },
+    "min_value": 1,
+    "max_value": 60,
+    "contract_rollover_compatibility": [
+      {
+        "rollover_period": {
+          "value": 1,
+          "unit": "MONTH"
+        },
+        "contract_term_constraint": {
+          "min_value": 1,
+          "max_value": 60,
+          "unit": "MONTH",
+          "multiple_of_months": 1
+        }
+      },
+      {
+        "rollover_period": {
+          "value": 3,
+          "unit": "MONTH"
+        },
+        "contract_term_constraint": {
+          "min_value": 3,
+          "max_value": 60,
+          "unit": "MONTH",
+          "multiple_of_months": 3
+        }
+      },
+      {
+        "rollover_period": {
+          "value": 6,
+          "unit": "MONTH"
+        },
+        "contract_term_constraint": {
+          "min_value": 6,
+          "max_value": 60,
+          "unit": "MONTH",
+          "multiple_of_months": 6
+        }
+      }
+    ],
+    "advertised_rate_period": {
+      "value": 6,
+      "unit": "MONTH"
+    }
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "source_amount_text": "100만원 이상 제한없음",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.7",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (1개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월 이상 5년 (1개월 회전식)",
+          "raw_cell": "1.700%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (1개월 회전식)"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (3개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "1개월 이상 5년 (3개월 회전식)",
+          "raw_cell": "2.000%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (3개월 회전식)"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-CTX-05-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (6개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "1개월 이상 5년 (6개월 회전식)",
+          "raw_cell": "2.450%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (6개월 회전식)"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.7",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (1개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월 이상 5년 (1개월 회전식)",
+          "raw_cell": "1.700%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (1개월 회전식)",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (3개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "1개월 이상 5년 (3개월 회전식)",
+          "raw_cell": "2.000%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (3개월 회전식)",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C396E458F1F-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.45",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "1개월 이상 5년 (6개월 회전식)"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "1개월 이상 5년 (6개월 회전식)",
+          "raw_cell": "2.450%",
+          "table_header": "기본 금리 | 기간 약정이율 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+        ],
+        "source_rate_row_text": "1개월 이상 5년 (6개월 회전식)",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 약정이율 비고\n1개월 이상 5년 (1개월 회전식)\n1.700%\n회전일(매 회전기간의 가입응당일)마다 1개월제 회전식 고시이율을 기준으로 변경적용\n1개월 이상 5년 (3개월 회전식)\n2.000%\n회전일(매 회전기간의 가입응당일)마다 3개월제 회전식 고시이율을 기준으로 변경적용\n1개월 이상 5년 (6개월 회전식)\n2.450%\n회전일(매 회전기간의 가입응당일)마다 6개월제 회전식 고시이율을 기준으로 변경적용",
+      "header_lines": [
+        "기본 금리",
+        "기간 약정이율 비고"
+      ],
+      "rows": [
+        {
+          "term_text": "1개월 이상 5년 (1개월 회전식)",
+          "cell_lines": [
+            "1.700%"
+          ],
+          "rate_values": [
+            "1.7"
+          ]
+        },
+        {
+          "term_text": "회전일(매 회전기간의 가입응당일)마다 1개월제 회전식 고시이율을 기준으로 변경적용",
+          "cell_lines": [],
+          "rate_values": [
+            null
+          ]
+        },
+        {
+          "term_text": "1개월 이상 5년 (3개월 회전식)",
+          "cell_lines": [
+            "2.000%"
+          ],
+          "rate_values": [
+            "2"
+          ]
+        },
+        {
+          "term_text": "회전일(매 회전기간의 가입응당일)마다 3개월제 회전식 고시이율을 기준으로 변경적용",
+          "cell_lines": [],
+          "rate_values": [
+            null
+          ]
+        },
+        {
+          "term_text": "1개월 이상 5년 (6개월 회전식)",
+          "cell_lines": [
+            "2.450%"
+          ],
+          "rate_values": [
+            "2.45"
+          ]
+        },
+        {
+          "term_text": "회전일(매 회전기간의 가입응당일)마다 6개월제 회전식 고시이율을 기준으로 변경적용",
+          "cell_lines": [],
+          "rate_values": [
+            null
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.45",
+      "unit": "PERCENT",
+      "representative_term_text": "6개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+      ],
+      "executable_base_supported_by_detail": true,
+      "representative_rate_period_basis": "ROLLOVER_PERIOD",
+      "contract_term_representative": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "representative_term_semantics": "ROLLOVER_PERIOD_NOT_PRIMARY_CONTRACT_MATURITY"
+    },
+    "advertised_max_rate": {
+      "value": "2.45",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "interest_payment_policy": {
+    "multiple_contexts": true,
+    "default_context_id": null,
+    "selection_required": true,
+    "source_text": "이자지급식 : 회전기간마다(1개월, 3개월, 6개월) 이자지급; 이자복리식 : 회전기간마다 이자복리 계산 후 해약시 지급",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "contexts": [
+      {
+        "context_id": "ROLLOVER_INTEREST_PAYMENT",
+        "payment_timing": "OTHER",
+        "compounding": "SIMPLE",
+        "source_text": "이자지급식 : 회전기간마다(1개월, 3개월, 6개월) 이자지급"
+      },
+      {
+        "context_id": "TERMINATION_COMPOUND_PAYMENT",
+        "payment_timing": "MATURITY",
+        "compounding": "COMPOUND",
+        "source_text": "이자복리식 : 회전기간마다(1개월, 3개월, 6개월) 이자복리 계산후 해약시 지급"
+      }
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "예금자보호법에 따라 원금과 소정 이자를 합해 SC제일은행 여타 보호상품과 합산하여 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ]
+  },
+  "tax_policy": {
+    "default_treatment": "TAXABLE",
+    "available_treatments": [
+      {
+        "treatment": "CONDITIONAL_TAX_EXEMPT",
+        "treatment_code": "KOREA_TAX_FREE_COMPREHENSIVE_SAVINGS",
+        "source_text": "비과세종합저축으로 가입 가능"
+      }
+    ],
+    "source_text": "공식 페이지는 개인·법인 일반 이자 세율을 15.4%(소득세·법인세 및 지방소득세 포함)로 표시하고 비과세종합저축 가입 가능을 명시한다.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ]
+  },
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T14:47:54+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "MANUAL_AUDIT_STAGED",
+    "data_gaps": [
+      {
+        "path": "liquidity_policy.early_termination_rate_policy",
+        "code": "EARLY_AND_POST_MATURITY_RATE_TERMS_NOT_STATED",
+        "reason": "정확한 공식 페이지는 가입시점별 중도해지·만기후 이율이 상이하며 상세 상품설명서를 보라고만 안내하여 실행 구간·수치를 제공하지 않음",
+        "status": "OPEN"
+      },
+      {
+        "path": "tax_policy.available_treatments[0]",
+        "code": "TAX_FREE_SAVINGS_TERMS_NOT_STATED",
+        "reason": "정확한 공식 페이지는 비과세종합저축 가입 가능만 명시하고 한도·법정 대상·제외 조건을 제공하지 않음",
+        "status": "OPEN"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "early_termination_allowed": true,
+    "early_termination_rate_policy": {
+      "status": "EXPLICIT_GAP",
+      "source_text": "만기 전 해지할 경우 약정한 이율보다 낮은 중도해지 이율이 적용되며, 가입시점에 따라 중도해지이율 및 만기후이율이 상이하므로 상세 상품설명서를 참고",
+      "reason": "정확한 공식 페이지에 실행 이율 구간·계산식·만기후 이율 수치가 없음"
+    },
+    "payment_restrictions": [
+      "SEIZURE",
+      "PROVISIONAL_SEIZURE",
+      "PLEDGE_SETTING"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+    ],
+    "renewal_policy": {
+      "mode": "ROLLOVER",
+      "rate_reset": "REFRESH_AT_RENEWAL_OR_ROLLOVER",
+      "original_contract_term_preserved": true,
+      "source_text": "회전방식은 1·3·6개월 중 선택하며 가입일 및 매 회전일의 퍼스트정기예금(일반식) 만기지급식 이율을 적용하고 매 회전일마다 약정이율을 변경 적용",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C396E458F1F"
+      ]
+    }
+  },
+  "data_gaps": [
+    {
+      "gap_id": "GAP-0264-EARLY-AND-POST-MATURITY-RATES",
+      "field": "liquidity_policy.early_termination_rate_policy",
+      "code": "EXPLICIT_GAP",
+      "reason": "정확한 공식 페이지는 중도해지율이 약정이율보다 낮고 가입시점별 중도·만기후 이율이 상이하다고만 안내하며 실행 구간·수치를 제공하지 않는다."
+    },
+    {
+      "gap_id": "GAP-0264-TAX-FREE-SAVINGS-TERMS",
+      "field": "tax_policy.available_treatments[0]",
+      "code": "EXPLICIT_GAP",
+      "reason": "정확한 공식 페이지는 비과세종합저축 가입 가능만 명시하고 한도·법정 대상·제외 조건을 제공하지 않는다."
+    }
+  ]
+}

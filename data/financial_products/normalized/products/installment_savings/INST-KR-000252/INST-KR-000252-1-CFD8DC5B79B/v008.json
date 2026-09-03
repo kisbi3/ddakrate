@@ -1,0 +1,352 @@
+{
+  "product_code": "INST-KR-000252-1-CFD8DC5B79B",
+  "version": 8,
+  "institution_id": "INST-KR-000252",
+  "name": "청년 주택드림 청약통장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 19세 ~ 만 34세 이하의 무주택 거주자로서 다음 1, 2 중 어느 하나에 해당하는 자\n1 연소득 5천만원 이하 신고소득(근로.사업.기타)이 있는 자\n2 직전 과세기간(직전 과세기간의 소득서류가 확정되지 않은 기간에 가입하는 경우 전전년도 포함) 비과세 소득만 있는 자 중 다음 중 어느 하나에 해당하는 자\n- 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원 등(이하 “현역병 등”이라 한다)\n- 현역병 등으로서 복무를 마친 자. 단, 직전 과세기간 중 복무한 기간이 1일 이상 반드시 포함되어 있어야 함",
+    "eligibility_text": "만 19세 ~ 만 34세 이하의 무주택 거주자로서 다음 1, 2 중 어느 하나에 해당하는 자\n1 연소득 5천만원 이하 신고소득(근로.사업.기타)이 있는 자\n2 직전 과세기간(직전 과세기간의 소득서류가 확정되지 않은 기간에 가입하는 경우 전전년도 포함) 비과세 소득만 있는 자 중 다음 중 어느 하나에 해당하는 자\n- 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원 등(이하 “현역병 등”이라 한다)\n- 현역병 등으로서 복무를 마친 자. 단, 직전 과세기간 중 복무한 기간이 1일 이상 반드시 포함되어 있어야 함",
+    "display_text": "만 19세 ~ 만 34세 이하의 무주택 거주자로서 다음 1, 2 중 어느 하나에 해당하는 자\n1 연소득 5천만원 이하 신고소득(근로.사업.기타)이 있는 자\n2 직전 과세기간(직전 과세기간의 소득서류가 확정되지 않은 기간에 가입하는 경우 전전년도 포함) 비과세 소득만 있는 자 중 다음 중 어느 하나에 해당하는 자\n- 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원 등(이하 “현역병 등”이라 한다)\n- 현역병 등으로서 복무를 마친 자. 단, 직전 과세기간 중 복무한 기간이 1일 이상 반드시 포함되어 있어야 함",
+    "source_ref_ids": [
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "age_range": {
+      "max_age": 34
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "derivation": {
+      "start_event": "SUBSCRIPTION_DATE",
+      "end_event": "HOUSING_SUBSCRIPTION_WIN_OR_ACCOUNT_TERMINATION"
+    },
+    "source_expression": "가입일로부터 해지일까지\n※ 단, 주택청약 당첨 이후 납입하는 경우에는 납입회차, 납입금액, 납입기간 인정되지 않음",
+    "source_ref_ids": [
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "20000",
+        "max_value": "15000000",
+        "increment_value": "10",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "conditional_amount_rules": [
+      {
+        "condition_type": "CUMULATIVE_BALANCE_BELOW_OR_REACHING_THRESHOLD",
+        "balance_threshold": "15000000",
+        "currency": "KRW",
+        "normal_cap_may_be_exceeded": true,
+        "source_expression": "납입잔액/납입누계액이 1,500만원에 도달하기 전에는 일반 회차·월 한도를 초과할 수 있음",
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+          }
+        ]
+      },
+      {
+        "condition_type": "ELIGIBLE_MATURITY_PROCEEDS_LUMP_SUM",
+        "max_value": "50000000",
+        "currency": "KRW",
+        "channel_scope": [
+          "BRANCH"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "매월 정해진 날짜 신규일에 해당하는 날에 2만원부터 100만원 이하의 금액을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치 가능\n잔액 1,500만원 이상인 경우 100만원 이내에서 자유적립\n※ 「청년희망적금」, 「청년도약계좌」, 「장병내일준비적금」, 「디딤씨앗통장」, 「청년내일저축계좌」 만기수령금을 「청년 주택드림 청약통장」에 일시납 하는 경우, 만기수령금을 포함한 월 납입금 총액이 1,500만원을 초과하더라도 5,000만원 이내에서 일시납 가능(영업점에서만 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "20000",
+        "currency": "KRW",
+        "source_expression": "2만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "매월 정해진 날짜 신규일에 해당하는 날에 2만원부터 100만원 이하의 금액을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "매월 정해진 날짜 신규일에 해당하는 날에 2만원부터 100만원 이하의 금액을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "진 날짜 신규일에 해당하는 날에 2만원부터 100만원 이하의 금액을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치 가능\n잔액 1,500만원 이상인 경우 100만원 이내에서"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "날에 2만원부터 100만원 이하의 금액을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치 가능\n잔액 1,500만원 이상인 경우 100만원 이내에서 자유적립\n※ 「청년희망적금」"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "을 자유롭게 납입\n※ 단, 잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치 가능\n잔액 1,500만원 이상인 경우 100만원 이내에서 자유적립\n※ 「청년희망적금」, 「청년도약계좌」, 「장병내일준비적금"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "잔액이 1,500만원 미만인 경우 1,500만원까지 일시예치 가능\n잔액 1,500만원 이상인 경우 100만원 이내에서 자유적립\n※ 「청년희망적금」, 「청년도약계좌」, 「장병내일준비적금」, 「디딤씨앗통장」,"
+      },
+      {
+        "value": "15000000",
+        "currency": "KRW",
+        "source_expression": "1,500만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "만기수령금을 「청년 주택드림 청약통장」에 일시납 하는 경우, 만기수령금을 포함한 월 납입금 총액이 1,500만원을 초과하더라도 5,000만원 이내에서 일시납 가능(영업점에서만 가능)"
+      },
+      {
+        "value": "50000000",
+        "currency": "KRW",
+        "source_expression": "5,000만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "청약통장」에 일시납 하는 경우, 만기수령금을 포함한 월 납입금 총액이 1,500만원을 초과하더라도 5,000만원 이내에서 일시납 가능(영업점에서만 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "VARIABLE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-CFD8DC5B79B-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-CFD8DC5B79B-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 12,
+          "min_inclusive": false,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-CFD8DC5B79B-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-CFD8DC5B79B-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE",
+      "EVD-IS-3979870D65A794A74F69B827DC1E4447-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "3979870d65a794a74f69b827dc1e4447"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO",
+    "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE",
+    "EVD-IS-3979870D65A794A74F69B827DC1E4447-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "3979870d65a794a74f69b827dc1e4447",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_policy",
+        "reason": "max>base이나 조건별 원문 없음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL_ABSENT",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_SIMPLE",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-3979870D65A794A74F69B827DC1E4447-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

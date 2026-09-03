@@ -1,0 +1,337 @@
+{
+  "product_code": "INST-KR-000216-1-C158262669D",
+  "version": 8,
+  "institution_id": "INST-KR-000216",
+  "name": "제주은행 장병내일준비적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인으로 아래의 조건을 모두 충족하는 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한함. (1인 1계좌)\n- 이 적금 신규일 기준으로 남은 의무복무기간이 1개월 이상\n- 가입대상임을 증빙하는 '장병내일준비적금 가입자격 확인서' 원본 제출자",
+    "eligibility_text": "실명의 개인으로 아래의 조건을 모두 충족하는 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한함. (1인 1계좌)\n- 이 적금 신규일 기준으로 남은 의무복무기간이 1개월 이상\n- 가입대상임을 증빙하는 '장병내일준비적금 가입자격 확인서' 원본 제출자",
+    "display_text": "실명의 개인으로 아래의 조건을 모두 충족하는 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원에 한함. (1인 1계좌)\n- 이 적금 신규일 기준으로 남은 의무복무기간이 1개월 이상\n- 가입대상임을 증빙하는 '장병내일준비적금 가입자격 확인서' 원본 제출자",
+    "source_ref_ids": [
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 24,
+    "source_expression": "1개월 이상 24개월 이하\n이 적금의 계약기간은 1개월 ~ 24개월 이내로 일단위로 하며 만기일은 고객의 전역(또는 소집해제)예정일로 합니다.\n이 적금의 계약기간은 변경될 수 없음.",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 24,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000",
+        "increment_value": "1"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "300000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "aggregate_limit_rules": [
+      {
+        "scope": "CROSS_INSTITUTION_PER_MONTH",
+        "currency": "KRW",
+        "max_value": "550000",
+        "source_ref_ids": [
+          "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "최소 1만원 이상 최대 30만원 이하\n회차별 최소 1만원 이상 원단위로 매월(월 초일부터 말일까지) 30만원 이하\n단, 「장병내일준비적금」상품을 판매하는 모든 은행을 합산하여 고객의 최대 저축한도는 월 55만원이며 동 저축한도를 초과하지 않는 범위 내에서 은행별 월 30만원까지 저축가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상 최대 30만원 이하\n회차별 최소 1만원 이상 원단위로 매월(월 초일부터 말일까지) 30만원"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상 최대 30만원 이하\n회차별 최소 1만원 이상 원단위로 매월(월 초일부터 말일까지) 30만원 이하\n단, 「장병내일"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상 최대 30만원 이하\n회차별 최소 1만원 이상 원단위로 매월(월 초일부터 말일까지) 30만원 이하\n단, 「장병내일준비적금」상품을 판매하는"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "소 1만원 이상 최대 30만원 이하\n회차별 최소 1만원 이상 원단위로 매월(월 초일부터 말일까지) 30만원 이하\n단, 「장병내일준비적금」상품을 판매하는 모든 은행을 합산하여 고객의 최대 저축한도는 월 55"
+      },
+      {
+        "value": "550000",
+        "currency": "KRW",
+        "source_expression": "55만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "만원 이하\n단, 「장병내일준비적금」상품을 판매하는 모든 은행을 합산하여 고객의 최대 저축한도는 월 55만원이며 동 저축한도를 초과하지 않는 범위 내에서 은행별 월 30만원까지 저축가능"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "산하여 고객의 최대 저축한도는 월 55만원이며 동 저축한도를 초과하지 않는 범위 내에서 은행별 월 30만원까지 저축가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-C158262669D-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C158262669D-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C158262669D-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 15,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C158262669D-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "5.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 15,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE",
+      "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "3d3cb542268f6c0e888c46e2fb707913"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO",
+    "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE",
+    "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "3d3cb542268f6c0e888c46e2fb707913",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL_ABSENT",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 0,
+      "unresolved_count": 0,
+      "status": "VERIFIED_SIMPLE",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-3D3CB542268F6C0E888C46E2FB707913-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

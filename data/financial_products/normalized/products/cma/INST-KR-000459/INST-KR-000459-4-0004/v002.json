@@ -1,0 +1,523 @@
+{
+  "product_code": "INST-KR-000459-4-0004",
+  "version": 2,
+  "institution_id": "INST-KR-000459",
+  "name": "미래에셋 CMA-RP 네이버통장",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004",
+      "EVD-CMA-OFFICIAL-MIRAE-IDLE-CASH-20260729",
+      "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+    ],
+    "uninvested_cash_state": {
+      "state": "CASH_DEPOSIT_BALANCE",
+      "trigger_reasons": [
+        "BELOW_MINIMUM_RP_PURCHASE_AMOUNT",
+        "AFTER_RP_AUTOMATIC_PURCHASE_TIME",
+        "NON_BUSINESS_DAY_DEPOSIT",
+        "RP_INVENTORY_UNAVAILABLE"
+      ],
+      "compensation_policy": {
+        "return_kind": "DEPOSIT_USE_FEE",
+        "calculation_method": "BALANCE_TIERED_OBSERVATION",
+        "rate_basis_disclosure": "3_MONTH_AVERAGE_DEPOSIT_BALANCE",
+        "as_of": "2026-07-29",
+        "guaranteed_as_rp_yield": false,
+        "rate_entries": [
+          {
+            "role": "DEPOSIT_USE_FEE",
+            "calculation": {
+              "type": "POSTED_DEPOSIT_USE_FEE",
+              "value": "2.00",
+              "unit": "PERCENT"
+            },
+            "applies_to": [
+              {
+                "basis": "CASH_DEPOSIT_BALANCE",
+                "range": {
+                  "unit": "KRW",
+                  "min_value": "0",
+                  "min_inclusive": true,
+                  "max_value": "10000",
+                  "max_inclusive": false
+                }
+              }
+            ]
+          },
+          {
+            "role": "DEPOSIT_USE_FEE",
+            "calculation": {
+              "type": "POSTED_DEPOSIT_USE_FEE",
+              "value": "2.10",
+              "unit": "PERCENT"
+            },
+            "applies_to": [
+              {
+                "basis": "CASH_DEPOSIT_BALANCE",
+                "range": {
+                  "unit": "KRW",
+                  "min_value": "10000",
+                  "min_inclusive": true
+                }
+              }
+            ]
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-MIRAE-IDLE-CASH-20260729"
+        ]
+      },
+      "next_action": "AUTO_PURCHASE_RP_WHEN_ELIGIBLE_OR_ON_NEXT_BUSINESS_DAY",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-IDLE-CASH-20260729",
+        "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "MARGINAL_BALANCE_PER_RP_LOT",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000459-4-0004-PREF-10M",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.65",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+          "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+        ],
+        "as_of": "2026-07-22",
+        "customer_scope": "INDIVIDUAL",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "unit": "KRW",
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_value": "0",
+              "max_value": "10000000"
+            }
+          }
+        ],
+        "effective_to": "2026-09-01",
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_COMPARISON_SERVICE",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        },
+        "effective_from": "2026-07-22"
+      },
+      {
+        "rate_id": "INST-KR-000459-4-0004-EXCESS",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.10",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+          "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+        ],
+        "as_of": "2026-07-22",
+        "customer_scope": "INDIVIDUAL",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "unit": "KRW",
+              "min_inclusive": false,
+              "max_inclusive": true,
+              "min_value": "10000000"
+            }
+          }
+        ],
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_COMPARISON_SERVICE",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        },
+        "effective_from": "2026-07-22",
+        "effective_to": "2026-09-01"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004",
+      "EVD-CMA-20260829-INST-KR-000060-4-C0162E2A47A",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+      "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS",
+      "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+    ],
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 31,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1",
+      "creates_new_investment_lot": true,
+      "new_rate_source": "POSTED_RATE_ON_REINVESTMENT_DATE"
+    },
+    "balance_tier_method": "MARGINAL",
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+        "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+      ],
+      "initial_fixing_event": "RP_PURCHASE",
+      "reinvestment_fixing_event": "RP_REINVESTMENT"
+    },
+    "promotion_transition": {
+      "promotional_balance_limit": {
+        "value": "10000000",
+        "currency": "KRW",
+        "inclusive": true
+      },
+      "post_expiry_behavior": "USE_THEN_POSTED_STANDARD_RP_CMA_RATE",
+      "future_rate_value": "DYNAMIC_NOT_PRECOMMITTED",
+      "source_ref_ids": [
+        "EVD-CMA-20260829-INST-KR-000060-4-C0162E2A47A",
+        "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+      ],
+      "preferential_program_effective_to": "2027-05-31",
+      "current_numeric_rate_effective_to": "2026-09-01",
+      "post_program_behavior": "USE_THEN_POSTED_STANDARD_RP_CMA_RATE"
+    },
+    "preferential_policy": {
+      "mode": "RATE_OVERRIDE",
+      "conditions": [
+        {
+          "basis": "CUSTOMER.TYPE",
+          "operator": "EQ",
+          "value": "INDIVIDUAL"
+        },
+        {
+          "basis": "BALANCE_PORTION",
+          "operator": "LTE",
+          "value": "10000000",
+          "unit": "KRW"
+        }
+      ],
+      "rate_override": {
+        "value": "2.65",
+        "unit": "PERCENT",
+        "effective_from": "2026-07-22",
+        "effective_to": "2026-09-01"
+      },
+      "post_expiry_fallback": "THEN_POSTED_STANDARD_CMA_RP_RATE",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+        "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+      ],
+      "program_effective_to": "2027-05-31",
+      "scheduled_rate_overrides": [
+        {
+          "effective_from": "2026-09-02",
+          "status": "FUTURE_NOT_CURRENT_AS_OF_2026-08-29",
+          "rate_override": {
+            "value": "2.80",
+            "unit": "PERCENT"
+          },
+          "source_ref_ids": [
+            "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+          ]
+        }
+      ]
+    },
+    "scheduled_rate_changes": [
+      {
+        "effective_from": "2026-09-02",
+        "status": "FUTURE_NOT_CURRENT_AS_OF_2026-08-29",
+        "rate_entries": [
+          {
+            "rate_id": "INST-KR-000459-4-0004-PREF-10M-FUT-20260902",
+            "role": "BASE",
+            "customer_scope": "INDIVIDUAL",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.80",
+              "unit": "PERCENT"
+            },
+            "applies_to": [
+              {
+                "basis": "BALANCE",
+                "range": {
+                  "unit": "KRW",
+                  "min_inclusive": true,
+                  "max_inclusive": true,
+                  "min_value": "0",
+                  "max_value": "10000000"
+                }
+              }
+            ],
+            "rate_context": {
+              "kind": "POSTED_FIXED_AT_PURCHASE",
+              "tax_basis": "PRE_TAX",
+              "observation_source": "NAVER_PRODUCT_NOTICE"
+            }
+          },
+          {
+            "rate_id": "INST-KR-000459-4-0004-EXCESS-FUT-20260902",
+            "role": "BASE",
+            "customer_scope": "INDIVIDUAL",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.25",
+              "unit": "PERCENT"
+            },
+            "applies_to": [
+              {
+                "basis": "BALANCE",
+                "range": {
+                  "unit": "KRW",
+                  "min_inclusive": false,
+                  "max_inclusive": true,
+                  "min_value": "10000000"
+                }
+              }
+            ],
+            "rate_context": {
+              "kind": "POSTED_FIXED_AT_PURCHASE",
+              "tax_basis": "PRE_TAX",
+              "observation_source": "NAVER_PRODUCT_NOTICE"
+            }
+          }
+        ],
+        "application_policy": {
+          "new_deposits": {
+            "effective_from": "2026-09-02",
+            "prior_rate_deposit_cutoff": "2026-09-01T22:00:00+09:00"
+          },
+          "existing_rp_lots": {
+            "apply_event": "NEXT_AUTOMATIC_REINVESTMENT",
+            "cycle_day": 31,
+            "repricing_before_reinvestment": false
+          }
+        },
+        "preferential_program_effective_to": "2027-05-31",
+        "source_ref_ids": [
+          "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+        ],
+        "reason": "Naver product notice announced the Sep 2 change; do not apply to current rates on Aug 29."
+      }
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000459-4-0004",
+    "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "input_line": 65,
+        "product_code": "INST-KR-000459-4-0004",
+        "product_name": "미래에셋 CMA-RP 네이버통장",
+        "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+        "path": "identity.institution_id_reconciliation",
+        "reason": "동일 미래에셋증권 실질 상품이 서로 다른 institution_id로 분리되어 있어 CMA shard만으로 canonical ID를 일방 변경할 수 없음",
+        "status": "REQUIRES_EXTERNAL_DEFINITION",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0004",
+          "EVD-CMA-20260829-INST-KR-000060-4-C0162E2A47A"
+        ],
+        "usage_impact": "DO_NOT_AUTO_MERGE_INSTITUTION_IDS"
+      }
+    ],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER",
+      "INSTITUTION_ID_RECONCILIATION_REQUIRED"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000459/INST-KR-000459-4-0004/v001.json",
+    "previous_sha256": "sha256:7225925f9d67341fe281770c2fef297498a8fdfc613817dd92fec6e5b52ca389",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0004"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      },
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0004"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "SAME_COMMERCIAL_PRODUCT_CROSS_INSTITUTION_ID",
+      "equivalence_group_id": "CMA-EQ-MIRAE-NAVER-RP",
+      "related_input_product_codes": [
+        "INST-KR-000060-4-C0162E2A47A"
+      ],
+      "relation": "REGISTRY_ID_CONFLICT_REQUIRES_GLOBAL_MIGRATION",
+      "institution_ids": [
+        "INST-KR-000459",
+        "INST-KR-000060"
+      ]
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "EXPLICIT_NONOVERLAP"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 31,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "SAME_COMMERCIAL_PRODUCT_CROSS_INSTITUTION_ID",
+          "group": "CMA-EQ-MIRAE-NAVER-RP"
+        }
+      }
+    },
+    "final_audit_repairs": [
+      {
+        "field": "return_policy.scheduled_rate_changes",
+        "repair": "ADD_2026-09-02_2.80_2.25_AND_SEPARATE_NUMERIC_RATE_PERIOD_FROM_PROGRAM_PERIOD",
+        "source_ref_ids": [
+          "EVD-CMA-NAVER-MIRAE-NAVER-RP-RATE-20260902"
+        ]
+      }
+    ],
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "investment_policy": {
+    "underlying_asset": "BONDS",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004",
+      "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS",
+      "EVD-CMA-OFFICIAL-MIRAE-IDLE-CASH-20260729"
+    ],
+    "automatic_investment": true,
+    "minimum_investment_amount": {
+      "value": "10000",
+      "currency": "KRW",
+      "applies_to": "AUTOMATIC_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000060-4-C0162E2A47A-20260829",
+        "EVD-CMA-OFFICIAL-MIRAE-IDLE-CASH-20260729",
+        "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+      ]
+    },
+    "purchase_window": {
+      "business_day_only": true,
+      "customer_scope": "INDIVIDUAL",
+      "execution_time_range_local": "17:20-22:00",
+      "after_execution_window_or_non_business_day": "HOLD_AS_CASH_DEPOSIT_THEN_PURCHASE_NEXT_ELIGIBLE_BUSINESS_DAY",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0004",
+      "EVD-CMA-OFFICIAL-MIRAE-CMA-PURCHASE-TERMS"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}

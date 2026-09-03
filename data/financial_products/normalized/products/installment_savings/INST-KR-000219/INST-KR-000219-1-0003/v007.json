@@ -1,0 +1,749 @@
+{
+  "product_code": "INST-KR-000219-1-0003",
+  "version": 7,
+  "institution_id": "INST-KR-000219",
+  "name": "2026 신한 SOL KBO 리그 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-SALE"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "500000"
+      }
+    ],
+    "source_amount_text": "최소 1원 이상 50만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 50만원 이하"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 50만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-0003-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "EXTERNAL.KBO.SELECTED_TEAM_POSTSEASON_RESULT",
+          "type": "ENUM",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "authority": "OFFICIAL_EXTERNAL_RESULT",
+          "self_report_eligible": false,
+          "allowed_values": [
+            "KOREAN_SERIES_CHAMPION",
+            "KOREAN_SERIES_APPEARANCE",
+            "POSTSEASON_APPEARANCE",
+            "NONE",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACTIVITY.FANTASY_BASEBALL_PARTICIPATION_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "COUNT",
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.QUALIFYING_INCOME_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH_COUNT",
+          "repeated_dimension": "CALENDAR_MONTH",
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-KBO-FANTASY-PARTICIPATION",
+          "event_type": "CONTENT_PARTICIPATION",
+          "qualifying_action": "SOL야구 판타지야구 콘텐츠 내 출전하기",
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY_TERMINATION"
+          },
+          "maximum_count_per_contract": 5,
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            }
+          ]
+        },
+        {
+          "event_id": "EVENT-KBO-QUALIFYING-INCOME-MONTH",
+          "event_type": "QUALIFYING_INCOME_RECEIPT_MONTH",
+          "qualifying_types": [
+            {
+              "type": "SALARY_TRANSFER",
+              "per_transaction_amount_threshold": {
+                "operator": "GTE",
+                "value": "500000",
+                "currency": "KRW"
+              }
+            },
+            {
+              "type": "SALARY_CLUB_PAY_ENVELOPE"
+            },
+            {
+              "type": "PUBLIC_PENSION",
+              "subtypes": [
+                "NATIONAL_PENSION",
+                "PUBLIC_OFFICIAL_PENSION",
+                "PRIVATE_SCHOOL_PENSION",
+                "MILITARY_PENSION",
+                "VETERANS_PENSION"
+              ]
+            }
+          ],
+          "account_owner_scope": "SELF",
+          "institution_scope": "SHINHAN_BANK",
+          "maximum_count_per_period": 1,
+          "period_unit": "MONTH",
+          "count_window": {
+            "start": "FIRST_DAY_OF_SUBSCRIPTION_MONTH",
+            "end": "LAST_DAY_OF_MONTH_TWO_MONTHS_BEFORE_MATURITY"
+          },
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-0003-PREF-02",
+          "title": "응원 팀 성적 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "EXTERNAL.KBO.SELECTED_TEAM_POSTSEASON_RESULT",
+              "operator": "IN",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "authority": "OFFICIAL_EXTERNAL_RESULT",
+              "self_report_eligible": false,
+              "expected_value": [
+                "KOREAN_SERIES_CHAMPION",
+                "KOREAN_SERIES_APPEARANCE",
+                "POSTSEASON_APPEARANCE"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "unit": "PERCENTAGE_POINT",
+            "tiers": [
+              {
+                "result": "POSTSEASON_APPEARANCE",
+                "value": "0.50"
+              },
+              {
+                "result": "KOREAN_SERIES_APPEARANCE",
+                "value": "1.00"
+              },
+              {
+                "result": "KOREAN_SERIES_CHAMPION",
+                "value": "1.50"
+              }
+            ],
+            "selection": "ONE_HIGHEST_RESULT",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+              }
+            ],
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "EXTERNAL_OFFICIAL_RESULT",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입 시 선택한 응원 팀의 공식 시즌 성적에 따라 차등",
+            "reward_text": "최대 +1.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            }
+          ],
+          "semantic_domain": "EXTERNAL_EVENT_RESULT",
+          "source_clause_text": "응원 팀 성적 우대 : 최고 연 1.5%\n- 한국시리즈 우승하면 : 연 1.5%\n- 한국시리즈 진출하면 : 연 1.0%\n- 포스트시즌 진출하면 : 연 0.5%\n※ 가입 시 선택한 응원 팀(변경불가)의 성적에 따라 우대이자율 차등 제공(중복 적용 불가)\n※ 정규시즌 종료된 다음 달 10일 이전에 우대이자율 반영"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-0003-PREF-03",
+          "title": "판타지야구 참여 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACTIVITY.FANTASY_BASEBALL_PARTICIPATION_COUNT",
+              "operator": "GTE",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "unit": "COUNT",
+              "expected_value": 1,
+              "source_ref_ids": [
+                "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-KBO-FANTASY-PARTICIPATION",
+            "value_per_occurrence": "0.10",
+            "unit": "PERCENTAGE_POINT",
+            "max_occurrences": 5,
+            "cap_value": "0.50",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+              }
+            ],
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "EXTERNAL_OFFICIAL_RESULT",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "판타지야구 출전 1회당 +0.10%p, 최대 5회",
+            "reward_text": "최대 +0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            }
+          ],
+          "semantic_domain": "EXTERNAL_EVENT_RESULT",
+          "source_clause_text": "‘판타지야구’ 참여 우대 : 최고 연 0.5%\n- SOL야구 콘텐츠 ‘판타지야구‘ 참여 시 1회당 연 0.1% (최대 5회 인정)\n※ 판타지야구 : 나만의 구단 만들어 혜택 받는 SOL야구 신규 콘텐츠 (참여는 해당 콘텐츠 내 ‘출전하기’ 기준)\n※ 실적 인정 기간 : 만기 해지 시까지"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-0003-PREF-04",
+          "title": "소득 입금 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.QUALIFYING_INCOME_MONTH_COUNT",
+              "operator": "GTE",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "unit": "MONTH_COUNT",
+              "expected_value": 6,
+              "source_ref_ids": [
+                "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+              }
+            ],
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "급여·월급봉투·공적연금 인정 월 6개월 이상",
+            "reward_text": "+0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "소득 입금 우대 : 연 0.5%\n본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 6개월 이상 입금(수령) 시\n- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투\n- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)\n※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지\n(예시 : 2026.4.15 가입 시 2026.4.1 ~ 2027.2.28)"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-KBO-TOTAL",
+          "members": [
+            "INST-KR-000219-1-0003-PREF-02",
+            "INST-KR-000219-1-0003-PREF-03",
+            "INST-KR-000219-1-0003-PREF-04"
+          ],
+          "cap": {
+            "value": "2.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01",
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02",
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03",
+              "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01",
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02",
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03",
+            "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+            }
+          ],
+          "operator": "SUM_WITH_CAP"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01",
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02",
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03",
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04",
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+        }
+      ],
+      "global_cap": {
+        "value": "2.50",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03",
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-04"
+          }
+        ]
+      },
+      "source_section_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-RATE",
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "7fb17bd924d9dac79033fd1d0418fa68"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO",
+    "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-RATE",
+    "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-LISTING",
+    "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "7fb17bd924d9dac79033fd1d0418fa68",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 0,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "variant_policy": {
+    "dimensions": [
+      {
+        "dimension_id": "SUPPORT_TEAM",
+        "selection_time": "SUBSCRIPTION",
+        "immutable_after_selection": true,
+        "changes_canonical_product_code": false,
+        "changes_display_name": false,
+        "source_ref_ids": [
+          "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+          }
+        ]
+      }
+    ]
+  },
+  "offering_policy": {
+    "seasonal": true,
+    "season": "2026",
+    "versioned_by_offering": true,
+    "source_ref_ids": [
+      "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-7FB17BD924D9DAC79033FD1D0418FA68-PREF-02"
+      }
+    ]
+  }
+}

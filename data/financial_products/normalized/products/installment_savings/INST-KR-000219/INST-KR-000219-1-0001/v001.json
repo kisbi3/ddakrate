@@ -1,0 +1,289 @@
+{
+  "product_code": "INST-KR-000219-1-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000219",
+  "name": "청년 처음적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "가입일 현재 만 18세 이상 만 39세 이하 실명의 개인 및 개인사업자 (1인1계좌)",
+    "eligibility_text": "가입일 현재 만 18세 이상 만 39세 이하 실명의 개인 및 개인사업자 (1인1계좌)",
+    "display_text": "가입일 현재 만 18세 이상 만 39세 이하 실명의 개인 및 개인사업자 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 18
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0001"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.050",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000219-1-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "6.05",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0001-01",
+        "title": "다음 우대 요건의 충족 여부에 따라 최고 연 3.0% 우대이자율 적용",
+        "condition_text": "다음 우대 요건의 충족 여부에 따라 최고 연 3.0% 우대이자율 적용",
+        "structured_steps": [
+          "다음 우대 요건의 충족 여부에 따라 최고 연 3.0% 우대이자율 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "3.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "다음 우대 요건의 충족 여부에 따라 최고 연 3.0% 우대이자율 적용",
+          "summary_text": "다음 우대 요건의 충족 여부에 따라 최고 연 3.0% 우대이자율 적용",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0001-02",
+        "title": "주거래 우대*(이 상품 신규 후 급여이체 실적 또는 급여클럽 월급 봉투를 6개월 이상 받은 경우) : 1.0%",
+        "condition_text": "주거래 우대*(이 상품 신규 후 급여이체 실적 또는 급여클럽 월급 봉투를 6개월 이상 받은 경우) : 1.0%\n* 급여이체 또는 급여클럽 월급봉투 인정 기준 (아래 중 1가지 이상 충족 시)\n① ‘신한 주거래 우대통장’ 또는 ‘Tops 직장인 플랜 저축예금’ 가입 고객으로 급여일 수기 등록 후 급여일(전후 1영업일 포함)에 건당 50만원 이상 입금되는 경우\n② 대량 급여이체로 이체되거나 타행에서 이체 시 거래메모 또는 내용상 급여, 상여금, 월급, 봉급, 연금, 성과급, 급료, 보너스, 보로금, Salary, bonus, pay 등으로 입금실적이 건당 50만원 이상 있는 경우\n③ 급여클럽 월급봉투 취득 시\n- 급여 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지",
+        "structured_steps": [
+          "주거래 우대*(이 상품 신규 후 급여이체 실적 또는 급여클럽 월급 봉투를 6개월 이상 받은 경우) : 1.0%",
+          "* 급여이체 또는 급여클럽 월급봉투 인정 기준 (아래 중 1가지 이상 충족 시)",
+          "① ‘신한 주거래 우대통장’ 또는 ‘Tops 직장인 플랜 저축예금’ 가입 고객으로 급여일 수기 등록 후 급여일(전후 1영업일 포함)에 건당 50만원 이상 입금되는 경우",
+          "② 대량 급여이체로 이체되거나 타행에서 이체 시 거래메모 또는 내용상 급여, 상여금, 월급, 봉급, 연금, 성과급, 급료, 보너스, 보로금, Salary, bonus, pay 등으로 입금실적이 건당 50만원 이상 있는 경우",
+          "③ 급여클럽 월급봉투 취득 시",
+          "- 급여 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "주거래 우대*(이 상품 신규 후 급여이체 실적 또는 급여클럽 월급 봉투를 6개월 이상 받은 경우) : 1.0%",
+          "summary_text": "주거래 우대*(이 상품 신규 후 급여이체 실적 또는 급여클럽 월급 봉투를 6개월 이상 받은 경우) : 1.0%",
+          "detail_texts": [
+            "* 급여이체 또는 급여클럽 월급봉투 인정 기준 (아래 중 1가지 이상 충족 시)",
+            "① ‘신한 주거래 우대통장’ 또는 ‘Tops 직장인 플랜 저축예금’ 가입 고객으로 급여일 수기 등록 후 급여일(전후 1영업일 포함)에 건당 50만원 이상 입금되는 경우",
+            "② 대량 급여이체로 이체되거나 타행에서 이체 시 거래메모 또는 내용상 급여, 상여금, 월급, 봉급, 연금, 성과급, 급료, 보너스, 보로금, Salary, bonus, pay 등으로 입금실적이 건당 50만원 이상 있는 경우",
+            "③ 급여클럽 월급봉투 취득 시",
+            "- 급여 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0001-03",
+        "title": "본인명의 신한은행 입출금 통장으로 신한카드(신용/체크) 결제 실적 6개월 이상 : 0.5%",
+        "condition_text": "본인명의 신한은행 입출금 통장으로 신한카드(신용/체크) 결제 실적 6개월 이상 : 0.5%\n- 신한카드(신용/체크) 결제 우대는 1원 이상 결제 실적 보유 시 해당 월 실적으로 인정됩니다.\n- 신한카드 결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지",
+        "structured_steps": [
+          "본인명의 신한은행 입출금 통장으로 신한카드(신용/체크) 결제 실적 6개월 이상 : 0.5%",
+          "- 신한카드(신용/체크) 결제 우대는 1원 이상 결제 실적 보유 시 해당 월 실적으로 인정됩니다.",
+          "- 신한카드 결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "본인명의 신한은행 입출금 통장으로 신한카드(신용/체크) 결제 실적 6개월 이상 : 0.5%",
+          "summary_text": "본인명의 신한은행 입출금 통장으로 신한카드(신용/체크) 결제 실적 6개월 이상 : 0.5%",
+          "detail_texts": [
+            "- 신한카드(신용/체크) 결제 우대는 1원 이상 결제 실적 보유 시 해당 월 실적으로 인정됩니다.",
+            "- 신한카드 결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0001-04",
+        "title": "신한 슈퍼SOL 앱 회원가입 : 0.5%",
+        "condition_text": "신한 슈퍼SOL 앱 회원가입 : 0.5%\n- 슈퍼SOL 회원가입 인정 요건 : 이 예금 만기 전전영업일까지 가입 상태 유지시 (적금 개설 전후 관계없이 만기 전전영업일까지 가입 유지시 적용)",
+        "structured_steps": [
+          "신한 슈퍼SOL 앱 회원가입 : 0.5%",
+          "- 슈퍼SOL 회원가입 인정 요건 : 이 예금 만기 전전영업일까지 가입 상태 유지시 (적금 개설 전후 관계없이 만기 전전영업일까지 가입 유지시 적용)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신한 슈퍼SOL 앱 회원가입 : 0.5%",
+          "summary_text": "신한 슈퍼SOL 앱 회원가입 : 0.5%",
+          "detail_texts": [
+            "- 슈퍼SOL 회원가입 인정 요건 : 이 예금 만기 전전영업일까지 가입 상태 유지시 (적금 개설 전후 관계없이 만기 전전영업일까지 가입 유지시 적용)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0001-05",
+        "title": "이 예금 신규 직전 1년 간(이 예금 신규일로부터 1년 전 ~ 예금 신규 전일) 신한은행 정기예금, 정기적금, 주택청약을 보유하지 않은 경우 또는 대고객 이벤트 우대이자율 적용에 따른 우대 : 1.0%",
+        "condition_text": "이 예금 신규 직전 1년 간(이 예금 신규일로부터 1년 전 ~ 예금 신규 전일) 신한은행 정기예금, 정기적금, 주택청약을 보유하지 않은 경우 또는 대고객 이벤트 우대이자율 적용에 따른 우대 : 1.0%\n- 신한은행 홈페이지 및 신한 SOL뱅크에 공지하며, 가입 당시 확정된 이벤트 내용에 대해서는 적금 만기시까지 유효합니다. 신한은행 대고객 이벤트 공지를 통해 제시된 요건을 충족한 고객에게는 자동으로 특별금리우대 쿠폰이 발급됩니다.",
+        "structured_steps": [
+          "이 예금 신규 직전 1년 간(이 예금 신규일로부터 1년 전 ~ 예금 신규 전일) 신한은행 정기예금, 정기적금, 주택청약을 보유하지 않은 경우 또는 대고객 이벤트 우대이자율 적용에 따른 우대 : 1.0%",
+          "- 신한은행 홈페이지 및 신한 SOL뱅크에 공지하며, 가입 당시 확정된 이벤트 내용에 대해서는 적금 만기시까지 유효합니다. 신한은행 대고객 이벤트 공지를 통해 제시된 요건을 충족한 고객에게는 자동으로 특별금리우대 쿠폰이 발급됩니다."
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 신규 직전 1년 간(이 예금 신규일로부터 1년 전 ~ 예금 신규 전일) 신한은행 정기예금, 정기적금, 주택청약을 보유하지 않은 경우 또는 대고객 이벤트 우대이자율 적용에 따른 우대 : 1.0%",
+          "summary_text": "이 예금 신규 직전 1년 간(이 예금 신규일로부터 1년 전 ~ 예금 신규 전일) 신한은행 정기예금, 정기적금, 주택청약을 보유하지 않은 경우 또는 대고객 이벤트 우대이자율 적용에 따른 우대 : 1.0%",
+          "detail_texts": [
+            "- 신한은행 홈페이지 및 신한 SOL뱅크에 공지하며, 가입 당시 확정된 이벤트 내용에 대해서는 적금 만기시까지 유효합니다. 신한은행 대고객 이벤트 공지를 통해 제시된 요건을 충족한 고객에게는 자동으로 특별금리우대 쿠폰이 발급됩니다."
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "6.05",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000219-1-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000219-1-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.263816+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

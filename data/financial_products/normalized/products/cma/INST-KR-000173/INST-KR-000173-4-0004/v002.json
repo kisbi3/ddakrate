@@ -1,0 +1,246 @@
+{
+  "product_code": "INST-KR-000173-4-0004",
+  "version": 2,
+  "institution_id": "INST-KR-000173",
+  "name": "The H CMA (디지털 RP형)",
+  "product_family": "CMA",
+  "classifications": [
+    {"tag": "SUBSCRIPTION_CHANNEL", "value": "APP", "source_ref_ids": ["EVD-CMA-20260829-INST-KR-000173-4-0004"]},
+    {"tag": "PRODUCT_TRAIT", "value": "CMA_RP", "source_ref_ids": ["EVD-CMA-20260829-INST-KR-000173-4-0004"]}
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000173-4-0004",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829",
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ],
+    "subscription_channel_modes": [
+      "NON_FACE_TO_FACE"
+    ],
+    "subscription_method_disclosure": "MTS 내 비대면/온라인 신규 계좌개설 (2023-05-15 이후 개설 개인 신규·추가계좌)"
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000173-4-0004",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829",
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+    ],
+    "subscription_method_disclosure": "MTS 내 비대면/온라인 신규 계좌계설",
+    "required_account_opening_channel": "MOBILE_APP",
+    "account_opened_on_or_after": "2023-05-15",
+    "account_scope": [
+      "NEW_ACCOUNT",
+      "ADDITIONAL_ACCOUNT"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000173-4-0004"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000173-4-0004",
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+    ],
+    "uninvested_cash_state": {
+      "state": "CASH_DEPOSIT_BALANCE",
+      "when": "DEPOSIT_OUTSIDE_RP_PURCHASE_WINDOW",
+      "compensation": "DEPOSIT_USE_FEE",
+      "next_action": "NEXT_BUSINESS_DAY_RP_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_RP_LOT",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000173-4-0004-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.75",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829",
+          "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+        ],
+        "as_of": "2026-08-28",
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_COMPARISON_SERVICE",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000173-4-0004",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829",
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+    ],
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "trigger": "RP_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+      ]
+    },
+    "evaluation_scope": {
+      "current_lot_rate_evaluable": true,
+      "long_horizon_rollover_projection": "NOT_MODELED_WITHOUT_INTERVAL",
+      "completion_gate": "NON_BLOCKING"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000173-4-0004",
+    "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829",
+    "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T14:15:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "input_line": 33,
+        "product_code": "INST-KR-000173-4-0004",
+        "product_name": "The H CMA (디지털 RP형)",
+        "source_priority": "NAVER_PRIMARY",
+        "path": "return_policy.advertised_max_rate",
+        "reason": "네이버 CMA 카드 표시 수익률을 계약상 최고수익률로 승격하지 않음; listing_snapshot에서만 보존",
+        "status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000173-4-0004"
+        ],
+        "usage_impact": "NO_ADVERTISED_MAX_RANKING"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "usage_restrictions": [
+      "NO_NAVER_LISTING_RATE_AS_CONTRACT_MAX"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000173/INST-KR-000173-4-0004/v001.json",
+    "previous_sha256": "sha256:2d31d039cc9a4857ce52e4ef27cbe4d3e122e2eba5788976e7d97f6e15686b41",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-scope-finalization-09",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "NO_TIER_OR_SINGLE_RATE"
+        },
+        "reinvestment": {
+          "status": "SOURCE_INSUFFICIENT",
+          "value": null
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY",
+    "nonblocking_notes": [
+      {
+        "path": "return_policy.reinvestment_policy.interval",
+        "status": "DEFERRED_NON_BLOCKING",
+        "note": "정확한 재투자 일수는 미확인이나 현재 상품 비교/현재 lot 수익률 계산의 완료 gate에서는 제외한다.",
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+        ]
+      }
+    ]
+  },
+  "product_subtype": "RP",
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829"
+    ],
+    "evidence_authority": "OFFICIAL_PROVIDER_PRODUCT_EXPLANATION"
+  },
+  "fee_policy": {
+    "disclosure_text": "이체 수수료 혜택\n\n급여이체 입금완료 계좌(\"급여\"로 표시된경우) 또는 The H CMA에서 당사 적립식 상품으로 월 10만원 이상 자동이체시 익월 1일부터 이체수수료가 면제됩니다.\n\nCD/ATM기 수수료 혜택\n\n고객님이 선택하신 은행의 CD기 출금수수료는 상시 면제됩니다. (국민/우리/하나/신한/농협/SC제일/새마을금고 중 택2)",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000173-4-0004-20260829"
+    ],
+    "disclosure_semantics": "SOURCE_TEXT_ONLY_NOT_EXECUTABLE_FEE_CALCULATION"
+  },
+  "investment_policy": {
+    "automatic_investment": true,
+    "purchase_window": {
+      "business_day_only": true,
+      "cutoff_local": "21:00",
+      "before_or_at_cutoff_action": "SAME_BUSINESS_DAY_RP_PURCHASE",
+      "after_cutoff_action": "NEXT_BUSINESS_DAY_RP_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-CMA-OFFICIAL-HYUNDAI-CORE-20240911"
+    ]
+  }
+}

@@ -1,0 +1,493 @@
+{
+  "product_code": "INST-KR-000783-3-0004",
+  "version": 3,
+  "institution_id": "INST-KR-000783",
+  "name": "OK×피너츠공모파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "금액\n제한없음(단, 금액별 차등금리 적용)\n가입방법\nOK저축은행(앱)\n대상\n개인(OK저축은행의 보통예금을 보유하지 않은 경우)\n※ '피너츠 공모주' 앱을 통해 가입 가능, 1인 1계좌 개설 가능\n이자지급\n매월 셋째 주 토요일 다음날, 해지 시\n유의\n자세한 유의사항은 상품페이지 및 상품설명서를 확인해주세요.\n이 예금은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 \"1억원까지\"(OK저축은행의 여타 보호 상품과 합산) 보호됩니다.",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "condition": {
+      "predicate": {
+        "fact_key": "RELATIONSHIP.OK_SAVINGS.ORDINARY_DEPOSIT_HELD",
+        "operator": "EQUALS",
+        "expected_value": false
+      }
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT"
+    },
+    "subscription_binding": {
+      "channel": "PARTNER_APP",
+      "platform": "PEANUTS_IPO"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000783-3-0004-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "5.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-0004"
+        ],
+        "source_clause": "50만원 이하 분 5.0%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "0",
+              "min_inclusive": false,
+              "max_value": "500000",
+              "max_inclusive": true,
+              "source_text": "50만원 이하 분 5.0%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-0004-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.8",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-0004"
+        ],
+        "source_clause": "50만원 초과~500만원 이하 분 0.8%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "500000",
+              "min_inclusive": false,
+              "max_value": "5000000",
+              "max_inclusive": true,
+              "source_text": "50만원 초과~500만원 이하 분 0.8%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-0004-BASE-03",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-0004"
+        ],
+        "source_clause": "500만원 초과~5천만원 이하 분 0.1%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "5000000",
+              "min_inclusive": false,
+              "max_value": "50000000",
+              "max_inclusive": true,
+              "source_text": "500만원 초과~5천만원 이하 분 0.1%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-0004-BASE-04",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-0004"
+        ],
+        "source_clause": "5천만원 초과 분 1.0%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "50000000",
+              "min_inclusive": false,
+              "source_text": "5천만원 초과 분 1.0%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "PAYMENT.FOUR_MAJOR_PAY.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ],
+          "providers": [
+            "NAVER_PAY",
+            "KAKAO_PAY",
+            "PAYCO",
+            "TOSS"
+          ]
+        },
+        {
+          "fact_key": "CARD.DOMESTIC.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.OK_SAVINGS.ORDINARY_DEPOSIT_HELD",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "INST-KR-000783-3-0004-EVT-REGISTER",
+          "event_type": "ANY_QUALIFYING_PAYMENT_ACCOUNT_REGISTERED",
+          "effective_offset": {
+            "value": 2,
+            "unit": "CALENDAR_DAY"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000783-3-0004-EVT-ALL-REMOVE",
+          "event_type": "ALL_QUALIFYING_PAYMENT_ACCOUNT_REGISTRATIONS_REMOVED",
+          "effective_offset": {
+            "value": 3,
+            "unit": "CALENDAR_DAY"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000783-3-0004-PREF-01",
+          "title": "4대페이 또는 국내 카드 결제계좌 등록",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.FOUR_MAJOR_PAY.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CARD.DOMESTIC.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "50000000",
+                "max_inclusive": true
+              }
+            },
+            "activation": {
+              "trigger_event_ref": "INST-KR-000783-3-0004-EVT-REGISTER",
+              "effective_offset": {
+                "value": 2,
+                "unit": "CALENDAR_DAY"
+              }
+            },
+            "deactivation": {
+              "trigger_event_ref": "INST-KR-000783-3-0004-EVT-ALL-REMOVE",
+              "effective_offset": {
+                "value": 3,
+                "unit": "CALENDAR_DAY"
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ],
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        },
+        {
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-0004"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL_TRANCHE",
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-0004"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000783-3-0004"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000783-3-0004",
+        "product_name": "OK×피너츠공모파킹통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000783-3-0004",
+    "source_record_id": "8c0d0136dd0b4078ae40d13d6cd1d4bf",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 187,
+    "reviewed_source_record_id": "8c0d0136dd0b4078ae40d13d6cd1d4bf",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "CARD_PAY_REGISTRATION_OR_ISSUANCE_MISCLASSIFIED_AS_USAGE",
+      "ELIGIBILITY_HISTORY_CONDITION_UNSTRUCTURED",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "4대페이 등록 OR 국내 카드 결제계좌 등록을 카드사용 fact와 분리",
+      "등록일+2일 활성·전체해제일+3일 비활성 및 첫 5천만원 +2.0%p 구조화",
+      "OK 보통예금 미보유와 피너츠 앱 가입 prerequisite 보존"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-0004"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

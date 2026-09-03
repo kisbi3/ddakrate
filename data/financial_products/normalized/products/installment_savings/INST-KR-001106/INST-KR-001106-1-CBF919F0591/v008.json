@@ -1,0 +1,546 @@
+{
+  "product_code": "INST-KR-001106-1-CBF919F0591",
+  "version": 8,
+  "institution_id": "INST-KR-001106",
+  "name": "토스뱅크 키워봐요 31일적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명확인된 본인명의 토스뱅크 통장 또는 토스뱅크 아이 통장(이하 \"근거계좌\")을 보유한 7세 이상 실명의 개인\n※ 1인 1계좌에 한하여 가입 가능해요. 단, 토스뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설이 가능해요.",
+    "eligibility_text": "실명확인된 본인명의 토스뱅크 통장 또는 토스뱅크 아이 통장(이하 \"근거계좌\")을 보유한 7세 이상 실명의 개인\n※ 1인 1계좌에 한하여 가입 가능해요. 단, 토스뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설이 가능해요.",
+    "display_text": "실명확인된 본인명의 토스뱅크 통장 또는 토스뱅크 아이 통장(이하 \"근거계좌\")을 보유한 7세 이상 실명의 개인\n※ 1인 1계좌에 한하여 가입 가능해요. 단, 토스뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설이 가능해요.",
+    "source_ref_ids": [
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 31,
+    "source_expression": "31일(가입일부터 31일 동안 저금할 수 있어요.)",
+    "source_ref_ids": [
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+    ],
+    "representative_value": 31
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+    ],
+    "contribution_mode": "MULTI_OPTION",
+    "contribution_mode_options": [
+      "FIXED",
+      "FREE"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "5000",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "PER_DAY",
+        "max_count": 1
+      }
+    ],
+    "source_amount_text": "저금 한도 : 1일 최대 5,000원",
+    "source_contribution_text": "정액적립식, 자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "5000",
+        "currency": "KRW",
+        "source_expression": "5,000원",
+        "scope": "PER_DAY",
+        "role": "MAXIMUM",
+        "context": "저금 한도 : 1일 최대 5,000원"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001106-1-CBF919F0591-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "fixed_value": 31
+        },
+        "source_ref_ids": [
+          "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+          "type": "INTEGER",
+          "unit": "DAY",
+          "authority": "BANK_TRANSACTION_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-001106-1-CBF919F0591-PREF-01",
+          "title": "저금 성공일수에 따라 우대금리를 차등 지급",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                      }
+                    ],
+                    "unit": "DAY",
+                    "lower": 3,
+                    "upper": 7,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    }
+                  ]
+                },
+                "rate_value": "2",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "3일 저금 성공 시: 연 +2%",
+                "source_ref_ids": [
+                  "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                      }
+                    ],
+                    "unit": "DAY",
+                    "lower": 7,
+                    "upper": 14,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    }
+                  ]
+                },
+                "rate_value": "3",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "7일 저금 성공 시: 연 +3%",
+                "source_ref_ids": [
+                  "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                      }
+                    ],
+                    "unit": "DAY",
+                    "lower": 14,
+                    "upper": 21,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    }
+                  ]
+                },
+                "rate_value": "5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "14일 저금 성공 시: 연 +5%",
+                "source_ref_ids": [
+                  "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                      }
+                    ],
+                    "unit": "DAY",
+                    "lower": 21,
+                    "upper": 31,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    }
+                  ]
+                },
+                "rate_value": "7",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "21일 저금 성공 시: 연 +7%",
+                "source_ref_ids": [
+                  "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                      }
+                    ],
+                    "expected_value": 31,
+                    "unit": "DAY"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                    }
+                  ]
+                },
+                "rate_value": "9",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "31일 저금 성공 시: 연 +9%",
+                "source_ref_ids": [
+                  "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+              }
+            ],
+            "cap_value": "9"
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+              }
+            ],
+            "fact_authority": "APP_OR_DEVICE_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "저금 성공일수에 따라 우대금리를 차등 지급"
+          },
+          "source_ref_ids": [
+            "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            }
+          ],
+          "semantic_domain": "ACTIVITY_OR_MISSION",
+          "source_clause_text": "저금 성공일수에 따라 우대금리를 차등 지급\n• 3일 저금 성공 시: 연 +2%\n• 7일 저금 성공 시: 연 +3%\n• 14일 저금 성공 시: 연 +5%\n• 21일 저금 성공 시: 연 +7%\n• 31일 저금 성공 시: 연 +9%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-001106-1-CBF919F0591-PREF-01-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-001106-1-CBF919F0591-PREF-01"
+          ],
+          "selector_fact_key": "ACCOUNT.SUCCESSFUL_SAVING_DAY_COUNT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "9",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01",
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-RATE",
+      "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "9b0d2cbf7a3a59c7d56ae962849d2c13"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO",
+    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-RATE",
+    "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "9b0d2cbf7a3a59c7d56ae962849d2c13",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-9B0D2CBF7A3A59C7D56AE962849D2C13-RATE"
+      ]
+    }
+  ]
+}

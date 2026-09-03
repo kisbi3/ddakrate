@@ -1,0 +1,1385 @@
+{
+  "product_code": "INST-KR-000516-1-C2C780B5E93",
+  "version": 8,
+  "institution_id": "INST-KR-000516",
+  "name": "KB달리자적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-500F93712492954C845D89AAD16B1266-SALE"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 200000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 실명의 개인 (1인 1계좌 限)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입 불가",
+    "eligibility_text": "만 14세 이상 실명의 개인 (1인 1계좌 限)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입 불가",
+    "display_text": "만 14세 이상 실명의 개인 (1인 1계좌 限)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입 불가",
+    "source_ref_ids": [
+      "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지 입금 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지 입금 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-C2C780B5E93-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-500F93712492954C845D89AAD16B1266-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "rate_application_period": {
+          "start": "SUBSCRIPTION_DATE",
+          "end": "DAY_BEFORE_MATURITY"
+        },
+        "source_ref_ids": [
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "6.20",
+        "unit": "PERCENTAGE_POINT",
+        "scope": "DECLARED_PREFERENTIAL_EXCLUDING_VARIABLE_COUPON",
+        "source_ref_ids": [
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+          "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "KB.GROUP_ACCOUNT_MEMBER_COUNT_AT_REFERENCE_DATE",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "reference_date": "END_OF_MONTH_TWO_MONTHS_BEFORE_MATURITY",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.GROUP_ACCOUNT_ROLE_AT_REFERENCE_DATE",
+          "type": "ENUM",
+          "allowed_values": [
+            "ORGANIZER",
+            "MEMBER",
+            "NONE",
+            "UNKNOWN"
+          ],
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.OWN_KB_AUTO_TRANSFER_REGISTERED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.RUNNER_SERVICE_ENROLLED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.RUNNER_CONSENT_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "immutable_after_subscription": true,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.RUNNER_DISTANCE_KM",
+          "type": "DECIMAL",
+          "unit": "KM",
+          "repeated_dimension": {
+            "axis": "RUNNER_ASSESSMENT_PERIOD",
+            "count": 6,
+            "period_rule": "SUBSCRIPTION_DAY_TO_DAY_BEFORE_NEXT_MONTH_CORRESPONDING_DAY; IF_MISSING_USE_MONTH_END"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "GROUP_REPEATED_PERIODS",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.RUNNER_DISTANCE_CONFIRMED_IN_RATE_SCREEN",
+          "type": "BOOLEAN",
+          "repeated_dimension": {
+            "axis": "RUNNER_ASSESSMENT_PERIOD",
+            "count": 6
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "KB.RATE_COUPON_APPLIED_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "detail_id": "INST-KR-000516-1-C2C780B5E93-RUNNER-SERVICE",
+          "applies_to": [
+            "INST-KR-000516-1-C2C780B5E93-RUN-10K",
+            "INST-KR-000516-1-C2C780B5E93-RUN-HALF",
+            "INST-KR-000516-1-C2C780B5E93-RUN-FULL"
+          ],
+          "requirements": [
+            "달리자 서비스 가입",
+            "가입 시 선택 개인정보 동의",
+            "각 산정기간 내 금리확인 화면에서 거리/우대이율 최종 확인"
+          ],
+          "notes": [
+            "달리자 화면은 접속 기준 최근 72시간 이내 데이터만 반영되므로 업데이트 필요"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            }
+          ]
+        },
+        {
+          "detail_id": "INST-KR-000516-1-C2C780B5E93-COUPON-DETAIL",
+          "applies_to": [
+            "INST-KR-000516-1-C2C780B5E93-COUPON"
+          ],
+          "requirements": [
+            "신규 가입 시 금리우대쿠폰 적용"
+          ],
+          "notes": [
+            "쿠폰 적용방법·우대이율 값은 KB금융쿠폰 서비스 정의를 따름"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-C2C780B5E93-GROUP",
+          "title": "모임통장 우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "KB.GROUP_ACCOUNT_ROLE_AT_REFERENCE_DATE",
+                  "operator": "EQUALS",
+                  "expected_value": "ORGANIZER",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.GROUP_ACCOUNT_MEMBER_COUNT_AT_REFERENCE_DATE",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "basis": "CONTRACT_ACCRUED_RATE",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "모임통장 우대이율 (연 2.0%p) : 적금 만기 전전월 말일 기준 예금주가 KB모임통장 서비스에 가입(총무)되어 있고 해당 모임서비스에 참여한 모임원이 3명 이상(총무 포함)인 경우"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C2C780B5E93-RUN-10K",
+          "title": "10km 코스",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_KM",
+                  "operator": "GTE",
+                  "expected_value": "10",
+                  "unit": "KM",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_KM",
+                  "operator": "LT",
+                  "expected_value": "21",
+                  "unit": "KM",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_CONFIRMED_IN_RATE_SCREEN",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.30",
+            "unit": "PERCENTAGE_POINT",
+            "per": "RUNNER_ASSESSMENT_PERIOD",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "basis": "CONTRACT_ACCRUED_RATE",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "달리자 우대이율 (최고 연 4.2%p) : 1, 2 모두 충족 시 [금리확인] 화면에서 매월* 최종 확인된 우대이율을 합산하여 적용\n1 본인명의 KB국민은행 입출금통장에서 KB달리자적금으로 자동이체 등록\n2 KB스타뱅킹 「달리자」서비스의 달린 거리를 기준으로 매월* 달린 거리(km) 구간에 따른 우대이율을 적용\n- 10km코스 우대이율(연 0.3%p): 월 기준 누적거리 10km 이상~21km 미만 달성 시 제공\n- 하프코스 우대이율(연 0.5%p): 월 기준 누적거리 21km 이상~42km 미만 달성 시 제공\n- 풀코스 우대이율(연 0.7%p): 월 기준 누적거리 42km 이상 달성 시 제공\n※ [금리확인] 화면에서 대상 월별 기간동안 최종 확인된 달린 거리를 기준으로 적용되며, 기간 내 미확인시 기간 종료 후 우대이율 소급 적용 불가\n※ 고객별 달리자 우대이율 산정 기간은 KB달리자적금 [금리확인] 화면에서 확인 가능\n* 이달 가입일부터 다음달 가입일 전날까지이며, 가입일에 해당하는 날짜가 없는 경우 해당월 마지막 날짜를 가입일로 적용\n금리우대쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C2C780B5E93-RUN-HALF",
+          "title": "하프 코스",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_KM",
+                  "operator": "GTE",
+                  "expected_value": "21",
+                  "unit": "KM",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_KM",
+                  "operator": "LT",
+                  "expected_value": "42",
+                  "unit": "KM",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_CONFIRMED_IN_RATE_SCREEN",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "per": "RUNNER_ASSESSMENT_PERIOD",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "basis": "CONTRACT_ACCRUED_RATE",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "달리자 우대이율 (최고 연 4.2%p) : 1, 2 모두 충족 시 [금리확인] 화면에서 매월* 최종 확인된 우대이율을 합산하여 적용\n1 본인명의 KB국민은행 입출금통장에서 KB달리자적금으로 자동이체 등록\n2 KB스타뱅킹 「달리자」서비스의 달린 거리를 기준으로 매월* 달린 거리(km) 구간에 따른 우대이율을 적용\n- 10km코스 우대이율(연 0.3%p): 월 기준 누적거리 10km 이상~21km 미만 달성 시 제공\n- 하프코스 우대이율(연 0.5%p): 월 기준 누적거리 21km 이상~42km 미만 달성 시 제공\n- 풀코스 우대이율(연 0.7%p): 월 기준 누적거리 42km 이상 달성 시 제공\n※ [금리확인] 화면에서 대상 월별 기간동안 최종 확인된 달린 거리를 기준으로 적용되며, 기간 내 미확인시 기간 종료 후 우대이율 소급 적용 불가\n※ 고객별 달리자 우대이율 산정 기간은 KB달리자적금 [금리확인] 화면에서 확인 가능\n* 이달 가입일부터 다음달 가입일 전날까지이며, 가입일에 해당하는 날짜가 없는 경우 해당월 마지막 날짜를 가입일로 적용\n금리우대쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C2C780B5E93-RUN-FULL",
+          "title": "풀 코스",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_KM",
+                  "operator": "GTE",
+                  "expected_value": "42",
+                  "unit": "KM",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_DISTANCE_CONFIRMED_IN_RATE_SCREEN",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.70",
+            "unit": "PERCENTAGE_POINT",
+            "per": "RUNNER_ASSESSMENT_PERIOD",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "basis": "CONTRACT_ACCRUED_RATE",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "달리자 우대이율 (최고 연 4.2%p) : 1, 2 모두 충족 시 [금리확인] 화면에서 매월* 최종 확인된 우대이율을 합산하여 적용\n1 본인명의 KB국민은행 입출금통장에서 KB달리자적금으로 자동이체 등록\n2 KB스타뱅킹 「달리자」서비스의 달린 거리를 기준으로 매월* 달린 거리(km) 구간에 따른 우대이율을 적용\n- 10km코스 우대이율(연 0.3%p): 월 기준 누적거리 10km 이상~21km 미만 달성 시 제공\n- 하프코스 우대이율(연 0.5%p): 월 기준 누적거리 21km 이상~42km 미만 달성 시 제공\n- 풀코스 우대이율(연 0.7%p): 월 기준 누적거리 42km 이상 달성 시 제공\n※ [금리확인] 화면에서 대상 월별 기간동안 최종 확인된 달린 거리를 기준으로 적용되며, 기간 내 미확인시 기간 종료 후 우대이율 소급 적용 불가\n※ 고객별 달리자 우대이율 산정 기간은 KB달리자적금 [금리확인] 화면에서 확인 가능\n* 이달 가입일부터 다음달 가입일 전날까지이며, 가입일에 해당하는 날짜가 없는 경우 해당월 마지막 날짜를 가입일로 적용\n금리우대쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C2C780B5E93-COUPON",
+          "title": "금리우대쿠폰",
+          "condition": {
+            "predicate": {
+              "fact_key": "KB.RATE_COUPON_APPLIED_AT_SUBSCRIPTION",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "KB_FINANCIAL_COUPON_SERVICE",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "early_termination_eligible": false,
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "가입 시 금리우대쿠폰을 적용한 경우 최종이율에 쿠폰의 우대이율을 더함\n※ 금리우대쿠폰은 신규 시에만 사용 가능하며 중도해지 시 미적용\n※ 금리우대쿠폰의 적용방법 및 유의사항은 금리우대쿠폰에서 확인 가능하며 자세한 내용은 KB금융쿠폰 서비스에 따름"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000516-1-C2C780B5E93-REL-PERIOD-TIER",
+          "members": [
+            "INST-KR-000516-1-C2C780B5E93-RUN-10K",
+            "INST-KR-000516-1-C2C780B5E93-RUN-HALF",
+            "INST-KR-000516-1-C2C780B5E93-RUN-FULL"
+          ],
+          "selection_axis": "RUNNER_ASSESSMENT_PERIOD",
+          "select_exactly_one_matching_tier_per_period": true,
+          "gate_condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.OWN_KB_AUTO_TRANSFER_REGISTERED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_SERVICE_ENROLLED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "KB.RUNNER_CONSENT_AT_SUBSCRIPTION",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              }
+            ]
+          },
+          "gate_semantics": "ALL_MEMBER_TIERS_REQUIRE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            }
+          ],
+          "operator": "TIER_SELECT"
+        },
+        {
+          "relation_id": "INST-KR-000516-1-C2C780B5E93-REL-RUNNER-SIX",
+          "member_relation_id": "INST-KR-000516-1-C2C780B5E93-REL-PERIOD-TIER",
+          "repeat_count": 6,
+          "aggregation": "SUM_REWARDS_ACROSS_PERIODS",
+          "cap": {
+            "value": "4.20",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              }
+            ]
+          },
+          "application_scope": "CONTRACT_ACCRUED_RATE_NOT_PERIOD_CONTRIBUTION",
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ],
+          "operator": "CUMULATIVE"
+        },
+        {
+          "relation_id": "INST-KR-000516-1-C2C780B5E93-REL-DECLARED",
+          "members": [
+            "INST-KR-000516-1-C2C780B5E93-GROUP",
+            "INST-KR-000516-1-C2C780B5E93-REL-RUNNER-SIX"
+          ],
+          "cap": {
+            "value": "6.20",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+              "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ],
+          "operator": "SUM_WITH_CAP"
+        },
+        {
+          "relation_id": "INST-KR-000516-1-C2C780B5E93-REL-COUPON",
+          "members": [
+            "INST-KR-000516-1-C2C780B5E93-REL-DECLARED",
+            "INST-KR-000516-1-C2C780B5E93-COUPON"
+          ],
+          "note": "쿠폰 숫자값은 원문에 없어 고정 advertised max 산술에 임의 포함하지 않음",
+          "source_ref_ids": [
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+            "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+            }
+          ],
+          "operator": "INDEPENDENT"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01",
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02",
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03",
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04",
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-500F93712492954C845D89AAD16B1266-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-500F93712492954C845D89AAD16B1266-RATE",
+      "EVD-IS-500F93712492954C845D89AAD16B1266-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7.2",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "500f93712492954c845d89aad16b1266"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO",
+    "EVD-IS-500F93712492954C845D89AAD16B1266-RATE",
+    "EVD-IS-500F93712492954C845D89AAD16B1266-LISTING",
+    "EVD-IS-500F93712492954C845D89AAD16B1266-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "500f93712492954c845d89aad16b1266",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-500F93712492954C845D89AAD16B1266-SALE"
+      ]
+    }
+  ]
+}

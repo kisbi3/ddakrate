@@ -1,0 +1,177 @@
+{
+  "product_code": "INST-KR-000223-1-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK D-day적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "eligibility_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "display_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0001"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.35",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0001-01",
+        "title": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%",
+        "condition_text": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%\n* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함",
+        "structured_steps": [
+          "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%",
+          "* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%",
+          "summary_text": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%",
+          "detail_texts": [
+            "* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0001-02",
+        "title": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%",
+        "condition_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%\n• 실명등록일로부터 3개월 이내\n• 가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원",
+        "structured_steps": [
+          "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%",
+          "실명등록일로부터 3개월 이내",
+          "가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%",
+          "summary_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%",
+          "detail_texts": [
+            "실명등록일로부터 3개월 이내",
+            "가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "4.35",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-1-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-1-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.289371+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

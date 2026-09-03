@@ -1,0 +1,578 @@
+{
+  "product_code": "INST-KR-000753-1-C090FBB5358",
+  "version": 7,
+  "institution_id": "INST-KR-000753",
+  "name": "정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "",
+    "eligibility_text": "",
+    "display_text": "",
+    "source_ref_ids": [
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_expression": "6개월 이상 60개월 이하",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "source_amount_text": "1만원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1만원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000753-1-C090FBB5358-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000753-1-C090FBB5358-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000753-1-C090FBB5358-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000753-1-C090FBB5358-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 36,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000753-1-C090FBB5358-BASE-05",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 60
+        },
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "global_cap": {
+        "value": "2.4",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01",
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02",
+          "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000753_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "인터넷뱅킹, 모바일App, 모바일Web(하나디지털뱅크, 하나원큐연계), 비대면계좌개설서비스(SB톡톡)으로 적금 가입시 : 0.1%"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000753_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "사회적 배려 대상 고객 가입 시 (영업점에서 가입 가능)\n<적용조건> 1인 1계좌, 가입기간 12개월, 불입금액 최대 50만원 이내 가입 시\n<우대금리 적용대상> 장애인, 기초생활수급자, 한부모가족지원대상자, 차상위계층\n※ 가입 대상 확인을 위해 계좌 개설 시 증빙서류 제출 : 2.4%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000753-1-C090FBB5358-PREF-03",
+          "applies_to_rule_ids": [
+            "INST-KR-000753-1-C090FBB5358-PREF-03"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "사회적 배려 대상 고객 가입 시 (영업점에서 가입 가능)\n<적용조건> 1인 1계좌, 가입기간 12개월, 불입금액 최대 50만원 이내 가입 시\n<우대금리 적용대상> 장애인, 기초생활수급자, 한부모가족지원대상자, 차상위계층\n※ 가입 대상 확인을 위해 계좌 개설 시 증빙서류 제출 : 2.4%",
+          "accepted_documents": [
+            "증빙서류"
+          ],
+          "submission_channels": [
+            "BRANCH"
+          ],
+          "submission_deadline_source_expressions": [
+            "<적용조건> 1인 1계좌, 가입기간 12개월, 불입금액 최대 50만원 이내 가입 시"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000753-1-C090FBB5358-PREF-02",
+          "title": "인터넷뱅킹, 모바일App, 모바일Web(하나디지털뱅크, 하나원큐연계), 비대면계좌개설서비스(SB톡톡)으로 적금 가입시 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000753_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "인터넷뱅킹, 모바일App, 모바일Web(하나디지털뱅크, 하나원큐연계), 비대면계좌개설서비스(SB톡톡)으로 적금 가입시 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "인터넷뱅킹, 모바일App, 모바일Web(하나디지털뱅크, 하나원큐연계), 비대면계좌개설서비스(SB톡톡)으로 적금 가입시 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000753-1-C090FBB5358-PREF-03",
+          "title": "사회적 배려 대상 고객 가입 시 (영업점에서 가입 가능)",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000753_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "사회적 배려 대상 고객 가입 시 (영업점에서 가입 가능)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "사회적 배려 대상 고객 가입 시 (영업점에서 가입 가능)\n<적용조건> 1인 1계좌, 가입기간 12개월, 불입금액 최대 50만원 이내 가입 시\n<우대금리 적용대상> 장애인, 기초생활수급자, 한부모가족지원대상자, 차상위계층\n※ 가입 대상 확인을 위해 계좌 개설 시 증빙서류 제출 : 2.4%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000753-1-C090FBB5358-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000753-1-C090FBB5358-PREF-02",
+            "INST-KR-000753-1-C090FBB5358-PREF-03"
+          ],
+          "cap": {
+            "value": "2.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01",
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02",
+              "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01",
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02",
+            "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01",
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02",
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03",
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE",
+      "EVD-IS-493F52FDDEC09A85926BB77287D85E08-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "493f52fddec09a85926bb77287d85e08"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO",
+    "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE",
+    "EVD-IS-493F52FDDEC09A85926BB77287D85E08-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "493f52fddec09a85926bb77287d85e08",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      },
+      {
+        "path": "eligibility_policy",
+        "reason": "네이버 상품안내의 대상 문구가 비어 있음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-493F52FDDEC09A85926BB77287D85E08-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

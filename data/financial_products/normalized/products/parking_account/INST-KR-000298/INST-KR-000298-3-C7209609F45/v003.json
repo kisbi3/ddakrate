@@ -1,0 +1,288 @@
+{
+  "product_code": "INST-KR-000298-3-C7209609F45",
+  "version": 3,
+  "institution_id": "INST-KR-000298",
+  "name": "Fi 저축예금",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인\n- 대면 : 증빙서류 지참 필수/ 비대면 : SB톡톡+ 또는 다올디지털뱅크 Fi(파이) 다운로드",
+    "eligibility_text": "개인\n- 대면 : 증빙서류 지참 필수/ 비대면 : SB톡톡+ 또는 다올디지털뱅크 Fi(파이) 다운로드",
+    "display_text": "개인\n- 대면 : 증빙서류 지참 필수/ 비대면 : SB톡톡+ 또는 다올디지털뱅크 Fi(파이) 다운로드",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ],
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000298-3-C7209609F45-REL-44D1543981FA",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "- 제한 사항 : 계좌에 압류, 가압류,질권설정 등이 등록될 경우 원금 및 이자지급 제한, 예금잔액증명서 발급당일은 잔액변동 불가 등",
+        "fact_key": "SOURCE_RELATIONSHIP.44D1543981FA.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+        ]
+      }
+    ],
+    "history_requirements": [
+      {
+        "fact_key": "ACCOUNT_HISTORY.A85C728878FD.QUALIFIED",
+        "operator": "EQUALS",
+        "expected_value": true,
+        "lookback": {
+          "value": 20,
+          "unit": "BUSINESS_DAY"
+        },
+        "source_text": "- 최근 20영업일 이내 금융회사 수시입출금식예금을 개설한 경우 본 상품의 가입이 제한됩니다.",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000298-3-C7209609F45-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.80",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+        ],
+        "source_clause": "영업점 | 2.80%",
+        "condition_text": "영업점",
+        "structuring_status": "AMBIGUOUS_CONTEXT_DIMENSION",
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000298-3-C7209609F45-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.80",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+        ],
+        "source_clause": "비대면 (SB톡톡+) | 2.80%",
+        "condition_text": "비대면 (SB톡톡+)",
+        "structuring_status": "AMBIGUOUS_CONTEXT_DIMENSION",
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000298-3-C7209609F45-BASE-03",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.80",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+        ],
+        "source_clause": "비대면 (다올디지털뱅크 Fi(파이)) | 2.80%",
+        "condition_text": "비대면 (다올디지털뱅크 Fi(파이))",
+        "structuring_status": "AMBIGUOUS_CONTEXT_DIMENSION",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "매월 이자지급\n- 매월 셋째주 토요일을 결산기준일로 하여 결산기준일 익일에 원금에 가산\n- 최초예금일 또는 지난 원가일부터 결산기준일까지의 기간을 이자계산 기간으로 하며, 매일의 최종잔액에 대하여 금리 적용",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000298-3-C7209609F45-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "2.80",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000298-3-C7209609F45",
+    "source_record_id": "eff29a1a14a2cc87fc2aa270201e3172",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 120,
+    "reviewed_source_record_id": "eff29a1a14a2cc87fc2aa270201e3172",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000298-3-C7209609F45"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

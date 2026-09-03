@@ -1,0 +1,434 @@
+{
+  "product_code": "INST-KR-000055-3-C4471F68D18",
+  "version": 3,
+  "institution_id": "INST-KR-000055",
+  "name": "월급더하기",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 : 1인 1계좌",
+    "eligibility_text": "개인 : 1인 1계좌",
+    "display_text": "개인 : 1인 1계좌",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000055-3-C4471F68D18-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.200",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+        ],
+        "source_clause": "1일 이상 | 1.200%",
+        "applies_to": [
+          {
+            "basis": "ACCOUNT_AGE",
+            "range": {
+              "unit": "DAY",
+              "source_text": "1일 이상",
+              "min_value": "1",
+              "min_inclusive": true
+            }
+          }
+        ],
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED",
+      "global_application": {
+        "balance_gate": {
+          "predicate": {
+            "fact_key": "ACCOUNT.END_OF_DAY_BALANCE",
+            "operator": "LTE",
+            "expected_value": 50000000
+          }
+        },
+        "when_balance_exceeds_gate": "NO_PREFERENTIAL_RATE_ON_ANY_BALANCE",
+        "initial_unconditional_window": "SUBSCRIPTION_CALENDAR_MONTH",
+        "normal_fact_window": "QUALIFICATION_CALENDAR_MONTH",
+        "normal_reward_window": "NEXT_CALENDAR_MONTH"
+      },
+      "global_cap": {
+        "value": "1.5",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.END_OF_DAY_BALANCE",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "ACCOUNT.QUALIFYING_INCOME_TRANSFER_EVENT_COUNT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ],
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000055-3-C4471F68D18-INCOME-TRANSFER"
+        },
+        {
+          "fact_key": "ACCOUNT.QUALIFYING_CMS_GIRO_DEBIT_EVENT_COUNT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ],
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000055-3-C4471F68D18-CMS-GIRO"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EV-INST-KR-000055-3-C4471F68D18-INCOME-TRANSFER",
+          "event_type": "INCOME_TRANSFER",
+          "origin_institution_scope": "OTHER_FINANCIAL_INSTITUTION",
+          "destination_scope": "THIS_ACCOUNT",
+          "amount_threshold": {
+            "operator": "GTE",
+            "value": "1000000",
+            "unit": "KRW",
+            "scope": "PER_EVENT"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        },
+        {
+          "event_id": "EV-INST-KR-000055-3-C4471F68D18-CMS-GIRO",
+          "event_type": "AUTOMATIC_BILL_PAYMENT",
+          "qualifying_rails": [
+            "CMS",
+            "GIRO"
+          ],
+          "destination_or_debit_account_scope": "THIS_ACCOUNT",
+          "examples": [
+            "INSURANCE_PREMIUM",
+            "CARD_BILL"
+          ],
+          "excluded_types": [
+            "INTRA_BANK_ACCOUNT_TO_ACCOUNT_AUTOMATIC_TRANSFER"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000055-3-C4471F68D18-PREF-INCOME",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.END_OF_DAY_BALANCE",
+                  "operator": "LTE",
+                  "expected_value": 50000000
+                }
+              },
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "calendar_month_relation": "SUBSCRIPTION_MONTH"
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.QUALIFYING_INCOME_TRANSFER_EVENT_COUNT",
+                      "operator": "GTE",
+                      "expected_value": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "principal_scope": {
+              "basis": "WHOLE_BALANCE"
+            },
+            "reward_window": "NEXT_CALENDAR_MONTH_EXCEPT_SUBSCRIPTION_MONTH_IMMEDIATE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000055-3-C4471F68D18-PREF-CMS-GIRO",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.END_OF_DAY_BALANCE",
+                  "operator": "LTE",
+                  "expected_value": 50000000
+                }
+              },
+              {
+                "operator": "OR",
+                "operands": [
+                  {
+                    "calendar_month_relation": "SUBSCRIPTION_MONTH"
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.QUALIFYING_CMS_GIRO_DEBIT_EVENT_COUNT",
+                      "operator": "GTE",
+                      "expected_value": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "principal_scope": {
+              "basis": "WHOLE_BALANCE"
+            },
+            "reward_window": "NEXT_CALENDAR_MONTH_EXCEPT_SUBSCRIPTION_MONTH_IMMEDIATE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000055-3-C4471F68D18-REL-TOTAL",
+          "type": "SUM_WITH_CAP",
+          "rule_ids": [
+            "INST-KR-000055-3-C4471F68D18-PREF-INCOME",
+            "INST-KR-000055-3-C4471F68D18-PREF-CMS-GIRO"
+          ],
+          "cap": {
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "매월 세번째 금요일 결산기준일로 하여 다음날 원금에 가산(기준일이 휴일인경우, 해당일)\n결산기준일 익일부터 결산기준일까지의 기간을 이자계산 기간으로 하고, 매일 최종잔액에 대하여 영업점 및 인터넷 홈페이지에 고시한 이율로 계산",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000055-3-C4471F68D18-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "2.70",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000055-3-C4471F68D18",
+    "source_record_id": "e11871d79e05bed8540c158005d54ef2",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "resolved_audit_findings": [
+      "CMS_GIRO_FACT_MISCLASSIFIED_AS_CARD_USAGE",
+      "CONDITION_MONTH_TO_NEXT_MONTH_TIMING_UNSTRUCTURED"
+    ],
+    "review_sequence": 23,
+    "reviewed_source_record_id": "e11871d79e05bed8540c158005d54ef2",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4471F68D18"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

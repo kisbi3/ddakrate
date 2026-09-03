@@ -1,0 +1,857 @@
+{
+  "product_code": "INST-KR-000252-1-0001",
+  "version": 8,
+  "institution_id": "INST-KR-000252",
+  "name": "부자씨 적금\n네이버 페이",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "매월 1원 이상~50만원 이하(원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 1원 이상~50만원 이하(원 단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 1원 이상~50만원 이하(원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "2.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05",
+          "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000252_1_0001_PREF_02.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-0001-PREF-02-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+          ],
+          "authority": "BANK_OR_APP_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%"
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규가입시 금리우대쿠폰을 적용한 경우, 쿠폰의 우대금리를 추가로 제공합니다. (단, 중도해지시 미적용)"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000252-1-0001-PREF-02-QUALIFYING",
+          "event_type": "APP_LOGIN",
+          "qualifying_definition": {
+            "source_text": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-0001-PREF-02",
+          "title": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000252_1_0001_PREF_02.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0001-PREF-03",
+          "title": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.6",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0001-PREF-04",
+          "title": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0001-PREF-05",
+          "title": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-0001-PREF-06",
+          "title": "신규가입시 금리우대쿠폰을 적용한 경우, 쿠폰의 우대금리를 추가로 제공합니다. (단, 중도해지시 미적용)",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규가입시 금리우대쿠폰을 적용한 경우, 쿠폰의 우대금리를 추가로 제공합니다. (단, 중도해지시 미적용)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "신규가입시 금리우대쿠폰을 적용한 경우, 쿠폰의 우대금리를 추가로 제공합니다. (단, 중도해지시 미적용)"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000252-1-0001-PREF-02-SOURCE",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000252-1-0001-PREF-02"
+          ],
+          "component_source_rows": [],
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000252-1-0001-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000252-1-0001-PREF-02",
+            "INST-KR-000252-1-0001-PREF-03",
+            "INST-KR-000252-1-0001-PREF-04",
+            "INST-KR-000252-1-0001-PREF-05",
+            "INST-KR-000252-1-0001-PREF-06"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01",
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02",
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03",
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04",
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05",
+              "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01",
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02",
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03",
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04",
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05",
+            "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06",
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-RATE",
+      "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d6ee61c080ccc0fae6223c904553cce1"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO",
+    "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-RATE",
+    "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "d6ee61c080ccc0fae6223c904553cce1",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-D6EE61C080CCC0FAE6223C904553CCE1-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

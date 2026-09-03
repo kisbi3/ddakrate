@@ -1,0 +1,362 @@
+{
+  "product_code": "INST-KR-000046-1-C8488CAEE21",
+  "version": 7,
+  "institution_id": "INST-KR-000046",
+  "name": "더쿠폰적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-08-24",
+      "end_date": "2026-10-24",
+      "end_inclusive": true
+    },
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 (1인 1좌) 이벤트 기간 내 iM뱅크 앱 첫 로그인 고객",
+    "eligibility_text": "개인 (1인 1좌) 이벤트 기간 내 iM뱅크 앱 첫 로그인 고객",
+    "display_text": "개인 (1인 1좌) 이벤트 기간 내 iM뱅크 앱 첫 로그인 고객",
+    "source_ref_ids": [
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "200000"
+      }
+    ],
+    "source_amount_text": "월 1천원 이상 20만원이하",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상 20만원이하"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상 20만원이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000046-1-C8488CAEE21-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "5.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "PROMOTION_COUPON.AMOUNT.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다.",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000046_1_C8488CAEE21-INST_KR_000046_1_C8488-SOURCE_CLAUSE_INST_KR_000046_1",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000046-1-C8488CAEE21-PREF-01-QUALIFYING",
+          "event_type": "PROMOTION_COUPON_ISSUED_OR_APPLIED",
+          "qualifying_definition": {
+            "source_text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다.",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다.",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000046_1_C8488CAEE21-INST_KR_000046_1_C8488-SOURCE_CLAUSE_INST_KR_000046_1",
+          "source_ref_ids": [
+            "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "PROMOTION_COUPON_ISSUED_OR_APPLIED",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다.",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000046-1-C8488CAEE21-PREF-01",
+          "title": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.AMOUNT.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "11",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "- 기간 중 금리 쿠폰을 다운 받아 더쿠폰적금 가입 후 약정한 모든 회차의 월 입금액을 입금하고, 만기까지 유지한 경우에만 연 11% 적금 금리가 자동 적용됩니다.\n- 쿠폰 미발급자는 본 적금 가입이 불가합니다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01",
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-RATE",
+      "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "11",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "f62f646879f9737e16d0bf7a88a77a26"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO",
+    "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-RATE",
+    "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-LISTING",
+    "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "f62f646879f9737e16d0bf7a88a77a26",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-F62F646879F9737E16D0BF7A88A77A26-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

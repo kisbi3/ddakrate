@@ -1,0 +1,377 @@
+{
+  "product_code": "INST-KR-000252-3-C55460DB506",
+  "version": 3,
+  "institution_id": "INST-KR-000252",
+  "name": "(지역장려금) 하나통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "해당 지자체에서 가입대상자로 확인한 만14세 이상 만40세 이하 실명의 개인 및 개인사업자\n(지자체의 각 사업별로 1인 1계좌 가입 가능)",
+    "eligibility_text": "해당 지자체에서 가입대상자로 확인한 만14세 이상 만40세 이하 실명의 개인 및 개인사업자\n(지자체의 각 사업별로 1인 1계좌 가입 가능)",
+    "display_text": "해당 지자체에서 가입대상자로 확인한 만14세 이상 만40세 이하 실명의 개인 및 개인사업자\n(지자체의 각 사업별로 1인 1계좌 가입 가능)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14,
+      "max_age": 40,
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE"
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000252-3-C55460DB506-REL-FFF7030CF556",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "• 상품가입 후 만42세 이후 첫번째 도래하는 결산일에 [주거래 하나통장]으로 자동 전환됩니다. 단, [주거래 하나통장]을 보유하고 있는 경우에는 [저축예금]으로 자동전환 됩니다. 전환된 이후에는 전환된 상품의 우대서비스 및 혜택만 제공합니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.FFF7030CF556.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-3-C55460DB506-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+        ],
+        "source_clause": "기본금리 0.100%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.HANA_QUALIFYING_SALARY_TRANSFER_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+          ],
+          "minimum_monthly_amount": 500000
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.PARTNER_LOCAL_GOVERNMENT_GRANT_FIRST_DEPOSIT_DATE",
+          "data_type": "DATE",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-3-C55460DB506-PREF-01",
+          "title": "전월 급여이체",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.HANA_QUALIFYING_SALARY_TRANSFER_PREVIOUS_MONTH",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000252-3-C55460DB506-PREF-02",
+          "title": "협약 지자체 장려금 최초 입금",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.PARTNER_LOCAL_GOVERNMENT_GRANT_FIRST_DEPOSIT_DATE",
+              "operator": "IS_KNOWN",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "RELATIVE_DURATION_FROM_FACT",
+              "anchor_fact_key": "ACCOUNT.THIS.PARTNER_LOCAL_GOVERNMENT_GRANT_FIRST_DEPOSIT_DATE",
+              "duration": {
+                "value": 6,
+                "unit": "MONTH"
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "2.4",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "• 이자결산일: 매월 세번째 금요일\n• 이자지급(원가)일 : 매월 세번째 금요일의 다음 영업일",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000252-3-C55460DB506-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "BUSINESS_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000252-3-C55460DB506",
+    "source_record_id": "c8b63fc77b041ca8dea2f83081ed6f56",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 102,
+    "reviewed_source_record_id": "c8b63fc77b041ca8dea2f83081ed6f56",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "AGE_MAX_MISMATCH_SECOND_PASS",
+      "AGE_RANGE_MISMATCH",
+      "GRANT_FIRST_DEPOSIT_SIX_MONTH_WINDOW_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "장려금 최초 입금일부터 6개월 +1.0%p window 컴파일",
+      "전월 급여 +1.4%p와 합산 cap 2.4%p 및 첫 200만원 scope 보존"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000252-3-C55460DB506"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

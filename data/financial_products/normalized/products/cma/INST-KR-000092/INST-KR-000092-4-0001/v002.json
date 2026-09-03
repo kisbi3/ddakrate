@@ -1,0 +1,234 @@
+{
+  "product_code": "INST-KR-000092-4-0001",
+  "version": 2,
+  "institution_id": "INST-KR-000092",
+  "name": "W-CMA통장 (RP형)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829",
+      "EVD-CMA-OFFICIAL-YUANTA-RP-20260827"
+    ],
+    "subscription_method_disclosure": "최초 거래자: 스마트 계좌 개설 전용 앱, 지점 방문\n기존 거래자(동양증권 포함): 스마트 계좌 개설 전용 앱, 티레이더 앱, 홈페이지, 지점 방문",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "CORPORATION"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_RP_LOT_ELAPSED_TERM",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000092-4-0001-1-30",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.60",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829",
+          "EVD-CMA-OFFICIAL-YUANTA-RP-20260827"
+        ],
+        "as_of": "2026-08-28",
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "DAY",
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_value": "1",
+              "max_value": "30"
+            }
+          }
+        ],
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829",
+      "EVD-CMA-OFFICIAL-YUANTA-RP-20260827"
+    ],
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 30,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829",
+        "EVD-CMA-OFFICIAL-YUANTA-RP-20260827"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1"
+    },
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829",
+        "EVD-CMA-OFFICIAL-YUANTA-RP-20260827"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000092-4-0001",
+    "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "publication_gate": "READY",
+    "data_gaps": [
+      {
+        "input_line": 16,
+        "product_code": "INST-KR-000092-4-0001",
+        "product_name": "W-CMA통장 (RP형)",
+        "source_priority": "NAVER_PRIMARY",
+        "path": "return_policy.advertised_max_rate",
+        "reason": "네이버 CMA 카드 표시 수익률을 계약상 최고수익률로 승격하지 않음; listing_snapshot에서만 보존",
+        "status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000092-4-0001"
+        ],
+        "usage_impact": "NO_ADVERTISED_MAX_RANKING"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "usage_restrictions": [
+      "NO_NAVER_LISTING_RATE_AS_CONTRACT_MAX"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000092/INST-KR-000092-4-0001/v001.json",
+    "previous_sha256": "sha256:eb47dfcd78ab8f7e3b45c470aa409380a2e31455e2ad8ddfe46255d40c43c75d",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "EXPLICIT_NONOVERLAP"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 30,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL",
+            "CORPORATION"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  },
+  "fee_policy": {
+    "disclosure_text": "이체 수수료 혜택\n\n1. 급여이체 등록시 온라인 은행이체 수수료 무료 : 급여이체 등록 계좌 중 해당 월 1회 50만원 이상 입금실적이 있는 W-CMA통장의 온라인 은행이체 수수료를 면제해드립니다.\n2. 신용카드 대금 등 공과금 자동납부시 온라인 은행이체 수수료 무료(당사 계좌 이용시) : 당사 계좌로 신용카드대금, 보험료, 지로자동이체, 아파트관리비 자동이체 등 공과금 자동납부 실적발생 시 익일부터 익월 말까지 해당 계좌의 온라인 은행이체수수료를 면제해 드립니다.(은행가상계좌 실적 제외)\n3. W-CMA통장 월평잔 500만원 이상 계좌의 온라인 은행이체 수수료 무료 : W-CMA통장의 순수 CMA 또는 예수금 월평잔 500만원 이상 시 익월 한 달간 온라인 은행이체수수료를 면제해드립니다.\n4. 적립식펀드(랩) 10만원 이상 자동이체시 온라인 은행이체수수료 무료 (일부 펀드(랩) 제외) : W-CMA 통장에서 적립식 펀드(랩) 계좌로 월 10만원 이상 자동이체 시, W-CMA통장의 온라인 이체수수료를 면제해드립니다.(일부 상품 제외)\n5. 법인 직원 급여계좌 등록 시 온라인 은행이체 수수료 무료 : 법인 계좌(자금 담당자가 급여자금을 입금할 계좌) 등록 후 직원 W-CMA통장으로 급여이체시 해당 직원 W-CMA통장의 온라인 은행이체 수수료를 면제해 드립니다.\n\nCD/ATM기 수수료 혜택\n\n자동화기기 이용수수료 무료\n1. 편의점\n-CU, 세븐일레븐 편의점에 설치된 NICE CD기에서 언제나 수수료 없이 출금\n※ NICE 간판 및 유안타증권 전용서비스 버튼을 꼭 확인 후 이용하세요.\n2. 유안타 ATM\n-유안타증권 지점에 설치된 ATM은 당연히 무료! 입금/출금/당행이체/통장정리",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829"
+    ],
+    "disclosure_semantics": "STRUCTURED_CONDITIONAL_WAIVER_WITH_SOURCE_DISCLOSURE",
+    "waiver_policies": [
+      {"waiver_id":"YUANTA-WCMA-SALARY","fee_type":"ONLINE_BANK_TRANSFER","relation":"AND","conditions":[{"fact_key":"ACCOUNT.SALARY_TRANSFER_REGISTERED","operator":"EQUALS","expected_value":true},{"fact_key":"ACCOUNT.MONTHLY_SINGLE_SALARY_DEPOSIT","operator":"GTE","expected_value":"500000","unit":"KRW"}]},
+      {"waiver_id":"YUANTA-WCMA-AUTOPAY","fee_type":"ONLINE_BANK_TRANSFER","fact_key":"ACCOUNT.QUALIFYING_UTILITY_AUTOPAY_OCCURRED","operator":"EQUALS","expected_value":true,"qualifying_types":["CREDIT_CARD_BILL","INSURANCE_PREMIUM","GIRO","APARTMENT_MANAGEMENT_FEE"],"excluded_types":["BANK_VIRTUAL_ACCOUNT"],"benefit_window":{"start":"DAY_AFTER_OCCURRENCE","end":"END_OF_FOLLOWING_MONTH"}},
+      {"waiver_id":"YUANTA-WCMA-BALANCE","fee_type":"ONLINE_BANK_TRANSFER","fact_key":"ACCOUNT.MONTHLY_AVERAGE_CMA_OR_CASH_BALANCE","operator":"GTE","expected_value":"5000000","unit":"KRW","benefit_period":"FOLLOWING_MONTH"},
+      {"waiver_id":"YUANTA-WCMA-FUND-WRAP","fee_type":"ONLINE_BANK_TRANSFER","fact_key":"ACCOUNT.MONTHLY_AUTO_TRANSFER_TO_ELIGIBLE_INSTALLMENT_FUND_OR_WRAP","operator":"GTE","expected_value":"100000","unit":"KRW","excluded_products":"SOME_PRODUCTS_AS_PROVIDER_LIST"},
+      {"waiver_id":"YUANTA-WCMA-CORPORATE-PAYROLL","fee_type":"ONLINE_BANK_TRANSFER","relation":"AND","conditions":[{"fact_key":"EMPLOYER.PAYROLL_FUNDING_ACCOUNT_REGISTERED","operator":"EQUALS","expected_value":true},{"fact_key":"ACCOUNT.EMPLOYEE_SALARY_RECEIVED_FROM_REGISTERED_CORPORATE_ACCOUNT","operator":"EQUALS","expected_value":true}]}
+    ],
+    "atm_benefits": [
+      {"network":"NICE_AT_CU_OR_SEVEN_ELEVEN","transaction":"WITHDRAWAL","fee":"FREE","availability":"ALWAYS","requirements":["NICE_SIGNAGE","YUANTA_DEDICATED_SERVICE_BUTTON"]},
+      {"network":"YUANTA_BRANCH_ATM","transactions":["DEPOSIT","WITHDRAWAL","INTERNAL_TRANSFER","PASSBOOK_UPDATE"],"fee":"FREE"}
+    ],
+    "structured_source_ref_ids": ["EVD-CMA-LIVE-NAVER-INST-KR-000092-4-0001-20260829"]
+  }
+}

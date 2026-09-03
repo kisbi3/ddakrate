@@ -1,0 +1,737 @@
+{
+  "product_code": "INST-KR-000516-1-C537E8D80DB",
+  "version": 8,
+  "institution_id": "INST-KR-000516",
+  "name": "KB카드쓰담적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-519749311786087B2BBE79473B90B785-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2026-08-21",
+      "end_date": "2027-08-17",
+      "end_inclusive": true
+    },
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입불가",
+    "eligibility_text": "실명의 개인(1인 1계좌)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입불가",
+    "display_text": "실명의 개인(1인 1계좌)\n※ 개인사업자, 임의단체(서류 미제출 임의단체 포함), 공동명의 가입불가",
+    "source_ref_ids": [
+      "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지 입금 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하 (원 단위)\n※ 매월 첫 날부터 마지막 날까지 자유롭게 저축(만기일 전날까지 입금 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-C537E8D80DB-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-519749311786087B2BBE79473B90B785-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01",
+          "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02",
+          "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03",
+          "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "type": "NUMBER",
+          "unit": "KRW",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신용카드 우대금리 (연 6.0%p)\n적금 신규일의 전월 말 기준 직전 6개월 KB국민 개인 신용카드 결제 실적이 없는 고객이 다음 조건을 모두 충족한 경우\n- 적금 신규월의 첫날부터 2개월이 경과한 달의 말일까지 KB국민 개인 신용카드로 합산 10만원 이상 결제*\n- 적금 만기일 기준 3영업일 전까지 KB국민은행을 통해 신청하여 발급**한 KB국민 개인 신용카드 보유 및 국민은행 결제계좌 이용\n* 카드 결제 실적은 본인 회원 기준(가족카드, KB국민비씨카드 결제금액 포함)이며 연회비, 연체료, 각종 수수료 및 이자, 장기카드대출, 상품권 및 선불카드 구입/충전금액 등은 제외\n** 국민은행 지점 및 모바일브랜치(휴대폰 URL발송), 태블릿브랜치, KB스타뱅킹, 리브똑똑, ATM 간편발급을 모두 포함",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000516_1_C537E8D80DB-INST_KR_000516_1_C537E-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000516-1-C537E8D80DB-PREF-03-QUALIFYING",
+          "event_type": "SUBSCRIPTION_OR_ACCOUNT_AMOUNT_RECORDED",
+          "qualifying_definition": {
+            "source_text": "평균액 우대금리 (최고 연2.0%p)\n신규금액 출금계좌*의 월 평균잔액**이\n- 50만원 이상인 월이 한 번 이상 있는 경우 연 1.0%p\n- 100만원 이상인 월이 한 번 이상 있는 경우 연 2.0%p\n* 적금 가입 시 신규금액을 출금한 예금주 명의의 ‘입출금이 자유로운 예금’으로 이 계좌의 거래실적을 기준으로 평균잔액 우대금리를 제공\n** 해당월 1일부터 마지막 날까지 매일 통장의 최종 잔액을 합산하여 해당월의 일수로 나눈 금액"
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "평균액 우대금리 (최고 연2.0%p)\n신규금액 출금계좌*의 월 평균잔액**이\n- 50만원 이상인 월이 한 번 이상 있는 경우 연 1.0%p\n- 100만원 이상인 월이 한 번 이상 있는 경우 연 2.0%p\n* 적금 가입 시 신규금액을 출금한 예금주 명의의 ‘입출금이 자유로운 예금’으로 이 계좌의 거래실적을 기준으로 평균잔액 우대금리를 제공\n** 해당월 1일부터 마지막 날까지 매일 통장의 최종 잔액을 합산하여 해당월의 일수로 나눈 금액"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "평균액 우대금리 (최고 연2.0%p)\n신규금액 출금계좌*의 월 평균잔액**이\n- 50만원 이상인 월이 한 번 이상 있는 경우 연 1.0%p\n- 100만원 이상인 월이 한 번 이상 있는 경우 연 2.0%p\n* 적금 가입 시 신규금액을 출금한 예금주 명의의 ‘입출금이 자유로운 예금’으로 이 계좌의 거래실적을 기준으로 평균잔액 우대금리를 제공\n** 해당월 1일부터 마지막 날까지 매일 통장의 최종 잔액을 합산하여 해당월의 일수로 나눈 금액",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000516_1_C537E8D80DB-INST_KR_000516_1_C537E-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "신용카드 우대금리 (연 6.0%p)\n적금 신규일의 전월 말 기준 직전 6개월 KB국민 개인 신용카드 결제 실적이 없는 고객이 다음 조건을 모두 충족한 경우\n- 적금 신규월의 첫날부터 2개월이 경과한 달의 말일까지 KB국민 개인 신용카드로 합산 10만원 이상 결제*\n- 적금 만기일 기준 3영업일 전까지 KB국민은행을 통해 신청하여 발급**한 KB국민 개인 신용카드 보유 및 국민은행 결제계좌 이용\n* 카드 결제 실적은 본인 회원 기준(가족카드, KB국민비씨카드 결제금액 포함)이며 연회비, 연체료, 각종 수수료 및 이자, 장기카드대출, 상품권 및 선불카드 구입/충전금액 등은 제외\n** 국민은행 지점 및 모바일브랜치(휴대폰 URL발송), 태블릿브랜치, KB스타뱅킹, 리브똑똑, ATM 간편발급을 모두 포함",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_MONTH",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000516-1-C537E8D80DB-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000516-1-C537E8D80DB-PREF-02"
+          ],
+          "required_actions": [
+            "COMPLETE_APPLICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "신용카드 우대금리 (연 6.0%p)\n적금 신규일의 전월 말 기준 직전 6개월 KB국민 개인 신용카드 결제 실적이 없는 고객이 다음 조건을 모두 충족한 경우\n- 적금 신규월의 첫날부터 2개월이 경과한 달의 말일까지 KB국민 개인 신용카드로 합산 10만원 이상 결제*\n- 적금 만기일 기준 3영업일 전까지 KB국민은행을 통해 신청하여 발급**한 KB국민 개인 신용카드 보유 및 국민은행 결제계좌 이용\n* 카드 결제 실적은 본인 회원 기준(가족카드, KB국민비씨카드 결제금액 포함)이며 연회비, 연체료, 각종 수수료 및 이자, 장기카드대출, 상품권 및 선불카드 구입/충전금액 등은 제외\n** 국민은행 지점 및 모바일브랜치(휴대폰 URL발송), 태블릿브랜치, KB스타뱅킹, 리브똑똑, ATM 간편발급을 모두 포함",
+          "submission_deadline_source_expressions": [
+            "- 적금 신규월의 첫날부터 2개월이 경과한 달의 말일까지 KB국민 개인 신용카드로 합산 10만원 이상 결제*",
+            "- 적금 만기일 기준 3영업일 전까지 KB국민은행을 통해 신청하여 발급**한 KB국민 개인 신용카드 보유 및 국민은행 결제계좌"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "만기일 기준 3영업일 전까지"
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-C537E8D80DB-PREF-02",
+          "title": "신용카드 우대금리 (연 6.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "6.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신용카드 우대금리 (연 6.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신용카드 우대금리 (연 6.0%p)\n적금 신규일의 전월 말 기준 직전 6개월 KB국민 개인 신용카드 결제 실적이 없는 고객이 다음 조건을 모두 충족한 경우\n- 적금 신규월의 첫날부터 2개월이 경과한 달의 말일까지 KB국민 개인 신용카드로 합산 10만원 이상 결제*\n- 적금 만기일 기준 3영업일 전까지 KB국민은행을 통해 신청하여 발급**한 KB국민 개인 신용카드 보유 및 국민은행 결제계좌 이용\n* 카드 결제 실적은 본인 회원 기준(가족카드, KB국민비씨카드 결제금액 포함)이며 연회비, 연체료, 각종 수수료 및 이자, 장기카드대출, 상품권 및 선불카드 구입/충전금액 등은 제외\n** 국민은행 지점 및 모바일브랜치(휴대폰 URL발송), 태블릿브랜치, KB스타뱅킹, 리브똑똑, ATM 간편발급을 모두 포함"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C537E8D80DB-PREF-03",
+          "title": "평균액 우대금리 (최고 연2.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+                    "operator": "GTE",
+                    "expected_value": 500000,
+                    "unit": "KRW"
+                  }
+                },
+                "rate_value": "1",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "50만원 이상인 월이 한 번 이상 있는 경우 연 1.0%p"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+                    "operator": "GTE",
+                    "expected_value": 1000000,
+                    "unit": "KRW"
+                  }
+                },
+                "rate_value": "2",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "100만원 이상인 월이 한 번 이상 있는 경우 연 2.0%p"
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+              }
+            ],
+            "cap_value": "2.0"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "평균액 우대금리 (최고 연2.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            }
+          ],
+          "semantic_domain": "SUBSCRIPTION_OR_ACCOUNT_AMOUNT",
+          "source_clause_text": "평균액 우대금리 (최고 연2.0%p)\n신규금액 출금계좌*의 월 평균잔액**이\n- 50만원 이상인 월이 한 번 이상 있는 경우 연 1.0%p\n- 100만원 이상인 월이 한 번 이상 있는 경우 연 2.0%p\n* 적금 가입 시 신규금액을 출금한 예금주 명의의 ‘입출금이 자유로운 예금’으로 이 계좌의 거래실적을 기준으로 평균잔액 우대금리를 제공\n** 해당월 1일부터 마지막 날까지 매일 통장의 최종 잔액을 합산하여 해당월의 일수로 나눈 금액"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-C537E8D80DB-PREF-04",
+          "title": "급여 첫거래 우대금리 (연 2.0%p)",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "급여 첫거래 우대금리 (연 2.0%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "급여 첫거래 우대금리 (연 2.0%p)\n최근 1년 동안(1년전 적금 가입 해당일~가입 전일) 급여 입금 실적이 없는 고객이 KB국민은행으로부터 급여를 한 번 이상 받은 경우"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000516-1-C537E8D80DB-PREF-02-SOURCE",
+          "operator": "ALL_OR_NOTHING",
+          "member_rule_ids": [
+            "INST-KR-000516-1-C537E8D80DB-PREF-02"
+          ],
+          "component_source_rows": [],
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000516-1-C537E8D80DB-PREF-03-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000516-1-C537E8D80DB-PREF-03"
+          ],
+          "selector_fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "2.0",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03",
+            "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01",
+        "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02",
+        "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03",
+        "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04",
+        "EVD-IS-519749311786087B2BBE79473B90B785-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-519749311786087B2BBE79473B90B785-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-519749311786087B2BBE79473B90B785-RATE",
+      "EVD-IS-519749311786087B2BBE79473B90B785-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "12",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "519749311786087b2bbe79473b90b785"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO",
+    "EVD-IS-519749311786087B2BBE79473B90B785-RATE",
+    "EVD-IS-519749311786087B2BBE79473B90B785-LISTING",
+    "EVD-IS-519749311786087B2BBE79473B90B785-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "519749311786087b2bbe79473b90b785",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-519749311786087B2BBE79473B90B785-SALE"
+      ]
+    }
+  ]
+}

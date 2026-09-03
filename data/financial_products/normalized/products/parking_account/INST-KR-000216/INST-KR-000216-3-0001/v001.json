@@ -1,0 +1,229 @@
+{
+  "product_code": "INST-KR-000216-3-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000216",
+  "name": "탐나는전 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)\n탐나는전 플랫폼 회원가입이 되어 있는 실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)\n탐나는전 플랫폼 회원가입이 되어 있는 실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)\n탐나는전 플랫폼 회원가입이 되어 있는 실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 60,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-3-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.10",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-3-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-3-0001-02",
+        "title": "잔액유지 우대이자율",
+        "condition_text": "잔액유지 우대이자율\n매일의 최종 예금잔액 중 해당구간에 대해 우대이자율 적용\n- 1백만원 초과～5백만원 이하 : 1.20%\n- 5백만원 초과 ~１천만원 이하 : 1.40%",
+        "structured_steps": [
+          "잔액유지 우대이자율",
+          "매일의 최종 예금잔액 중 해당구간에 대해 우대이자율 적용",
+          "- 1백만원 초과～5백만원 이하 : 1.20%",
+          "- 5백만원 초과 ~１천만원 이하 : 1.40%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.40",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "잔액유지 우대이자율",
+          "summary_text": "잔액유지 우대이자율",
+          "detail_texts": [
+            "매일의 최종 예금잔액 중 해당구간에 대해 우대이자율 적용",
+            "- 1백만원 초과～5백만원 이하 : 1.20%",
+            "- 5백만원 초과 ~１천만원 이하 : 1.40%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.40",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-3-0001-03",
+        "title": "요건충족 우대이자율",
+        "condition_text": "요건충족 우대이자율\n* 요건 충족한 달의 다음 달부터 적용\n- 마케팅 수신 동의 : 0.50% 우대이자율 적용\n* 문자(SMS/카카오톡)필수, 앱푸쉬/이메일/전화/우편 중 하나 이상 동의\n- 탐나는전 충전 월 1회 이상 : 1.00% 우대이자율 적용\n* ‘탐나는전 파킹통장’으로 충전거래 시 인정",
+        "structured_steps": [
+          "요건충족 우대이자율",
+          "* 요건 충족한 달의 다음 달부터 적용",
+          "- 마케팅 수신 동의 : 0.50% 우대이자율 적용",
+          "* 문자(SMS/카카오톡)필수, 앱푸쉬/이메일/전화/우편 중 하나 이상 동의",
+          "- 탐나는전 충전 월 1회 이상 : 1.00% 우대이자율 적용",
+          "* ‘탐나는전 파킹통장’으로 충전거래 시 인정"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.00",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "요건충족 우대이자율",
+          "summary_text": "요건충족 우대이자율",
+          "detail_texts": [
+            "* 요건 충족한 달의 다음 달부터 적용",
+            "- 마케팅 수신 동의 : 0.50% 우대이자율 적용",
+            "* 문자(SMS/카카오톡)필수, 앱푸쉬/이메일/전화/우편 중 하나 이상 동의",
+            "- 탐나는전 충전 월 1회 이상 : 1.00% 우대이자율 적용",
+            "* ‘탐나는전 파킹통장’으로 충전거래 시 인정"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-3-0001-04",
+        "title": "이벤트 우대이자율",
+        "condition_text": "이벤트 우대이자율\n매일의 최종 예금잔액 중 해당 구간에 대해 우대이자율 적용\n- 1백만원 이하 : 2.90%\n- 1백만원 초과～5백만원 이하 : 1.20%\n- 5백만원 초과 ~１천만원 이하 : 0.50%\n- 이벤트 기간 : 가입일～2026.12.31. 까지\n* 이벤트 기간 종료 후 우대이자율 자동 종료",
+        "structured_steps": [
+          "이벤트 우대이자율",
+          "매일의 최종 예금잔액 중 해당 구간에 대해 우대이자율 적용",
+          "- 1백만원 이하 : 2.90%",
+          "- 1백만원 초과～5백만원 이하 : 1.20%",
+          "- 5백만원 초과 ~１천만원 이하 : 0.50%",
+          "- 이벤트 기간 : 가입일～2026.12.31. 까지",
+          "* 이벤트 기간 종료 후 우대이자율 자동 종료"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.50",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이벤트 우대이자율",
+          "summary_text": "이벤트 우대이자율",
+          "detail_texts": [
+            "매일의 최종 예금잔액 중 해당 구간에 대해 우대이자율 적용",
+            "- 1백만원 이하 : 2.90%",
+            "- 1백만원 초과～5백만원 이하 : 1.20%",
+            "- 5백만원 초과 ~１천만원 이하 : 0.50%",
+            "- 이벤트 기간 : 가입일～2026.12.31. 까지",
+            "* 이벤트 기간 종료 후 우대이자율 자동 종료"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "4.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000216-3-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000216-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.440136+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

@@ -1,0 +1,1580 @@
+{
+  "product_code": "INST-KR-000796-2-C886E13CD10",
+  "version": 3,
+  "institution_id": "INST-KR-000796",
+  "name": "더프라임에이지예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP",
+      "INTERNET"
+    ],
+    "subscription_channel_source_text": "영업점, 스마트뱅킹, 인터넷뱅킹"
+  },
+  "eligibility_policy": {
+    "raw_text": "만 50세 이상인 실명의 개인",
+    "eligibility_text": "만 50세 이상인 실명의 개인",
+    "display_text": "만 50세 이상인 실명의 개인",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 50
+    }
+  },
+  "term_policy": {
+    "source_text": "1년 이상 3년 이하 월단위 또는 일단위",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "selection_units": [
+      "DAY",
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM",
+    "min_value": 12,
+    "max_value": 36,
+    "min_inclusive": true,
+    "max_inclusive": true
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ],
+    "source_amount_text": "5백만원 이상 1억원 이하 원단위 (1인당 최고 가입한도 1억원 이하)",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "5000000",
+        "currency": "KRW",
+        "max_value": "100000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.53",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.13",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-01-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.03",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-01-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.33",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-01-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.23",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-02-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-02-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-02-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.96",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-03-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.86",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-03-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.16",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-CTX-03-04",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.06",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.13",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.03",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.33",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.23",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년이상 2년미만",
+          "raw_cell": "3.130% 3.030% 3.330% 3.230%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "1년이상 2년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-007",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-008",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "2년이상 3년미만",
+          "raw_cell": "3.000% 2.900% 3.200% 3.100%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "2년이상 3년미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-009",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.96",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-010",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.86",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-011",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.16",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C886E13CD10-BASE-012",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.06",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "3년이상",
+          "raw_cell": "2.960% 2.860% 3.160% 3.060%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)",
+          "column_index": 3
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ],
+        "source_rate_row_text": "3년이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)\n1년이상 2년미만\n3.130% 3.030% 3.330% 3.230%\n2년이상 3년미만\n3.000% 2.900% 3.200% 3.100%\n3년이상\n2.960% 2.860% 3.160% 3.060%",
+      "header_lines": [
+        "기본 금리",
+        "기간 만기일시지급식 월이자지급식 만기일시지급식 (온라인 가입시) 월이자지급식 (온라인 가입시)"
+      ],
+      "rows": [
+        {
+          "term_text": "1년이상 2년미만",
+          "cell_lines": [
+            "3.130% 3.030% 3.330% 3.230%"
+          ],
+          "rate_values": [
+            "3.13",
+            "3.03",
+            "3.33",
+            "3.23"
+          ]
+        },
+        {
+          "term_text": "2년이상 3년미만",
+          "cell_lines": [
+            "3.000% 2.900% 3.200% 3.100%"
+          ],
+          "rate_values": [
+            "3",
+            "2.9",
+            "3.2",
+            "3.1"
+          ]
+        },
+        {
+          "term_text": "3년이상",
+          "cell_lines": [
+            "2.960% 2.860% 3.160% 3.060%"
+          ],
+          "rate_values": [
+            "2.96",
+            "2.86",
+            "3.16",
+            "3.06"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "BRANCH"
+        },
+        {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "BRANCH"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "channel": "ONLINE"
+        },
+        {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "channel": "ONLINE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B01-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "definition_text": "「4대연금(국민연금, 공무원연금, 사학연금, 군인연금)」수급실적이 있는 고객 : 연 0.10% - 이 예금 신규가입일 또는 예금만기일 3개월 전까지 당행으로 연금수급계좌를 지정하고, 4대 연금 수급권자의 확인을 위해 관련 증빙서류를 은행에 제출한 경우에 한합니다. - 4대연금 수급실적 산정기간은 연금수급계좌 지정일로부터 이 예금만기일 전전월말까지 연금수급실적이 확인되는 경우에 적용합니다."
+        },
+        {
+          "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "value_type": "NUMBER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "unit": "KRW",
+          "definition_text": "「요구불예금」평균잔액에 의한 우대금리 : 최고 연 0.10%p - 요구불예금 평균잔액이 500만원 이상인 경우 : 연 0.05%p"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B03-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n*이벤트 조건은 이벤트기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됩니다.",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ]
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B04-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.\n*‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됩니다.",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "「4대연금(국민연금, 공무원연금, 사학연금, 군인연금)」수급실적이 있는 고객 : 연 0.10%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B01-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "「4대연금(국민연금, 공무원연금, 사학연금, 군인연금)」수급실적이 있는 고객 : 연 0.10%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "evidence": [
+            {
+              "text": "「4대연금(국민연금, 공무원연금, 사학연금, 군인연금)」수급실적이 있는 고객 : 연 0.10%\n- 이 예금 신규가입일 또는 예금만기일 3개월 전까지 당행으로 연금수급계좌를 지정하고, 4대 연금 수급권자의 확인을 위해 관련 증빙서류를 은행에 제출한 경우에 한합니다.\n- 4대연금 수급실적 산정기간은 연금수급계좌 지정일로부터 이 예금만기일 전전월말까지 연금수급실적이 확인되는 경우에 적용합니다."
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "- 요구불예금 평균잔액이 500만원 이상인 경우 : 연 0.05%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+              "operator": "GTE",
+              "expected_value": "5000000",
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "- 요구불예금 평균잔액이 500만원 이상인 경우 : 연 0.05%p",
+            "reward_text": "+0.05%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "evidence": [
+            {
+              "text": "「요구불예금」평균잔액에 의한 우대금리 : 최고 연 0.10%p\n- 요구불예금 평균잔액이 500만원 이상인 경우 : 연 0.05%p"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-02",
+          "title": "- 요구불예금 평균잔액이 1,000만원 이상인 경우 : 연 0.10%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+              "operator": "GTE",
+              "expected_value": "10000000",
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "- 요구불예금 평균잔액이 1,000만원 이상인 경우 : 연 0.10%p",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "evidence": [
+            {
+              "text": "「요구불예금」평균잔액에 의한 우대금리 : 최고 연 0.10%p\n- 요구불예금 평균잔액이 1,000만원 이상인 경우 : 연 0.10%p"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B03-01",
+          "title": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B03-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "EXTERNAL_POSTED_RATE",
+            "value": null,
+            "unit": "PERCENTAGE_POINT",
+            "value_status": "EXTERNAL_SOURCE_REQUIRED"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다."
+          },
+          "structuring_status": "REQUIRES_EXTERNAL_VALUE",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "evidence": [
+            {
+              "text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n*이벤트 조건은 이벤트기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됩니다."
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B04-01",
+          "title": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C886E13CD10.PREF-B04-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value": null,
+            "unit": "PERCENTAGE_POINT",
+            "value_status": "EXTERNAL_SOURCE_REQUIRED"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다."
+          },
+          "structuring_status": "REQUIRES_EXTERNAL_VALUE",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "evidence": [
+            {
+              "text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.\n*‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됩니다."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-B02",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B02-01",
+            "PREF-B02-02"
+          ],
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "cap": {
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          }
+        },
+        {
+          "relation_id": "REL-TOTAL-PREFERENTIAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B01-01",
+            "PREF-B03-01",
+            "PREF-B04-01"
+          ],
+          "cap": {
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+          ],
+          "child_relation_ids": [
+            "REL-B02"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ],
+      "structuring_status": "PARTIAL_EXTERNAL_DEPENDENCY",
+      "global_cap": {
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "만기일시지급식으로 1천만원 이상 가입한 고객 중 만기해지 시점에 예금잔액이 1천만원 이상이며, 아래의 조건을 충족하는 만기해지의 경우에 한하여 계좌단위로 최고 연 0.20%p의 우대금리를 제공합니다."
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ],
+    "listing_base_rate_reference": {
+      "value": "3.13",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "3.53",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    "interest_payment_policy": {
+      "contexts": [
+        {
+          "context_id": "MATURITY_PAYMENT_BRANCH",
+          "payment_timing": "MATURITY"
+        },
+        {
+          "context_id": "MONTHLY_PAYMENT_BRANCH",
+          "payment_timing": "MONTHLY"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT_ONLINE",
+          "payment_timing": "MATURITY"
+        },
+        {
+          "context_id": "MONTHLY_PAYMENT_ONLINE",
+          "payment_timing": "MONTHLY"
+        }
+      ],
+      "multiple_contexts": true,
+      "default_context_id": "MATURITY_PAYMENT_BRANCH",
+      "default_context_derivation": "LISTING_BASE_VALUE_MATCH"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02T00:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "field": "return_policy.preferential_policy.rules.PREF-B03-01",
+        "code": "REQUIRES_EXTERNAL_VALUE",
+        "reason_code": "REQUIRES_EXTERNAL_VALUE",
+        "message": "광주은행 이벤트 조건 결과에 따른 추가 우대금리는 이벤트기간 중 홈페이지에 게시되는 외부 결정값으로 원문에 숫자가 없어 추정하지 않음",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ]
+      },
+      {
+        "field": "return_policy.preferential_policy.rules.PREF-B04-01",
+        "code": "REQUIRES_EXTERNAL_VALUE",
+        "reason_code": "REQUIRES_EXTERNAL_VALUE",
+        "message": "우대금리쿠폰에 기재된 조건/이율은 쿠폰별 외부 결정값으로 원문에 숫자가 없어 추정하지 않음",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ]
+      },
+      {
+        "field": "liquidity_policy.early_termination_policy.rate_basis",
+        "code": "UNSPECIFIED_IN_SOURCE",
+        "reason_code": "UNSPECIFIED_IN_SOURCE",
+        "message": "중도해지금리·만기후금리·자동재예치 세부율이 Naver 원문에 미기재되어 canonical 수치를 채우지 않음",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ]
+      },
+      {
+        "field": "official_research",
+        "code": "OFFICIAL_PRODUCT_DETAIL_UNAVAILABLE",
+        "reason_code": "OFFICIAL_PRODUCT_DETAIL_UNAVAILABLE",
+        "message": "작업 범위상 외부 공식 조회 미수행(v002/지정 raw 라인만 열람). 공식 상세로 해소해야 할 항목을 명시적 gap으로 표기",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+        ]
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "data_gaps": [
+    {
+      "field": "return_policy.preferential_policy.rules.PREF-B03-01",
+      "code": "REQUIRES_EXTERNAL_VALUE",
+      "reason_code": "REQUIRES_EXTERNAL_VALUE",
+      "message": "광주은행 이벤트 조건 결과에 따른 추가 우대금리는 이벤트기간 중 홈페이지에 게시되는 외부 결정값으로 원문에 숫자가 없어 추정하지 않음",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    {
+      "field": "return_policy.preferential_policy.rules.PREF-B04-01",
+      "code": "REQUIRES_EXTERNAL_VALUE",
+      "reason_code": "REQUIRES_EXTERNAL_VALUE",
+      "message": "우대금리쿠폰에 기재된 조건/이율은 쿠폰별 외부 결정값으로 원문에 숫자가 없어 추정하지 않음",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    {
+      "field": "liquidity_policy.early_termination_policy.rate_basis",
+      "code": "UNSPECIFIED_IN_SOURCE",
+      "reason_code": "UNSPECIFIED_IN_SOURCE",
+      "message": "중도해지금리·만기후금리·자동재예치 세부율이 Naver 원문에 미기재되어 canonical 수치를 채우지 않음",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    {
+      "field": "official_research",
+      "code": "OFFICIAL_PRODUCT_DETAIL_UNAVAILABLE",
+      "reason_code": "OFFICIAL_PRODUCT_DETAIL_UNAVAILABLE",
+      "message": "작업 범위상 외부 공식 조회 미수행(v002/지정 raw 라인만 열람). 공식 상세로 해소해야 할 항목을 명시적 gap으로 표기",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    }
+  ],
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MATURITY_PAYMENT",
+        "payment_timing": "MATURITY",
+        "compounding": "SIMPLE",
+        "source_text": "① 만기일시지급식 : 만기(후) 또는 중도해지 요청시 이자를 지급합니다."
+      },
+      {
+        "context_id": "MONTHLY_PAYMENT",
+        "payment_timing": "MONTHLY",
+        "compounding": "SIMPLE",
+        "source_text": "② 월이자지급식 : 매월 신규가입일 해당일에 이자를 분할하여 지급하는 방식으로 지급일이 공휴일인 경우에는 직전 영업일에 지급하고, 해당일이 없는 경우에는 그 월의 말일에 지급합니다."
+      }
+    ],
+    "multiple_contexts": true,
+    "selection": {
+      "at_signup": true,
+      "changeable_after_signup": false,
+      "source_text": "가입시 만기일시지급식, 월이자지급식 중에서 선택하며, 중도에 변경할 수 없습니다."
+    },
+    "default_context_id": "MATURITY_PAYMENT",
+    "default_context_derivation": "LISTING_BASE_VALUE_MATCH",
+    "source_text": "가입시 만기일시지급식, 월이자지급식 중에서 선택하며, 중도에 변경할 수 없습니다.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "이 예금은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 \"1억원까지\"(광주은행의 여타 보호상품과 합산) 보호됩니다.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "basis": "RATE_POSTED_AT_ORIGIN",
+      "rate_basis": "UNSPECIFIED_IN_SOURCE",
+      "source_text": "만기 전 해지할 경우 약정한 금리보다 낮은 중도해지금리가 적용됩니다. 우대금리는 만기해지 계좌에 한하여 지급합니다. 월이자지급식 계좌의 경우 중도해지 시 지급이자와 중도해지금리를 적용한 중도해지이자 차액을 원금에서 차감하여 지급합니다.",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    "after_maturity_policy": {
+      "basis": "NOT_STATED",
+      "rate_basis": "UNSPECIFIED_IN_SOURCE",
+      "source_text": "만기(후) 이자 지급만 명시되고 만기후 적용이율 세부값은 Naver 원문 미기재",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    "renewal_policy": {
+      "mode": "NOT_STATED",
+      "source_text": "자동재예치(자동재가입) 세부조건은 Naver 원문 미기재. 지급제한 사유 시 만기자동해지 불가라는 제약만 존재.",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+      ]
+    },
+    "partial_withdrawal": {
+      "allowed": false,
+      "source_text": "이 예금은 계약기간 변경 및 계좌분할이 불가합니다."
+    },
+    "account_split": {
+      "allowed": false,
+      "source_text": "이 예금은 계약기간 변경 및 계좌분할이 불가합니다."
+    },
+    "term_change": {
+      "allowed": false,
+      "source_text": "이 예금은 계약기간 변경 및 계좌분할이 불가합니다."
+    },
+    "maturity_options": [
+      "MANUAL_CLOSE",
+      "AUTO_CLOSE_RESTRICTED"
+    ],
+    "maturity_auto_close_restriction": {
+      "source_text": "압류, 담보설정, 주의코드 설정 등 지급제한 사유가 있는 경우에는 만기자동해지가 불가하며, 예금을 양수도 하는 경우 만기자동해지 서비스는 자동 해제됩니다."
+    },
+    "source_text": "유의사항의 유동성 관련 제약(중도해지금리·계좌분할/계약기간변경 불가·만기자동해지 제한) 구조화",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C886E13CD10"
+    ]
+  }
+}

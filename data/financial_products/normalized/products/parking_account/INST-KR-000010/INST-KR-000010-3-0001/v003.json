@@ -1,0 +1,494 @@
+{
+  "product_code": "INST-KR-000010-3-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000010",
+  "name": "BNK 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ],
+    "campaigns": [
+      {
+        "campaign_id": "INST-KR-000010-3-0001-SPECIAL-SALE-2024-2026",
+        "kind": "SPECIAL_SALE",
+        "enrollment_window": {
+          "start": "2024-05-29",
+          "end": "2026-12-31",
+          "end_inclusive": true
+        },
+        "capacity": {
+          "value": 40000,
+          "unit": "ACCOUNT"
+        },
+        "early_termination_when_capacity_exhausted": true,
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ]
+      }
+    ],
+    "special_sale": true,
+    "sale_period": {
+      "start": "2024-05-29",
+      "end": "2026-12-31",
+      "end_inclusive": true,
+      "source_text": "(금리) 기본이율 포함된 최종잔액 금액구간 5천만원 이하에 대하여 적용이율 연 2.30%에 이벤트이율 연 0.70% 적용시 최고 연 3.00% 금리제공\n(조건) 이벤트기간 동안 은행마케팅 모바일메세지 수신동의 고객의 최종잔액이 5천만원 이하인 금액에 대하여 상품가입일부터 3개월간 이벤트이율 제공\n판매기간 : 2024.05.29 ~ 2026.12.31\n판매한도 : 4만좌 (한도소진시 조기종료)\n전화 문의\n공식홈에서 더 알아보기"
+    },
+    "quantity_limit": {
+      "max_count": 40000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "4만좌"
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "경남은행 첫거래 개인고객 (1인 1계좌)\n※ 첫거래고객: 상품 가입 당일 경남은행 입출금계좌를 미보유한 만 17세 이상인 국민인 거주자(거래중지계좌만 보유 또는 거래종료 고객 포함)",
+    "eligibility_text": "경남은행 첫거래 개인고객 (1인 1계좌)\n※ 첫거래고객: 상품 가입 당일 경남은행 입출금계좌를 미보유한 만 17세 이상인 국민인 거주자(거래중지계좌만 보유 또는 거래종료 고객 포함)",
+    "display_text": "경남은행 첫거래 개인고객 (1인 1계좌)\n※ 첫거래고객: 상품 가입 당일 경남은행 입출금계좌를 미보유한 만 17세 이상인 국민인 거주자(거래중지계좌만 보유 또는 거래종료 고객 포함)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ],
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 17
+    },
+    "nationality_scope": "KOREAN_ONLY",
+    "residency_scope": "RESIDENT_ONLY",
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000010-3-0001-REL-2DD05B9DA7C8",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "※ 첫거래고객: 상품 가입 당일 경남은행 입출금계좌를 미보유한 만 17세 이상인 국민인 거주자(거래중지계좌만 보유 또는 거래종료 고객 포함)",
+        "fact_key": "SOURCE_RELATIONSHIP.2DD05B9DA7C8.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ]
+      }
+    ],
+    "history_requirements": [
+      {
+        "fact_key": "ACCOUNT_HISTORY.46B008F928AF.QUALIFIED",
+        "operator": "EQUALS",
+        "expected_value": true,
+        "lookback": {
+          "value": 20,
+          "unit": "BUSINESS_DAY"
+        },
+        "source_text": "▪ 이 상품은 '금융거래 한도 제한계좌'로 개설되며, 최근 20영업일 이내 금융기관에서 입출금 계좌 개설 기록이 있는 경우 계좌 개설이 불가할 수 있습니다.",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.30",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ],
+        "source_clause": "5천만원 이하 | 2.30%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하",
+              "max_value": "50000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000010-3-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.00",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ],
+        "source_clause": "5천만원 초과 ~ 1억원 이하 | 2.00%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과 ~ 1억원 이하",
+              "min_value": "50000000",
+              "min_inclusive": false,
+              "max_value": "100000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000010-3-0001-BASE-03",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.01",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-0001"
+        ],
+        "source_clause": "1억원 초과 | 0.01%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "1억원 초과",
+              "min_value": "100000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED",
+      "global_application": {
+        "campaign_enrollment_window": {
+          "start": "2024-05-29",
+          "end": "2026-12-31",
+          "end_inclusive": true
+        },
+        "condition_evaluation_events": [
+          "MONTHLY_INTEREST_SETTLEMENT",
+          "ACCOUNT_TERMINATION"
+        ]
+      },
+      "global_cap": {
+        "value": "0.70",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CONSENT.BNK_MARKETING_DATA_COLLECTION_USE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-0001"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.BNK_MOBILE_MESSAGE_RECEIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-0001"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-3-0001-PREF-01",
+          "title": "마케팅 수집·이용 및 모바일메시지 수신 동의",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.BNK_MARKETING_DATA_COLLECTION_USE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.BNK_MOBILE_MESSAGE_RECEIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.70",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "principal_scope": {
+              "basis": "BALANCE",
+              "range": {
+                "unit": "KRW",
+                "currency": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "50000000",
+                "max_inclusive": true,
+                "source_text": "5천만원 이하 금액"
+              },
+              "method": "CAPPED_PORTION",
+              "source_text": "5천만원 이하 금액"
+            },
+            "effective_window": {
+              "relative_to": "ACCOUNT_OPEN_DATE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 3,
+                "unit": "MONTH",
+                "inclusive": false
+              }
+            },
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-0001"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ],
+    "interest_crediting": {
+      "raw_text": "이자는 이자계산기준일에 셈하여 매월 원가일에 원금에 더합니다.\n▪ 원가일: 이자계산기준일에 이은 첫 영업일\n▪ 이자계산 기준일: 매월 둘째 토요일(토요일이 공휴일인 경우 그 직전 영업일)\n▪ 이자계산 기간: 최초 예금일(또는 지난 이자계산기준일 다음날) ~ 이자계산기준일",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000010-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 2,
+              "weekday": "SATURDAY"
+            },
+            "reference_day_holiday_adjustment": "PREVIOUS_BUSINESS_DAY",
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER",
+      "CAPPED_PORTION"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE_TIER",
+    "advertised_max_rate": {
+      "value": "3.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000010-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000010-3-0001",
+        "product_name": "BNK 파킹통장",
+        "path": "return_policy.interest_accrual.formula",
+        "reason": "원문은 이자계산기간과 결산일을 제시하지만 일별 기준잔액/day-count 산식은 명시하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000010-3-0001",
+    "source_record_id": "ef452122331e3a65214cad7d7b0cb4b5",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_HISTORY_CONDITION_UNSTRUCTURED",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "EXPLICIT_REWARD_LEFT_NON_EXECUTABLE_SECOND_PASS",
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "SPECIAL_SALE_WINDOW_UNSTRUCTURED"
+    ],
+    "review_sequence": 1,
+    "reviewed_source_record_id": "ef452122331e3a65214cad7d7b0cb4b5",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

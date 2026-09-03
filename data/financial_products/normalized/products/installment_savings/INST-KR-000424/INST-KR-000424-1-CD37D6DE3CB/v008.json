@@ -1,0 +1,830 @@
+{
+  "product_code": "INST-KR-000424-1-CD37D6DE3CB",
+  "version": 8,
+  "institution_id": "INST-KR-000424",
+  "name": "우리은행 장병내일준비적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "현역병(육군·해군·공군·해병대), 상근예비역, 의무경찰, 해양의무경찰, 의무소방대원, 사회복무요원, 대체복무요원 중 아래 조건을 모두 충족하는 고객(금융회사별 1인 1계좌)\n(1) 이 적금 신규일 기준 남은 의무복무기간이 1개월 이상\n(2) 장병내일준비적금 가입 자격확인서",
+    "eligibility_text": "현역병(육군·해군·공군·해병대), 상근예비역, 의무경찰, 해양의무경찰, 의무소방대원, 사회복무요원, 대체복무요원 중 아래 조건을 모두 충족하는 고객(금융회사별 1인 1계좌)\n(1) 이 적금 신규일 기준 남은 의무복무기간이 1개월 이상\n(2) 장병내일준비적금 가입 자격확인서",
+    "display_text": "현역병(육군·해군·공군·해병대), 상근예비역, 의무경찰, 해양의무경찰, 의무소방대원, 사회복무요원, 대체복무요원 중 아래 조건을 모두 충족하는 고객(금융회사별 1인 1계좌)\n(1) 이 적금 신규일 기준 남은 의무복무기간이 1개월 이상\n(2) 장병내일준비적금 가입 자격확인서",
+    "source_ref_ids": [
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 24,
+    "source_expression": "1개월 ~ 24개월 이내 가입 시점에 일단위로 지정\n☞ 적금 만기일은 가입 고객의 전역(또는 소집해제) 예정일\n계약기간은 변경 불가",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 24,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "0",
+        "max_value": "300000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "300000",
+        "fixed_value": "550000",
+        "period_basis": "CALENDAR_MONTH"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "550000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "0원 ~ 300,000원\n고객이 설정한 은행별 비과세 저축한도 범위 내에서 매월 30만원 이하 금액을 자유롭게 적립 (금융회사별)\n장병내일준비적금 상품을 가입 할 수 있는 모든 은행의 한도를 합산하여 매월 55만원 범위 내 적립 가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "0원 ~ 300,000원\n고객이 설정한 은행별 비과세 저축한도 범위 내에서 매월 30만원 이하 금액을"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "300,000원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "0원 ~ 300,000원\n고객이 설정한 은행별 비과세 저축한도 범위 내에서 매월 30만원 이하 금액을 자유롭게 적립 (금융"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "0원 ~ 300,000원\n고객이 설정한 은행별 비과세 저축한도 범위 내에서 매월 30만원 이하 금액을 자유롭게 적립 (금융회사별)\n장병내일준비적금 상품을 가입 할 수 있는 모든 은행의 한"
+      },
+      {
+        "value": "550000",
+        "currency": "KRW",
+        "source_expression": "55만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "게 적립 (금융회사별)\n장병내일준비적금 상품을 가입 할 수 있는 모든 은행의 한도를 합산하여 매월 55만원 범위 내 적립 가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-CD37D6DE3CB-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000424-1-CD37D6DE3CB-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000424-1-CD37D6DE3CB-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 15,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000424-1-CD37D6DE3CB-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "5.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 15,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01",
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02",
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03",
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04",
+          "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.AGE",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "YEAR",
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_MONTHS.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "우리은행 상품ᆞ서비스 마케팅 동의항목 중 전화(휴대폰), SMS 항목 중 하나 이상을 동의한 후 만기 해지시점까지 유지 : 0.2%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000424-1-CD37D6DE3CB-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000424-1-CD37D6DE3CB-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%"
+          },
+          "structuring_status": "AMBIGUOUS"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-1-CD37D6DE3CB-PREF-02",
+          "title": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "우리은행 입출식 계좌에서 매월 자동이체를 통해 실적 인정 기간(신규월 및 만기월을 제외한 가입기간)의 1/2 기간 이상 이 적금으로 적립 : 0.4%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-CD37D6DE3CB-PREF-03",
+          "title": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_MONTHS.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "실적 인정 기간(신규월 및 만기월을 제외한 가입기간) 동안 우리은행 입출식 계좌에서 우리카드사 신용/체크카드 결제금액이 매월 출금된 실적 보유 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-CD37D6DE3CB-PREF-04",
+          "title": "이 적금의 신규시점(이 상품의 신규월)에 우리은행에서 가입한 「주택청약종합저축」, 「우리아이행복 주택청약종합저축」, 「청년 주택드림 청약통장」(구 청년 우대형 주택청약종합저축) 상품 보유 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.AGE",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금의 신규시점(이 상품의 신규월)에 우리은행에서 가입한 「주택청약종합저축」, 「우리아이행복 주택청약종합저축」, 「청년 주택드림 청약통장」(구 청년 우대형 주택청약종합저축) 상품 보유 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "이 적금의 신규시점(이 상품의 신규월)에 우리은행에서 가입한 「주택청약종합저축」, 「우리아이행복 주택청약종합저축」, 「청년 주택드림 청약통장」(구 청년 우대형 주택청약종합저축) 상품 보유 시\n: 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-CD37D6DE3CB-PREF-05",
+          "title": "우리은행 상품ㆍ서비스 마케팅 동의항목 중 전화(휴대폰), SMS 항목 중 하나 이상을 동의한 후 만기 해지시점까지 유지 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "우리은행 상품ㆍ서비스 마케팅 동의항목 중 전화(휴대폰), SMS 항목 중 하나 이상을 동의한 후 만기 해지시점까지 유지 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "우리은행 상품ᆞ서비스 마케팅 동의항목 중 전화(휴대폰), SMS 항목 중 하나 이상을 동의한 후 만기 해지시점까지 유지 : 0.2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "0.4",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04",
+            "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01",
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02",
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03",
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04",
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05",
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE",
+      "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c6b0ad1c4ba7dc2c801d701ba9813d48"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO",
+    "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE",
+    "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c6b0ad1c4ba7dc2c801d701ba9813d48",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-C6B0AD1C4BA7DC2C801D701BA9813D48-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

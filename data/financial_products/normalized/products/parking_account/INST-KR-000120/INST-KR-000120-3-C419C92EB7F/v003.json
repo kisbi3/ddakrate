@@ -1,0 +1,296 @@
+{
+  "product_code": "INST-KR-000120-3-C419C92EB7F",
+  "version": 3,
+  "institution_id": "INST-KR-000120",
+  "name": "마!이통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 만 39세 이하 개인 고객 (1인 1계좌)",
+    "eligibility_text": "만 14세 이상 만 39세 이하 개인 고객 (1인 1계좌)",
+    "display_text": "만 14세 이상 만 39세 이하 개인 고객 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ],
+    "age_range": {
+      "min_age": 14,
+      "max_age": 39,
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE"
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-3-C419C92EB7F-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.100",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+        ],
+        "source_clause": "자유저축예금 기본 0.100%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.INTEREST_SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+          ],
+          "unit": "KRW"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000120-3-C419C92EB7F-PREF-01",
+          "title": "이자결산기간 평균잔액 100만원 이하",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.THIS.INTEREST_SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+              "operator": "LTE",
+              "expected_value": 1000000,
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.40",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "CURRENT_INTEREST_SETTLEMENT_PERIOD",
+            "reward_window": "SAME_INTEREST_SETTLEMENT_PERIOD",
+            "principal_scope": {
+              "basis": "SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "1000000",
+                "max_inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "1.40",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "aggregation": "AVERAGE_DAILY_BALANCE_OVER_SETTLEMENT_PERIOD",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    },
+    "interest_crediting": {
+      "frequency": {
+        "value": 3,
+        "unit": "MONTH"
+      },
+      "calendar_months": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "calendar_months": [
+              1,
+              4,
+              7,
+              10
+            ],
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SUNDAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "1.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000120-3-C419C92EB7F",
+    "source_record_id": "de3e03536a117c8fb5ca9eb001a6813a",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 37,
+    "reviewed_source_record_id": "de3e03536a117c8fb5ca9eb001a6813a",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "AGE_MAX_MISMATCH_SECOND_PASS",
+      "AGE_RANGE_MISMATCH",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "product_by_product_changes": [
+      "결산기간 평균잔액 100만원 이하 조건을 수치 fact로 교정",
+      "평균잔액 기준 첫 100만원 +1.40%p와 1·4·7·10월 셋째 일요일 결산을 구조화"
+    ],
+    "final_execution_leak_audit_status": "RESOLVED_BY_EXPLICIT_RECOMPILATION",
+    "final_execution_leak_audit_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000120-3-C419C92EB7F"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

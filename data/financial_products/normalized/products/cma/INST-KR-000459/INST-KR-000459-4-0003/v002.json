@@ -1,0 +1,285 @@
+{
+  "product_code": "INST-KR-000459-4-0003",
+  "version": 2,
+  "institution_id": "INST-KR-000459",
+  "name": "미래에셋 CMA 발행어음형",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003",
+      "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ],
+    "uninvested_cash_state": {
+      "state": "CASH_DEPOSIT_BALANCE",
+      "reason_codes": [
+        "ISSUANCE_SUSPENDED_OR_PURCHASE_UNAVAILABLE"
+      ],
+      "compensation": "DEPOSIT_USE_FEE",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_ISSUED_NOTE_LOT",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000459-4-0003-IND",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.40",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+        ],
+        "as_of": "2026-07-22",
+        "customer_scope": "INDIVIDUAL",
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003",
+      "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+    ],
+    "customer_tier_method": "CUSTOMER_TYPE_SELECT",
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 31,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1"
+    },
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+      "scope": "PER_ISSUED_NOTE_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+      ]
+    },
+    "scheduled_rate_changes": [
+      {
+        "effective_from": "2026-08-31",
+        "status": "FUTURE_NOT_CURRENT_AS_OF_2026-08-29",
+        "rate_entries": [
+          {
+            "rate_id": "INST-KR-000459-4-0003-IND-FUTURE",
+            "role": "BASE",
+            "customer_scope": "INDIVIDUAL",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.60",
+              "unit": "PERCENT"
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+        ],
+        "reason": "Official announced future CMA issued-note rate; do not use before effective date."
+      }
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000459-4-0003"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "input_line": 64,
+        "product_code": "INST-KR-000459-4-0003",
+        "product_name": "미래에셋 CMA 발행어음형",
+        "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+        "path": "return_policy.customer_tier_method",
+        "reason": "customer_scope별 수익률을 현재 loader가 직접 선택하지 못하므로 자동 계산을 제한",
+        "status": "REQUIRES_EXTERNAL_DEFINITION",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0003"
+        ],
+        "usage_impact": "NO_AUTOMATIC_CUSTOMER_RATE_SELECTION"
+      },
+      {
+        "input_line": 64,
+        "product_code": "INST-KR-000459-4-0003",
+        "product_name": "미래에셋 CMA 발행어음형",
+        "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+        "path": "identity.institution_id_reconciliation",
+        "reason": "동일 미래에셋증권 실질 상품이 서로 다른 institution_id로 분리되어 있어 CMA shard만으로 canonical ID를 일방 변경할 수 없음",
+        "status": "REQUIRES_EXTERNAL_DEFINITION",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0003",
+          "EVD-CMA-20260829-INST-KR-000060-4-CCFC5EEBE0A"
+        ],
+        "usage_impact": "DO_NOT_AUTO_MERGE_INSTITUTION_IDS"
+      }
+    ],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER",
+      "INSTITUTION_ID_RECONCILIATION_REQUIRED"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000459/INST-KR-000459-4-0003/v001.json",
+    "previous_sha256": "sha256:62740da7340e364b16bad9d3cbdc30254c85d69cca7832dd6e84ac666690b003",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0003"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      },
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000459-4-0003"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "SAME_COMMERCIAL_PRODUCT_CROSS_INSTITUTION_ID",
+      "equivalence_group_id": "CMA-EQ-MIRAE-ISSUED",
+      "related_input_product_codes": [
+        "INST-KR-000060-4-CCFC5EEBE0A"
+      ],
+      "relation": "REGISTRY_ID_CONFLICT_REQUIRES_GLOBAL_MIGRATION",
+      "institution_ids": [
+        "INST-KR-000459",
+        "INST-KR-000060"
+      ]
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "ISSUED_NOTE"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "NO_TIER_OR_SINGLE_RATE"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 31,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "SAME_COMMERCIAL_PRODUCT_CROSS_INSTITUTION_ID",
+          "group": "CMA-EQ-MIRAE-ISSUED"
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "ISSUED_NOTE",
+  "investment_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ],
+    "automatic_investment": true,
+    "minimum_investment_amount": {
+      "value": "10000",
+      "currency": "KRW",
+      "applies_to": "AUTOMATIC_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-MIRAE-ISSUED-20260828"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000459-4-0003"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}

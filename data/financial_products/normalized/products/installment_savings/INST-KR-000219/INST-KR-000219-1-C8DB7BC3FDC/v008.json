@@ -1,0 +1,948 @@
+{
+  "product_code": "INST-KR-000219-1-C8DB7BC3FDC",
+  "version": 8,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 SOL패밀리 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-SALE"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "19세 이상 실명의 개인 및 개인사업자인 내국인 (1인1계좌)",
+    "eligibility_text": "19세 이상 실명의 개인 및 개인사업자인 내국인 (1인1계좌)",
+    "display_text": "19세 이상 실명의 개인 및 개인사업자인 내국인 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "nationality_scope": "KOREAN_ONLY",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "300000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "300000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "최소 1원 이상 30만원 이하\n저축한도 : 월 30만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 30만원 이하\n저축한도 : 월 30만원 이하"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 30만원 이하\n저축한도 : 월 30만원 이하"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 30만원 이하\n저축한도 : 월 30만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-C8DB7BC3FDC-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01",
+          "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02",
+          "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01",
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02",
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000219_1_C8DB7BC3FDC_PREF_02_PET.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000219_1_C8DB7BC3FDC_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000219-1-C8DB7BC3FDC-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.COUNT.SOURCE_COMPONENT_INST_KR_00021",
+          "type": "INTEGER",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "source_definition": "SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "unit": "COUNT",
+          "self_report_eligible": false,
+          "source_recognition_text": "패밀리금융 우대: 최고 연 2.5%\nSOL패밀리 서비스를 가족대표로 가입하고, SOL패밀리 서비스에 등록된 가족구성원 수에 따른 우대이자율과 반려동물 등록에 따른 우대이자율을 합산하여 적용하며 최고 연 2.5%까지 적용됩니다.\n- 등록된 가족구성원이 3명이상인 경우 : 연 2.5%\n- 등록된 가족구성원이 2명인 경우 : 연 2.0%\n- 등록된 가족구성원이 1명인 경우 : 연 1.0%\n- SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%\n※ 패밀리금융 우대이자율은 만기 해지 시 SOL패밀리 서비스에 등록된 가족구성원 수와 반려동물 정보로 적용",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000219_1_C8DB7BC3FDC-INST_KR_000219_1_C8DB7-SOURCE_COMPONENT_INST_KR_00021",
+            "operator": "COUNT"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000219-1-C8DB7BC3FDC-PREF-03-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "가족급여 우대: 연 1.0%\n본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 3개월 이상 입금(수령) 시\n- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투\n- 부모급여수당, 영아, 양육, 아동수당\n- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)\n※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지\n(예시 : 2026.6.15 가입 시 2026.6.1~2027.4.30)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "가족급여 우대: 연 1.0%\n본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 3개월 이상 입금(수령) 시\n- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투\n- 부모급여수당, 영아, 양육, 아동수당\n- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)\n※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지\n(예시 : 2026.6.15 가입 시 2026.6.1~2027.4.30)"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000219_1_C8DB7BC3FDC-INST_KR_000219_1_C8DB7-SOURCE_COMPONENT_INST_KR_00021",
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "DEMOGRAPHIC_OR_LIFE_EVENT_VERIFIED",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "패밀리금융 우대: 최고 연 2.5%\nSOL패밀리 서비스를 가족대표로 가입하고, SOL패밀리 서비스에 등록된 가족구성원 수에 따른 우대이자율과 반려동물 등록에 따른 우대이자율을 합산하여 적용하며 최고 연 2.5%까지 적용됩니다.\n- 등록된 가족구성원이 3명이상인 경우 : 연 2.5%\n- 등록된 가족구성원이 2명인 경우 : 연 2.0%\n- 등록된 가족구성원이 1명인 경우 : 연 1.0%\n- SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%\n※ 패밀리금융 우대이자율은 만기 해지 시 SOL패밀리 서비스에 등록된 가족구성원 수와 반려동물 정보로 적용",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY",
+          "applies_to_rule_ids": [
+            "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "등록된 가족구성원이 3명이상인 경우 : 연 2.5% / 2명 : 연 2.0% / 1명 : 연 1.0%"
+        },
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000219-1-C8DB7BC3FDC-PREF-02-PET",
+          "applies_to_rule_ids": [
+            "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-PET"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%",
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000219_1_C8DB7BC3FDC_PREF_02_PET.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY",
+          "title": "SOL패밀리 가족구성원 수 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                      }
+                    ],
+                    "expected_value": 1,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "1.0",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "등록된 가족구성원이 1명인 경우 : 연 1.0%",
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+                    "operator": "EQUALS",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                      }
+                    ],
+                    "expected_value": 2,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "2.0",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "등록된 가족구성원이 2명인 경우 : 연 2.0%",
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                      }
+                    ],
+                    "expected_value": 3,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "2.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "등록된 가족구성원이 3명이상인 경우 : 연 2.5%",
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ],
+            "cap_value": "2.5"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "패밀리금융 우대: 최고 연 2.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "source_component_text": "등록된 가족구성원이 3명이상인 경우 : 연 2.5% / 2명 : 연 2.0% / 1명 : 연 1.0%",
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "패밀리금융 우대: 최고 연 2.5%\nSOL패밀리 서비스를 가족대표로 가입하고, SOL패밀리 서비스에 등록된 가족구성원 수에 따른 우대이자율과 반려동물 등록에 따른 우대이자율을 합산하여 적용하며 최고 연 2.5%까지 적용됩니다.\n- 등록된 가족구성원이 3명이상인 경우 : 연 2.5%\n- 등록된 가족구성원이 2명인 경우 : 연 2.0%\n- 등록된 가족구성원이 1명인 경우 : 연 1.0%\n- SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%\n※ 패밀리금융 우대이자율은 만기 해지 시 SOL패밀리 서비스에 등록된 가족구성원 수와 반려동물 정보로 적용"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-PET",
+          "title": "SOL패밀리 반려동물 등록 우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.COUNT.SOURCE_COMPONENT_INST_KR_00021",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000219_1_C8DB7BC3FDC_PREF_02_PET.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "SOL패밀리 서비스 내 반려동물 등록",
+            "reward_text": "+0.5%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "source_component_text": "SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%",
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "패밀리금융 우대: 최고 연 2.5%\nSOL패밀리 서비스를 가족대표로 가입하고, SOL패밀리 서비스에 등록된 가족구성원 수에 따른 우대이자율과 반려동물 등록에 따른 우대이자율을 합산하여 적용하며 최고 연 2.5%까지 적용됩니다.\n- 등록된 가족구성원이 3명이상인 경우 : 연 2.5%\n- 등록된 가족구성원이 2명인 경우 : 연 2.0%\n- 등록된 가족구성원이 1명인 경우 : 연 1.0%\n- SOL패밀리 서비스 내 반려동물 등록한 경우 : 연 0.5%\n※ 패밀리금융 우대이자율은 만기 해지 시 SOL패밀리 서비스에 등록된 가족구성원 수와 반려동물 정보로 적용"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C8DB7BC3FDC-PREF-03",
+          "title": "가족급여 우대: 연 1.0%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000219_1_C8DB7BC3FDC_PREF_03.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가족급여 우대: 연 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+            }
+          ],
+          "semantic_domain": "BENEFIT_OR_SCHOOL_CREDIT",
+          "source_clause_text": "가족급여 우대: 연 1.0%\n본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 3개월 이상 입금(수령) 시\n- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투\n- 부모급여수당, 영아, 양육, 아동수당\n- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)\n※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지\n(예시 : 2026.6.15 가입 시 2026.6.1~2027.4.30)"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY"
+          ],
+          "selector_fact_key": "GROUP.SOL_FAMILY_MEMBER_COUNT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "2.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY-PET-CAP",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-FAMILY",
+            "INST-KR-000219-1-C8DB7BC3FDC-PREF-02-PET"
+          ],
+          "cap": {
+            "value": "2.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01",
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02",
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03",
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-RATE",
+      "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "93e01d21f6bdb0ee9e28113916217bf9"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO",
+    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-RATE",
+    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-LISTING",
+    "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "93e01d21f6bdb0ee9e28113916217bf9",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-93E01D21F6BDB0EE9E28113916217BF9-SALE"
+      ]
+    }
+  ]
+}

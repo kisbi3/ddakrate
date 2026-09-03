@@ -1,0 +1,527 @@
+{
+  "product_code": "INST-KR-000010-1-0002",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "BNK 공공 드림적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "공무원 및 공기업 재직중인 자이며 최종 합격자도 포함합니다. 1인 1좌 (해지 후 재가입 가능)\n1 경남은행 영업점을 방문하여 가입하는 고객의 경우 가입대상에 해당하는 증빙서류를(재직증명서, 공무원증, 사원증 등) 제출하셔야 합니다.\n2 경남은행 모바일 뱅킹을 통해 가입하시는 경우 마이데이터(또는 스크래핑)을 통해 공무원 및 공기업 재직 여부가 확인됩니다. 단, 공무원 및 공기업 재직중임에도 불구하고 비대면을 통해 가입자격 확인이 안되시는 분들은 경남은행 영업점 방문하여 가입 해주시기 바랍니다.",
+    "eligibility_text": "공무원 및 공기업 재직중인 자이며 최종 합격자도 포함합니다. 1인 1좌 (해지 후 재가입 가능)\n1 경남은행 영업점을 방문하여 가입하는 고객의 경우 가입대상에 해당하는 증빙서류를(재직증명서, 공무원증, 사원증 등) 제출하셔야 합니다.\n2 경남은행 모바일 뱅킹을 통해 가입하시는 경우 마이데이터(또는 스크래핑)을 통해 공무원 및 공기업 재직 여부가 확인됩니다. 단, 공무원 및 공기업 재직중임에도 불구하고 비대면을 통해 가입자격 확인이 안되시는 분들은 경남은행 영업점 방문하여 가입 해주시기 바랍니다.",
+    "display_text": "공무원 및 공기업 재직중인 자이며 최종 합격자도 포함합니다. 1인 1좌 (해지 후 재가입 가능)\n1 경남은행 영업점을 방문하여 가입하는 고객의 경우 가입대상에 해당하는 증빙서류를(재직증명서, 공무원증, 사원증 등) 제출하셔야 합니다.\n2 경남은행 모바일 뱅킹을 통해 가입하시는 경우 마이데이터(또는 스크래핑)을 통해 공무원 및 공기업 재직 여부가 확인됩니다. 단, 공무원 및 공기업 재직중임에도 불구하고 비대면을 통해 가입자격 확인이 안되시는 분들은 경남은행 영업점 방문하여 가입 해주시기 바랍니다.",
+    "source_ref_ids": [
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED"
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "1000000",
+        "increment_value": "10000"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 ~ 100만원 이하 (1만원 단위)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (1만원 단위)"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (1만원 단위)"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 100만원 이하 (1만원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-01",
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02",
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03",
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입 전 경남은행의 마케팅 동의가* 되어 있을 시\n* 이 예금 가입 전 경남은행 마케팅 동의가 되어 있어야 합니다. : 0.4%"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_MONTHS.CUSTOMER_CARD_USAGE_FULFILLMENT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 계약기간의 2/3 이상* 경남 BC 신용카드 또는 체크카드 월 30만원 이상 대금 결제 실적이** 있을 시\n* 계약기간 12개월(12회) 중 8개월(8회) 이상의 실적 충족을 의미 합니다. 8개월(8회) 연속하여 실적 충족을 의미하지는 않습니다.\n** 카드 승인 내역이 아닌 대금 결제를 뜻하며 타행 계좌를 통한 결제는 인정되지 않습니다. : 1.4%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-0002-PREF-02",
+          "title": "이 예금 가입 전 경남은행의 마케팅 동의가* 되어 있을 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입 전 경남은행의 마케팅 동의가* 되어 있을 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "이 예금 가입 전 경남은행의 마케팅 동의가* 되어 있을 시\n* 이 예금 가입 전 경남은행 마케팅 동의가 되어 있어야 합니다. : 0.4%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0002-PREF-03",
+          "title": "이 예금 계약기간의 2/3 이상* BNK 공공드림통장 으로 급여이체 실적이** 있을 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 8,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간의 2/3 이상* BNK 공공드림통장 으로 급여이체 실적이** 있을 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금 계약기간의 2/3 이상* BNK 공공드림통장 으로 급여이체 실적이** 있을 시\n* 계약기간 12개월(12회) 중 8개월(8회) 이상의 실적 충족을 의미 합니다. 8개월(8회) 연속하여 실적 충족을 의미하지는 않습니다.\n** BNK 공공드림통장으로 급여일을 등록하고 급여일 기준 전 5영업일 또는 후 10영업일 이내 100만원 이상 입금 실적이 있는 경우에 급여 실적으로 인정됩니다. : 1.4%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0002-PREF-04",
+          "title": "이 예금 계약기간의 2/3 이상* 경남 BC 신용카드 또는 체크카드 월 30만원 이상 대금 결제 실적이** 있을 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_MONTHS.CUSTOMER_CARD_USAGE_FULFILLMENT",
+              "operator": "GTE",
+              "expected_value": 8,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간의 2/3 이상* 경남 BC 신용카드 또는 체크카드 월 30만원 이상 대금 결제 실적이** 있을 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "이 예금 계약기간의 2/3 이상* 경남 BC 신용카드 또는 체크카드 월 30만원 이상 대금 결제 실적이** 있을 시\n* 계약기간 12개월(12회) 중 8개월(8회) 이상의 실적 충족을 의미 합니다. 8개월(8회) 연속하여 실적 충족을 의미하지는 않습니다.\n** 카드 승인 내역이 아닌 대금 결제를 뜻하며 타행 계좌를 통한 결제는 인정되지 않습니다. : 1.4%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-01",
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02",
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03",
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04",
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-RATE",
+      "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "375cfe0c2340a02ec5c11e3c802e7afc"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO",
+    "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-RATE",
+    "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "375cfe0c2340a02ec5c11e3c802e7afc",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T00:30:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_CORRECTED",
+      "reason_codes": [
+        "INTEGER_FACT_OPERATOR_CORRECTION",
+        "FACT_KEY_TYPO_CORRECTION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-375CFE0C2340A02EC5C11E3C802E7AFC-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "product_code": "INST-KR-000216-1-CB371C739A4",
+  "version": 7,
+  "institution_id": "INST-KR-000216",
+  "name": "매일모아부금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인, 법인사업자\n법인(단체포함) (고객별 20계좌)",
+    "eligibility_text": "실명의 개인, 법인사업자\n법인(단체포함) (고객별 20계좌)",
+    "display_text": "실명의 개인, 법인사업자\n법인(단체포함) (고객별 20계좌)",
+    "source_ref_ids": [
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "CORPORATION",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 72,
+    "source_expression": "6개월 이상 6년이하(월 단위)",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 6,
+        "unit": "YEAR"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "0"
+      }
+    ],
+    "source_amount_text": "제한없음\n최초 가입금액은 0원이상, 가입 후 금액 제한없이 적립가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "INITIAL",
+        "role": "MINIMUM",
+        "context": "제한없음\n최초 가입금액은 0원이상, 가입 후 금액 제한없이 적립가능"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "최초 가입금액은 0원이상, 가입 후 금액 제한없이 적립가능",
+      "min_value": "0"
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-CB371C739A4-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-CB371C739A4-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-CB371C739A4-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-CB371C739A4-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 3,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대\n달리자 파킹통장 가입 후 이 상품 가입 시 0.3% 우대"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000216-1-CB371C739A4-PREF-02-QUALIFYING",
+          "event_type": "PRODUCT_HOLDING_STATUS_OBSERVED",
+          "qualifying_definition": {
+            "source_text": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대\n달리자 파킹통장 가입 후 이 상품 가입 시 0.3% 우대"
+          },
+          "source_ref_ids": [
+            "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대\n달리자 파킹통장 가입 후 이 상품 가입 시 0.3% 우대"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대\n달리자 파킹통장 가입 후 이 상품 가입 시 0.3% 우대",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000216-1-CB371C739A4-PREF-02",
+          "title": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대"
+          },
+          "source_ref_ids": [
+            "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "탐나는J사업자 통장 가입 또는 보유고객이 매일모아부금 상품 가입시 0.3% 우대\n달리자 파킹통장 가입 후 이 상품 가입 시 0.3% 우대"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-01",
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02",
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-02"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-025797222560E61A13FCDB8F56EA5211-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE",
+      "EVD-IS-025797222560E61A13FCDB8F56EA5211-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "025797222560e61a13fcdb8f56ea5211"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO",
+    "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE",
+    "EVD-IS-025797222560E61A13FCDB8F56EA5211-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "025797222560e61a13fcdb8f56ea5211",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-025797222560E61A13FCDB8F56EA5211-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

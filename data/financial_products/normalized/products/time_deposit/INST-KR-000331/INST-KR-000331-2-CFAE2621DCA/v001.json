@@ -1,0 +1,114 @@
+{
+  "product_code": "INST-KR-000331-2-CFAE2621DCA",
+  "version": 1,
+  "institution_id": "INST-KR-000331",
+  "name": "회전정기예금(비대면)",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 19세 이상 개인고객 (단, 외국인은 불가)",
+    "eligibility_text": "만 19세 이상 개인고객 (단, 외국인은 불가)",
+    "display_text": "만 19세 이상 개인고객 (단, 외국인은 불가)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "age_range": {
+      "min_age": 19
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      24,
+      60
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000331-2-CFAE2621DCA-BASE-TERM-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 60,
+              "max_inclusive": true
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000331-2-CFAE2621DCA-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+    ],
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000331-2-CFAE2621DCA"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.848143+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

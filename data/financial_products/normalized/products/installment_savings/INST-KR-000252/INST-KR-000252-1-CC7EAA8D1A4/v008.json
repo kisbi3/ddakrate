@@ -1,0 +1,968 @@
+{
+  "product_code": "INST-KR-000252-1-CC7EAA8D1A4",
+  "version": 8,
+  "institution_id": "INST-KR-000252",
+  "name": "평생 군인 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "군 복무 중인 직업군인*으로 실명의 개인 (1인 1계좌)\n*장교, 준사관, 부사관 및 육·해·공군 사관생도, 간호사관생도, 학군장교후보생(ROTC), 학사장교후보생, 육군 3사관생도, 기타 장교 후보생, 준사관·부사관후보생, 군무원 (※현역병 등 의무복무병 제외)",
+    "eligibility_text": "군 복무 중인 직업군인*으로 실명의 개인 (1인 1계좌)\n*장교, 준사관, 부사관 및 육·해·공군 사관생도, 간호사관생도, 학군장교후보생(ROTC), 학사장교후보생, 육군 3사관생도, 기타 장교 후보생, 준사관·부사관후보생, 군무원 (※현역병 등 의무복무병 제외)",
+    "display_text": "군 복무 중인 직업군인*으로 실명의 개인 (1인 1계좌)\n*장교, 준사관, 부사관 및 육·해·공군 사관생도, 간호사관생도, 학군장교후보생(ROTC), 학사장교후보생, 육군 3사관생도, 기타 장교 후보생, 준사관·부사관후보생, 군무원 (※현역병 등 의무복무병 제외)",
+    "source_ref_ids": [
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10",
+        "max_value": "300000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "매월 10원 이상 ~ 30만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10",
+        "currency": "KRW",
+        "source_expression": "10원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 10원 이상 ~ 30만원 이하"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "매월 10원 이상 ~ 30만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-CC7EAA8D1A4-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.250",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "global_cap": {
+        "value": "4.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01",
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02",
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03",
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04",
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05",
+          "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_02.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-02-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_05.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-05-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입일로부터 다음달 말일까지 본인명의 주택청약종합저축을 (주)하나은행에서 신규로 가입한 경우 : 1%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입전 (주)하나은행 상품· 서비스 마케팅동의 항목 모두를 동의한 경우 : 0.2%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-02-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 입출금계좌로 국군재정관리단을 통한 급여이체를 충족한 경우 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 입출금계좌로 국군재정관리단을 통한 급여이체를 충족한 경우 : 2%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 계좌에서 하나카드(신용,체크) 결제대금을 월 30만원이상 보유한 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 300000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "30만원이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 계좌에서 하나카드(신용,체크) 결제대금을 월 30만원이상 보유한 경우 : 0.5%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000252-1-CC7EAA8D1A4-PREF-05-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "㈜하나은행 계좌에서 자동이체로 이 예금에 6개월 이상 납입한 경우 : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "㈜하나은행 계좌에서 자동이체로 이 예금에 6개월 이상 납입한 경우 : 0.3%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-CC7EAA8D1A4-PREF-02",
+          "title": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 입출금계좌로 국군재정관리단을 통한 급여이체를 충족한 경우 : 2%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_02.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 입출금계좌로 국군재정관리단을 통한 급여이체를 충족한 경우 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 (주)하나은행 입출금계좌로 국군재정관리단을 통한 급여이체를 충족한 경우 : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-CC7EAA8D1A4-PREF-03",
+          "title": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 계좌에서 하나카드(신용,체크) 결제대금을 월 30만원이상 보유한 경우 : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_03.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 ㈜하나은행 계좌에서 하나카드(신용,체크) 결제대금을 월 30만원이상 보유한 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "이 예금 만기 전전월말 기준, 6개월 이상 본인명의 (주)하나은행 계좌에서 하나카드(신용,체크) 결제대금을 월 30만원이상 보유한 경우 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-CC7EAA8D1A4-PREF-04",
+          "title": "이 예금 가입일로부터 다음달 말일까지 본인명의 주택청약종합저축을 ㈜하나은행에서 신규로 가입한 경우 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입일로부터 다음달 말일까지 본인명의 주택청약종합저축을 ㈜하나은행에서 신규로 가입한 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "이 예금 가입일로부터 다음달 말일까지 본인명의 주택청약종합저축을 (주)하나은행에서 신규로 가입한 경우 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-CC7EAA8D1A4-PREF-05",
+          "title": "㈜하나은행 계좌에서 자동이체로 이 예금에 6개월 이상 납입한 경우 : 0.3%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000252_1_CC7EAA8D1A4_PREF_05.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "㈜하나은행 계좌에서 자동이체로 이 예금에 6개월 이상 납입한 경우 : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "(주)하나은행 계좌에서 자동이체로 이 예금에 6개월 이상 납입한 경우 : 0.3%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-CC7EAA8D1A4-PREF-06",
+          "title": "이 예금 가입전 ㈜하나은행 상품· 서비스 마케팅동의 항목 모두를 동의한 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입전 ㈜하나은행 상품· 서비스 마케팅동의 항목 모두를 동의한 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "이 예금 가입전 (주)하나은행 상품· 서비스 마케팅동의 항목 모두를 동의한 경우 : 0.2%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000252-1-CC7EAA8D1A4-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000252-1-CC7EAA8D1A4-PREF-02",
+            "INST-KR-000252-1-CC7EAA8D1A4-PREF-03",
+            "INST-KR-000252-1-CC7EAA8D1A4-PREF-04",
+            "INST-KR-000252-1-CC7EAA8D1A4-PREF-05",
+            "INST-KR-000252-1-CC7EAA8D1A4-PREF-06"
+          ],
+          "cap": {
+            "value": "4.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01",
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02",
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03",
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04",
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05",
+              "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05",
+            "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06",
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-RATE",
+      "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.25",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c68b4ef0c77e03e5dace0f76ebbc070e"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO",
+    "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-RATE",
+    "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c68b4ef0c77e03e5dace0f76ebbc070e",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-C68B4EF0C77E03E5DACE0F76EBBC070E-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

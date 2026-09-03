@@ -1,0 +1,909 @@
+{
+  "product_code": "INST-KR-000516-1-CFFE6FE64D6",
+  "version": 8,
+  "institution_id": "INST-KR-000516",
+  "name": "KB Global Star 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 외국인(1인 1계좌)\n※ 개인사업자 및 임의단체(서류 미제출 임의단체 포함) 가입 가능\n※ 공동명의 가입 불가",
+    "eligibility_text": "실명의 외국인(1인 1계좌)\n※ 개인사업자 및 임의단체(서류 미제출 임의단체 포함) 가입 가능\n※ 공동명의 가입 불가",
+    "display_text": "실명의 외국인(1인 1계좌)\n※ 개인사업자 및 임의단체(서류 미제출 임의단체 포함) 가입 가능\n※ 공동명의 가입 불가",
+    "source_ref_ids": [
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1천원 이상~50만원 이하(원 단위)\n※ 매월 1일부터 마지막일까지 자유롭게 저축(만기일 전일까지 입금 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상~50만원 이하(원 단위)\n※ 매월 1일부터 마지막일까지 자유롭게 저축(만기일 전일까지 입금"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 1천원 이상~50만원 이하(원 단위)\n※ 매월 1일부터 마지막일까지 자유롭게 저축(만기일 전일까지 입금 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-1-CFFE6FE64D6-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01",
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02",
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03",
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04",
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05",
+          "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01",
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02",
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03",
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04",
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05",
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_02.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-02-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_04.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-04-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.COUNT.SOURCE_CLAUSE_INST_KR_000516_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+          ],
+          "unit": "COUNT",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "적금 만기 해지일*로부터 3개월 이내** 이 적금을 재 가입시 1회 제공\n* 만기 해지일 : 적금 만기일이 아닌 실제 만기 해지 거래일 기준\n** 3개월 이내 : 만기 해지 거래일로부터 3개월이 되는 해당일까지이며, 해당일이 없는 경우는 3개월 해당월의 마지막일까지 : 0.5%\n금리우대쿠폰",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000516_1_CFFE6FE64D6-INST_KR_000516_1_CFFE6-SOURCE_CLAUSE_INST_KR_000516_1",
+            "operator": "COUNT"
+          }
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "가입 시 금리우대쿠폰을 적용한 경우 최종금리에 쿠폰의 우대금리를 더함\n- 금리우대쿠폰의 적용방법 및 유의사항은 해당 금리우대쿠폰에서 확인 가능\n- 중도해지 시 쿠폰의 우대금리가 적용되지 않음"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-02-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 급여이체가 발생한 월이 총 6개월 이상인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 급여이체가 발생한 월이 총 6개월 이상인 경우 : 1%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 본인명의 KB국민은행 입출금통장으로 KB국민(신용/체크/BC)카드 결제대금출금*이 발생한 월이 총 6개월 이상인 경우\n* KB국민카드 결제대금 출금 : 계좌에서 출금된 신용카드 결제일 출금 또는 체크카드 즉시결제\n※ 오픈뱅킹을 통한 결제 건, 기업카드 및 선불카드 결제 건 등 제외 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 본인명의 KB국민은행 입출금통장으로 KB국민(신용/체크/BC)카드 결제대금출금*이 발생한 월이 총 6개월 이상인 경우\n* KB국민카드 결제대금 출금 : 계좌에서 출금된 신용카드 결제일 출금 또는 체크카드 즉시결제\n※ 오픈뱅킹을 통한 결제 건, 기업카드 및 선불카드 결제 건 등 제외 : 1%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000516-1-CFFE6FE64D6-PREF-04-QUALIFYING",
+          "event_type": "QUALIFYING_FX_OR_REMITTANCE_POSTED",
+          "qualifying_definition": {
+            "source_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%",
+            "start": "SUBSCRIPTION_MONTH",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000516_1_CFFE6FE64D6-INST_KR_000516_1_CFFE6-SOURCE_CLAUSE_INST_KR_000516_1",
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "PROMOTION_COUPON_ISSUED_OR_APPLIED",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "적금 만기 해지일*로부터 3개월 이내** 이 적금을 재 가입시 1회 제공\n* 만기 해지일 : 적금 만기일이 아닌 실제 만기 해지 거래일 기준\n** 3개월 이내 : 만기 해지 거래일로부터 3개월이 되는 해당일까지이며, 해당일이 없는 경우는 3개월 해당월의 마지막일까지 : 0.5%\n금리우대쿠폰",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-1-CFFE6FE64D6-PREF-02",
+          "title": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 급여이체가 발생한 월이 총 6개월 이상인 경우 : 1%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_02.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 급여이체가 발생한 월이 총 6개월 이상인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 급여이체가 발생한 월이 총 6개월 이상인 경우 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-CFFE6FE64D6-PREF-03",
+          "title": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 본인명의 KB국민은행 입출금통장으로 KB국민(신용/체크/BC)카드 결제대금출금*이 발생한 월이 총 6개월 이상인 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_03.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 본인명의 KB국민은행 입출금통장으로 KB국민(신용/체크/BC)카드 결제대금출금*이 발생한 월이 총 6개월 이상인 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 본인명의 KB국민은행 입출금통장으로 KB국민(신용/체크/BC)카드 결제대금출금*이 발생한 월이 총 6개월 이상인 경우\n* KB국민카드 결제대금 출금 : 계좌에서 출금된 신용카드 결제일 출금 또는 체크카드 즉시결제\n※ 오픈뱅킹을 통한 결제 건, 기업카드 및 선불카드 결제 건 등 제외 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-CFFE6FE64D6-PREF-04",
+          "title": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000516_1_CFFE6FE64D6_PREF_04.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+            }
+          ],
+          "semantic_domain": "FX_REMITTANCE",
+          "source_clause_text": "적금 가입월 1일부터 만기월의 전전월 마지막일까지 KB국민은행을 통한 해외송금 횟수가 총 3회 이상인 경우 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-CFFE6FE64D6-PREF-05",
+          "title": "적금 만기 해지일*로부터 3개월 이내** 이 적금을 재 가입시 1회 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.COUNT.SOURCE_CLAUSE_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "적금 만기 해지일*로부터 3개월 이내** 이 적금을 재 가입시 1회 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "적금 만기 해지일*로부터 3개월 이내** 이 적금을 재 가입시 1회 제공\n* 만기 해지일 : 적금 만기일이 아닌 실제 만기 해지 거래일 기준\n** 3개월 이내 : 만기 해지 거래일로부터 3개월이 되는 해당일까지이며, 해당일이 없는 경우는 3개월 해당월의 마지막일까지 : 0.5%\n금리우대쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000516-1-CFFE6FE64D6-PREF-06",
+          "title": "가입 시 금리우대쿠폰을 적용한 경우 최종금리에 쿠폰의 우대금리를 더함",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000516_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입 시 금리우대쿠폰을 적용한 경우 최종금리에 쿠폰의 우대금리를 더함"
+          },
+          "source_ref_ids": [
+            "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "가입 시 금리우대쿠폰을 적용한 경우 최종금리에 쿠폰의 우대금리를 더함\n- 금리우대쿠폰의 적용방법 및 유의사항은 해당 금리우대쿠폰에서 확인 가능\n- 중도해지 시 쿠폰의 우대금리가 적용되지 않음"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06",
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-RATE",
+      "EVD-IS-827F9F01932C38D893576F7AFBB662AB-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "827f9f01932c38d893576f7afbb662ab"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO",
+    "EVD-IS-827F9F01932C38D893576F7AFBB662AB-RATE",
+    "EVD-IS-827F9F01932C38D893576F7AFBB662AB-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "827f9f01932c38d893576f7afbb662ab",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-827F9F01932C38D893576F7AFBB662AB-RATE"
+      ]
+    }
+  ]
+}

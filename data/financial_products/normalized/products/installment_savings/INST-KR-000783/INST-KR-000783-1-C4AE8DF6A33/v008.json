@@ -1,0 +1,620 @@
+{
+  "product_code": "INST-KR-000783-1-C4AE8DF6A33",
+  "version": 8,
+  "institution_id": "INST-KR-000783",
+  "name": "OK마라톤적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(1인 1계좌 개설 가능)",
+    "eligibility_text": "개인(1인 1계좌 개설 가능)",
+    "display_text": "개인(1인 1계좌 개설 가능)",
+    "source_ref_ids": [
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "50000",
+        "fixed_value": "50000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "매월 50,000원",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "50000",
+        "currency": "KRW",
+        "source_expression": "50,000원",
+        "scope": "PER_MONTH",
+        "role": "FIXED_OR_SELECTED",
+        "context": "매월 50,000원"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01",
+          "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02",
+          "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000783_1_C4AE8DF6A33_PREF_02.COMPLETION_RATIO",
+          "type": "NUMBER",
+          "unit": "RATIO",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-02-QUALIFYING",
+            "operator": "COMPLETION_RATIO"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000783_1_C4AE8DF6A33_PREF_03.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-03-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000783_1_C4AE8DF6A33_PREF_03.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-02-QUALIFYING",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "qualifying_definition": {
+            "source_text": "전 회차(6회차) 납입 및 만기해지 시 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "전 회차(6회차) 납입 및 만기해지 시 : 1%",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "전 회차(6회차) 납입 및 만기해지 시 : 1%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-03-SUCCESS",
+          "event_type": "EXTERNAL_ACTIVITY_VERIFICATION",
+          "qualifying_definition": {
+            "source_text": "마라톤 대회 참가 증빙자료제출 시 우대금리 : 최대 연 3.0%p\n- 상세내용 : 마라톤 대회 참가 인증 서류를 만기일 7일 전까지 OK모바일앱*을 통해 제출하여 인증 받은 경우 대회 1건당 연 1.0%p, 최대 연 3.0%p\n※ 마라톤 대회는 국내에서 개최하고 홈페이지로 참가 신청을 받는 오프라인 대회만 인정되고, 버추얼런등 온라인 대회는 제외입니다.\n※ 증빙 자료는 상품가입자가 참가한 마라톤 대회명이 명시된 증빙 자료로 제출(접수증, 참가증, 완주증, 기록증 등 택 1)해야 하며, 같은 대회 중복 인증은 불가합니다.\n※ 인증사진 식별이 어려운 경우 증빙자료를 제출하셨더라도 인증이 불가할 수 있습니다.\n* OK모바일앱 : OK모바일앱실행_전체>뱅킹>계좌관리>증빙서류제출(개설 시 SMS 또는 알림톡으로 제출URL전송)"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000783-1-C4AE8DF6A33-PREF-03",
+          "applies_to_rule_ids": [
+            "INST-KR-000783-1-C4AE8DF6A33-PREF-03"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "COMPLETE_APPLICATION",
+            "COMPLETE_VERIFICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "마라톤 대회 참가 증빙자료제출 시 우대금리 : 최대 연 3.0%p\n- 상세내용 : 마라톤 대회 참가 인증 서류를 만기일 7일 전까지 OK모바일앱*을 통해 제출하여 인증 받은 경우 대회 1건당 연 1.0%p, 최대 연 3.0%p\n※ 마라톤 대회는 국내에서 개최하고 홈페이지로 참가 신청을 받는 오프라인 대회만 인정되고, 버추얼런등 온라인 대회는 제외입니다.\n※ 증빙 자료는 상품가입자가 참가한 마라톤 대회명이 명시된 증빙 자료로 제출(접수증, 참가증, 완주증, 기록증 등 택 1)해야 하며, 같은 대회 중복 인증은 불가합니다.\n※ 인증사진 식별이 어려운 경우 증빙자료를 제출하셨더라도 인증이 불가할 수 있습니다.\n* OK모바일앱 : OK모바일앱실행_전체>뱅킹>계좌관리>증빙서류제출(개설 시 SMS 또는 알림톡으로 제출URL전송)",
+          "accepted_documents": [
+            "참가 인증 서류",
+            "인증 서류",
+            "증빙서류",
+            "증빙자료"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE",
+          "submission_channels": [
+            "MOBILE_APP"
+          ],
+          "submission_deadline_source_expressions": [
+            "- 상세내용 : 마라톤 대회 참가 인증 서류를 만기일 7일 전까지 OK모바일앱*을 통해 제출하여 인증 받은 경우 대회 1건당 연 1"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "만기일 7일 전까지"
+            ]
+          },
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000783_1_C4AE8DF6A33_PREF_03.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000783-1-C4AE8DF6A33-PREF-02",
+          "title": "전 회차(6회차) 납입 및 만기해지 시 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000783_1_C4AE8DF6A33_PREF_02.COMPLETION_RATIO",
+              "operator": "EQUALS",
+              "expected_value": 1.0,
+              "unit": "RATIO",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "전 회차(6회차) 납입 및 만기해지 시 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "전 회차(6회차) 납입 및 만기해지 시 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000783-1-C4AE8DF6A33-PREF-03",
+          "title": "마라톤 대회 참가 증빙자료제출 시 우대금리 : 최대 연 3.0%p",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000783_1_C4AE8DF6A33_PREF_03.SUCCESS_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000783_1_C4AE8DF6A33_PREF_03.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-03-SUCCESS",
+            "value_per_occurrence": "1.0",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+              }
+            ],
+            "cap_value": "3.0",
+            "max_qualifying_units": 3
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "마라톤 대회 참가 증빙자료제출 시 우대금리 : 최대 연 3.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ],
+          "semantic_domain": "BILL_PAYMENT",
+          "source_clause_text": "마라톤 대회 참가 증빙자료제출 시 우대금리 : 최대 연 3.0%p\n- 상세내용 : 마라톤 대회 참가 인증 서류를 만기일 7일 전까지 OK모바일앱*을 통해 제출하여 인증 받은 경우 대회 1건당 연 1.0%p, 최대 연 3.0%p\n※ 마라톤 대회는 국내에서 개최하고 홈페이지로 참가 신청을 받는 오프라인 대회만 인정되고, 버추얼런등 온라인 대회는 제외입니다.\n※ 증빙 자료는 상품가입자가 참가한 마라톤 대회명이 명시된 증빙 자료로 제출(접수증, 참가증, 완주증, 기록증 등 택 1)해야 하며, 같은 대회 중복 인증은 불가합니다.\n※ 인증사진 식별이 어려운 경우 증빙자료를 제출하셨더라도 인증이 불가할 수 있습니다.\n* OK모바일앱 : OK모바일앱실행_전체>뱅킹>계좌관리>증빙서류제출(개설 시 SMS 또는 알림톡으로 제출URL전송)"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000783-1-C4AE8DF6A33-PREF-03-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000783-1-C4AE8DF6A33-PREF-03"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000783-1-C4AE8DF6A33-PREF-03-SUCCESS",
+          "value_per_occurrence": "1.0",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "3.0",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01",
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02",
+            "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01",
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02",
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03",
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-RATE",
+      "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "17fcee0d3a6f74ac0b048605c10b0588"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO",
+    "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-RATE",
+    "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "17fcee0d3a6f74ac0b048605c10b0588",
+    "data_gaps": [
+      {
+        "path": "return_policy.rate_entries",
+        "reason": "기간별 계약금리 표 없음/파싱 실패"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-17FCEE0D3A6F74AC0B048605C10B0588-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "product_code": "INST-KR-000252-1-C68A8FB455E",
+  "version": 7,
+  "institution_id": "INST-KR-000252",
+  "name": "도전365 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "만 14세 이상 실명의 개인 및 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "200000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "1천원 이상 20만원 이하 (원단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1천원 이상 20만원 이하 (원단위)"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "1천원 이상 20만원 이하 (원단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-C68A8FB455E-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-13C8D286D7761780041995C77AB491E6-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-01",
+          "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02",
+          "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03",
+          "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.HANA_MONEY_STEP_TRACKING_ENABLED",
+          "type": "BOOLEAN",
+          "authority": "HANA_MONEY_APP_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACTIVITY.STEP_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "HANA_MONEY_LINKED_DATA",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000252_1_C68A8FB455E_PREF_04.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000252-1-C68A8FB455E-PREF-04-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000252_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금의 가입자가 가입일 기준 만 65세 이상인 경우 : 0.4%"
+        },
+        {
+          "fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+          "type": "INTEGER",
+          "unit": "STEP",
+          "aggregation": {
+            "event_ref": "EVENT-HANA-MONEY-STEP-COUNT",
+            "operator": "SOURCE_REPORTED_TOTAL"
+          },
+          "authority": "HANA_MONEY_APP_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE.HANA_MONEY_MEMBER_ACTIVE",
+          "type": "BOOLEAN",
+          "authority": "HANA_MONEY_APP_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "SERVICE.HANA_MONEY_STEP_CHECK_BUTTON_CLICKED",
+          "type": "BOOLEAN",
+          "authority": "HANA_MONEY_APP_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000252-1-C68A8FB455E-PREF-04-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "당행 요구불 통장에서 자동이체를 통해 이 적금 통장에 매월 10만원 이상으로 3회차 이상 납입한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            }
+          ],
+          "amount_threshold": {
+            "value": 100000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "10만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "당행 요구불 통장에서 자동이체를 통해 이 적금 통장에 매월 10만원 이상으로 3회차 이상 납입한 경우 : 0.1%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-HANA-MONEY-STEP-COUNT",
+          "event_type": "APP_ACTIVITY_MEASUREMENT_POSTED",
+          "service": "HANA_MONEY",
+          "measurement": "STEP_COUNT",
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "ELEVEN_MONTH_ANNIVERSARY"
+          },
+          "authority": "HANA_MONEY_APP_RECORD",
+          "self_report_eligible": false,
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000252-1-C68A8FB455E-PREF-02",
+          "title": "하나머니 걸음수 구간 우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "SERVICE.HANA_MONEY_MEMBER_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "SERVICE.HANA_MONEY_STEP_CHECK_BUTTON_CLICKED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 100000,
+                  "unit": "STEP",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "cap_value": "2.00",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+                    "operator": "BETWEEN",
+                    "lower": 100000,
+                    "upper": 2000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+                    "operator": "BETWEEN",
+                    "lower": 2000000,
+                    "upper": 3650000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "1.50",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+                    "operator": "GTE",
+                    "expected_value": 3650000,
+                    "unit": "STEP"
+                  }
+                },
+                "rate_value": "2.00",
+                "unit": "PERCENTAGE_POINT"
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+              }
+            ]
+          },
+          "display": {
+            "summary": "하나머니 걸음수에 따라 최대 +2.00%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ],
+          "source_component_text": "하나머니 앱내 ‘내 걸음수 확인하기’ 버튼을 누른 하나머니 회원이 적금 신규일로부터 11개월이 되는 일자까지, 아래 항목을 충족하는 경우(최대 연2.00%)\n- 걸음수 데이터 10만보 이상 ~ 200만보 미만: 연 1.00%\n- 걸음수 데이터 200만보 이상 ~ 365만보 미만: 연 1.50%\n- 걸음수 데이터 365만보 이상: 연 2.00%",
+          "semantic_domain": "ACTIVITY_OR_MISSION",
+          "source_clause_text": "하나머니 앱내 ‘내 걸음수 확인하기’ 버튼을 누른 하나머니 회원이 적금 신규일로부터 11개월이 되는 일자까지, 아래 항목을 충족하는 경우(최대 연2.00%)\n- 걸음수 데이터 10만보 이상 ~ 200만보 미만: 연 1.00%\n- 걸음수 데이터 200만보 이상 ~ 365만보 미만: 연 1.50%\n- 걸음수 데이터 365만보 이상: 연 2.00%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C68A8FB455E-PREF-03",
+          "title": "이 예금의 가입자가 가입일 기준 만 65세 이상인 경우 : 0.4%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000252_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금의 가입자가 가입일 기준 만 65세 이상인 경우 : 0.4%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "이 예금의 가입자가 가입일 기준 만 65세 이상인 경우 : 0.4%"
+        },
+        {
+          "rule_id": "INST-KR-000252-1-C68A8FB455E-PREF-04",
+          "title": "당행 요구불 통장에서 자동이체를 통해 이 적금 통장에 매월 10만원 이상으로 3회차 이상 납입한 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000252_1_C68A8FB455E_PREF_04.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "당행 요구불 통장에서 자동이체를 통해 이 적금 통장에 매월 10만원 이상으로 3회차 이상 납입한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "당행 요구불 통장에서 자동이체를 통해 이 적금 통장에 매월 10만원 이상으로 3회차 이상 납입한 경우 : 0.1%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-HANA-CHALLENGE365-STEP-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000252-1-C68A8FB455E-PREF-02"
+          ],
+          "selector_fact_key": "ACTIVITY.HANA_MONEY_STEP_COUNT",
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-01",
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02",
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03",
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04",
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-04"
+        }
+      ],
+      "ui_guidance": [
+        {
+          "guidance_id": "INST-KR-000252-1-C68A8FB455E-PREF-02-UI",
+          "text": "하나머니 앱내 ‘내 걸음수 확인하기’ 버튼을 누른 하나머니 회원이 적금 신규일로부터 11개월이 되는 일자까지, 아래 항목을 충족하는 경우(최대 연2.00%)\n- 걸음수 데이터 10만보 이상 ~ 200만보 미만: 연 1.00%\n- 걸음수 데이터 200만보 이상 ~ 365만보 미만: 연 1.50%\n- 걸음수 데이터 365만보 이상: 연 2.00%",
+          "source_ref_ids": [
+            "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-02"
+            }
+          ]
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-13C8D286D7761780041995C77AB491E6-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-RATE",
+      "EVD-IS-13C8D286D7761780041995C77AB491E6-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "13c8d286d7761780041995c77ab491e6"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO",
+    "EVD-IS-13C8D286D7761780041995C77AB491E6-RATE",
+    "EVD-IS-13C8D286D7761780041995C77AB491E6-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "13c8d286d7761780041995c77ab491e6",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-13C8D286D7761780041995C77AB491E6-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

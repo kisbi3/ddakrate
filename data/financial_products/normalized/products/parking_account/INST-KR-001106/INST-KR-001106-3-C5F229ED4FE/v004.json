@@ -1,0 +1,237 @@
+{
+  "product_code": "INST-KR-001106-3-C5F229ED4FE",
+  "version": 4,
+  "institution_id": "INST-KR-001106",
+  "name": "이자 받는 저금통",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+        "EVD-OFFICIAL-214"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+        "EVD-OFFICIAL-214"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+      "EVD-OFFICIAL-214"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "본인 명의 아이 통장을 보유한 7세 이상 17세 미만의 실명의 개인 (1인 1계좌)",
+    "eligibility_text": "본인 명의 아이 통장을 보유한 7세 이상 17세 미만의 실명의 개인 (1인 1계좌)",
+    "display_text": "본인 명의 아이 통장을 보유한 7세 이상 17세 미만의 실명의 개인 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+      "EVD-OFFICIAL-214"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-001106-3-C5F229ED4FE-REL-4EB875D189C7",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "본인 명의 아이 통장을 보유한 7세 이상 17세 미만의 실명의 개인 (1인 1계좌)",
+        "fact_key": "SOURCE_RELATIONSHIP.4EB875D189C7.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001106-3-C5F229ED4FE-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.4",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 1.4%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+      "EVD-OFFICIAL-214"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+        "EVD-OFFICIAL-214"
+      ],
+      "structuring_status": "SUPPORTED",
+      "day_count_denominator": 365,
+      "rounding": {
+        "method": "TRUNCATE_BELOW_1_WON",
+        "currency": "KRW"
+      }
+    },
+    "interest_crediting": {
+      "raw_text": "매일의 최종 잔액에 약정된 기본 금리를 적용하여 계산한 매일의 이자를 합산하여 이자지급일에 지급(원 미만은 절사)\n매일의 이자: 매일의 최종 잔액 x 적용이율/ 365\n이자지급일: 매월 1일, 고객이 직접 이자지급을 요청하여 지급한 날\n※ 이자지급 요청은 자녀의 모바일 앱에서만 가능합니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+        "EVD-OFFICIAL-214"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-001106-3-C5F229ED4FE-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+          ]
+        },
+        {
+          "event_id": "INST-KR-001106-3-C5F229ED4FE-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "매일의 최종 잔액에 약정된 기본 금리를 적용하여 계산한 매일의 이자를 합산하여 이자지급일에 지급(원 미만은 절사)\n매일의 이자: 매일의 최종 잔액 x 적용이율/ 365\n이자지급일: 매월 1일, 고객이 직접 이자지급을 요청하여 지급한 날\n※ 이자지급 요청은 자녀의 모바일 앱에서만 가능합니다.",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.40",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+      "EVD-OFFICIAL-214"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001106-3-C5F229ED4FE",
+    "EVD-OFFICIAL-214"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_PAGE_PARTIAL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_TOSS_OFFICIAL_CHILD_MONEYBOX_PAGE; AGE_RATE_DETAIL_NOT_RENDERED",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001106-3-C5F229ED4FE",
+    "source_record_id": "76df725b0ddf81db2ffd17484a85314e",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 214,
+    "reviewed_source_record_id": "SRC-OFFICIAL-214",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_OFFICIAL_PARTIAL",
+    "resolved_audit_findings": [
+      "AGE_MAX_MISMATCH_SECOND_PASS",
+      "AGE_MIN_MISMATCH_SECOND_PASS",
+      "AGE_RANGE_MISMATCH",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "product_by_product_changes": [
+      "토스뱅크 공식 이자 받는 저금통 페이지에서 상품명과 어린이 대상·직접 이자 경험·심의필 확인",
+      "공식 본문에 나이·금리·지급 세부가 없어 Naver 상세를 공식 확정으로 대체하지 않음"
+    ]
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

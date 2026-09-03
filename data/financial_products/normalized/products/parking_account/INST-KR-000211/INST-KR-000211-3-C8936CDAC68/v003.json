@@ -1,0 +1,614 @@
+{
+  "product_code": "INST-KR-000211-3-C8936CDAC68",
+  "version": 3,
+  "institution_id": "INST-KR-000211",
+  "name": "Hi통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "eligibility_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "display_text": "개인 및 개인사업자 (1인 1계좌에 한함)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-C8936CDAC68-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+        ],
+        "source_clause": "기본금리",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ],
+          "qualification": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SC.CRM_AGE_DAYS",
+                  "operator": "LTE",
+                  "expected_value": 31
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SC.DEPOSIT_ACCOUNT_HELD_DURING_PREOPEN_1Y",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fact_key": "BALANCE.END_OF_DAY",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "CHANNEL.SC.QUALIFYING_PARTNER_OR_MOBILE_OPENING",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.SC.SMS_AND_ANY_PHONE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.SC.PRIORITY_GRADE_OR_ABOVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.SC.ALL_WON_DEMAND_ACCOUNTS.ANNUAL_AVERAGE_BALANCE",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ],
+          "unit": "KRW"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-01",
+          "title": "첫거래 고객·잔액 1억원 미만",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BALANCE.END_OF_DAY",
+                  "operator": "LT",
+                  "expected_value": 100000000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            },
+            "extension_policy": {
+              "interval": {
+                "value": 1,
+                "unit": "YEAR"
+              },
+              "condition": {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SC.ALL_WON_DEMAND_ACCOUNTS.ANNUAL_AVERAGE_BALANCE",
+                  "operator": "GTE",
+                  "expected_value": 100000000,
+                  "unit": "KRW"
+                }
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-02",
+          "title": "첫거래 고객·잔액 1억원 이상 3억원 이하",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BALANCE.END_OF_DAY",
+                  "operator": "GTE",
+                  "expected_value": 100000000,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BALANCE.END_OF_DAY",
+                  "operator": "LTE",
+                  "expected_value": 300000000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.6",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            },
+            "extension_policy": {
+              "interval": {
+                "value": 1,
+                "unit": "YEAR"
+              },
+              "condition": {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SC.ALL_WON_DEMAND_ACCOUNTS.ANNUAL_AVERAGE_BALANCE",
+                  "operator": "GTE",
+                  "expected_value": 100000000,
+                  "unit": "KRW"
+                }
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-03",
+          "title": "첫거래 고객·잔액 3억원 초과",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SC.FIRST_CUSTOMER_QUALIFIED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BALANCE.END_OF_DAY",
+                  "operator": "GT",
+                  "expected_value": 300000000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            },
+            "extension_policy": {
+              "interval": {
+                "value": 1,
+                "unit": "YEAR"
+              },
+              "condition": {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SC.ALL_WON_DEMAND_ACCOUNTS.ANNUAL_AVERAGE_BALANCE",
+                  "operator": "GTE",
+                  "expected_value": 100000000,
+                  "unit": "KRW"
+                }
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-04",
+          "title": "제휴채널 신규",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL.SC.QUALIFYING_PARTNER_OR_MOBILE_OPENING",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-05",
+          "title": "마케팅 동의",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONSENT.SC.SMS_AND_ANY_PHONE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "INTEREST_SETTLEMENT_DATE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C8936CDAC68-PREF-06",
+          "title": "Priority 등급 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SC.PRIORITY_GRADE_OR_ABOVE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "INTEREST_SETTLEMENT_DATE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "MUTUALLY_EXCLUSIVE_MAX",
+          "rule_ids": [
+            "INST-KR-000211-3-C8936CDAC68-PREF-01",
+            "INST-KR-000211-3-C8936CDAC68-PREF-02",
+            "INST-KR-000211-3-C8936CDAC68-PREF-03"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "AVERAGE_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "매월 첫 영업일(예금 신규시는 예금신규일)부터 매월 말일 (단, 말일이 금융휴무일 또는 법정공휴일인 경우에는 연속되는 휴일의 마지막 날)까지 일별로 이자계산하여 합산된 이자금액을 매월 첫 영업일에 원금에 더함",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000211-3-C8936CDAC68-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "BUSINESS_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "2.60",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000211-3-C8936CDAC68",
+    "source_record_id": "fd15997261bd01502028152916a7a09c",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 73,
+    "reviewed_source_record_id": "fd15997261bd01502028152916a7a09c",
+    "reviewed_individually": true,
+    "recommendation_gate": "REQUIRES_MANUAL_RULE_CONFIRMATION",
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "ANNUAL_EXTENSION_CONDITION_UNSTRUCTURED",
+      "FIRST_CUSTOMER_LOOKBACK_CONFLATED_WITH_REWARD_WINDOW",
+      "FIRST_CUSTOMER_TIER_BOUNDARIES_OVERLAP",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "1억원/3억원 경계 복원",
+      "첫거래 lookback·1년 우대·연장조건 분리",
+      "매 1년 시점 합산 연평잔 1억원 이상이면 1년씩 연장되는 구조 재검증"
+    ],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C8936CDAC68"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

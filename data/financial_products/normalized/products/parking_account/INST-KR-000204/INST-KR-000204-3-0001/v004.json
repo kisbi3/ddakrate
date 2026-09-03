@@ -1,0 +1,360 @@
+{
+  "product_code": "INST-KR-000204-3-0001",
+  "version": 4,
+  "institution_id": "INST-KR-000204",
+  "name": "JB MY금고",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000204-3-0001-REL-LINKED-ACCOUNT",
+        "kind": "LINKED_ACCOUNT_REQUIRED",
+        "expected_state": true,
+        "fact_key": "RELATIONSHIP.JB.ELIGIBLE_DEMAND_DEPOSIT_LINKED",
+        "source_text": "실명이 확인된 당행 입출금통장과 연결을 통해서만 신규 가능",
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000204-3-0001"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ],
+    "amount_rules": [
+      {
+        "scope": "FUNDING_OR_PRINCIPAL",
+        "limit_kind": "MAX_CUSTOMER_FUNDED_AMOUNT",
+        "currency": "KRW",
+        "max_value": "100000000",
+        "interest_credit_exception": true,
+        "source_text": "최대 1억원. 당행이 이자를 입금하는 경우에 한하여 한도 초과 가능"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000204-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-30",
+          "snapshot_basis": "NAVER_CRAWL_PLUS_USER_CONFIRMATION"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000204-3-0001",
+          "EVD-USER-PARK-20260830-JB-MY-VAULT-UNKNOWN"
+        ],
+        "source_clause": "1억원 이하 2.0%",
+        "executable": true,
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "0",
+              "min_inclusive": true,
+              "max_value": "100000000",
+              "max_inclusive": true,
+              "source_text": "1억원 이하"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        }
+      },
+      {
+        "rate_id": "INST-KR-000204-3-0001-BASE-02-EXTERNAL",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "EXTERNAL_POSTED_RATE",
+          "reference_product_name": "저축예금",
+          "reference_institution_id": "INST-KR-000204",
+          "value": null,
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "100000000",
+              "min_inclusive": false,
+              "source_text": "1억원 초과 금액"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "source_clause": "1억원 초과 금액에 대해서는 저축예금의 기본이율 적용",
+        "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+        "execution_status": "NON_EXECUTABLE_EXTERNAL_RATE_NOT_FOUND",
+        "executable": false,
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000204-3-0001",
+          "EVD-USER-PARK-20260830-JB-MY-VAULT-UNKNOWN"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ],
+    "interest_crediting": {
+      "raw_text": "저축예금 : 예금의 이자는 매년 3월, 6월, 9월, 12월의 제4금요일에 셈하여 그 다음 일에 원금에 더함\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000204-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 3,
+              "unit": "MONTH"
+            },
+            "calendar_months": [
+              3,
+              6,
+              9,
+              12
+            ],
+            "reference_day": {
+              "ordinal_week": 4,
+              "weekday": "FRIDAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000204-3-0001"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000204-3-0001-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000204-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 3,
+        "unit": "MONTH"
+      },
+      "calendar_months": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000204-3-0001"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL_TRANCHE",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000204-3-0001"
+      ]
+    },
+    "contract_rate_execution_status": "PARTIAL_EXECUTABLE_EXTERNAL_EXCESS_RATE_UNRESOLVED"
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000204-3-0001",
+    "EVD-USER-PARK-20260830-JB-MY-VAULT-UNKNOWN"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_USER_CONFIRMED_RECONCILIATION",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000204-3-0001",
+        "product_name": "JB MY금고",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000204-3-0001",
+        "product_name": "JB MY금고",
+        "path": "return_policy.rate_entries[1].calculation.value",
+        "reason": "1억원 초과분이 참조하는 전북은행 저축예금 기본이율을 현재 확인할 수 없음. 수치 추정 금지.",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000204-3-0001",
+    "source_record_id": "7f34789f963a2c63cb769cc3fc2ca14f",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T15:12:00+09:00",
+    "restructure_mode": "NAVER_CONDITION_SECTION_ENRICHMENT_AND_USER_RECONCILIATION",
+    "review_sequence": 64,
+    "reviewed_source_record_id": "7f34789f963a2c63cb769cc3fc2ca14f",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_SOURCE_GAPS",
+    "resolved_audit_findings": [
+      "BALANCE_METHOD_CONTRADICTS_SOURCE",
+      "BASE_BALANCE_APPLICATION_WHOLE_VS_TRANCHE_EXPLICIT_SOURCE",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "MISSING_EXTERNAL_EXCESS_RATE_ENTRY",
+      "BALANCE_METHOD_INCONSISTENCY",
+      "BOGUS_RELATIONSHIP_FROM_PASSBOOK_DISCLOSURE"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T15:12:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reviewed": true,
+    "condition_section_review_basis": "NAVER_RATE_INFO_AFTER_CONDITIONAL_HEADING",
+    "product_by_product_changes": [
+      "1억원 초과 external 저축예금 금리 entry를 명시적 non-executable tranche로 추가",
+      "비대면·무통장 문구를 가입관계로 오인한 항목 제거",
+      "실제 연결계좌 prerequisite 복원"
+    ],
+    "user_confirmation_applied_at": "2026-08-30T15:12:00+09:00"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000204-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T15:12:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE_EXTERNAL_EXCESS_UNRESOLVED",
+    "declared_data_gap_count": 2,
+    "condition_section_reconciled": true
+  }
+}

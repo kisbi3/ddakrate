@@ -1,0 +1,273 @@
+{
+  "product_code": "INST-KR-001106-3-C9A9ECC0400",
+  "version": 4,
+  "institution_id": "INST-KR-001106",
+  "name": "토스뱅크 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+        "EVD-OFFICIAL-216"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+        "EVD-OFFICIAL-216"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+        "EVD-OFFICIAL-216"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+      "EVD-OFFICIAL-216"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "14세 이상의 실명의 개인(1인 1계좌)",
+    "eligibility_text": "14세 이상의 실명의 개인(1인 1계좌)",
+    "display_text": "14세 이상의 실명의 개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+      "EVD-OFFICIAL-216"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001106-3-C9A9ECC0400-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+          "EVD-OFFICIAL-216"
+        ],
+        "source_clause": "5천만원 이하 | 연 1%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하",
+              "max_value": "50000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-001106-3-C9A9ECC0400-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+          "EVD-OFFICIAL-216"
+        ],
+        "source_clause": "5천만원 초과 | 연 1%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과",
+              "min_value": "50000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+      "EVD-OFFICIAL-216"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 1일 또는 고객이 직접 이자지급을 요청하여 지급한 날",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+        "EVD-OFFICIAL-216"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-001106-3-C9A9ECC0400-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+          ]
+        },
+        {
+          "event_id": "INST-KR-001106-3-C9A9ECC0400-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "매월 1일 또는 고객이 직접 이자지급을 요청하여 지급한 날",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "1.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+      "EVD-OFFICIAL-216"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001106-3-C9A9ECC0400",
+    "EVD-OFFICIAL-216"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_PAGE_PARTIAL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-001106-3-C9A9ECC0400",
+        "product_name": "토스뱅크 통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_TOSS_OFFICIAL_ACCOUNT_PAGE; NUMERIC_RATE_NOT_RENDERED",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001106-3-C9A9ECC0400",
+    "source_record_id": "3d66dde9d905adf75f69c74e1080acc0",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 216,
+    "reviewed_source_record_id": "SRC-OFFICIAL-216",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_OFFICIAL_RATE_PLACEHOLDER",
+    "resolved_audit_findings": [
+      "AGE_MIN_MISMATCH_SECOND_PASS",
+      "AGE_RANGE_MISMATCH",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "product_by_product_changes": [
+      "토스뱅크 공식 통장 본문에서 상품명·자유로운 입출금·만기 없음·ATM 무료·송금한도·심의필 확인",
+      "공식 본문 금리 연 -% placeholder로 Naver 1% 구간값은 공식 확정하지 않음"
+    ]
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 1
+  }
+}

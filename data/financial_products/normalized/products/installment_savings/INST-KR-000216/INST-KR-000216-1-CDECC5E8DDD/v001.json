@@ -1,0 +1,279 @@
+{
+  "product_code": "INST-KR-000216-1-CDECC5E8DDD",
+  "version": 1,
+  "institution_id": "INST-KR-000216",
+  "name": "jBANK 저금통적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인, 개인사업자 (1인 1계좌)",
+    "eligibility_text": "실명의 개인, 개인사업자 (1인 1계좌)",
+    "display_text": "실명의 개인, 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      6,
+      12
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-CDECC5E8DDD-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-CDECC5E8DDD-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.70",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-1-CDECC5E8DDD-01",
+        "title": "아래 1, 2, 3, 4의 요건 충족여부에 따라 최고 연 2.10%p 우대함",
+        "condition_text": "아래 1, 2, 3, 4의 요건 충족여부에 따라 최고 연 2.10%p 우대함\n단, 계약기간 만기 전 중도 해지한 계좌에 대하여 우대 이자율을 적용하지 않음\n1항, 3항, 4항의 우대 이자율에 해당하는 고객에게 만기해지 시 해당 우대이자율을 지급하며 신규 시 해당 우대 이자율 적용이 표시되지 않음",
+        "structured_steps": [
+          "아래 1, 2, 3, 4의 요건 충족여부에 따라 최고 연 2.10%p 우대함",
+          "단, 계약기간 만기 전 중도 해지한 계좌에 대하여 우대 이자율을 적용하지 않음",
+          "1항, 3항, 4항의 우대 이자율에 해당하는 고객에게 만기해지 시 해당 우대이자율을 지급하며 신규 시 해당 우대 이자율 적용이 표시되지 않음"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "아래 1, 2, 3, 4의 요건 충족여부에 따라 최고 연 2.10%p 우대함",
+          "summary_text": "아래 1, 2, 3, 4의 요건 충족여부에 따라 최고 연 2.10%p 우대함",
+          "detail_texts": [
+            "단, 계약기간 만기 전 중도 해지한 계좌에 대하여 우대 이자율을 적용하지 않음",
+            "1항, 3항, 4항의 우대 이자율에 해당하는 고객에게 만기해지 시 해당 우대이자율을 지급하며 신규 시 해당 우대 이자율 적용이 표시되지 않음"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-1-CDECC5E8DDD-02",
+        "title": "가입일 익일부터 만기일 전전일까지 자투리 출금이체가 설정된 입출금통장 평잔 50만원 이상 유지 시 : 0.8%",
+        "condition_text": "가입일 익일부터 만기일 전전일까지 자투리 출금이체가 설정된 입출금통장 평잔 50만원 이상 유지 시 : 0.8%",
+        "structured_steps": [
+          "가입일 익일부터 만기일 전전일까지 자투리 출금이체가 설정된 입출금통장 평잔 50만원 이상 유지 시 : 0.8%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.8",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가입일 익일부터 만기일 전전일까지 자투리 출금이체가 설정된 입출금통장 평잔 50만원 이상 유지 시 : 0.8%",
+          "summary_text": "가입일 익일부터 만기일 전전일까지 자투리 출금이체가 설정된 입출금통장 평잔 50만원 이상 유지 시 : 0.8%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.8",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-1-CDECC5E8DDD-03",
+        "title": "예금 신규일 기준 과거 3개월간 당행 거치식 및 적립식 예금 미보유 고객 혹은 jBANK 저금통적금 만기 시점에서 1개월 내 재신규하는 고객 대상 : 0.5%",
+        "condition_text": "예금 신규일 기준 과거 3개월간 당행 거치식 및 적립식 예금 미보유 고객 혹은 jBANK 저금통적금 만기 시점에서 1개월 내 재신규하는 고객 대상 : 0.5%",
+        "structured_steps": [
+          "예금 신규일 기준 과거 3개월간 당행 거치식 및 적립식 예금 미보유 고객 혹은 jBANK 저금통적금 만기 시점에서 1개월 내 재신규하는 고객 대상 : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "예금 신규일 기준 과거 3개월간 당행 거치식 및 적립식 예금 미보유 고객 혹은 jBANK 저금통적금 만기 시점에서 1개월 내 재신규하는 고객 대상 : 0.5%",
+          "summary_text": "예금 신규일 기준 과거 3개월간 당행 거치식 및 적립식 예금 미보유 고객 혹은 jBANK 저금통적금 만기 시점에서 1개월 내 재신규하는 고객 대상 : 0.5%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-1-CDECC5E8DDD-04",
+        "title": "신규가입 시점에서 적금 목표금액 최소 30만원 이상 설정하고, 적금 신규일로부터 3개월 내 잔액이 목표금액 이상인 경우 우대금리 획득 : 0.5%",
+        "condition_text": "신규가입 시점에서 적금 목표금액 최소 30만원 이상 설정하고, 적금 신규일로부터 3개월 내 잔액이 목표금액 이상인 경우 우대금리 획득 : 0.5%",
+        "structured_steps": [
+          "신규가입 시점에서 적금 목표금액 최소 30만원 이상 설정하고, 적금 신규일로부터 3개월 내 잔액이 목표금액 이상인 경우 우대금리 획득 : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규가입 시점에서 적금 목표금액 최소 30만원 이상 설정하고, 적금 신규일로부터 3개월 내 잔액이 목표금액 이상인 경우 우대금리 획득 : 0.5%",
+          "summary_text": "신규가입 시점에서 적금 목표금액 최소 30만원 이상 설정하고, 적금 신규일로부터 3개월 내 잔액이 목표금액 이상인 경우 우대금리 획득 : 0.5%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-1-CDECC5E8DDD-05",
+        "title": "추천인 우대금리 : 추천인 1인당 0.30%(최대 1인까지)",
+        "condition_text": "추천인 우대금리 : 추천인 1인당 0.30%(최대 1인까지)\n-신규 가입 시 제공하는 추천인 번호를 타인이 본 상품 가입 시 입력할 경우 입력자와 피추천인 각각 우대되며 추천인 번호 입력 우대 적용 가능 기간은 계약기간 1/2까지 가능함\n-예금주 본인의 추천인 번호와 해지된 계좌의 추천인 번호는 사용불가\n: 0.3%",
+        "structured_steps": [
+          "추천인 우대금리 : 추천인 1인당 0.30%(최대 1인까지)",
+          "-신규 가입 시 제공하는 추천인 번호를 타인이 본 상품 가입 시 입력할 경우 입력자와 피추천인 각각 우대되며 추천인 번호 입력 우대 적용 가능 기간은 계약기간 1/2까지 가능함",
+          "-예금주 본인의 추천인 번호와 해지된 계좌의 추천인 번호는 사용불가",
+          ": 0.3%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "추천인 우대금리 : 추천인 1인당 0.30%(최대 1인까지)",
+          "summary_text": "추천인 우대금리 : 추천인 1인당 0.30%(최대 1인까지)",
+          "detail_texts": [
+            "-신규 가입 시 제공하는 추천인 번호를 타인이 본 상품 가입 시 입력할 경우 입력자와 피추천인 각각 우대되며 추천인 번호 입력 우대 적용 가능 기간은 계약기간 1/2까지 가능함",
+            "-예금주 본인의 추천인 번호와 해지된 계좌의 추천인 번호는 사용불가",
+            ": 0.3%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+    ],
+    "advertised_max_rate": {
+      "value": "4.70",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000216-1-CDECC5E8DDD"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.259668+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

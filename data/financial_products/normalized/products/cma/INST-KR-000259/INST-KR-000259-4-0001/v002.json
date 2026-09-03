@@ -1,0 +1,314 @@
+{
+  "product_code": "INST-KR-000259-4-0001",
+  "version": 2,
+  "institution_id": "INST-KR-000259",
+  "name": "한국투자 CMA (RP형)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001",
+      "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+      "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "CORPORATION"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_RP_LOT",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000259-4-0001-IND",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.30",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+          "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+        ],
+        "as_of": "2026-07-20",
+        "customer_scope": "INDIVIDUAL",
+        "applies_to": [{"basis": "ELAPSED_TERM", "range": {"unit": "DAY", "min_inclusive": true, "max_inclusive": true, "min_value": "1", "max_value": "30"}}],
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      },
+      {
+        "rate_id": "INST-KR-000259-4-0001-CORP",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.30",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+          "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+        ],
+        "as_of": "2026-07-20",
+        "customer_scope": "CORPORATION",
+        "applies_to": [{"basis": "ELAPSED_TERM", "range": {"unit": "DAY", "min_inclusive": true, "max_inclusive": true, "min_value": "1", "max_value": "30"}}],
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      },
+      {
+        "rate_id": "INST-KR-000259-4-0001-IND-CURRENT",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {"type": "VARIABLE_POSTED", "value": null, "unit": "PERCENT"},
+        "source_ref_ids": ["EVD-CMA-OFFICIAL-KIS-CMA-202608", "EVD-CMA-OFFICIAL-KIS-RP-20260828"],
+        "as_of": "2026-07-20",
+        "customer_scope": "INDIVIDUAL",
+        "applies_to": [{"basis": "ELAPSED_TERM", "range": {"unit": "DAY", "min_inclusive": true, "min_value": "31"}}],
+        "rate_context": {"kind": "CURRENT_POSTED_RATE_AUTO_REPRICING", "tax_basis": "PRE_TAX", "observation_source": "OFFICIAL_PROVIDER_CURRENT_RATE", "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"}
+      },
+      {
+        "rate_id": "INST-KR-000259-4-0001-CORP-CURRENT",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {"type": "VARIABLE_POSTED", "value": null, "unit": "PERCENT"},
+        "source_ref_ids": ["EVD-CMA-OFFICIAL-KIS-CMA-202608", "EVD-CMA-OFFICIAL-KIS-RP-20260828"],
+        "as_of": "2026-07-20",
+        "customer_scope": "CORPORATION",
+        "applies_to": [{"basis": "ELAPSED_TERM", "range": {"unit": "DAY", "min_inclusive": true, "min_value": "31"}}],
+        "rate_context": {"kind": "CURRENT_POSTED_RATE_AUTO_REPRICING", "tax_basis": "PRE_TAX", "observation_source": "OFFICIAL_PROVIDER_CURRENT_RATE", "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"}
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001",
+      "EVD-CMA-20260829-INST-KR-000259-4-CB78CCB6D73",
+      "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+      "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+    ],
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 30,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+        "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1"
+    },
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+        "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+      ]
+    },
+    "legacy_cycle_exception": {
+      "deposit_before": "2012-11-09",
+      "reinvestment_interval": {
+        "value": 90,
+        "unit": "DAY"
+      },
+      "executable": false,
+      "source_ref_ids": [
+        "EVD-CMA-20260829-INST-KR-000259-4-CB78CCB6D73"
+      ]
+    },
+    "scheduled_rate_changes": [
+      {
+        "effective_from": "2026-08-31",
+        "status": "FUTURE_NOT_CURRENT_AS_OF_2026-08-29",
+        "rate_entries": [
+          {
+            "rate_id": "INST-KR-000259-4-0001-IND-FUT",
+            "role": "BASE",
+            "customer_scope": "INDIVIDUAL",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.50",
+              "unit": "PERCENT"
+            }
+          },
+          {
+            "rate_id": "INST-KR-000259-4-0001-CORP-FUT",
+            "role": "BASE",
+            "customer_scope": "CORPORATION",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.50",
+              "unit": "PERCENT"
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-KIS-CMA-202608",
+          "EVD-CMA-OFFICIAL-KIS-RP-20260828"
+        ],
+        "reason": "Official future rate; current rate remains 2.30 through 2026-08-30."
+      }
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000259-4-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "READY",
+    "data_gaps": [
+      {
+        "input_line": 42,
+        "product_code": "INST-KR-000259-4-0001",
+        "path": "return_policy.rate_entries[2].calculation.value",
+        "reason": "31일 이상은 당시 신규 약정이율로 적용된다는 외부 고시율 참조만 확인되어 수치가 없음",
+        "status": "REQUIRES_EXTERNAL_DEFINITION",
+        "source_ref_ids": ["EVD-CMA-20260829-INST-KR-000259-4-0001", "EVD-CMA-OFFICIAL-KIS-CMA-202608", "EVD-CMA-OFFICIAL-KIS-RP-20260828"],
+        "usage_impact": "NO_AUTOMATIC_RATE_SELECTION_AFTER_DAY_30"
+      }
+    ],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000259/INST-KR-000259-4-0001/v001.json",
+    "previous_sha256": "sha256:cacea74a861f43049d33cdc0ad4eabdbc1ad95f29c89844baf7b99b9af14ac2d",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000259-4-0001"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      },
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000259-4-0001"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+      "equivalence_group_id": "CMA-EQ-KIS-RP",
+      "preferred_product_code": "INST-KR-000259-4-0001",
+      "related_input_product_codes": [
+        "INST-KR-000259-4-CB78CCB6D73"
+      ],
+      "relation": "SAME_CONTRACT_SOURCE_DUPLICATE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "NO_TIER_OR_SINGLE_RATE"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 30,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL",
+            "CORPORATION"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+          "group": "CMA-EQ-KIS-RP"
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "investment_policy": {
+    "underlying_asset": "BONDS",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000259-4-0001"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}

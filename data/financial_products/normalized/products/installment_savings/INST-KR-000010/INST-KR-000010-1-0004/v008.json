@@ -1,0 +1,1222 @@
+{
+  "product_code": "INST-KR-000010-1-0004",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "Touch UP 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE"
+    ],
+    "sale_period": {
+      "start_date": "2025-03-27",
+      "end_date": "2026-12-31",
+      "end_inclusive": true
+    },
+    "subscription_channels": [
+      "APP"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 10000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 1,
+    "source_expression": "1개월",
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_DAY",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "30000",
+        "interpretation": "DAILY_AGGREGATE_CONTRIBUTION_RANGE_WHEN_A_CONTRIBUTION_IS_MADE",
+        "source_ref_ids": [
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO",
+          "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-CORE-20260831"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-CORE-20260831"
+          }
+        ]
+      }
+    ],
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_count": 999,
+        "source_ref_ids": [
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "contribution_channel_constraints": {
+      "allowed_source": "OWN_BANK_DEMAND_DEPOSIT_TRANSFER",
+      "allowed_methods": [
+        "MOBILE_BANKING_TRANSFER",
+        "INTERNET_BANKING_TRANSFER",
+        "TELEBANKING_TRANSFER",
+        "OWN_BANK_CD_ATM_TRANSFER"
+      ],
+      "disallowed_methods": [
+        "AUTO_TRANSFER",
+        "CASH_OR_PASSBOOK_DEPOSIT",
+        "OPEN_BANKING"
+      ],
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+        }
+      ]
+    },
+    "source_amount_text": "일 1천원 이상 ~ 3만원 이하 (자유적립식)\n- 자동이체 등록불가, 가입기간 내 저축횟수 999회 이내, 만기일 전일까지 입금 가능\n- 당행 입출금계좌를 통한 이체입금만 가능 (스마트폰, 인터넷뱅킹, 텔레뱅킹, 당행 CD/ATM 이체거래를 통한 입금 가능하며, 무통장입금, 오픈뱅킹을 통한 입금은 불가합니다.)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "일 1천원 이상 ~ 3만원 이하 (자유적립식)\n- 자동이체 등록불가, 가입기간 내 저축횟수 999회 이내,"
+      },
+      {
+        "value": "30000",
+        "currency": "KRW",
+        "source_expression": "3만원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "일 1천원 이상 ~ 3만원 이하 (자유적립식)\n- 자동이체 등록불가, 가입기간 내 저축횟수 999회 이내, 만기일 전일까지"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-0004-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "standard_preferential_cap": {
+          "value": "5.25",
+          "unit": "PERCENTAGE_POINT",
+          "scope": "EXCLUDES_SEPARATE_EVENT_RATE",
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            }
+          ]
+        },
+        "separate_event_rate_additive": true,
+        "source_ref_ids": [
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+          "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06",
+          "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.KNBANK_DEPOSIT_SAVINGS_ACTIVITY_COUNT_LAST_12M",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_window": {
+            "end": "SUBSCRIPTION_PRE_COMMIT",
+            "lookback": {
+              "value": 12,
+              "unit": "MONTH"
+            },
+            "activity_types": [
+              "NEW",
+              "TERMINATION"
+            ],
+            "product_scope": [
+              "DEPOSIT",
+              "INSTALLMENT_SAVINGS"
+            ]
+          },
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.MARKETING_CONSENT_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_moment": "SUBSCRIPTION",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.MOBILE_MESSAGE_RECEIPT_CONSENT_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_moment": "SUBSCRIPTION",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000010_1_0004_PREF_04.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "derived_from_event_ref": "EVENT-INST-KR-000010-1-0004-PREF-04-QUALIFYING-DEPOSIT-DAY",
+          "aggregation": "COUNT_DISTINCT_LOCAL_CALENDAR_DATE",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.AGE_YEARS_AT_SUBSCRIPTION",
+          "type": "INTEGER",
+          "unit": "YEAR",
+          "authority": "BANK_KYC_OR_USER_PROFILE",
+          "self_report_eligible": true,
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "evaluation_moment": "SUBSCRIPTION",
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000010-1-0004-PREF-04-QUALIFYING-DEPOSIT-DAY",
+          "event_type": "SAVINGS_CONTRIBUTION_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "requires_valid_contribution": true,
+            "counting_unit": "DISTINCT_LOCAL_CALENDAR_DATE",
+            "multiple_contributions_same_date_count_as": 1,
+            "amount_policy_ref": "cash_flow_policy.amount_rules[scope=PER_DAY]",
+            "source_text": "적금 입금일마다 0.15%씩 우대"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "DAY_BEFORE_MATURITY"
+          },
+          "maximum_count_per_period": {
+            "period": "DAY",
+            "count": 1
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-0004-PREF-02",
+          "title": "신규고객 우대: 최근 12개월 예·적금 신규·해지이력 미보유",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.KNBANK_DEPOSIT_SAVINGS_ACTIVITY_COUNT_LAST_12M",
+              "operator": "EQUALS",
+              "expected_value": 0,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+                "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+                },
+                {
+                  "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                }
+              ],
+              "unit": "COUNT"
+            },
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "display": {
+            "summary": "최근 12개월 예·적금 신규·해지이력이 없으면 +1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "신규고객 우대: 최근 12개월 예·적금 신규·해지이력 미보유 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0004-PREF-03",
+          "title": "가입 시 마케팅동의 AND 모바일메세지 수신동의",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.MARKETING_CONSENT_AT_SUBSCRIPTION",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+                    "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+                    },
+                    {
+                      "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+                  "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+                  },
+                  {
+                    "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.MOBILE_MESSAGE_RECEIPT_CONSENT_AT_SUBSCRIPTION",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+                    "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+                    },
+                    {
+                      "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+                  "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+                  },
+                  {
+                    "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "display": {
+            "summary": "상품가입 시 마케팅동의와 모바일메세지 수신동의를 모두 하면 +0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "상품가입 시 마케팅동의 및 모바일메세지 수신동의 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0004-PREF-04",
+          "title": "TOUCH 금리: 입금일마다 +0.15%p, 최대 +3.75%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000010_1_0004_PREF_04.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+                "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+                },
+                {
+                  "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                }
+              ],
+              "unit": "COUNT"
+            },
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000010-1-0004-PREF-04-QUALIFYING-DEPOSIT-DAY",
+            "value_per_occurrence": "0.15",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "cap_value": "3.75",
+            "max_qualifying_units": 25,
+            "max_qualifying_units_derivation": "3.75 / 0.15",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "display": {
+            "summary": "서로 다른 적금 입금일 1일당 +0.15%p, 최대 25일·+3.75%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "CONTRIBUTION_EVENT",
+          "source_clause_text": "TOUCH 금리: 최대 3.75%\n- 적금 입금일마다 0.15%씩 우대"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0004-PREF-05",
+          "title": "이벤트 금리: 가입 시 만 29세 이하 +0.30%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.AGE_YEARS_AT_SUBSCRIPTION",
+              "operator": "LTE",
+              "expected_value": 29,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+                "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+                },
+                {
+                  "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+                }
+              ],
+              "unit": "YEAR"
+            },
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.30",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_KYC_OR_USER_PROFILE",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "display": {
+            "summary": "가입 시 만 29세 이하이면 별도 이벤트 금리 +0.30%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "AGE",
+          "source_clause_text": "이벤트 금리- 20대이하(만 29세)고객 가입 시 : 0.3%",
+          "reward_class": "SEPARATE_EVENT_RATE"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000010-1-0004-PREF-04-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000010-1-0004-PREF-04"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000010-1-0004-PREF-04-QUALIFYING-DEPOSIT-DAY",
+          "value_per_occurrence": "0.15",
+          "occurrence_block_size": 1,
+          "cap": {
+            "value": "3.75",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+              "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+              }
+            ]
+          },
+          "counting_semantics": "DISTINCT_DEPOSIT_DAY",
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000010-1-0004-STANDARD-PREFERENTIAL-CAP",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000010-1-0004-PREF-02",
+            "INST-KR-000010-1-0004-PREF-03",
+            "INST-KR-000010-1-0004-PREF-04"
+          ],
+          "cap": {
+            "value": "5.25",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              }
+            ]
+          },
+          "scope": "STANDARD_PREFERENTIAL_EXCLUDING_EVENT_RATE",
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000010-1-0004-TOTAL-PREFERENTIAL-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "REL-INST-KR-000010-1-0004-STANDARD-PREFERENTIAL-CAP",
+            "INST-KR-000010-1-0004-PREF-05"
+          ],
+          "cap": {
+            "value": "5.55",
+            "unit": "PERCENTAGE_POINT",
+            "derivation": "5.25 standard preferential maximum + 0.30 separate event rate",
+            "source_ref_ids": [
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE",
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+              "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-LISTING"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE"
+              },
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-LISTING"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_AND_EVENT_RATE_ENVELOPE",
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+            "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-SECTION",
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+        }
+      ],
+      "ui_guidance": [
+        {
+          "guidance_id": "INST-KR-000010-1-0004-PREF-06-UI",
+          "text": "우대이율 충족여부: 경남은행 모바일뱅킹 앱 → 전체계좌조회 → 거래내역조회 → 예상적용금리",
+          "source_ref_ids": [
+            "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-06"
+            }
+          ]
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-RATE",
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-LISTING",
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-CORE-20260831"
+      ],
+      "context": "NAVER_LISTING_CONFIRMED_BY_ISSUER"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "b6946e2cee56c3b5f7fbe20f38f215e4"
+    },
+    "payment_timing": "MATURITY",
+    "preferential_max_rate": {
+      "value": "5.25",
+      "unit": "PERCENTAGE_POINT",
+      "scope": "STANDARD_PREFERENTIAL_EXCLUDING_EVENT_RATE",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+      ]
+    },
+    "event_rate_max": {
+      "value": "0.30",
+      "unit": "PERCENTAGE_POINT",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-04",
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-05",
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO",
+    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-RATE",
+    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-LISTING",
+    "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE",
+    "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-CORE-20260831",
+    "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831",
+    "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T02:20:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_ISSUER_ENRICHMENT",
+    "publication_gate": "TARGETED_PRODUCT_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "b6946e2cee56c3b5f7fbe20f38f215e4",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-09",
+      "reviewed_at": "2026-08-31T02:20:00+09:00",
+      "method": "NAVER_PRODUCT_GUIDE_PLUS_RATE_CONDITIONAL_PLUS_ISSUER_PRODUCT_PAGE_DIRECT_REVIEW",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "ISSUER_PRODUCT_PAGE"
+      ],
+      "correction_count": 12,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "termination_policy": {
+    "ordinary_termination": {
+      "allowed_channels": [
+        "APP",
+        "BRANCH"
+      ],
+      "minor_customer_rule": {
+        "condition": "CUSTOMER_LEGAL_STATUS == MINOR",
+        "allowed_channels": [
+          "BRANCH"
+        ],
+        "automatic_maturity_eligible": false
+      },
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+        }
+      ]
+    },
+    "automatic_maturity": {
+      "eligible": true,
+      "holiday_adjustment": "NEXT_BUSINESS_DAY_IF_MATURITY_FALLS_ON_WEEKEND_OR_HOLIDAY",
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+        }
+      ]
+    },
+    "partial_termination_allowed": false,
+    "preferential_rate_on_early_termination": false,
+    "source_ref_ids": [
+      "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01",
+      "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-B6946E2CEE56C3B5F7FBE20F38F215E4-PREF-01"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+      }
+    ]
+  },
+  "official_source_enrichment": {
+    "issuer": "BNK_KYONGNAM_BANK",
+    "official_product_page": "https://www.knbank.co.kr/ib20/mnu/FPMREP020101000?FNC_PRD_DIS_CD=01&FNC_PRD_NO=0000210880",
+    "verified_at": "2026-08-31",
+    "source_ref_ids": [
+      "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-CORE-20260831",
+      "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-PREFERENTIAL-20260831",
+      "EVD-IS-OFFICIAL-KNBANK-TOUCH-UP-TERMINATION-20260831"
+    ]
+  }
+}

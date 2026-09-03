@@ -1,0 +1,98 @@
+{
+  "product_code": "INST-KR-000408-1-0003",
+  "version": 1,
+  "institution_id": "INST-KR-000408",
+  "name": "Mymo 정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-1-0003"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "당사 인터넷뱅킹(비대면) 가입 고객",
+    "eligibility_text": "당사 인터넷뱅킹(비대면) 가입 고객",
+    "display_text": "당사 인터넷뱅킹(비대면) 가입 고객",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-1-0003"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 60,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-1-0003"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-1-0003"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000408-1-0003-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000408-1-0003"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000408-1-0003-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000408-1-0003"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000408-1-0003"
+    ],
+    "advertised_max_rate": {
+      "value": "3.55",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000408-1-0003"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000408-1-0003"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.387617+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "eligibility_policy",
+        "reason": "원문 가입대상을 새 조건 트리로 구조화하기 전에는 개인화 판정을 보류"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

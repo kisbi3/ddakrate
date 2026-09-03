@@ -1,0 +1,226 @@
+{
+  "product_code": "INST-KR-000223-1-0009",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK중기근로자우대적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0009"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "중소기업에서 근무하는 실명의 개인(개인사업자 제외) *1인 1계좌",
+    "eligibility_text": "중소기업에서 근무하는 실명의 개인(개인사업자 제외) *1인 1계좌",
+    "display_text": "중소기업에서 근무하는 실명의 개인(개인사업자 제외) *1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0009"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0009"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0009"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0009-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0009"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0009-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.70",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0009"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0009-01",
+        "title": "계약기간 동안 아래조건을 충족하고 만기해지 시 최고 연 2.2% 우대이자율 제공",
+        "condition_text": "계약기간 동안 아래조건을 충족하고 만기해지 시 최고 연 2.2% 우대이자율 제공",
+        "structured_steps": [
+          "계약기간 동안 아래조건을 충족하고 만기해지 시 최고 연 2.2% 우대이자율 제공"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0009"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "계약기간 동안 아래조건을 충족하고 만기해지 시 최고 연 2.2% 우대이자율 제공",
+          "summary_text": "계약기간 동안 아래조건을 충족하고 만기해지 시 최고 연 2.2% 우대이자율 제공",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0009-02",
+        "title": "가입시점 중소기업의 근로자로 확인된 경우 재직기간에 따른 우대이자율 제공",
+        "condition_text": "가입시점 중소기업의 근로자로 확인된 경우 재직기간에 따른 우대이자율 제공\n5년 미만 : 연 0.5%\n5년 이상 10년 미만 : 연 0.8%\n10년 이상 15년 미만 : 연 1.0%\n15년 이상 : 연 1.2%\n- 영업점 : 재직확인서류* 제출을 통한 중소기업 재직여부 및 입사일자 확인\n* 재직회사의 사업자번호, 입사일자가 기재된 재직증명서 등\n- 비대면 : i-ONE Bank 공공마이데이터*를 통한 중소기업 재직여부 및 입사일자 확인\n* 건강보험공단을 통한 재직여부 및 직장정보, 입사일자 검증",
+        "structured_steps": [
+          "가입시점 중소기업의 근로자로 확인된 경우 재직기간에 따른 우대이자율 제공",
+          "5년 미만 : 연 0.5%",
+          "5년 이상 10년 미만 : 연 0.8%",
+          "10년 이상 15년 미만 : 연 1.0%",
+          "15년 이상 : 연 1.2%",
+          "- 영업점 : 재직확인서류* 제출을 통한 중소기업 재직여부 및 입사일자 확인",
+          "* 재직회사의 사업자번호, 입사일자가 기재된 재직증명서 등",
+          "- 비대면 : i-ONE Bank 공공마이데이터*를 통한 중소기업 재직여부 및 입사일자 확인",
+          "* 건강보험공단을 통한 재직여부 및 직장정보, 입사일자 검증"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0009"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가입시점 중소기업의 근로자로 확인된 경우 재직기간에 따른 우대이자율 제공",
+          "summary_text": "가입시점 중소기업의 근로자로 확인된 경우 재직기간에 따른 우대이자율 제공",
+          "detail_texts": [
+            "5년 미만 : 연 0.5%",
+            "5년 이상 10년 미만 : 연 0.8%",
+            "10년 이상 15년 미만 : 연 1.0%",
+            "15년 이상 : 연 1.2%",
+            "- 영업점 : 재직확인서류* 제출을 통한 중소기업 재직여부 및 입사일자 확인",
+            "* 재직회사의 사업자번호, 입사일자가 기재된 재직증명서 등",
+            "- 비대면 : i-ONE Bank 공공마이데이터*를 통한 중소기업 재직여부 및 입사일자 확인",
+            "* 건강보험공단을 통한 재직여부 및 직장정보, 입사일자 검증"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0009-03",
+        "title": "당행 급여이체 실적(월50만원 이상)이 6개월 이상인 경우 : 연 1.0%",
+        "condition_text": "당행 급여이체 실적(월50만원 이상)이 6개월 이상인 경우 : 연 1.0%\n※ 급여이체 실적 인정 기준(다음 방식 중 1가지 이상 충족 시)\n① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹급여이체 시스템을 통해 월 50만원 이상 입금\n② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK영업점 창구, 자동화기기 입금, 당행간 자동이체 등은 인정되지 않음)\n③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일(총 7영업일)이내에 월 50만원 이상 입금",
+        "structured_steps": [
+          "당행 급여이체 실적(월50만원 이상)이 6개월 이상인 경우 : 연 1.0%",
+          "※ 급여이체 실적 인정 기준(다음 방식 중 1가지 이상 충족 시)",
+          "① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹급여이체 시스템을 통해 월 50만원 이상 입금",
+          "② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK영업점 창구, 자동화기기 입금, 당행간 자동이체 등은 인정되지 않음)",
+          "③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일(총 7영업일)이내에 월 50만원 이상 입금"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0009"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "당행 급여이체 실적(월50만원 이상)이 6개월 이상인 경우 : 연 1.0%",
+          "summary_text": "당행 급여이체 실적(월50만원 이상)이 6개월 이상인 경우 : 연 1.0%",
+          "detail_texts": [
+            "※ 급여이체 실적 인정 기준(다음 방식 중 1가지 이상 충족 시)",
+            "① 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹급여이체 시스템을 통해 월 50만원 이상 입금",
+            "② 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK영업점 창구, 자동화기기 입금, 당행간 자동이체 등은 인정되지 않음)",
+            "③ 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일(총 7영업일)이내에 월 50만원 이상 입금"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0009"
+    ],
+    "advertised_max_rate": {
+      "value": "4.70",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-1-0009"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-1-0009"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.295749+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

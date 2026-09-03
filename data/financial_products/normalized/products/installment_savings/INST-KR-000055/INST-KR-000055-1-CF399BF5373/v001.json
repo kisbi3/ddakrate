@@ -1,0 +1,183 @@
+{
+  "product_code": "INST-KR-000055-1-CF399BF5373",
+  "version": 1,
+  "institution_id": "INST-KR-000055",
+  "name": "청년플랜적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(만 19세 ~ 만 39세) : 1인 1계좌",
+    "eligibility_text": "개인(만 19세 ~ 만 39세) : 1인 1계좌",
+    "display_text": "개인(만 19세 ~ 만 39세) : 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000055-1-CF399BF5373-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000055-1-CF399BF5373-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "7.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000055-1-CF399BF5373-02",
+        "title": "목표금액 달성 우대",
+        "condition_text": "목표금액 달성 우대\n우대금리는 이 적금 계약기간(신규일 ~ 만기일 전일) 동안 가입시 고객이 직접 설정한 목표금액*이상 납입하는 경우 적용함\n* 목표금액\n1. 가입시점 고객이 직접 설정하며, 설정 이후 변경되지 않음\n2. 목표금액 범위 : 최소 10만원 이상 최대[월 불입금액 한도 50만원 X 계약기간]의 금액이내, 만원 단위로 설정\n3. 목표금액 달성 이후 추가 입금 제한함 : 2.5%",
+        "structured_steps": [
+          "목표금액 달성 우대",
+          "우대금리는 이 적금 계약기간(신규일 ~ 만기일 전일) 동안 가입시 고객이 직접 설정한 목표금액*이상 납입하는 경우 적용함",
+          "* 목표금액",
+          "1. 가입시점 고객이 직접 설정하며, 설정 이후 변경되지 않음",
+          "2. 목표금액 범위 : 최소 10만원 이상 최대[월 불입금액 한도 50만원 X 계약기간]의 금액이내, 만원 단위로 설정",
+          "3. 목표금액 달성 이후 추가 입금 제한함 : 2.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "목표금액 달성 우대",
+          "summary_text": "목표금액 달성 우대",
+          "detail_texts": [
+            "우대금리는 이 적금 계약기간(신규일 ~ 만기일 전일) 동안 가입시 고객이 직접 설정한 목표금액*이상 납입하는 경우 적용함",
+            "* 목표금액",
+            "1. 가입시점 고객이 직접 설정하며, 설정 이후 변경되지 않음",
+            "2. 목표금액 범위 : 최소 10만원 이상 최대[월 불입금액 한도 50만원 X 계약기간]의 금액이내, 만원 단위로 설정",
+            "3. 목표금액 달성 이후 추가 입금 제한함 : 2.5%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000055-1-CF399BF5373-03",
+        "title": "모바일뱅킹 거래 실적 우대(3회이상)",
+        "condition_text": "모바일뱅킹 거래 실적 우대(3회이상)\n우대금리는 이 적금 계약기간 동안(신규일 ~ 만기 전일) 모바일뱅킹 거래* 3회 이상인 경우 적용함\n* 모바일뱅킹 거래 : 신규(이 적금 신규 포함), 해지, 이체(당,타행 포함) 거래를 의미하며, 월 1회로 실적 인정 제한함 : 1%",
+        "structured_steps": [
+          "모바일뱅킹 거래 실적 우대(3회이상)",
+          "우대금리는 이 적금 계약기간 동안(신규일 ~ 만기 전일) 모바일뱅킹 거래* 3회 이상인 경우 적용함",
+          "* 모바일뱅킹 거래 : 신규(이 적금 신규 포함), 해지, 이체(당,타행 포함) 거래를 의미하며, 월 1회로 실적 인정 제한함 : 1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "모바일뱅킹 거래 실적 우대(3회이상)",
+          "summary_text": "모바일뱅킹 거래 실적 우대(3회이상)",
+          "detail_texts": [
+            "우대금리는 이 적금 계약기간 동안(신규일 ~ 만기 전일) 모바일뱅킹 거래* 3회 이상인 경우 적용함",
+            "* 모바일뱅킹 거래 : 신규(이 적금 신규 포함), 해지, 이체(당,타행 포함) 거래를 의미하며, 월 1회로 실적 인정 제한함 : 1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+    ],
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000055-1-CF399BF5373"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.145056+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

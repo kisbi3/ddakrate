@@ -1,0 +1,1960 @@
+{
+  "product_code": "INST-KR-000796-1-C97C83F555C",
+  "version": 8,
+  "institution_id": "INST-KR-000796",
+  "name": "셀렉트챌린지적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "100000",
+        "max_value": "1000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 10만원 ~ 100만원 이하",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "월 10만원 ~ 100만원 이하"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "월 10만원 ~ 100만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-1-C97C83F555C-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01",
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02",
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "2.50",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01",
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02",
+          "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+          "type": "ENUM",
+          "allowed_values": [
+            "PRACTICAL",
+            "CONSUMPTION",
+            "LOYAL",
+            "CHALLENGE"
+          ],
+          "authority": "IMMUTABLE_SUBSCRIPTION_SELECTION",
+          "mutable_after_subscription": false,
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.CARD_SPEND_KRW",
+          "type": "MONEY",
+          "unit": "KRW",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "type": "MONEY",
+          "unit": "KRW",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+          "type": "MONEY",
+          "unit": "KRW",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "OFFICIAL_RANDOM_RESULT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+          ],
+          "unit": "YEAR",
+          "authority": "BANK_OFFICIAL_RESULT",
+          "self_report_eligible": false,
+          "source_recognition_text": "공통(행운금리) 우대금리 : 올해의 띠* 출생 고객 연 0.50%p\n* 가입 연도의 띠와 동일한 띠에 출생한 고객 (우대조건은 본인에 한함)"
+        },
+        {
+          "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079",
+          "type": "NUMBER",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "실속형 결제성 계좌 입금실적 : 연 1.00%p",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "unit": "KRW",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_recognition_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000796_1_C97C83F555C-INST_KR_000796_1_C97C8-SOURCE_COMPONENT_INST_KR_00079",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        },
+        {
+          "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079_INST_KR_000796_1",
+          "type": "NUMBER",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "도전형 광주은행 첫거래 고객 : 연 1.00%p",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "unit": "KRW",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_recognition_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000796_1_C97C83F555C-INST_KR_000796_1_C97C8-SOURCE_COMPONENT_INST_KR_00079",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000796_1_C97C83F555C-INST_KR_000796_1_C97C8-SOURCE_COMPONENT_INST_KR_00079",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "MERCHANT_SETTLEMENT_DEPOSIT_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "account_owner_scope": "CUSTOMER",
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-02",
+          "title": "공통(행운금리) 우대금리 : 올해의 띠* 출생 고객 연 0.50%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "OFFICIAL_RANDOM_RESULT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RESULT",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "공통(행운금리) 우대금리 : 올해의 띠* 출생 고객 연 0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+            }
+          ],
+          "semantic_domain": "OFFICIAL_RANDOM_RESULT",
+          "source_clause_text": "공통(행운금리) 우대금리 : 올해의 띠* 출생 고객 연 0.50%p\n* 가입 연도의 띠와 동일한 띠에 출생한 고객 (우대조건은 본인에 한함)"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-INCOME",
+          "title": "실속형 결제성계좌 입금실적",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "PRACTICAL"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실속형 결제성계좌 입금실적",
+            "reward_text": "+1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "실속형 결제성 계좌 입금실적 : 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-MYDATA",
+          "title": "실속형 마이데이터 자산연결",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "PRACTICAL"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079_INST_KR_000796_1",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실속형 마이데이터 자산연결",
+            "reward_text": "+1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "실속형 마이데이터 자산연결 : 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-FX",
+          "title": "소비형 해외송금/환전",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "CONSUMPTION"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079_INST_KR_000796_1",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "소비형 해외송금/환전",
+            "reward_text": "+1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "소비형 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-CARD",
+          "title": "소비형 카드 사용실적",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "CONSUMPTION"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.CARD_SPEND_KRW",
+                  "operator": "EXISTS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "CUSTOMER.CARD_SPEND_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.CARD_SPEND_KRW",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "unit": "KRW",
+                    "lower": 1000000,
+                    "upper": 3000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.50",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "사용실적 합산 1백만원 이상 : 연 0.50%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.CARD_SPEND_KRW",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "expected_value": 3000000,
+                    "unit": "KRW"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "사용실적 합산 3백만원 이상 : 연 1.00%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "cap_value": "1.00"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "source_component_text": "소비형 카드 사용실적 합산 1백만원 이상 연 0.50%p, 3백만원 이상 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-LONG",
+          "title": "단골형 장기거래",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "LOYAL"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079_INST_KR_000796_1",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "단골형 장기거래",
+            "reward_text": "+1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "단골형 당행 10년 이상의 장기거래 고객 : 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-BAL",
+          "title": "단골형 요구불예금 평균잔액",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "LOYAL"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+                  "operator": "EXISTS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "unit": "KRW",
+                    "lower": 5000000,
+                    "upper": 10000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.50",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "평균잔액 5백만원 이상 연 0.50%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "expected_value": 10000000,
+                    "unit": "KRW"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "평균잔액 10백만원 이상 연 1.00%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "cap_value": "1.00"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "source_component_text": "평균잔액 5백만원 이상 연 0.50%p, 평균잔액 10백만원 이상 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-FIRST",
+          "title": "도전형 첫거래 고객",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "CHALLENGE"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00079_INST_KR_000796_1",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "도전형 첫거래 고객",
+            "reward_text": "+1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "도전형 광주은행 첫거래 고객 : 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-PRINCIPAL",
+          "title": "도전형 만기해지 원금",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ],
+                  "expected_value": "CHALLENGE"
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+                  "operator": "EXISTS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "unit": "KRW",
+                    "lower": 3000000,
+                    "upper": 5000000,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.50",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "해지원금 3백만원 이상 연 0.50%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                      }
+                    ],
+                    "expected_value": 5000000,
+                    "unit": "KRW"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "해지원금 5백만원 이상 연 1.00%p",
+                "source_ref_ids": [
+                  "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "cap_value": "1.00"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "source_component_text": "해지원금 3백만원 이상 연 0.50%p, 해지원금 5백만원 이상 연 1.00%p",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "선택금리 : 아래 유형 (실속형, 소비형, 단골형, 도전형) 중 1가지 유형을 선택하여 조건을 충족하는 경우 최고 연 2.00%p\n1) 실속형\n▪ 결제성 계좌* 입금실적 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지 당행 요구불계좌에 급여, 연금, 가맹점 카드 매출대금이 매월 1건 이상 입금실적이 있는 경우. 단, 현금 입금거래 및 본인 명의 계좌에서 이체 건 제외\n* 결제성계좌 (급여, 연금, 가맹점 카드매출대금)\n1 급여 : 금액이 50만원 이상이고, 급여성 문구(급여, 상여, 성과, 수당, 급료, 월급, 봉급 등) 또는 당행 급여이체 코드로 입금\n2 연금 : 금액이 50만원 이상이고, 4대 연금(국민연금, 공무원연금, 사학연금, 군인연금) 입금\n3 가맹점 카드매출대금 : 9개 카드사* 中 1개 카드사 이상 적요로 입금\n*BC, 신한, 삼성, NH, 현대, 하나, KB, 롯데, 우리카드\n▪ 마이데이터 자산연결 : 연 1.00%p\n- 이 예금 만기일 전전월 말까지 마이데이터 서비스에 자산등록이 되어 있는 경우\n2) 소비형\n▪ 해외송금/외국통화 환전 합산 실적 미화환산 500불 이상 : 연 1.00%p\n- 이 예금 가입일부터 만기일 전전월 말까지 가입자 본인의 해외송금/외국통화 환전 실적의 합산 금액\n▪ 당행 신용(체크)카드 사용실적에 따른 우대 : 연 1.00%p\n- 이 예금의 신규일부터 만기일 전전월말까지 가입자 본인의 광주은행 신용(체크)카드 사용(매입 금액) 합계금액 (가족회원 사용금액 포함)\n사용실적 합산 1백만원 이상 : 연 0.50%p, 사용실적 합산 3백만원 이상 : 연 1.00%p\n3) 단골형\n▪ 당행 10년 이상의 장기거래 고객 : 연 1.00%p\n- 이 예금 신규 시에 예금주의 광주은행 거래 기간이 10년 이상인 경우. 단, 거래 종료 고객*으로 등록된 이력이 있는 경우 제외\n* 거래종료고객 : 당행의 모든 채권·채무 종료 (수신, 여신, 외환, 카드, 제3자 담보제공 등) 및 서비스 기간이 만료된 고객\n▪ 요구불예금* 평균잔액에 따른 우대 : 연 1.00%p\n- 이 예금 가입한 다음 달 1일부터 만기일 전전월 말까지의 기간 동안 산출한 요구불예금 평균잔액\n평균잔액 5백만원 이상:연 0.50%p, 평균잔액 10백만원 이상:연 1.00%p\n* 요구불예금 대상 : 당행 본인 명의의 입출금이 자유로운 예금으로 대상예금은 보통예금, 저축예금, 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금 (MMDA)은 제외함\n4) 도전형\n▪ 광주은행 첫거래 고객 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n▪ 만기해지 원금 기준 우대 : 연 1.00%p\n- 이 예금 가입일 이전 최근 3개월 동안 당행 정기예금 및 적금 계좌를 보유하고 있지 않거나 신규 또는 해지 거래 (신규 취소 제외) 이력이 없는 경우\n해지원금 3백만원 이상 : 연 0.50%p, 해지원금 5백만원 이상 : 연 1.00%p"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-CARD-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-CARD"
+          ],
+          "selector_fact_key": "CUSTOMER.CARD_SPEND_KRW",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-BAL-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-BAL"
+          ],
+          "selector_fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-PRINCIPAL-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-PRINCIPAL"
+          ],
+          "selector_fact_key": "ACCOUNT.PRINCIPAL_BALANCE_KRW",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-INCOME",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-MYDATA"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-FX",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-CARD"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-LONG",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-BAL"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-FIRST",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-PRINCIPAL"
+          ],
+          "cap": {
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-PREF-03-TYPE-SELECT",
+          "operator": "EXCLUSIVE_ONE",
+          "members": [
+            "REL-INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL",
+            "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION",
+            "REL-INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL",
+            "REL-INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE"
+          ],
+          "selector_fact_key": "ACCOUNT.SELECTED_CHALLENGE_TYPE",
+          "selection_at": "SUBSCRIPTION",
+          "mutable_after_subscription": false,
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000796-1-C97C83F555C-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000796-1-C97C83F555C-PREF-02",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-INCOME",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-PRACTICAL-MYDATA",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-FX",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CONSUMPTION-CARD",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-LONG",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-LOYAL-BAL",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-FIRST",
+            "INST-KR-000796-1-C97C83F555C-PREF-03-CHALLENGE-PRINCIPAL"
+          ],
+          "cap": {
+            "value": "2.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01",
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02",
+              "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01",
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02",
+            "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01",
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02",
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03",
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-RATE",
+      "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "a8ba124c0bdf778870ed8e7247a46485"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO",
+    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-RATE",
+    "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "a8ba124c0bdf778870ed8e7247a46485",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-A8BA124C0BDF778870ED8E7247A46485-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

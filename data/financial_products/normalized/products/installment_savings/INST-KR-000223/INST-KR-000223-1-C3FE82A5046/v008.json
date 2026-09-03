@@ -1,0 +1,1087 @@
+{
+  "product_code": "INST-KR-000223-1-C3FE82A5046",
+  "version": 8,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK성공맞춤적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH",
+      "PHONE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "사업자등록증을 소지한 개인사업자 및 법인",
+    "eligibility_text": "사업자등록증을 소지한 개인사업자 및 법인",
+    "display_text": "사업자등록증을 소지한 개인사업자 및 법인",
+    "source_ref_ids": [
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "CORPORATION"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 12,
+    "source_expression": "최초계약기간은 6개월이상 1년이하 범위 내에서 월단위로 하며, 자동 재예치에 동의한 고객의 경우 재예치계약기간은 1년으로 함",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 1,
+        "unit": "YEAR"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ],
+    "renewal_policy": {
+      "type": "AUTOMATIC_REDEPOSIT",
+      "renewal_term": {
+        "value": 1,
+        "unit": "YEAR"
+      },
+      "requires_customer_consent": true,
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+        }
+      ]
+    }
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "currency": "KRW",
+        "min_value": "10000",
+        "period_basis": null
+      }
+    ],
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "conditional_amount_rules": [
+      {
+        "condition_type": "AFTER_CONTRACT_FRACTION",
+        "contract_fraction_gte": "2/3",
+        "max_additional_amount_formula": "EXCLUDING_INITIAL_CONTRIBUTION, ADDITIONAL_BALANCE_SO_FAR",
+        "source_expression": "초입금 제한 없으며, 최저 1만원 이상 적립 가능, 최대금액 제한 없음\n※ 단, 계약기간 ⅔ 경과 후에는 초입금을 제외한 납입 잔액을 초과하여 입금 불가(만기 1개월 전까지 적립 가능)",
+        "source_ref_ids": [
+          "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "초입금 제한 없으며, 최저 1만원 이상 적립 가능, 최대금액 제한 없음\n※ 단, 계약기간 2⁄3 경과 후에는 초입금을 제외한 납입 잔액을 초과하여 입금 불가(만기 1개월 전까지 적립 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "INITIAL",
+        "role": "RANGE_BOUND",
+        "context": "초입금 제한 없으며, 최저 1만원 이상 적립 가능, 최대금액 제한 없음\n※ 단, 계약기간 2⁄3 경과 후에는 초입금을 제외한 납입"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "초입금 제한 없으며, 최저 1만원 이상 적립 가능, 최대금액 제한 없음",
+      "mentioned_values": [
+        "10000"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-C3FE82A5046-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-C3FE82A5046-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-01",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06",
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            },
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000223_1_C3FE82A5046_PREF_03.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-C3FE82A5046-PREF-03-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000223_1_C3FE82A5046_PREF_06.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-C3FE82A5046-PREF-06-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000223_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.SATISFIED.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0.2%\n재예치 시 : 다음 조건을 충족하는 경우 최고 연 0.3%p 우대"
+        },
+        {
+          "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000223_1_INST_KR_000223_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+        },
+        {
+          "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "자동재예치 된 경우 : 0.1%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000223-1-C3FE82A5046-PREF-03-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n① 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n② 동 계좌 자동이체 입금실적 3회 이상\n③ 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n④ 기업카드 이용실적 300만원 이상(체크카드 포함)\n⑤ 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 3000000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "300만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n① 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n② 동 계좌 자동이체 입금실적 3회 이상\n③ 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n④ 기업카드 이용실적 300만원 이상(체크카드 포함)\n⑤ 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000223-1-C3FE82A5046-PREF-06-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n① 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n② 동 계좌 자동이체 입금실적 3회 이상\n③ 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n④ 기업카드 이용실적 300만원 이상(체크카드 포함)\n⑤ 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            }
+          ],
+          "amount_threshold": {
+            "value": 3000000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "300만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n① 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n② 동 계좌 자동이체 입금실적 3회 이상\n③ 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n④ 기업카드 이용실적 300만원 이상(체크카드 포함)\n⑤ 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000223-1-C3FE82A5046-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-000223-1-C3FE82A5046-PREF-04"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0.2%\n재예치 시 : 다음 조건을 충족하는 경우 최고 연 0.3%p 우대",
+          "submission_deadline_source_expressions": [
+            "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-02",
+          "title": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000223_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+            }
+          ],
+          "semantic_domain": "LOAN_HOLDING_OR_PERFORMANCE",
+          "source_clause_text": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-03",
+          "title": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000223_1_C3FE82A5046_PREF_03.QUALIFYING_EVENT_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n1 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n2 동 계좌 자동이체 입금실적 3회 이상\n3 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n4 기업카드 이용실적 300만원 이상(체크카드 포함)\n5 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-04",
+          "title": "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.SATISFIED.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "IBK평생주거래기업통장(입출식계좌)' 가입 또는 전환 기업이 가입(전환)일로부터 1개월 이내에 IBK성공맞춤적금에 가입하고, IBK평생주거래기업통장에 적립금 자동이체 등록 : 0.2%\n재예치 시 : 다음 조건을 충족하는 경우 최고 연 0.3%p 우대"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-05",
+          "title": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000223_1_INST_KR_000223_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+            }
+          ],
+          "semantic_domain": "LOAN_HOLDING_OR_PERFORMANCE",
+          "source_clause_text": "계약기간동안 당행 기업여신 보유 내역 있는 경우 (수시로대출 포함) : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-06",
+          "title": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000223_1_C3FE82A5046_PREF_06.QUALIFYING_EVENT_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "계약기간동안 아래 요건 중 2가지 이상 충족한 경우 : 0.1%\n1 동 상품 최초 신규시 비대면채널을 통해 가입 (단, 최초 계약기간에 한하여 요건으로 인정)\n2 동 계좌 자동이체 입금실적 3회 이상\n3 급여이체 실적 3회 이상(인터넷뱅킹 실시분 포함)\n4 기업카드 이용실적 300만원 이상(체크카드 포함)\n5 환전 $1,000 또는 해외송금 $5,000 이상(USD기준)"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-C3FE82A5046-PREF-07",
+          "title": "자동재예치 된 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000223_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자동재예치 된 경우 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+            }
+          ],
+          "semantic_domain": "MATURITY_OR_RENEWAL",
+          "source_clause_text": "자동재예치 된 경우 : 0.1%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-01",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07",
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-07"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-RATE",
+      "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "2cfd898b00c4c1ef0b2e643af670bc52"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO",
+    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-RATE",
+    "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "2cfd898b00c4c1ef0b2e643af670bc52",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "PHONE",
+      "source_ref_ids": [
+        "EVD-IS-2CFD898B00C4C1EF0B2E643AF670BC52-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

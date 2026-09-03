@@ -1,0 +1,285 @@
+{
+  "product_code": "INST-KR-000830-3-C90225C0EC4",
+  "version": 3,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 세이프박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인\n- 카카오뱅크 입출금통장 또는 개인사업자통장을 통한 연결만 가능하며, 연결된 계좌당 1개씩만 개설 가능",
+    "eligibility_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인\n- 카카오뱅크 입출금통장 또는 개인사업자통장을 통한 연결만 가능하며, 연결된 계좌당 1개씩만 개설 가능",
+    "display_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인\n- 카카오뱅크 입출금통장 또는 개인사업자통장을 통한 연결만 가능하며, 연결된 계좌당 1개씩만 개설 가능",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000830-3-C90225C0EC4-REL-88A51C8CED19",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인",
+        "fact_key": "SOURCE_RELATIONSHIP.88A51C8CED19.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000830-3-C90225C0EC4-REL-DB19CB227A77",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "• 이 통장은 양도에 의한 명의변경은 불가하나, 상속에 의한 명의변경은 가능합니다. 다만, 상속에 의한 명의변경은 상속인이 카카오뱅크의 계좌를 보유한 경우에 한하여 가능합니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.DB19CB227A77.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ],
+    "amount_rules": [
+      {
+        "scope": "BALANCE",
+        "currency": "KRW",
+        "source_text": "최소가입금액 : 0원 이상 (0원 신규 가입 가능)\n기본한도 : 1천만원\n증액한도 : 1억원\n※ 입금한도 증액을 위한 조건은 없으며, 누구나 증액 가능. 다만 한도 증액이후 기본한도로의 감액은 불가",
+        "min_value": "0",
+        "max_value": "100000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-3-C90225C0EC4-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.60",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 1.60% (세금공제 전)",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "STRUCTURED",
+      "global_application": {
+        "source_text": "금리쿠폰"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "COUPON.ELIGIBLE_COUPON_APPLIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000830-3-C90225C0EC4-PREF-01",
+          "title": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "COUPON.ELIGIBLE_COUPON_APPLIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "timing": "AS_DEFINED_BY_SOURCE",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "display": {
+            "summary": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공",
+            "reward_text": "쿠폰별 변동 우대금리"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4",
+              "source_text": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ],
+    "interest_crediting": {
+      "raw_text": "직전 이자지급일부터 이자지급일 전날까지의 이자를 이자지급일에 지급\n※ 이자지급일: 매월 네번째 금요일의 다음날 또는 고객이 이자지급을 요청한 날",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000830-3-C90225C0EC4-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000830-3-C90225C0EC4-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "직전 이자지급일부터 이자지급일 전날까지의 이자를 이자지급일에 지급\n※ 이자지급일: 매월 네번째 금요일의 다음날 또는 고객이 이자지급을 요청한 날",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.60",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000830-3-C90225C0EC4",
+        "product_name": "카카오뱅크 세이프박스",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000830-3-C90225C0EC4",
+    "source_record_id": "2dc0ddb3f28a4aa9a049b603b8795bbc",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 205,
+    "reviewed_source_record_id": "2dc0ddb3f28a4aa9a049b603b8795bbc",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED",
+      "UNDERLYING_KAKAOBANK_CHECKING_ACCOUNT_PREREQUISITE_RAW_ONLY"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "SOURCE_SUPPORTED_EXECUTABLE_FIELDS_ONLY",
+    "declared_data_gap_count": 1
+  }
+}

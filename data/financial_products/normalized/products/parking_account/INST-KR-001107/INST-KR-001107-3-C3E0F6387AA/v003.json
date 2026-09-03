@@ -1,0 +1,1058 @@
+{
+  "product_code": "INST-KR-001107-3-C3E0F6387AA",
+  "version": 3,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국 페이든든+ 통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인통장 : 실명의 개인\n사업자통장 : 개인사업자, 법인",
+    "eligibility_text": "개인통장 : 실명의 개인\n사업자통장 : 개인사업자, 법인",
+    "display_text": "개인통장 : 실명의 개인\n사업자통장 : 개인사업자, 법인",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "CORPORATION",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ],
+    "real_name_required": true,
+    "execution_status": "REQUIRES_CONFIRMATION",
+    "recommendation_gate": "DO_NOT_AUTO_CONFIRM_ELIGIBILITY",
+    "unresolved_findings": [
+      {
+        "issue_type": "PERSONAL_AND_BUSINESS_VARIANTS_CONFLATED",
+        "reason": "개인통장 규칙 1~4와 사업자통장 규칙 5~7이 서로 다른 variant인데 v002가 한 policy에 모두 넣어 고객유형별 rule scope를 잃음.",
+        "source_evidence": "기본금리 0.100%\n조건별\n매 결산일 개인통장 각 항목에 대하여 우대조건을 충족하는 경우 최고 연 0.9%p 제공\n1\n우체국페이 이용우대\n• 이 예금에서 전월(1일~말일) 중 우체국페이를 이용한 간편결제 및 간편송금 합산 이용금액이 아래 각 구간별 실적에 해당할 경우\n- 10만원 이상 20만원 미만 : 0.1%p\n- 20만원 이상 30만원 미만 : 0.2%p\n- 30만원 이상 40만원 미만 : 0.3%p\n- 40만원 이상 50만원 미만 : 0.4%p\n- 50만원 이상 : 0.5%p\n※ 간편결제 : QR코드 결제, 바코드 결제\n※ 간편송금 : 전화번호송금, 계좌송금, 경조송금\n※ 우체국예금 본인 계좌 간 간편송금 또는 간편결제 결제 취소 시 실적 산정에서 제외\n2\n적립식예금 보유\n• 전월(1일~말일) 중 우체국 적립식 예금을 정상보유 한 경우\n• 적립식 예금의 가입 취소, 중도해지, 만기일이 경과한 경우는 정상보유 실적 산정에서 제외\n• 단, 적립식 예금 만기일이 속한 월은 정상 보유로 실적 산정 : 0.2%\n3\n자동이체 실적\n• 전월(1일~말일) 중 이 예금에서 공과금, 통신비, 보험료, 우체국 적금 자동이체 실적이 있는 경우\n• 아파트관리비, 지로, CMS, 펌뱅킹을 통한 자동납부 : 0.2%\n4\n소상공인 · 소기업 우대\n• 가입 시 또는 가입 이후 소상공인 또는 소기업 대표자로 확인될 경우 : 0.2%\n매 결산일 사업자통장 각 항목에 대하여 우대조건을 충족하는 경우 최고 연 0.9%p 제공\n5\n가맹점 우대\n• 우체국페이(제로페이 포함) 간편결제 가맹점 결제계좌가 우체국 계좌로 약정되어 있고, 페이든든 통장 결산기간 평균 잔액이 구간 별 실적에 해당할 경우\n- 100만원 이상 200만원 미만 : 0.1%p\n- 200만원 이상 300만원 미만 : 0.2%p\n- 300만원 이상 400만원 미만 : 0.3%p\n- 400만원 이상 500만원 미만 : 0.4%p\n- 500만원 이상 : 0.5%p\n※ 결산기간 (전월 넷째주 일요일 ~ 당월 넷째주 토요일) 중 매일의 잔액의 합에 결산기간의 총 일수로 나눈금액\n6\n소상공인 정기예금 보유\n• 전월(1일~말일) 중 「우체국 소상공인 정기예금」을 정상보유 한 경우\n• 「소상공인 정기예금」의 가입 취소, 중도해지, 만기일이 경과한 경우는 정상보유 실적 산정에서 제외\n• 단, 「소상공인 정기예금」 만기일이 속한 월은 정상 보유로 실적 산정 : 0.2%\n7\n소상공인 · 소기업 우대\n• 가입 시 또는 가입 이후 소상공인 또는 소기업으로 확인될 경우 : 0.2%\n유형 변동금리"
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-3-C3E0F6387AA-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.100",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+        ],
+        "source_clause": "기본금리",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.VARIANT",
+          "data_type": "ENUM",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ],
+          "allowed_values": [
+            "PERSONAL",
+            "BUSINESS"
+          ]
+        },
+        {
+          "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "RELATIONSHIP.POST.INSTALLMENT_SAVINGS_NORMAL_HELD_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.MONTHLY_AUTOPAY_COUNT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "fact_key": "BUSINESS.SMALL_MERCHANT_OR_SMALL_ENTERPRISE_CONFIRMED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "RELATIONSHIP.POST.SMALL_MERCHANT_TIME_DEPOSIT_NORMAL_HELD_PREVIOUS_MONTH",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-01",
+          "title": "개인 우체국페이 100000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 100000,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "LT",
+                  "expected_value": 200000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-02",
+          "title": "개인 우체국페이 200000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 200000,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "LT",
+                  "expected_value": 300000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-03",
+          "title": "개인 우체국페이 300000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 300000,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "LT",
+                  "expected_value": 400000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-04",
+          "title": "개인 우체국페이 400000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 400000,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "LT",
+                  "expected_value": 500000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-05",
+          "title": "개인 우체국페이 500000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "POSTPAY.MONTHLY_USAGE_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 500000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-06",
+          "title": "개인 적립식예금 보유",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.POST.INSTALLMENT_SAVINGS_NORMAL_HELD_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-07",
+          "title": "개인 자동이체",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.MONTHLY_AUTOPAY_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-08",
+          "title": "개인 소상공인·소기업",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "PERSONAL"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BUSINESS.SMALL_MERCHANT_OR_SMALL_ENTERPRISE_CONFIRMED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-09",
+          "title": "사업자 가맹점 평잔 1000000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "GTE",
+                      "expected_value": 1000000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "LT",
+                      "expected_value": 2000000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "SETTLEMENT_PERIOD_AVERAGE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-10",
+          "title": "사업자 가맹점 평잔 2000000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "GTE",
+                      "expected_value": 2000000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "LT",
+                      "expected_value": 3000000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "SETTLEMENT_PERIOD_AVERAGE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-11",
+          "title": "사업자 가맹점 평잔 3000000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "GTE",
+                      "expected_value": 3000000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "LT",
+                      "expected_value": 4000000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "SETTLEMENT_PERIOD_AVERAGE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-12",
+          "title": "사업자 가맹점 평잔 4000000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "GTE",
+                      "expected_value": 4000000,
+                      "unit": "KRW"
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                      "operator": "LT",
+                      "expected_value": 5000000,
+                      "unit": "KRW"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "SETTLEMENT_PERIOD_AVERAGE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-13",
+          "title": "사업자 가맹점 평잔 5000000 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.POSTPAY.MERCHANT_SETTLEMENT_ACCOUNT_IS_POST",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SETTLEMENT_PERIOD_AVERAGE_BALANCE",
+                  "operator": "GTE",
+                  "expected_value": 5000000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "SETTLEMENT_PERIOD_AVERAGE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-14",
+          "title": "사업자 소상공인 정기예금 보유",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.POST.SMALL_MERCHANT_TIME_DEPOSIT_NORMAL_HELD_PREVIOUS_MONTH",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-C3E0F6387AA-PREF-15",
+          "title": "사업자 소상공인·소기업",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.VARIANT",
+                  "operator": "EQUALS",
+                  "expected_value": "BUSINESS"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BUSINESS.SMALL_MERCHANT_OR_SMALL_ENTERPRISE_CONFIRMED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "VARIANT_SCOPED",
+          "variant_fact": "CUSTOMER.VARIANT",
+          "variants": {
+            "PERSONAL": [
+              "INST-KR-001107-3-C3E0F6387AA-PREF-01",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-02",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-03",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-04",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-05",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-06",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-07",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-08"
+            ],
+            "BUSINESS": [
+              "INST-KR-001107-3-C3E0F6387AA-PREF-09",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-10",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-11",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-12",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-13",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-14",
+              "INST-KR-001107-3-C3E0F6387AA-PREF-15"
+            ]
+          }
+        },
+        {
+          "type": "MUTUALLY_EXCLUSIVE_MAX",
+          "rule_ids": [
+            "INST-KR-001107-3-C3E0F6387AA-PREF-01",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-02",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-03",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-04",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-05"
+          ]
+        },
+        {
+          "type": "MUTUALLY_EXCLUSIVE_MAX",
+          "rule_ids": [
+            "INST-KR-001107-3-C3E0F6387AA-PREF-09",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-10",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-11",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-12",
+            "INST-KR-001107-3-C3E0F6387AA-PREF-13"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE_PER_VARIANT",
+        "value": "0.9",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "basis": "END_OF_DAY_BALANCE",
+      "calculation_frequency": {
+        "value": 1,
+        "unit": "DAY"
+      }
+    },
+    "interest_crediting": {
+      "raw_text": "매월 넷째 토요일",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-001107-3-C3E0F6387AA-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 4,
+              "weekday": "SATURDAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001107-3-C3E0F6387AA"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001107-3-C3E0F6387AA",
+    "source_record_id": "509c593f5a635041747494e892d2a7be",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 219,
+    "reviewed_source_record_id": "509c593f5a635041747494e892d2a7be",
+    "reviewed_individually": true,
+    "recommendation_gate": "REQUIRES_MANUAL_RULE_CONFIRMATION",
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "BUSINESS_TERM_DEPOSIT_HOLDING_MISCLASSIFIED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "PERSONAL_AND_BUSINESS_VARIANTS_CONFLATED"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "개인/사업자 variant rule scope 분리",
+      "소상공인 정기예금 보유 fact 교정"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

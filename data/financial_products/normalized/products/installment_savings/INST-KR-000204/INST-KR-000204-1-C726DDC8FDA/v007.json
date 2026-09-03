@@ -1,0 +1,825 @@
+{
+  "product_code": "INST-KR-000204-1-C726DDC8FDA",
+  "version": 7,
+  "institution_id": "INST-KR-000204",
+  "name": "JB 아이 꿈 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 18세 이하 실명의 개인 (1인 1계좌)",
+    "eligibility_text": "만 18세 이하 실명의 개인 (1인 1계좌)",
+    "display_text": "만 18세 이하 실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "max_age": 18
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년 (1년 단위 자동재예치)\n※ 자동재예치 불가 계좌\n- 재예치일에 만 18세 초과인 경우\n- 자동 재예치를 신청하지 않은 계좌\n- 압류 및 질권설정 등 지급제한 계좌",
+    "source_ref_ids": [
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+    ],
+    "representative_value": 1,
+    "duration_selection_granularity_options": [
+      "YEAR"
+    ],
+    "renewal_policy": {
+      "type": "AUTOMATIC_REDEPOSIT",
+      "renewal_term": {
+        "value": 1,
+        "unit": "YEAR"
+      },
+      "requires_customer_opt_in": true,
+      "ineligibility_rules": [
+        "AGE_OVER_18_AT_RENEWAL",
+        "AUTO_REDEPOSIT_NOT_REQUESTED",
+        "PAYMENT_RESTRICTION_OR_PLEDGE"
+      ],
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+        }
+      ]
+    }
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_QUARTER",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "3000000"
+      }
+    ],
+    "source_amount_text": "초회 1만원 이상 분기별 최고 3백만원 이내\n※ 자동재예치시 이자는 재예치 원금에 가산하여 재예치(1년단위 세후 원리금 재예치)\n※ 자동재예치 원금과 이자는 분기별 적립한도에 포함되지 않음",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_YEAR",
+        "role": "RANGE_BOUND",
+        "context": "초회 1만원 이상 분기별 최고 3백만원 이내\n※ 자동재예치시 이자는 재예치 원금에 가산하여 재예치(1년단위 세"
+      },
+      {
+        "value": "3000000",
+        "currency": "KRW",
+        "source_expression": "3백만원",
+        "scope": "PER_YEAR",
+        "role": "RANGE_BOUND",
+        "context": "초회 1만원 이상 분기별 최고 3백만원 이내\n※ 자동재예치시 이자는 재예치 원금에 가산하여 재예치(1년단위 세후 원리금 재예치)\n※ 자동"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "초회 1만원 이상 분기별 최고 3백만원 이내",
+      "min_value": "10000",
+      "max_value": "3000000"
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000204-1-C726DDC8FDA-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.350",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "FX_REMITTANCE.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "전북은행 최초거래고객: 이 예금 신규일 기준 최초 고객 신규 또는 전일자 기준 거치식, 적립식예금(외화, 신탁, 수익증권 제외) 미보유 고객(신규가입 후 1년간 제공) : 0.1%"
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 계약기간 중 전북은행 계좌간 자동이체 방법을 통해 납입한 적립금 우대(재예치원리금 제외) : 0.1%"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+          ],
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 신규일 또는 재예치일로부터 3개월 이내 전북은행 체크카드 사용실적 보유시 : 0.2%"
+        },
+        {
+          "fact_key": "BENEFIT_OR_SCHOOL_CREDIT.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 신규일 또는 재예치일로부터 6개월 이내 「JB아이 꿈통장」에서 스쿨뱅킹 또는 교육재정 출금실적이 있는 경우 : 0.2%"
+        },
+        {
+          "fact_key": "BENEFIT_OR_SCHOOL_CREDIT.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000204_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 계약기간 중 「JB아이 꿈통장」으로 「아동수당 또는 장애아동수당」 입금실적이 있는 경우\n(*다만, 입금실적 인정용어인 「아동수당」으로 입금되는 경우에 한함) : 0.2%\n이벤트 우대이자율"
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금은 전북은행에서 실시하는 이벤트 조건을 충족하는 경우 추가 우대이율을 제공하는 이벤트를 시행할 수 있음\n이벤트 조건(이벤트 기간, 우대대상, 우대조건, 우대이율, 우대기간 등)은 이벤트 시행 시 별도로 정할 수 있음\n이벤트 조건은 이벤트 기간 동안 전북은행 인터넷 홈페이지에 게시하며, 게시된 조건을 충족하는 경우 추가 우대이율 제공"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-02",
+          "title": "전북은행 최초거래고객: 이 예금 신규일 기준 최초 고객 신규 또는 전일자 기준 거치식, 적립식예금(외화, 신탁, 수익증권 제외) 미보유 고객(신규가입 후 1년간 제공) : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "FX_REMITTANCE.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "전북은행 최초거래고객: 이 예금 신규일 기준 최초 고객 신규 또는 전일자 기준 거치식, 적립식예금(외화, 신탁, 수익증권 제외) 미보유 고객(신규가입 후 1년간 제공) : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+            }
+          ],
+          "semantic_domain": "FX_REMITTANCE",
+          "source_clause_text": "전북은행 최초거래고객: 이 예금 신규일 기준 최초 고객 신규 또는 전일자 기준 거치식, 적립식예금(외화, 신탁, 수익증권 제외) 미보유 고객(신규가입 후 1년간 제공) : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-03",
+          "title": "이 예금 계약기간 중 전북은행 계좌간 자동이체 방법을 통해 납입한 적립금 우대(재예치원리금 제외) : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간 중 전북은행 계좌간 자동이체 방법을 통해 납입한 적립금 우대(재예치원리금 제외) : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "이 예금 계약기간 중 전북은행 계좌간 자동이체 방법을 통해 납입한 적립금 우대(재예치원리금 제외) : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-04",
+          "title": "이 예금 신규일 또는 재예치일로부터 3개월 이내 전북은행 체크카드 사용실적 보유시 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규일 또는 재예치일로부터 3개월 이내 전북은행 체크카드 사용실적 보유시 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "이 예금 신규일 또는 재예치일로부터 3개월 이내 전북은행 체크카드 사용실적 보유시 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-05",
+          "title": "이 예금 신규일 또는 재예치일로부터 6개월 이내 「JB아이 꿈통장」에서 스쿨뱅킹 또는 교육재정 출금실적이 있는 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "BENEFIT_OR_SCHOOL_CREDIT.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규일 또는 재예치일로부터 6개월 이내 「JB아이 꿈통장」에서 스쿨뱅킹 또는 교육재정 출금실적이 있는 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+            }
+          ],
+          "semantic_domain": "BENEFIT_OR_SCHOOL_CREDIT",
+          "source_clause_text": "이 예금 신규일 또는 재예치일로부터 6개월 이내 「JB아이 꿈통장」에서 스쿨뱅킹 또는 교육재정 출금실적이 있는 경우 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-06",
+          "title": "이 예금 계약기간 중 「JB아이 꿈통장」으로 「아동수당 또는 장애아동수당」 입금실적이 있는 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "BENEFIT_OR_SCHOOL_CREDIT.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000204_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간 중 「JB아이 꿈통장」으로 「아동수당 또는 장애아동수당」 입금실적이 있는 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+            }
+          ],
+          "semantic_domain": "BENEFIT_OR_SCHOOL_CREDIT",
+          "source_clause_text": "이 예금 계약기간 중 「JB아이 꿈통장」으로 「아동수당 또는 장애아동수당」 입금실적이 있는 경우\n(*다만, 입금실적 인정용어인 「아동수당」으로 입금되는 경우에 한함) : 0.2%\n이벤트 우대이자율"
+        },
+        {
+          "rule_id": "INST-KR-000204-1-C726DDC8FDA-PREF-07",
+          "title": "이 예금은 전북은행에서 실시하는 이벤트 조건을 충족하는 경우 추가 우대이율을 제공하는 이벤트를 시행할 수 있음",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000204_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금은 전북은행에서 실시하는 이벤트 조건을 충족하는 경우 추가 우대이율을 제공하는 이벤트를 시행할 수 있음"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이 예금은 전북은행에서 실시하는 이벤트 조건을 충족하는 경우 추가 우대이율을 제공하는 이벤트를 시행할 수 있음\n이벤트 조건(이벤트 기간, 우대대상, 우대조건, 우대이율, 우대기간 등)은 이벤트 시행 시 별도로 정할 수 있음\n이벤트 조건은 이벤트 기간 동안 전북은행 인터넷 홈페이지에 게시하며, 게시된 조건을 충족하는 경우 추가 우대이율 제공"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-01",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07",
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-07"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-RATE",
+      "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.05",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "e7c9f2d4ee32f64240d140a1eee988db"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO",
+    "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-RATE",
+    "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "e7c9f2d4ee32f64240d140a1eee988db",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 7,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-E7C9F2D4EE32F64240D140A1EEE988DB-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

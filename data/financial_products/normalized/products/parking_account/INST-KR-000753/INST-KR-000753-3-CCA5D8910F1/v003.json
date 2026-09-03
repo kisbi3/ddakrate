@@ -1,0 +1,469 @@
+{
+  "product_code": "INST-KR-000753-3-CCA5D8910F1",
+  "version": 3,
+  "institution_id": "INST-KR-000753",
+  "name": "사장님 혜택 가득 보통예금",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인사업자 (1인1계좌_활동좌 기준)",
+    "eligibility_text": "개인사업자 (1인1계좌_활동좌 기준)",
+    "display_text": "개인사업자 (1인1계좌_활동좌 기준)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000753-3-CCA5D8910F1-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.00",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+        ],
+        "source_clause": "일별 잔액 300만원 미만 | 연2.00%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "일별 잔액 300만원 미만",
+              "max_value": "3000000",
+              "max_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000753-3-CCA5D8910F1-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.40",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+        ],
+        "source_clause": "일별 잔액 300만원 이상~3,000만원 미만 | 연2.40%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "일별 잔액 300만원 이상~3,000만원 미만",
+              "min_value": "3000000",
+              "min_inclusive": true,
+              "max_value": "30000000",
+              "max_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000753-3-CCA5D8910F1-BASE-03",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.60",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+        ],
+        "source_clause": "일별 잔액 3,000만원 이상~2억원 이하 | 연2.60%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "일별 잔액 3,000만원 이상~2억원 이하",
+              "min_value": "30000000",
+              "min_inclusive": true,
+              "max_value": "200000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000753-3-CCA5D8910F1-BASE-04",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.00",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+        ],
+        "source_clause": "일별 잔액 2억원 초과 | 연1.00%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "일별 잔액 2억원 초과",
+              "min_value": "200000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 3,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "BUSINESS.CLASSIFICATION.IS_SMALL_OR_MEDIUM_ENTERPRISE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+          ]
+        },
+        {
+          "fact_key": "BUSINESS.CLASSIFICATION.IS_SMALL_MERCHANT",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000753-3-CCA5D8910F1-PREF-01",
+          "title": "중소기업",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "BUSINESS.CLASSIFICATION.IS_SMALL_OR_MEDIUM_ENTERPRISE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "BUSINESS.CLASSIFICATION.IS_SMALL_MERCHANT",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "evaluation_time": "ACCOUNT_OPENING",
+            "effective_window": {
+              "start": "ACCOUNT_OPEN_DATE",
+              "end": "ACCOUNT_TERMINATION"
+            },
+            "reward_classification_locked": true
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000753-3-CCA5D8910F1-PREF-02",
+          "title": "소상공인",
+          "condition": {
+            "predicate": {
+              "fact_key": "BUSINESS.CLASSIFICATION.IS_SMALL_MERCHANT",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "evaluation_time": "ACCOUNT_OPENING",
+            "effective_window": {
+              "start": "ACCOUNT_OPEN_DATE",
+              "end": "ACCOUNT_TERMINATION"
+            },
+            "reward_classification_locked": true
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "MUTUALLY_EXCLUSIVE_HIGHEST_SPECIFICITY",
+          "rule_ids": [
+            "INST-KR-000753-3-CCA5D8910F1-PREF-01",
+            "INST-KR-000753-3-CCA5D8910F1-PREF-02"
+          ],
+          "priority": [
+            "SMALL_MERCHANT",
+            "SMALL_OR_MEDIUM_ENTERPRISE"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ],
+      "classification_time": "ACCOUNT_OPENING",
+      "reward_state_policy": {
+        "kind": "LOCKED_AT_SUBSCRIPTION",
+        "reevaluation_after_opening": false,
+        "initial_reward_does_not_change": true
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 세번째 목요일을 결산기준일로 정하여 계산하고, 결산기준일 익일에 지급",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000753-3-CCA5D8910F1-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "2.80",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000753-3-CCA5D8910F1",
+        "product_name": "사장님 혜택 가득 보통예금",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000753-3-CCA5D8910F1",
+    "source_record_id": "7bb880df88db06e08526024353c8c9d1",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 174,
+    "reviewed_source_record_id": "7bb880df88db06e08526024353c8c9d1",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "BUSINESS_SUBTYPE_REWARD_CONDITION_COLLAPSED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_MANUAL",
+      "SUBSCRIPTION_TIME_STATIC_REWARD_CLASSIFICATION_NOT_COMPILED"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "중소기업 0.1%p와 소상공인 0.2%p 분리",
+      "가입 시 중소기업/소상공인 분류와 최초 우대금리의 영구 고정 상태를 구조화"
+    ],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000753-3-CCA5D8910F1"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

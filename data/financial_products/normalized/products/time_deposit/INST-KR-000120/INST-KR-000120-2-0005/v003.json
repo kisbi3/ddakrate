@@ -1,0 +1,880 @@
+{
+  "product_code": "INST-KR-000120-2-0005",
+  "version": 3,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK오픈뱅킹 정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "source_text": "6개월, 12개월",
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      6,
+      12
+    ],
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005"
+    ],
+    "source_amount_text": "1백만원 이상 1천만원 이하 (원 단위) (1인당 계좌 합산 5천만원 한도 내)",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW",
+        "max_value": "50000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-2-0005-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.5",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.5",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "6개월",
+          "raw_cell": "2.500% 2.510%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "6개월"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-CTX-01-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.51",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "COMPOUND_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "interest_method": "COMPOUND",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "6개월",
+          "raw_cell": "2.500% 2.510%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "6개월"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.8",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.800% 2.800%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "12개월"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-CTX-02-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.8",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "COMPOUND_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "interest_method": "COMPOUND",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.800% 2.800%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "12개월"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.5",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "6개월",
+          "raw_cell": "2.500% 2.510%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "6개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.8",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.800% 2.800%",
+          "table_header": "기본 금리 | 기간 연이율 연수익률",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ],
+        "source_rate_row_text": "12개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-PREF-B01-01",
+        "role": "PREFERENTIAL",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.30",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-PREF-B01-02",
+        "role": "PREFERENTIAL",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-PREF-B02-01",
+        "role": "PREFERENTIAL",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.20",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-PREF-B03-01",
+        "role": "PREFERENTIAL",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005"
+        ]
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 연이율 연수익률\n6개월\n2.500% 2.510%\n12개월\n2.800% 2.800%",
+      "header_lines": [
+        "기본 금리",
+        "기간 연이율 연수익률"
+      ],
+      "rows": [
+        {
+          "term_text": "6개월",
+          "cell_lines": [
+            "2.500% 2.510%"
+          ],
+          "rate_values": [
+            "2.5",
+            "2.51"
+          ]
+        },
+        {
+          "term_text": "12개월",
+          "cell_lines": [
+            "2.800% 2.800%"
+          ],
+          "rate_values": [
+            "2.8",
+            "2.8"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        },
+        {
+          "context_id": "COMPOUND_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "interest_method": "COMPOUND"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+          "value_type": "NUMBER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "unit": "KRW",
+          "definition_text": "나. 입출금 평잔 우대이율 : 0.20%p - 이 예금 가입일로부터 예금 만기일 3영업일 전까지의 입출금 계좌 평균 잔액이 예금 가입 전일의 입출금계좌 잔액 합계 보다 100만원 이상 증가한 경우 적용 ※ 예금 만기일 3영업일 전 정상 보유 중인 입출금계좌에 한하여 평균 잔액을 산정하며, MMDA는 산정대상에서 제외됩니다."
+        },
+        {
+          "fact_key": "ACTIVITY.CARD_SPEND_AMOUNT_KRW",
+          "value_type": "NUMBER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "unit": "KRW",
+          "definition_text": "다. 신용(체크)카드 실적 우대이율 : 0.10%p - 이 예금 가입기간 중 신용(체크)카드 누적 청구(승인)금액 500만원 이상 인 경우 적용 (승인 취소 거래시 사용 청구(승인)실적에서 차감)"
+        },
+        {
+          "fact_key": "ACTIVITY.OPEN_BANKING_FULL_INITIAL_FUNDING",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "definition_text": "가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로 전액 신규"
+        },
+        {
+          "fact_key": "ACTIVITY.OPEN_BANKING_INFLOW_COUNT",
+          "value_type": "INTEGER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "unit": "COUNT",
+          "definition_text": "가입기간 중 신규일 제외 1일1회 인정 오픈뱅킹 입금 횟수"
+        },
+        {
+          "fact_key": "ACTIVITY.OPEN_BANKING_INFLOW_CUMULATIVE_KRW",
+          "value_type": "NUMBER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "unit": "KRW",
+          "definition_text": "가입기간 중 오픈뱅킹 입금 누적금액"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACTIVITY.OPEN_BANKING_FULL_INITIAL_FUNDING",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p",
+            "reward_text": "+0.3%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "evidence": [
+            {
+              "text": "가. 오픈뱅킹우대이율 : 최대 0.40%p\n① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B01-02",
+          "title": "② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "ACTIVITY.OPEN_BANKING_INFLOW_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "COUNT"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACTIVITY.OPEN_BANKING_INFLOW_CUMULATIVE_KRW",
+                  "operator": "GTE",
+                  "expected_value": 1000000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "evidence": [
+            {
+              "text": "가. 오픈뱅킹우대이율 : 최대 0.40%p\n② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "나. 입출금 평잔 우대이율 : 0.20%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AVERAGE_BALANCE_KRW",
+              "operator": "GTE",
+              "expected_value": "1000000",
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "나. 입출금 평잔 우대이율 : 0.20%p",
+            "reward_text": "+0.2%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "evidence": [
+            {
+              "text": "나. 입출금 평잔 우대이율 : 0.20%p\n- 이 예금 가입일로부터 예금 만기일 3영업일 전까지의 입출금 계좌 평균 잔액이 예금 가입 전일의 입출금계좌 잔액 합계 보다 100만원 이상 증가한 경우 적용\n※ 예금 만기일 3영업일 전 정상 보유 중인 입출금계좌에 한하여 평균 잔액을 산정하며, MMDA는 산정대상에서 제외됩니다."
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B03-01",
+          "title": "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACTIVITY.CARD_SPEND_AMOUNT_KRW",
+              "operator": "GTE",
+              "expected_value": "5000000",
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "evidence": [
+            {
+              "text": "다. 신용(체크)카드 실적 우대이율 : 0.10%p\n- 이 예금 가입기간 중 신용(체크)카드 누적 청구(승인)금액 500만원 이상 인 경우 적용 (승인 취소 거래시 사용 청구(승인)실적에서 차감)"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-B01",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B01-01",
+            "PREF-B01-02"
+          ],
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "cap": {
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          }
+        },
+        {
+          "relation_id": "REL-TOTAL-PREFERENTIAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B02-01",
+            "PREF-B03-01"
+          ],
+          "cap": {
+            "value": "0.7",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000120-2-0005"
+          ],
+          "child_relation_ids": [
+            "REL-B01"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ],
+      "structuring_status": "SUPPORTED",
+      "global_cap": {
+        "value": "0.7",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "우대금리 (최대 0.70%)\n※ 모든 우대 이율은 만기 해지 시에 지급하며, 이 예금에 다른 기준(다른상품의 특약)에서 정한 우대이율은 적용하지 아니합니다."
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.8",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "3.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005",
+        "EVD-OFFICIAL-INST-KR-000120-2-0005"
+      ]
+    },
+    "preferential_application": {
+      "mode": "SUM",
+      "cap_value": "0.70",
+      "cap_unit": "PERCENTAGE_POINT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ]
+    }
+  },
+  "standard_conditions": [
+    {
+      "condition_id": "INST-KR-000120-2-0005-COND-OPEN-FUND",
+      "condition_type": "DEMAND_DEPOSIT_ACCOUNT",
+      "purpose": "PREFERENTIAL_RETURN",
+      "title": "가입 당일 오픈뱅킹 전액 신규",
+      "criteria": {
+        "source_condition_text": "가입 당일 오픈뱅킹 입금액이 가입금액 이상"
+      },
+      "reward_refs": [
+        "INST-KR-000120-2-0005-PREF-B01-01"
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ]
+    },
+    {
+      "condition_id": "INST-KR-000120-2-0005-COND-OPEN-ACTIVITY",
+      "condition_type": "DEMAND_DEPOSIT_ACCOUNT",
+      "purpose": "PREFERENTIAL_RETURN",
+      "title": "오픈뱅킹 3회·100만원 입금",
+      "criteria": {
+        "source_condition_text": "신규일 제외 3회 이상·누적 100만원 이상"
+      },
+      "reward_refs": [
+        "INST-KR-000120-2-0005-PREF-B01-02"
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ]
+    },
+    {
+      "condition_id": "INST-KR-000120-2-0005-COND-AVG-BAL",
+      "condition_type": "BALANCE_THRESHOLD",
+      "purpose": "PREFERENTIAL_RETURN",
+      "title": "입출금 평잔 100만원 증가",
+      "criteria": {
+        "source_condition_text": "가입 전일 대비 만기 3영업일 전까지 평균잔액 100만원 이상 증가"
+      },
+      "reward_refs": [
+        "INST-KR-000120-2-0005-PREF-B02-01"
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ]
+    },
+    {
+      "condition_id": "INST-KR-000120-2-0005-COND-CARD",
+      "condition_type": "CARD_SPEND",
+      "purpose": "PREFERENTIAL_RETURN",
+      "title": "카드 누적 승인 500만원",
+      "criteria": {
+        "source_condition_text": "가입기간 중 신용·체크카드 누적 청구 승인금액 500만원 이상"
+      },
+      "reward_refs": [
+        "INST-KR-000120-2-0005-PREF-B03-01"
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005"
+      ]
+    }
+  ],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000120-2-0005"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-01T07:30:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL_OFFICIAL_LISTING_CROSS_CHECK",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "field": "sale_policy.subscription_channels",
+        "reason_code": "OFFICIAL_CHANNEL_CONFLICT",
+        "code": "OFFICIAL_CHANNEL_CONFLICT",
+        "message": "Naver는 영업점·개인/기업 인터넷·개인/기업 모바일·디지털데스크를 표시하고 공식 목록은 영업점·스마트폰가입만 표시한다. 현재 채널 적용범위의 기준일 차이를 해소할 수 없어 표준 BRANCH/MOBILE_APP을 보존하고 디지털데스크·기업채널을 gap으로 남김",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005",
+          "EVD-OFFICIAL-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "field": "return_policy.rate_schedule",
+        "reason_code": "OFFICIAL_DETAIL_ACCESS_ERROR",
+        "code": "OFFICIAL_DETAIL_ACCESS_ERROR",
+        "message": "FPCD 0010100207/MKPD_CD 0100010608 상세 위젯 직접 요청이 HTTP 200 JSON resCode 99/error.code F9999를 반환하여 상세 정책을 확인하지 못함",
+        "source_ref_ids": [
+          "EVD-OFFICIAL-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "field": "liquidity_policy.detail",
+        "reason_code": "LIQUIDITY_DETAIL_NOT_AVAILABLE",
+        "code": "LIQUIDITY_DETAIL_NOT_AVAILABLE",
+        "message": "Naver는 낮은 중도해지율과 만기후 지급만 설명하고 세부 중도해지율·만기후율·재예치율을 제공하지 않아 추정하지 않음",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000120-2-0005",
+          "EVD-OFFICIAL-INST-KR-000120-2-0005"
+        ]
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_OFFICIAL_LISTING_CROSS_CHECK",
+    "source_reason": "DIRECT_SOURCE_RECORD_AND_ISSUER_LISTING"
+  },
+  "data_gaps": [
+    {
+      "field": "sale_policy.subscription_channels",
+      "reason_code": "OFFICIAL_CHANNEL_CONFLICT",
+      "code": "OFFICIAL_CHANNEL_CONFLICT",
+      "message": "Naver는 영업점·개인/기업 인터넷·개인/기업 모바일·디지털데스크를 표시하고 공식 목록은 영업점·스마트폰가입만 표시한다. 현재 채널 적용범위의 기준일 차이를 해소할 수 없어 표준 BRANCH/MOBILE_APP을 보존하고 디지털데스크·기업채널을 gap으로 남김",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005",
+        "EVD-OFFICIAL-INST-KR-000120-2-0005"
+      ]
+    },
+    {
+      "field": "return_policy.rate_schedule",
+      "reason_code": "OFFICIAL_DETAIL_ACCESS_ERROR",
+      "code": "OFFICIAL_DETAIL_ACCESS_ERROR",
+      "message": "FPCD 0010100207/MKPD_CD 0100010608 상세 위젯 직접 요청이 HTTP 200 JSON resCode 99/error.code F9999를 반환하여 상세 정책을 확인하지 못함",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-INST-KR-000120-2-0005"
+      ]
+    },
+    {
+      "field": "liquidity_policy.detail",
+      "reason_code": "LIQUIDITY_DETAIL_NOT_AVAILABLE",
+      "code": "LIQUIDITY_DETAIL_NOT_AVAILABLE",
+      "message": "Naver는 낮은 중도해지율과 만기후 지급만 설명하고 세부 중도해지율·만기후율·재예치율을 제공하지 않아 추정하지 않음",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000120-2-0005",
+        "EVD-OFFICIAL-INST-KR-000120-2-0005"
+      ]
+    }
+  ],
+  "interest_payment_policy": {
+    "payment_timing": "MATURITY",
+    "source_text": "만기일시지급식(만기(후) 또는 중도해지 요청 시 이자를 지급)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 1억원까지(부산은행 여타 보호상품 합산) 보호",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ]
+  },
+  "liquidity_policy": {
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "source_text": "만기 전 해지시 약정이율보다 낮은 중도해지 이율 적용; 세부율 미기재",
+      "rate_basis": "UNSPECIFIED_IN_SOURCE"
+    },
+    "post_maturity_rate_policy": {
+      "source_text": "만기(후) 요청시 이자 지급; 만기후율 미기재",
+      "rate_basis": "UNSPECIFIED_IN_SOURCE"
+    },
+    "renewal_policy": {
+      "allowed": null,
+      "auto_renewal": null,
+      "source_text": "자동재예치 세부조건 미기재"
+    },
+    "rollover_policy": {
+      "allowed": null,
+      "auto_renewal": null,
+      "source_text": "자동재예치 세부조건 미기재"
+    },
+    "partial_withdrawal": {
+      "allowed": null,
+      "source_text": "분할해지 세부조건 미기재"
+    },
+    "maturity_options": [
+      "MANUAL_CLOSE"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000120-2-0005",
+      "EVD-OFFICIAL-INST-KR-000120-2-0005"
+    ]
+  }
+}

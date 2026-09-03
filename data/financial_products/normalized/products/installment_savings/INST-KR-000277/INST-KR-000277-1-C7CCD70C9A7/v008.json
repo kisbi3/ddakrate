@@ -1,0 +1,534 @@
+{
+  "product_code": "INST-KR-000277-1-C7CCD70C9A7",
+  "version": 8,
+  "institution_id": "INST-KR-000277",
+  "name": "아이행복적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-SALE"
+    ],
+    "quantity_limit": {
+      "max_count": 300,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE"
+    },
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "아래의 조건 중 하나 이상을 충족하는 19세 이상 실명의 개인\n- 18세 이하 자녀가 2명 이상인 부모\n- 본인 혹은 배우자가 출산 예정인 자\n- 신규 가입일 기준 2년 이내 출생 자녀를 둔 부모",
+    "eligibility_text": "아래의 조건 중 하나 이상을 충족하는 19세 이상 실명의 개인\n- 18세 이하 자녀가 2명 이상인 부모\n- 본인 혹은 배우자가 출산 예정인 자\n- 신규 가입일 기준 2년 이내 출생 자녀를 둔 부모",
+    "display_text": "아래의 조건 중 하나 이상을 충족하는 19세 이상 실명의 개인\n- 18세 이하 자녀가 2명 이상인 부모\n- 본인 혹은 배우자가 출산 예정인 자\n- 신규 가입일 기준 2년 이내 출생 자녀를 둔 부모",
+    "source_ref_ids": [
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 30만원 이하(정액적립식)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하(정액적립식)"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 30만원 이하(정액적립식)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000277-1-C7CCD70C9A7-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.750",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000277_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규 가입일 당시 18세 이하 자녀 2명 이상인 경우 : 1%"
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000277_1_INST_KR_000277_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%"
+        },
+        {
+          "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000277_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "한부모가정의 부모인 경우 : 1%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000277-1-C7CCD70C9A7-PREF-03",
+          "applies_to_rule_ids": [
+            "INST-KR-000277-1-C7CCD70C9A7-PREF-03"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%",
+          "submission_deadline_source_expressions": [
+            "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000277-1-C7CCD70C9A7-PREF-02",
+          "title": "신규 가입일 당시 18세 이하 자녀 2명 이상인 경우 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000277_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 가입일 당시 18세 이하 자녀 2명 이상인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "신규 가입일 당시 18세 이하 자녀 2명 이상인 경우 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000277-1-C7CCD70C9A7-PREF-03",
+          "title": "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000277_1_INST_KR_000277_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "의료기관에서 발급받은 임신확인서 제출하는 경우 또는 신규 가입일 당시 2년 이내 출생한 자녀의 부모인 경우 : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000277-1-C7CCD70C9A7-PREF-04",
+          "title": "한부모가정의 부모인 경우 : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ELIGIBILITY_STATUS.SATISFIED.SOURCE_CLAUSE_INST_KR_000277_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "한부모가정의 부모인 경우 : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+            }
+          ],
+          "semantic_domain": "ELIGIBILITY_STATUS",
+          "source_clause_text": "한부모가정의 부모인 경우 : 1%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-01",
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02",
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03",
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04",
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-RATE",
+      "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6.75",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "3e0ed3f43c9e467526f2dbaabab70040"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO",
+    "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-RATE",
+    "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-LISTING",
+    "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "3e0ed3f43c9e467526f2dbaabab70040",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-3E0ED3F43C9E467526F2DBAABAB70040-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

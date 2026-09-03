@@ -1,0 +1,867 @@
+{
+  "product_code": "INST-KR-000830-1-CD19BB23CD9",
+  "version": 7,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 한달적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인당 3계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "eligibility_text": "실명의 개인 (1인당 3계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "display_text": "실명의 개인 (1인당 3계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "source_ref_ids": [
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "nationality_scope": "KOREAN_ONLY",
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 3
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 31,
+    "source_expression": "31일",
+    "source_ref_ids": [
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+    ],
+    "representative_value": 31
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "100",
+        "max_value": "30000",
+        "increment_value": "1"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "PER_DAY",
+        "max_count": 1
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "최초 가입금액 : 0원으로만 가입 가능(가입일로부터 바로 납입 가능)",
+      "min_value": "0"
+    },
+    "source_amount_text": "최초 가입금액 : 0원으로만 가입 가능(가입일로부터 바로 납입 가능)\n1회 납입금액 : 100원 이상 3만원 이하(1원 단위로 납입 가능)\n• 직접 납입을 통해서 1일 1회만 입금 가능하며, 그외의 입금은 모두 제한\n• 연결된 카카오뱅크 입출금통장 또는 개인사업자통장을 통한 입금만 가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "PER_CONTRIBUTION",
+        "role": "RANGE_BOUND",
+        "context": "최초 가입금액 : 0원으로만 가입 가능(가입일로부터 바로 납입 가능)\n1회 납입금액 : 100원 이상 3만원 이하(1원"
+      },
+      {
+        "value": "100",
+        "currency": "KRW",
+        "source_expression": "100원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "최초 가입금액 : 0원으로만 가입 가능(가입일로부터 바로 납입 가능)\n1회 납입금액 : 100원 이상 3만원 이하(1원 단위로 납입 가능)\n• 직접 납입을 통해서 1일 1회만 입금 가능하며, 그"
+      },
+      {
+        "value": "30000",
+        "currency": "KRW",
+        "source_expression": "3만원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "가입금액 : 0원으로만 가입 가능(가입일로부터 바로 납입 가능)\n1회 납입금액 : 100원 이상 3만원 이하(1원 단위로 납입 가능)\n• 직접 납입을 통해서 1일 1회만 입금 가능하며, 그외의 입금은"
+      },
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "0원으로만 가입 가능(가입일로부터 바로 납입 가능)\n1회 납입금액 : 100원 이상 3만원 이하(1원 단위로 납입 가능)\n• 직접 납입을 통해서 1일 1회만 입금 가능하며, 그외의 입금은 모두 제한"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-1-CD19BB23CD9-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.50",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "fixed_value": 31
+        },
+        "source_ref_ids": [
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "5.50",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03",
+          "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000830_1_CD19BB23CD9_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000830-1-CD19BB23CD9-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.COUNT.SOURCE_CLAUSE_INST_KR_000830_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          ],
+          "unit": "COUNT",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "보너스 우대금리 누적하여 최대 연 2.40%p 제공\n- 5 회 입금시+연 0.20%p\n- 10 회 입금시+연 0.20%p (누적 연 0.40%p)\n- 15 회 입금시+연 0.30%p (누적 연 0.70%p)\n- 20 회 입금시+연 0.30%p (누적 연 1.00%p)\n- 25 회 입금시+연 0.50%p (누적 연 1.50%p)\n- 31 회 입금시+연 0.90%p (누적 연 2.40%p)\n금리쿠폰",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000830_1_CD19BB23CD9-INST_KR_000830_1_CD19B-SOURCE_CLAUSE_INST_KR_000830_1",
+            "operator": "COUNT"
+          }
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000830_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-KAKAO-ONE-MONTH-DAILY-CONTRIBUTION",
+          "event_type": "CONTRIBUTION_SUCCESS",
+          "maximum_count_per_period": {
+            "period": "DAY",
+            "count": 1
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY_DATE"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-KAKAO-ONE-MONTH-CONTRIBUTION",
+          "event_type": "CONTRIBUTION_SUCCESS",
+          "maximum_count_per_period": {
+            "period": "DAY",
+            "count": 1
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000830-1-CD19BB23CD9-PREF-02-SUCCESS",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "qualifying_definition": {
+            "source_text": "매일 우대금리 최대 연 3.10%p 제공\n- 매 입금 시마다 + 연 0.10%p"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "매일 우대금리 최대 연 3.10%p 제공\n- 매 입금 시마다 + 연 0.10%p",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000830_1_CD19BB23CD9-INST_KR_000830_1_CD19B-SOURCE_CLAUSE_INST_KR_000830_1",
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "PROMOTION_COUPON_ISSUED_OR_APPLIED",
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "보너스 우대금리 누적하여 최대 연 2.40%p 제공\n- 5 회 입금시+연 0.20%p\n- 10 회 입금시+연 0.20%p (누적 연 0.40%p)\n- 15 회 입금시+연 0.30%p (누적 연 0.70%p)\n- 20 회 입금시+연 0.30%p (누적 연 1.00%p)\n- 25 회 입금시+연 0.50%p (누적 연 1.50%p)\n- 31 회 입금시+연 0.90%p (누적 연 2.40%p)\n금리쿠폰",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000830-1-CD19BB23CD9-PREF-02",
+          "title": "매일 우대금리 최대 연 3.10%p 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000830_1_CD19BB23CD9_PREF_02.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000830-1-CD19BB23CD9-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.10",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              }
+            ],
+            "cap_value": "3.10",
+            "max_qualifying_units": 31
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "매일 우대금리 최대 연 3.10%p 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "매일 우대금리 최대 연 3.10%p 제공\n- 매 입금 시마다 + 연 0.10%p"
+        },
+        {
+          "rule_id": "INST-KR-000830-1-CD19BB23CD9-PREF-03",
+          "title": "보너스 우대금리 누적하여 최대 연 2.40%p 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.COUNT.SOURCE_CLAUSE_INST_KR_000830_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-KAKAO-ONE-MONTH-CONTRIBUTION",
+            "milestone_rewards": [
+              {
+                "threshold_count": 5,
+                "increment_value": "0.20",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "threshold_count": 10,
+                "increment_value": "0.20",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "threshold_count": 15,
+                "increment_value": "0.30",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "threshold_count": 20,
+                "increment_value": "0.30",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "threshold_count": 25,
+                "increment_value": "0.50",
+                "unit": "PERCENTAGE_POINT"
+              },
+              {
+                "threshold_count": 31,
+                "increment_value": "0.90",
+                "unit": "PERCENTAGE_POINT"
+              }
+            ],
+            "cap_value": "2.40",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "보너스 우대금리 누적하여 최대 연 2.40%p 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "보너스 우대금리 누적하여 최대 연 2.40%p 제공\n- 5 회 입금시+연 0.20%p\n- 10 회 입금시+연 0.20%p (누적 연 0.40%p)\n- 15 회 입금시+연 0.30%p (누적 연 0.70%p)\n- 20 회 입금시+연 0.30%p (누적 연 1.00%p)\n- 25 회 입금시+연 0.50%p (누적 연 1.50%p)\n- 31 회 입금시+연 0.90%p (누적 연 2.40%p)\n금리쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000830-1-CD19BB23CD9-PREF-04",
+          "title": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000830_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-KAKAO-ONE-MONTH-DAILY",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000830-1-CD19BB23CD9-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-KAKAO-ONE-MONTH-DAILY-CONTRIBUTION",
+          "value_per_occurrence": "0.10",
+          "cap": {
+            "value": "3.10",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-KAKAO-ONE-MONTH-BONUS",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000830-1-CD19BB23CD9-PREF-03"
+          ],
+          "milestones": [
+            {
+              "threshold_count": 5,
+              "increment_value": "0.20"
+            },
+            {
+              "threshold_count": 10,
+              "increment_value": "0.20"
+            },
+            {
+              "threshold_count": 15,
+              "increment_value": "0.30"
+            },
+            {
+              "threshold_count": 20,
+              "increment_value": "0.30"
+            },
+            {
+              "threshold_count": 25,
+              "increment_value": "0.50"
+            },
+            {
+              "threshold_count": 31,
+              "increment_value": "0.90"
+            }
+          ],
+          "cap": {
+            "value": "2.40",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000830-1-CD19BB23CD9-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000830-1-CD19BB23CD9-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000830-1-CD19BB23CD9-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.10",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "3.10",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000830-1-CD19BB23CD9-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000830-1-CD19BB23CD9-PREF-02",
+            "INST-KR-000830-1-CD19BB23CD9-PREF-03",
+            "INST-KR-000830-1-CD19BB23CD9-PREF-04"
+          ],
+          "cap": {
+            "value": "5.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01",
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02",
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03",
+              "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01",
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02",
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03",
+            "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01",
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02",
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03",
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04",
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-RATE",
+      "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "afe8750a8fbd65403a59d28ef00a5bf8"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO",
+    "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-RATE",
+    "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "afe8750a8fbd65403a59d28ef00a5bf8",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 4,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "DAILY",
+      "source_ref_ids": [
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-AFE8750A8FBD65403A59D28EF00A5BF8-RATE"
+      ]
+    }
+  ]
+}

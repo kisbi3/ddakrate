@@ -1,0 +1,387 @@
+{
+  "product_code": "INST-KR-000010-2-C62755883EF",
+  "version": 3,
+  "institution_id": "INST-KR-000010",
+  "name": "장기회전정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": ["BRANCH", "MOBILE_APP", "WEB"],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음 (단, 국가 및 지방자치단체는 실세형 가입 불가)",
+    "eligibility_text": "제한없음 (단, 국가 및 지방자치단체는 실세형 가입 불가)",
+    "display_text": "제한없음 (단, 국가 및 지방자치단체는 실세형 가입 불가)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "source_text": "1년 이상 ~ 15년 이내 (연 단위)",
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 15,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "YEAR"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+    ],
+    "rollover_period_policy": {
+      "kind": "FIXED",
+      "unit": "MONTH",
+      "fixed_value": 12,
+      "source_text": "원문 매 1년/12개월 회전 명시"
+    },
+    "representative_term": {
+      "value": 1,
+      "unit": "YEAR"
+    },
+    "representative_value": 1,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "EXISTING_SELECTABLE_REPRESENTATIVE"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+    ],
+    "source_amount_text": "일반형 : 최소 1만원 이상 ~ 최고 가입금액 제한없음\n실세형 : 최소 5백만원 이상 ~ 최고 가입금액 제한없음",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "10000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "interest_payment_policy": {"contexts": [{"context_id": "MATURITY_PAYMENT", "payment_timing": "AT_MATURITY"}, {"context_id": "MONTHLY_PAYMENT", "payment_timing": "MONTHLY"}, {"context_id": "ANNUAL_PAYMENT", "payment_timing": "OTHER", "source_text": "연이자지급식"}], "multiple_contexts": true, "source_text": "만기일시지급식, 월이자지급식, 연이자지급식"},
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-2-C62755883EF-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          },
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "derivation": "FIXED_ROLLOVER_PERIOD_POLICY"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.300%",
+          "table_header": "기본 금리 | 기간 약정금리[만기] 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+        ],
+        "source_rate_row_text": "12개월"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C62755883EF-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          },
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "derivation": "FIXED_ROLLOVER_PERIOD_POLICY"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.400%",
+          "table_header": "기본 금리 | 기간 약정금리[만기] 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+        ],
+        "source_rate_row_text": "12개월"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C62755883EF-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C62755883EF-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          },
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "derivation": "FIXED_ROLLOVER_PERIOD_POLICY"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.300%",
+          "table_header": "기본 금리 | 기간 약정금리[만기] 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+        ],
+        "source_rate_row_text": "12개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000010-2-C62755883EF-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          },
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "derivation": "FIXED_ROLLOVER_PERIOD_POLICY"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "2.400%",
+          "table_header": "기본 금리 | 기간 약정금리[만기] 비고",
+          "rate_period_basis": "ROLLOVER_PERIOD"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+        ],
+        "source_rate_row_text": "12개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 약정금리[만기] 비고\n12개월\n2.300%\n일반형으로 가입한 경우 가입일 및 매 1년 응당일 당시 영업점 및 인터넷 홈페이지에 게시한 “일반정기예금 1년제 금리”를 적용\n12개월\n2.400%\n실세형으로 가입한 경우 가입일 및 매 1년 응당일 당시 영업점 및 인터넷 홈페이지에 게시한 “마니마니정기예금 1년제 금리”를 적용",
+      "header_lines": [
+        "기본 금리",
+        "기간 약정금리[만기] 비고"
+      ],
+      "rows": [
+        {
+          "term_text": "12개월",
+          "cell_lines": [
+            "2.300%"
+          ],
+          "rate_values": [
+            "2.3"
+          ]
+        },
+        {
+          "term_text": "일반형으로 가입한 경우 가입일 및 매 1년 응당일 당시 영업점 및 인터넷 홈페이지에 게시한 “일반정기예금 1년제 금리”를 적용",
+          "cell_lines": [],
+          "rate_values": [
+            null
+          ]
+        },
+        {
+          "term_text": "12개월",
+          "cell_lines": [
+            "2.400%"
+          ],
+          "rate_values": [
+            "2.4"
+          ]
+        },
+        {
+          "term_text": "실세형으로 가입한 경우 가입일 및 매 1년 응당일 당시 영업점 및 인터넷 홈페이지에 게시한 “마니마니정기예금 1년제 금리”를 적용",
+          "cell_lines": [],
+          "rate_values": [
+            null
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.3",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+      ]
+    }
+  },
+  "protection_policy": {"coverage_status": "PROTECTED", "coverage_limit_krw": "100000000", "scheme_ref": {"scheme_code": "KDIC-DEPOSIT-PROTECTION", "version": 1}, "source_ref_ids": ["EVD-TD-20260829-INST-KR-000010-2-C62755883EF"]},
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T14:47:54+09:00",
+    "previous_version": 2,
+    "correction_reason": "Naver 원문으로 확정된 세 가입채널·세 이자지급방식·보호·중도해지 정책을 immutable version 3에 반영",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "liquidity_policy": {
+    "renewal_policy": {
+      "mode": "ROLLOVER",
+      "rate_reset": "REFRESH_AT_ROLLOVER",
+      "original_contract_term_preserved": true,
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000010-2-C62755883EF"
+      ]
+    },
+    "early_termination_allowed": true,
+    "early_termination_policy": {"source_text": "중도해지 시 낮은 이율 적용"},
+    "source_ref_ids": ["EVD-TD-20260829-INST-KR-000010-2-C62755883EF"]
+  },
+  "data_gaps": []
+}

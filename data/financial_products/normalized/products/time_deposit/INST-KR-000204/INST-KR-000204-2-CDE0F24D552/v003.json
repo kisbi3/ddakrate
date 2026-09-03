@@ -1,0 +1,575 @@
+{
+  "product_code": "INST-KR-000204-2-CDE0F24D552",
+  "version": 3,
+  "institution_id": "INST-KR-000204",
+  "name": "JB시니어우대예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP",
+      "MOBILE_WEB"
+    ],
+    "subscription_channel_source_text": "영업점, 모바일뱅킹, 모바일웹",
+    "subscription_channel_source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "주소지가 전라북도인 만 60세이상 실명의 개인 및 개인사업자(임의단체 제외)\n1. 전라북도 소재 영업점 : 주민등록상 주소지가 전라북도인 자\n2. 전라북도 이외 영업점 : 주민등록상 주소지, 원적지 또는 본적지가 전북인 자",
+    "eligibility_text": "주소지가 전라북도인 만 60세이상 실명의 개인 및 개인사업자(임의단체 제외)\n1. 전라북도 소재 영업점 : 주민등록상 주소지가 전라북도인 자\n2. 전라북도 이외 영업점 : 주민등록상 주소지, 원적지 또는 본적지가 전북인 자",
+    "display_text": "주소지가 전라북도인 만 60세이상 실명의 개인 및 개인사업자(임의단체 제외)\n1. 전라북도 소재 영업점 : 주민등록상 주소지가 전라북도인 자\n2. 전라북도 이외 영업점 : 주민등록상 주소지, 원적지 또는 본적지가 전북인 자",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 60
+    },
+    "subscription_channel_rules": [
+      {
+        "customer_types": [
+          "INDIVIDUAL",
+          "SOLE_PROPRIETOR"
+        ],
+        "allowed_channels": [
+          "BRANCH",
+          "MOBILE_APP",
+          "MOBILE_WEB"
+        ],
+        "source_text": "영업점, 모바일뱅킹, 모바일웹",
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "source_text": "1년",
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "source_amount_text": "최저 1백만원 이상",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000204-2-CDE0F24D552-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "1년만기"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년만기",
+          "raw_cell": "2.100%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+        ],
+        "source_rate_row_text": "1년만기"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CDE0F24D552-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.35",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CDE0F24D552-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "1년만기"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1년만기",
+          "raw_cell": "2.100%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+        ],
+        "source_rate_row_text": "1년만기",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 금리\n1년만기\n2.100%",
+      "header_lines": [
+        "기본 금리",
+        "기간 금리"
+      ],
+      "rows": [
+        {
+          "term_text": "1년만기",
+          "cell_lines": [
+            "2.100%"
+          ],
+          "rate_values": [
+            "2.1"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.AGE_YEARS",
+          "value_type": "INTEGER",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "unit": "YEAR",
+          "definition_text": "가입일 기준 만 나이",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.RESIDENTIAL_ADDRESS_PROVINCE",
+          "value_type": "STRING",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "주민등록상 주소지의 시·도",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.ORIGIN_REGION_PROVINCE",
+          "value_type": "STRING",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "원적지의 시·도",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.REGISTERED_DOMICILE_PROVINCE",
+          "value_type": "STRING",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "본적지의 시·도",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ]
+        },
+        {
+          "fact_key": "SUBSCRIPTION.BRANCH_PROVINCE",
+          "value_type": "STRING",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "가입 영업점 소재 시·도",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "만 60세 이상 전북 연고 고객 우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.AGE_YEARS",
+                  "operator": "GTE",
+                  "expected_value": 60,
+                  "unit": "YEAR"
+                }
+              },
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "SUBSCRIPTION.BRANCH_PROVINCE",
+                          "operator": "EQUALS",
+                          "expected_value": "JEONBUK"
+                        }
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "CUSTOMER.RESIDENTIAL_ADDRESS_PROVINCE",
+                          "operator": "EQUALS",
+                          "expected_value": "JEONBUK"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "SUBSCRIPTION.BRANCH_PROVINCE",
+                          "operator": "NOT_EQUALS",
+                          "expected_value": "JEONBUK"
+                        }
+                      },
+                      {
+                        "operator": "OR",
+                        "children": [
+                          {
+                            "predicate": {
+                              "fact_key": "CUSTOMER.RESIDENTIAL_ADDRESS_PROVINCE",
+                              "operator": "EQUALS",
+                              "expected_value": "JEONBUK"
+                            }
+                          },
+                          {
+                            "predicate": {
+                              "fact_key": "CUSTOMER.ORIGIN_REGION_PROVINCE",
+                              "operator": "EQUALS",
+                              "expected_value": "JEONBUK"
+                            }
+                          },
+                          {
+                            "predicate": {
+                              "fact_key": "CUSTOMER.REGISTERED_DOMICILE_PROVINCE",
+                              "operator": "EQUALS",
+                              "expected_value": "JEONBUK"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.25",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "만 60세 이상: 전북 영업점은 주민등록 주소지 전북, 그 외 영업점은 주민등록 주소지·원적지·본적지 중 전북",
+            "reward_text": "+0.25%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+          ],
+          "evidence": [
+            {
+              "text": "전라북도 소재 영업점은 주민등록상 주소지가 전라북도, 전라북도 이외 영업점은 주민등록상 주소지·원적지 또는 본적지가 전북인 만 60세 이상 개인·개인사업자."
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+      ],
+      "structuring_status": "SUPPORTED",
+      "global_cap": {
+        "value": "0.25",
+        "unit": "PERCENTAGE_POINT",
+        "scope": "SENIOR_REGIONAL_PREFERENCE",
+        "source_text": "만 60세이상 도내 고객에 한함, 0.25% 범위내 추가우대 가능"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.1",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.35",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-01T00:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL_WITH_OFFICIAL_PROTECTED_PRODUCT_REGISTER_CHECK",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "interest_payment_policy.contexts.MONTHLY_INTEREST_PAYMENT.rate",
+        "code": "MONTHLY_PAYMENT_RATE_NOT_STATED",
+        "reason": "월이자지급식 선택 가능은 명시되나 월지급식의 별도 금리·금리차이는 미기재",
+        "status": "OPEN"
+      },
+      {
+        "path": "liquidity_policy.early_termination_rate_policy",
+        "code": "ORDINARY_EARLY_TERMINATION_RATE_TABLE_NOT_STATED",
+        "reason": "일반 중도해지율 표는 미기재; 특정 사유 3개월 경과 시 시장금리부정기예금 신규시점 고시이율 적용만 명시",
+        "status": "OPEN"
+      },
+      {
+        "path": "liquidity_policy.partial_withdrawal.max_count",
+        "code": "PARTIAL_WITHDRAWAL_MAX_COUNT_NOT_STATED",
+        "reason": "특정 사유 분할해지는 가능하나 횟수·금액 한도 미기재",
+        "status": "OPEN"
+      },
+      {
+        "path": "official_research.exact_product_specification",
+        "code": "OFFICIAL_EXACT_PRODUCT_DETAIL_NOT_DISCOVERABLE",
+        "reason": "공식 보호대상상품 목록에서 동명 정기예금·판매개시일은 확인했으나 상세 조건·금리 본문을 재현 가능하게 찾지 못함",
+        "status": "OPEN"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_PROTECTED_PRODUCT_REGISTER_CHECK",
+    "source_reason": "NAVER_DIRECT_SOURCE_RECORD_ID_AND_JB_OFFICIAL_PROTECTED_PRODUCT_REGISTER",
+    "previous_version": 2,
+    "correction_reason": "Naver 원문으로 지역·가입 영업점별 시니어 우대, 지급방식, 특정 사유 중도/분할해지, 담보대출·수수료·보호를 구조화"
+  },
+  "data_gaps": [
+    {
+      "path": "interest_payment_policy.contexts.MONTHLY_INTEREST_PAYMENT.rate",
+      "code": "MONTHLY_PAYMENT_RATE_NOT_STATED",
+      "reason": "월이자지급식 선택 가능은 명시되나 월지급식의 별도 금리·금리차이는 미기재",
+      "status": "OPEN"
+    },
+    {
+      "path": "liquidity_policy.early_termination_rate_policy",
+      "code": "ORDINARY_EARLY_TERMINATION_RATE_TABLE_NOT_STATED",
+      "reason": "일반 중도해지율 표는 미기재; 특정 사유 3개월 경과 시 시장금리부정기예금 신규시점 고시이율 적용만 명시",
+      "status": "OPEN"
+    },
+    {
+      "path": "liquidity_policy.partial_withdrawal.max_count",
+      "code": "PARTIAL_WITHDRAWAL_MAX_COUNT_NOT_STATED",
+      "reason": "특정 사유 분할해지는 가능하나 횟수·금액 한도 미기재",
+      "status": "OPEN"
+    },
+    {
+      "path": "official_research.exact_product_specification",
+      "code": "OFFICIAL_EXACT_PRODUCT_DETAIL_NOT_DISCOVERABLE",
+      "reason": "공식 보호대상상품 목록에서 동명 정기예금·판매개시일은 확인했으나 상세 조건·금리 본문을 재현 가능하게 찾지 못함",
+      "status": "OPEN"
+    }
+  ],
+  "interest_payment_policy": {
+    "multiple_contexts": true,
+    "default_context_id": "MATURITY_LUMP_SUM",
+    "default_context_derivation": "NAVER_CALCULATOR_12_MONTH_MATURITY_SIMPLE",
+    "source_text": "만기일시지급식: 만기(후) 또는 중도해지 요청 시 이자 지급; 월이자 지급식: 매월 또는 중도해지 요청 시 이자 지급",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ],
+    "contexts": [
+      {
+        "context_id": "MATURITY_LUMP_SUM",
+        "interest_method": "SIMPLE",
+        "payment_timing": "AT_MATURITY",
+        "payment_amount": "PRINCIPAL_AND_INTEREST",
+        "early_termination_payment_timing": "ON_EARLY_TERMINATION_REQUEST"
+      },
+      {
+        "context_id": "MONTHLY_INTEREST_PAYMENT",
+        "interest_method": "SIMPLE",
+        "payment_timing": "MONTHLY",
+        "early_termination_payment_timing": "ON_EARLY_TERMINATION_REQUEST",
+        "early_termination_reconciliation": "DEDUCT_PREPAID_INTEREST_EXCESS_FROM_PRINCIPAL",
+        "source_text": "월이자지급식은 중도해지 시 기지급 이자와 중도해지 이자의 차액을 원금에서 차감하여 지급"
+      }
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "early_termination_allowed": true,
+    "early_termination_rate_policy": {
+      "status": "ORDINARY_RATE_TABLE_NOT_STATED",
+      "source_text": "일반 중도해지율 표는 미기재."
+    },
+    "special_early_or_partial_termination_policy": {
+      "minimum_elapsed_term": {
+        "value": 3,
+        "unit": "MONTH"
+      },
+      "qualifying_reasons": [
+        "CHILD_MARRIAGE",
+        "HOME_PURCHASE",
+        "SELF_HOSPITALIZATION",
+        "SPOUSE_HOSPITALIZATION",
+        "OTHER_COMPARABLE_REASON"
+      ],
+      "rate_basis": "MARKET_RATE_TIME_DEPOSIT_POSTED_AT_INITIAL_SUBSCRIPTION_BY_ELAPSED_TERM",
+      "source_text": "예치기간 3개월 경과 후 자녀결혼·주택구입·본인 및 배우자 입원 등으로 중도해지 또는 분할해지 요청 시 시장금리부정기예금 예치기간별 신규시점 고시이율 적용"
+    },
+    "partial_withdrawal": {
+      "allowed": true,
+      "conditions": "예치 3개월 경과 및 자녀결혼·주택구입·본인/배우자 입원 등 사유로 요청",
+      "rate_treatment": "MARKET_RATE_TIME_DEPOSIT_POSTED_AT_INITIAL_SUBSCRIPTION_BY_ELAPSED_TERM",
+      "max_count_status": "NOT_STATED",
+      "source_text": "예치기간 3개월 경과된 경우로 자녀결혼·주택구입, 본인 및 배우자 입원 등으로 분할해지 요청 시 시장금리부정기예금 예치기간별 신규시점 고시이율 적용"
+    },
+    "automatic_termination_policy": {
+      "blocked_by_payment_restriction": true,
+      "blocking_examples": [
+        "SEIZURE",
+        "LIEN",
+        "CAUTION_CODE"
+      ],
+      "source_text": "압류·담보설정·주의코드 등 지급제한 사유가 있는 경우 자동해지에서 제외"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  },
+  "collateral_loan_policy": {
+    "rate_adjustment": {
+      "kind": "ADD_RATE",
+      "value": "1.0",
+      "unit": "PERCENTAGE_POINT"
+    },
+    "source_text": "이 예금 담보대출 이율은 예금이율의 연 1.0% 가산 적용",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  },
+  "fee_policy": {
+    "waivers": [
+      {
+        "fee_type": "ACCIDENT_REPORT_FEE",
+        "source_text": "제사고신고 수수료 면제"
+      },
+      {
+        "fee_type": "PASSBOOK_REISSUE_FEE",
+        "source_text": "통장재발행 수수료 면제"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "예금자보호법에 따라 원금과 소정 이자를 합해 전북은행 여타 보호상품과 합산하여 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  },
+  "tax_policy": {
+    "default_treatment": "TAXABLE",
+    "source_text": "Naver 12개월 만기 세후 계산에서 이자과세 15.4% 표시; 비과세 가입 가능 여부는 원문에 미기재.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CDE0F24D552"
+    ]
+  }
+}

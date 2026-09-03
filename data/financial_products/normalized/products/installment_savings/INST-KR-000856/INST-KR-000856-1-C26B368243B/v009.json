@@ -1,0 +1,1002 @@
+{
+  "product_code": "INST-KR-000856-1-C26B368243B",
+  "version": 9,
+  "institution_id": "INST-KR-000856",
+  "name": "Sh파워챌린지적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-SALE",
+      "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831",
+      "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20250909"
+    ],
+    "quantity_limit": {
+      "max_count": 15000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-SALE"
+      ]
+    },
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인",
+    "eligibility_text": "실명의 개인",
+    "display_text": "실명의 개인",
+    "source_ref_ids": [
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 7,
+    "source_expression": "1개월 이상 7개월이하 (월 단위, 일 단위 계약 가능)",
+    "source_bounds": {
+      "min": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 7,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY",
+      "MONTH"
+    ],
+    "customer_selected_maturity": true
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "IRREGULAR",
+    "contribution_frequency_options": [
+      "WEEKLY",
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "100000",
+        "period_definition": {
+          "week_start": "MONDAY",
+          "week_end": "SUNDAY"
+        },
+        "applies_when": {
+          "selected_cadence": "WEEKLY"
+        },
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ],
+        "period_basis": "CALENDAR_WEEK"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "20000",
+        "applies_when": {
+          "selected_cadence": "DAILY"
+        },
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ],
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "cadence_selection_policy": {
+      "selection_event": "SUBSCRIPTION",
+      "allowed_values": [
+        "WEEKLY",
+        "DAILY"
+      ],
+      "immutable_after_selection": true,
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        }
+      ]
+    },
+    "source_amount_text": "적립주기 : 가입 시점에 적립 주기(매주 또는 매일) 선택 가능\n※ 계약기간 중 변경 불가\n적립금액 및 저축방법 : 적립 주기에 따라 정해진 납입한도 이내에서 자유롭게 적립\n- 적립 주기 별 납입 한도\n매주(월요일~일요일) : 최저 1천원이상 최고 10만원이내\n매일 : 최저 1천원이상 최고 2만원이내",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_WEEK",
+        "role": "MINIMUM",
+        "context": "매주(월요일~일요일) 최저 1천원",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ]
+      },
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_WEEK",
+        "role": "MAXIMUM",
+        "context": "매주(월요일~일요일) 최고 10만원",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ]
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_DAY",
+        "role": "MINIMUM",
+        "context": "매일 최저 1천원",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ]
+      },
+      {
+        "value": "20000",
+        "currency": "KRW",
+        "source_expression": "2만원",
+        "scope": "PER_DAY",
+        "role": "MAXIMUM",
+        "context": "매일 최고 2만원",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+        ]
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000856-1-C26B368243B-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.00",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 7,
+          "min_inclusive": true,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-RATE",
+          "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01",
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02",
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03",
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "4.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+          "type": "NUMBER",
+          "unit": "PERCENT",
+          "authority": "BANK_TRANSACTION_DERIVED",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "derivation": {
+            "formula": "TRUNCATE((QUALIFYING_AUTO_TRANSFER_COUNT / TOTAL_SCHEDULED_CONTRIBUTION_COUNT) * 100)",
+            "rounding": "TRUNCATE_FRACTIONAL_PERCENT",
+            "numerator": "QUALIFYING_AUTO_TRANSFER_COUNT",
+            "denominator": "TOTAL_SCHEDULED_CONTRIBUTION_COUNT",
+            "denominator_by_selected_cadence": {
+              "WEEKLY": {
+                "definition": "COUNT_WEEKS",
+                "window_start": "SUBSCRIPTION_DATE",
+                "window_end": "WEEK_BEFORE_MATURITY_DATE",
+                "source_expression": "가입일~만기일 전주까지의 주 횟수"
+              },
+              "DAILY": {
+                "definition": "COUNT_BANK_BUSINESS_DAYS",
+                "window_start": "SUBSCRIPTION_DATE",
+                "window_end": "DAY_BEFORE_MATURITY_DATE",
+                "source_expression": "가입일~만기일 전일까지의 영업일 수"
+              }
+            }
+          },
+          "question_generation": {
+            "mode": "NO_USER_QUESTION",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "SUHYUP.ELIGIBLE_DEPOSIT_SAVINGS_HELD_DURING_FIRST_TRADE_LOOKBACK",
+          "type": "BOOLEAN",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "derivation": {
+            "institution": "SH_SUHYUP_BANK",
+            "included_product_families": [
+              "TIME_DEPOSIT",
+              "INSTALLMENT_SAVINGS"
+            ],
+            "excluded_product_families": [
+              "DEMAND_DEPOSIT"
+            ],
+            "window": {
+              "start": {
+                "relative_to": "SUBSCRIPTION_DATE",
+                "offset": {
+                  "value": -1,
+                  "unit": "YEAR"
+                }
+              },
+              "end": {
+                "relative_to": "SUBSCRIPTION_DATE",
+                "boundary": "END_OF_SECOND_PREVIOUS_CALENDAR_MONTH"
+              }
+            },
+            "qualifying_value": false
+          },
+          "question_generation": {
+            "mode": "NO_USER_QUESTION",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "CONSENT.PRODUCT_SERVICE_ALL_NOTIFICATION_CHANNELS_MAINTAINED_THROUGH_MATURITY",
+          "type": "BOOLEAN",
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "derivation": {
+            "consent_document": "개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)",
+            "required_scope": "ALL_PRODUCT_SERVICE_NOTIFICATION_METHODS",
+            "continuous_maintenance_window": {
+              "start": "SUBSCRIPTION",
+              "end": "MATURITY_TERMINATION"
+            }
+          },
+          "question_generation": {
+            "mode": "NO_USER_QUESTION",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000856-1-C26B368243B-AUTO-TRANSFER-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "qualifying_definition": {
+            "source_account_institution": "SH_SUHYUP_BANK",
+            "source_account_type": "DEMAND_DEPOSIT",
+            "destination_account": "THIS_SAVINGS_ACCOUNT",
+            "transfer_method": "AUTO_TRANSFER",
+            "execution_calendar": "BANK_BUSINESS_DAY",
+            "manual_direct_deposit_qualifies": false,
+            "initial_contribution_counts_as_auto_transfer_count": true,
+            "recognition_limit_by_selected_cadence": {
+              "WEEKLY": {
+                "max_count": 1,
+                "scope": "PER_WEEK"
+              },
+              "DAILY": {
+                "max_count": 1,
+                "scope": "PER_DAY"
+              }
+            },
+            "business_day_definition": "Excludes public holidays, Saturdays, and Labor Day under source clause."
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000856-1-C26B368243B-PREF-02",
+          "title": "첫거래 우대",
+          "source_clause_text": "첫거래 우대(신규시 적용): 최근 1년 룩백 기간에 수협은행 예·적금 활동계좌 미보유 시 +1.00%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "SUHYUP.ELIGIBLE_DEPOSIT_SAVINGS_HELD_DURING_FIRST_TRADE_LOOKBACK",
+              "operator": "EQUALS",
+              "expected_value": false,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "eligibility_evaluation_event": "SUBSCRIPTION",
+            "eligibility_locked_at_subscription": true,
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+              }
+            ]
+          },
+          "display": {
+            "summary": "첫거래 우대 +1.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "PRODUCT_HOLDING"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C26B368243B-PREF-03",
+          "title": "마케팅 동의 유지 우대",
+          "source_clause_text": "만기해지 시까지 상품서비스 안내수단 전체동의를 유지하면 +0.10%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONSENT.PRODUCT_SERVICE_ALL_NOTIFICATION_CHANNELS_MAINTAINED_THROUGH_MATURITY",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.10",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "requires_continuous_condition_through_event": true,
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+              }
+            ]
+          },
+          "display": {
+            "summary": "마케팅 안내수단 전체동의 유지 +0.10%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "MARKETING_CONSENT"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C26B368243B-PREF-04",
+          "title": "자동이체 달성율 우대",
+          "source_clause_text": "자동이체 횟수/총 납입 횟수의 정수% 달성율에 따라 50~80% 미만 +1.40%p, 80% 이상 +2.90%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "cap_value": "2.90",
+            "selector_calculation": {
+              "formula": "TRUNCATE((QUALIFYING_AUTO_TRANSFER_COUNT / TOTAL_SCHEDULED_CONTRIBUTION_COUNT) * 100)",
+              "rounding": "TRUNCATE_FRACTIONAL_PERCENT",
+              "numerator": "QUALIFYING_AUTO_TRANSFER_COUNT",
+              "denominator": "TOTAL_SCHEDULED_CONTRIBUTION_COUNT",
+              "denominator_by_selected_cadence": {
+                "WEEKLY": {
+                  "definition": "COUNT_WEEKS",
+                  "window_start": "SUBSCRIPTION_DATE",
+                  "window_end": "WEEK_BEFORE_MATURITY_DATE",
+                  "source_expression": "가입일~만기일 전주까지의 주 횟수"
+                },
+                "DAILY": {
+                  "definition": "COUNT_BANK_BUSINESS_DAYS",
+                  "window_start": "SUBSCRIPTION_DATE",
+                  "window_end": "DAY_BEFORE_MATURITY_DATE",
+                  "source_expression": "가입일~만기일 전일까지의 영업일 수"
+                }
+              }
+            },
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+                    "operator": "BETWEEN",
+                    "lower": 50,
+                    "upper": 80,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false,
+                    "unit": "PERCENT",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                      }
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                    }
+                  ]
+                },
+                "rate_value": "1.40",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "50% 이상 ~ 80% 미만: +1.40%p",
+                "source_ref_ids": [
+                  "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+                    "operator": "GTE",
+                    "expected_value": 80,
+                    "unit": "PERCENT",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                      }
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                    }
+                  ]
+                },
+                "rate_value": "2.90",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "80% 이상: +2.90%p",
+                "source_ref_ids": [
+                  "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+              }
+            ]
+          },
+          "display": {
+            "summary": "자동이체 달성율 최대 +2.90%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "AUTOMATIC_TRANSFER"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000856-1-C26B368243B-PREF-04-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000856-1-C26B368243B-PREF-04"
+          ],
+          "selector_fact_key": "ACCOUNT.AUTO_TRANSFER_ACHIEVEMENT_PERCENT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "cap": {
+            "value": "2.90",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000856-1-C26B368243B-TOTAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000856-1-C26B368243B-PREF-02",
+            "INST-KR-000856-1-C26B368243B-PREF-03",
+            "INST-KR-000856-1-C26B368243B-PREF-04"
+          ],
+          "cap": {
+            "value": "4.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "source_ref_ids": [
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01",
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02",
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03",
+            "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01",
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02",
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03",
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04",
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-E5B150C7E40A76E535387143A25EB288-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-RATE",
+      "EVD-IS-E5B150C7E40A76E535387143A25EB288-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-LISTING",
+        "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831"
+      ],
+      "context": "NAVER_LISTING_CURRENT_OFFERING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "e5b150c7e40a76e535387143a25eb288"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [
+    {
+      "condition_id": "SHP-CADENCE-IMMUTABLE",
+      "type": "IMMUTABLE_SUBSCRIPTION_SELECTION",
+      "field": "cash_flow_policy.cadence_selection_policy",
+      "values": [
+        "WEEKLY",
+        "DAILY"
+      ],
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    },
+    {
+      "condition_id": "SHP-MIDTERM-RATE-NOTE",
+      "type": "EARLY_TERMINATION_RATE",
+      "effect": "CONTRACTED_MATURITY_RATE_NOT_APPLIED",
+      "source_text": "만기전 해지할 경우 약정 금리보다 낮은 중도해지금리가 적용됩니다.",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO",
+    "EVD-IS-E5B150C7E40A76E535387143A25EB288-RATE",
+    "EVD-IS-E5B150C7E40A76E535387143A25EB288-LISTING",
+    "EVD-IS-E5B150C7E40A76E535387143A25EB288-SALE",
+    "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831",
+    "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20250909",
+    "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20260420"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T11:20:00+09:00",
+    "data_authority": "NAVER_PRIMARY_PLUS_ISSUER_ENRICHMENT",
+    "publication_gate": "TARGETED_PRODUCT_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "e5b150c7e40a76e535387143a25eb288",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-14",
+      "reviewed_at": "2026-08-31T11:20:00+09:00",
+      "method": "NAVER_PRODUCT_GUIDE_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_PLUS_SUHYUP_OFFICIAL_AMENDMENT_REVIEW",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "SUHYUP_CURRENT_PRODUCT_LIST",
+        "SUHYUP_TERMS_AMENDMENT_20250909",
+        "SUHYUP_TERMS_AMENDMENT_20260420"
+      ],
+      "correction_count": 12,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    },
+    "official_enrichment_ref_ids": [
+      "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831",
+      "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20250909",
+      "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20260420"
+    ]
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "DAILY",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "WEEKLY",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-E5B150C7E40A76E535387143A25EB288-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "offering_policy": {
+    "current_offering_ruleset": {
+      "effective_from": "2025-09-09",
+      "applies_to_subscriptions_from": "2025-09-09",
+      "applies_retroactively_to_existing_accounts": false,
+      "base_rate": {
+        "value": "2.00",
+        "unit": "PERCENT"
+      },
+      "preferential_rate_cap": {
+        "value": "4.00",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "advertised_max_rate": {
+        "value": "6.00",
+        "unit": "PERCENT"
+      },
+      "per_customer_account_count_limit_status": "REMOVED",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20250909",
+        "EVD-OFFICIAL-SUHYUP-SHPOWER-CURRENT-20260831"
+      ]
+    },
+    "amendments": [
+      {
+        "effective_from": "2026-04-20",
+        "applies_to_existing_accounts": true,
+        "changes": [
+          "DELETE_PARTNERSHIP_EVENT_CLAUSE",
+          "RENUMBER_TRANSACTION_RESTRICTION_CLAUSE"
+        ],
+        "source_ref_ids": [
+          "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20260420"
+        ]
+      }
+    ],
+    "historical_account_rule_preservation": {
+      "preserve_subscription_time_rules": true,
+      "note": "2025-09-09 우대금리/가입제한 개정은 기존 고객 미적용이므로 가입일 이전 ruleset을 현재 ruleset으로 덮어쓰지 않음.",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-SUHYUP-SHPOWER-AMENDMENT-20250909"
+      ]
+    }
+  }
+}

@@ -1,0 +1,945 @@
+{
+  "product_code": "INST-KR-000856-1-C55FF02A443",
+  "version": 8,
+  "institution_id": "INST-KR-000856",
+  "name": "Sh똑똑한우리아이적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-SALE"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 70000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "18세 이하 실명의 개인 (1인 1계좌)",
+    "eligibility_text": "18세 이하 실명의 개인 (1인 1계좌)",
+    "display_text": "18세 이하 실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 3,
+    "source_expression": "1년 이상 3년 이하 (연단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+    ],
+    "duration_selection_granularity_options": [
+      "YEAR"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "100000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 10만원 이하",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 10만원 이하"
+      },
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 10만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000856-1-C55FF02A443-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000856-1-C55FF02A443-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000856-1-C55FF02A443-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "1.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05",
+          "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000856_1_C55FF02A443_PREF_03.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000856-1-C55FF02A443-PREF-03-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000856_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금 신규익월부터 만기전월까지 수협은행 본인명의 입출금통장 평균잔액 10만원 이상인 경우 (만기 해지시 적용) : 1%",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000856_1_C55FF02A443-INST_KR_000856_1_C55FF-SOURCE_CLAUSE_INST_KR_000856_1",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000856_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금 신규일에 인터넷뱅킹·스마트폰뱅킹을 신규 가입한 고객 또는 기가입 고객 (신규 시 적용) : 0.5%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000856_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+          ],
+          "unit": "YEAR",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "수협은행 적금 계좌 첫 거래고객 (신규 시 적용)\n- 최근 5년간 수협은행 적금 활동계좌 미보유고객*\n*이 적금 가입 기준 5년 전부터 가입 전일까지 수협은행 적금(입출금이자유로운예금•거치식예금 제외)계좌를 보유하고 있지 않은 고객. (단, 5세 이하 고객은 출생일로부터 가입 전일까지) : 0.5%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000856_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "Sh쑥쑥크는아이적금을 현재 보유한 고객 또는 만기 해지일로부터 1개월 이내 이 적금을 가입한 고객 (신규 시 적용) : 0.5%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000856-1-C55FF02A443-PREF-03-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "수협은행 입출금통장에서 이 적금으로 자동이체로 납입된 횟수가 적금 계약 기간의 1/2이상인 경우 (만기 해지시 적용)\n(1년: 6회이상, 2년: 12회이상, 3년: 18회이상) : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "수협은행 입출금통장에서 이 적금으로 자동이체로 납입된 횟수가 적금 계약 기간의 1/2이상인 경우 (만기 해지시 적용)\n(1년: 6회이상, 2년: 12회이상, 3년: 18회이상) : 0.5%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000856_1_C55FF02A443-INST_KR_000856_1_C55FF-SOURCE_CLAUSE_INST_KR_000856_1",
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "ACCOUNT_BALANCE_OBSERVED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "이 적금 신규익월부터 만기전월까지 수협은행 본인명의 입출금통장 평균잔액 10만원 이상인 경우 (만기 해지시 적용) : 1%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "account_owner_scope": "CUSTOMER",
+          "count_window": {
+            "end": "END_OF_MONTH_BEFORE_MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000856-1-C55FF02A443-PREF-02",
+          "title": "이 적금 신규익월부터 만기전월까지 수협은행 본인명의 입출금통장 평균잔액 10만원 이상인 경우 (만기 해지시 적용) : 1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000856_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금 신규익월부터 만기전월까지 수협은행 본인명의 입출금통장 평균잔액 10만원 이상인 경우 (만기 해지시 적용) : 1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+            }
+          ],
+          "semantic_domain": "ACCOUNT_BALANCE",
+          "source_clause_text": "이 적금 신규익월부터 만기전월까지 수협은행 본인명의 입출금통장 평균잔액 10만원 이상인 경우 (만기 해지시 적용) : 1%"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C55FF02A443-PREF-03",
+          "title": "수협은행 입출금통장에서 이 적금으로 자동이체로 납입된 횟수가 적금 계약 기간의 1/2이상인 경우 (만기 해지시 적용)",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000856_1_C55FF02A443_PREF_03.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "수협은행 입출금통장에서 이 적금으로 자동이체로 납입된 횟수가 적금 계약 기간의 1/2이상인 경우 (만기 해지시 적용)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "수협은행 입출금통장에서 이 적금으로 자동이체로 납입된 횟수가 적금 계약 기간의 1/2이상인 경우 (만기 해지시 적용)\n(1년: 6회이상, 2년: 12회이상, 3년: 18회이상) : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C55FF02A443-PREF-04",
+          "title": "이 적금 신규일에 인터넷뱅킹·스마트폰뱅킹을 신규 가입한 고객 또는 기가입 고객 (신규 시 적용) : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000856_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금 신규일에 인터넷뱅킹·스마트폰뱅킹을 신규 가입한 고객 또는 기가입 고객 (신규 시 적용) : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "이 적금 신규일에 인터넷뱅킹·스마트폰뱅킹을 신규 가입한 고객 또는 기가입 고객 (신규 시 적용) : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C55FF02A443-PREF-05",
+          "title": "수협은행 적금 계좌 첫 거래고객 (신규 시 적용)",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000856_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "수협은행 적금 계좌 첫 거래고객 (신규 시 적용)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "수협은행 적금 계좌 첫 거래고객 (신규 시 적용)\n- 최근 5년간 수협은행 적금 활동계좌 미보유고객*\n*이 적금 가입 기준 5년 전부터 가입 전일까지 수협은행 적금(입출금이자유로운예금•거치식예금 제외)계좌를 보유하고 있지 않은 고객. (단, 5세 이하 고객은 출생일로부터 가입 전일까지) : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000856-1-C55FF02A443-PREF-06",
+          "title": "Sh쑥쑥크는아이적금을 현재 보유한 고객 또는 만기 해지일로부터 1개월 이내 이 적금을 가입한 고객 (신규 시 적용) : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000856_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "Sh쑥쑥크는아이적금을 현재 보유한 고객 또는 만기 해지일로부터 1개월 이내 이 적금을 가입한 고객 (신규 시 적용) : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "Sh쑥쑥크는아이적금을 현재 보유한 고객 또는 만기 해지일로부터 1개월 이내 이 적금을 가입한 고객 (신규 시 적용) : 0.5%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000856-1-C55FF02A443-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000856-1-C55FF02A443-PREF-02",
+            "INST-KR-000856-1-C55FF02A443-PREF-03",
+            "INST-KR-000856-1-C55FF02A443-PREF-04",
+            "INST-KR-000856-1-C55FF02A443-PREF-05",
+            "INST-KR-000856-1-C55FF02A443-PREF-06"
+          ],
+          "cap": {
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01",
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02",
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03",
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04",
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05",
+              "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+              },
+              {
+                "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01",
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02",
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03",
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04",
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05",
+            "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06",
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-140E78244B71955121D7125DDCFB52EF-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE",
+      "EVD-IS-140E78244B71955121D7125DDCFB52EF-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "140e78244b71955121d7125ddcfb52ef"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO",
+    "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE",
+    "EVD-IS-140E78244B71955121D7125DDCFB52EF-LISTING",
+    "EVD-IS-140E78244B71955121D7125DDCFB52EF-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "140e78244b71955121d7125ddcfb52ef",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-140E78244B71955121D7125DDCFB52EF-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

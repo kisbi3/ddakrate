@@ -1,0 +1,227 @@
+{
+  "product_code": "INST-KR-000516-3-CEEDC76356A",
+  "version": 1,
+  "institution_id": "INST-KR-000516",
+  "name": "KB사장님 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "KB국민은행 입출금이 자유로운 예금을 보유한 개인 및 개인사업자\n(1인 1계좌 보유 가능)\n※ 임의단체 및 공동명의 가입불가",
+    "eligibility_text": "KB국민은행 입출금이 자유로운 예금을 보유한 개인 및 개인사업자\n(1인 1계좌 보유 가능)\n※ 임의단체 및 공동명의 가입불가",
+    "display_text": "KB국민은행 입출금이 자유로운 예금을 보유한 개인 및 개인사업자\n(1인 1계좌 보유 가능)\n※ 임의단체 및 공동명의 가입불가",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 60,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-3-CEEDC76356A-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.1",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000516-3-CEEDC76356A-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000516-3-CEEDC76356A-01",
+        "title": "우대이율 최고 연 2.4%p(이벤트 이율 포함)",
+        "condition_text": "우대이율 최고 연 2.4%p(이벤트 이율 포함)\n※ 결산일 현재 영업점 및 KB국민은행 홈페이지에 게시한 우대이율 적용\n※ 우대이율 및 이벤트이율은 적용조건을 충족하는 경우 이자계산기간 동안 적용",
+        "structured_steps": [
+          "우대이율 최고 연 2.4%p(이벤트 이율 포함)",
+          "※ 결산일 현재 영업점 및 KB국민은행 홈페이지에 게시한 우대이율 적용",
+          "※ 우대이율 및 이벤트이율은 적용조건을 충족하는 경우 이자계산기간 동안 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대이율 최고 연 2.4%p(이벤트 이율 포함)",
+          "summary_text": "우대이율 최고 연 2.4%p(이벤트 이율 포함)",
+          "detail_texts": [
+            "※ 결산일 현재 영업점 및 KB국민은행 홈페이지에 게시한 우대이율 적용",
+            "※ 우대이율 및 이벤트이율은 적용조건을 충족하는 경우 이자계산기간 동안 적용"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000516-3-CEEDC76356A-02",
+        "title": "매출정산 입금 우대이율(연 1.9%p)",
+        "condition_text": "매출정산 입금 우대이율(연 1.9%p)\n이자지급 월의 전월 말일 기준 직전 3개월 동안 1개월 이상 아래 3가지 입금 조건 중 1가지 이상 충족하는 경우\n• 가맹대금 : 본인명의 KB국민은행 입출금통장으로 3개 카드사(KB국민카드 필수) 이상 가맹대금 입금 또는 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 간편결제 플랫폼 가맹대금 입금\n• 배달플랫폼 : 신규 시 등록한 연결계좌로 배달플랫폼(배달의 민족, 요기요, 쿠팡이츠 限)에서 매출정산대금 입금\n• 온라인마켓 : 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 온라인마켓 정산금 입금",
+        "structured_steps": [
+          "매출정산 입금 우대이율(연 1.9%p)",
+          "이자지급 월의 전월 말일 기준 직전 3개월 동안 1개월 이상 아래 3가지 입금 조건 중 1가지 이상 충족하는 경우",
+          "가맹대금 : 본인명의 KB국민은행 입출금통장으로 3개 카드사(KB국민카드 필수) 이상 가맹대금 입금 또는 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 간편결제 플랫폼 가맹대금 입금",
+          "배달플랫폼 : 신규 시 등록한 연결계좌로 배달플랫폼(배달의 민족, 요기요, 쿠팡이츠 限)에서 매출정산대금 입금",
+          "온라인마켓 : 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 온라인마켓 정산금 입금"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.9",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "매출정산 입금 우대이율(연 1.9%p)",
+          "summary_text": "매출정산 입금 우대이율(연 1.9%p)",
+          "detail_texts": [
+            "이자지급 월의 전월 말일 기준 직전 3개월 동안 1개월 이상 아래 3가지 입금 조건 중 1가지 이상 충족하는 경우",
+            "가맹대금 : 본인명의 KB국민은행 입출금통장으로 3개 카드사(KB국민카드 필수) 이상 가맹대금 입금 또는 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 간편결제 플랫폼 가맹대금 입금",
+            "배달플랫폼 : 신규 시 등록한 연결계좌로 배달플랫폼(배달의 민족, 요기요, 쿠팡이츠 限)에서 매출정산대금 입금",
+            "온라인마켓 : 신규 시 등록한 연결계좌로 KB국민은행과 제휴 계약이 된 온라인마켓 정산금 입금"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000516-3-CEEDC76356A-03",
+        "title": "이벤트 이율(연 0.5%p)",
+        "condition_text": "이벤트 이율(연 0.5%p)\n▪ 선정된 플랫폼을 통해 유입 시* 플랫폼 제휴 이벤트 이율 제공\n【이벤트 이율 유의사항】\n- 이벤트 이율은 매출정산입금 우대이율을 충족하는 경우에만 적용됩니다.\n- KB사장님 파킹통장 상품 최초 가입 시에만 적용되며, 1인 1회, 예금 가입 후 12개월만 적용됩니다.\n- KB사장님 파킹통장 최초 가입 후 12개월째의 가입일자가 해당 월의 결산일을 경과한 경우에는 바로 다음 도래하는 결산월의 결산일까지 이벤트 이율을 적용합니다.\n* 선정된 제휴 플랫폼(또는 가맹점)에서 제공하는 별도의 가입방식(QR스캔, 전용배너, 링크 등)을 통해 본 상품에 가입한 경우를 의미\n※ 제휴 플랫폼 현황은 KB스타기업뱅킹 또는 KB스타뱅킹 내 ‘상품정보 및 금리보기’에 별도 게시",
+        "structured_steps": [
+          "이벤트 이율(연 0.5%p)",
+          "▪ 선정된 플랫폼을 통해 유입 시* 플랫폼 제휴 이벤트 이율 제공",
+          "【이벤트 이율 유의사항】",
+          "- 이벤트 이율은 매출정산입금 우대이율을 충족하는 경우에만 적용됩니다.",
+          "- KB사장님 파킹통장 상품 최초 가입 시에만 적용되며, 1인 1회, 예금 가입 후 12개월만 적용됩니다.",
+          "- KB사장님 파킹통장 최초 가입 후 12개월째의 가입일자가 해당 월의 결산일을 경과한 경우에는 바로 다음 도래하는 결산월의 결산일까지 이벤트 이율을 적용합니다.",
+          "* 선정된 제휴 플랫폼(또는 가맹점)에서 제공하는 별도의 가입방식(QR스캔, 전용배너, 링크 등)을 통해 본 상품에 가입한 경우를 의미",
+          "※ 제휴 플랫폼 현황은 KB스타기업뱅킹 또는 KB스타뱅킹 내 ‘상품정보 및 금리보기’에 별도 게시"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이벤트 이율(연 0.5%p)",
+          "summary_text": "이벤트 이율(연 0.5%p)",
+          "detail_texts": [
+            "▪ 선정된 플랫폼을 통해 유입 시* 플랫폼 제휴 이벤트 이율 제공",
+            "【이벤트 이율 유의사항】",
+            "- 이벤트 이율은 매출정산입금 우대이율을 충족하는 경우에만 적용됩니다.",
+            "- KB사장님 파킹통장 상품 최초 가입 시에만 적용되며, 1인 1회, 예금 가입 후 12개월만 적용됩니다.",
+            "- KB사장님 파킹통장 최초 가입 후 12개월째의 가입일자가 해당 월의 결산일을 경과한 경우에는 바로 다음 도래하는 결산월의 결산일까지 이벤트 이율을 적용합니다.",
+            "* 선정된 제휴 플랫폼(또는 가맹점)에서 제공하는 별도의 가입방식(QR스캔, 전용배너, 링크 등)을 통해 본 상품에 가입한 경우를 의미",
+            "※ 제휴 플랫폼 현황은 KB스타기업뱅킹 또는 KB스타뱅킹 내 ‘상품정보 및 금리보기’에 별도 게시"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+    ],
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000516-3-CEEDC76356A"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.495500+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

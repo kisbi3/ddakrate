@@ -1,0 +1,797 @@
+{
+  "product_code": "INST-KR-000010-1-C2FC29EB675",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "주거래 프리미엄 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      1,
+      2,
+      3
+    ],
+    "source_ref_ids": [
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+    ],
+    "source_expression": "1년, 2년, 3년"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "increment_value": "1"
+      }
+    ],
+    "source_amount_text": "월 1만원 이상 ~ 최고금액 제한 없음(원 단위, 정액적립식)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "월 1만원 이상 ~ 최고금액 제한 없음(원 단위, 정액적립식)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-C2FC29EB675-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-C2FC29EB675-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-C2FC29EB675-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.550",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01",
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02",
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03",
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04",
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05",
+          "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.PRIMARY_TRANSACTION_SATISFIED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01",
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02",
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03",
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04",
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05",
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "BILL_PAYMENT.CONTRACT_TERM_HALF_SATISFIED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금 계약기간의 1/2이상 당행 입출금통장에서 공과금 자동이체(알뜰폰 요금 제외) 실적 보유시\n- 공과금 자동이체 월 3건: 연 0.40%\n- 공과금 자동이체 월 4건 이상: 연 0.60%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "가입일 기준, 직전 6개월 간 당행 거치식/적립식예금 미보유시\n- 단, 활동좌인 주택청약종합저축계좌는 제외 : 0.2%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금 만기해지 시점에 당행 주택청약종합저축 보유시 : 0.1%"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금을 전자명함을 통해 신규시 : 0.2%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-C2FC29EB675-PREF-02",
+          "title": "이 적금 계약기간의 1/2이상 다음 중 하나의 주거래 실적 보유시",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.PRIMARY_TRANSACTION_SATISFIED",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금 계약기간의 1/2이상 다음 중 하나의 주거래 실적 보유시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+            }
+          ],
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "이 적금 계약기간의 1/2이상 다음 중 하나의 주거래 실적 보유시\n- 급여이체 실적 보유 : 당행 입출금통장에 급여 지정일자 전 5영업일 또는 후 10영업일 이내에 건별 50만원 이상 급여 입금\n- 가맹점 결제대금 입금 실적 보유 : 당행 입출금통장에 BC, 삼성, 신한카드사 중 1개 이상의 가맹점 결제대금* 입금\n*가맹점 결제대금 : 당행 펌 이체방식에 의한 입금 건에 한함(신용카드사로부터 직접 이체 건은 제외) : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-C2FC29EB675-PREF-03",
+          "title": "이 적금 계약기간의 1/2이상 당행 입출금통장에서 공과금 자동이체(알뜰폰 요금 제외) 실적 보유시",
+          "condition": {
+            "predicate": {
+              "fact_key": "BILL_PAYMENT.CONTRACT_TERM_HALF_SATISFIED",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "candidate_values": [
+              "0.40",
+              "0.60"
+            ],
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금 계약기간의 1/2이상 당행 입출금통장에서 공과금 자동이체(알뜰폰 요금 제외) 실적 보유시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+            }
+          ],
+          "semantic_domain": "BILL_PAYMENT",
+          "source_clause_text": "이 적금 계약기간의 1/2이상 당행 입출금통장에서 공과금 자동이체(알뜰폰 요금 제외) 실적 보유시\n- 공과금 자동이체 월 3건: 연 0.40%\n- 공과금 자동이체 월 4건 이상: 연 0.60%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-C2FC29EB675-PREF-04",
+          "title": "가입일 기준, 직전 6개월 간 당행 거치식/적립식예금 미보유시",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입일 기준, 직전 6개월 간 당행 거치식/적립식예금 미보유시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "가입일 기준, 직전 6개월 간 당행 거치식/적립식예금 미보유시\n- 단, 활동좌인 주택청약종합저축계좌는 제외 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-C2FC29EB675-PREF-05",
+          "title": "이 적금 만기해지 시점에 당행 주택청약종합저축 보유시 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금 만기해지 시점에 당행 주택청약종합저축 보유시 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "이 적금 만기해지 시점에 당행 주택청약종합저축 보유시 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-C2FC29EB675-PREF-06",
+          "title": "이 적금을 전자명함을 통해 신규시 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금을 전자명함을 통해 신규시 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "이 적금을 전자명함을 통해 신규시 : 0.2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06",
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE",
+      "EVD-IS-6263173EAC92FFD6578FF905733FBA17-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "6263173eac92ffd6578ff905733fba17"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO",
+    "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE",
+    "EVD-IS-6263173EAC92FFD6578FF905733FBA17-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T03:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "AUDIT_SEMANTIC_CORRECTION",
+    "source_record_id": "6263173eac92ffd6578ff905733fba17",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T03:00:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-6263173EAC92FFD6578FF905733FBA17-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

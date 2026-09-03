@@ -1,0 +1,655 @@
+{
+  "product_code": "INST-KR-000223-3-0012",
+  "version": 4,
+  "institution_id": "INST-KR-000223",
+  "name": "나라사랑머니박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012",
+      "EVD-OFFICIAL-IBK-NARASARANG-MONEYBOX-20260830"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ],
+    "subscription_channel_details": [
+      {
+        "channel": "MOBILE_APP",
+        "platform": "IBK_I_ONE_BANK",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012",
+          "EVD-OFFICIAL-IBK-NARASARANG-MONEYBOX-20260830"
+        ]
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "eligibility_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "display_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012"
+    ],
+    "excluded_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "excluded_residency_statuses": [
+      "NON_RESIDENT"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "fact_definitions": [
+      {
+        "fact_key": "RELATIONSHIP.IBK.NARASARANG_ACCOUNT_HELD",
+        "data_type": "BOOLEAN",
+        "institution_id": "INST-KR-000223",
+        "description": "가입 시점에 IBK나라사랑통장을 보유하고 있는지 여부",
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ]
+      },
+      {
+        "fact_key": "CUSTOMER.IS_SOLE_PROPRIETOR",
+        "data_type": "BOOLEAN",
+        "description": "개인사업자 여부",
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ]
+      },
+      {
+        "fact_key": "RESIDENCY.IS_FOREIGN_NONRESIDENT",
+        "data_type": "BOOLEAN",
+        "description": "외국인 비거주자 여부",
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ]
+      }
+    ],
+    "condition": {
+      "operator": "AND",
+      "operands": [
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.TYPE",
+            "operator": "EQUALS",
+            "expected_value": "INDIVIDUAL"
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.REAL_NAME_VERIFIED",
+            "operator": "EQUALS",
+            "expected_value": true
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "RELATIONSHIP.IBK.NARASARANG_ACCOUNT_HELD",
+            "operator": "EQUALS",
+            "expected_value": true
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.IS_SOLE_PROPRIETOR",
+            "operator": "EQUALS",
+            "expected_value": false
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "RESIDENCY.IS_FOREIGN_NONRESIDENT",
+            "operator": "EQUALS",
+            "expected_value": false
+          }
+        }
+      ]
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012",
+      "EVD-OFFICIAL-IBK-NARASARANG-MONEYBOX-20260830"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012"
+    ],
+    "amount_rules": [
+      {
+        "scope": "FUNDING",
+        "limit_kind": "MAX_DEPOSITABLE_AMOUNT",
+        "currency": "KRW",
+        "source_text": "최대 100만원까지 입금 가능",
+        "max_value": "1000000",
+        "does_not_assert_post_interest_balance_cap": true,
+        "structuring_status": "SUPPORTED"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-3-0012-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.100",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ],
+        "source_clause": "기본금리 | 기본금리 0.100%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED",
+      "global_application": {
+        "source_text": "최고 연 3.9%p. 전월(1일~말일) 조건 충족 실적을 당월(1일~말일)에 적용. 상품전환으로 IBK나라사랑통장을 신규한 경우 전환일 이후 실적부터 인정.",
+        "fact_window": "PREVIOUS_CALENDAR_MONTH",
+        "reward_window": "CURRENT_CALENDAR_MONTH",
+        "conversion_clipping": {
+          "applies_when": "PARENT_IBK_NARASARANG_ACCOUNT_CREATED_BY_PRODUCT_CONVERSION",
+          "earliest_qualifying_fact_date": "CONVERSION_DATE",
+          "event_definition_ref": "EV-INST-KR-000223-3-0012-PARENT-ACCOUNT-CONVERSION"
+        }
+      },
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "3.9",
+        "unit": "PERCENTAGE_POINT",
+        "application": "AFTER_SUM_OF_QUALIFYING_ADDITIVE_REWARDS",
+        "source_text": "최고 연 3.9%p",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ]
+      },
+      "event_definitions": [
+        {
+          "event_id": "EV-INST-KR-000223-3-0012-MILITARY-SALARY",
+          "event_type": "MILITARY_SALARY_TRANSFER",
+          "account_scope": "IBK_NARASARANG_ACCOUNT",
+          "originator": "ROK_MILITARY_FINANCE_MANAGEMENT_CORPS",
+          "transfer_arrangement": "IBK_CENTRAL_PAYROLL_CONTRACT",
+          "qualifying_types": [
+            "ROK_ACTIVE_DUTY_ENLISTED_MILITARY_SALARY"
+          ],
+          "excluded_types": [
+            "SOCIAL_SERVICE_PERSONNEL_PAY",
+            "ALTERNATIVE_SERVICE_PERSONNEL_PAY",
+            "OTHER_SERVICE_INSTITUTION_PAY"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "event_id": "EV-INST-KR-000223-3-0012-NARASARANG-CARD-SALES-SLIP",
+          "event_type": "CARD_USAGE_ACCEPTED_SALES_SLIP",
+          "card_product": "IBK_NARASARANG_CARD",
+          "recognition_basis": "SALES_SLIP_RECEIVED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "event_id": "EV-INST-KR-000223-3-0012-QUALIFYING-DOCUMENT-REGISTERED",
+          "event_type": "QUALIFYING_DOCUMENT_REGISTERED",
+          "channel": "BRANCH",
+          "persistence": "REGISTERED_STATE",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "event_id": "EV-INST-KR-000223-3-0012-PARENT-ACCOUNT-CONVERSION",
+          "event_type": "PARENT_ACCOUNT_PRODUCT_CONVERSION",
+          "target_product": "IBK_NARASARANG_ACCOUNT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_EVENT_COUNT",
+          "data_type": "INTEGER",
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000223-3-0012-MILITARY-SALARY",
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_CONSECUTIVE_MONTHS",
+          "data_type": "INTEGER",
+          "unit": "CALENDAR_MONTH",
+          "derivation": {
+            "kind": "CONSECUTIVE_MONTHS_WITH_EVENT",
+            "event_definition_ref": "EV-INST-KR-000223-3-0012-MILITARY-SALARY",
+            "minimum_event_count_per_month": 1,
+            "count_at_most_once_per_calendar_month": true,
+            "window_end": "PREVIOUS_CALENDAR_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "fact_key": "CARD.IBK_NARASARANG.ACCEPTED_SALES_SLIP_COUNT",
+          "data_type": "INTEGER",
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000223-3-0012-NARASARANG-CARD-SALES-SLIP",
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "fact_key": "DOCUMENT.IBK_NARASARANG.QUALIFYING_WELFARE_DOCUMENT_REGISTERED",
+          "data_type": "BOOLEAN",
+          "event_definition_ref": "EV-INST-KR-000223-3-0012-QUALIFYING-DOCUMENT-REGISTERED",
+          "derivation": {
+            "kind": "ANY_QUALIFYING_DOCUMENT_REGISTERED",
+            "accepted_document_branches": [
+              {
+                "document_type": "BENEFIT_RECIPIENT_CERTIFICATE",
+                "holder": "ACCOUNT_HOLDER",
+                "maximum_age_at_product_opening": {
+                  "value": 3,
+                  "unit": "MONTH"
+                }
+              },
+              {
+                "document_type": "SOCIAL_SECURITY_BENEFIT_STOP_NOTICE",
+                "holder": "ACCOUNT_HOLDER",
+                "required_reason": "MILITARY_ENLISTMENT"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-3-0012-PREF-01",
+          "title": "전월 군장병 급여이체",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 1
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "global_cap_ref": "preferential_policy.global_cap"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000223-3-0012-PREF-02",
+          "title": "12개월 연속 군장병 급여이체",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_CONSECUTIVE_MONTHS",
+              "operator": "GTE",
+              "expected_value": 12
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "global_cap_ref": "preferential_policy.global_cap"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000223-3-0012-PREF-03",
+          "title": "전월 나라사랑카드 1회 이상 사용 + 전월 군장병 급여이체",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_EVENT_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CARD.IBK_NARASARANG.ACCEPTED_SALES_SLIP_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "global_cap_ref": "preferential_policy.global_cap"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000223-3-0012-PREF-04",
+          "title": "지정 증명서 제출·등록 + 전월 군장병 급여이체",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.IBK_NARASARANG.MILITARY_SALARY_TRANSFER_EVENT_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "DOCUMENT.IBK_NARASARANG.QUALIFYING_WELFARE_DOCUMENT_REGISTERED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": "CURRENT_CALENDAR_MONTH",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "global_cap_ref": "preferential_policy.global_cap",
+            "document_state_semantics": "PERSISTENT_REGISTERED_STATE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000223-3-0012-REL-CUMULATIVE-CAPPED",
+          "type": "CUMULATIVE_WITH_GLOBAL_CAP",
+          "rule_ids": [
+            "INST-KR-000223-3-0012-PREF-01",
+            "INST-KR-000223-3-0012-PREF-02",
+            "INST-KR-000223-3-0012-PREF-03",
+            "INST-KR-000223-3-0012-PREF-04"
+          ],
+          "global_cap_ref": "preferential_policy.global_cap",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FUL-INST-KR-000223-3-0012-PREF-04",
+          "applies_to_rule_ids": [
+            "INST-KR-000223-3-0012-PREF-04"
+          ],
+          "required_actions": [
+            "BRANCH_DOCUMENT_SUBMISSION_AND_REGISTRATION"
+          ],
+          "accepted_documents": [
+            {
+              "document_type": "BENEFIT_RECIPIENT_CERTIFICATE",
+              "holder": "ACCOUNT_HOLDER",
+              "maximum_age_at_product_opening": {
+                "value": 3,
+                "unit": "MONTH"
+              }
+            },
+            {
+              "document_type": "SOCIAL_SECURITY_BENEFIT_STOP_NOTICE",
+              "holder": "ACCOUNT_HOLDER",
+              "required_reason": "MILITARY_ENLISTMENT"
+            }
+          ],
+          "list_semantics": "EXHAUSTIVE_OR",
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 둘째 주 토요일 결산 후 다음날 지급\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄계산하여 지급할 수 있음",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000223-3-0012-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 2,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000223-3-0012-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000223-3-0012"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000223-3-0012"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC_WITH_LONG_INACTIVITY_EXCEPTION",
+    "advertised_max_rate": {
+      "value": "4.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000223-3-0012"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012",
+      "EVD-OFFICIAL-IBK-NARASARANG-MONEYBOX-20260830"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000223-3-0012",
+    "EVD-OFFICIAL-IBK-NARASARANG-MONEYBOX-20260830"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_IBK_ENRICHMENT",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000223-3-0012",
+        "product_name": "나라사랑머니박스",
+        "path": "cash_flow_policy.amount_rules[0].post_interest_balance_behavior",
+        "reason": "원문은 '최대 100만원까지 입금 가능'이라고 명시하지만, 이자 원가산으로 잔액이 100만원을 넘는 경우의 입금/금리 처리까지는 명시하지 않음.",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000223-3-0012",
+        "product_name": "나라사랑머니박스",
+        "path": "return_policy.interest_accrual",
+        "reason": "현재 확보한 네이버 상세 원문과 IBK 공개 상품목록만으로 일별 이자 산정 기준잔액·day-count 산식을 확정하지 못함.",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "Naver detail is the primary source for detailed eligibility/rate conditions; IBK official deposit listing confirms the product is currently listed as a mobile individual demand-deposit product with preferential-rate benefits.",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000223-3-0012",
+    "source_record_id": "bbf5a54ca8cd83d9484e2e697878bd8e",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T22:13:00+09:00",
+    "resolved_audit_findings": [
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "EXCLUDED_CUSTOMER_TYPE_ERRONEOUSLY_ALLOWED_SECOND_PASS",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "FOREIGNER_ONLY_ERRONEOUS_SCOPE_REMOVED",
+      "NARASARANG_PARENT_ACCOUNT_PREREQUISITE_EXECUTABLE"
+    ],
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 88,
+    "reviewed_source_record_id": "bbf5a54ca8cd83d9484e2e697878bd8e",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "patch_reason": [
+      "앱 가입자격 필터 오류 수정: FOREIGNER_ONLY 제거",
+      "IBK나라사랑통장 보유 필수 조건을 executable eligibility로 복원"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000223-3-0012"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 2
+  }
+}

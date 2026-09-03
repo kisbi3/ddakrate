@@ -1,0 +1,388 @@
+{
+  "product_code": "INST-KR-000856-1-CA778963301",
+  "version": 8,
+  "institution_id": "INST-KR-000856",
+  "name": "파트너가계적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자",
+    "eligibility_text": "개인 및 개인사업자",
+    "display_text": "개인 및 개인사업자",
+    "source_ref_ids": [
+      "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 3,
+    "source_expression": "1년 이상 3년 이하 (월 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 정액 저축금 1만원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "월 정액 저축금 1만원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000856-1-CA778963301-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.350",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-959191E8D97F217720A63821E206568A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000856-1-CA778963301-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-959191E8D97F217720A63821E206568A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000856-1-CA778963301-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-959191E8D97F217720A63821E206568A-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000856_1_CA778963301_PREF_01.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000856-1-CA778963301-PREF-01-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000856-1-CA778963301-PREF-01-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "샐러리맨리치예금에서 10회이상 자동이체적립시 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "샐러리맨리치예금에서 10회이상 자동이체적립시 : 0.1%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000856-1-CA778963301-PREF-01",
+          "title": "샐러리맨리치예금에서 10회이상 자동이체적립시 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000856_1_CA778963301_PREF_01.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 10,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "샐러리맨리치예금에서 10회이상 자동이체적립시 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "샐러리맨리치예금에서 10회이상 자동이체적립시 : 0.1%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01",
+        "EVD-IS-959191E8D97F217720A63821E206568A-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-959191E8D97F217720A63821E206568A-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-959191E8D97F217720A63821E206568A-RATE",
+      "EVD-IS-959191E8D97F217720A63821E206568A-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.45",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "959191e8d97f217720a63821e206568a"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO",
+    "EVD-IS-959191E8D97F217720A63821E206568A-RATE",
+    "EVD-IS-959191E8D97F217720A63821E206568A-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "959191e8d97f217720a63821e206568a",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-959191E8D97F217720A63821E206568A-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

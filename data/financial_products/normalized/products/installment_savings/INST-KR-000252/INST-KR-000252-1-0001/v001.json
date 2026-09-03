@@ -1,0 +1,264 @@
+{
+  "product_code": "INST-KR-000252-1-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000252",
+  "name": "부자씨 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0001"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0001-01",
+        "title": "아래 우대항목을 충족하는 경우, 최대 연 2.00%의 우대금리를 만기해지시 제공 (단, 중도해지시 미적용)",
+        "condition_text": "아래 우대항목을 충족하는 경우, 최대 연 2.00%의 우대금리를 만기해지시 제공 (단, 중도해지시 미적용)",
+        "structured_steps": [
+          "아래 우대항목을 충족하는 경우, 최대 연 2.00%의 우대금리를 만기해지시 제공 (단, 중도해지시 미적용)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.00",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "아래 우대항목을 충족하는 경우, 최대 연 2.00%의 우대금리를 만기해지시 제공 (단, 중도해지시 미적용)",
+          "summary_text": "아래 우대항목을 충족하는 경우, 최대 연 2.00%의 우대금리를 만기해지시 제공 (단, 중도해지시 미적용)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0001-02",
+        "title": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%",
+        "condition_text": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%",
+        "structured_steps": [
+          "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%",
+          "summary_text": "이 예금 가입일(재예치일)로 부터 만기전일까지 매월1회 이상 하나원큐 로그인을 한 경우, 로그인 해당 월마다 연 0.10% 적용 후 합산하여 제공 : 1.2%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0001-03",
+        "title": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%",
+        "condition_text": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%",
+        "structured_steps": [
+          "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.6",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%",
+          "summary_text": "이 예금 가입일(재예치일)기준 익월말까지 『하나 합 서비스』 가입 및 하나은행외 기관을 1개 이상 연결하고 만기전전월말에 유지한 경우 : 0.6%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.6",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0001-04",
+        "title": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%",
+        "condition_text": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%",
+        "structured_steps": [
+          "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%",
+          "summary_text": "이 예금 가입(또는 재예치)전 하나은행 상품, 서비스 마케팅 동의 항목 모두를 동의한 경우 : 0.1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0001-05",
+        "title": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%",
+        "condition_text": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%",
+        "structured_steps": [
+          "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%",
+          "summary_text": "이 예금 가입(또는 재예치)전 하나원큐 마케팅Push알림을 동의한 경우 : 0.1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "4.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000252-1-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000252-1-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.313601+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "product_code": "INST-KR-000223-1-0007",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK모으기통장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0007"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "eligibility_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "display_text": "실명의 개인(개인사업자 제외) ※ 1인당 5계좌까지 가입 가능",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0007"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0007"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0007"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0007-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0007"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0007-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.75",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0007"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-1-0007-01",
+        "title": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%",
+        "condition_text": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%\n당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주\n6개월 이상 12개월 미만 : 3회\n12개월 이상 24개월 미만 : 6회\n24개월 이상 36개월 미만 : 12회\n36개월 : 18회",
+        "structured_steps": [
+          "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%",
+          "당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주",
+          "6개월 이상 12개월 미만 : 3회",
+          "12개월 이상 24개월 미만 : 6회",
+          "24개월 이상 36개월 미만 : 12회",
+          "36개월 : 18회"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-1-0007"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%",
+          "summary_text": "계약기간 동안 아래 조건을 충족하고 만기해지하는 경우 우대금리 제공 : 연 0.2%",
+          "detail_texts": [
+            "당행 입출금식 계좌에서 이 적금으로 자동이체를 실시하고 계약기간에 따른 자동이체 횟수를 충족한 경우 ※ 단, 월중(1일~말일) 복수이체는 1회로 간주",
+            "6개월 이상 12개월 미만 : 3회",
+            "12개월 이상 24개월 미만 : 6회",
+            "24개월 이상 36개월 미만 : 12회",
+            "36개월 : 18회"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-1-0007"
+    ],
+    "advertised_max_rate": {
+      "value": "2.75",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-1-0007"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-1-0007"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.294307+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "product_code": "INST-KR-000424-1-C0F8DA633D7",
+  "version": 1,
+  "institution_id": "INST-KR-000424",
+  "name": "N일 적금(200일)",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 3계좌)",
+    "eligibility_text": "실명의 개인 (1인 3계좌)",
+    "display_text": "실명의 개인 (1인 3계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 200,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "min_value": "1000",
+        "currency": "KRW",
+        "max_value": "30000"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-C0F8DA633D7-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.050",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000424-1-C0F8DA633D7-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "5.05",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000424-1-C0F8DA633D7-01",
+        "title": "아래의 우대조건을 충족하고 만기해지 시 최대 연 3.0%p 우대금리 적용 (중도해지한 계좌에는 적용하지 않음)",
+        "condition_text": "아래의 우대조건을 충족하고 만기해지 시 최대 연 3.0%p 우대금리 적용 (중도해지한 계좌에는 적용하지 않음)\n단, 우대이율은 만기해지 시점까지 우리은행 상품·서비스 마케팅 동의 항목 중 ‘전화(휴대폰)’ 및 ‘SMS’ 항목을 모두 동의한 경우 제공",
+        "structured_steps": [
+          "아래의 우대조건을 충족하고 만기해지 시 최대 연 3.0%p 우대금리 적용 (중도해지한 계좌에는 적용하지 않음)",
+          "단, 우대이율은 만기해지 시점까지 우리은행 상품·서비스 마케팅 동의 항목 중 ‘전화(휴대폰)’ 및 ‘SMS’ 항목을 모두 동의한 경우 제공"
+        ],
+        "extracted_reward_candidate": {
+          "value": "3.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "아래의 우대조건을 충족하고 만기해지 시 최대 연 3.0%p 우대금리 적용 (중도해지한 계좌에는 적용하지 않음)",
+          "summary_text": "아래의 우대조건을 충족하고 만기해지 시 최대 연 3.0%p 우대금리 적용 (중도해지한 계좌에는 적용하지 않음)",
+          "detail_texts": [
+            "단, 우대이율은 만기해지 시점까지 우리은행 상품·서비스 마케팅 동의 항목 중 ‘전화(휴대폰)’ 및 ‘SMS’ 항목을 모두 동의한 경우 제공"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000424-1-C0F8DA633D7-02",
+        "title": "가입시점에 우리은행 정기예금 및 적금 상품을 보유하지 않은 경우 : 1%",
+        "condition_text": "가입시점에 우리은행 정기예금 및 적금 상품을 보유하지 않은 경우 : 1%",
+        "structured_steps": [
+          "가입시점에 우리은행 정기예금 및 적금 상품을 보유하지 않은 경우 : 1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가입시점에 우리은행 정기예금 및 적금 상품을 보유하지 않은 경우 : 1%",
+          "summary_text": "가입시점에 우리은행 정기예금 및 적금 상품을 보유하지 않은 경우 : 1%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000424-1-C0F8DA633D7-03",
+        "title": "가입기간의 1/2 이상 납입하고, 상품 전용 관리페이지에서 감정스탬프를 가입기간의 3/4 이상 선택한 경우",
+        "condition_text": "가입기간의 1/2 이상 납입하고, 상품 전용 관리페이지에서 감정스탬프를 가입기간의 3/4 이상 선택한 경우\n* 우대이율은 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%",
+        "structured_steps": [
+          "가입기간의 1/2 이상 납입하고, 상품 전용 관리페이지에서 감정스탬프를 가입기간의 3/4 이상 선택한 경우",
+          "* 우대이율은 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가입기간의 1/2 이상 납입하고, 상품 전용 관리페이지에서 감정스탬프를 가입기간의 3/4 이상 선택한 경우",
+          "summary_text": "가입기간의 1/2 이상 납입하고, 상품 전용 관리페이지에서 감정스탬프를 가입기간의 3/4 이상 선택한 경우",
+          "detail_texts": [
+            "* 우대이율은 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+    ],
+    "advertised_max_rate": {
+      "value": "5.05",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000424-1-C0F8DA633D7"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.395264+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "product_code": "INST-KR-000856-3-CEBE213F637",
+  "version": 5,
+  "institution_id": "INST-KR-000856",
+  "name": "Sh내가만든통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-OFFICIAL-208-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-OFFICIAL-208-RATE"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-OFFICIAL-208-RATE"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-OFFICIAL-208-RATE"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+      "EVD-OFFICIAL-208-RATE"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000856-3-CEBE213F637-BASE-DYN-UNDER-D",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.100",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-30"
+        },
+        "dynamic_applies_to": {
+          "basis": "TOTAL_BALANCE",
+          "expression": "BALANCE < D",
+          "variable_ref": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+          "application_method": "WHOLE_BALANCE_TIER"
+        },
+        "source_clause": "지정금액 미만시 0.100%",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+          "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE",
+          "EVD-OFFICIAL-208-RATE",
+          "EVD-OFFICIAL-208-TERMS"
+        ],
+        "executable": false,
+        "structuring_status": "SOURCE_SUPPORTED_REQUIRES_DYNAMIC_BOUNDARY_RUNTIME"
+      },
+      {
+        "rate_id": "INST-KR-000856-3-CEBE213F637-BASE-DYN-FIRST-D",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.000",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-30"
+        },
+        "schedule_activation_condition": "BALANCE >= D",
+        "dynamic_applies_to": {
+          "basis": "PRINCIPAL_PORTION",
+          "expression": "0 < PORTION <= D",
+          "variable_ref": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+          "application_method": "MARGINAL_TRANCHE"
+        },
+        "source_clause": "지정금액 D까지 1.000%",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+          "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE",
+          "EVD-OFFICIAL-208-RATE",
+          "EVD-OFFICIAL-208-TERMS"
+        ],
+        "executable": false,
+        "structuring_status": "SOURCE_SUPPORTED_REQUIRES_DYNAMIC_BOUNDARY_RUNTIME"
+      },
+      {
+        "rate_id": "INST-KR-000856-3-CEBE213F637-BASE-DYN-D-TO-2D",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.700",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-30"
+        },
+        "schedule_activation_condition": "BALANCE >= D",
+        "dynamic_applies_to": {
+          "basis": "PRINCIPAL_PORTION",
+          "expression": "D < PORTION <= 2D",
+          "variable_ref": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+          "application_method": "MARGINAL_TRANCHE"
+        },
+        "source_clause": "지정금액 초과~지정금액의 2배 0.700%",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+          "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE",
+          "EVD-OFFICIAL-208-RATE",
+          "EVD-OFFICIAL-208-TERMS"
+        ],
+        "executable": false,
+        "structuring_status": "SOURCE_SUPPORTED_REQUIRES_DYNAMIC_BOUNDARY_RUNTIME"
+      },
+      {
+        "rate_id": "INST-KR-000856-3-CEBE213F637-BASE-DYN-ABOVE-2D",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.400",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-30"
+        },
+        "schedule_activation_condition": "BALANCE >= D",
+        "dynamic_applies_to": {
+          "basis": "PRINCIPAL_PORTION",
+          "expression": "PORTION > 2D",
+          "variable_ref": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+          "application_method": "MARGINAL_TRANCHE"
+        },
+        "source_clause": "지정금액의 2배 초과금액 0.400%",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+          "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE",
+          "EVD-OFFICIAL-208-RATE",
+          "EVD-OFFICIAL-208-TERMS"
+        ],
+        "executable": false,
+        "structuring_status": "SOURCE_SUPPORTED_REQUIRES_DYNAMIC_BOUNDARY_RUNTIME"
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "NOT_APPLICABLE_PRODUCT_MECHANIC",
+      "executable": false,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+      "EVD-OFFICIAL-208-RATE",
+      "EVD-OFFICIAL-208-TERMS"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 제3토요일(단, 제 3토요일이 법정공휴일인 경우에는 직전 영업일)의 다음날에 이자 지급\n※ 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-OFFICIAL-208-TERMS"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000856-3-CEBE213F637-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "reference_day_holiday_adjustment": "PREVIOUS_BUSINESS_DAY",
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000856-3-CEBE213F637-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER",
+      "MARGINAL_TRANCHE",
+      "DYNAMIC_PARAMETER"
+    ],
+    "balance_tier_method": "PARAMETERIZED_HYBRID_WHOLE_AND_MARGINAL",
+    "advertised_max_rate": {
+      "value": "1.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+      ]
+    },
+    "dynamic_balance_fact": {
+      "fact_key": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+      "data_type": "MONEY",
+      "value_status_modes": [
+        "ACTUAL",
+        "PLANNED",
+        "ESTIMATED",
+        "UNKNOWN"
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+      ],
+      "currency": "KRW",
+      "constraints": {
+        "max_value": "1000000000",
+        "max_inclusive": true
+      }
+    },
+    "contract_rate_execution_status": "NON_RANKABLE_WITHOUT_USER_PARAMETER_AND_DYNAMIC_RUNTIME",
+    "dynamic_parameter_definitions": [
+      {
+        "parameter_key": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+        "symbol": "D",
+        "data_type": "MONEY",
+        "currency": "KRW",
+        "unit_increment": "1000000",
+        "maximum_value": "1000000000",
+        "initialization": [
+          "ACCOUNT_OPENING",
+          "DESIGNATED_AMOUNT_CHANGE_MENU"
+        ],
+        "change_policy": {
+          "maximum_changes": 1,
+          "period": "CALENDAR_MONTH",
+          "effective_from": "CHANGE_DATE"
+        },
+        "minimum_value_by_open_date": [
+          {
+            "open_date_end": "2019-04-28",
+            "minimum_value": "1000000"
+          },
+          {
+            "open_date_start": "2019-04-29",
+            "minimum_value": "10000000"
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+          "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE"
+        ]
+      }
+    ],
+    "parameterized_schedule": {
+      "if": "BALANCE < D",
+      "then": {
+        "method": "WHOLE_BALANCE_TIER",
+        "rate_percent": "0.100"
+      },
+      "else": {
+        "method": "MARGINAL_TRANCHE",
+        "tranches": [
+          {
+            "portion_expression": "0 < PORTION <= D",
+            "rate_percent": "1.000"
+          },
+          {
+            "portion_expression": "D < PORTION <= 2D",
+            "rate_percent": "0.700"
+          },
+          {
+            "portion_expression": "PORTION > 2D",
+            "rate_percent": "0.400"
+          }
+        ]
+      },
+      "variable_ref": "ACCOUNT.USER_DESIGNATED_AMOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+        "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637",
+    "EVD-USER-PARK-20260830-SH-DESIGNATED-SCHEDULE",
+    "EVD-OFFICIAL-208-RATE",
+    "EVD-OFFICIAL-208-TERMS"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_VALIDATED_BY_ISSUER_OFFICIAL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000856-3-CEBE213F637",
+        "product_name": "Sh내가만든통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VALIDATION",
+    "source_reason": "NAVER_PRIMARY_AND_SUHYUP_OFFICIAL_RATE_TABLE_AND_TERMS_VALIDATION",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000856-3-CEBE213F637",
+    "source_record_id": "ad76c58829040284a93a9d513c01019d",
+    "supersedes_version": 4,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_VALIDATION",
+    "review_sequence": 208,
+    "reviewed_source_record_id": "SRC-OFFICIAL-208-RATE",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED_WITH_SOURCE_GAPS",
+    "resolved_audit_findings": [
+      "DYNAMIC_DESIGNATED_AMOUNT_RATE_BOUNDARIES_NONEXECUTABLE",
+      "PRODUCT_MECHANIC_MISCLASSIFIED_AS_PREFERENCE",
+      "DYNAMIC_SCHEDULE_BELOW_D_SEMANTICS_WRONG",
+      "GENERIC_AMBIGUOUS_PREFERENCE_FROM_PRODUCT_MECHANIC",
+      "BOGUS_RELATIONSHIP_FROM_PASSBOOK_DISCLOSURE"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T15:12:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reviewed": true,
+    "condition_section_review_basis": "NAVER_RATE_INFO_AFTER_CONDITIONAL_HEADING",
+    "product_by_product_changes": [
+      "공식 수시입출금 금리표에서 Sh내가만든통장 상품명과 현재 기본금리 0.10% 대조",
+      "공식 약관 개정 안내문에서 고객 지정금액 기준 매일 최종잔액 구간금리 구조와 변경일 적용 문구 대조"
+    ],
+    "user_confirmation_applied_at": "2026-08-30T15:12:00+09:00"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000856-3-CEBE213F637"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "PARAMETERIZED_NOT_GLOBALLY_RANKABLE",
+    "declared_data_gap_count": 1,
+    "condition_section_reconciled": true
+  }
+}

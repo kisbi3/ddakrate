@@ -1,0 +1,512 @@
+{
+  "product_code": "INST-KR-000055-1-C6881F00E29",
+  "version": 7,
+  "institution_id": "INST-KR-000055",
+  "name": "애(愛)랑해적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(만 19세 이상) : 1인 1계좌",
+    "eligibility_text": "개인(만 19세 이상) : 1인 1계좌",
+    "display_text": "개인(만 19세 이상) : 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "age_range": {
+      "min_age": 19
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "300000"
+      }
+    ],
+    "source_amount_text": "1만원 ~ 30만원\n자유적립식 적금으로 매월 불입한도 30만원내 자유롭게 입금",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1만원 ~ 30만원\n자유적립식 적금으로 매월 불입한도 30만원내 자유롭게 입금"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1만원 ~ 30만원\n자유적립식 적금으로 매월 불입한도 30만원내 자유롭게 입금"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1만원 ~ 30만원\n자유적립식 적금으로 매월 불입한도 30만원내 자유롭게 입금"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000055-1-C6881F00E29-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-77E7A7679F6879828B171D6D9B64E135-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000055_1_C6881F00E29_PREF_03.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000055-1-C6881F00E29-PREF-03-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000055_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "아이사랑우대(임신, 출산, 자녀)\n- 우대금리는 신규일부터 만기일 전영업일 까지 임신, 출산, 자녀 조건에 해당하는 증빙서류를 제출하여 승인완료시 우대하며 중복 적용 불가. (영업점 서류확인 및 등록 최대 5영업일 소요)\n- 아이사랑우대 조건 적용 대상\n임신 : 임산부 본인만 해당\n출산 : 상품 가입기간내 자녀를 출산한 부,모\n자녀 : 가입시점 만 12세 이하 자녀를 둔 부,모 : 3.5%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000055-1-C6881F00E29-PREF-03-QUALIFYING",
+          "event_type": "ACCOUNT_BALANCE_OBSERVED",
+          "qualifying_definition": {
+            "source_text": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상\n- 우대금리는 신규 가입일이 속한 월의 1일부터 ~ 만기일 전월 말일까지 입출금통장 전체 계좌(해지계좌 포함)의 월평잔 실적(50만원 이상)을 산정하여 3회 이상 달성 시 우대. : 1.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상\n- 우대금리는 신규 가입일이 속한 월의 1일부터 ~ 만기일 전월 말일까지 입출금통장 전체 계좌(해지계좌 포함)의 월평잔 실적(50만원 이상)을 산정하여 3회 이상 달성 시 우대. : 1.5%",
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상\n- 우대금리는 신규 가입일이 속한 월의 1일부터 ~ 만기일 전월 말일까지 입출금통장 전체 계좌(해지계좌 포함)의 월평잔 실적(50만원 이상)을 산정하여 3회 이상 달성 시 우대. : 1.5%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000055-1-C6881F00E29-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000055-1-C6881F00E29-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "아이사랑우대(임신, 출산, 자녀)\n- 우대금리는 신규일부터 만기일 전영업일 까지 임신, 출산, 자녀 조건에 해당하는 증빙서류를 제출하여 승인완료시 우대하며 중복 적용 불가. (영업점 서류확인 및 등록 최대 5영업일 소요)\n- 아이사랑우대 조건 적용 대상\n임신 : 임산부 본인만 해당\n출산 : 상품 가입기간내 자녀를 출산한 부,모\n자녀 : 가입시점 만 12세 이하 자녀를 둔 부,모 : 3.5%",
+          "accepted_documents": [
+            "증빙서류"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE",
+          "submission_channels": [
+            "BRANCH"
+          ],
+          "submission_deadline_source_expressions": [
+            "- 우대금리는 신규일부터 만기일 전영업일 까지 임신, 출산, 자녀 조건에 해당하는 증빙서류를 제출하여 승인완료시 우대하며 중복 적용 불"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "만기일 전영업일 까지"
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000055-1-C6881F00E29-PREF-02",
+          "title": "아이사랑우대(임신, 출산, 자녀)",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000055_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "3.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "아이사랑우대(임신, 출산, 자녀)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "아이사랑우대(임신, 출산, 자녀)\n- 우대금리는 신규일부터 만기일 전영업일 까지 임신, 출산, 자녀 조건에 해당하는 증빙서류를 제출하여 승인완료시 우대하며 중복 적용 불가. (영업점 서류확인 및 등록 최대 5영업일 소요)\n- 아이사랑우대 조건 적용 대상\n임신 : 임산부 본인만 해당\n출산 : 상품 가입기간내 자녀를 출산한 부,모\n자녀 : 가입시점 만 12세 이하 자녀를 둔 부,모 : 3.5%"
+        },
+        {
+          "rule_id": "INST-KR-000055-1-C6881F00E29-PREF-03",
+          "title": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000055_1_C6881F00E29_PREF_03.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상"
+          },
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+            }
+          ],
+          "semantic_domain": "ACCOUNT_BALANCE",
+          "source_clause_text": "입출금통장 월 평잔 실적 우대 (50만원) 3회이상\n- 우대금리는 신규 가입일이 속한 월의 1일부터 ~ 만기일 전월 말일까지 입출금통장 전체 계좌(해지계좌 포함)의 월평잔 실적(50만원 이상)을 산정하여 3회 이상 달성 시 우대. : 1.5%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000055-1-C6881F00E29-PREF-02-SOURCE",
+          "operator": "MAX_OF",
+          "member_rule_ids": [
+            "INST-KR-000055-1-C6881F00E29-PREF-02"
+          ],
+          "component_source_rows": [
+            "자녀 : 가입시점 만 12세 이하 자녀를 둔 부,모 : 3.5%"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-01",
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02",
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03",
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-RATE",
+      "EVD-IS-77E7A7679F6879828B171D6D9B64E135-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "77e7a7679f6879828b171d6d9b64e135"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO",
+    "EVD-IS-77E7A7679F6879828B171D6D9B64E135-RATE",
+    "EVD-IS-77E7A7679F6879828B171D6D9B64E135-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "77e7a7679f6879828b171d6d9b64e135",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-77E7A7679F6879828B171D6D9B64E135-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

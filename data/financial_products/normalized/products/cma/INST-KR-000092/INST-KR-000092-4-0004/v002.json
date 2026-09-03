@@ -1,0 +1,259 @@
+{
+  "product_code": "INST-KR-000092-4-0004",
+  "version": 2,
+  "institution_id": "INST-KR-000092",
+  "name": "CMA-MMW(약정형)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004"
+    ]
+  },
+  "eligibility_policy": {
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "CORPORATION"
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004",
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 36,
+    "representative_value": 12,
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004",
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ],
+    "maturity_action": "AUTO_SELL_THEN_CMA_MMW_AUTO_INVEST"
+  },
+  "cash_flow_policy": {
+    "funding_type": "FIXED_TERM_PURCHASE",
+    "currency": "KRW",
+    "minimum_purchase_amount": {
+      "value": "1000000",
+      "currency": "KRW"
+    },
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004",
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "FIXED_TERM_CONTRACTUAL_MMW",
+    "rate_entries": [],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004",
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ],
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_UNTIL_MATURITY",
+      "scope": "PER_CONTRACT_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+      ]
+    },
+    "current_rate_disclosure": {
+      "availability": "QUOTE_REQUIRED",
+      "numeric_rate_intentionally_absent": true,
+      "channels": [
+        "BRANCH",
+        "CUSTOMER_SUPPORT_CENTER"
+      ],
+      "comparison_eligibility": "EXCLUDE_FROM_NUMERIC_RATE_RANKING_UNTIL_QUOTED",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+      ]
+    },
+    "numeric_evaluation_policy": {
+      "status": "NOT_AVAILABLE_BY_PUBLIC_DISCLOSURE",
+      "behavior": "DO_NOT_ESTIMATE_OR_IMPUTE",
+      "ranking_policy": "EXCLUDE_FROM_NUMERIC_RATE_RANKING",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000092-4-0004",
+    "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T14:15:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_ADVERTISED_MAX_RANKING",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER",
+      "NO_RATE_EVALUATION_WITHOUT_CURRENT_QUOTE"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000092/INST-KR-000092-4-0004/v001.json",
+    "previous_sha256": "sha256:07fce24b53e29d976ebf41e082650803d2711ce91cd757f06fc7a70f21b59e85",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000092-4-0004"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-scope-finalization-09",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "MMW",
+          "note": "MMW 명칭을 유지하되 일반 수시형 MMW가 아닌 별도 고정기간 약정형 variant"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "가입 시 약정한 금리를 만기에 지급; 일반 MMW의 실적배당 수시형과 구별"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED_WITH_NUMERIC_GAP",
+          "value": "FIXED_AT_PURCHASE_UNTIL_MATURITY",
+          "note": "현재 약정금리 숫자는 별도문의"
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "CONTRACT_TERM_RANGE_1_36_MONTH"
+        },
+        "reinvestment": {
+          "status": "NOT_APPLICABLE",
+          "value": "AUTO_SELL_AT_MATURITY_THEN_CMA_MMW_AUTO_INVEST"
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL",
+            "CORPORATION"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY",
+    "nonblocking_notes": [
+      {
+        "path": "return_policy.current_rate_disclosure",
+        "status": "QUOTE_REQUIRED_TERMINAL_STATE",
+        "note": "공식 현행 수익률은 별도문의. 공개 숫자를 추정하지 않으며 숫자 금리 랭킹에서 제외한다.",
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+        ]
+      }
+    ]
+  },
+  "product_subtype": "MMW",
+  "investment_policy": {
+    "underlying_asset": "KOREA_SECURITIES_FINANCE_CALL_AND_DEPOSIT",
+    "purchase_mode": "CUSTOMER_DIRECT",
+    "purchase_window": {
+      "calendar": "BUSINESS_DAY",
+      "time_range": "08:00-17:00"
+    },
+    "source_ref_ids": [
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "EARLY_TERMINATION_ALLOWED",
+    "source_ref_ids": [
+      "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+    ],
+    "early_termination_policy": {
+      "formula": "CONTRACT_RATE_X_EARLY_TERMINATION_RATIO",
+      "ratio_basis": "ELAPSED_PERCENT_OF_CONTRACT_TERM",
+      "tiers": [
+        {
+          "min_percent": 0,
+          "max_percent": 20,
+          "max_inclusive": false,
+          "ratio_percent": "10"
+        },
+        {
+          "min_percent": 20,
+          "max_percent": 40,
+          "max_inclusive": false,
+          "ratio_percent": "20"
+        },
+        {
+          "min_percent": 40,
+          "max_percent": 60,
+          "max_inclusive": false,
+          "ratio_percent": "40"
+        },
+        {
+          "min_percent": 60,
+          "max_percent": 80,
+          "max_inclusive": false,
+          "ratio_percent": "60"
+        },
+        {
+          "min_percent": 80,
+          "max_percent": 100,
+          "max_inclusive": false,
+          "ratio_percent": "80"
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+      ]
+    },
+    "maturity_policy": {
+      "action": "AUTO_SELL_BEFORE_BUSINESS_OPEN",
+      "post_maturity_action": "AUTO_INVEST_TO_CMA_MMW_AT_17:00",
+      "holiday_roll": "NEXT_BUSINESS_DAY",
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-YUANTA-CONTRACT-MMW-20260830"
+      ]
+    }
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000092-4-0004"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}

@@ -1,0 +1,609 @@
+{
+  "product_code": "INST-KR-000223-1-0006",
+  "version": 7,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK중소기업재직자우대저축",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "eligibility_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "display_text": "『중소기업재직자 우대저축공제 약관』에 따라 중소벤처기업진흥공단에서 상품가입을 승인한 실명의 개인 (개인사업자 제외, 외국인 가입가능), 은행별 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      3,
+      5
+    ],
+    "source_ref_ids": [
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+    ],
+    "source_expression": "3년제, 5년제"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "100000",
+        "max_value": "500000",
+        "increment_value": "10000"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "PER_MONTH",
+        "max_count": 1
+      }
+    ],
+    "amount_selection_policy": {
+      "selection_event": "SUBSCRIPTION",
+      "authority": "SME_PROMOTION_AGENCY_APPROVAL",
+      "min_value": "100000",
+      "max_value": "500000",
+      "increment_value": "10000",
+      "immutable_after_selection": true,
+      "recurring_amount_equals_selected_subscription_amount": true,
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+        }
+      ]
+    },
+    "source_amount_text": "최소 10만원 이상 월 50만원 이내로 월 1회 납입 가능하며, 최초 가입한 금액*으로 적립 가능\n* 「중소기업재직자 우대저축공제 약관」에 따라 중소벤처기업진흥공단에서 승인한 금액\n* 중소기업과 재직자의 납입 비율 = 1:5",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_CONTRIBUTION",
+        "role": "RANGE_BOUND",
+        "context": "최소 10만원 이상 월 50만원 이내로 월 1회 납입 가능하며, 최초 가입한 금액*으로 적립 가능\n* 「중소기업"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_CONTRIBUTION",
+        "role": "RANGE_BOUND",
+        "context": "최소 10만원 이상 월 50만원 이내로 월 1회 납입 가능하며, 최초 가입한 금액*으로 적립 가능\n* 「중소기업재직자 우대저축공제"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0006-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0006-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 36,
+          "max_value": 60,
+          "min_inclusive": false,
+          "max_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01",
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02",
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03",
+          "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01",
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02",
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03",
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "BILL_PAYMENT.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%\n** 아파트관리비, 지로, CMS, 펌뱅킹"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외\n*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000223_1_0006-INST_KR_000223_1_0006_-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000223_1_0006-INST_KR_000223_1_0006_-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외\n*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-0006-PREF-02",
+          "title": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 입출식 통장으로 급여이체 실적(월 50만원 이상)이 연 평균 6개월 이상*있는 경우 : 1.0%\n* (예시)2024.10.10. 가입, 계약기간 3년제(5년제)인 경우\n2024.10.01.~2027.08.31.까지 급여이체 실적이 18개월(30개월) 이상 있는 경우\n2024.10.01.~2027.08.31.까지 카드 이용 실적이 600만원(1,000만원) 이상 있는 경우\n[급여이체 실적인정 기준]\n※ 다음 중 1가지 이상 충족하는 경우 급여이체 실적으로 인정\n1 당행 급여이체 방식 : IBK 영업점 창구 급여이체 또는 인터넷뱅킹 급여이체 시스템을 통해 월 50만원 이상 입금\n2 기타 이체 방식 : 지로대량이체, CMS대량이체, 타행환, 전자금융을 통해 급여, 월급, 상여금 등의 용어로 월 50만원 이상 입금(단, IBK 영업점 창구, 자동화기기 입금 분은 인정되지 않음)\n3 급여이체 지정일자 등록방식 : 급여이체 지정일자를 신청, 등록하고 지정일자 앞뒤로 3영업일 이내에 월 50만원 이상 입금"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0006-PREF-03",
+          "title": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "BILL_PAYMENT.CONTRACT_TERM_MONTHS.ACCOUNT_AUTO_TRANSFER_FULFILLM",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+            }
+          ],
+          "semantic_domain": "BILL_PAYMENT",
+          "source_clause_text": "지로·공과금 자동이체** 실적(월 2건 이상)이 연 평균 6개월 이상 있는 경우 : 0.5%\n** 아파트관리비, 지로, CMS, 펌뱅킹"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0006-PREF-04",
+          "title": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신규일이 포함된 월부터 만기일의 전전월말까지 당행 신용(체크)카드 이용실적***이 연 평균 200만원 이상으로 신용(체크)카드를 만기 시점까지 보유한 경우 : 0.5%\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 이용실적은 제외\n*** 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01",
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02",
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03",
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04",
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-911CD658404BB6B207D8B898FD42281F-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-RATE",
+      "EVD-IS-911CD658404BB6B207D8B898FD42281F-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "911cd658404bb6b207d8b898fd42281f"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO",
+    "EVD-IS-911CD658404BB6B207D8B898FD42281F-RATE",
+    "EVD-IS-911CD658404BB6B207D8B898FD42281F-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "911cd658404bb6b207d8b898fd42281f",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-911CD658404BB6B207D8B898FD42281F-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

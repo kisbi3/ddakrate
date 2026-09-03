@@ -1,0 +1,256 @@
+{
+  "product_code": "INST-KR-000296-4-0005",
+  "version": 2,
+  "institution_id": "INST-KR-000296",
+  "name": "KB CMA 약정식 RP (90일)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005",
+      "EVD-CMA-OFFICIAL-KB-CMA-CURRENT-20260830"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005",
+      "EVD-CMA-OFFICIAL-KB-RATE-20260828"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 90,
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005"
+    ],
+    "maturity_action": "AUTO_REDEMPTION"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "FIXED_TERM_RP",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000296-4-0005-CONTRACT",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.55",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-KB-RATE-20260828",
+          "EVD-CMA-20260829-INST-KR-000296-4-0005"
+        ],
+        "as_of": "2026-07-21",
+        "customer_scope": "INDIVIDUAL",
+        "rate_context": {
+          "kind": "POSTED_FIXED_UNTIL_MATURITY",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005",
+      "EVD-CMA-OFFICIAL-KB-RATE-20260828"
+    ],
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_UNTIL_MATURITY",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-KB-RATE-20260828",
+        "EVD-CMA-20260829-INST-KR-000296-4-0005"
+      ]
+    },
+    "scheduled_rate_changes": [
+      {
+        "effective_from": "2026-08-31",
+        "status": "FUTURE_NOT_CURRENT_AS_OF_2026-08-29",
+        "rate_entries": [
+          {
+            "rate_id": "INST-KR-000296-4-0005-FUT",
+            "role": "BASE",
+            "customer_scope": "INDIVIDUAL",
+            "calculation": {
+              "type": "FIXED_POSTED_AT_PURCHASE",
+              "value": "2.80",
+              "unit": "PERCENT"
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-CMA-OFFICIAL-KB-RATE-20260828",
+          "EVD-CMA-20260829-INST-KR-000296-4-0005"
+        ],
+        "reason": "Official future rate applies only to new purchases from 2026-08-31; existing lots keep purchase rate until maturity."
+      }
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000296-4-0005",
+    "EVD-CMA-OFFICIAL-KB-CMA-CURRENT-20260830"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "READY",
+    "data_gaps": [],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000296/INST-KR-000296-4-0005/v001.json",
+    "previous_sha256": "sha256:c41a5033b69825395f1275367e0a6ef846cbecccb696d8155cfd16f526f78e74",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000296-4-0005"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      },
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000296-4-0005"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_UNTIL_MATURITY",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "NO_TIER_OR_SINGLE_RATE"
+        },
+        "reinvestment": {
+          "status": "NOT_APPLICABLE",
+          "value": "AUTO_REDEMPTION_AT_MATURITY"
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "liquidity_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005",
+      "EVD-CMA-OFFICIAL-KB-CMA-CURRENT-20260830"
+    ],
+    "access_mode": "REDEMPTION_REQUIRED",
+    "early_termination_allowed": true,
+    "payment_balance_eligible": false,
+    "withdrawable_balance_eligible": false,
+    "early_termination_policy": {
+      "kind": "CONTRACT_RATE_MULTIPLIER",
+      "tiers": [
+        {
+          "elapsed_term": {
+            "min_value": "1",
+            "max_value": "45",
+            "unit": "DAY",
+            "min_inclusive": true,
+            "max_inclusive": true
+          },
+          "contract_rate_multiplier_percent": "50"
+        },
+        {
+          "elapsed_term": {
+            "min_value": "46",
+            "max_value": "72",
+            "unit": "DAY",
+            "min_inclusive": true,
+            "max_inclusive": true
+          },
+          "contract_rate_multiplier_percent": "80"
+        },
+        {
+          "elapsed_term": {
+            "min_value": "73",
+            "max_value": "90",
+            "unit": "DAY",
+            "min_inclusive": true,
+            "max_inclusive": true
+          },
+          "contract_rate_multiplier_percent": "100"
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-CMA-OFFICIAL-KB-CMA-CURRENT-20260830"
+      ]
+    }
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000296-4-0005"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}

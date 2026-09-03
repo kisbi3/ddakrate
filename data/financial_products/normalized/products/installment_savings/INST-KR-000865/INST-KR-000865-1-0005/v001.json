@@ -1,0 +1,149 @@
+{
+  "product_code": "INST-KR-000865-1-0005",
+  "version": 1,
+  "institution_id": "INST-KR-000865",
+  "name": "마이키즈 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0005"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "eligibility_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "display_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0005"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "max_age": 16
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      12,
+      24,
+      36,
+      48,
+      60
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0005"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0005"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0005-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "7.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0005"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000865-1-0005-02",
+        "title": "실적 우대금리",
+        "condition_text": "실적 우대금리\n전체 계약 월 수의 2/3이상 해당되는 개월 수 동안 납입한 경우 만기 해지 계좌에 한해 적용 : 4%\n금리쿠폰에 따른 우대금리",
+        "structured_steps": [
+          "실적 우대금리",
+          "전체 계약 월 수의 2/3이상 해당되는 개월 수 동안 납입한 경우 만기 해지 계좌에 한해 적용 : 4%",
+          "금리쿠폰에 따른 우대금리"
+        ],
+        "extracted_reward_candidate": {
+          "value": "4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000865-1-0005"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "실적 우대금리",
+          "summary_text": "실적 우대금리",
+          "detail_texts": [
+            "전체 계약 월 수의 2/3이상 해당되는 개월 수 동안 납입한 경우 만기 해지 계좌에 한해 적용 : 4%",
+            "금리쿠폰에 따른 우대금리"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000865-1-0005"
+    ],
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000865-1-0005"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000865-1-0005"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.535590+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

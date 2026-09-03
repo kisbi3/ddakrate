@@ -1,0 +1,834 @@
+{
+  "product_code": "INST-KR-000865-1-0005",
+  "version": 9,
+  "institution_id": "INST-KR-000865",
+  "name": "마이키즈 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "eligibility_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "display_text": "마이키즈 서비스를 이용중인 만 17세 미만의 실명의 개인(1인 1계좌)\n- 마이키즈서비스 가입을 통해 법정대리인으로 확인된 부 또는 모가 마이키즈 통장을 근거계좌로 하여 예금주 본인을 대리하여 가입\n(마이키즈 서비스는 마이키즈 통장 가입 시 자동으로 가입되며, 통장을 가입하지 않은 부모는 자녀 연결을 통해 가입 가능)",
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "max_age_exclusive": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    },
+    "required_service": {
+      "service_key": "KBANK.MYKIDS_SERVICE",
+      "required_status": "ACTIVE",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+      ]
+    },
+    "subscription_actor_policy": {
+      "account_owner": "MINOR_CUSTOMER",
+      "subscription_on_behalf_of_owner": true,
+      "permitted_actor": "VERIFIED_LEGAL_REPRESENTATIVE_PARENT",
+      "permitted_parent_roles": [
+        "FATHER",
+        "MOTHER"
+      ],
+      "verification_basis": "MYKIDS_SERVICE_LEGAL_REPRESENTATIVE_VERIFICATION",
+      "reference_account_requirement": {
+        "account_type": "KBANK_MYKIDS_DEMAND_DEPOSIT",
+        "owner": "ACCOUNT_OWNER_CHILD"
+      },
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+      ]
+    },
+    "service_enrollment_notes": {
+      "mykids_account_opening_auto_enrolls_service": true,
+      "parent_without_own_mykids_account_can_join_via_child_link": true,
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+      ]
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+    ],
+    "source_expression": "1년, 2년, 3년, 4년, 5년"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "300000",
+        "increment_value": "1",
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+        ],
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "contribution_frequency": "IRREGULAR",
+    "contribution_frequency_options": [
+      "IRREGULAR"
+    ],
+    "initial_contribution_rule": {
+      "scope": "AT_SUBSCRIPTION",
+      "currency": "KRW",
+      "required_value": "0",
+      "role": "INITIAL_CONTRIBUTION_FIXED",
+      "source_text": "가입금액: 0원",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+      ]
+    },
+    "source_amount_text": "가입금액: 0원\n적립한도: 월 최대 30만원(원단위, 자유적립식)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "가입금액: 0원",
+        "scope": "AT_SUBSCRIPTION",
+        "role": "INITIAL_CONTRIBUTION_FIXED",
+        "context": "가입금액: 0원"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "월 최대 30만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "적립한도: 월 최대 30만원(원단위, 자유적립식)"
+      },
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "원단위",
+        "scope": "PER_CONTRIBUTION",
+        "role": "INCREMENT",
+        "context": "적립한도: 월 최대 30만원(원단위, 자유적립식)"
+      }
+    ],
+    "optional_auto_transfer_frequency_options": [
+      "DAILY",
+      "WEEKLY",
+      "MONTHLY"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 2
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 4
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0005-BASE-05",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 5
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "default_required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "special_termination_exceptions": [
+          "INHERITANCE_TERMINATION_IF_PREFERENCE_CONDITIONS_SATISFIED"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-01",
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-TERMINATION-20260827"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KBANK-MYKIDS-TERMINATION-20260827"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.QUALIFYING_CONTRIBUTION_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000865-1-0005-CONTRIBUTION-POSTED",
+            "operator": "COUNT_DISTINCT",
+            "group_by": "CONTRACT_MONTH",
+            "max_count_per_group": 1
+          },
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ]
+        },
+        {
+          "fact_key": "CONTRACT.TOTAL_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "ACCOUNT_CONTRACT",
+          "self_report_eligible": false,
+          "derived_from": "SELECTED_CONTRACT_TERM",
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.APPLIED_TO_ACCOUNT",
+          "type": "BOOLEAN",
+          "authority": "BANK_COUPON_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000865-1-0005-CONTRIBUTION-POSTED",
+          "event_type": "SAVINGS_CONTRIBUTION_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "amount_operator": "GT",
+            "amount_value": "0",
+            "currency": "KRW",
+            "counting_unit": "DISTINCT_CONTRACT_MONTH",
+            "max_qualifying_count_per_contract_month": 1,
+            "source_text": "전체 계약 월 수의 2/3 이상 해당되는 개월 수 동안 납입"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY_DATE"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000865-1-0005-PREF-PERFORMANCE",
+          "title": "실적 우대금리",
+          "condition": {
+            "relation": {
+              "operator": "GTE_RATIO",
+              "left_fact_key": "ACCOUNT.QUALIFYING_CONTRIBUTION_MONTH_COUNT",
+              "right_fact_key": "CONTRACT.TOTAL_MONTH_COUNT",
+              "ratio_numerator": 2,
+              "ratio_denominator": 3,
+              "derived_thresholds_by_selected_term_months": {
+                "12": 8,
+                "24": 16,
+                "36": 24,
+                "48": 32,
+                "60": 40
+              }
+            },
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "4.00",
+            "unit": "PERCENTAGE_POINT",
+            "rate_snapshot_date": "2026-08-29",
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ]
+          },
+          "display": {
+            "summary": "전체 계약 월 수의 2/3 이상인 계약월에 납입 시 +4.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_clause_text": "전체 계약 월 수의 2/3이상 해당되는 개월 수 동안 납입한 경우 만기 해지 계좌에 한해 적용 : 4%"
+        },
+        {
+          "rule_id": "INST-KR-000865-1-0005-PREF-COUPON",
+          "title": "금리쿠폰 우대금리",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.APPLIED_TO_ACCOUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "unit": "PERCENTAGE_POINT",
+            "value_source": "BANK_COUPON_DETAIL_METADATA",
+            "external_definition_fields": [
+              "rate_delta",
+              "eligible_subscription_amount",
+              "eligible_contract_terms",
+              "valid_from",
+              "valid_until",
+              "application_deadline"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+              "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+            ]
+          },
+          "display": {
+            "summary": "계좌에 실제 적용된 금리쿠폰의 상세조건에 따라 추가 우대"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "source_clause_text": "이벤트 등을 통해 금리쿠폰을 적용한 경우 만기해지 계좌에 한하여 우대금리를 적용; 금리 및 가입금액 등은 금리쿠폰 상세정보 기준"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000865-1-0005-PREFERENCE-SUM",
+          "operator": "SUM",
+          "members": [
+            "INST-KR-000865-1-0005-PREF-PERFORMANCE",
+            "INST-KR-000865-1-0005-PREF-COUPON"
+          ],
+          "standard_fixed_component_cap": {
+            "value": "4.00",
+            "unit": "PERCENTAGE_POINT",
+            "applies_to_members": [
+              "INST-KR-000865-1-0005-PREF-PERFORMANCE"
+            ]
+          },
+          "coupon_component_external": true,
+          "source_ref_ids": [
+            "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-SECTION",
+            "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+          ]
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "deterministic_component_status": "SUPPORTED",
+      "external_component_reason": "금리쿠폰의 금리/가입금액/기간 조건은 개별 쿠폰 상세정보에서 결정",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-01",
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02",
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03",
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-SECTION",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "0e1631557d53a9e3d2e907f4cac6091b"
+    },
+    "payment_timing": "MATURITY",
+    "standard_max_rate_entries": [
+      {
+        "contract_term_years": 1,
+        "value": "7.00",
+        "unit": "PERCENT",
+        "includes": [
+          "BASE",
+          "PERFORMANCE_PREFERENCE"
+        ],
+        "excludes": [
+          "COUPON_VARIABLE"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "contract_term_years": 2,
+        "value": "7.00",
+        "unit": "PERCENT",
+        "includes": [
+          "BASE",
+          "PERFORMANCE_PREFERENCE"
+        ],
+        "excludes": [
+          "COUPON_VARIABLE"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "contract_term_years": 3,
+        "value": "7.30",
+        "unit": "PERCENT",
+        "includes": [
+          "BASE",
+          "PERFORMANCE_PREFERENCE"
+        ],
+        "excludes": [
+          "COUPON_VARIABLE"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "contract_term_years": 4,
+        "value": "7.30",
+        "unit": "PERCENT",
+        "includes": [
+          "BASE",
+          "PERFORMANCE_PREFERENCE"
+        ],
+        "excludes": [
+          "COUPON_VARIABLE"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      },
+      {
+        "contract_term_years": 5,
+        "value": "7.50",
+        "unit": "PERCENT",
+        "includes": [
+          "BASE",
+          "PERFORMANCE_PREFERENCE"
+        ],
+        "excludes": [
+          "COUPON_VARIABLE"
+        ],
+        "source_ref_ids": [
+          "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+          "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+        ]
+      }
+    ],
+    "listing_rate_semantics": {
+      "listing_base_rate_context": "12_MONTH_REFERENCE",
+      "listing_max_rate_context": "12_MONTH_REFERENCE_STANDARD_PERFORMANCE_INCLUDED_COUPON_EXCLUDED",
+      "note": "네이버 상단 기본 3.00%/최고 7.00%는 12개월 기준이며, 5년 계약은 기본 3.50%/실적우대 포함 최고 7.50%이다.",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-LISTING",
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+    "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE",
+    "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-LISTING",
+    "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827",
+    "EVD-IS-OFFICIAL-KBANK-MYKIDS-RATE-20260827",
+    "EVD-IS-OFFICIAL-KBANK-MYKIDS-LIQUIDITY-20260827",
+    "EVD-IS-OFFICIAL-KBANK-MYKIDS-RENEWAL-20260827",
+    "EVD-IS-OFFICIAL-KBANK-MYKIDS-TERMINATION-20260827"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T03:05:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "publication_gate": "TARGETED_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "NAVER_PRIMARY_PLUS_KBANK_OFFICIAL_ENRICHMENT",
+    "source_record_id": "0e1631557d53a9e3d2e907f4cac6091b",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-10",
+      "reviewed_at": "2026-08-31T03:05:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_KBANK_OFFICIAL_PRODUCT_PAGE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "KBANK_OFFICIAL_PRODUCT_DETAIL",
+        "KBANK_OFFICIAL_RATE",
+        "KBANK_OFFICIAL_RENEWAL_AND_WITHDRAWAL"
+      ],
+      "correction_count": 12,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "COUPON_REQUIRES_EXTERNAL_COUPON_DETAIL_METADATA"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO"
+      ]
+    }
+  ],
+  "interest_calculation_policy": {
+    "basis": "PER_CONTRIBUTION",
+    "period_start": "CONTRIBUTION_POSTED_DATE",
+    "period_end": "DAY_BEFORE_TERMINATION",
+    "calculation": "SUM_INTEREST_PER_CONTRIBUTION_AT_CONTRACT_RATE",
+    "source_ref_ids": [
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-CORE-20260827"
+    ]
+  },
+  "liquidity_policy": {
+    "partial_withdrawal": {
+      "allowed": true,
+      "max_count": 2,
+      "allocation_method": "LIFO",
+      "withdrawn_portion_rate": "EARLY_TERMINATION_RATE",
+      "minimum_remaining_balance": {
+        "value": "10000",
+        "currency": "KRW"
+      },
+      "tax_exempt_savings_amount_withdrawable": false,
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-KBANK-MYKIDS-LIQUIDITY-20260827"
+      ]
+    }
+  },
+  "renewal_policy": {
+    "type": "OPTIONAL_AUTOMATIC_REENROLLMENT",
+    "selection_options": [
+      "AUTO_CLOSE",
+      "MANUAL_CLOSE",
+      "AUTO_REENROLLMENT"
+    ],
+    "renewal_term": "SAME_AS_ORIGINAL_CONTRACT_TERM",
+    "renewal_eligibility": {
+      "renewal_date_must_be_before_owner_age": 17
+    },
+    "renewal_first_contribution": "SAME_AS_PREVIOUS_FIRST_CONTRIBUTION",
+    "rate_on_renewal": "POSTED_RATE_ON_RENEWAL_DATE",
+    "prior_coupon_carryover": false,
+    "prior_preferential_carryover": false,
+    "performance_condition_must_be_requalified": true,
+    "automatic_transfer_extension": {
+      "optional": true,
+      "carry_forward_from_last_transfer": [
+        "AMOUNT",
+        "FREQUENCY",
+        "TRANSFER_DAY"
+      ],
+      "supported_prior_frequencies": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY"
+      ],
+      "requires_source_account_owner": "ACCOUNT_OWNER_CHILD",
+      "requires_source_institution": "KBANK"
+    },
+    "blocking_conditions": [
+      "ACCOUNT_RESTRICTION_OR_DEPOSIT_RESTRICTION_REPORTED",
+      "TAX_EXEMPT_COMPREHENSIVE_SAVINGS",
+      "PRODUCT_NO_LONGER_AVAILABLE_FOR_NEW_SUBSCRIPTION"
+    ],
+    "source_ref_ids": [
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-RENEWAL-20260827"
+    ]
+  },
+  "termination_policy": {
+    "maturity_options": [
+      "AUTO_CLOSE",
+      "MANUAL_CLOSE",
+      "AUTO_REENROLLMENT"
+    ],
+    "auto_close": {
+      "execution_timing": "MATURITY_DATE",
+      "executes_on_holiday": true,
+      "proceeds_to": "LINKED_ACCOUNT"
+    },
+    "manual_close": {
+      "default_actor": "PARENT_ENROLLED_IN_MYKIDS_SERVICE",
+      "proceeds_account_requirement": "ACCOUNT_OWNER_CHILD_KBANK_DEMAND_DEPOSIT",
+      "owner_only_if_mykids_reference_account_replaced": true
+    },
+    "early_termination": {
+      "preferential_rate_eligible": false,
+      "rate_policy": "EARLY_TERMINATION_RATE_BY_EACH_CONTRIBUTION_HOLDING_PERIOD"
+    },
+    "source_ref_ids": [
+      "EVD-IS-0E1631557D53A9E3D2E907F4CAC6091B-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-TERMINATION-20260827"
+    ]
+  },
+  "succession_policy": {
+    "assignment_allowed": false,
+    "name_change_allowed": false,
+    "inheritance": {
+      "contract_transfer_allowed": false,
+      "termination_only": true,
+      "rate": "ORIGINAL_CONTRACT_BASE_RATE_PLUS_PREFERENCE_IF_CONDITIONS_SATISFIED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-OFFICIAL-KBANK-MYKIDS-TERMINATION-20260827"
+    ]
+  }
+}

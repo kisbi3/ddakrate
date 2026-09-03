@@ -1,0 +1,715 @@
+{
+  "product_code": "INST-KR-000010-1-0003",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "BNK더조은자유적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인",
+    "eligibility_text": "실명의 개인",
+    "display_text": "실명의 개인",
+    "source_ref_ids": [
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 24,
+    "source_expression": "6개월이상 24개월 이내(월단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "5000000"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_count": 999
+      }
+    ],
+    "source_amount_text": "고객당 월 1만원 이상 ~ 500만원 이하 (자유적립식, 저축횟수는 999회 이내)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "고객당 월 1만원 이상 ~ 500만원 이하 (자유적립식, 저축횟수는 999회 이내)"
+      },
+      {
+        "value": "5000000",
+        "currency": "KRW",
+        "source_expression": "500만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "고객당 월 1만원 이상 ~ 500만원 이하 (자유적립식, 저축횟수는 999회 이내)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-0003-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0003-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000010-1-0003-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 24
+        },
+        "source_ref_ids": [
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "0.70",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04",
+          "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "금리우대쿠폰 등록\n- 금리우대쿠폰은 BNK모바일입출금통장 개설, 비대면 정기예·적금 만기 예정, 이벤트 진행시, 전자명함 등을 통해 제공됩니다. : 0.3%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.2%"
+        },
+        {
+          "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+          ],
+          "authority": "BANK_OR_APP_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "경남은행 오픈뱅킹 서비스 가입\n- 만기해지까지 해당서비스 유지하는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "AUTOMATIC_TRANSFER.SATISFIED.ACCOUNT_AUTO_TRANSFER_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "경남은행 입출금통장 또는 경남은행 오픈뱅킹 서비스를 통한 자동이체 시\n- 신규시 출금 포함, 입금건별에 대해 적용 : 0.1%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-0003-PREF-02",
+          "title": "금리우대쿠폰 등록",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "금리우대쿠폰 등록"
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "금리우대쿠폰 등록\n- 금리우대쿠폰은 BNK모바일입출금통장 개설, 비대면 정기예·적금 만기 예정, 이벤트 진행시, 전자명함 등을 통해 제공됩니다. : 0.3%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0003-PREF-03",
+          "title": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "은행 마케팅동의 및 모바일메세지 수신동의 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0003-PREF-04",
+          "title": "경남은행 오픈뱅킹 서비스 가입",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE_ENROLLMENT_OR_USE.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_OR_APP_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "경남은행 오픈뱅킹 서비스 가입"
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+            }
+          ],
+          "semantic_domain": "SERVICE_ENROLLMENT_OR_USE",
+          "source_clause_text": "경남은행 오픈뱅킹 서비스 가입\n- 만기해지까지 해당서비스 유지하는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-0003-PREF-05",
+          "title": "경남은행 입출금통장 또는 경남은행 오픈뱅킹 서비스를 통한 자동이체 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOMATIC_TRANSFER.SATISFIED.ACCOUNT_AUTO_TRANSFER_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "경남은행 입출금통장 또는 경남은행 오픈뱅킹 서비스를 통한 자동이체 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "경남은행 입출금통장 또는 경남은행 오픈뱅킹 서비스를 통한 자동이체 시\n- 신규시 출금 포함, 입금건별에 대해 적용 : 0.1%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01",
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02",
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03",
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04",
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05",
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE",
+      "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.9",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "60d476ae3ba44c378b81fbe7090c933a"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO",
+    "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE",
+    "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "60d476ae3ba44c378b81fbe7090c933a",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-31T01:00:00+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_CORRECTED",
+      "reason_codes": [
+        "FACT_KEY_TYPO_CORRECTION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-60D476AE3BA44C378B81FBE7090C933A-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

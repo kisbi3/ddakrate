@@ -1,0 +1,630 @@
+{
+  "product_code": "INST-KR-000223-1-0001",
+  "version": 8,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK D-day적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "PHONE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "eligibility_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "display_text": "실명의 개인 (단, 개인사업자 및 외국인비거주자 제외)\n※ 1인 최대 3계좌까지 가입가능\n(단, 기업은행이 추가 계좌개설을 허용하는 경우(금리우대쿠폰 제공 이벤트 등)에 한하여 계좌 수 제한을 초과하여 가입 가능)",
+    "source_ref_ids": [
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 3
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 12,
+    "source_expression": "1개월 이상 12개월 이내 (일 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "200000",
+        "increment_value": "1000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "최소 1만원 이상 월 20만원 이내 (천원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상 월 20만원 이내 (천원 단위)"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상 월 20만원 이내 (천원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.650",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0001-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.850",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000223_1_0001_PREF_01.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-0001-PREF-01-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "DOCUMENT_VERIFICATION.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000223_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+          ],
+          "unit": "KRW",
+          "authority": "DOCUMENT_VERIFICATION",
+          "self_report_eligible": false,
+          "source_recognition_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%\n• 실명등록일로부터 3개월 이내\n• 가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000223_1_0001-INST_KR_000223_1_0001_-SOURCE_CLAUSE_INST_KR_000223_1",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+          ],
+          "authority": "BANK_CONSENT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 금리우대쿠폰의 형식으로 제공되며 금리우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 금리우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.\n금리우대쿠폰 제공 이벤트 진행 시 기업은행 홈페이지, i-ONE Bank(개인) 등에 게시된 이벤트페이지 內 주요내용(금리, 기간, 대상 등 조건)을 통해 상세내용을 확인할 수 있으며, 이벤트 별로 금리, 기간, 대상 등 세부내용이 달라질 수 있습니다.\n(금리우대쿠폰 확인방법 : i-ONE Bank(개인) 쿠폰함, IBK고객센터, 영업점)"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000223-1-0001-PREF-01-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%\n* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%\n* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000223_1_0001-INST_KR_000223_1_0001_-SOURCE_CLAUSE_INST_KR_000223_1",
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "DOCUMENT_VERIFICATION_COMPLETED",
+          "authority": "DOCUMENT_VERIFICATION",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%\n• 실명등록일로부터 3개월 이내\n• 가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000223-1-0001-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000223-1-0001-PREF-02"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%\n• 실명등록일로부터 3개월 이내\n• 가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원",
+          "submission_deadline_source_expressions": [
+            "• 실명등록일로부터 3개월 이내"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-0001-PREF-01",
+          "title": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000223_1_0001_PREF_01.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "당행 입출금식 계좌에서 자동이체를 통해 3회 이상 납입하고 만기일 전일까지 목표금액*이상 납입하는 경우 : 1.0%\n* 목표금액 : 가입시점에 고객이 별도 설정해야 하며, 목표금액은 {월 적립금액 한도 20만원 × 만기까지의 개월 수}의 값이내로 설정해야함"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0001-PREF-02",
+          "title": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%",
+          "condition": {
+            "predicate": {
+              "fact_key": "DOCUMENT_VERIFICATION.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000223_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_VERIFICATION",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+            }
+          ],
+          "semantic_domain": "DOCUMENT_VERIFICATION",
+          "source_clause_text": "가입시점에 아래 2가지 요건 中 1가지 이상 충족하는 경우 : 0.5%\n• 실명등록일로부터 3개월 이내\n• 가입 직전월 기준 6개월간 총 수신 평잔 ‘0’원"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0001-PREF-03",
+          "title": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 금리우대쿠폰의 형식으로 제공되며 금리우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 금리우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CONSENT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 금리우대쿠폰의 형식으로 제공되며 금리우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 금리우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+            }
+          ],
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "특별우대이자율은 은행의 이벤트, 마케팅 등을 통해 금리우대쿠폰의 형식으로 제공되며 금리우대쿠폰의 우대이자율은 각 쿠폰에 별도로 명시된 우대이자율을 적용합니다. 특별우대이자율을 적용하는 금리우대쿠폰은 재예치 또는 중도 해지 시 사용하실 수 없습니다.\n금리우대쿠폰 제공 이벤트 진행 시 기업은행 홈페이지, i-ONE Bank(개인) 등에 게시된 이벤트페이지 內 주요내용(금리, 기간, 대상 등 조건)을 통해 상세내용을 확인할 수 있으며, 이벤트 별로 금리, 기간, 대상 등 세부내용이 달라질 수 있습니다.\n(금리우대쿠폰 확인방법 : i-ONE Bank(개인) 쿠폰함, IBK고객센터, 영업점)"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01",
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02",
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03",
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE",
+      "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.35",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "3cc3c0f45365a3761f406cb38a44a3be"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO",
+    "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE",
+    "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "3cc3c0f45365a3761f406cb38a44a3be",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "PHONE",
+      "source_ref_ids": [
+        "EVD-IS-3CC3C0F45365A3761F406CB38A44A3BE-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,866 @@
+{
+  "product_code": "INST-KR-000223-1-0005",
+  "version": 8,
+  "institution_id": "INST-KR-000223",
+  "name": "IBK군간부우대적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "복무중인 장교, 부사관, 준사관, 군무원, 사관생도, 사관후보생 및 그 배우자로 실명의 개인(개인사업자 제외) ※ 1인 1계좌",
+    "eligibility_text": "복무중인 장교, 부사관, 준사관, 군무원, 사관생도, 사관후보생 및 그 배우자로 실명의 개인(개인사업자 제외) ※ 1인 1계좌",
+    "display_text": "복무중인 장교, 부사관, 준사관, 군무원, 사관생도, 사관후보생 및 그 배우자로 실명의 개인(개인사업자 제외) ※ 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 12,
+    "source_expression": "6개월 이상 12개월 이하 (일, 월 단위)",
+    "source_bounds": {
+      "min": {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 12,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "최소 1천원 이상 월 50만원 이하(원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1천원 이상 월 50만원 이하(원 단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1천원 이상 월 50만원 이하(원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-1-0005-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-1-0005-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01",
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02",
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03",
+          "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01",
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02",
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03",
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.TENURE_YEARS",
+          "type": "NUMBER",
+          "unit": "YEAR",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0005_PREF_02.COMPLETED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000223_1_0005_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000223-1-0005-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신용(체크)카드 이용 우대이자율 : 연 1.0%p\n- 가입일부터 만기일이 속한 월의 전전월말까지 당행 신용(체크*)카드 결제금액이 100만원 이상인 경우\n* 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 실적은 제외",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000223_1_0005-INST_KR_000223_1_0005_-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000223-1-0005-PREF-03-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "군 급여이체 우대이자율 : 연 1.0%p\n- 본인 명의 당행 입출금식 통장으로 3개월 이상 국군재정 관리단을 통한 중앙급여이체 방식으로 군 급여이체 실적이 있는 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "군 급여이체 우대이자율 : 연 1.0%p\n- 본인 명의 당행 입출금식 통장으로 3개월 이상 국군재정 관리단을 통한 중앙급여이체 방식으로 군 급여이체 실적이 있는 경우"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000223_1_0005-INST_KR_000223_1_0005_-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "신용(체크)카드 이용 우대이자율 : 연 1.0%p\n- 가입일부터 만기일이 속한 월의 전전월말까지 당행 신용(체크*)카드 결제금액이 100만원 이상인 경우\n* 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 실적은 제외",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000223-1-0005-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000223-1-0005-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p\n- 복무기간 확인서류 제출 : 병적증명서, 군경력증명서 등(발급일로부터 3개월 이내)\n복무기간(10년 이하) : 연 0.5%p\n복무기간(10년 초과 20년 이하) : 연 1.0%p\n복무기간(20년 초과) : 연 1.5%p\n※ 가입 시 복무기간 확인서류를 미제출한 경우 '10년 이하' 우대이자율 적용",
+          "accepted_documents": [
+            "병적증명서",
+            "군경력증명서",
+            "확인서류"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE",
+          "submission_deadline_source_expressions": [
+            "- 복무기간 확인서류 제출 : 병적증명서, 군경력증명서 등(발급일로부터 3개월 이내)"
+          ],
+          "document_constraints": {
+            "source_expressions": [
+              "발급일로부터 3개월 이내)"
+            ]
+          },
+          "completion_fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0005_PREF_02.COMPLETED"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000223-1-0005-PREF-02",
+          "title": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.TENURE_YEARS",
+                  "operator": "EXISTS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "FULFILLMENT.FULFILL_INST_KR_000223_1_0005_PREF_02.COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "CUSTOMER.TENURE_YEARS",
+            "tiers": [
+              {
+                "condition": {
+                  "source_condition_text": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p",
+                  "fact_key": "CUSTOMER.TENURE_YEARS",
+                  "unit": "YEAR",
+                  "structuring_status": "AMBIGUOUS"
+                },
+                "rate_value": "1.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p"
+              },
+              {
+                "condition": {
+                  "source_condition_text": "복무기간(10년 이하) : 연 0.5%p",
+                  "fact_key": "CUSTOMER.TENURE_YEARS",
+                  "unit": "YEAR",
+                  "structuring_status": "AMBIGUOUS"
+                },
+                "rate_value": "0.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "복무기간(10년 이하) : 연 0.5%p"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.TENURE_YEARS",
+                    "operator": "GT",
+                    "expected_value": 10,
+                    "unit": "YEAR"
+                  }
+                },
+                "rate_value": "1",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "복무기간(10년 초과 20년 이하) : 연 1.0%p"
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.TENURE_YEARS",
+                    "operator": "GT",
+                    "expected_value": 20,
+                    "unit": "YEAR"
+                  }
+                },
+                "rate_value": "1.5",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "복무기간(20년 초과) : 연 1.5%p"
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+              }
+            ],
+            "cap_value": "1.5"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+              }
+            ],
+            "fact_authority": "DOCUMENT_VERIFICATION",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            }
+          ],
+          "semantic_domain": "DOCUMENT_VERIFICATION",
+          "source_clause_text": "가입시점 복무기간에 따른 우대이자율 : 최고 연 1.5%p\n- 복무기간 확인서류 제출 : 병적증명서, 군경력증명서 등(발급일로부터 3개월 이내)\n복무기간(10년 이하) : 연 0.5%p\n복무기간(10년 초과 20년 이하) : 연 1.0%p\n복무기간(20년 초과) : 연 1.5%p\n※ 가입 시 복무기간 확인서류를 미제출한 경우 '10년 이하' 우대이자율 적용"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0005-PREF-03",
+          "title": "군 급여이체 우대이자율 : 연 1.0%p",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RULE.INST_KR_000223_1_0005_PREF_03.QUALIFYING_PERIOD_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 3,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "군 급여이체 우대이자율 : 연 1.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "군 급여이체 우대이자율 : 연 1.0%p\n- 본인 명의 당행 입출금식 통장으로 3개월 이상 국군재정 관리단을 통한 중앙급여이체 방식으로 군 급여이체 실적이 있는 경우"
+        },
+        {
+          "rule_id": "INST-KR-000223-1-0005-PREF-04",
+          "title": "신용(체크)카드 이용 우대이자율 : 연 1.0%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신용(체크)카드 이용 우대이자율 : 연 1.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신용(체크)카드 이용 우대이자율 : 연 1.0%p\n- 가입일부터 만기일이 속한 월의 전전월말까지 당행 신용(체크*)카드 결제금액이 100만원 이상인 경우\n* 체크카드의 이용실적 중 현금 IC카드 결제 서비스(매출표 접수 결제가 아닌, 현금 출금으로 결제되는 경우)는 이용실적에 포함 되지 않음\n※ 단, 매출표 접수일 기준으로 결제계좌가 당행인 경우에 한하며, 현금서비스 실적은 제외"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000223-1-0005-PREF-02-TIER",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000223-1-0005-PREF-02"
+          ],
+          "selector_fact_key": "CUSTOMER.TENURE_YEARS",
+          "source_ref_ids": [
+            "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            }
+          ],
+          "structuring_status": "AMBIGUOUS",
+          "cap": {
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01",
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02",
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03",
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04",
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-RATE",
+      "EVD-IS-BAB0E2719966F23723B4C7378736EB36-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "bab0e2719966f23723b4c7378736eb36"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO",
+    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-RATE",
+    "EVD-IS-BAB0E2719966F23723B4C7378736EB36-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "bab0e2719966f23723b4c7378736eb36",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-BAB0E2719966F23723B4C7378736EB36-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

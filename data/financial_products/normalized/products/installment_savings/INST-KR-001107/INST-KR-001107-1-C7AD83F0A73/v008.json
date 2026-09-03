@@ -1,0 +1,1037 @@
+{
+  "product_code": "INST-KR-001107-1-C7AD83F0A73",
+  "version": 8,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국 다드림(多Dream) 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "YEAR",
+    "options": [
+      1,
+      2,
+      3
+    ],
+    "source_ref_ids": [
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+    ],
+    "source_expression": "1년, 2년, 3년"
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 50만원까지 자유저축",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 50만원까지 자유저축"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "가입 시 최저 1만원 이상 2회차 이후 원단위로 월 50만원까지 자유저축"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-1-C7AD83F0A73-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-C7AD83F0A73-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 2
+        },
+        "source_ref_ids": [
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-001107-1-C7AD83F0A73-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.200",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01",
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02",
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03",
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04",
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05",
+          "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01",
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02",
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03",
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04",
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05",
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            },
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.POST_BANK_GRADE",
+          "type": "ENUM",
+          "unit": "GRADE",
+          "authority": "BANK_OR_ACCOUNT_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_001107_1_C7AD83F0A73_PREF_06.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-001107-1-C7AD83F0A73-PREF-06-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER_RELATIONSHIP.SATISFIED.SOURCE_CLAUSE_INST_KR_001107_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+          ],
+          "authority": "BANK_CUSTOMER_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규 가입일 현재 우체국 예금을 최초로 계좌 개설한 시점으로부터 3년 이상 경과한 경우\n※ 단, 예금 가입 취소는 장기거래 고객 산정 기준에서 제외 : 0.1%"
+        },
+        {
+          "fact_key": "MATURITY_OR_RENEWAL.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_001107_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "다드림 적금을 3년으로 가입을 하고 만기해지 할 경우 : 0.2%"
+        },
+        {
+          "fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "authority": "BANK_CONTRACT_RECORD",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-001107-1-C7AD83F0A73-PREF-05-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 매월 2가지 이상의 실적이 충족되는 개월수가 (1년제 : 6개월 / 2년제 : 12개월 / 3년제 : 18개월)이상인 경우\n* 실적 인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전전월까지\n① 급여이체 : 우체국 급여성이체 우대서비스 기준에 해당하는 경우\n* 우체국 급여성이체 약정 고객\n- 기관으로부터 50만원 이상의 소속직원 급여이체가 지정급여일 (±3영업일)에 있는 경우\n- 개인이 급여이체 약정 후 50만원 이상의 급여성 입금실적이 있는 경우\n* 우체국 급여성이체 미약정 고객\n- 개인이 50만원 이상 입금실적과 급여 등 입금내역 표시가 있는 경우\n※ 자세한 내용은 「우체국 다드림(多Dream) 적금」 상품설명서를 참고하시기 바랍니다.\n② 연금수령 : 우체국 수시입출식 예금에 금융결제원을 통해 일괄 입금되거나 입금내역에「국민연금, 공무원연금, 사학연금, 사립학교 교직원연금, 군인연금, 별정우체국연금」의 글자가 있는 경우\n③ 공과금 자동이체 : 아파트 관리비, 지로, CMS, 펌뱅킹을 통한 자동납부 실적이 있는 경우 (※단, 납부자 자동이체, 예약이체 제외)\n④ 적금 자동이체 : 우체국 수시입출식 예금에서 다드림 적금으로 월 납부금 자동이체 실적이 있는 경우 : 0.4%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 매월 2가지 이상의 실적이 충족되는 개월수가 (1년제 : 6개월 / 2년제 : 12개월 / 3년제 : 18개월)이상인 경우\n* 실적 인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전전월까지\n① 급여이체 : 우체국 급여성이체 우대서비스 기준에 해당하는 경우\n* 우체국 급여성이체 약정 고객\n- 기관으로부터 50만원 이상의 소속직원 급여이체가 지정급여일 (±3영업일)에 있는 경우\n- 개인이 급여이체 약정 후 50만원 이상의 급여성 입금실적이 있는 경우\n* 우체국 급여성이체 미약정 고객\n- 개인이 50만원 이상 입금실적과 급여 등 입금내역 표시가 있는 경우\n※ 자세한 내용은 「우체국 다드림(多Dream) 적금」 상품설명서를 참고하시기 바랍니다.\n② 연금수령 : 우체국 수시입출식 예금에 금융결제원을 통해 일괄 입금되거나 입금내역에「국민연금, 공무원연금, 사학연금, 사립학교 교직원연금, 군인연금, 별정우체국연금」의 글자가 있는 경"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST-KR-001107-1-C7AD83F0A73-PREF-06-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 1가지 이상의 실적이 충족되는 개월수가 3개월 이상*인 경우\n① 다드림 통장 : 월 평잔이 100만원 이상인 경우\n② 다드림 체크카드 : 결제실적이 월 10만원 이상인 경우\n* 실적인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전 전월까지\n* 다드림 통장 및 다드림 체크카드의 실적은 연속된 개월 수 뿐만 아니라 비연속적인 경우도 포함\n※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크카드 사용금액만 실적으로 인정(신용결제 제외) : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            }
+          ],
+          "amount_threshold": {
+            "value": 1000000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "100만원 이상"
+          },
+          "excluded_source_types": [
+            "승인취소"
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 1가지 이상의 실적이 충족되는 개월수가 3개월 이상*인 경우\n① 다드림 통장 : 월 평잔이 100만원 이상인 경우\n② 다드림 체크카드 : 결제실적이 월 10만원 이상인 경우\n* 실적인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전 전월까지\n* 다드림 통장 및 다드림 체크카드의 실적은 연속된 개월 수 뿐만 아니라 비연속적인 경우도 포함\n※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크카드 사용금액만 실적으로 인정(신용결제 제외) : 0.2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-001107-1-C7AD83F0A73-PREF-02",
+          "title": "신규 가입일 현재 우체국 예금을 최초로 계좌 개설한 시점으로부터 3년 이상 경과한 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER_RELATIONSHIP.SATISFIED.SOURCE_CLAUSE_INST_KR_001107_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CUSTOMER_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 가입일 현재 우체국 예금을 최초로 계좌 개설한 시점으로부터 3년 이상 경과한 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+            }
+          ],
+          "semantic_domain": "CUSTOMER_RELATIONSHIP",
+          "source_clause_text": "신규 가입일 현재 우체국 예금을 최초로 계좌 개설한 시점으로부터 3년 이상 경과한 경우\n※ 단, 예금 가입 취소는 장기거래 고객 산정 기준에서 제외 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-C7AD83F0A73-PREF-03",
+          "title": "신규 가입일 또는 만기해지 시점에 우체국예금 우수고객인 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.POST_BANK_GRADE",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "CUSTOMER.POST_BANK_GRADE",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.POST_BANK_GRADE",
+                    "operator": "IN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                      }
+                    ],
+                    "expected_value": [
+                      "S-MVP",
+                      "MVP",
+                      "VIP"
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.1",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "S-MVP, MVP, VIP 등급 : 연 0.1%p",
+                "source_ref_ids": [
+                  "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.POST_BANK_GRADE",
+                    "operator": "IN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                      }
+                    ],
+                    "expected_value": [
+                      "PREMIUM",
+                      "SS-MVP"
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                    }
+                  ]
+                },
+                "rate_value": "0.15",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "Premium, SS-MVP 등급 : 연 0.15%p",
+                "source_ref_ids": [
+                  "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+              }
+            ],
+            "cap_value": "0.15"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_MEMBERSHIP_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 가입일 또는 만기해지 시점에 우체국예금 우수고객인 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            }
+          ],
+          "semantic_domain": "MEMBERSHIP_OR_TIER",
+          "source_clause_text": "신규 가입일 또는 만기해지 시점에 우체국예금 우수고객인 경우\n※ '우체국 예금 우수고객 우대이율' 기준적용\n- \"S-MVP, MVP, VIP\" 등급 : 연 0.1%p 적용\n- \"Premium, SS-MVP\" 등급 : 연 0.15%p 적용"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-C7AD83F0A73-PREF-04",
+          "title": "다드림 적금을 3년으로 가입을 하고 만기해지 할 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MATURITY_OR_RENEWAL.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_001107_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "다드림 적금을 3년으로 가입을 하고 만기해지 할 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+            }
+          ],
+          "semantic_domain": "MATURITY_OR_RENEWAL",
+          "source_clause_text": "다드림 적금을 3년으로 가입을 하고 만기해지 할 경우 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-C7AD83F0A73-PREF-05",
+          "title": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 매월 2가지 이상의 실적이 충족되는 개월수가 (1년제 : 6개월 / 2년제 : 12개월 / 3년제 : 18개월)이상인 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 매월 2가지 이상의 실적이 충족되는 개월수가 (1년제 : 6개월 / 2년제 : 12개월 / 3년제 : 18개월)이상인 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 매월 2가지 이상의 실적이 충족되는 개월수가 (1년제 : 6개월 / 2년제 : 12개월 / 3년제 : 18개월)이상인 경우\n* 실적 인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전전월까지\n1 급여이체 : 우체국 급여성이체 우대서비스 기준에 해당하는 경우\n* 우체국 급여성이체 약정 고객\n- 기관으로부터 50만원 이상의 소속직원 급여이체가 지정급여일 (±3영업일)에 있는 경우\n- 개인이 급여이체 약정 후 50만원 이상의 급여성 입금실적이 있는 경우\n* 우체국 급여성이체 미약정 고객\n- 개인이 50만원 이상 입금실적과 급여 등 입금내역 표시가 있는 경우\n※ 자세한 내용은 「우체국 다드림(多Dream) 적금」 상품설명서를 참고하시기 바랍니다.\n2 연금수령 : 우체국 수시입출식 예금에 금융결제원을 통해 일괄 입금되거나 입금내역에「국민연금, 공무원연금, 사학연금, 사립학교 교직원연금, 군인연금, 별정우체국연금」의 글자가 있는 경우\n3 공과금 자동이체 : 아파트 관리비, 지로, CMS, 펌뱅킹을 통한 자동납부 실적이 있는 경우 (※단, 납부자 자동이체, 예약이체 제외)\n4 적금 자동이체 : 우체국 수시입출식 예금에서 다드림 적금으로 월 납부금 자동이체 실적이 있는 경우 : 0.4%"
+        },
+        {
+          "rule_id": "INST-KR-001107-1-C7AD83F0A73-PREF-06",
+          "title": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 1가지 이상의 실적이 충족되는 개월수가 3개월 이상*인 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_001107_1_C7AD83F0A73_PREF_06.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 1가지 이상의 실적이 충족되는 개월수가 3개월 이상*인 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "실적 인정기간* 동안 아래의 기준에서 정하는 우대요건 중 1가지 이상의 실적이 충족되는 개월수가 3개월 이상*인 경우\n1 다드림 통장 : 월 평잔이 100만원 이상인 경우\n2 다드림 체크카드 : 결제실적이 월 10만원 이상인 경우\n* 실적인정기간 : 신규일이 속한 월부터 만기일이 속한 월의 전 전월까지\n* 다드림 통장 및 다드림 체크카드의 실적은 연속된 개월 수 뿐만 아니라 비연속적인 경우도 포함\n※ 체크카드 승인취소 및 매입취소는 취소한 당월 실적에서 제외하며 체크카드 사용금액만 실적으로 인정(신용결제 제외) : 0.2%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-001107-1-C7AD83F0A73-PREF-03-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-001107-1-C7AD83F0A73-PREF-03"
+          ],
+          "selector_fact_key": "CUSTOMER.POST_BANK_GRADE",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.15",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-001107-1-C7AD83F0A73-PREF-05-TERM-MONTH-THRESHOLD",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-001107-1-C7AD83F0A73-PREF-05"
+          ],
+          "selector_fact_key": "ACCOUNT.CONTRACT_TERM_MONTHS",
+          "selection_target": "MINIMUM_QUALIFYING_MONTH_COUNT",
+          "tiers": [
+            {
+              "contract_term_months": 12,
+              "required_qualifying_month_count": 6
+            },
+            {
+              "contract_term_months": 24,
+              "required_qualifying_month_count": 12
+            },
+            {
+              "contract_term_months": 36,
+              "required_qualifying_month_count": 18
+            }
+          ],
+          "per_month_requirement": {
+            "operator": "AT_LEAST_N",
+            "n": 2,
+            "source_components": [
+              "SALARY_TRANSFER",
+              "PENSION_RECEIPT",
+              "UTILITY_AUTO_DEBIT",
+              "SAVINGS_AUTO_TRANSFER"
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06",
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-C32098ABF43176AB421137942C46AD09-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE",
+      "EVD-IS-C32098ABF43176AB421137942C46AD09-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "c32098abf43176ab421137942c46ad09"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO",
+    "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE",
+    "EVD-IS-C32098ABF43176AB421137942C46AD09-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "c32098abf43176ab421137942c46ad09",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-C32098ABF43176AB421137942C46AD09-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

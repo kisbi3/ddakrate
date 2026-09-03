@@ -1,0 +1,274 @@
+{
+  "product_code": "INST-KR-000014-1-CD8D5FD3D42",
+  "version": 8,
+  "institution_id": "INST-KR-000014",
+  "name": "정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+      "EVD-A2-029-NAVER",
+      "EVD-A2-029-OFFICIAL"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음(단, 비거주 외국인 제외)",
+    "eligibility_text": "제한없음(단, 비거주 외국인 제외)",
+    "display_text": "제한없음(단, 비거주 외국인 제외)",
+    "source_ref_ids": [
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+      "EVD-A2-029-NAVER",
+      "EVD-A2-029-OFFICIAL"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED"
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 6,
+    "max_value": 36,
+    "source_expression": "6개월 ~ 36개월 (월단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+      "EVD-A2-029-NAVER",
+      "EVD-A2-029-OFFICIAL"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+      "EVD-A2-029-NAVER",
+      "EVD-A2-029-OFFICIAL"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "source_amount_text": "계약금액 : 1만원 이상 (가입금액 제한없음)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "MINIMUM",
+        "context": "계약금액 : 1만원 이상 (가입금액 제한없음)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000014-1-CD8D5FD3D42-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+          "EVD-A2-029-NAVER",
+          "EVD-A2-029-OFFICIAL"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000014-1-CD8D5FD3D42-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "4.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+          "EVD-A2-029-NAVER",
+          "EVD-A2-029-OFFICIAL"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000014-1-CD8D5FD3D42-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "min_inclusive": true
+        },
+        "source_ref_ids": [
+          "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+          "EVD-A2-029-NAVER",
+          "EVD-A2-029-OFFICIAL"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000014-1-CD8D5FD3D42-BASE-04",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+          "EVD-A2-029-NAVER",
+          "EVD-A2-029-OFFICIAL"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+      "EVD-IS-630C8230572DD5E01C1BF241023C982A-LISTING",
+      "EVD-A2-029-NAVER",
+      "EVD-A2-029-OFFICIAL"
+    ],
+    "advertised_max_rate": {
+      "value": "4",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-630C8230572DD5E01C1BF241023C982A-LISTING",
+        "EVD-A2-029-NAVER",
+        "EVD-A2-029-OFFICIAL"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "630c8230572dd5e01c1bf241023c982a"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+    "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+    "EVD-IS-630C8230572DD5E01C1BF241023C982A-LISTING",
+    "EVD-A2-029-NAVER",
+    "EVD-A2-029-OFFICIAL"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T00:20:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "630c8230572dd5e01c1bf241023c982a",
+    "data_gaps": [
+      {
+        "path": "liquidity_fees_tax",
+        "reason": "상세 거래 수수료와 계좌개수 제한은 원문에 없음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-14-agent-a2",
+      "reviewed_at": "2026-08-31T00:20:00+09:00",
+      "method": "NAVER_FULL_RECORD_PLUS_OFFICIAL_CURRENT_PAGE",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE",
+        "NAVER_LISTING",
+        "OFFICIAL_PRODUCT_PAGE"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 1,
+      "status": "VERIFIED_OFFICIAL",
+      "reason_codes": [
+        "AMOUNT_SCOPE_NORMALIZED_TO_PER_MONTH"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+        "EVD-A2-029-NAVER",
+        "EVD-A2-029-OFFICIAL"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-630C8230572DD5E01C1BF241023C982A-RATE",
+        "EVD-A2-029-NAVER",
+        "EVD-A2-029-OFFICIAL"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-630C8230572DD5E01C1BF241023C982A-PRODUCT-INFO",
+        "EVD-A2-029-NAVER",
+        "EVD-A2-029-OFFICIAL"
+      ]
+    }
+  ]
+}

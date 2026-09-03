@@ -1,0 +1,647 @@
+{
+  "product_code": "INST-KR-000216-1-C59F036767D",
+  "version": 7,
+  "institution_id": "INST-KR-000216",
+  "name": "이어도사랑적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인, 개인사업자",
+    "eligibility_text": "실명의 개인, 개인사업자",
+    "display_text": "실명의 개인, 개인사업자",
+    "source_ref_ids": [
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 24,
+    "source_expression": "12개월 이상 24개월 이하(월단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "source_amount_text": "최소 1만원 이상\n최고 저축금액 제한없음",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1만원 이상\n최고 저축금액 제한없음"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-1-C59F036767D-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.300",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-AF4892400C6D345A99033BBA12B17C33-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-1-C59F036767D-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.400",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 2
+        },
+        "source_ref_ids": [
+          "EVD-IS-AF4892400C6D345A99033BBA12B17C33-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000216_1_C59F036767D_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000216-1-C59F036767D-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "DONATION_OR_DECLARATION.AMOUNT.SOURCE_CLAUSE_INST_KR_000216_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+          ],
+          "unit": "KRW",
+          "authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+          "self_report_eligible": true,
+          "source_recognition_text": "특별우대이자율 : 연 0.1%p\n이 예금은 가입시 이어도사랑 기부금 출연을 희망하여 신청한 고객 : 우대 이자율 연 0.1%p 제공\n(단, 고객이 출연한 기부금이 년간 누계액 기준 1천만원 이른 시점부터는 해당연도의 특별우대이자율 제공 및 기부금 모금은 끝납니다.)",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000216_1_C59F036767D-INST_KR_000216_1_C59F0-SOURCE_CLAUSE_INST_KR_000216_1",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "인터넷뱅킹 등 비대면매체 신규 우대이자율 : 0.1%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000216-1-C59F036767D-PREF-02-SUCCESS",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "qualifying_definition": {
+            "source_text": "교차 우대이자율 적용 : 최고 연 0.3%p\n다음 각 호에 해당하는 경우 1건당(연 0.1%p), 최고(연 0.3%p)이내에서 우대 이자율을 우대합니다.\n· 적금 가입시 자동대체 등록고객 : 우대이자율 0.1p% 제공\n· 제주은행 신규 등록 고객 : 우대이자율 0.1p% 제공\n· 입출금이 자유로운 예금 기가입 고객 : 우대이자율 0.1%p 제공\n· 등록 장애인(복지카드 소지자) 고객 : 우대이자율 0.1%p 제공\n· 비과세종합저축 대상 고객 : 우대이자율 0.1%p 제공\n· 다자녀 고객(3자녀 이상), 다문화 가정 고객 : 우대이자율 0.1%p 제공"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "교차 우대이자율 적용 : 최고 연 0.3%p\n다음 각 호에 해당하는 경우 1건당(연 0.1%p), 최고(연 0.3%p)이내에서 우대 이자율을 우대합니다.\n· 적금 가입시 자동대체 등록고객 : 우대이자율 0.1p% 제공\n· 제주은행 신규 등록 고객 : 우대이자율 0.1p% 제공\n· 입출금이 자유로운 예금 기가입 고객 : 우대이자율 0.1%p 제공\n· 등록 장애인(복지카드 소지자) 고객 : 우대이자율 0.1%p 제공\n· 비과세종합저축 대상 고객 : 우대이자율 0.1%p 제공\n· 다자녀 고객(3자녀 이상), 다문화 가정 고객 : 우대이자율 0.1%p 제공",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000216_1_C59F036767D-INST_KR_000216_1_C59F0-SOURCE_CLAUSE_INST_KR_000216_1",
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "DONATION_OR_DECLARATION_RECORDED",
+          "authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+          "self_report_eligible": true,
+          "recognition_criteria": {
+            "source_text": "특별우대이자율 : 연 0.1%p\n이 예금은 가입시 이어도사랑 기부금 출연을 희망하여 신청한 고객 : 우대 이자율 연 0.1%p 제공\n(단, 고객이 출연한 기부금이 년간 누계액 기준 1천만원 이른 시점부터는 해당연도의 특별우대이자율 제공 및 기부금 모금은 끝납니다.)",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000216-1-C59F036767D-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000216-1-C59F036767D-PREF-02"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "교차 우대이자율 적용 : 최고 연 0.3%p\n다음 각 호에 해당하는 경우 1건당(연 0.1%p), 최고(연 0.3%p)이내에서 우대 이자율을 우대합니다.\n· 적금 가입시 자동대체 등록고객 : 우대이자율 0.1p% 제공\n· 제주은행 신규 등록 고객 : 우대이자율 0.1p% 제공\n· 입출금이 자유로운 예금 기가입 고객 : 우대이자율 0.1%p 제공\n· 등록 장애인(복지카드 소지자) 고객 : 우대이자율 0.1%p 제공\n· 비과세종합저축 대상 고객 : 우대이자율 0.1%p 제공\n· 다자녀 고객(3자녀 이상), 다문화 가정 고객 : 우대이자율 0.1%p 제공",
+          "accepted_documents": [
+            "복지카드"
+          ],
+          "list_semantics": "EXAMPLES_OR_NON_EXHAUSTIVE",
+          "submission_deadline_source_expressions": [
+            "3%p)이내에서 우대 이자율을 우대합니다"
+          ]
+        },
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000216-1-C59F036767D-PREF-03",
+          "applies_to_rule_ids": [
+            "INST-KR-000216-1-C59F036767D-PREF-03"
+          ],
+          "required_actions": [
+            "COMPLETE_APPLICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "특별우대이자율 : 연 0.1%p\n이 예금은 가입시 이어도사랑 기부금 출연을 희망하여 신청한 고객 : 우대 이자율 연 0.1%p 제공\n(단, 고객이 출연한 기부금이 년간 누계액 기준 1천만원 이른 시점부터는 해당연도의 특별우대이자율 제공 및 기부금 모금은 끝납니다.)"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000216-1-C59F036767D-PREF-02",
+          "title": "교차 우대이자율 적용 : 최고 연 0.3%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000216_1_C59F036767D_PREF_02.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000216-1-C59F036767D-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.1",
+            "occurrence_block_size": 1,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+              }
+            ],
+            "cap_value": "0.3",
+            "max_qualifying_units": 3
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "교차 우대이자율 적용 : 최고 연 0.3%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "교차 우대이자율 적용 : 최고 연 0.3%p\n다음 각 호에 해당하는 경우 1건당(연 0.1%p), 최고(연 0.3%p)이내에서 우대 이자율을 우대합니다.\n· 적금 가입시 자동대체 등록고객 : 우대이자율 0.1p% 제공\n· 제주은행 신규 등록 고객 : 우대이자율 0.1p% 제공\n· 입출금이 자유로운 예금 기가입 고객 : 우대이자율 0.1%p 제공\n· 등록 장애인(복지카드 소지자) 고객 : 우대이자율 0.1%p 제공\n· 비과세종합저축 대상 고객 : 우대이자율 0.1%p 제공\n· 다자녀 고객(3자녀 이상), 다문화 가정 고객 : 우대이자율 0.1%p 제공"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C59F036767D-PREF-03",
+          "title": "특별우대이자율 : 연 0.1%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "DONATION_OR_DECLARATION.AMOUNT.SOURCE_CLAUSE_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+              }
+            ],
+            "fact_authority": "CUSTOMER_DECLARATION_OR_BANK_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "특별우대이자율 : 연 0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+            }
+          ],
+          "semantic_domain": "DONATION_OR_DECLARATION",
+          "source_clause_text": "특별우대이자율 : 연 0.1%p\n이 예금은 가입시 이어도사랑 기부금 출연을 희망하여 신청한 고객 : 우대 이자율 연 0.1%p 제공\n(단, 고객이 출연한 기부금이 년간 누계액 기준 1천만원 이른 시점부터는 해당연도의 특별우대이자율 제공 및 기부금 모금은 끝납니다.)"
+        },
+        {
+          "rule_id": "INST-KR-000216-1-C59F036767D-PREF-04",
+          "title": "인터넷뱅킹 등 비대면매체 신규 우대이자율 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000216_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "인터넷뱅킹 등 비대면매체 신규 우대이자율 : 0.1%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "인터넷뱅킹 등 비대면매체 신규 우대이자율 : 0.1%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000216-1-C59F036767D-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000216-1-C59F036767D-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000216-1-C59F036767D-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.1",
+          "occurrence_block_size": 1,
+          "source_ref_ids": [
+            "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-01",
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02",
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03",
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04",
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-RATE",
+      "EVD-IS-AF4892400C6D345A99033BBA12B17C33-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "2.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "af4892400c6d345a99033bba12b17c33"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO",
+    "EVD-IS-AF4892400C6D345A99033BBA12B17C33-RATE",
+    "EVD-IS-AF4892400C6D345A99033BBA12B17C33-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "af4892400c6d345a99033bba12b17c33",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-AF4892400C6D345A99033BBA12B17C33-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

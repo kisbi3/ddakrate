@@ -1,0 +1,523 @@
+{
+  "product_code": "INST-KR-000743-3-0001",
+  "version": 4,
+  "institution_id": "INST-KR-000743",
+  "name": "kiwi팡팡통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000743-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-0001"
+        ],
+        "source_clause": "1억원 이하 | 연 2.0%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "1억원 이하",
+              "max_value": "100000000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000743-3-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.3",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-0001"
+        ],
+        "source_clause": "1억원 초과 | 연 1.3%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "1억원 초과",
+              "min_value": "100000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_scope": {
+          "basis": "END_OF_DAY_BALANCE",
+          "method": "CAPPED_PORTION",
+          "range": {
+            "currency": "KRW",
+            "unit": "KRW",
+            "min_value": "0",
+            "min_inclusive": true,
+            "max_value": "100000000",
+            "max_inclusive": true,
+            "source_text": "이자계산기간 동안 매일 최종잔액 중 1억원 이하 금액"
+          },
+          "source_text": "이자계산기간 동안 매일 최종잔액 중 1억원 이하 금액"
+        },
+        "reward_window": "CURRENT_INTEREST_CALCULATION_MONTH",
+        "opening_month_policy": {
+          "default": "NO_PREFERENTIAL_RATE",
+          "exception_rule_ids": [
+            "INST-KR-000743-3-0001-PREF-01"
+          ],
+          "exception_basis": "PREVIOUS_MONTH_END_PREEXISTING_MEMBERSHIP_OR_MARKETING_CONSENT"
+        },
+        "source_text": "우대이율 최대 0.5%\n* 이자계산기간동안의 매일의 최종예금잔액에 대하여 1억원 이하 금액까지는 기본이율과 우대이율을 합산하여 적용하며, 1억원을 초과하는 금액은 기본이율 적용\n* 신규가입 첫 달의 경우 무실적으로 우대금리 미적용 (단, 전월 말일 기준 kiwi멤버십 또는 마케팅 수신 기 가입자는 해당 우대금리 적용)\n1\nkiwi멤버십 또는 마케팅 수신 동의(문자 및 앱푸시 모두 동의)\n* 이자지급 기준은 결산기준일의 전월의 말일 기준 : 0.2%\n2\nkiwi팡팡통장계좌를 출금계좌로 등록한 건으로, 자동이체 2건 이상 출금 거래 등록\n* 이자지급 기준은 결산기준일의 전월의 말일 기준 : 0.1%\n3\nKB저축은행 앱을 이용하여 당행 또는 타행 계좌에 월1회 이상 이체 실적 있는 경우(인터넷뱅킹 이체거래, 자동이체, 창구에서 당행/타행으로 이체한 거래는 제외) : 0.2%"
+      },
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000743-3-0001"
+        ]
+      },
+      "event_definitions": [
+        {
+          "event_id": "EV-INST-KR-000743-3-0001-APP-TRANSFER",
+          "event_type": "MOBILE_APP_INITIATED_ACCOUNT_TRANSFER",
+          "initiating_app": "KB_SAVINGS_BANK_APP",
+          "destination_scope": [
+            "SAME_BANK_ACCOUNT",
+            "OTHER_BANK_ACCOUNT"
+          ],
+          "excluded_channels": [
+            "INTERNET_BANKING",
+            "AUTOMATIC_TRANSFER",
+            "BRANCH_TRANSFER"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        }
+      ],
+      "fact_definitions": [
+        {
+          "fact_key": "MEMBERSHIP.KIWI.ACTIVE_AT_PREVIOUS_MONTH_END",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "CONSENT.MARKETING.SMS_ACTIVE_AT_PREVIOUS_MONTH_END",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "CONSENT.MARKETING.APP_PUSH_ACTIVE_AT_PREVIOUS_MONTH_END",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "AUTOTRANSFER.THIS_ACCOUNT_DEBIT_REGISTRATION_COUNT_AT_PREVIOUS_MONTH_END",
+          "data_type": "INTEGER",
+          "unit": "COUNT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "TRANSFER.KB_SAVINGS_APP_QUALIFYING_COUNT_CURRENT_MONTH",
+          "data_type": "INTEGER",
+          "unit": "COUNT",
+          "event_definition_ref": "EV-INST-KR-000743-3-0001-APP-TRANSFER",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000743-3-0001-PREF-01",
+          "title": "kiwi멤버십 또는 문자·앱푸시 마케팅 동의",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "MEMBERSHIP.KIWI.ACTIVE_AT_PREVIOUS_MONTH_END",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "condition": {
+                  "operator": "AND",
+                  "operands": [
+                    {
+                      "predicate": {
+                        "fact_key": "CONSENT.MARKETING.SMS_ACTIVE_AT_PREVIOUS_MONTH_END",
+                        "operator": "EQUALS",
+                        "expected_value": true
+                      }
+                    },
+                    {
+                      "predicate": {
+                        "fact_key": "CONSENT.MARKETING.APP_PUSH_ACTIVE_AT_PREVIOUS_MONTH_END",
+                        "operator": "EQUALS",
+                        "expected_value": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_snapshot": "PREVIOUS_MONTH_END",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000743-3-0001-PREF-02",
+          "title": "자동이체 출금거래 등록 2건 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "AUTOTRANSFER.THIS_ACCOUNT_DEBIT_REGISTRATION_COUNT_AT_PREVIOUS_MONTH_END",
+              "operator": "GTE",
+              "expected_value": 2
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_snapshot": "PREVIOUS_MONTH_END",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000743-3-0001-PREF-03",
+          "title": "KB저축은행 앱 직접 이체 월 1회 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "TRANSFER.KB_SAVINGS_APP_QUALIFYING_COUNT_CURRENT_MONTH",
+              "operator": "GTE",
+              "expected_value": 1
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_window": "CURRENT_INTEREST_CALCULATION_MONTH",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000743-3-0001-REL-SUM-CAP",
+          "type": "SUM_WITH_CAP",
+          "rule_ids": [
+            "INST-KR-000743-3-0001-PREF-01",
+            "INST-KR-000743-3-0001-PREF-02",
+            "INST-KR-000743-3-0001-PREF-03"
+          ],
+          "cap_value": "0.5",
+          "cap_unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "￭ 매월 말일(휴일 포함)을 결산기준일로 하여 익일(매월 1일) 또는 고객이 직접 이자지급을 요청한 날 원금에 가산\n￭ 최초 예금일 또는 전 결산기준일 익일부터 다음 결산기준일 또는 지급일 전일까지의 기간을 이자계산기간으로 매일의 최종잔액에 대하여 고시된 이율로 계산하여 적용",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000743-3-0001-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            },
+            "reference_day": {
+              "type": "LAST_CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000743-3-0001-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "￭ 매월 말일(휴일 포함)을 결산기준일로 하여 익일(매월 1일) 또는 고객이 직접 이자지급을 요청한 날 원금에 가산\n￭ 최초 예금일 또는 전 결산기준일 익일부터 다음 결산기준일 또는 지급일 전일까지의 기간을 이자계산기간으로 매일의 최종잔액에 대하여 고시된 이율로 계산하여 적용",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000743-3-0001"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER",
+      "CAPPED_PORTION"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE_TIER",
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000743-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000743-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000743-3-0001",
+    "source_record_id": "02f56e15903494a5f5991c1615855e98",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T16:10:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 169,
+    "reviewed_source_record_id": "02f56e15903494a5f5991c1615855e98",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY",
+      "ON_REQUEST_INTEREST_PATH_NOT_STRUCTURED",
+      "MEMBERSHIP_OR_MARKETING_GRAPH_LOST",
+      "APP_TRANSFER_CONDITION_MISCOMPILED",
+      "OPENING_MONTH_EXCEPTION_LOST"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reconciled_at": "2026-08-30T16:10:00+09:00",
+    "condition_section_reconciliation_pass": 2,
+    "condition_section_primary_source": "NAVER_RATE_INFO_CONDITION_SECTION",
+    "condition_section_sha256": "bbec68d9ccc634cd3dd342f880984090292f814215b5f41a4db176de700a13a0",
+    "resolved_condition_findings": [
+      "MEMBERSHIP_OR_MARKETING_GRAPH_LOST",
+      "APP_TRANSFER_CONDITION_MISCOMPILED",
+      "OPENING_MONTH_EXCEPTION_LOST"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000743-3-0001"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T16:10:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true,
+    "condition_section_reconciliation_pass": 2
+  }
+}

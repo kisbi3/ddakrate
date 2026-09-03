@@ -1,0 +1,541 @@
+{
+  "product_code": "INST-KR-000204-2-CCADDA1A31B",
+  "version": 3,
+  "institution_id": "INST-KR-000204",
+  "name": "시장금리부 정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "subscription_channel_source_text": "영업점",
+    "subscription_channel_source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "국가 및 지방자치단체를 제외하고 제한없이 가입",
+    "eligibility_text": "국가 및 지방자치단체를 제외하고 제한없이 가입",
+    "display_text": "국가 및 지방자치단체를 제외하고 제한없이 가입",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "mode": "UNRESTRICTED",
+    "restrictions": [
+      {
+        "kind": "EXCLUDED_CUSTOMER_CATEGORY",
+        "excluded_categories": [
+          "NATIONAL_GOVERNMENT",
+          "LOCAL_GOVERNMENT"
+        ],
+        "source_text": "국가 및 지방자치단체를 제외하고 제한없이 가입"
+      }
+    ]
+  },
+  "term_policy": {
+    "source_text": "1개월 이상 36개월 범위 내에서 월단위 또는 일단위",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 36,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "MONTH",
+      "DAY"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "source_amount_text": "300만원 이상",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "3000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "interest_payment_policy": {
+    "multiple_contexts": true,
+    "source_text": "• 만기일시지급식 : 만기(후) 또는 중도해지 요청 시 이자를 지급 • 월이자 지급식 : 매월 또는 중도해지 요청시 이자를 지급",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "contexts": [
+      {
+        "context_id": "MATURITY_LUMP_SUM",
+        "payment_timing": "AT_MATURITY",
+        "payment_amount": "PRINCIPAL_AND_INTEREST",
+        "early_termination_payment_timing": "ON_EARLY_TERMINATION_REQUEST"
+      },
+      {
+        "context_id": "MONTHLY_INTEREST_PAYMENT",
+        "payment_timing": "MONTHLY",
+        "payment_amount": "INTEREST_ONLY",
+        "early_termination_payment_timing": "ON_EARLY_TERMINATION_REQUEST"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.6",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 3개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 3개월 미만",
+          "raw_cell": "1.600%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "1개월이상 3개월 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.8",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 6개월 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 6개월 미만",
+          "raw_cell": "1.800%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "3개월이상 6개월 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.9",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 1년 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 1년 미만",
+          "raw_cell": "1.900%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "6개월이상 1년 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "1년이상 2년 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "1년이상 2년 미만",
+          "raw_cell": "2.100%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "1년이상 2년 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.0",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "2년이상 3년 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "2년이상 3년 미만",
+          "raw_cell": "2.000%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "2년이상 3년 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.85",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "3년만기"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "3년만기",
+          "raw_cell": "1.850%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ],
+        "source_rate_row_text": "3년만기",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000204-2-CCADDA1A31B-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+        ]
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\\n기간 금리\\n1개월이상 3개월 미만\\n1.600%\\n3개월이상 6개월 미만\\n1.800%\\n6개월이상 1년 미만\\n1.900%\\n1년이상 2년 미만\\n2.100%\\n2년이상 3년 미만\\n2.000%\\n3년만기\\n1.850%",
+      "header_lines": [
+        "기본 금리",
+        "기간 금리"
+      ],
+      "rows": [
+        {"term_text": "1개월이상 3개월 미만", "cell_lines": ["1.600%"], "rate_values": ["1.6"]},
+        {"term_text": "3개월이상 6개월 미만", "cell_lines": ["1.800%"], "rate_values": ["1.8"]},
+        {"term_text": "6개월이상 1년 미만", "cell_lines": ["1.900%"], "rate_values": ["1.9"]},
+        {"term_text": "1년이상 2년 미만", "cell_lines": ["2.100%"], "rate_values": ["2.1"]},
+        {"term_text": "2년이상 3년 미만", "cell_lines": ["2.000%"], "rate_values": ["2.0"]},
+        {"term_text": "3년만기", "cell_lines": ["1.850%"], "rate_values": ["1.85"]}
+      ],
+      "column_descriptors": [
+        {"context_id": "CONTRACT_RATE", "semantic_role": "CONTRACT_RATE"}
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT.INST-KR-000204-2-CCADDA1A31B.PREF-B01-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+          ],
+          "definition_text": "JB 햇살론 YOUTH 보유고객 우대 : 0.2%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "JB 햇살론 YOUTH 보유고객 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000204-2-CCADDA1A31B.PREF-B01-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": ["EARLY_TERMINATION"]
+          },
+          "display": {
+            "summary": "JB 햇살론 YOUTH 보유고객 우대 : 0.2%",
+            "reward_text": "+0.2%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+          ],
+          "evidence": [
+            {"text": "JB 햇살론 YOUTH 보유고객 우대 : 0.2%"}
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+      ],
+      "structuring_status": "SUPPORTED",
+      "global_cap": {
+        "value": "0.2",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "JB 햇살론 YOUTH 보유고객 우대 : 0.2%"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.1",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B"
+      ]
+    }
+  },
+  "tax_policy": {
+    "default_treatment": "TAXABLE",
+    "available_treatments": [
+      {
+        "treatment": "CONDITIONAL_TAX_EXEMPT",
+        "treatment_code": "KOREA_TAX_FREE_COMPREHENSIVE_SAVINGS",
+        "eligibility_text": "전북은행 공식 상품 페이지는 ‘비과세가능’만 명시하며 법정 대상·한도는 페이지에 미기재."
+      }
+    ],
+    "source_text": "Naver 계산 예시는 이자과세(15.4%)를 표시하고, 전북은행 공식 상품주요내용은 과세혜택 ‘비과세가능’을 표시한다.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+      "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "early_termination_allowed": true,
+    "early_termination_rate_policy": {
+      "status": "RATE_TABLE_REFERENCED_NOT_CAPTURED",
+      "source_text": "Naver는 월이자지급식 중도해지 시 기지급 이자와 중도해지이율 적용 이자의 차액을 원금에서 차감한다고 명시한다. 전북은행 공식 페이지는 ‘중도해지이율 | 금리보기 Go’만 제공하며, 직접 읽은 상품 본문에는 구간별 수치가 없다.",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+        "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+      ]
+    },
+    "after_maturity_policy": {
+      "status": "RATE_TABLE_REFERENCED_NOT_CAPTURED",
+      "source_text": "전북은행 공식 페이지는 ‘만기후 이율 | 금리보기 Go’만 제공하며, 직접 읽은 상품 본문에는 만기후 적용이율 또는 구간별 산식이 없다.",
+      "source_ref_ids": [
+        "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+      ]
+    },
+    "partial_withdrawal": {
+      "allowed": true,
+      "max_count": 3,
+      "source_text": "분할해지가 가능함으로 긴급자금 필요시에도 이자 손실없이 예금의 일부 인출 가능(만기해지 포함 최장 3회까지 인출 가능)",
+      "source_ref_ids": [
+        "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+      ]
+    },
+    "renewal_policy": {
+      "status": "NOT_STATED",
+      "source_text": "직접 읽은 Naver 전체 원문과 전북은행 공식 상품 본문에는 자동재예치 또는 자동연장 조건이 미기재.",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+        "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+      ]
+    },
+    "rollover_policy": {
+      "status": "NOT_STATED",
+      "source_text": "직접 읽은 Naver 전체 원문과 전북은행 공식 상품 본문에는 자동재예치 또는 자동연장 조건이 미기재.",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+        "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+      ]
+    },
+    "maturity_options": ["MANUAL_CLOSE"],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+      "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "전북은행 공식 상품 페이지: 예금자보호여부 해당, 원금과 소정의 이자를 합하여 1인당 최고 1억원; Naver도 전북은행 여타 보호 상품과 합산 1억원까지 보호를 명시.",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+      "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000204-2-CCADDA1A31B",
+    "EVD-TD-ROW0256-JBBANK-PRODUCT-PAGE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-01T23:40:00+09:00",
+    "data_authority": "NAVER_FULL_RAW_PLUS_DIRECT_JBBANK_PRODUCT_PAGE",
+    "publication_gate": "STAGED_PENDING_ROW255_GLOBAL_NUMERIC_CU_ZERO",
+    "data_gaps": [
+      {"path": "eligibility_policy.internet_banking_requirement", "gap_id": "GAP-0256-ELIGIBILITY-CONFLICT"},
+      {"path": "return_policy.rate_entries", "gap_id": "GAP-0256-OFFICIAL-RATE-NUMERICS"},
+      {"path": "interest_payment_policy.context_rate_mapping", "gap_id": "GAP-0256-PAYMENT-RATE-CONTEXT"},
+      {"path": "liquidity_policy.early_termination_rate_policy", "gap_id": "GAP-0256-EARLY-TERMINATION-RATE-TABLE"},
+      {"path": "liquidity_policy.after_maturity_policy", "gap_id": "GAP-0256-AFTER-MATURITY-RATE-TABLE"},
+      {"path": "liquidity_policy.renewal_policy", "gap_id": "GAP-0256-ROLLOVER-NOT-STATED"},
+      {"path": "tax_policy.available_treatments[0].eligibility_text", "gap_id": "GAP-0256-TAX-FREE-CONDITIONS"}
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_CONFLICT_RECORDED",
+    "source_reason": "DIRECT_NAVER_RAW_RECORD_AND_DIRECT_JBBANK_PRODUCT_PAGE",
+    "staging_only": true
+  },
+  "data_gaps": [
+    {"gap_id": "GAP-0256-ELIGIBILITY-CONFLICT", "path": "eligibility_policy.internet_banking_requirement"},
+    {"gap_id": "GAP-0256-OFFICIAL-RATE-NUMERICS", "path": "return_policy.rate_entries"},
+    {"gap_id": "GAP-0256-PAYMENT-RATE-CONTEXT", "path": "interest_payment_policy.context_rate_mapping"},
+    {"gap_id": "GAP-0256-EARLY-TERMINATION-RATE-TABLE", "path": "liquidity_policy.early_termination_rate_policy"},
+    {"gap_id": "GAP-0256-AFTER-MATURITY-RATE-TABLE", "path": "liquidity_policy.after_maturity_policy"},
+    {"gap_id": "GAP-0256-ROLLOVER-NOT-STATED", "path": "liquidity_policy.renewal_policy"},
+    {"gap_id": "GAP-0256-TAX-FREE-CONDITIONS", "path": "tax_policy.available_treatments[0].eligibility_text"}
+  ]
+}

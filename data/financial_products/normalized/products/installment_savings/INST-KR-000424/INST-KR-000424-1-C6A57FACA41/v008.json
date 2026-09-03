@@ -1,0 +1,915 @@
+{
+  "product_code": "INST-KR-000424-1-C6A57FACA41",
+  "version": 8,
+  "institution_id": "INST-KR-000424",
+  "name": "우리 사장님 성장 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-SALE"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 30000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "사업자등록증을 보유한 개인사업자 (1인 1계좌)",
+    "eligibility_text": "사업자등록증을 보유한 개인사업자 (1인 1계좌)",
+    "display_text": "사업자등록증을 보유한 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "1000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 100만원 이하로 지정한 금액",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "월 100만원 이하로 지정한 금액"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-C6A57FACA41-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "global_cap": {
+        "value": "4.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01",
+          "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02",
+          "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03",
+          "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000424_1_C6A57FACA41_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000424-1-C6A57FACA41-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000424_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "성실상환* 고객 또는 매출성장** 고객 우대\n* 이 적금 만기일 기준 6개월 이상 보유한 우리은행 기업여신의 연체 일수가 10일 이하인 경우\n** 이 적금 신규 가입 시점 대비 만기 시점에 확인되는 매출액이 '1원 이상' 증가한 경우\n※ 매출 정보는 행정안전부의 공공마이데이터를 통해 조회되는 부가가치세 과세표준증명원 상의 매출액을 기준으로 활용함(단, 해지 시점에 조회 오류 등으로 정보 조회가 어려워 비대면 해지가 불가할 경우 매출 정보를 확인할 수 있는 서류(재무제표, 부가가치세 과세표준증명원 등)를 영업점에 제출하여 대면 해지하는 경우 우대 적용 가능 : 0.5%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000424_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "직전 1년*동안 우리은행 예·적금(청약포함) 상품 미보유 고객\n* 이 적금 신규 가입 전일자 기준 직전 1년 : 2%"
+        },
+        {
+          "fact_key": "PRODUCT.YELLOW_UMBRELLA_HELD_THROUGH_WOORI",
+          "type": "BOOLEAN",
+          "authority": "WOORI_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "MERCHANT_SETTLEMENT.QUALIFYING_MONTH_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-WOORI-BUSINESS-MERCHANT-SETTLEMENT",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000424-1-C6A57FACA41-PREF-03-QUALIFYING",
+          "event_type": "MERCHANT_SETTLEMENT_DEPOSIT_POSTED",
+          "qualifying_definition": {
+            "source_text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-WOORI-BUSINESS-MERCHANT-SETTLEMENT",
+          "event_type": "MERCHANT_SETTLEMENT_DEPOSIT_POSTED",
+          "qualifying_types": [
+            "CREDIT_CARD_SALES_PROCEEDS",
+            "ZEROPAY_SALES_PROCEEDS",
+            "BAEMIN_SALES_PROCEEDS",
+            "COUPANG_SALES_PROCEEDS",
+            "NAVER_SMARTSTORE_SETTLEMENT",
+            "NAVERPAY_MERCHANT_SETTLEMENT"
+          ],
+          "destination_account_type": "WOORI_DEMAND_DEPOSIT",
+          "maximum_count_per_period": {
+            "period": "MONTH",
+            "max_count": 1,
+            "aggregation": "QUALIFYING_MONTH_BOOLEAN"
+          },
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000424-1-C6A57FACA41-PREF-02",
+          "applies_to_rule_ids": [
+            "INST-KR-000424-1-C6A57FACA41-PREF-02"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "성실상환* 고객 또는 매출성장** 고객 우대\n* 이 적금 만기일 기준 6개월 이상 보유한 우리은행 기업여신의 연체 일수가 10일 이하인 경우\n** 이 적금 신규 가입 시점 대비 만기 시점에 확인되는 매출액이 '1원 이상' 증가한 경우\n※ 매출 정보는 행정안전부의 공공마이데이터를 통해 조회되는 부가가치세 과세표준증명원 상의 매출액을 기준으로 활용함(단, 해지 시점에 조회 오류 등으로 정보 조회가 어려워 비대면 해지가 불가할 경우 매출 정보를 확인할 수 있는 서류(재무제표, 부가가치세 과세표준증명원 등)를 영업점에 제출하여 대면 해지하는 경우 우대 적용 가능 : 0.5%",
+          "submission_channels": [
+            "BRANCH"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-02",
+          "title": "성실상환* 고객 또는 매출성장** 고객 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000424_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "성실상환* 고객 또는 매출성장** 고객 우대"
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            }
+          ],
+          "semantic_domain": "LOAN_HOLDING_OR_PERFORMANCE",
+          "source_clause_text": "성실상환* 고객 또는 매출성장** 고객 우대\n* 이 적금 만기일 기준 6개월 이상 보유한 우리은행 기업여신의 연체 일수가 10일 이하인 경우\n** 이 적금 신규 가입 시점 대비 만기 시점에 확인되는 매출액이 '1원 이상' 증가한 경우\n※ 매출 정보는 행정안전부의 공공마이데이터를 통해 조회되는 부가가치세 과세표준증명원 상의 매출액을 기준으로 활용함(단, 해지 시점에 조회 오류 등으로 정보 조회가 어려워 비대면 해지가 불가할 경우 매출 정보를 확인할 수 있는 서류(재무제표, 부가가치세 과세표준증명원 등)를 영업점에 제출하여 대면 해지하는 경우 우대 적용 가능 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-04",
+          "title": "직전 1년*동안 우리은행 예·적금(청약포함) 상품 미보유 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000424_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "직전 1년*동안 우리은행 예·적금(청약포함) 상품 미보유 고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "직전 1년*동안 우리은행 예·적금(청약포함) 상품 미보유 고객\n* 이 적금 신규 가입 전일자 기준 직전 1년 : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-03-YELLOW-UMBRELLA",
+          "title": "우리은행을 통한 노란우산 가입·보유",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.YELLOW_UMBRELLA_HELD_THROUGH_WOORI",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-03-SETTLEMENT",
+          "title": "가맹점 매출대금 6개월 이상 입금",
+          "condition": {
+            "predicate": {
+              "fact_key": "MERCHANT_SETTLEMENT.QUALIFYING_MONTH_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-03-BOTH-BONUS",
+          "title": "두 조건 동시 충족 추가우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "PRODUCT.YELLOW_UMBRELLA_HELD_THROUGH_WOORI",
+                  "operator": "EQUALS",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MERCHANT_SETTLEMENT.QUALIFYING_MONTH_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 6,
+                  "unit": "MONTH",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "우리은행을 통해 노란우산을 가입(보유)하고, 우리은행 입출금 통장으로 가맹점 매출대금*이 6개월 이상 입금된 고객 연 0.5%p~연 1.5%**\n* 신용카드 매출대금, 제로페이 매출대금, 배달의민족 매출대금, 쿠팡 매출대금, 네이버 스마트스토어 및 네이버페이 가맹점 정산대금\n** 노란우산 가입(보유) 및 가맹점매출대금 6개월 이상 입금을 모두 충족하는 경우 연 1.5%p 적용 (단, 둘 중 하나만 충족하는 경우 연 0.5%p 적용)",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000424-1-C6A57FACA41-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000424-1-C6A57FACA41-PREF-02",
+            "INST-KR-000424-1-C6A57FACA41-PREF-04",
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-YELLOW-UMBRELLA",
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-SETTLEMENT",
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-BOTH-BONUS"
+          ],
+          "cap": {
+            "value": "4.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01",
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02",
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03",
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01",
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02",
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03",
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-WOORI-BUSINESS-GROWTH-PREF-03",
+          "operator": "SUM_WITH_CAP",
+          "member_rule_ids": [
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-YELLOW-UMBRELLA",
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-SETTLEMENT",
+            "INST-KR-000424-1-C6A57FACA41-PREF-03-BOTH-BONUS"
+          ],
+          "cap": {
+            "value": "1.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+              }
+            ]
+          },
+          "dependency_rules": [
+            {
+              "rule_id": "INST-KR-000424-1-C6A57FACA41-PREF-03-BOTH-BONUS",
+              "requires_all_rule_ids": [
+                "INST-KR-000424-1-C6A57FACA41-PREF-03-YELLOW-UMBRELLA",
+                "INST-KR-000424-1-C6A57FACA41-PREF-03-SETTLEMENT"
+              ]
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+            }
+          ]
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01",
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02",
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03",
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04",
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-RATE",
+      "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "f22a50d8f5c8ccbbe09d4286dcf72537"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO",
+    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-RATE",
+    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-LISTING",
+    "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "f22a50d8f5c8ccbbe09d4286dcf72537",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 7,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-F22A50D8F5C8CCBBE09D4286DCF72537-SALE"
+      ]
+    }
+  ]
+}

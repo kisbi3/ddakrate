@@ -1,0 +1,1401 @@
+{
+  "product_code": "INST-KR-000739-2-C4C876638DA",
+  "version": 4,
+  "institution_id": "INST-KR-000739",
+  "name": "정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음",
+    "eligibility_text": "제한없음",
+    "display_text": "제한없음",
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "source_text": "1개월 이상 36개월 이내(월단위 또는 월/일 단위로 가입 가능)",
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 36,
+    "min_inclusive": true,
+    "max_inclusive": true,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER",
+      "EVD-TD-ROW0512-NH-PDF"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER",
+      "EVD-TD-ROW0512-NH-PDF"
+    ],
+    "source_amount_text": "1천원 이상 제한없음",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.050% 1.950%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-01-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.050% 1.950%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.100% 2.000%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-02-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.100% 2.000%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-03-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-04-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.400% 2.300%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-04-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.400% 2.300%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-05-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-05-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-06-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월이상",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "36개월이상"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-CTX-06-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월이상",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "36개월이상"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.05",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.050% 1.950%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-002",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.95",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": false
+            },
+            "source_term_text": "1개월이상 ~ 3개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "1개월이상 ~ 3개월미만",
+          "raw_cell": "2.050% 1.950%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "1개월이상 ~ 3개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.100% 2.000%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-004",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": false
+            },
+            "source_term_text": "3개월이상 ~ 6개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "3개월이상 ~ 6개월미만",
+          "raw_cell": "2.100% 2.000%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "3개월이상 ~ 6개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-006",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": false
+            },
+            "source_term_text": "6개월이상 ~ 12개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "6개월이상 ~ 12개월미만",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "6개월이상 ~ 12개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-007",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.4",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.400% 2.300%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-008",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 24,
+              "max_inclusive": false
+            },
+            "source_term_text": "12개월이상 ~ 24개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "12개월이상 ~ 24개월미만",
+          "raw_cell": "2.400% 2.300%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "12개월이상 ~ 24개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-009",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.3",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-010",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 24,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": false
+            },
+            "source_term_text": "24개월이상 ~ 36개월미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "24개월이상 ~ 36개월미만",
+          "raw_cell": "2.300% 2.200%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "24개월이상 ~ 36개월미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-011",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.25",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월이상",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "36개월이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000739-2-C4C876638DA-BASE-012",
+        "role": "BASE",
+        "application_event": "MONTHLY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.15",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 36,
+              "min_inclusive": true,
+              "max_value": 36,
+              "max_inclusive": true
+            },
+            "source_term_text": "36개월이상"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 5,
+          "source_rate_row_text": "36개월이상",
+          "raw_cell": "2.250% 2.150%",
+          "table_header": "기본 금리 | 기간 만기일시지급식 이자지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-ROW0512-NAVER",
+          "EVD-TD-ROW0512-NH-PDF"
+        ],
+        "source_rate_row_text": "36개월이상",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 만기일시지급식 이자지급식\n1개월이상 ~ 3개월미만\n2.050% 1.950%\n3개월이상 ~ 6개월미만\n2.100% 2.000%\n6개월이상 ~ 12개월미만\n2.250% 2.150%\n12개월이상 ~ 24개월미만\n2.400% 2.300%\n24개월이상 ~ 36개월미만\n2.300% 2.200%\n36개월이상\n2.250% 2.150%",
+      "header_lines": [
+        "기본 금리",
+        "기간 만기일시지급식 이자지급식"
+      ],
+      "rows": [
+        {
+          "term_text": "1개월이상 ~ 3개월미만",
+          "cell_lines": [
+            "2.050% 1.950%"
+          ],
+          "rate_values": [
+            "2.05",
+            "1.95"
+          ]
+        },
+        {
+          "term_text": "3개월이상 ~ 6개월미만",
+          "cell_lines": [
+            "2.100% 2.000%"
+          ],
+          "rate_values": [
+            "2.1",
+            "2"
+          ]
+        },
+        {
+          "term_text": "6개월이상 ~ 12개월미만",
+          "cell_lines": [
+            "2.250% 2.150%"
+          ],
+          "rate_values": [
+            "2.25",
+            "2.15"
+          ]
+        },
+        {
+          "term_text": "12개월이상 ~ 24개월미만",
+          "cell_lines": [
+            "2.400% 2.300%"
+          ],
+          "rate_values": [
+            "2.4",
+            "2.3"
+          ]
+        },
+        {
+          "term_text": "24개월이상 ~ 36개월미만",
+          "cell_lines": [
+            "2.300% 2.200%"
+          ],
+          "rate_values": [
+            "2.3",
+            "2.2"
+          ]
+        },
+        {
+          "term_text": "36개월이상",
+          "cell_lines": [
+            "2.250% 2.150%"
+          ],
+          "rate_values": [
+            "2.25",
+            "2.15"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY"
+        },
+        {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY"
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NAVER",
+        "EVD-TD-ROW0512-NH-PDF"
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NAVER",
+        "EVD-TD-ROW0512-NH-PDF"
+      ],
+      "structuring_status": "SUPPORTED_WITH_EXPLICIT_GAPS"
+    },
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER",
+      "EVD-TD-ROW0512-NH-PDF"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.4",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NAVER"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "2.4",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NAVER"
+      ]
+    },
+    "interest_payment_policy": {
+      "contexts": [
+        {
+          "context_id": "MONTHLY_PAYMENT",
+          "payment_timing": "MONTHLY"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "payment_timing": "MATURITY"
+        }
+      ],
+      "multiple_contexts": true,
+      "default_context_id": "MONTHLY_PAYMENT",
+      "default_context_derivation": "LISTING_BASE_VALUE_MATCH"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-ROW0512-NAVER",
+    "EVD-TD-ROW0512-NH-PDF"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02",
+    "data_authority": "NAVER_PRIMARY_WITH_NH_OFFICIAL_DESCRIPTION_CORROBORATION",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "field": "product_identity.official_product_name",
+        "reason_code": "SOURCE_NAME_VARIANT",
+        "message": "Naver 현재 상품명은 정기예금, NH 공식 설명서는 큰만족실세예금으로 명칭 변형을 보존"
+      },
+      {
+        "field": "sale_policy.subscription_channels",
+        "reason_code": "SOURCE_CONTEXT_CONFLICT",
+        "message": "Naver 현재 표시는 영업점만, 공식 설명서(2024-06-17)는 신규 영업점·비대면 채널; Naver primary 유지"
+      },
+      {
+        "field": "eligibility_policy",
+        "reason_code": "SOURCE_CONTEXT_CONFLICT",
+        "message": "Naver 제한없음과 공식 설명서의 개인·법인(국가·지자체 제외)이 충돌하여 현재 Naver 값을 보존"
+      },
+      {
+        "field": "cash_flow_policy.amount_rules[0].min_value",
+        "reason_code": "SOURCE_CONTEXT_CONFLICT",
+        "message": "Naver 현재 최저 1천원과 공식 설명서 작성기준일 2024-04-24 최저 1백만원이 충돌하여 Naver primary 유지"
+      },
+      {
+        "field": "return_policy.rate_entries",
+        "reason_code": "SOURCE_DATE_CONFLICT",
+        "message": "Naver 현재 2026-09-02 표시 금리와 공식 설명서 작성기준일 2024-04-24 금리표가 시점 충돌; 현재 Naver 표 보존"
+      },
+      {
+        "field": "protection_policy.coverage_limit_krw",
+        "reason_code": "SOURCE_DATE_CONFLICT",
+        "message": "Naver 현재 1억원과 공식 설명서(유효기간 2026-05-31) 5천만원은 2025-09-01 보호한도 변경 및 문서 만료에 따른 충돌; Naver primary 유지"
+      },
+      {
+        "field": "official_current_product_page",
+        "reason_code": "ACCESS_BLOCKED_OR_NOT_FOUND",
+        "message": "NH 상품공시실 후보 URL HTTP 404; 현재 exact 상품 본문 URL을 확인하지 못해 PDF의 만료 시점을 명시"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_NAVER_RECORD_PLUS_NH_10000003_EXPIRED_DESCRIPTION_PDF",
+    "supersedes_version": 3
+  },
+  "data_gaps": [
+    {
+      "field": "product_identity.official_product_name",
+      "reason_code": "SOURCE_NAME_VARIANT",
+      "message": "Naver 현재 상품명은 정기예금, NH 공식 설명서는 큰만족실세예금으로 명칭 변형을 보존"
+    },
+    {
+      "field": "sale_policy.subscription_channels",
+      "reason_code": "SOURCE_CONTEXT_CONFLICT",
+      "message": "Naver 현재 표시는 영업점만, 공식 설명서(2024-06-17)는 신규 영업점·비대면 채널; Naver primary 유지"
+    },
+    {
+      "field": "eligibility_policy",
+      "reason_code": "SOURCE_CONTEXT_CONFLICT",
+      "message": "Naver 제한없음과 공식 설명서의 개인·법인(국가·지자체 제외)이 충돌하여 현재 Naver 값을 보존"
+    },
+    {
+      "field": "cash_flow_policy.amount_rules[0].min_value",
+      "reason_code": "SOURCE_CONTEXT_CONFLICT",
+      "message": "Naver 현재 최저 1천원과 공식 설명서 작성기준일 2024-04-24 최저 1백만원이 충돌하여 Naver primary 유지"
+    },
+    {
+      "field": "return_policy.rate_entries",
+      "reason_code": "SOURCE_DATE_CONFLICT",
+      "message": "Naver 현재 2026-09-02 표시 금리와 공식 설명서 작성기준일 2024-04-24 금리표가 시점 충돌; 현재 Naver 표 보존"
+    },
+    {
+      "field": "protection_policy.coverage_limit_krw",
+      "reason_code": "SOURCE_DATE_CONFLICT",
+      "message": "Naver 현재 1억원과 공식 설명서(유효기간 2026-05-31) 5천만원은 2025-09-01 보호한도 변경 및 문서 만료에 따른 충돌; Naver primary 유지"
+    },
+    {
+      "field": "official_current_product_page",
+      "reason_code": "ACCESS_BLOCKED_OR_NOT_FOUND",
+      "message": "NH 상품공시실 후보 URL HTTP 404; 현재 exact 상품 본문 URL을 확인하지 못해 PDF의 만료 시점을 명시"
+    }
+  ],
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MATURITY_PAYMENT",
+        "payment_timing": "MATURITY",
+        "interest_method": "SIMPLE"
+      },
+      {
+        "context_id": "MONTHLY_PAYMENT",
+        "payment_timing": "MONTHLY",
+        "interest_method": "SIMPLE"
+      }
+    ],
+    "multiple_contexts": true,
+    "default_context_id": "MATURITY_PAYMENT",
+    "source_text": "만기일시지급식 또는 월이자지급식",
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER",
+      "EVD-TD-ROW0512-NH-PDF"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme": "KDIC",
+    "source_text": "예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NAVER"
+    ]
+  },
+  "liquidity_policy": {
+    "automatic_renewal_allowed": true,
+    "automatic_renewal_policy": {
+      "available_channels": [
+        "WEB",
+        "MOBILE_APP"
+      ],
+      "annual_term_only": true,
+      "selection_count_min": 1,
+      "selection_count_max": 3,
+      "source_text": "인터넷뱅킹/스마트뱅킹 가입 시 연 단위 계약에 한해 1회부터 3회까지 재예치 선택 가능",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NH-PDF"
+      ]
+    },
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "tiers": [
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "max_value": 3,
+            "max_inclusive": false
+          },
+          "rate": {
+            "type": "FIXED",
+            "value": "0.10",
+            "unit": "PERCENT"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 3,
+            "min_inclusive": true,
+            "max_value": 6,
+            "max_inclusive": false
+          },
+          "rate": {
+            "formula": "EARLY_BASE_RATE*50%*ELAPSED_MONTHS/CONTRACT_MONTHS",
+            "minimum_percent": "0.10"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 6,
+            "min_inclusive": true,
+            "max_value": 9,
+            "max_inclusive": false
+          },
+          "rate": {
+            "formula": "EARLY_BASE_RATE*60%*ELAPSED_MONTHS/CONTRACT_MONTHS",
+            "minimum_percent": "0.10"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 9,
+            "min_inclusive": true,
+            "max_value": 11,
+            "max_inclusive": false
+          },
+          "rate": {
+            "formula": "EARLY_BASE_RATE*70%*ELAPSED_MONTHS/CONTRACT_MONTHS",
+            "minimum_percent": "0.10"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 11,
+            "min_inclusive": true
+          },
+          "rate": {
+            "formula": "EARLY_BASE_RATE*80%*ELAPSED_MONTHS/CONTRACT_MONTHS",
+            "minimum_percent": "0.10"
+          }
+        }
+      ],
+      "source_text": "3개월 미만 0.10%; 3~6개월 미만 ×50%; 6~9개월 미만 ×60%; 9~11개월 미만 ×70%; 11개월 이상 ×80%; 최저 0.1%",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NH-PDF"
+      ]
+    },
+    "after_maturity_policy": {
+      "tiers": [
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "max_value": 3,
+            "max_inclusive": true
+          },
+          "rate": {
+            "formula": "BASIC_RATE*50%"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 3,
+            "min_inclusive": false,
+            "max_value": 6,
+            "max_inclusive": true
+          },
+          "rate": {
+            "formula": "BASIC_RATE*20%"
+          }
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 6,
+            "min_inclusive": false
+          },
+          "rate": {
+            "formula": "BASIC_RATE*10%"
+          }
+        }
+      ],
+      "source_text": "만기 후 3개월 이내 기본이율의 50%, 6개월 이내 20%, 6개월 초과 10%",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NH-PDF"
+      ]
+    },
+    "partial_withdrawal": {
+      "allowed": true,
+      "max_events_including_maturity": 3,
+      "remaining_balance_min_krw": "1000000",
+      "rate_on_withdrawal": "EARLY_TERMINATION_RATE",
+      "source_ref_ids": [
+        "EVD-TD-ROW0512-NH-PDF"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-TD-ROW0512-NH-PDF"
+    ]
+  }
+}

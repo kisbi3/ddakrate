@@ -1,0 +1,1340 @@
+{
+  "product_code": "INST-KR-000010-1-CEF70A52A05",
+  "version": 8,
+  "institution_id": "INST-KR-000010",
+  "name": "오면우대!하면우대! 정기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+    ],
+    "representative_value": 12,
+    "min_value": 12,
+    "max_value": 36,
+    "source_bounds": {
+      "min": {
+        "value": 12,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 36,
+        "unit": "MONTH"
+      },
+      "min_inclusive": true,
+      "max_inclusive": true
+    }
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "100000",
+        "max_value": "500000",
+        "increment_value": "10000"
+      }
+    ],
+    "source_amount_text": "월 10만원 이상 50만원 이하(1만원 단위)",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 10만원 이상 50만원 이하(1만원 단위)"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 10만원 이상 50만원 이하(1만원 단위)"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "월 10만원 이상 50만원 이하(1만원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-1-CEF70A52A05-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.900",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "5.1",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03",
+          "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.NEW_TO_BANK_AT_SUBSCRIPTION",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "self_report_eligible": false
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.NEW_CUSTOMER_3M_100K_SPEND_SATISFIED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "self_report_eligible": false
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "self_report_eligible": false
+        },
+        {
+          "fact_key": "INCOME_CREDIT.SALARY_OR_PENSION_2_OF_3_TERM_SATISFIED",
+          "type": "BOOLEAN",
+          "authority": "BANK_CARD_LEDGER",
+          "source_definition": "신규고객이 이 예금 가입 시 : 3.0%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "ACCOUNT.UTILITY_AUTOPAY_INCREASE_AND_2M_CONTINUATION_SATISFIED",
+          "type": "BOOLEAN",
+          "authority": "BANK_CARD_LEDGER",
+          "source_definition": "이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.MONTHLY_100K_2_OF_3_TERM_SATISFIED",
+          "type": "BOOLEAN",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+          "type": "BOOLEAN",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "source_definition": "이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "self_report_eligible": false,
+          "source_recognition_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "* 기타 자세한 사항은 오면우대! 하면우대! 정기적금 상품설명서를 참조 바랍니다."
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000010-1-CEF70A52A05-PREF-03-SALARY-PENSION-QUALIFYING",
+          "event_type": "SALARY_DEPOSIT",
+          "qualifying_definition": {
+            "source_text": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000010-1-CEF70A52A05-PREF-03-UTILITY-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "공과금 자동이체 1건 이상 증가 및 신규월 익월부터 연속하여 2회이상 이체 실적 유지 : 2.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "공과금 자동이체 1건 이상 증가 및 신규월 익월부터 연속하여 2회이상 이체 실적 유지 : 2.0%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000010-1-CEF70A52A05-PREF-03-CARD-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우 : 1.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 100000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "10만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우 : 1.5%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000010_1_CEF70A52A05-INST_KR_000010_1_CEF70-SOURCE_COMPONENT_INST_KR_00001",
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_MONTH"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-02-NEW",
+          "title": "신규고객이 이 예금 가입 시 : 3.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "INCOME_CREDIT.SALARY_OR_PENSION_2_OF_3_TERM_SATISFIED",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규고객이 이 예금 가입 시 : 3.0%",
+            "reward_text": "+3.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "신규고객이 이 예금 가입 시 : 3.0%",
+          "semantic_domain": "CUSTOMER_STATUS",
+          "source_clause_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-02-CARD",
+          "title": "이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우 : 2.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.UTILITY_AUTOPAY_INCREASE_AND_2M_CONTINUATION_SATISFIED",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우 : 2.0%",
+            "reward_text": "+2.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우 : 2.0%",
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-02-MKT",
+          "title": "이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.UTILITY_AUTOPAY_INCREASE_AND_2M_CONTINUATION_SATISFIED",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%",
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "오면우대! : 신규고객 대상 우대이율 제공\n- 신규고객이 이 예금 가입 시 : 3.0%\n- 이 예금 신규월 포함하여 3개월동안 10만원 이상 경남은행 카드 대금결제가 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 2.0%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-03-SALARY-PENSION",
+          "title": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "CARD_ACTIVITY.MONTHLY_100K_2_OF_3_TERM_SATISFIED",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CUSTOMER.NEW_TO_BANK_AT_SUBSCRIPTION",
+                  "operator": "GTE",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)",
+            "reward_text": "+1.5%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5% (급여 또는 연금)",
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-03-UTILITY",
+          "title": "공과금 자동이체 1건 이상 증가 및 신규월 익월부터 연속하여 2회이상 이체 실적 유지 : 2.0%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CARD_ACTIVITY.NEW_CUSTOMER_3M_100K_SPEND_SATISFIED",
+                  "operator": "GTE",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "공과금 자동이체 1건 이상 증가 및 신규월 익월부터 연속하여 2회이상 이체 실적 유지 : 2.0%",
+            "reward_text": "+2.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "공과금 자동이체 1건 이상 증가 및 신규월 익월부터 연속하여 2회이상 이체 실적 유지 : 2.0%",
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-03-CARD",
+          "title": "이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우 : 1.5%",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "predicate": {
+                  "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+                  "operator": "EQUALS",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ],
+                  "expected_value": true
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+                  "operator": "GTE",
+                  "expected_value": true,
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "source_ref_ids": [
+                    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우 : 1.5%",
+            "reward_text": "+1.5%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우 : 1.5%",
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-03-MKT",
+          "title": "이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "MARKETING_CONSENT.AT_SUBSCRIPTION_SATISFIED",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%",
+          "semantic_domain": "MARKETING_CONSENT",
+          "source_clause_text": "하면우대! : 기존고객 대상 우대이율 제공\n- 이 예금 계약기간의 2/3이상 다음 중 하나의 실적이 있는 경우 : 1.5%\n1 경남은행 입출금통장으로 급여지정일 전 5영업일부터 급여지정일 후 10영업일 이내에 급여성 자금이 100만원 이상 입금\n2 경남은행 입출금통장으로 매월 합산하여 100만원 이상 연금 입금\n- 아래 두가지 요건을 모두 충족한 경우 : 2.0%\n1 이 예금의 신규 직전월 대비 공과금 자동이체 1건 이상 증가\n2 이 예금의 신규월 익월부터 연속하여 2회이상 이체 실적 유지\n- 이 예금 계약기간의 2/3이상 기간동안 매월 10만원 이상 경남은행 카드 대금결제 실적이 있는 경우(신용/체크카드 합산, 당행 결제계좌에 한함) : 1.5%\n- 이 예금 가입 시 경남은행 마케팅동의가 되어 있는 경우 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000010-1-CEF70A52A05-PREF-04",
+          "title": "* 기타 자세한 사항은 오면우대! 하면우대! 정기적금 상품설명서를 참조 바랍니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "* 기타 자세한 사항은 오면우대! 하면우대! 정기적금 상품설명서를 참조 바랍니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "* 기타 자세한 사항은 오면우대! 하면우대! 정기적금 상품설명서를 참조 바랍니다."
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000010-1-CEF70A52A05-PREF-02-OMYEON",
+          "operator": "INDEPENDENT",
+          "member_rule_ids": [
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-NEW",
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-CARD",
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-MKT"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000010-1-CEF70A52A05-PREF-03-HAMYEON",
+          "operator": "INDEPENDENT",
+          "member_rule_ids": [
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-SALARY-PENSION",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-UTILITY",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-CARD",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-MKT"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "relation_id": "REL-INST-KR-000010-1-CEF70A52A05-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-NEW",
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-CARD",
+            "INST-KR-000010-1-CEF70A52A05-PREF-02-MKT",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-SALARY-PENSION",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-UTILITY",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-CARD",
+            "INST-KR-000010-1-CEF70A52A05-PREF-03-MKT",
+            "INST-KR-000010-1-CEF70A52A05-PREF-04"
+          ],
+          "cap": {
+            "value": "5.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01",
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02",
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03",
+              "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01",
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02",
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03",
+            "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01",
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02",
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03",
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04",
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-RATE",
+      "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "aca9d25223efec892bebb2adc5b1a123"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO",
+    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-RATE",
+    "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "aca9d25223efec892bebb2adc5b1a123",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 8,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-ACA9D25223EFEC892BEBB2ADC5B1A123-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

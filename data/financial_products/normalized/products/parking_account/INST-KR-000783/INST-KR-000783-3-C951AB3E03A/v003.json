@@ -1,0 +1,650 @@
+{
+  "product_code": "INST-KR-000783-3-C951AB3E03A",
+  "version": 3,
+  "institution_id": "INST-KR-000783",
+  "name": "OK×다날다모음통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ],
+    "subscription_channel_details": [
+      {
+        "channel": "MOBILE_APP",
+        "platform": "DANAL_DAMOEM",
+        "embedded_service": "OK_SAVINGS_REMOTE_ACCOUNT_OPENING",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ]
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(OK저축은행의 보통예금을 보유하지 않은 경우)\n※ 1인 1계좌 개설 가능(다날앱內 'OK저축은행 비대면 계좌개설'로 진행한 개인)",
+    "eligibility_text": "개인(OK저축은행의 보통예금을 보유하지 않은 경우)\n※ 1인 1계좌 개설 가능(다날앱內 'OK저축은행 비대면 계좌개설'로 진행한 개인)",
+    "display_text": "개인(OK저축은행의 보통예금을 보유하지 않은 경우)\n※ 1인 1계좌 개설 가능(다날앱內 'OK저축은행 비대면 계좌개설'로 진행한 개인)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000783-3-C951AB3E03A-REL-DFB96E62A1FF",
+        "kind": "PRODUCT_OR_ACCOUNT_RELATIONSHIP",
+        "expected_state": false,
+        "source_text": "개인(OK저축은행의 보통예금을 보유하지 않은 경우)",
+        "fact_key": "SOURCE_RELATIONSHIP.DFB96E62A1FF.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000783-3-C951AB3E03A-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "5.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ],
+        "source_clause": "50만원 이하 분 | 연 5.0%(세전)",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "50만원 이하 분",
+              "max_value": "500000",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-C951AB3E03A-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.8",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ],
+        "source_clause": "500만원 이하 분 | 연 0.8%(세전)",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "500만원 이하 분",
+              "max_value": "5000000",
+              "max_inclusive": true,
+              "min_value": "500000",
+              "min_inclusive": false,
+              "range_derivation": "LOWER_BOUND_FROM_PREVIOUS_TIER_CONTEXT"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-C951AB3E03A-BASE-03",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ],
+        "source_clause": "5천만원 이하 분 | 연 0.1%(세전)",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 이하 분",
+              "max_value": "50000000",
+              "max_inclusive": true,
+              "min_value": "5000000",
+              "min_inclusive": false,
+              "range_derivation": "LOWER_BOUND_FROM_PREVIOUS_TIER_CONTEXT"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-000783-3-C951AB3E03A-BASE-04",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.0",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+        ],
+        "source_clause": "5천만원 초과 분 | 연 1.0%(세전)",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "5천만원 초과 분",
+              "min_value": "50000000",
+              "min_inclusive": false
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "MARGINAL_TRANCHE"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED",
+      "global_application": {
+        "source_text": "1번, 2번 우대금리 지급조건은 예치 금액 5천만원 이하 분에 한해 적용"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PARTNER.DAMOEM_CASH.QUALIFIED_PAYMENT_ACCOUNT_STATE_ACTIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "description": "다모음캐시 결제계좌 등록/전체 해제 이벤트의 지연 발효를 반영한 우대금리 자격 상태",
+          "derivation": {
+            "kind": "EVENT_DRIVEN_STATE",
+            "initial_value": false,
+            "transitions": [
+              {
+                "event_ref": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-REGISTER",
+                "set_value": true,
+                "effective_offset": {
+                  "value": 2,
+                  "unit": "CALENDAR_DAY"
+                }
+              },
+              {
+                "event_ref": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-ALL-UNREGISTER",
+                "set_value": false,
+                "effective_offset": {
+                  "value": 3,
+                  "unit": "CALENDAR_DAY"
+                }
+              }
+            ]
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.PERSONAL_CREDIT_INFO_COLLECTION_USE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.MARKETING_CHANNEL_SMS",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.MARKETING_CHANNEL_PHONE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-REGISTER",
+          "event_type": "PARTNER_PAYMENT_ACCOUNT_REGISTRATION",
+          "qualifying_types": [
+            "DAMOEM_CASH_PAYMENT_ACCOUNT"
+          ],
+          "partner": "DANAL_DAMOEM",
+          "account_scope": "THIS_ACCOUNT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A",
+              "source_text": "다모음캐시 결제계좌로 당행 해당 계좌 등록 시 등록일 다음날부터 1일 후 우대금리 적용(등록일이 6월1일인 경우 6월 3일 적용)"
+            }
+          ]
+        },
+        {
+          "event_id": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-ALL-UNREGISTER",
+          "event_type": "PARTNER_PAYMENT_ACCOUNT_ALL_REGISTRATIONS_REMOVED",
+          "qualifying_types": [
+            "DAMOEM_CASH_PAYMENT_ACCOUNT"
+          ],
+          "partner": "DANAL_DAMOEM",
+          "account_scope": "THIS_ACCOUNT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A",
+              "source_text": "다모음캐시 등록한 건 해제 시 해제일 다음날부터 2일 후 우대금리 제외(전체 해제일이 6월 1일인 경우 6월 4일 제외)"
+            }
+          ]
+        },
+        {
+          "event_id": "INST-KR-000783-3-C951AB3E03A-EVT-ACCOUNT-OPEN",
+          "event_type": "ACCOUNT_OPENED",
+          "account_scope": "THIS_ACCOUNT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000783-3-C951AB3E03A-PREF-01",
+          "title": "다모음캐시 결제계좌 등록 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "PARTNER.DAMOEM_CASH.QUALIFIED_PAYMENT_ACCOUNT_STATE_ACTIVE",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.8",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "timing": "EVENT_DRIVEN_STATE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "range": {
+                "currency": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "50000000",
+                "max_inclusive": true,
+                "source_text": "1번, 2번 우대금리 지급조건은 예치 금액 5천만원 이하 분에 한해 적용"
+              },
+              "method": "CAPPED_PORTION",
+              "source_text": "1번, 2번 우대금리 지급조건은 예치 금액 5천만원 이하 분에 한해 적용"
+            },
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "activation": {
+              "trigger_event_ref": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-REGISTER",
+              "effective_offset": {
+                "value": 2,
+                "unit": "CALENDAR_DAY"
+              }
+            },
+            "deactivation": {
+              "trigger_event_ref": "INST-KR-000783-3-C951AB3E03A-EVT-DAMOEM-ALL-UNREGISTER",
+              "effective_offset": {
+                "value": 3,
+                "unit": "CALENDAR_DAY"
+              }
+            }
+          },
+          "display": {
+            "summary": "다모음캐시 결제계좌 등록 시",
+            "reward_text": "+1.8%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A",
+              "source_text": "다모음캐시 결제계좌 등록 시\n- 적용조건: 다모음캐시 결제계좌로 당행 해당 계좌 등록 시 등록일 다음날부터 1일 후 우대금리 적용(등록일이 6월1일인 경우 6월 3일 적용)\n- 해제조건: 다모음캐시 등록한 건 해제 시 해제일 다음날부터 2일 후 우대금리 제외(전체 해제일이 6월 1일인 경우 6월 4일 제외) : 1.8%"
+            }
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000783-3-C951AB3E03A-PREF-02",
+          "title": "마케팅동의 시",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.PERSONAL_CREDIT_INFO_COLLECTION_USE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.MARKETING_CHANNEL_SMS",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.MARKETING_CHANNEL_PHONE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ],
+            "evaluation_time_policy": {
+              "normal_opening": "ACCOUNT_OPENING_STAGE",
+              "when_opening_resumed_and_timestamps_differ": "TERMS_CONSENT_TIMESTAMP"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "timing": "ACCOUNT_OPEN_DATE_PLUS_OFFSET",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "range": {
+                "currency": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "50000000",
+                "max_inclusive": true,
+                "source_text": "1번, 2번 우대금리 지급조건은 예치 금액 5천만원 이하 분에 한해 적용"
+              },
+              "method": "CAPPED_PORTION",
+              "source_text": "1번, 2번 우대금리 지급조건은 예치 금액 5천만원 이하 분에 한해 적용"
+            },
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "activation": {
+              "trigger_event_ref": "INST-KR-000783-3-C951AB3E03A-EVT-ACCOUNT-OPEN",
+              "effective_offset": {
+                "value": 2,
+                "unit": "CALENDAR_DAY"
+              }
+            }
+          },
+          "display": {
+            "summary": "마케팅동의 시",
+            "reward_text": "+0.2%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A",
+              "source_text": "마케팅동의 시\n- 마케팅동의 기준: (선택)개인(신용) 정보 수집·이용동의 및 상품서비스 안내 수단의 SMS, 전화 2개 항목 모두 동의한 경우\n- 적용조건: 해당 상품 개설 단계 중 위의 마케팅 동의 기준을 충족한 경우 (계좌개설일 + 2일)부터 우대금리 제공\n- 단, 계좌개설 중단 후 이어하기 시점이 달라 약관동의 시점과 계좌개설 시점이 다른 경우, 약관동의 시점의 마케팅동의 여부를 기준으로 함 : 0.2%"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000783-3-C951AB3E03A-REL-INDEPENDENT",
+          "type": "INDEPENDENT",
+          "rule_ids": [
+            "INST-KR-000783-3-C951AB3E03A-PREF-01",
+            "INST-KR-000783-3-C951AB3E03A-PREF-02"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ],
+    "interest_crediting": {
+      "raw_text": "매월 셋째 주 토요일 다음날, 해지 시",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000783-3-C951AB3E03A-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000783-3-C951AB3E03A-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "MULTI_EVENT",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION",
+      "MARGINAL_TRANCHE"
+    ],
+    "balance_tier_method": "MARGINAL",
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000783-3-C951AB3E03A",
+        "product_name": "OK×다날다모음통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000783-3-C951AB3E03A",
+    "source_record_id": "31016ee470a13e3f1c8a9cdd69c12094",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "patch_reason": [
+      "가입자격의 OK저축은행 보통예금 미보유 조건을 deterministic predicate로 승격",
+      "다모음캐시 등록/전체해제 우대의 +2일/+3일 지연 발효를 event-driven state로 구조화",
+      "마케팅 동의 3개 필수요건 및 계좌개설일+2일 발효를 구조화",
+      "월 정기 이자지급과 해지 시 지급을 별도 crediting event로 분리"
+    ],
+    "resolved_audit_findings": [
+      "ELIGIBILITY_HISTORY_CONDITION_UNSTRUCTURED",
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SUPERSEDED_BY_INDIVIDUAL_V003_PATCH"
+    ],
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 191,
+    "reviewed_source_record_id": "31016ee470a13e3f1c8a9cdd69c12094",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000783-3-C951AB3E03A"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

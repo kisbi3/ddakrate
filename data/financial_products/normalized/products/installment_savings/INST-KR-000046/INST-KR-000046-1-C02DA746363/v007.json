@@ -1,0 +1,660 @@
+{
+  "product_code": "INST-KR-000046-1-C02DA746363",
+  "version": 7,
+  "institution_id": "INST-KR-000046",
+  "name": "알찬여행적금(개인)",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한없음(국가 및 지방자치단체는 제외)\n가입계좌수 제한없음",
+    "eligibility_text": "제한없음(국가 및 지방자치단체는 제외)\n가입계좌수 제한없음",
+    "display_text": "제한없음(국가 및 지방자치단체는 제외)\n가입계좌수 제한없음",
+    "source_ref_ids": [
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+    ],
+    "mode": "UNRESTRICTED_OR_SOURCE_LIMITED",
+    "allowed_customer_types": [
+      "ORGANIZATION"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 3,
+    "source_expression": "1년~3년(월 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "100000"
+      }
+    ],
+    "source_amount_text": "월저축금 10만원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_MONTH",
+        "role": "MINIMUM",
+        "context": "월저축금 10만원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000046-1-C02DA746363-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.560",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 12,
+          "max_value": 24,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000046-1-C02DA746363-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.430",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 24,
+          "max_value": 36,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000046-1-C02DA746363-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 36
+        },
+        "source_ref_ids": [
+          "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "인터넷뱅킹에서 가입 시 비대면우대이자율(연0.05%p) 추가로 적용됩니다.\n단, 중도에 통장 발행 등 일반예금으로 전환하는 경우 전체 예금기간에 대해 비대면우대이자율이 적용되지 않습니다.\n우대이자율 : 최고 연 0.40%p\n* 우대요건 신규시점 기준"
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.AMOUNT.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "월저축금 30만원 이상 연 0.10%p",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000046_1_C02DA746363-INST_KR_000046_1_C02DA-SOURCE_CLAUSE_INST_KR_000046_1",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "MEMBERSHIP_OR_TIER.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+          ],
+          "authority": "BANK_MEMBERSHIP_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "우수고객\n1 에이스 고객 : 연 0.10%p\n2 톱 고객 이상 : 연 0.20%p"
+        },
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "여성고객 연 0.10%p"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000046_1_C02DA746363-INST_KR_000046_1_C02DA-SOURCE_CLAUSE_INST_KR_000046_1",
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "월저축금 30만원 이상 연 0.10%p",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000046-1-C02DA746363-PREF-01",
+          "title": "인터넷뱅킹에서 가입 시 비대면우대이자율(연0.05%p) 추가로 적용됩니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.05",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "인터넷뱅킹에서 가입 시 비대면우대이자율(연0.05%p) 추가로 적용됩니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "인터넷뱅킹에서 가입 시 비대면우대이자율(연0.05%p) 추가로 적용됩니다.\n단, 중도에 통장 발행 등 일반예금으로 전환하는 경우 전체 예금기간에 대해 비대면우대이자율이 적용되지 않습니다.\n우대이자율 : 최고 연 0.40%p\n* 우대요건 신규시점 기준"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C02DA746363-PREF-02",
+          "title": "월저축금 30만원 이상 연 0.10%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.AMOUNT.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "월저축금 30만원 이상 연 0.10%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "월저축금 30만원 이상 연 0.10%p"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C02DA746363-PREF-03",
+          "title": "우수고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "MEMBERSHIP_OR_TIER.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "candidate_values": [
+              "0.10",
+              "0.20"
+            ],
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_MEMBERSHIP_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "우수고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+            }
+          ],
+          "semantic_domain": "MEMBERSHIP_OR_TIER",
+          "source_clause_text": "우수고객\n1 에이스 고객 : 연 0.10%p\n2 톱 고객 이상 : 연 0.20%p"
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C02DA746363-PREF-04",
+          "title": "여성고객 연 0.10%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "CONTRACT",
+            "source_ref_ids": [
+              "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "여성고객 연 0.10%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "여성고객 연 0.10%p"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01",
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02",
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03",
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04",
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-04"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE",
+      "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.01",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "ed1914011915372c0eb51cfbe57c2d1e"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO",
+    "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE",
+    "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "ed1914011915372c0eb51cfbe57c2d1e",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 6,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-ED1914011915372C0EB51CFBE57C2D1E-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

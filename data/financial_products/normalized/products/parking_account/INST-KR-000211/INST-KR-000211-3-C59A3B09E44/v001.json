@@ -1,0 +1,199 @@
+{
+  "product_code": "INST-KR-000211-3-C59A3B09E44",
+  "version": 1,
+  "institution_id": "INST-KR-000211",
+  "name": "모아예금통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자",
+    "eligibility_text": "개인 및 개인사업자",
+    "display_text": "개인 및 개인사업자",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "MONTH",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-C59A3B09E44-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.10",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-3-C59A3B09E44-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "1.10",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-C59A3B09E44-02",
+        "title": "은행 첫 거래고객 우대이율 1.0% (1년간)",
+        "condition_text": "은행 첫 거래고객 우대이율 1.0% (1년간)\n- 적용조건 : 은행 고객정보 최초 채번일 기준 31일 이내 예금 신규 고객\n- 적용금액 : 이자계산 기준 전체 평균잔액금액에 대해 적용",
+        "structured_steps": [
+          "은행 첫 거래고객 우대이율 1.0% (1년간)",
+          "- 적용조건 : 은행 고객정보 최초 채번일 기준 31일 이내 예금 신규 고객",
+          "- 적용금액 : 이자계산 기준 전체 평균잔액금액에 대해 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.0",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "은행 첫 거래고객 우대이율 1.0% (1년간)",
+          "summary_text": "은행 첫 거래고객 우대이율 1.0% (1년간)",
+          "detail_texts": [
+            "- 적용조건 : 은행 고객정보 최초 채번일 기준 31일 이내 예금 신규 고객",
+            "- 적용금액 : 이자계산 기준 전체 평균잔액금액에 대해 적용"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-3-C59A3B09E44-03",
+        "title": "주택담보대출 연계 우대이율",
+        "condition_text": "주택담보대출 연계 우대이율\n- 우대이율 : 추가 약정 주택담보대출 계좌별 기준금리 X 50% (소수점 셋째 자리 미만은 버림)\n- 적용조건\n① 가계주택담보대출(퍼스트홈론, 잔금대출 포함) 실적연동 금리우대용 추가 약정을 체결하고 이 예금을 연계 예금계좌로 등록한 경우에 적용함\n② 주택담보대출 1계좌 당 모아예금통장 1계좌만 연결\n- 적용금액 : 이자계산 평균잔액 금액 중 이자결산일 기준 연계 주택담보 대출 계좌의 대출잔액 까지만 연계 우대이율을 적용함. 대출잔액을 초과하는 평균잔액 금액에는 연계 우대이율을 적용하지 않음\n- 적용기간 : 연계 주택담보대출의 대출기한 만료일까지\n- 아래의 경우에는 주택담보대출 연계 우대이율을 적용하지 않음\nⅰ 연계된 주택담보대출 계좌의 대출기한이 경과된 경우\nⅱ 이 예금의 이자 결산일 현재 연계된 주택담보대출 계좌의 대출잔액이 전액 상환된 경우\nⅲ 이 예금을 해약하는 경우\n- 제한사항\n① 하나의 모아예금통장에 여러 대출계좌를 중복하여 연결할 수 없음\n② 대출 약정기간 중 연계 예금계좌를 변경할 수 없음\n③ 대출 약정기간 중 연계 예금계좌를 해지할 수는 있으나, 해지한 경우 연계 우대이율은 적용되지 않음",
+        "structured_steps": [
+          "주택담보대출 연계 우대이율",
+          "- 우대이율 : 추가 약정 주택담보대출 계좌별 기준금리 X 50% (소수점 셋째 자리 미만은 버림)",
+          "- 적용조건",
+          "① 가계주택담보대출(퍼스트홈론, 잔금대출 포함) 실적연동 금리우대용 추가 약정을 체결하고 이 예금을 연계 예금계좌로 등록한 경우에 적용함",
+          "② 주택담보대출 1계좌 당 모아예금통장 1계좌만 연결",
+          "- 적용금액 : 이자계산 평균잔액 금액 중 이자결산일 기준 연계 주택담보 대출 계좌의 대출잔액 까지만 연계 우대이율을 적용함. 대출잔액을 초과하는 평균잔액 금액에는 연계 우대이율을 적용하지 않음",
+          "- 적용기간 : 연계 주택담보대출의 대출기한 만료일까지",
+          "- 아래의 경우에는 주택담보대출 연계 우대이율을 적용하지 않음",
+          "ⅰ 연계된 주택담보대출 계좌의 대출기한이 경과된 경우",
+          "ⅱ 이 예금의 이자 결산일 현재 연계된 주택담보대출 계좌의 대출잔액이 전액 상환된 경우",
+          "ⅲ 이 예금을 해약하는 경우",
+          "- 제한사항",
+          "① 하나의 모아예금통장에 여러 대출계좌를 중복하여 연결할 수 없음",
+          "② 대출 약정기간 중 연계 예금계좌를 변경할 수 없음",
+          "③ 대출 약정기간 중 연계 예금계좌를 해지할 수는 있으나, 해지한 경우 연계 우대이율은 적용되지 않음"
+        ],
+        "extracted_reward_candidate": {
+          "value": "50",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "주택담보대출 연계 우대이율",
+          "summary_text": "주택담보대출 연계 우대이율",
+          "detail_texts": [
+            "- 우대이율 : 추가 약정 주택담보대출 계좌별 기준금리 X 50% (소수점 셋째 자리 미만은 버림)",
+            "- 적용조건",
+            "① 가계주택담보대출(퍼스트홈론, 잔금대출 포함) 실적연동 금리우대용 추가 약정을 체결하고 이 예금을 연계 예금계좌로 등록한 경우에 적용함",
+            "② 주택담보대출 1계좌 당 모아예금통장 1계좌만 연결",
+            "- 적용금액 : 이자계산 평균잔액 금액 중 이자결산일 기준 연계 주택담보 대출 계좌의 대출잔액 까지만 연계 우대이율을 적용함. 대출잔액을 초과하는 평균잔액 금액에는 연계 우대이율을 적용하지 않음",
+            "- 적용기간 : 연계 주택담보대출의 대출기한 만료일까지",
+            "- 아래의 경우에는 주택담보대출 연계 우대이율을 적용하지 않음",
+            "ⅰ 연계된 주택담보대출 계좌의 대출기한이 경과된 경우",
+            "ⅱ 이 예금의 이자 결산일 현재 연계된 주택담보대출 계좌의 대출잔액이 전액 상환된 경우",
+            "ⅲ 이 예금을 해약하는 경우",
+            "- 제한사항",
+            "① 하나의 모아예금통장에 여러 대출계좌를 중복하여 연결할 수 없음",
+            "② 대출 약정기간 중 연계 예금계좌를 변경할 수 없음",
+            "③ 대출 약정기간 중 연계 예금계좌를 해지할 수는 있으나, 해지한 경우 연계 우대이율은 적용되지 않음"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "50",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+    ],
+    "advertised_max_rate": {
+      "value": "1.10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000211-3-C59A3B09E44"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.435292+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

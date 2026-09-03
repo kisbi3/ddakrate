@@ -1,0 +1,226 @@
+{
+  "product_code": "INST-KR-000289-4-0001",
+  "version": 2,
+  "institution_id": "INST-KR-000289",
+  "name": "메리츠CMA (RP형)",
+  "product_family": "CMA",
+  "classifications": [],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000289-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "WEB"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000289-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+    ],
+    "subscription_method_disclosure": "1. 영업점 방문\n2. 온라인 계좌개설 가능"
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000289-4-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000289-4-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "PER_RP_LOT_ELAPSED_TERM",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000289-4-0001-1-30",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED_POSTED_AT_PURCHASE",
+          "value": "2.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+        ],
+        "as_of": "2026-08-28",
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "DAY",
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_value": "1",
+              "max_value": "30"
+            }
+          }
+        ],
+        "rate_context": {
+          "kind": "POSTED_FIXED_AT_PURCHASE",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "NAVER_COMPARISON_SERVICE",
+          "contract_authority": "OFFICIAL_ENRICHED_WHERE_AVAILABLE"
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000289-4-0001",
+      "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+    ],
+    "reinvestment_policy": {
+      "mode": "AUTOMATIC",
+      "interval": {
+        "value": 30,
+        "unit": "DAY"
+      },
+      "rate_reset": "REFRESH_AT_INTERVAL",
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+      ],
+      "elapsed_term_after_reinvestment": "RESET_TO_DAY_1",
+      "intermediate_cash_state": {
+        "state": "CASH_SETTLEMENT_THEN_REPURCHASE",
+        "components": [
+          "PRINCIPAL",
+          "AFTER_TAX_INTEREST"
+        ]
+      }
+    },
+    "rate_fixing_policy": {
+      "kind": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+      "scope": "PER_RP_LOT",
+      "retroactive_repricing": false,
+      "source_ref_ids": [
+        "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000289-4-0001",
+    "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_OFFICIAL_ENRICHMENT",
+    "publication_gate": "READY",
+    "data_gaps": [
+      {
+        "input_line": 50,
+        "product_code": "INST-KR-000289-4-0001",
+        "product_name": "메리츠CMA (RP형)",
+        "source_priority": "NAVER_PRIMARY",
+        "path": "return_policy.advertised_max_rate",
+        "reason": "네이버 CMA 카드 표시 수익률을 계약상 최고수익률로 승격하지 않음; listing_snapshot에서만 보존",
+        "status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000289-4-0001"
+        ],
+      "usage_impact": "NO_ADVERTISED_MAX_RANKING"
+    },
+    {
+      "input_line": 50,
+      "product_code": "INST-KR-000289-4-0001",
+      "product_name": "메리츠CMA (RP형)",
+      "source_priority": "NAVER_PRIMARY",
+      "path": "return_policy.rate_entries[0].calculation.value",
+      "reason": "원본 네이버 수집본은 2026-07-20 2.25%이나 2026-08-29 live 검증은 2026-08-28 2.50%로 확인되어 최신 live 관측값을 현재 스냅샷으로 보존; 두 시점의 차이는 계약상 소급 재가격으로 해석하지 않음",
+      "status": "CONFLICTING_SOURCE",
+      "source_ref_ids": ["EVD-CMA-20260829-INST-KR-000289-4-0001", "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"],
+      "usage_impact": "CURRENT_RATE_ONLY; LISTING_RATE_REMAINS_DISPLAY_ONLY"
+    }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "usage_restrictions": [
+      "NO_NAVER_LISTING_RATE_AS_CONTRACT_MAX"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 1,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000289/INST-KR-000289-4-0001/v001.json",
+    "previous_sha256": "sha256:0bd5143767785b53834421c05345e77179beb09544980b5c5eba8f04b08e9aed",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "STANDALONE_UNIQUE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED",
+          "value": "FIXED_AT_PURCHASE_OR_REINVESTMENT",
+          "note": null
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "EXPLICIT_NONOVERLAP"
+        },
+        "reinvestment": {
+          "status": "VERIFIED",
+          "value": {
+            "value": 30,
+            "unit": "DAY"
+          }
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": null,
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "STANDALONE_UNIQUE",
+          "group": null
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY"
+  },
+  "product_subtype": "RP",
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  },
+  "fee_policy": {
+    "disclosure_text": "CD/ATM기 수수료 혜택\n\n- CD/ATM 출금 수수료 면제 요건(주민등록번호 단위)\n1. 최초계좌개설고객 : 계좌개설일로부터 1년간 면제\n2. 고객서비스등급 Gold 이상\n3. 펀드신규가입(이동)고객 : 설정(이동)일로부터 1년간 면제 (최초 1회)\n4. 급여 50만원 이상 입금(CMA자산관리계좌/Super365의 거래 내역에 띄어쓰기없이 급여 또는 상여라고 기재되어 있는 고객) : 익월 면제\n5. 카드대금/보험료/지로공과금 등 자동납부 실적 1건 이상 : 익월 면제\n* ① 최초계좌개설에 의한 수수료 면제적용(1년)후 ③ 펀드신규가입 요건 충족으로 인한 추가면제 적용은 불가합니다.\n* 저축은행 CD/ATM은 금융결제원 지급결제 가입된 경우에 한함\n* VAN사(나이스) 현금인출기 이용 시 해당 기관의 수수료가 적용됩니다.\n* 수수료 면제 적용 기간은 영업일 기준으로 매월 4영업일 부터 익월 4영업일 전일까지 입니다.",
+    "source_ref_ids": [
+      "EVD-CMA-LIVE-NAVER-INST-KR-000289-4-0001-20260829"
+    ],
+    "disclosure_semantics": "SOURCE_TEXT_ONLY_NOT_EXECUTABLE_FEE_CALCULATION"
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "product_code": "INST-KR-000120-2-0005",
+  "version": 1,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK오픈뱅킹 정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-2-0005"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-2-0005"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      6,
+      12
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-2-0005"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-2-0005"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-2-0005-BASE-TERM-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-BASE-TERM-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ELAPSED_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            }
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-2-0005-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-2-0005-01",
+        "title": "우대금리 (최대 0.70%)",
+        "condition_text": "우대금리 (최대 0.70%)\n※ 모든 우대 이율은 만기 해지 시에 지급하며, 이 예금에 다른 기준(다른상품의 특약)에서 정한 우대이율은 적용하지 아니합니다.",
+        "structured_steps": [
+          "우대금리 (최대 0.70%)",
+          "※ 모든 우대 이율은 만기 해지 시에 지급하며, 이 예금에 다른 기준(다른상품의 특약)에서 정한 우대이율은 적용하지 아니합니다."
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.70",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대금리 (최대 0.70%)",
+          "summary_text": "우대금리 (최대 0.70%)",
+          "detail_texts": [
+            "※ 모든 우대 이율은 만기 해지 시에 지급하며, 이 예금에 다른 기준(다른상품의 특약)에서 정한 우대이율은 적용하지 아니합니다."
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.70",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-2-0005-02",
+        "title": "가. 오픈뱅킹우대이율 : 최대 0.40%p",
+        "condition_text": "가. 오픈뱅킹우대이율 : 최대 0.40%p\n① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p\n(예금 가입 당일 오픈뱅킹을 통해 입금된 금액이 오픈뱅킹 정기예금 가입 금액 보다 많거나 같을 경우)\n② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)",
+        "structured_steps": [
+          "가. 오픈뱅킹우대이율 : 최대 0.40%p",
+          "① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p",
+          "(예금 가입 당일 오픈뱅킹을 통해 입금된 금액이 오픈뱅킹 정기예금 가입 금액 보다 많거나 같을 경우)",
+          "② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "가. 오픈뱅킹우대이율 : 최대 0.40%p",
+          "summary_text": "가. 오픈뱅킹우대이율 : 최대 0.40%p",
+          "detail_texts": [
+            "① 이 예금 가입 당일 오픈뱅킹을 통해 당행으로 입금한 자금으로전액 신규 시: 0.30%p",
+            "(예금 가입 당일 오픈뱅킹을 통해 입금된 금액이 오픈뱅킹 정기예금 가입 금액 보다 많거나 같을 경우)",
+            "② 이 예금 가입기간 중 오픈뱅킹을 통해 입금한 실적이 3회 이상이고 입금 누적 금액이 100만원 이상인 경우 : 0.10%p (1일1회 인정, 신규 가입일 제외)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-2-0005-03",
+        "title": "나. 입출금 평잔 우대이율 : 0.20%p",
+        "condition_text": "나. 입출금 평잔 우대이율 : 0.20%p\n- 이 예금 가입일로부터 예금 만기일 3영업일 전까지의 입출금 계좌 평균 잔액이 예금 가입 전일의 입출금계좌 잔액 합계 보다 100만원 이상 증가한 경우 적용\n※ 예금 만기일 3영업일 전 정상 보유 중인 입출금계좌에 한하여 평균 잔액을 산정하며, MMDA는 산정대상에서 제외됩니다.",
+        "structured_steps": [
+          "나. 입출금 평잔 우대이율 : 0.20%p",
+          "- 이 예금 가입일로부터 예금 만기일 3영업일 전까지의 입출금 계좌 평균 잔액이 예금 가입 전일의 입출금계좌 잔액 합계 보다 100만원 이상 증가한 경우 적용",
+          "※ 예금 만기일 3영업일 전 정상 보유 중인 입출금계좌에 한하여 평균 잔액을 산정하며, MMDA는 산정대상에서 제외됩니다."
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.20",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "나. 입출금 평잔 우대이율 : 0.20%p",
+          "summary_text": "나. 입출금 평잔 우대이율 : 0.20%p",
+          "detail_texts": [
+            "- 이 예금 가입일로부터 예금 만기일 3영업일 전까지의 입출금 계좌 평균 잔액이 예금 가입 전일의 입출금계좌 잔액 합계 보다 100만원 이상 증가한 경우 적용",
+            "※ 예금 만기일 3영업일 전 정상 보유 중인 입출금계좌에 한하여 평균 잔액을 산정하며, MMDA는 산정대상에서 제외됩니다."
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.20",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-2-0005-04",
+        "title": "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+        "condition_text": "다. 신용(체크)카드 실적 우대이율 : 0.10%p\n- 이 예금 가입기간 중 신용(체크)카드 누적 청구(승인)금액 500만원 이상 인 경우 적용 (승인 취소 거래시 사용 청구(승인)실적에서 차감)",
+        "structured_steps": [
+          "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+          "- 이 예금 가입기간 중 신용(체크)카드 누적 청구(승인)금액 500만원 이상 인 경우 적용 (승인 취소 거래시 사용 청구(승인)실적에서 차감)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-2-0005"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+          "summary_text": "다. 신용(체크)카드 실적 우대이율 : 0.10%p",
+          "detail_texts": [
+            "- 이 예금 가입기간 중 신용(체크)카드 누적 청구(승인)금액 500만원 이상 인 경우 적용 (승인 취소 거래시 사용 청구(승인)실적에서 차감)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-2-0005"
+    ],
+    "advertised_max_rate": {
+      "value": "3.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000120-2-0005"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000120-2-0005"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.650534+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

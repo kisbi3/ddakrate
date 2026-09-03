@@ -1,0 +1,361 @@
+{
+  "product_code": "INST-KR-000865-1-0003",
+  "version": 8,
+  "institution_id": "INST-KR-000865",
+  "name": "데굴데굴 농장",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n※ 단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능",
+    "eligibility_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n※ 단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능",
+    "display_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n※ 단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능",
+    "source_ref_ids": [
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "options": [
+      6,
+      12
+    ],
+    "source_options": [
+      {
+        "value": 6,
+        "unit": "MONTH"
+      },
+      {
+        "value": 1,
+        "unit": "YEAR"
+      }
+    ],
+    "source_expression": "6개월, 1년",
+    "source_ref_ids": [
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "10000",
+        "max_value": "10000000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "가입금액: 1만원 이상 1천만원 이하",
+      "min_value": "10000",
+      "max_value": "10000000"
+    },
+    "source_amount_text": "가입금액: 1만원 이상 1천만원 이하\n적립한도: 월 최소 1만원 이상 최대 1천만원 이하(원단위, 자유적립식)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "가입금액: 1만원 이상 1천만원 이하\n적립한도: 월 최소 1만원 이상 최대 1천만원 이하(원단위, 자유적립식)"
+      },
+      {
+        "value": "10000000",
+        "currency": "KRW",
+        "source_expression": "1천만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "가입금액: 1만원 이상 1천만원 이하\n적립한도: 월 최소 1만원 이상 최대 1천만원 이하(원단위, 자유적립식)"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "가입금액: 1만원 이상 1천만원 이하\n적립한도: 월 최소 1만원 이상 최대 1천만원 이하(원단위, 자유적립식)"
+      },
+      {
+        "value": "10000000",
+        "currency": "KRW",
+        "source_expression": "1천만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "가입금액: 1만원 이상 1천만원 이하\n적립한도: 월 최소 1만원 이상 최대 1천만원 이하(원단위, 자유적립식)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0003-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000865-1-0003-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 1
+        },
+        "source_ref_ids": [
+          "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000865_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "신규 시 금리우대 코드를 입력하는 경우 우대금리 적용\n금리우대 코드는 케이뱅크 이벤트 또는 제휴사 이벤트 진행시에만 사용 가능\n만기 자동재가입의 경우 최초 가입 시 적용한 우대코드는 제외하고 상품 재가입\n※ 재가입 시에는 우대금리가 적용되지 않습니다.\n※ 케이뱅크 이벤트 또는 제휴사와 이벤트 진행 시 케이뱅크 홈페이지 및 케이뱅크 앱에 이벤트 주요 내용 (금리, 기간, 한도 등 조건)을 고시하며, 이벤트 별로 금리, 가입기간, 가입한도 등 세부 내용이 달라질 수 있습니다."
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000865-1-0003-PREF-01",
+          "title": "신규 시 금리우대 코드를 입력하는 경우 우대금리 적용",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000865_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신규 시 금리우대 코드를 입력하는 경우 우대금리 적용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "신규 시 금리우대 코드를 입력하는 경우 우대금리 적용\n금리우대 코드는 케이뱅크 이벤트 또는 제휴사 이벤트 진행시에만 사용 가능\n만기 자동재가입의 경우 최초 가입 시 적용한 우대코드는 제외하고 상품 재가입\n※ 재가입 시에는 우대금리가 적용되지 않습니다.\n※ 케이뱅크 이벤트 또는 제휴사와 이벤트 진행 시 케이뱅크 홈페이지 및 케이뱅크 앱에 이벤트 주요 내용 (금리, 기간, 한도 등 조건)을 고시하며, 이벤트 별로 금리, 가입기간, 가입한도 등 세부 내용이 달라질 수 있습니다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01",
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-RATE",
+      "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "02ccd780e23005ac92350ea16cf3bf98"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO",
+    "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-RATE",
+    "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "source_record_id": "02ccd780e23005ac92350ea16cf3bf98",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-02CCD780E23005AC92350EA16CF3BF98-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

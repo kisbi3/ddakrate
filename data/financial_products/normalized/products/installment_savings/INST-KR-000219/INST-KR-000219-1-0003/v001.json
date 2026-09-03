@@ -1,0 +1,264 @@
+{
+  "product_code": "INST-KR-000219-1-0003",
+  "version": 1,
+  "institution_id": "INST-KR-000219",
+  "name": "2026 신한 SOL KBO 리그 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0003"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0003"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0003"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0003"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-0003-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000219-1-0003-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "5.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0003-01",
+        "title": "다음의 우대조건 충족 시 최고 연 2.5% 우대이자율이 적용됩니다",
+        "condition_text": "다음의 우대조건 충족 시 최고 연 2.5% 우대이자율이 적용됩니다\n* 계약기간 만기 전 중도해지한 계좌에 대해서는 우대이자율을 적용하지 않습니다.",
+        "structured_steps": [
+          "다음의 우대조건 충족 시 최고 연 2.5% 우대이자율이 적용됩니다",
+          "* 계약기간 만기 전 중도해지한 계좌에 대해서는 우대이자율을 적용하지 않습니다."
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "다음의 우대조건 충족 시 최고 연 2.5% 우대이자율이 적용됩니다",
+          "summary_text": "다음의 우대조건 충족 시 최고 연 2.5% 우대이자율이 적용됩니다",
+          "detail_texts": [
+            "* 계약기간 만기 전 중도해지한 계좌에 대해서는 우대이자율을 적용하지 않습니다."
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0003-02",
+        "title": "응원 팀 성적 우대 : 최고 연 1.5%",
+        "condition_text": "응원 팀 성적 우대 : 최고 연 1.5%\n- 한국시리즈 우승하면 : 연 1.5%\n- 한국시리즈 진출하면 : 연 1.0%\n- 포스트시즌 진출하면 : 연 0.5%\n※ 가입 시 선택한 응원 팀(변경불가)의 성적에 따라 우대이자율 차등 제공(중복 적용 불가)\n※ 정규시즌 종료된 다음 달 10일 이전에 우대이자율 반영",
+        "structured_steps": [
+          "응원 팀 성적 우대 : 최고 연 1.5%",
+          "- 한국시리즈 우승하면 : 연 1.5%",
+          "- 한국시리즈 진출하면 : 연 1.0%",
+          "- 포스트시즌 진출하면 : 연 0.5%",
+          "※ 가입 시 선택한 응원 팀(변경불가)의 성적에 따라 우대이자율 차등 제공(중복 적용 불가)",
+          "※ 정규시즌 종료된 다음 달 10일 이전에 우대이자율 반영"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "응원 팀 성적 우대 : 최고 연 1.5%",
+          "summary_text": "응원 팀 성적 우대 : 최고 연 1.5%",
+          "detail_texts": [
+            "- 한국시리즈 우승하면 : 연 1.5%",
+            "- 한국시리즈 진출하면 : 연 1.0%",
+            "- 포스트시즌 진출하면 : 연 0.5%",
+            "※ 가입 시 선택한 응원 팀(변경불가)의 성적에 따라 우대이자율 차등 제공(중복 적용 불가)",
+            "※ 정규시즌 종료된 다음 달 10일 이전에 우대이자율 반영"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0003-03",
+        "title": "‘판타지야구’ 참여 우대 : 최고 연 0.5%",
+        "condition_text": "‘판타지야구’ 참여 우대 : 최고 연 0.5%\n- SOL야구 콘텐츠 ‘판타지야구‘ 참여 시 1회당 연 0.1% (최대 5회 인정)\n※ 판타지야구 : 나만의 구단 만들어 혜택 받는 SOL야구 신규 콘텐츠 (참여는 해당 콘텐츠 내 ‘출전하기’ 기준)\n※ 실적 인정 기간 : 만기 해지 시까지",
+        "structured_steps": [
+          "‘판타지야구’ 참여 우대 : 최고 연 0.5%",
+          "- SOL야구 콘텐츠 ‘판타지야구‘ 참여 시 1회당 연 0.1% (최대 5회 인정)",
+          "※ 판타지야구 : 나만의 구단 만들어 혜택 받는 SOL야구 신규 콘텐츠 (참여는 해당 콘텐츠 내 ‘출전하기’ 기준)",
+          "※ 실적 인정 기간 : 만기 해지 시까지"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "‘판타지야구’ 참여 우대 : 최고 연 0.5%",
+          "summary_text": "‘판타지야구’ 참여 우대 : 최고 연 0.5%",
+          "detail_texts": [
+            "- SOL야구 콘텐츠 ‘판타지야구‘ 참여 시 1회당 연 0.1% (최대 5회 인정)",
+            "※ 판타지야구 : 나만의 구단 만들어 혜택 받는 SOL야구 신규 콘텐츠 (참여는 해당 콘텐츠 내 ‘출전하기’ 기준)",
+            "※ 실적 인정 기간 : 만기 해지 시까지"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000219-1-0003-04",
+        "title": "소득 입금 우대 : 연 0.5%",
+        "condition_text": "소득 입금 우대 : 연 0.5%\n본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 6개월 이상 입금(수령) 시\n- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투\n- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)\n※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지\n(예시 : 2026.4.15 가입 시 2026.4.1 ~ 2027.2.28)",
+        "structured_steps": [
+          "소득 입금 우대 : 연 0.5%",
+          "본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 6개월 이상 입금(수령) 시",
+          "- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투",
+          "- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)",
+          "※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지",
+          "(예시 : 2026.4.15 가입 시 2026.4.1 ~ 2027.2.28)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000219-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "소득 입금 우대 : 연 0.5%",
+          "summary_text": "소득 입금 우대 : 연 0.5%",
+          "detail_texts": [
+            "본인명의 신한은행 입출금통장으로 아래 항목 중 한 가지 이상을 6개월 이상 입금(수령) 시",
+            "- 급여(건당 50만원 이상) 또는 급여클럽 월급봉투",
+            "- 공적연금(국민연금, 공무원연금, 사학연금, 군인연금, 보훈연금)",
+            "※ 실적 인정 기간 : 가입월로부터 만기일이 속한 달의 전전월 말까지",
+            "(예시 : 2026.4.15 가입 시 2026.4.1 ~ 2027.2.28)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000219-1-0003"
+    ],
+    "advertised_max_rate": {
+      "value": "5.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000219-1-0003"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000219-1-0003"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.265407+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

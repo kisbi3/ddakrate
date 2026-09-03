@@ -1,0 +1,506 @@
+{
+  "product_code": "INST-KR-000424-1-CE42AD8BC95",
+  "version": 7,
+  "institution_id": "INST-KR-000424",
+  "name": "우리WON모바일 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-SALE"
+    ],
+    "subscription_channels": [
+      "APP"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 100000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "YEAR",
+    "fixed_value": 1,
+    "source_expression": "1년",
+    "source_ref_ids": [
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO"
+    ],
+    "representative_value": 1
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "200000"
+      }
+    ],
+    "source_amount_text": "1원 ~ 200,000원",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "UNSPECIFIED",
+        "role": "MENTION",
+        "context": "1원 ~ 200,000원"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "200,000원",
+        "scope": "UNSPECIFIED",
+        "role": "MENTION",
+        "context": "1원 ~ 200,000원"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-CE42AD8BC95-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.750",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "global_cap": {
+        "value": "6.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01",
+          "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02",
+          "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000424_1_CE42AD8BC95_PREF_03.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000424-1-CE42AD8BC95-PREF-03-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000424_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "우리WON모바일 가입 고객\n적금 신규월의 다음월 말일까지 우리WON모바일을 개통하고 적금 만기일까지 우리WON모바일 가입을 유지한 경우 : 4%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000424-1-CE42AD8BC95-PREF-03-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "우리WON모바일 통신비 자동이체 시\n적금 가입월로부터 만기일이 속한 월의 전전월까지, 우리은행 통장에서 6회 이상 자동이체 실적 보유 시(본인명의, 연속 여부와 무관)\n※ 단, 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "우리WON모바일 통신비 자동이체 시\n적금 가입월로부터 만기일이 속한 월의 전전월까지, 우리은행 통장에서 6회 이상 자동이체 실적 보유 시(본인명의, 연속 여부와 무관)\n※ 단, 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-1-CE42AD8BC95-PREF-02",
+          "title": "우리WON모바일 가입 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000424_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "4",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "우리WON모바일 가입 고객"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "우리WON모바일 가입 고객\n적금 신규월의 다음월 말일까지 우리WON모바일을 개통하고 적금 만기일까지 우리WON모바일 가입을 유지한 경우 : 4%"
+        },
+        {
+          "rule_id": "INST-KR-000424-1-CE42AD8BC95-PREF-03",
+          "title": "우리WON모바일 통신비 자동이체 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000424_1_CE42AD8BC95_PREF_03.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 6,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "우리WON모바일 통신비 자동이체 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            }
+          ],
+          "semantic_domain": "BILL_PAYMENT",
+          "source_clause_text": "우리WON모바일 통신비 자동이체 시\n적금 가입월로부터 만기일이 속한 월의 전전월까지, 우리은행 통장에서 6회 이상 자동이체 실적 보유 시(본인명의, 연속 여부와 무관)\n※ 단, 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음 : 2%"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000424-1-CE42AD8BC95-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000424-1-CE42AD8BC95-PREF-02",
+            "INST-KR-000424-1-CE42AD8BC95-PREF-03"
+          ],
+          "cap": {
+            "value": "6.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01",
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02",
+              "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01",
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02",
+            "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01",
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02",
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03",
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-RATE",
+      "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "8.75",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d22a09bf8c7dc635279ac2b7e723cc1b"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO",
+    "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-RATE",
+    "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-LISTING",
+    "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "d22a09bf8c7dc635279ac2b7e723cc1b",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-D22A09BF8C7DC635279AC2B7E723CC1B-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

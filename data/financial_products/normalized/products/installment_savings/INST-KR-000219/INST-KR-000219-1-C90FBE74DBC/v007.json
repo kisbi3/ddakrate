@@ -1,0 +1,592 @@
+{
+  "product_code": "INST-KR-000219-1-C90FBE74DBC",
+  "version": 7,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 적금 9단",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-SALE"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 200000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1",
+        "max_value": "300000"
+      }
+    ],
+    "source_amount_text": "최소 1원 이상 30만원 이하",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1",
+        "currency": "KRW",
+        "source_expression": "1원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 30만원 이하"
+      },
+      {
+        "value": "300000",
+        "currency": "KRW",
+        "source_expression": "30만원",
+        "scope": "UNSPECIFIED",
+        "role": "RANGE_BOUND",
+        "context": "최소 1원 이상 30만원 이하"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-C90FBE74DBC-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000219_1_C90FBE74DBC_PREF_03.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000219-1-C90FBE74DBC-PREF-03-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.AMOUNT.SOURCE_COMPONENT_INST_KR_00021",
+          "type": "NUMBER",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "source_definition": "이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "unit": "KRW",
+          "self_report_eligible": false,
+          "source_recognition_text": "첫 적금 우대 : 최고 연 6.0%\n다음 각 요건을 충족하는 경우 차등적용, 중복적용 불가\n- 이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%\n- 2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 이 예금 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%\n※ 신규직전 6개월 : 예금 신규일로부터 6개월전 ~ 예금 신규 전일",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000219_1_C90FBE74DBC-INST_KR_000219_1_C90FB-SOURCE_COMPONENT_INST_KR_00021",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.AMOUNT.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000219_1",
+          "type": "NUMBER",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "source_definition": "2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "unit": "KRW",
+          "self_report_eligible": false,
+          "source_recognition_text": "첫 적금 우대 : 최고 연 6.0%\n다음 각 요건을 충족하는 경우 차등적용, 중복적용 불가\n- 이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%\n- 2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 이 예금 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%\n※ 신규직전 6개월 : 예금 신규일로부터 6개월전 ~ 예금 신규 전일",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000219_1_C90FBE74DBC-INST_KR_000219_1_C90FB-SOURCE_COMPONENT_INST_KR_00021",
+            "operator": "SUM"
+          }
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000219-1-C90FBE74DBC-PREF-03-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "신한카드(신용/체크) 결제실적 우대 : 연 2.0%\n이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "신한카드(신용/체크) 결제실적 우대 : 연 2.0%\n이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST_KR_000219_1_C90FBE74DBC-INST_KR_000219_1_C90FB-SOURCE_COMPONENT_INST_KR_00021",
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "PRODUCT_HOLDING_STATUS_OBSERVED",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "첫 적금 우대 : 최고 연 6.0%\n다음 각 요건을 충족하는 경우 차등적용, 중복적용 불가\n- 이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%\n- 2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 이 예금 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%\n※ 신규직전 6개월 : 예금 신규일로부터 6개월전 ~ 예금 신규 전일",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-C90FBE74DBC-PREF-02-NEW",
+          "title": "이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.AMOUNT.SOURCE_COMPONENT_INST_KR_00021",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "5.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%",
+            "reward_text": "+5.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%",
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "첫 적금 우대 : 최고 연 6.0%\n다음 각 요건을 충족하는 경우 차등적용, 중복적용 불가\n- 이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%\n- 2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 이 예금 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%\n※ 신규직전 6개월 : 예금 신규일로부터 6개월전 ~ 예금 신규 전일"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C90FBE74DBC-PREF-02-PROMO",
+          "title": "2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.AMOUNT.SOURCE_COMPONENT_INST_KR_00021_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "6.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%",
+            "reward_text": "+6.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_component_text": "2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%",
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "첫 적금 우대 : 최고 연 6.0%\n다음 각 요건을 충족하는 경우 차등적용, 중복적용 불가\n- 이 예금 신규 직전 6개월간 신한은행 예금, 적금, 청약이 없는 경우, 연 5.0%\n- 2026년 8월 31일까지 신규금액 30만원으로 가입한 고객 중 이 예금 신규 직전 6개월 간 신한은행 예금, 적금, 청약이 없는 경우, 연 6.0%\n※ 신규직전 6개월 : 예금 신규일로부터 6개월전 ~ 예금 신규 전일"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C90FBE74DBC-PREF-03",
+          "title": "신한카드(신용/체크) 결제실적 우대 : 연 2.0%",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000219_1_C90FBE74DBC_PREF_03.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 3,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신한카드(신용/체크) 결제실적 우대 : 연 2.0%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신한카드(신용/체크) 결제실적 우대 : 연 2.0%\n이 예금 신규 후 본인 명의 신한은행 입출금통장을 결제계좌로 신한카드(신용/체크) 결제 실적이 3개월 이상인 경우\n※ 카드결제 실적 인정기간 : 신규월로부터 만기일이 속한 달의 전전월 말까지"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000219-1-C90FBE74DBC-PREF-02-FIRST-SAVINGS-MAX",
+          "operator": "MAX_OF",
+          "member_rule_ids": [
+            "INST-KR-000219-1-C90FBE74DBC-PREF-02-NEW",
+            "INST-KR-000219-1-C90FBE74DBC-PREF-02-PROMO"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "6.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-01",
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02",
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03",
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-RATE",
+      "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "9",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "757503b04fb26fd6c5ec5aca687af3be"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO",
+    "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-RATE",
+    "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-LISTING",
+    "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "757503b04fb26fd6c5ec5aca687af3be",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-757503B04FB26FD6C5EC5ACA687AF3BE-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

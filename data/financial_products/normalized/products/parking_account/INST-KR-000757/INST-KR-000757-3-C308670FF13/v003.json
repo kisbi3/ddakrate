@@ -1,0 +1,291 @@
+{
+  "product_code": "INST-KR-000757-3-C308670FF13",
+  "version": 3,
+  "institution_id": "INST-KR-000757",
+  "name": "Smart-저축예금",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "금액\n제한없음\n가입방법\n본인명의 휴대폰\n대상\n만 19세 이상 개인 (법인, 외국인, 대리인 불가), 1인 1계좌\n본인명의 휴대폰 및 신분증(주민등록증, 운전면허증)소지고객\n최근 20영업일 이내 당행 포함 입출금통장을 개설한 이력이 없는 고객\n이자지급\n매일 최종잔액을 기준으로 이자를 산정하여 매월3일 결산 후 익일 원금에 합산 지급함\n유의\n1. 입출금이 자유로운 예금통장 개설시, 증빙서류 등을 통해 금융거래목적 확인이 되지 않는 경우 한도제한계좌로 개설됩니다.\n- 1일 이체(출금)한도 : 창구(영업점) 300만원, 전자금융거래(인터넷/스마트뱅킹) 100만원\n2. 이 상품은 비대면 실명확인(신분증 제출, 본인명의 휴대폰, 본인명의 타행계좌인증)을 통해 가입 가능한 상품으로, 가입 후 예.적금거래는 당사 온라인채널(인터넷홈페이지/모바일앱)을 통하여 거래가 가능합니다. 보다 자세한 내용은 고객센터(1644-7777)로 문의 하시기 바랍니다.\n3. 수수료 우대 혜택은 당사 수수료정책에 따라 변경될 수 있으며, 세율이 변동되는 경우 해지 수령액이 달라질 수 있습니다.\n4. 계좌에 압류, 가압류 등이 등록될 경우 원금 및 이자 지급의 제한이 있을 수 있습니다.\n5. 양도 및 담보제공, 질권설정은 불가능 합니다.\n6. 예금잔액증명서 발급 당일 잔액 변동이 불가능 합니다.\n7. 금융소비자보호법 제19조 제1항에 따라 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며 설명을 이해한 후 거래하시기 바랍니다.\n8. 계약을 체결하기 전 상품설명서 및 예금거래기본약관 등을 반드시 확인하시기 바랍니다.\n9. 전기통신금융사기피해방지 및 피해금 환급에 관한 특별법에서 정의한 피해의심거래계좌 및 사기이용계좌로 이용될 경우 지급정지 등의 금융거래 제한조치를 할 수 있습니다.\n※ 신규 가입일로부터 5영업일이내 오픈뱅킹 신청이 제한됩니다.\n이 예금은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 \"1억원까지\"(신한저축은행의 여타 보호상품과 합산) 보호됩니다.",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "excluded_customer_types": [
+      "CORPORATION",
+      "PROXY_APPLICANT"
+    ],
+    "nationality_scope": "KOREAN_ONLY",
+    "real_name_required": true,
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 19
+    },
+    "fact_definitions": [
+      {
+        "fact_key": "CUSTOMER.HAS_OWN_MOBILE_PHONE",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+        ]
+      },
+      {
+        "fact_key": "CUSTOMER.HAS_ACCEPTED_ID_DOCUMENT",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+        ],
+        "accepted_documents": [
+          "KOREAN_RESIDENT_REGISTRATION_CARD",
+          "KOREAN_DRIVER_LICENSE"
+        ]
+      },
+      {
+        "fact_key": "RELATIONSHIP.ANY_FINANCIAL_INSTITUTION.DEMAND_DEPOSIT_OPENED_PREVIOUS_20_BUSINESS_DAYS",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+        ]
+      }
+    ],
+    "condition": {
+      "operator": "AND",
+      "operands": [
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.TYPE",
+            "operator": "EQUALS",
+            "expected_value": "INDIVIDUAL"
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.HAS_OWN_MOBILE_PHONE",
+            "operator": "EQUALS",
+            "expected_value": true
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "CUSTOMER.HAS_ACCEPTED_ID_DOCUMENT",
+            "operator": "EQUALS",
+            "expected_value": true
+          }
+        },
+        {
+          "predicate": {
+            "fact_key": "RELATIONSHIP.ANY_FINANCIAL_INSTITUTION.DEMAND_DEPOSIT_OPENED_PREVIOUS_20_BUSINESS_DAYS",
+            "operator": "EQUALS",
+            "expected_value": false
+          }
+        }
+      ]
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000757-3-C308670FF13-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.3",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+        ],
+        "source_clause": "기본금리 | 기본금리 1.3%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_CONDITIONS_DISCLOSED",
+      "global_application": {},
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    },
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "settlement_day_of_month": 3,
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.30",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000757-3-C308670FF13",
+    "source_record_id": "2cca4e186f71c46e9082a4d290756032",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 177,
+    "reviewed_source_record_id": "2cca4e186f71c46e9082a4d290756032",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "ELIGIBILITY_HISTORY_CONDITION_UNSTRUCTURED",
+      "EXCLUDED_CUSTOMER_TYPE_ERRONEOUSLY_ALLOWED_SECOND_PASS",
+      "INTEREST_CREDITING_FREQUENCY_MISCLASSIFIED_AS_DAILY",
+      "NON_CORPORATE_ELIGIBILITY_CONTRADICTION_CONFIRMED",
+      "RECENT_20_BUSINESS_DAY_ACCOUNT_OPENING_RESTRICTION_RAW_ONLY"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "전 금융기관 최근 20영업일 입출금통장 개설이력 없음 조건을 deterministic eligibility로 승격",
+      "만19세·내국인·본인 휴대폰·허용 신분증·1인1계좌 조건과 매월 3일 결산 익일 지급을 구조화"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000757-3-C308670FF13"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "BASE_RATE_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

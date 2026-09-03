@@ -1,0 +1,1053 @@
+{
+  "product_code": "INST-KR-000796-1-CEDA8111240",
+  "version": 8,
+  "institution_id": "INST-KR-000796",
+  "name": "더프라임에이지적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 50세 이상 실명의 개인(1인 1계좌)",
+    "eligibility_text": "만 50세 이상 실명의 개인(1인 1계좌)",
+    "display_text": "만 50세 이상 실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 50
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "YEAR",
+    "min_value": 1,
+    "max_value": 3,
+    "source_expression": "1년 이상 3년 이하 월단위",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "MONTH"
+    },
+    "duration_selection_granularity_options": [
+      "MONTH"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+    ],
+    "contribution_mode": "MULTI_OPTION",
+    "contribution_mode_options": [
+      "FIXED",
+      "FREE"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "1000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "contribution_option_rules": [
+      {
+        "mode": "FIXED",
+        "amount_rules": [
+          {
+            "scope": "PER_MONTH",
+            "currency": "KRW",
+            "min_value": "100000",
+            "max_value": "1000000"
+          }
+        ]
+      },
+      {
+        "mode": "FREE",
+        "initial_contribution_rule": {
+          "currency": "KRW",
+          "min_value": "100000"
+        },
+        "amount_rules": [
+          {
+            "scope": "PER_CONTRIBUTION",
+            "currency": "KRW",
+            "min_value": "1000",
+            "increment_value": "1"
+          },
+          {
+            "scope": "PER_MONTH",
+            "currency": "KRW",
+            "max_value": "1000000"
+          }
+        ]
+      }
+    ],
+    "source_amount_text": "정액적립식 : 월 10만원 이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내",
+    "source_contribution_text": "정액적립식, 자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "정액적립식 : 월 10만원 이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "정액적립식 : 월 10만원 이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내"
+      },
+      {
+        "value": "100000",
+        "currency": "KRW",
+        "source_expression": "10만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "정액적립식 : 월 10만원 이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내"
+      },
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "적립식 : 월 10만원 이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "PER_MONTH",
+        "role": "RANGE_BOUND",
+        "context": "이상 100만원 이하\n자유적립식 : 최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "최초가입금액 10만원 이상 추가적립금액 1천원 이상 월적립한도 100만원 이내",
+      "min_value": "100000",
+      "max_value": "1000"
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-1-CEDA8111240-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000796-1-CEDA8111240-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000796-1-CEDA8111240-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "0.50",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06",
+          "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+          },
+          {
+            "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "더프라임에이지통장·더프라임에이지적금 함께 가입 시.\n단, 더프라임에이지적금 만기 해지 전 더프라임에이지통장 해지 시 우대금리 적용 불가\n※ 2024.06.20. 이전 가입한 舊「불타는청춘통장·불타는청춘적금」 계좌는 2024.06.20.부터 「더프라임에이지통장, 더프라임에이지적금」으로 변경 적용됨 : 0.1%"
+        },
+        {
+          "fact_key": "SUBSCRIPTION_OR_ACCOUNT_AMOUNT.AMOUNT.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "정액적립식 : 이 예금 만기 해지 시\n자유적립식 : 이 예금 해지원금 기준 500만원 이상 만기 해지 시 : 0.1%",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000796_1_CEDA8111240-INST_KR_000796_1_CEDA8-SOURCE_CLAUSE_INST_KR_000796_1",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 가입일 다음달 1일부터 만기일 전전월말까지 기간동안 산출한 요구불예금* 평균잔액이 100만원 이상의 경우\n*요구불예금 대상 : 당행 본인 명의 입출금이 자유로운 예금으로 보통예금, 저축예금 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금(MMDA)는 제외함 : 0.2%",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000796_1_CEDA8111240-INST_KR_000796_1_CEDA8-SOURCE_CLAUSE_INST_KR_000796_1",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "더프라임에이지 베테랑신용(체크)카드 100만원 이상 사용시.\n이 예금의 신규일로부터 만기일 전월말까지의 가입자 본인의 더프라임에이지 베테랑신용(체크)카드 사용금액(매입기준)으로하며, 더프라임에이지 베테랑신용카드의 경우 가족회원 사용금액도 포함한다.\n단, 취소금액, 카드론 사용금액은 우대조건 충족 불가함.\n※ 2024.06.20. 이전 가입한 舊 「불타는청춘 베테랑신용(체크)카드」는 2024.06.20.부터 「더프라임에이지 베테랑신용(체크)카드」로 변경 적용됨 : 0.1%\n추가 우대금리 이벤트 또는 쿠폰발급",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000796_1_CEDA8111240-INST_KR_000796_1_CEDA8-CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "operator": "SUM"
+          }
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n*이벤트 조건은 이 예금의 이벤트 기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됨."
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.\n*‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됨."
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST_KR_000796_1_CEDA8111240-INST_KR_000796_1_CEDA8-SOURCE_CLAUSE_INST_KR_000796_1",
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "ACCOUNT_BALANCE_OBSERVED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "이 예금 가입일 다음달 1일부터 만기일 전전월말까지 기간동안 산출한 요구불예금* 평균잔액이 100만원 이상의 경우\n*요구불예금 대상 : 당행 본인 명의 입출금이 자유로운 예금으로 보통예금, 저축예금 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금(MMDA)는 제외함 : 0.2%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "account_owner_scope": "CUSTOMER",
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000796_1_CEDA8111240-INST_KR_000796_1_CEDA8-CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "QUALIFYING_CARD_ACTIVITY_RECORDED",
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "더프라임에이지 베테랑신용(체크)카드 100만원 이상 사용시.\n이 예금의 신규일로부터 만기일 전월말까지의 가입자 본인의 더프라임에이지 베테랑신용(체크)카드 사용금액(매입기준)으로하며, 더프라임에이지 베테랑신용카드의 경우 가족회원 사용금액도 포함한다.\n단, 취소금액, 카드론 사용금액은 우대조건 충족 불가함.\n※ 2024.06.20. 이전 가입한 舊 「불타는청춘 베테랑신용(체크)카드」는 2024.06.20.부터 「더프라임에이지 베테랑신용(체크)카드」로 변경 적용됨 : 0.1%\n추가 우대금리 이벤트 또는 쿠폰발급",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-02",
+          "title": "더프라임에이지통장·더프라임에이지적금 함께 가입 시.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "더프라임에이지통장·더프라임에이지적금 함께 가입 시."
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "더프라임에이지통장·더프라임에이지적금 함께 가입 시.\n단, 더프라임에이지적금 만기 해지 전 더프라임에이지통장 해지 시 우대금리 적용 불가\n※ 2024.06.20. 이전 가입한 舊「불타는청춘통장·불타는청춘적금」 계좌는 2024.06.20.부터 「더프라임에이지통장, 더프라임에이지적금」으로 변경 적용됨 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-03",
+          "title": "정액적립식 : 이 예금 만기 해지 시",
+          "condition": {
+            "predicate": {
+              "fact_key": "SUBSCRIPTION_OR_ACCOUNT_AMOUNT.AMOUNT.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "정액적립식 : 이 예금 만기 해지 시"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+            }
+          ],
+          "semantic_domain": "SUBSCRIPTION_OR_ACCOUNT_AMOUNT",
+          "source_clause_text": "정액적립식 : 이 예금 만기 해지 시\n자유적립식 : 이 예금 해지원금 기준 500만원 이상 만기 해지 시 : 0.1%"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-04",
+          "title": "이 예금 가입일 다음달 1일부터 만기일 전전월말까지 기간동안 산출한 요구불예금* 평균잔액이 100만원 이상의 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 가입일 다음달 1일부터 만기일 전전월말까지 기간동안 산출한 요구불예금* 평균잔액이 100만원 이상의 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+            }
+          ],
+          "semantic_domain": "ACCOUNT_BALANCE",
+          "source_clause_text": "이 예금 가입일 다음달 1일부터 만기일 전전월말까지 기간동안 산출한 요구불예금* 평균잔액이 100만원 이상의 경우\n*요구불예금 대상 : 당행 본인 명의 입출금이 자유로운 예금으로 보통예금, 저축예금 기업자유예금, 당좌예금, 가계당좌예금에 한하며, 가계·기업 황금보너스예금(MMDA)는 제외함 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-05",
+          "title": "더프라임에이지 베테랑신용(체크)카드 100만원 이상 사용시.",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.AMOUNT.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "더프라임에이지 베테랑신용(체크)카드 100만원 이상 사용시."
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "더프라임에이지 베테랑신용(체크)카드 100만원 이상 사용시.\n이 예금의 신규일로부터 만기일 전월말까지의 가입자 본인의 더프라임에이지 베테랑신용(체크)카드 사용금액(매입기준)으로하며, 더프라임에이지 베테랑신용카드의 경우 가족회원 사용금액도 포함한다.\n단, 취소금액, 카드론 사용금액은 우대조건 충족 불가함.\n※ 2024.06.20. 이전 가입한 舊 「불타는청춘 베테랑신용(체크)카드」는 2024.06.20.부터 「더프라임에이지 베테랑신용(체크)카드」로 변경 적용됨 : 0.1%\n추가 우대금리 이벤트 또는 쿠폰발급"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-06",
+          "title": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "광주은행에서 실시하는 이벤트 조건*에 부합할 경우 결과에 따른 추가 우대금리를 제공합니다.\n*이벤트 조건은 이 예금의 이벤트 기간 동안 광주은행 인터넷홈페이지 등에 게시되며, 충족하는 조건에 따라 이 예금의 만기해지 시 금리에 자동 적용됨."
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CEDA8111240-PREF-07",
+          "title": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이 예금에 가입 전에 ‘우대금리쿠폰’*을 발급 받은 고객이 우대금리 쿠폰에 기재된 조건을 충족한 경우 추가 우대금리를 제공합니다.\n*‘우대금리쿠폰’은 광주은행 고객 이벤트 등을 통해 특정 기간 중 특정 상품(서비스)에 가입하거나 다양한 이벤트 활동에 참여하여 조건을 달성한 경우 발급됨."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07",
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-07"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE",
+      "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "b349f5b62ff2263cb5c26cc906c55de0"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO",
+    "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE",
+    "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "b349f5b62ff2263cb5c26cc906c55de0",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 9,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-B349F5B62FF2263CB5C26CC906C55DE0-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

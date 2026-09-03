@@ -1,0 +1,210 @@
+{
+  "product_code": "INST-KR-000211-1-CBC0AB2BC9C",
+  "version": 1,
+  "institution_id": "INST-KR-000211",
+  "name": "SC행복적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n① 기초생활수급자\n② 소년소녀 가장\n③ 북한이탈주민\n④ 결혼이민자\n⑤ 근로장려금 수급자\n⑥ 한부모가족지원 보호대상자\n⑦ 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "eligibility_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n① 기초생활수급자\n② 소년소녀 가장\n③ 북한이탈주민\n④ 결혼이민자\n⑤ 근로장려금 수급자\n⑥ 한부모가족지원 보호대상자\n⑦ 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "display_text": "개인, 개인사업자 중 다음 조건 중 하나에 해당하는 자(1인 1계좌 가입 가능)\n① 기초생활수급자\n② 소년소녀 가장\n③ 북한이탈주민\n④ 결혼이민자\n⑤ 근로장려금 수급자\n⑥ 한부모가족지원 보호대상자\n⑦ 차상위계층(만65세 이상)\n※ 예금을 가입하는 때에 증빙자료 제출",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "age_range": {
+      "min_age": 65
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-1-CBC0AB2BC9C-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.65",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-1-CBC0AB2BC9C-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.15",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-1-CBC0AB2BC9C-01",
+        "title": "우대이율 (최대 우대 이율 합계 : 0.5%)",
+        "condition_text": "우대이율 (최대 우대 이율 합계 : 0.5%)",
+        "structured_steps": [
+          "우대이율 (최대 우대 이율 합계 : 0.5%)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대이율 (최대 우대 이율 합계 : 0.5%)",
+          "summary_text": "우대이율 (최대 우대 이율 합계 : 0.5%)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-1-CBC0AB2BC9C-02",
+        "title": "자동이체 우대이율",
+        "condition_text": "자동이체 우대이율\n- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%",
+        "structured_steps": [
+          "자동이체 우대이율",
+          "- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.3",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "자동이체 우대이율",
+          "summary_text": "자동이체 우대이율",
+          "detail_texts": [
+            "- 만기 시점을 기준으로 SC제일은행 입출금통장에서 SC행복적금으로 자동이체 5회 이상 실적이 있는 경우 : 0.3%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000211-1-CBC0AB2BC9C-03",
+        "title": "고령자 우대이율",
+        "condition_text": "고령자 우대이율\n- 예금을 가입할 때 65세 이상이면서 이 예금을 만기에 해약하는 경우 (특별중도해지 포함)\n- 2024. 1.15 이후 가입자만 적용 : 0.2%",
+        "structured_steps": [
+          "고령자 우대이율",
+          "- 예금을 가입할 때 65세 이상이면서 이 예금을 만기에 해약하는 경우 (특별중도해지 포함)",
+          "- 2024. 1.15 이후 가입자만 적용 : 0.2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "고령자 우대이율",
+          "summary_text": "고령자 우대이율",
+          "detail_texts": [
+            "- 예금을 가입할 때 65세 이상이면서 이 예금을 만기에 해약하는 경우 (특별중도해지 포함)",
+            "- 2024. 1.15 이후 가입자만 적용 : 0.2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+    ],
+    "advertised_max_rate": {
+      "value": "4.15",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000211-1-CBC0AB2BC9C"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.248902+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

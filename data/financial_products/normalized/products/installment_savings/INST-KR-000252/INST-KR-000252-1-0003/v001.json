@@ -1,0 +1,212 @@
+{
+  "product_code": "INST-KR-000252-1-0003",
+  "version": 1,
+  "institution_id": "INST-KR-000252",
+  "name": "연금하나 월복리 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0003"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(급여하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "eligibility_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(급여하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "display_text": "실명의 개인 또는 개인사업자 (1인 1계좌)\n(급여하나 월복리 적금 또는 주거래하나 월복리 적금과 중복 가입 불가)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0003"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      12,
+      24,
+      36
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0003"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0003"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000252-1-0003-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.950",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0003"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000252-1-0003-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.15",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0003"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0003-01",
+        "title": "최고 연 1.20% (단, 중도해지시 미제공)",
+        "condition_text": "최고 연 1.20% (단, 중도해지시 미제공)",
+        "structured_steps": [
+          "최고 연 1.20% (단, 중도해지시 미제공)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.20",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "최고 연 1.20% (단, 중도해지시 미제공)",
+          "summary_text": "최고 연 1.20% (단, 중도해지시 미제공)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.20",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0003-02",
+        "title": "연금하나 우대(최고 연 1.10%)",
+        "condition_text": "연금하나 우대(최고 연 1.10%)\n① 이 예금 만기 전전월말 기준, 계약기간의 1/2이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 0.90%)\n② 이 예금 만기 전전월말 기준, 계약기간의 2/3이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 1.10%)",
+        "structured_steps": [
+          "연금하나 우대(최고 연 1.10%)",
+          "① 이 예금 만기 전전월말 기준, 계약기간의 1/2이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 0.90%)",
+          "② 이 예금 만기 전전월말 기준, 계약기간의 2/3이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 1.10%)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "연금하나 우대(최고 연 1.10%)",
+          "summary_text": "연금하나 우대(최고 연 1.10%)",
+          "detail_texts": [
+            "① 이 예금 만기 전전월말 기준, 계약기간의 1/2이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 0.90%)",
+            "② 이 예금 만기 전전월말 기준, 계약기간의 2/3이상 본인명의 하나은행 입출금통장을 통해 연금 입금실적 보유한 경우(월 1회 이체) (연 1.10%)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000252-1-0003-03",
+        "title": "온라인 재예치 우대(최대 연 0.10%)",
+        "condition_text": "온라인 재예치 우대(최대 연 0.10%)\n- 이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우",
+        "structured_steps": [
+          "온라인 재예치 우대(최대 연 0.10%)",
+          "- 이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000252-1-0003"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "온라인 재예치 우대(최대 연 0.10%)",
+          "summary_text": "온라인 재예치 우대(최대 연 0.10%)",
+          "detail_texts": [
+            "- 이 예금을 온라인채널(인터넷뱅킹/스마트폰뱅킹)을 통해 가입 또는 만기재예치하는 경우"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000252-1-0003"
+    ],
+    "advertised_max_rate": {
+      "value": "4.15",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000252-1-0003"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000252-1-0003"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.315151+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

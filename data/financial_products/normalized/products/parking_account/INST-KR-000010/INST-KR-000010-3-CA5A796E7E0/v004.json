@@ -1,0 +1,420 @@
+{
+  "product_code": "INST-KR-000010-3-CA5A796E7E0",
+  "version": 4,
+  "institution_id": "INST-KR-000010",
+  "name": "내곁에 든든 연금통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만55세 이상 개인(1인 1계좌, 연금우대통장과 중복가입 불가)",
+    "eligibility_text": "만55세 이상 개인(1인 1계좌, 연금우대통장과 중복가입 불가)",
+    "display_text": "만55세 이상 개인(1인 1계좌, 연금우대통장과 중복가입 불가)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ],
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 55
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000010-3-CA5A796E7E0-REL-EXCLUDE-PENSION-PREF-ACCOUNT",
+        "kind": "CROSS_PRODUCT_EXCLUSION",
+        "related_product_name": "연금우대통장",
+        "expected_state": false,
+        "subject_scope": "PERSON",
+        "source_text": "연금우대통장과 중복가입 불가",
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000010-3-CA5A796E7E0-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+        ],
+        "source_clause": "기본금리 | 기본금리 0.10%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_scope": {
+          "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+          "method": "CAPPED_PORTION",
+          "range": {
+            "currency": "KRW",
+            "unit": "KRW",
+            "min_value": "0",
+            "min_inclusive": true,
+            "max_value": "1000000",
+            "max_inclusive": true,
+            "source_text": "이자계산기간 동안 평잔 100만원 이하 금액"
+          },
+          "source_text": "이자계산기간 동안 평잔 100만원 이하 금액"
+        },
+        "fact_window": {
+          "standard": "SIX_CALENDAR_MONTHS_ENDING_MONTH_BEFORE_SETTLEMENT_MONTH",
+          "if_account_age_less_than_six_months": "SUBSCRIPTION_MONTH_THROUGH_MONTH_BEFORE_SETTLEMENT_MONTH",
+          "if_subscribed_in_settlement_month": "NO_PREFERENTIAL_RATE"
+        },
+        "reward_window": "CURRENT_INTEREST_CALCULATION_PERIOD",
+        "source_text": "우대이율 최대 1.90%\n1\n① 결산 전월까지 최근 6개월 동안 연금실적이 매월 50만원 이상(월별 합계금액기준)인 경우 : 1.90%\n② 결산 전월까지 최근 6개월 동안 연금실적이 매월 입금되고 있으나 월별 합계금액이 1회이상 50만원 미만인 경우 : 0.90%\n※ 가입일로부터 결산 전월까지 6개월 미만일 경우 월로부터 결산 전월까지 연금 실적 계산 (단, 결산 월에 가입한 경우 해당결산월에 우대이율 미제공)\n※ 이 통장 적요란에 '연금'문구가 인자되어 입금된 경우에만 연금실적을 인정하며, 우대이율을 제공함 (창구입금은 제외)\n※ 우대이율은 이자계산기간 동안 평잔 1백만원이하에 대해서만 적용합니다.\n※ 이자계산기간은 최초 예금일(또는 지난 이자계산 기준일 다음날)부터 이자계산 기준일까지를 의미합니다.\n※ 이 통장의 적용이율은 변경될 수 있으며, 이율 변경시에는 변경일로부터 바뀐 이율이 적용됩니다."
+      },
+      "event_definitions": [
+        {
+          "event_id": "EV-INST-KR-000010-3-CA5A796E7E0-QUALIFYING-PENSION-CREDIT",
+          "event_type": "PENSION_CREDIT",
+          "account_scope": "THIS_ACCOUNT",
+          "memo_contains": [
+            "연금"
+          ],
+          "excluded_channels": [
+            "BRANCH_CASH_DEPOSIT"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ]
+        }
+      ],
+      "fact_definitions": [
+        {
+          "fact_key": "PENSION.QUALIFYING_MONTHLY_SUM_SERIES",
+          "data_type": "MONTHLY_MONEY_SERIES",
+          "unit": "KRW",
+          "event_definition_ref": "EV-INST-KR-000010-3-CA5A796E7E0-QUALIFYING-PENSION-CREDIT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "PENSION.ALL_EVALUATED_MONTHS_SUM_GTE_500000",
+          "data_type": "BOOLEAN",
+          "derivation": {
+            "series_fact": "PENSION.QUALIFYING_MONTHLY_SUM_SERIES",
+            "operator": "EVERY_PERIOD_GTE",
+            "value": 500000,
+            "unit": "KRW"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "PENSION.ALL_EVALUATED_MONTHS_HAVE_CREDIT_AND_ANY_SUM_LT_500000",
+          "data_type": "BOOLEAN",
+          "derivation": {
+            "operator": "AND",
+            "operands": [
+              {
+                "series_fact": "PENSION.QUALIFYING_MONTHLY_SUM_SERIES",
+                "operator": "EVERY_PERIOD_GT",
+                "value": 0
+              },
+              {
+                "series_fact": "PENSION.QUALIFYING_MONTHLY_SUM_SERIES",
+                "operator": "ANY_PERIOD_LT",
+                "value": 500000,
+                "unit": "KRW"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000010-3-CA5A796E7E0-PREF-01",
+          "title": "평가대상 모든 월의 연금 합계 50만원 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "PENSION.ALL_EVALUATED_MONTHS_SUM_GTE_500000",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.90",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000010-3-CA5A796E7E0-PREF-02",
+          "title": "평가대상 모든 월 연금 입금 존재, 1개월 이상 50만원 미만",
+          "condition": {
+            "predicate": {
+              "fact_key": "PENSION.ALL_EVALUATED_MONTHS_HAVE_CREDIT_AND_ANY_SUM_LT_500000",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.90",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000010-3-CA5A796E7E0-REL-MUTUALLY-EXCLUSIVE",
+          "type": "EXCLUSIVE_ONE",
+          "rule_ids": [
+            "INST-KR-000010-3-CA5A796E7E0-PREF-01",
+            "INST-KR-000010-3-CA5A796E7E0-PREF-02"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ],
+    "interest_crediting": {
+      "raw_text": "1. 보통예금의 이자의 결산은 5월과 11월의 제3토요일에 실시하며, 저축예금 및 자유저축예금은 3, 6, 9, 12월의 제3토요일에 실시합니다. 다만, 토요일이 공휴일인 경우에는 그 직전 영업일에 실시합니다.\n2. 이자의 원가는 보통예금, 저축예금, 자유저축예금 모두 결산 익영업일자로 합니다.\n3. 거래중지계좌에 편입된 예금은 결산대상에서 제외합니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000010-3-CA5A796E7E0-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "reference_day": {
+              "ordinal_week": 3,
+              "weekday": "SATURDAY"
+            },
+            "reference_day_holiday_adjustment": "PREVIOUS_BUSINESS_DAY",
+            "credit_offset": {
+              "value": 1,
+              "unit": "BUSINESS_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+          ]
+        }
+      ],
+      "variant_schedules": [
+        {
+          "account_subtypes": [
+            "ORDINARY_DEPOSIT"
+          ],
+          "calendar_months": [
+            5,
+            11
+          ]
+        },
+        {
+          "account_subtypes": [
+            "SAVINGS_DEPOSIT",
+            "FREE_SAVINGS_DEPOSIT"
+          ],
+          "calendar_months": [
+            3,
+            6,
+            9,
+            12
+          ]
+        }
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ]
+    },
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "AVERAGE_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+      ],
+      "structuring_status": "SUPPORTED"
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000010-3-CA5A796E7E0",
+    "source_record_id": "f6b6e9378da703224ae6d3866b18e577",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T16:10:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 2,
+    "reviewed_source_record_id": "f6b6e9378da703224ae6d3866b18e577",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "CROSS_PRODUCT_EXCLUSION_UNSTRUCTURED",
+      "INTEREST_CREDITING_MONTHS_MISMATCH",
+      "INTEREST_CREDITING_MONTH_SET_MISMATCH_SECOND_PASS",
+      "PENSION_MONTHLY_SERIES_LOGIC_LOST",
+      "PREFERENCE_AVERAGE_BALANCE_SCOPE_MISSING",
+      "FALSE_RELATIONSHIP_REQUIREMENTS"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reconciled_at": "2026-08-30T16:10:00+09:00",
+    "condition_section_reconciliation_pass": 2,
+    "condition_section_primary_source": "NAVER_RATE_INFO_CONDITION_SECTION",
+    "condition_section_sha256": "a16fb95b1db458b01d6bcdfeb169550cb3c2e0f42d3a8fae434e541bcc933480",
+    "resolved_condition_findings": [
+      "PENSION_MONTHLY_SERIES_LOGIC_LOST",
+      "PREFERENCE_AVERAGE_BALANCE_SCOPE_MISSING",
+      "FALSE_RELATIONSHIP_REQUIREMENTS"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000010-3-CA5A796E7E0"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T16:10:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true,
+    "condition_section_reconciliation_pass": 2
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "product_code": "INST-KR-000830-1-CA7BF0C5E7B",
+  "version": 1,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 26주적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인당 30계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "eligibility_text": "실명의 개인 (1인당 30계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "display_text": "실명의 개인 (1인당 30계좌 가입 가능)\n※ 주민등록증, 운전면허증 또는 여권을 소지한 만 14세 이상 내국인",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 14
+    },
+    "nationality_scope": "KOREAN_ONLY"
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-1-CA7BF0C5E7B-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000830-1-CA7BF0C5E7B-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "5.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000830-1-CA7BF0C5E7B-01",
+        "title": "주차별 자동이체 납입을 연속 성공하고 만기 해지한 경우 (최대 연 3.00%p)",
+        "condition_text": "주차별 자동이체 납입을 연속 성공하고 만기 해지한 경우 (최대 연 3.00%p)",
+        "structured_steps": [
+          "주차별 자동이체 납입을 연속 성공하고 만기 해지한 경우 (최대 연 3.00%p)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "3.00",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "주차별 자동이체 납입을 연속 성공하고 만기 해지한 경우 (최대 연 3.00%p)",
+          "summary_text": "주차별 자동이체 납입을 연속 성공하고 만기 해지한 경우 (최대 연 3.00%p)",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "3.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000830-1-CA7BF0C5E7B-02",
+        "title": "7주 연속 성공 시 +연 1.00%p (누적 연 1.00%p 제공)",
+        "condition_text": "7주 연속 성공 시 +연 1.00%p (누적 연 1.00%p 제공)\n26주 연속 성공 시 +연 2.00%p (누적 연 3.00%p 제공)\n* 자동이체를 실패한 주차에 빈자리 채우기를 하여도 성공으로 인정되지 않음\n7주차까지 자동이체 납입을 연속 성공한 경우, 이후 실패하더라도 연 1.00%p 는 제공함\n금리쿠폰",
+        "structured_steps": [
+          "7주 연속 성공 시 +연 1.00%p (누적 연 1.00%p 제공)",
+          "26주 연속 성공 시 +연 2.00%p (누적 연 3.00%p 제공)",
+          "* 자동이체를 실패한 주차에 빈자리 채우기를 하여도 성공으로 인정되지 않음",
+          "7주차까지 자동이체 납입을 연속 성공한 경우, 이후 실패하더라도 연 1.00%p 는 제공함",
+          "금리쿠폰"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.00",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "7주 연속 성공 시 +연 1.00%p (누적 연 1.00%p 제공)",
+          "summary_text": "7주 연속 성공 시 +연 1.00%p (누적 연 1.00%p 제공)",
+          "detail_texts": [
+            "26주 연속 성공 시 +연 2.00%p (누적 연 3.00%p 제공)",
+            "* 자동이체를 실패한 주차에 빈자리 채우기를 하여도 성공으로 인정되지 않음",
+            "7주차까지 자동이체 납입을 연속 성공한 경우, 이후 실패하더라도 연 1.00%p 는 제공함",
+            "금리쿠폰"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+    ],
+    "advertised_max_rate": {
+      "value": "5.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000830-1-CA7BF0C5E7B"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.517170+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

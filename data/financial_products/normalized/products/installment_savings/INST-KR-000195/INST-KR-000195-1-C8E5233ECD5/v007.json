@@ -1,0 +1,1210 @@
+{
+  "product_code": "INST-KR-000195-1-C8E5233ECD5",
+  "version": 7,
+  "institution_id": "INST-KR-000195",
+  "name": "내가 디자인하는 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인",
+    "eligibility_text": "개인",
+    "display_text": "개인",
+    "source_ref_ids": [
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 36,
+    "source_expression": "12개월 ~ 36개월",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FIXED",
+    "contribution_mode_options": [
+      "FIXED"
+    ],
+    "contribution_pattern": "FIXED_AMOUNT",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "10000"
+      }
+    ],
+    "source_amount_text": "최저 1만원 이상",
+    "source_contribution_text": "정액적립식",
+    "source_amount_constraints": [
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "최저 1만원 이상"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000195-1-C8E5233ECD5-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "내가 정하는 : _________________적금 이름 설정"
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "세람저축은행 정기예금 이용"
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "세람저축은행 첫 번째 적금 가입"
+        },
+        {
+          "fact_key": "DOCUMENT_VERIFICATION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+          ],
+          "authority": "DOCUMENT_VERIFICATION",
+          "self_report_eligible": false,
+          "source_recognition_text": "세람저축은행 고객등록 5년 이상"
+        },
+        {
+          "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+          ],
+          "authority": "SOURCE_VERIFICATION_REQUIRED",
+          "self_report_eligible": false,
+          "source_recognition_text": "36개월"
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+          ],
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "다 자녀(2인이상)를 두신 부모님(등본 및 가족관계증명서 필요)"
+        },
+        {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+          ],
+          "unit": "YEAR",
+          "authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "60세 이상 고객님"
+        },
+        {
+          "fact_key": "CONTRACT_TERM.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+          ],
+          "authority": "BANK_CONTRACT_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "24개월 이상"
+        },
+        {
+          "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "자동만기 재예치(적금 만기 후 정기예금 자동가입) - ※ 이연된 적금은 이연일자에 연장"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000195-1-C8E5233ECD5-PREF-05",
+          "applies_to_rule_ids": [
+            "INST-KR-000195-1-C8E5233ECD5-PREF-05"
+          ],
+          "required_actions": [
+            "REGISTER_REQUIRED_INFORMATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "세람저축은행 고객등록 5년 이상"
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-02",
+          "title": "내가 정하는 : _________________적금 이름 설정",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "내가 정하는 : _________________적금 이름 설정"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "내가 정하는 : _________________적금 이름 설정"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-03",
+          "title": "세람저축은행 정기예금 이용",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "세람저축은행 정기예금 이용"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "세람저축은행 정기예금 이용"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-04",
+          "title": "세람저축은행 첫 번째 적금 가입",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "세람저축은행 첫 번째 적금 가입"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "세람저축은행 첫 번째 적금 가입"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-05",
+          "title": "세람저축은행 고객등록 5년 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "DOCUMENT_VERIFICATION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+              }
+            ],
+            "fact_authority": "DOCUMENT_VERIFICATION",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "세람저축은행 고객등록 5년 이상"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+            }
+          ],
+          "semantic_domain": "DOCUMENT_VERIFICATION",
+          "source_clause_text": "세람저축은행 고객등록 5년 이상"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-06",
+          "title": "2인 이상 동반가입 (가입 당일에 한함)",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "2인 이상 동반가입 (가입 당일에 한함)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "2인 이상 동반가입 (가입 당일에 한함)"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-07",
+          "title": "다 자녀(2인이상)를 두신 부모님(등본 및 가족관계증명서 필요)",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "다 자녀(2인이상)를 두신 부모님(등본 및 가족관계증명서 필요)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "다 자녀(2인이상)를 두신 부모님(등본 및 가족관계증명서 필요)"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-08",
+          "title": "올해의 띠",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "올해의 띠"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "올해의 띠"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-09",
+          "title": "60세 이상 고객님",
+          "condition": {
+            "predicate": {
+              "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "60세 이상 고객님"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "60세 이상 고객님"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-10",
+          "title": "24개월 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRACT_TERM.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+              }
+            ],
+            "fact_authority": "BANK_CONTRACT_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "24개월 이상"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+            }
+          ],
+          "semantic_domain": "CONTRACT_TERM",
+          "source_clause_text": "24개월 이상"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-11",
+          "title": "36개월",
+          "condition": {
+            "predicate": {
+              "fact_key": "OTHER_SOURCE_CONDITION.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+              }
+            ],
+            "fact_authority": "SOURCE_VERIFICATION_REQUIRED",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "36개월"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+            }
+          ],
+          "semantic_domain": "OTHER_SOURCE_CONDITION",
+          "source_clause_text": "36개월"
+        },
+        {
+          "rule_id": "INST-KR-000195-1-C8E5233ECD5-PREF-12",
+          "title": "자동만기 재예치(적금 만기 후 정기예금 자동가입) - ※ 이연된 적금은 이연일자에 연장",
+          "condition": {
+            "predicate": {
+              "fact_key": "MATURITY_OR_RENEWAL.SATISFIED.SOURCE_CLAUSE_INST_KR_000195_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "UNKNOWN_REWARD",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "자동만기 재예치(적금 만기 후 정기예금 자동가입) - ※ 이연된 적금은 이연일자에 연장"
+          },
+          "source_ref_ids": [
+            "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+            }
+          ],
+          "semantic_domain": "MATURITY_OR_RENEWAL",
+          "source_clause_text": "자동만기 재예치(적금 만기 후 정기예금 자동가입) - ※ 이연된 적금은 이연일자에 연장"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-01",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12",
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-06"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-07"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-08"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-09"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-10"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-11"
+        },
+        {
+          "source_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-12"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-RATE",
+      "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.2",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "6342208dc70461bb79dd3cafb13edaeb"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO",
+    "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-RATE",
+    "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "6342208dc70461bb79dd3cafb13edaeb",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 12,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-6342208DC70461BB79DD3CAFB13EDAEB-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

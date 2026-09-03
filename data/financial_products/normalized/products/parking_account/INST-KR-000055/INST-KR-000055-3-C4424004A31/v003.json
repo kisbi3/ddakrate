@@ -1,0 +1,492 @@
+{
+  "product_code": "INST-KR-000055-3-C4424004A31",
+  "version": 3,
+  "institution_id": "INST-KR-000055",
+  "name": "머니모으기",
+  "product_family": "PARKING_ACCOUNT",
+  "product_subtype": "CHALLENGE_GOAL_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "CHALLENGE_GOAL_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "애큐온모바일자유예금을 보유한 실명의 개인",
+    "eligibility_text": "애큐온모바일자유예금을 보유한 실명의 개인",
+    "display_text": "애큐온모바일자유예금을 보유한 실명의 개인",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ],
+    "real_name_required": true,
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000055-3-C4424004A31-REL-C9128AB0C9CE",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "애큐온모바일자유예금을 보유한 실명의 개인",
+        "fact_key": "SOURCE_RELATIONSHIP.C9128AB0C9CE.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000055-3-C4424004A31-REL-E623548B7A32",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "가입 가능한 최대 금액은 보유한 머니모으기 계좌의 도전금액 합산 최대 1천만원까지",
+        "fact_key": "SOURCE_RELATIONSHIP.E623548B7A32.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "min_value": 4,
+    "max_value": 26,
+    "representative_value": 26,
+    "unit": "WEEK",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "CHALLENGE_TARGET",
+    "contribution_frequency": "WEEKLY",
+    "contribution_pattern": "CONSTANT",
+    "amount_derivation": "TARGET_AMOUNT_DIVIDED_BY_CHALLENGE_WEEKS_ROUND_UP_TO_WON",
+    "currency": "KRW",
+    "challenge_amount_rules": {
+      "per_account": {
+        "min_value": "10000",
+        "max_value": "2000000",
+        "increment": "10000",
+        "currency": "KRW",
+        "immutable_after_setting": true
+      },
+      "aggregate_across_active_accounts": {
+        "max_value": "10000000",
+        "currency": "KRW"
+      }
+    },
+    "challenge_duration_options": {
+      "min_value": 4,
+      "max_value": 26,
+      "unit": "WEEK"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000055-3-C4424004A31-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.000",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+        ],
+        "source_clause": "4주 ~ 26주 | 2.000%",
+        "applies_to": [
+          {
+            "basis": "ACCOUNT_AGE",
+            "range": {
+              "unit": "WEEK",
+              "source_text": "4주 ~ 26주",
+              "min_value": "4",
+              "min_inclusive": true,
+              "max_value": "26",
+              "max_inclusive": true
+            }
+          }
+        ],
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED",
+      "global_application": {
+        "reward_event": "CHALLENGE_SUCCESS"
+      },
+      "global_cap": {
+        "value": "3.0",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CHALLENGE.LAST_CONTRIBUTION_COMPLETED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        },
+        {
+          "fact_key": "CHALLENGE.EMERGENCY_WITHDRAWAL_COUNT_AFTER_LAST_CONTRIBUTION",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "CHALLENGE.ATTENDANCE_CHECK_COUNT_BEFORE_SUCCESS",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ],
+          "unit": "COUNT"
+        },
+        {
+          "fact_key": "CONSENT.ACCUON_MARKETING_MAINTAINED_THROUGH_SUCCESS",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.ACCUON_MARKETING_REVOKED_DURING_CHALLENGE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000055-3-C4424004A31-PREF-SUCCESS",
+          "title": "머니모으기 성공",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CHALLENGE.LAST_CONTRIBUTION_COMPLETED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CHALLENGE.EMERGENCY_WITHDRAWAL_COUNT_AFTER_LAST_CONTRIBUTION",
+                  "operator": "EQUALS",
+                  "expected_value": 0
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "CHALLENGE_SUCCESS"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000055-3-C4424004A31-PREF-ATTENDANCE",
+          "title": "도전 성공일 전까지 출석체크 12회",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHALLENGE.ATTENDANCE_CHECK_COUNT_BEFORE_SUCCESS",
+              "operator": "GTE",
+              "expected_value": 12
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "CHALLENGE_SUCCESS"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000055-3-C4424004A31-PREF-MARKETING",
+          "title": "마케팅 동의 유지",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.ACCUON_MARKETING_MAINTAINED_THROUGH_SUCCESS",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.ACCUON_MARKETING_REVOKED_DURING_CHALLENGE",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "CHALLENGE_SUCCESS",
+            "reconsent_after_revocation_does_not_restore_eligibility": true
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000055-3-C4424004A31-REL-OPTION-2",
+          "type": "MAX_OF",
+          "rule_ids": [
+            "INST-KR-000055-3-C4424004A31-PREF-ATTENDANCE",
+            "INST-KR-000055-3-C4424004A31-PREF-MARKETING"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        },
+        {
+          "relation_id": "INST-KR-000055-3-C4424004A31-REL-TOTAL",
+          "type": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000055-3-C4424004A31-PREF-SUCCESS",
+            "INST-KR-000055-3-C4424004A31-REL-OPTION-2"
+          ],
+          "cap": {
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ],
+      "structuring_status": "SUPPORTED",
+      "day_count_denominator": 365
+    },
+    "interest_crediting": {
+      "raw_text": "최초 가입일로부터 도전 성공일 전일까지의 기간을 이자계산 기간으로 하고, 매일의 최종 잔액에 대하여 가입 시점 애큐온저축은행 영업점 및 모바일 앱(홈페이지)에 고시한 금리 적용\n(매일 최종 잔액 X 약정금리 X 1/365 → 일자 별 이자를 모두 합산 후 도전성공일에 지급)\n이자지급시기 : 도전 성공일",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000055-3-C4424004A31-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "DAY"
+      }
+    },
+    "payment_timing": "EVENT_DRIVEN",
+    "advertised_max_rate": {
+      "value": "5.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "withdrawal_effect": {
+      "kind": "PREFERENTIAL_RATE_CONDITION",
+      "restricted_window": "AFTER_LAST_CONTRIBUTION_UNTIL_CHALLENGE_SUCCESS",
+      "required_withdrawal_count": 0,
+      "does_not_assert_withdrawal_is_IMPOSSIBLE": true
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000055-3-C4424004A31",
+        "product_name": "머니모으기",
+        "path": "return_policy.non_success_outcome",
+        "reason": "원문은 도전 성공일 지급을 명시하지만 도전 실패·중도종료 시 적용금리와 지급시점은 제시하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000055-3-C4424004A31",
+    "source_record_id": "7a227fad5064417fdc15e9e8a394fd5d",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "TIERED_OR_COMPOSITE_REWARD_LOGIC_LOSS"
+    ],
+    "review_sequence": 22,
+    "reviewed_source_record_id": "7a227fad5064417fdc15e9e8a394fd5d",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000055-3-C4424004A31"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "product_code": "INST-KR-000211-2-C0207168C43",
+  "version": 3,
+  "institution_id": "INST-KR-000211",
+  "name": "SC제일 친환경비움예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "subscription_channels": [
+      "BRANCH",
+      "MOBILE_APP"
+    ],
+    "subscription_channel_source_text": "영업점, 모바일뱅킹",
+    "subscription_channel_source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "limited_sale_policy": {
+      "total_capacity_krw": "100000000000",
+      "capacity_text": "모집한도 1천억원; 판매한도 이내에서 신규 가능하며 한도가 소진되면 신규 불가",
+      "passbook_issuance": "NOT_AVAILABLE",
+      "source_text": "친환경 활동 참여 고객을 위한 정기예금, 모집한도 1천억원, 통장 발행 불가",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ]
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(개인사업자포함)",
+    "eligibility_text": "개인(개인사업자포함)",
+    "display_text": "개인(개인사업자포함)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "source_text": "12개월",
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "source_amount_text": "1백만원 이상 - 5억원미만",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW",
+        "max_value": "500000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-2-C0207168C43-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.63",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C0207168C43-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.63",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월 / 5억원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월 / 5억원 미만",
+          "raw_cell": "3.630% -",
+          "table_header": "기본 금리 | 기간 만기일시지급식(약정 이율) 만기일시지급식(연수익률)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+        ],
+        "source_rate_row_text": "12개월 / 5억원 미만"
+      },
+      {
+        "rate_id": "INST-KR-000211-2-C0207168C43-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.63",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월 / 5억원 미만"
+          }
+        ],
+        "rate_context": {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월 / 5억원 미만",
+          "raw_cell": "3.630% -",
+          "table_header": "기본 금리 | 기간 만기일시지급식(약정 이율) 만기일시지급식(연수익률)",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+        ],
+        "source_rate_row_text": "12개월 / 5억원 미만",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 만기일시지급식(약정 이율) 만기일시지급식(연수익률)\n12개월 / 5억원 미만\n3.630%\n-",
+      "header_lines": [
+        "기본 금리",
+        "기간 만기일시지급식(약정 이율) 만기일시지급식(연수익률)"
+      ],
+      "rows": [
+        {
+          "term_text": "12개월 / 5억원 미만",
+          "cell_lines": [
+            "3.630%",
+            "-"
+          ],
+          "rate_values": [
+            "3.63",
+            null
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "NOMINAL_CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        },
+        {
+          "context_id": "COMPOUND_EFFECTIVE_YIELD",
+          "semantic_role": "EFFECTIVE_YIELD",
+          "interest_method": "COMPOUND"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ],
+      "structuring_status": "SUPPORTED",
+      "policy_notes": [
+        {
+          "note_id": "COND-01-NOTE",
+          "kind": "POLICY_NOTE",
+          "source_text": "출시기념, 환경 관련 기념일 관련 금리 이벤트를 시행할 수 있으며, 금리 이벤트에 따라 우대 이율을 적용할 수 있음\n금리 이벤트에 따른 우대 이율은 이벤트 실시 시작일 현재 은행 영업점 또는 인터넷 홈페이지 등에 게시된 조건에 따름",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+          ]
+        }
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "listing_base_rate_reference": {
+      "value": "3.63",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "3.63",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02T00:00:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL_WITH_EXACT_SC_OFFICIAL_PRODUCT_API_DISCLOSURE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "liquidity_policy.after_maturity_policy",
+        "code": "AFTER_MATURITY_RATE_TABLE_NOT_STATED",
+        "reason": "공식 공시는 가입시점에 따라 만기후이율이 다를 수 있다고만 안내하고 구체 표를 현재 공개 본문에 제공하지 않음",
+        "status": "OPEN"
+      },
+      {
+        "path": "liquidity_policy.renewal_policy",
+        "code": "PRODUCT_SPECIFIC_RENEWAL_POLICY_NOT_STATED",
+        "reason": "Naver·정확한 공식 공시에서 상품별 자동재예치 조건을 확인하지 못함",
+        "status": "OPEN"
+      },
+      {
+        "path": "tax_policy.available_treatments.CONDITIONAL_TAX_EXEMPT.eligibility_text",
+        "code": "TAX_CONVERSION_ELIGIBILITY_DETAIL_NOT_STATED",
+        "reason": "공식 공시는 신규 15일 이내 지점 전환만 안내하며 법정 대상 세부 목록을 기재하지 않음",
+        "status": "OPEN"
+      },
+      {
+        "path": "liquidity_policy.pledge_policy",
+        "code": "COLLATERAL_LOAN_TERMS_NOT_STATED",
+        "reason": "공식 상품속성은 담보대출 가능으로 표시하지만 한도·금리·세부조건은 공개 본문에 미기재",
+        "status": "OPEN"
+      }
+    ],
+    "source_priority": "OFFICIAL_PRODUCT_API_DISCLOSURE_FOR_POLICY_AND_NAVER_FOR_LISTING_VALUES",
+    "source_reason": "NAVER_DIRECT_SOURCE_RECORD_ID_AND_SC_OFFICIAL_PRODUCT_ID_5877",
+    "previous_version": 2,
+    "correction_reason": "정확한 SC 공식 Product API로 특판 한도·통장미발행, 채널, 단리 만기지급 산식, 분할인출 불가, 중도해지율, 해지 채널, 세제전환·지급제한·보호를 구조화"
+  },
+  "data_gaps": [
+    {
+      "path": "liquidity_policy.after_maturity_policy",
+      "code": "AFTER_MATURITY_RATE_TABLE_NOT_STATED",
+      "reason": "공식 공시는 가입시점에 따라 만기후이율이 다를 수 있다고만 안내하고 구체 표를 현재 공개 본문에 제공하지 않음",
+      "status": "OPEN"
+    },
+    {
+      "path": "liquidity_policy.renewal_policy",
+      "code": "PRODUCT_SPECIFIC_RENEWAL_POLICY_NOT_STATED",
+      "reason": "Naver·정확한 공식 공시에서 상품별 자동재예치 조건을 확인하지 못함",
+      "status": "OPEN"
+    },
+    {
+      "path": "tax_policy.available_treatments.CONDITIONAL_TAX_EXEMPT.eligibility_text",
+      "code": "TAX_CONVERSION_ELIGIBILITY_DETAIL_NOT_STATED",
+      "reason": "공식 공시는 신규 15일 이내 지점 전환만 안내하며 법정 대상 세부 목록을 기재하지 않음",
+      "status": "OPEN"
+    },
+    {
+      "path": "liquidity_policy.pledge_policy",
+      "code": "COLLATERAL_LOAN_TERMS_NOT_STATED",
+      "reason": "공식 상품속성은 담보대출 가능으로 표시하지만 한도·금리·세부조건은 공개 본문에 미기재",
+      "status": "OPEN"
+    }
+  ],
+  "interest_payment_policy": {
+    "multiple_contexts": false,
+    "default_context_id": "MATURITY_LUMP_SUM_SIMPLE",
+    "default_context_derivation": "NAVER_AND_OFFICIAL_MATURITY_LUMP_SUM_SIMPLE",
+    "source_text": "만기이자지급식: 만기에 이자를 일시에 지급; 원금 × 가입기간별 이율 × 일수 ÷ 365",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ],
+    "contexts": [
+      {
+        "context_id": "MATURITY_LUMP_SUM_SIMPLE",
+        "interest_method": "SIMPLE",
+        "payment_timing": "AT_MATURITY",
+        "payment_amount": "PRINCIPAL_AND_INTEREST",
+        "calculation_formula": "PRINCIPAL × CONTRACT_TERM_RATE × ELAPSED_DAYS ÷ 365",
+        "early_termination_payment_timing": "ON_EARLY_TERMINATION_REQUEST"
+      }
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "early_termination_allowed": true,
+    "termination_channels": [
+      "BRANCH",
+      "INTERNET",
+      "MOBILE_APP"
+    ],
+    "early_termination_policy": {
+      "basis": "CONTRACT_RATE_MULTIPLIER_BY_ELAPSED_TERM",
+      "tiers": [
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "max_value": 3,
+            "max_inclusive": false
+          },
+          "rate_formula": "CONTRACT_RATE_MULTIPLIER",
+          "multiplier": "0.10",
+          "source_text": "3개월 미만 경과분: 기본이율의 10%"
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 3,
+            "min_inclusive": true,
+            "max_value": 6,
+            "max_inclusive": false
+          },
+          "rate_formula": "CONTRACT_RATE_MULTIPLIER",
+          "multiplier": "0.30",
+          "source_text": "3개월 이상 6개월 미만 경과분: 기본이율의 30%"
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 6,
+            "min_inclusive": true,
+            "max_value": 10,
+            "max_inclusive": false
+          },
+          "rate_formula": "CONTRACT_RATE_MULTIPLIER",
+          "multiplier": "0.50",
+          "source_text": "6개월 이상 10개월 미만 경과분: 기본이율의 50%"
+        },
+        {
+          "elapsed_term": {
+            "unit": "MONTH",
+            "min_value": 10,
+            "min_inclusive": true
+          },
+          "rate_formula": "CONTRACT_RATE_MULTIPLIER",
+          "multiplier": "0.80",
+          "source_text": "10개월 이상 경과분: 기본이율의 80%"
+        }
+      ],
+      "source_text": "공식 상품페이지의 상품 ID 5877 전용 중도해지이율 표; 소수점 셋째자리 미만 절사"
+    },
+    "after_maturity_policy": {
+      "status": "NOT_STATED",
+      "source_text": "공식 공시는 가입시점에 따라 만기후이율이 다를 수 있어 상품설명서(상세)를 참조하도록 안내하며, 현재 공개 본문에는 구체 표를 제공하지 않음"
+    },
+    "partial_withdrawal": {
+      "allowed": false,
+      "source_text": "분할인출 불가",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ]
+    },
+    "payment_restriction_policy": {
+      "restricted_when": [
+        "SEIZURE",
+        "PROVISIONAL_SEIZURE",
+        "PLEDGE"
+      ],
+      "source_text": "계좌에 압류·가압류·질권설정 등이 등록될 경우 원금 및 이자 지급 제한",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ]
+    },
+    "pledge_policy": {
+      "allowed": true,
+      "details_status": "NOT_STATED",
+      "source_text": "공식 상품속성은 담보대출 가능으로 표시하나 한도·조건은 공개 본문에 미기재",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+      ]
+    },
+    "renewal_policy": {
+      "status": "NOT_STATED",
+      "source_text": "Naver와 공식 공시에서 상품별 자동재예치 조건을 확인하지 못함"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme_ref": {
+      "scheme_code": "KDIC-DEPOSIT-PROTECTION",
+      "version": 1
+    },
+    "coverage_basis": "PER_PERSON_ALL_PROTECTED_DEPOSITS_PRINCIPAL_AND_STATUTORY_INTEREST",
+    "source_text": "원금과 소정의 이자를 합해 SC제일은행 여타 보호상품과 합산하여 1인당 1억원까지 보호",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ]
+  },
+  "tax_policy": {
+    "default_treatment": "TAXABLE",
+    "available_treatments": [
+      {
+        "treatment": "CONDITIONAL_TAX_EXEMPT",
+        "treatment_code": "KOREA_TAX_FREE_COMPREHENSIVE_SAVINGS_CONVERSION",
+        "conversion_deadline_days_after_opening": 15,
+        "conversion_channel": "BRANCH",
+        "eligibility_text": "공식 공시는 신규 후 15일 이내 가까운 영업점에서 비과세종합저축 전환을 원할 수 있다고 안내하나, 법정 대상의 세부 목록은 해당 공시 본문에 미기재"
+      }
+    ],
+    "source_text": "일반 세율 15.4%; 비과세종합저축 신규가입은 불가하나 신규 후 15일 이내 영업점 전환 안내",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000211-2-C0207168C43"
+    ]
+  }
+}

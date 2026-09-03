@@ -1,0 +1,324 @@
+{
+  "product_code": "INST-KR-000120-1-C44F5A0189A",
+  "version": 1,
+  "institution_id": "INST-KR-000120",
+  "name": "아이사랑 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 19세 이상 실명의 내국인(1인 1계좌)",
+    "eligibility_text": "만 19세 이상 실명의 내국인(1인 1계좌)",
+    "display_text": "만 19세 이상 실명의 내국인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+    ],
+    "real_name_required": true,
+    "mode": "RESTRICTED",
+    "age_range": {
+      "min_age": 19
+    },
+    "nationality_scope": "KOREAN_ONLY"
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      12,
+      36
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-C44F5A0189A-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.900",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C44F5A0189A-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "7.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-C44F5A0189A-01",
+        "title": "우대이율 최대 연5.10%p",
+        "condition_text": "우대이율 최대 연5.10%p\n※ 이 상품의 우대이율은 모두 만기해지시에 적용되며, 중도해지시에는 적용되지 않습니다.\n※ 이 상품의 우대이율은 주거래 우대이율 등 다른 규정에서 정한 우대이율과 중복 적용은 불가합니다.\n※ 우대이율은 각 적용조건 충족 시 이 적금의 전체 가입기간에 대하여 적용합니다.",
+        "structured_steps": [
+          "우대이율 최대 연5.10%p",
+          "※ 이 상품의 우대이율은 모두 만기해지시에 적용되며, 중도해지시에는 적용되지 않습니다.",
+          "※ 이 상품의 우대이율은 주거래 우대이율 등 다른 규정에서 정한 우대이율과 중복 적용은 불가합니다.",
+          "※ 우대이율은 각 적용조건 충족 시 이 적금의 전체 가입기간에 대하여 적용합니다."
+        ],
+        "extracted_reward_candidate": {
+          "value": "5.10",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대이율 최대 연5.10%p",
+          "summary_text": "우대이율 최대 연5.10%p",
+          "detail_texts": [
+            "※ 이 상품의 우대이율은 모두 만기해지시에 적용되며, 중도해지시에는 적용되지 않습니다.",
+            "※ 이 상품의 우대이율은 주거래 우대이율 등 다른 규정에서 정한 우대이율과 중복 적용은 불가합니다.",
+            "※ 우대이율은 각 적용조건 충족 시 이 적금의 전체 가입기간에 대하여 적용합니다."
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "5.10",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-C44F5A0189A-02",
+        "title": "육아 우대이율(만기해지 시 지급)",
+        "condition_text": "육아 우대이율(만기해지 시 지급)\n- 이 적금 가입기간 중 자녀가 아래 연령에 해당하는 경우\n※ 만 1세, 만 2세, 만 4세, 만 6세, 만 8세, 만 10세\n※ 모바일뱅킹 비대면 스크랩핑을 통한 가족관계증명서 상 자녀생년월일을 기준으로 판단\n※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가\n※ 이 우대이율 적용은 1회에 한함 : 2%",
+        "structured_steps": [
+          "육아 우대이율(만기해지 시 지급)",
+          "- 이 적금 가입기간 중 자녀가 아래 연령에 해당하는 경우",
+          "※ 만 1세, 만 2세, 만 4세, 만 6세, 만 8세, 만 10세",
+          "※ 모바일뱅킹 비대면 스크랩핑을 통한 가족관계증명서 상 자녀생년월일을 기준으로 판단",
+          "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+          "※ 이 우대이율 적용은 1회에 한함 : 2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "육아 우대이율(만기해지 시 지급)",
+          "summary_text": "육아 우대이율(만기해지 시 지급)",
+          "detail_texts": [
+            "- 이 적금 가입기간 중 자녀가 아래 연령에 해당하는 경우",
+            "※ 만 1세, 만 2세, 만 4세, 만 6세, 만 8세, 만 10세",
+            "※ 모바일뱅킹 비대면 스크랩핑을 통한 가족관계증명서 상 자녀생년월일을 기준으로 판단",
+            "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+            "※ 이 우대이율 적용은 1회에 한함 : 2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-C44F5A0189A-03",
+        "title": "자녀명의로 당행에 보유한 입출금계좌 또는 수익증권계좌의 평균잔액이 아래 금액 충족 시(만기해지 시 지급)",
+        "condition_text": "자녀명의로 당행에 보유한 입출금계좌 또는 수익증권계좌의 평균잔액이 아래 금액 충족 시(만기해지 시 지급)\n- 50만원 이상 : 연0.50%p\n- 100만원 이상 : 연1.00%p\n- 150만원 이상 : 연1.50%p\n- 200만원 이상 : 연2.00%p\n※ 이 적금 가입기간 중의 평균잔액을 기준으로 우대이율을 적용하며, 수익증권의 경우 판매수수료 등을 감안하지 않은 순 입금금액을 기준으로 평잔을 산정\n☞ 평균잔액 산정기간은 이 적금가입일부터 만기 2영업일 전까지로 하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지 평균잔액을 산정합니다.\n※ 입출금계좌와 수익증권계좌의 평균잔액은 서로 합산하지 않으며, 입출금계좌와 수익증권계좌 모두 보유한 경우 더 많은 평균잔액을 보유한 계좌를 기준으로 판단\n※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가\n※ 이 우대이율 적용을 위한 비대면 스크랩핑 자녀정보의 등록은 적금가입일로부터 만기 2영업일 전까지만 가능하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지만 등록 가능\n※ 이 우대이율은 모바일뱅킹 비대면 스크랩핑을 통하여 대상 자녀의 법정대리인임이 확인되는 경우에 한하여 적용",
+        "structured_steps": [
+          "자녀명의로 당행에 보유한 입출금계좌 또는 수익증권계좌의 평균잔액이 아래 금액 충족 시(만기해지 시 지급)",
+          "- 50만원 이상 : 연0.50%p",
+          "- 100만원 이상 : 연1.00%p",
+          "- 150만원 이상 : 연1.50%p",
+          "- 200만원 이상 : 연2.00%p",
+          "※ 이 적금 가입기간 중의 평균잔액을 기준으로 우대이율을 적용하며, 수익증권의 경우 판매수수료 등을 감안하지 않은 순 입금금액을 기준으로 평잔을 산정",
+          "☞ 평균잔액 산정기간은 이 적금가입일부터 만기 2영업일 전까지로 하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지 평균잔액을 산정합니다.",
+          "※ 입출금계좌와 수익증권계좌의 평균잔액은 서로 합산하지 않으며, 입출금계좌와 수익증권계좌 모두 보유한 경우 더 많은 평균잔액을 보유한 계좌를 기준으로 판단",
+          "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+          "※ 이 우대이율 적용을 위한 비대면 스크랩핑 자녀정보의 등록은 적금가입일로부터 만기 2영업일 전까지만 가능하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지만 등록 가능",
+          "※ 이 우대이율은 모바일뱅킹 비대면 스크랩핑을 통하여 대상 자녀의 법정대리인임이 확인되는 경우에 한하여 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2.00",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "자녀명의로 당행에 보유한 입출금계좌 또는 수익증권계좌의 평균잔액이 아래 금액 충족 시(만기해지 시 지급)",
+          "summary_text": "자녀명의로 당행에 보유한 입출금계좌 또는 수익증권계좌의 평균잔액이 아래 금액 충족 시(만기해지 시 지급)",
+          "detail_texts": [
+            "- 50만원 이상 : 연0.50%p",
+            "- 100만원 이상 : 연1.00%p",
+            "- 150만원 이상 : 연1.50%p",
+            "- 200만원 이상 : 연2.00%p",
+            "※ 이 적금 가입기간 중의 평균잔액을 기준으로 우대이율을 적용하며, 수익증권의 경우 판매수수료 등을 감안하지 않은 순 입금금액을 기준으로 평잔을 산정",
+            "☞ 평균잔액 산정기간은 이 적금가입일부터 만기 2영업일 전까지로 하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지 평균잔액을 산정합니다.",
+            "※ 입출금계좌와 수익증권계좌의 평균잔액은 서로 합산하지 않으며, 입출금계좌와 수익증권계좌 모두 보유한 경우 더 많은 평균잔액을 보유한 계좌를 기준으로 판단",
+            "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+            "※ 이 우대이율 적용을 위한 비대면 스크랩핑 자녀정보의 등록은 적금가입일로부터 만기 2영업일 전까지만 가능하며, 만기일이 휴일인 경우 적금가입일로부터 만기 직전 영업일의 2영업일 전까지만 등록 가능",
+            "※ 이 우대이율은 모바일뱅킹 비대면 스크랩핑을 통하여 대상 자녀의 법정대리인임이 확인되는 경우에 한하여 적용"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-C44F5A0189A-04",
+        "title": "당행 주택담보대출 또는 전세자금대출 이용 시(만기해지 시 지급)",
+        "condition_text": "당행 주택담보대출 또는 전세자금대출 이용 시(만기해지 시 지급)\n- 이 적금 가입 전부터 주택담보대출 또는 전세자금대출을 이용 중이거나 가입기간 중 주택담보대출 또는 전세자금대출을 취급한 경우\n※ 이 적금 해지시점에 해당 대출을 보유하고 있는 경우에 적용\n※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가\n※ 이 우대이율 적용은 1회에 한함\n※ 은행은 고객의 의사에 반하여 위 대출취급과 함께 이 적금 가입 또는 이 적금 가입과 함께 대출취급을 강요할 수 없으며, 위 대출이 취급된 날을 기준으로 전 · 후 각 1개월 내에는 이 적금의 가입이 제한됩니다. : 1%",
+        "structured_steps": [
+          "당행 주택담보대출 또는 전세자금대출 이용 시(만기해지 시 지급)",
+          "- 이 적금 가입 전부터 주택담보대출 또는 전세자금대출을 이용 중이거나 가입기간 중 주택담보대출 또는 전세자금대출을 취급한 경우",
+          "※ 이 적금 해지시점에 해당 대출을 보유하고 있는 경우에 적용",
+          "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+          "※ 이 우대이율 적용은 1회에 한함",
+          "※ 은행은 고객의 의사에 반하여 위 대출취급과 함께 이 적금 가입 또는 이 적금 가입과 함께 대출취급을 강요할 수 없으며, 위 대출이 취급된 날을 기준으로 전 · 후 각 1개월 내에는 이 적금의 가입이 제한됩니다. : 1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "당행 주택담보대출 또는 전세자금대출 이용 시(만기해지 시 지급)",
+          "summary_text": "당행 주택담보대출 또는 전세자금대출 이용 시(만기해지 시 지급)",
+          "detail_texts": [
+            "- 이 적금 가입 전부터 주택담보대출 또는 전세자금대출을 이용 중이거나 가입기간 중 주택담보대출 또는 전세자금대출을 취급한 경우",
+            "※ 이 적금 해지시점에 해당 대출을 보유하고 있는 경우에 적용",
+            "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가",
+            "※ 이 우대이율 적용은 1회에 한함",
+            "※ 은행은 고객의 의사에 반하여 위 대출취급과 함께 이 적금 가입 또는 이 적금 가입과 함께 대출취급을 강요할 수 없으며, 위 대출이 취급된 날을 기준으로 전 · 후 각 1개월 내에는 이 적금의 가입이 제한됩니다. : 1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-C44F5A0189A-05",
+        "title": "모바일뱅킹 금융정보 및 혜택알림 동의 시(만기해지 시 지급)",
+        "condition_text": "모바일뱅킹 금융정보 및 혜택알림 동의 시(만기해지 시 지급)\n- 당행 모바일뱅킹 금융정보 및 혜택알림(PUSH)에 동의하는 경우\n※ 이 적금 가입시점부터 동의하여 해지시점까지 동의상태를 유지한 경우에 적용\n※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가 : 0.1%",
+        "structured_steps": [
+          "모바일뱅킹 금융정보 및 혜택알림 동의 시(만기해지 시 지급)",
+          "- 당행 모바일뱅킹 금융정보 및 혜택알림(PUSH)에 동의하는 경우",
+          "※ 이 적금 가입시점부터 동의하여 해지시점까지 동의상태를 유지한 경우에 적용",
+          "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "모바일뱅킹 금융정보 및 혜택알림 동의 시(만기해지 시 지급)",
+          "summary_text": "모바일뱅킹 금융정보 및 혜택알림 동의 시(만기해지 시 지급)",
+          "detail_texts": [
+            "- 당행 모바일뱅킹 금융정보 및 혜택알림(PUSH)에 동의하는 경우",
+            "※ 이 적금 가입시점부터 동의하여 해지시점까지 동의상태를 유지한 경우에 적용",
+            "※ 영업점 창구를 통한 해지 시 해당 우대이율 적용 불가 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+    ],
+    "advertised_max_rate": {
+      "value": "7.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000120-1-C44F5A0189A"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.169832+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

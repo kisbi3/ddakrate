@@ -1,0 +1,376 @@
+{
+  "product_code": "INST-KR-000120-1-C10A816440C",
+  "version": 7,
+  "institution_id": "INST-KR-000120",
+  "name": "BNK희망가꾸기적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인으로 다음의 고객 (1인 1계좌)\n- 기초생활수급자 본인(기초생활수급자인 독거노인 포함)\n- 소년소녀가장 본인\n- 새터민 본인\n- 다문화가정(결혼이민자 본인, 그 배우자 및 자녀)\n- 한부모가정\n- 장애인",
+    "eligibility_text": "실명의 개인으로 다음의 고객 (1인 1계좌)\n- 기초생활수급자 본인(기초생활수급자인 독거노인 포함)\n- 소년소녀가장 본인\n- 새터민 본인\n- 다문화가정(결혼이민자 본인, 그 배우자 및 자녀)\n- 한부모가정\n- 장애인",
+    "display_text": "실명의 개인으로 다음의 고객 (1인 1계좌)\n- 기초생활수급자 본인(기초생활수급자인 독거노인 포함)\n- 소년소녀가장 본인\n- 새터민 본인\n- 다문화가정(결혼이민자 본인, 그 배우자 및 자녀)\n- 한부모가정\n- 장애인",
+    "source_ref_ids": [
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 12,
+    "max_value": 36,
+    "source_expression": "12~36 개월",
+    "source_bounds": {
+      "min": {
+        "value": 12,
+        "unit": "MONTH"
+      },
+      "max": {
+        "value": 36,
+        "unit": "MONTH"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_MONTH",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "250000",
+        "fixed_value": "250000"
+      }
+    ],
+    "source_amount_text": "1천원 ~ 25만원(매월 25만원 한도)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1천원 ~ 25만원(매월 25만원 한도)"
+      },
+      {
+        "value": "250000",
+        "currency": "KRW",
+        "source_expression": "25만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1천원 ~ 25만원(매월 25만원 한도)"
+      },
+      {
+        "value": "250000",
+        "currency": "KRW",
+        "source_expression": "25만원",
+        "scope": "PER_MONTH",
+        "role": "MAXIMUM",
+        "context": "1천원 ~ 25만원(매월 25만원 한도)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-C10A816440C-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.500",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 1,
+          "max_value": 2,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C10A816440C-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "min_value": 2,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-C10A816440C-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "YEAR",
+          "fixed_value": 3
+        },
+        "source_ref_ids": [
+          "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "MATURITY_OR_RENEWAL.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000120_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 적금을 만기해지 하는 경우 가입기간 및 금액에 관계없이 우대이율 2.50%p를 적용한다."
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000120-1-C10A816440C-PREF-01",
+          "title": "이 적금을 만기해지 하는 경우 가입기간 및 금액에 관계없이 우대이율 2.50%p를 적용한다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "MATURITY_OR_RENEWAL.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000120_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 적금을 만기해지 하는 경우 가입기간 및 금액에 관계없이 우대이율 2.50%p를 적용한다."
+          },
+          "source_ref_ids": [
+            "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+            }
+          ],
+          "semantic_domain": "MATURITY_OR_RENEWAL",
+          "source_clause_text": "이 적금을 만기해지 하는 경우 가입기간 및 금액에 관계없이 우대이율 2.50%p를 적용한다."
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01",
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-01"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-D45401F87D23ACA7A358C45264D23161-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE",
+      "EVD-IS-D45401F87D23ACA7A358C45264D23161-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "5",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "d45401f87d23aca7a358c45264d23161"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO",
+    "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE",
+    "EVD-IS-D45401F87D23ACA7A358C45264D23161-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "d45401f87d23aca7a358c45264d23161",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-D45401F87D23ACA7A358C45264D23161-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

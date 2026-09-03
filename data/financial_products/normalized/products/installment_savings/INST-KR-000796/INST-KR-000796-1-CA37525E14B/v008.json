@@ -1,0 +1,598 @@
+{
+  "product_code": "INST-KR-000796-1-CA37525E14B",
+  "version": 8,
+  "institution_id": "INST-KR-000796",
+  "name": "100일챌린지적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-SALE"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 10000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세이상 실명의 개인 (1인 1계좌)",
+    "eligibility_text": "만 17세이상 실명의 개인 (1인 1계좌)",
+    "display_text": "만 17세이상 실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 101,
+    "source_expression": "101일",
+    "source_ref_ids": [
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+    ],
+    "representative_value": 101
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "10000",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "aggregate_limit_rules": [
+      {
+        "scope": "TOTAL_CONTRACT",
+        "currency": "KRW",
+        "max_value": "1000000",
+        "source_ref_ids": [
+          "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+          }
+        ]
+      }
+    ],
+    "contribution_channel_constraints": {
+      "automatic_transfer_allowed": false,
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+        }
+      ]
+    },
+    "source_amount_text": "일 1천원 ~ 1만원 이하 (가입일부터 만기일 전 일까지 합산하여 최대 100만원)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "일 1천원 ~ 1만원 이하 (가입일부터 만기일 전 일까지 합산하여 최대 100만원)"
+      },
+      {
+        "value": "10000",
+        "currency": "KRW",
+        "source_expression": "1만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "일 1천원 ~ 1만원 이하 (가입일부터 만기일 전 일까지 합산하여 최대 100만원)"
+      },
+      {
+        "value": "1000000",
+        "currency": "KRW",
+        "source_expression": "100만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "일 1천원 ~ 1만원 이하 (가입일부터 만기일 전 일까지 합산하여 최대 100만원)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-1-CA37525E14B-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "fixed_value": 101
+        },
+        "source_ref_ids": [
+          "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01",
+          "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02",
+          "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000796_1_CA37525E14B_PREF_02.SUCCESS_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000796-1-CA37525E14B-PREF-02-SUCCESS",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+          ],
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "챌린지 성공 축하 금리 연 2.0%p\n- 매일 입금 연속 일수가 가입일부터 만기일 전 일까지 100일을 모두 채운 경우"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000796-1-CA37525E14B-PREF-02-SUCCESS",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "qualifying_definition": {
+            "source_text": "챌린지 우대금리 최고 연 3.0%p\n- 매일 입금하는 연속 일수 20일당 연 0.60%p씩 제공"
+          },
+          "count_window": {
+            "source_expression": "CONTRACT_OR_POLICY_SPECIFIED_WINDOW"
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "챌린지 우대금리 최고 연 3.0%p\n- 매일 입금하는 연속 일수 20일당 연 0.60%p씩 제공",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST-KR-000796-1-CA37525E14B-PREF-03-QUALIFYING",
+          "event_type": "QUALIFYING_CONTRIBUTION_OR_TRANSFER_POSTED",
+          "qualifying_definition": {
+            "source_text": "챌린지 성공 축하 금리 연 2.0%p\n- 매일 입금 연속 일수가 가입일부터 만기일 전 일까지 100일을 모두 채운 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "챌린지 성공 축하 금리 연 2.0%p\n- 매일 입금 연속 일수가 가입일부터 만기일 전 일까지 100일을 모두 채운 경우",
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "챌린지 성공 축하 금리 연 2.0%p\n- 매일 입금 연속 일수가 가입일부터 만기일 전 일까지 100일을 모두 채운 경우",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000796-1-CA37525E14B-PREF-02",
+          "title": "챌린지 우대금리 최고 연 3.0%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000796_1_CA37525E14B_PREF_02.SUCCESS_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-INST-KR-000796-1-CA37525E14B-PREF-02-SUCCESS",
+            "value_per_occurrence": "0.60",
+            "occurrence_block_size": 20,
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+              }
+            ],
+            "cap_value": "3.0",
+            "max_qualifying_units": 100
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "챌린지 우대금리 최고 연 3.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "챌린지 우대금리 최고 연 3.0%p\n- 매일 입금하는 연속 일수 20일당 연 0.60%p씩 제공"
+        },
+        {
+          "rule_id": "INST-KR-000796-1-CA37525E14B-PREF-03",
+          "title": "챌린지 성공 축하 금리 연 2.0%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CONTRIBUTION_OR_TRANSFER.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "챌린지 성공 축하 금리 연 2.0%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            }
+          ],
+          "semantic_domain": "CONTRIBUTION_OR_TRANSFER",
+          "source_clause_text": "챌린지 성공 축하 금리 연 2.0%p\n- 매일 입금 연속 일수가 가입일부터 만기일 전 일까지 100일을 모두 채운 경우"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000796-1-CA37525E14B-PREF-02-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000796-1-CA37525E14B-PREF-02"
+          ],
+          "counter_event_ref": "EVENT-INST-KR-000796-1-CA37525E14B-PREF-02-SUCCESS",
+          "value_per_occurrence": "0.60",
+          "occurrence_block_size": 20,
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "3.0",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+              }
+            ]
+          }
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "cap_candidates": [
+        {
+          "value": "3.0",
+          "unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01",
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02",
+            "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+          ],
+          "promotion_status": "NOT_PROMOTED_DUE_TO_LISTING_ARITHMETIC_MISMATCH",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+            }
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01",
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02",
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03",
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-RATE",
+      "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "6",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "970e79d7bc12fadb4964ec5289c63c59"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO",
+    "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-RATE",
+    "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-LISTING",
+    "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "970e79d7bc12fadb4964ec5289c63c59",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 2,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-970E79D7BC12FADB4964EC5289C63C59-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

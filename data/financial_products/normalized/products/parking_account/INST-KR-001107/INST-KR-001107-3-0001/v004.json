@@ -1,0 +1,620 @@
+{
+  "product_code": "INST-KR-001107-3-0001",
+  "version": 4,
+  "institution_id": "INST-KR-001107",
+  "name": "우체국매일이자파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001",
+      "EVD-OFFICIAL-217"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 50000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "판매한도 : 50,000 좌"
+    },
+    "account_quota": 50000,
+    "may_close_on_quota_exhaustion": true
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001",
+      "EVD-OFFICIAL-217"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001",
+      "EVD-OFFICIAL-217"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-001107-3-0001-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.6",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001107-3-0001"
+        ],
+        "source_clause": "1천만원 이하 기본 1.600%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "0",
+              "min_inclusive": false,
+              "max_value": "10000000",
+              "max_inclusive": true,
+              "source_text": "1천만원 이하 기본 1.600%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      },
+      {
+        "rate_id": "INST-KR-001107-3-0001-BASE-02",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.15",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-001107-3-0001"
+        ],
+        "source_clause": "1천만원 초과 기본 0.150%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "10000000",
+              "min_inclusive": false,
+              "source_text": "1천만원 초과 기본 0.150%"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.POST.FIRST_DEMAND_DEPOSIT_CUSTOMER_AT_OPENING",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ],
+          "exclusions": [
+            "ACTIVE_ACCOUNT_HELD",
+            "TRANSACTION_SUSPENDED_ACCOUNT_HELD",
+            "DEMAND_DEPOSIT_TERMINATED_PREVIOUS_ONE_YEAR"
+          ],
+          "exception": "NATIONAL_TREASURY_ESCHEATED_ACCOUNT_DOES_NOT_DISQUALIFY"
+        },
+        {
+          "fact_key": "RELATIONSHIP.POST.DEMAND_DEPOSIT_AVERAGE_BALANCE_CURRENT_SETTLEMENT_PERIOD",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ],
+          "unit": "KRW",
+          "included_account_states": [
+            "NORMAL",
+            "TRANSACTION_SUSPENDED"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.FULL_AGE_AT_SETTLEMENT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ],
+          "unit": "YEAR"
+        },
+        {
+          "fact_key": "SERVICE.POST.ITDA_MONEY_INTEGRATED_MEMBERSHIP_ACTIVE_AT_SETTLEMENT",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "fact_key": "DONATION.POST.REQUESTED_AT_OPENING",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "fact_key": "DONATION.POST.TRANSFER_EVENT_COUNT_AT_SETTLEMENT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ],
+          "unit": "COUNT"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-001107-3-0001-PREF-01",
+          "title": "우체국 수시입출식 첫 고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.POST.FIRST_DEMAND_DEPOSIT_CUSTOMER_AT_OPENING",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "RELATIVE_FROM_FIRST_SETTLEMENT",
+              "start": "DAY_AFTER_FIRST_REGULAR_SETTLEMENT",
+              "duration": {
+                "value": 1,
+                "unit": "YEAR"
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-0001-PREF-02",
+          "title": "결산기간 우체국 수시입출식 평잔 30만원 이상",
+          "condition": {
+            "predicate": {
+              "fact_key": "RELATIONSHIP.POST.DEMAND_DEPOSIT_AVERAGE_BALANCE_CURRENT_SETTLEMENT_PERIOD",
+              "operator": "GTE",
+              "expected_value": 300000,
+              "unit": "KRW"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "CURRENT_SETTLEMENT_PERIOD",
+            "reward_window": {
+              "start": "DAY_AFTER_CURRENT_SETTLEMENT",
+              "end": "NEXT_REGULAR_SETTLEMENT_DATE"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-0001-PREF-03",
+          "title": "결산일 만 50세 이상 최초 충족",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.FULL_AGE_AT_SETTLEMENT",
+              "operator": "GTE",
+              "expected_value": 50,
+              "unit": "YEAR"
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "REGULAR_SETTLEMENT_DATE",
+            "effective_window": {
+              "type": "RELATIVE_FROM_FIRST_QUALIFYING_SETTLEMENT",
+              "start": "DAY_AFTER_QUALIFYING_SETTLEMENT",
+              "duration": {
+                "value": 1,
+                "unit": "YEAR"
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-0001-PREF-04",
+          "title": "결산일 잇다머니 통합멤버십 가입",
+          "condition": {
+            "predicate": {
+              "fact_key": "SERVICE.POST.ITDA_MONEY_INTEGRATED_MEMBERSHIP_ACTIVE_AT_SETTLEMENT",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "REGULAR_SETTLEMENT_DATE",
+            "reward_window": {
+              "start": "DAY_AFTER_CURRENT_SETTLEMENT",
+              "end": "NEXT_REGULAR_SETTLEMENT_DATE"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-001107-3-0001-PREF-05",
+          "title": "신규 시 기부 신청 및 기부금 1회 이체",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "DONATION.POST.REQUESTED_AT_OPENING",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "DONATION.POST.TRANSFER_EVENT_COUNT_AT_SETTLEMENT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": "REGULAR_SETTLEMENT_DATE",
+            "effective_window": {
+              "type": "RELATIVE_FROM_FIRST_QUALIFYING_SETTLEMENT",
+              "start": "DAY_AFTER_QUALIFYING_SETTLEMENT",
+              "duration": {
+                "value": 1,
+                "unit": "YEAR"
+              }
+            },
+            "occurrence_limit": {
+              "max_qualifying_transfer_count": 1
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "0.4",
+        "unit": "PERCENTAGE_POINT"
+      },
+      "initial_grace_policy": {
+        "type": "INITIAL_UNCONDITIONAL_MAX_PREFERENCE",
+        "start": "ACCOUNT_OPEN_DATE",
+        "end": "FIRST_REGULAR_MONTHLY_SETTLEMENT_DATE",
+        "reward": {
+          "kind": "ADD_RATE",
+          "value": "0.4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "principal_scope": {
+          "basis": "BALANCE",
+          "method": "ALL_BALANCE"
+        }
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001"
+    ],
+    "interest_crediting": {
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "crediting_events": [
+        {
+          "type": "PERIODIC",
+          "schedule": {
+            "settlement_day": "LAST_CALENDAR_DAY_OF_MONTH",
+            "credit_day": {
+              "day_of_month": 1,
+              "relative_month_offset": 1
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        },
+        {
+          "type": "ON_REQUEST",
+          "settlement_day": "REQUEST_DATE_MINUS_ONE_DAY",
+          "credit_day": "REQUEST_DATE",
+          "request_limit": {
+            "max_per_day": 1
+          },
+          "restricted_dates": [
+            {
+              "day_of_month": 1
+            }
+          ],
+          "minimum_after_tax_interest": "10",
+          "minimum_after_tax_interest_unit": "KRW",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-001107-3-0001"
+          ]
+        }
+      ],
+      "rounding": {
+        "method": "TRUNCATE_BELOW_10_KRW",
+        "legal_basis": "NATIONAL_FUNDS_MANAGEMENT_ACT"
+      },
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE_TIER",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-001107-3-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-001107-3-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-001107-3-0001",
+    "EVD-OFFICIAL-217"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-001107-3-0001",
+        "product_name": "우체국매일이자파킹통장",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY_WITH_OFFICIAL_VERIFICATION",
+    "source_reason": "LEGACY_SOURCE_MERGE",
+    "rebuild_input_id": "NFI-20260828-INST-KR-001107-3-0001",
+    "source_record_id": "f01371b73014f768df824069800415be",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 217,
+    "reviewed_source_record_id": "f01371b73014f768df824069800415be",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "FACT_TAXONOMY_MISMATCH",
+      "FIRST_SETTLEMENT_RELATIVE_REWARD_START_UNSTRUCTURED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "우체국페이 설치가 아니라 잇다머니 통합멤버십 가입상태 fact로 교정",
+      "가입일부터 최초 정기결산일까지 +0.4%p 무조건 grace와 첫결산 익일부터 시작하는 1년 reward들을 분리",
+      "평잔·연령·멤버십·기부 조건과 +0.4%p global cap, 매월 1일/요청지급 규칙 구조화"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "version": 4,
+    "official_verification_status": "IDENTITY_SALE_CONFIRMED_RATE_DETAILS_NOT_RENDERED",
+    "revised_at": "2026-08-31T00:00:00+09:00"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1,
+    "official_verification_status": "PARTIAL_RATE_UNKNOWN"
+  },
+  "official_verification": {
+    "official_url": "https://epostbank.go.kr/CCPOPE0000.do",
+    "document_title": "우체국예금 상품 공시실",
+    "checked_at": "2026-08-31T00:00:00+09:00",
+    "status": "VERIFIED_IDENTITY_SALE_PARTIAL_RATE_UNKNOWN",
+    "official_excerpt": "공식 공시실 본문 lines 120-128에 판매중인상품으로 ‘우체국매일이자파킹통장’이 표시되어 상품명·판매상태를 확인했다. 공식 금리조회 페이지(SPPSIN0000.do)는 조회 기준일 2026.08.31과 상품설명서 참고 안내만 노출하고 해당 상품의 수치 행은 본문에 렌더링하지 않았다.",
+    "attempts": [
+      {
+        "url": "https://epostbank.go.kr/CCPOPE0000.do",
+        "result": "official body read; exact product name listed under 판매중인상품; generic download/detail controls rendered"
+      },
+      {
+        "url": "https://mall.epostbank.go.kr/SPPSIN0000.do",
+        "result": "official rate lookup body read; 조회기준일 2026.08.31 and product-description reference rendered, but no product-specific numeric row in captured body"
+      },
+      {
+        "url": "https://mall.epostbank.go.kr/IPDGDI0000.do?gds_cd=110109400101",
+        "result": "candidate detail opened but body identifies different product (우체국My파킹통장); excluded"
+      }
+    ],
+    "failure_reason": "공식 공시실은 정확한 상품명·판매중 상태만 본문 확인되며, 금리조회 본문에 상품별 금리 행이 렌더링되지 않아 2026-08-29 Naver 수치(1.600/0.150/우대 0.4)를 공식 수치로 승격하지 않음."
+  }
+}

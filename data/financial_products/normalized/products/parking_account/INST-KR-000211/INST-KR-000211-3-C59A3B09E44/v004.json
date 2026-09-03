@@ -1,0 +1,433 @@
+{
+  "product_code": "INST-KR-000211-3-C59A3B09E44",
+  "version": 4,
+  "institution_id": "INST-KR-000211",
+  "name": "모아예금통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 및 개인사업자",
+    "eligibility_text": "개인 및 개인사업자",
+    "display_text": "개인 및 개인사업자",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000211-3-C59A3B09E44-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+        ],
+        "source_clause": "기본금리 | 기본금리 0.10%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SC.FIRST_BANKING_RELATIONSHIP",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "fact_key": "LOAN.SC.LINKED_MORTGAGE.ADDITIONAL_RATE_AGREEMENT_EXECUTED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "fact_key": "LOAN.SC.LINKED_MORTGAGE.DEPOSIT_ACCOUNT_LINK_ACTIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "fact_key": "LOAN.SC.LINKED_MORTGAGE.REFERENCE_RATE_PERCENT",
+          "data_type": "PERCENT",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "fact_key": "LOAN.SC.LINKED_MORTGAGE.OUTSTANDING_BALANCE",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "LOAN.SC.LINKED_MORTGAGE.MATURITY_PASSED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.TERMINATED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000211-3-C59A3B09E44-PREF-01",
+          "title": "은행 첫 거래고객",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SC.FIRST_BANKING_RELATIONSHIP",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.0",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000211-3-C59A3B09E44-PREF-02",
+          "title": "주택담보대출 연계 우대",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "LOAN.SC.LINKED_MORTGAGE.ADDITIONAL_RATE_AGREEMENT_EXECUTED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "LOAN.SC.LINKED_MORTGAGE.DEPOSIT_ACCOUNT_LINK_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "LOAN.SC.LINKED_MORTGAGE.OUTSTANDING_BALANCE",
+                  "operator": "GT",
+                  "expected_value": 0,
+                  "unit": "KRW"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "LOAN.SC.LINKED_MORTGAGE.MATURITY_PASSED",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.TERMINATED",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "FORMULA_ADD_RATE",
+            "formula": {
+              "expression": "LOAN_REFERENCE_RATE_PERCENT * 0.5",
+              "inputs": {
+                "LOAN_REFERENCE_RATE_PERCENT": "LOAN.SC.LINKED_MORTGAGE.REFERENCE_RATE_PERCENT"
+              },
+              "rounding": {
+                "method": "TRUNCATE",
+                "decimal_places": 2,
+                "source_semantics": "소수점 셋째 자리 미만 버림"
+              },
+              "unit": "PERCENTAGE_POINT"
+            }
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+              "method": "DYNAMIC_CAPPED_PORTION",
+              "cap_formula": "MIN(INTEREST_CALCULATION_AVERAGE_BALANCE,LOAN.SC.LINKED_MORTGAGE.OUTSTANDING_BALANCE)"
+            },
+            "effective_window": {
+              "start": "LINK_REGISTRATION_EFFECTIVE_DATE",
+              "end": "LINKED_MORTGAGE_MATURITY_DATE",
+              "end_inclusive": true
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ],
+      "link_cardinality": {
+        "mortgage_to_deposit": "ONE_TO_ONE",
+        "deposit_to_mortgage": "ONE_TO_ONE"
+      },
+      "link_change_policy": "NOT_CHANGEABLE_DURING_LOAN_AGREEMENT"
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ],
+    "interest_crediting": {
+      "raw_text": "연 4회(3월, 6월, 9월, 12월) 두 번째 토요일에 이은 휴일의 마지막 날 결산하여 다음 날에 원금에 더함",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000211-3-C59A3B09E44-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 3,
+              "unit": "MONTH"
+            },
+            "calendar_months": [
+              3,
+              6,
+              9,
+              12
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 3,
+        "unit": "MONTH"
+      },
+      "calendar_months": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.10",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ]
+    },
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "AVERAGE_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+      ],
+      "structuring_status": "SUPPORTED"
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000211-3-C59A3B09E44",
+    "source_record_id": "f4f5f78d771b5c65d5f6901abcbe6ece",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T15:12:00+09:00",
+    "restructure_mode": "NAVER_CONDITION_SECTION_ENRICHMENT_AND_USER_RECONCILIATION",
+    "review_sequence": 72,
+    "reviewed_source_record_id": "f4f5f78d771b5c65d5f6901abcbe6ece",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "STALE_DATA_GAP_AFTER_CANONICAL_POLICY_RECONSTRUCTION"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "주택담보대출 기준금리×50% 계산식과 셋째 자리 미만 절사 복원",
+      "평잔과 대출잔액 중 작은 금액까지만 우대하는 동적 principal scope 구조화",
+      "주택담보대출 기준금리×50% formula reward가 이미 구조화되어 stale gap 제거"
+    ],
+    "full_product_review_completed_at": "2026-08-30T15:12:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reviewed": true,
+    "condition_section_review_basis": "NAVER_RATE_INFO_AFTER_CONDITIONAL_HEADING"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000211-3-C59A3B09E44"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T15:12:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true
+  }
+}

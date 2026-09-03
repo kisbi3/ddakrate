@@ -1,0 +1,223 @@
+{
+  "product_code": "INST-KR-000341-3-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000341",
+  "name": "생활파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000341-3-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인(주민등록증 또는 운전면허증을 소지한 17세 이상 내국인)\n*1인 1계좌",
+    "eligibility_text": "개인(주민등록증 또는 운전면허증을 소지한 17세 이상 내국인)\n*1인 1계좌",
+    "display_text": "개인(주민등록증 또는 운전면허증을 소지한 17세 이상 내국인)\n*1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000341-3-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "nationality_scope": "KOREAN_ONLY"
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 1,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000341-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000341-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000341-3-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.7",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000341-3-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000341-3-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "7.70",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000341-3-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000341-3-0001-02",
+        "title": "청년층 : 17세 ~ 39세인 경우",
+        "condition_text": "청년층 : 17세 ~ 39세인 경우\n*「청년층 우대금리」는 가입 시점 17세 이상 39세 이하인 경우 가입일부터 우대금리가 적용되며, 만 40세가 되는 날이 속한 월의 다음달 1일에 우대금리가 종료됩니다. : 0.5%",
+        "structured_steps": [
+          "청년층 : 17세 ~ 39세인 경우",
+          "*「청년층 우대금리」는 가입 시점 17세 이상 39세 이하인 경우 가입일부터 우대금리가 적용되며, 만 40세가 되는 날이 속한 월의 다음달 1일에 우대금리가 종료됩니다. : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000341-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "청년층 : 17세 ~ 39세인 경우",
+          "summary_text": "청년층 : 17세 ~ 39세인 경우",
+          "detail_texts": [
+            "*「청년층 우대금리」는 가입 시점 17세 이상 39세 이하인 경우 가입일부터 우대금리가 적용되며, 만 40세가 되는 날이 속한 월의 다음달 1일에 우대금리가 종료됩니다. : 0.5%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000341-3-0001-03",
+        "title": "페이사 결제계좌 등록 : 아래 페이사 중 1개 이상의 기관에 간편결제 계좌로 등록한 경우",
+        "condition_text": "페이사 결제계좌 등록 : 아래 페이사 중 1개 이상의 기관에 간편결제 계좌로 등록한 경우\n1) 비바리퍼블리카(토스)\n2) 카카오페이\n3) NHN페이코(PAYCO)\n4) 네이버파이낸셜(네이버페이)\n5) 우아한형제들(배민페이)\n* 「페이사 결제계좌 등록 우대금리」는 간편결제 계좌 등록일이 속한 월의 말일 기준 등록 상태를 유지한 경우 다음달 1일부터 우대금리가 적용되며, 등록일이 속한 월의 말일 이전에 간편결제 계좌 등록을 해지한 경우 우대금리가 적용되지 않습니다. : 0.5%",
+        "structured_steps": [
+          "페이사 결제계좌 등록 : 아래 페이사 중 1개 이상의 기관에 간편결제 계좌로 등록한 경우",
+          "1) 비바리퍼블리카(토스)",
+          "2) 카카오페이",
+          "3) NHN페이코(PAYCO)",
+          "4) 네이버파이낸셜(네이버페이)",
+          "5) 우아한형제들(배민페이)",
+          "* 「페이사 결제계좌 등록 우대금리」는 간편결제 계좌 등록일이 속한 월의 말일 기준 등록 상태를 유지한 경우 다음달 1일부터 우대금리가 적용되며, 등록일이 속한 월의 말일 이전에 간편결제 계좌 등록을 해지한 경우 우대금리가 적용되지 않습니다. : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000341-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "페이사 결제계좌 등록 : 아래 페이사 중 1개 이상의 기관에 간편결제 계좌로 등록한 경우",
+          "summary_text": "페이사 결제계좌 등록 : 아래 페이사 중 1개 이상의 기관에 간편결제 계좌로 등록한 경우",
+          "detail_texts": [
+            "1) 비바리퍼블리카(토스)",
+            "2) 카카오페이",
+            "3) NHN페이코(PAYCO)",
+            "4) 네이버파이낸셜(네이버페이)",
+            "5) 우아한형제들(배민페이)",
+            "* 「페이사 결제계좌 등록 우대금리」는 간편결제 계좌 등록일이 속한 월의 말일 기준 등록 상태를 유지한 경우 다음달 1일부터 우대금리가 적용되며, 등록일이 속한 월의 말일 이전에 간편결제 계좌 등록을 해지한 경우 우대금리가 적용되지 않습니다. : 0.5%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000341-3-0001-04",
+        "title": "신규고객",
+        "condition_text": "신규고객\n1) 가입일 당시 예·적금 상품 최초 가입고객\n2) 가입일 당시 거래중지좌만 보유하고 있는 고객\n중 1개에 해당하는 경우 가입일로부터 1년간 우대금리 적용\n※ 신규고객 우대금리는 향후 금리정책에 따라 사전고지 없이 변경 또는 종료될 수 있습니다. : 4%",
+        "structured_steps": [
+          "신규고객",
+          "1) 가입일 당시 예·적금 상품 최초 가입고객",
+          "2) 가입일 당시 거래중지좌만 보유하고 있는 고객",
+          "중 1개에 해당하는 경우 가입일로부터 1년간 우대금리 적용",
+          "※ 신규고객 우대금리는 향후 금리정책에 따라 사전고지 없이 변경 또는 종료될 수 있습니다. : 4%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000341-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "신규고객",
+          "summary_text": "신규고객",
+          "detail_texts": [
+            "1) 가입일 당시 예·적금 상품 최초 가입고객",
+            "2) 가입일 당시 거래중지좌만 보유하고 있는 고객",
+            "중 1개에 해당하는 경우 가입일로부터 1년간 우대금리 적용",
+            "※ 신규고객 우대금리는 향후 금리정책에 따라 사전고지 없이 변경 또는 종료될 수 있습니다. : 4%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000341-3-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "7.70",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000341-3-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000341-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.477662+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

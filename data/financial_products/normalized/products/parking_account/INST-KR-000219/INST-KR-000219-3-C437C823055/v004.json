@@ -1,0 +1,496 @@
+{
+  "product_code": "INST-KR-000219-3-C437C823055",
+  "version": 4,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 Tax Box",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 50000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "5만좌"
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상 실명의 개인사업자 (1인 1계좌)",
+    "eligibility_text": "만 14세 이상 실명의 개인사업자 (1인 1계좌)",
+    "display_text": "만 14세 이상 실명의 개인사업자 (1인 1계좌)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 14
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-3-C437C823055-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.100",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+        ],
+        "source_clause": "기본금리 0.100%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "unit": "KRW",
+              "min_value": "0",
+              "min_inclusive": true,
+              "source_text": "전체 잔액"
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "SINGLE_RATE"
+        },
+        "structuring_status": "SUPPORTED",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_scope": {
+          "basis": "END_OF_DAY_BALANCE",
+          "method": "CAPPED_PORTION",
+          "range": {
+            "currency": "KRW",
+            "unit": "KRW",
+            "min_value": "0",
+            "min_inclusive": false,
+            "max_value": "10000000",
+            "max_inclusive": true,
+            "source_text": "매일 최종잔액 중 0원 초과 1000만원 이하 금액"
+          },
+          "source_text": "매일 최종잔액 중 0원 초과 1000만원 이하 금액"
+        },
+        "source_text": "매일의 최종 잔액 중 0원 초과 1,000만원 이하 금액에 대해서 아래 우대요건 충족 시 최고 연 2.4% 우대이자율이 적용 됩니다.\n1\n신한카드 가맹점 거래 우대 : 1.4%\n신한카드 가맹점 결제계좌를 신한은행으로 지정한 경우\n2\n교차거래 우대 : 0.5%\n다음 조건 중 하나 이상 충족시 제공됩니다.\n① 신한은행에 개인종합자산관리계좌(ISA)를 정상 보유 중인 경우\n② 신한은행에서 노란우산공제를 가입하고, 정상 보유 중인 경우\n③ 땡겨요 가맹점 정산계좌를 신한은행으로 지정하고, 땡겨요 사업자 전용 웹사이트(‘사장님라운지‘)에서 신한 Tax Box 보유고객 인증을 완료한 경우\n3\n유동성 첫 거래 우대 [가입일로부터 1년만 제공] : 0.5%\n이 예금 가입시점에 보유한 모든 신한은행 입출금통장(거래중지계좌 제외)이 이 예금 가입일로부터 직전 1개월 이내에 신규된 경우\n※ ‘신한카드 가맹점 거래 우대이자율’과 ‘교차거래 우대이자율’은 매월 전월 말 기준으로 우대요건 충족여부를 확인하여 당월 원가일부터 다음달 원가일 전일까지 제공됩니다.\n(다만, 신규일부터 다음달 원가일 전일까지는 우대요건 충족여부에 상관없이 우대이자율을 제공합니다.)\n※ ‘유동성 첫 거래 우대이자율’은 가입 시점에 우대요건 충족 시, 가입일로부터 1년간 제공됩니다."
+      },
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "2.4",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+        ]
+      },
+      "event_definitions": [],
+      "fact_definitions": [
+        {
+          "fact_key": "CARD.SHINHAN.MERCHANT_SETTLEMENT_ACCOUNT_DESIGNATED_TO_SHINHAN",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.ISA_ACTIVE",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.YELLOW_UMBRELLA_ACTIVE",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "PAYMENT.TTAENGYEO.MERCHANT_SETTLEMENT_ACCOUNT_DESIGNATED_TO_SHINHAN",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "SERVICE.TTAENGYEO.OWNER_LOUNGE.TAX_BOX_AUTHENTICATED",
+          "data_type": "BOOLEAN",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.ALL_NON_SUSPENDED_DEMAND_ACCOUNTS_OPENED_WITHIN_PREVIOUS_ONE_MONTH_AT_SUBSCRIPTION",
+          "data_type": "BOOLEAN",
+          "excluded_account_states": [
+            "TRANSACTION_SUSPENDED"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-3-C437C823055-PREF-01",
+          "title": "신한카드 가맹점 결제계좌를 신한은행으로 지정",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD.SHINHAN.MERCHANT_SETTLEMENT_ACCOUNT_DESIGNATED_TO_SHINHAN",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_snapshot": "PREVIOUS_MONTH_END",
+            "reward_window": "CURRENT_SETTLEMENT_DATE_TO_DAY_BEFORE_NEXT_SETTLEMENT_DATE",
+            "opening_grace": "SUBSCRIPTION_DATE_TO_DAY_BEFORE_NEXT_SETTLEMENT_DATE",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "INST-KR-000219-3-C437C823055-PREF-02",
+          "title": "교차거래 우대",
+          "condition": {
+            "operator": "OR",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SHINHAN.ISA_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SHINHAN.YELLOW_UMBRELLA_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "condition": {
+                  "operator": "AND",
+                  "operands": [
+                    {
+                      "predicate": {
+                        "fact_key": "PAYMENT.TTAENGYEO.MERCHANT_SETTLEMENT_ACCOUNT_DESIGNATED_TO_SHINHAN",
+                        "operator": "EQUALS",
+                        "expected_value": true
+                      }
+                    },
+                    {
+                      "predicate": {
+                        "fact_key": "SERVICE.TTAENGYEO.OWNER_LOUNGE.TAX_BOX_AUTHENTICATED",
+                        "operator": "EQUALS",
+                        "expected_value": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "fact_snapshot": "PREVIOUS_MONTH_END",
+            "reward_window": "CURRENT_SETTLEMENT_DATE_TO_DAY_BEFORE_NEXT_SETTLEMENT_DATE",
+            "opening_grace": "SUBSCRIPTION_DATE_TO_DAY_BEFORE_NEXT_SETTLEMENT_DATE",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "rule_id": "INST-KR-000219-3-C437C823055-PREF-03",
+          "title": "유동성 첫 거래 우대",
+          "condition": {
+            "predicate": {
+              "fact_key": "RELATIONSHIP.SHINHAN.ALL_NON_SUSPENDED_DEMAND_ACCOUNTS_OPENED_WITHIN_PREVIOUS_ONE_MONTH_AT_SUBSCRIPTION",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "evaluation_time": "SUBSCRIPTION_TIME",
+            "effective_window": {
+              "start": "SUBSCRIPTION_DATE",
+              "duration": {
+                "value": 1,
+                "unit": "YEAR"
+              }
+            },
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000219-3-C437C823055-REL-SUM-CAP",
+          "type": "SUM_WITH_CAP",
+          "rule_ids": [
+            "INST-KR-000219-3-C437C823055-PREF-01",
+            "INST-KR-000219-3-C437C823055-PREF-02",
+            "INST-KR-000219-3-C437C823055-PREF-03"
+          ],
+          "cap_value": "2.4",
+          "cap_unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "예금의 이자는 매월 셋째 주 마지막 영업일에 계산하여 그 익일(원가일)에 원금에 더함\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000219-3-C437C823055-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000219-3-C437C823055-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "SINGLE_RATE",
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "2.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+      ]
+    },
+    "balance_tier_method": "SINGLE_RATE"
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000219-3-C437C823055",
+    "source_record_id": "6b8401609ffd0131055fbc57951129eb",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T16:10:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 82,
+    "reviewed_source_record_id": "6b8401609ffd0131055fbc57951129eb",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "MERCHANT_SETTLEMENT_REGISTRATION_MISCLASSIFIED_AS_CARD_USAGE",
+      "CROSS_TRANSACTION_OR_GRAPH_LOST",
+      "FIRST_LIQUIDITY_RELATIONSHIP_CONDITION_LOST",
+      "PREFERENCE_TIMING_AND_GRACE_LOST"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reconciled_at": "2026-08-30T16:10:00+09:00",
+    "condition_section_reconciliation_pass": 2,
+    "condition_section_primary_source": "NAVER_RATE_INFO_CONDITION_SECTION",
+    "condition_section_sha256": "e1bacf4b0644baec422ffe9bd6ed2d1f26813fa0a2ea837555cba9fcdca6443e",
+    "resolved_condition_findings": [
+      "MERCHANT_SETTLEMENT_REGISTRATION_MISCLASSIFIED_AS_CARD_USAGE",
+      "CROSS_TRANSACTION_OR_GRAPH_LOST",
+      "FIRST_LIQUIDITY_RELATIONSHIP_CONDITION_LOST",
+      "PREFERENCE_TIMING_AND_GRACE_LOST"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-C437C823055"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T16:10:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true,
+    "condition_section_reconciliation_pass": 2
+  }
+}

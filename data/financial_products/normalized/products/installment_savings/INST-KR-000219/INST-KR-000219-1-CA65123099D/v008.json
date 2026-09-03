@@ -1,0 +1,843 @@
+{
+  "product_code": "INST-KR-000219-1-CA65123099D",
+  "version": 8,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 사업자 성공기원적금(자유적립식)",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인사업자 - 1 인 1 계좌",
+    "eligibility_text": "개인사업자 - 1 인 1 계좌",
+    "display_text": "개인사업자 - 1 인 1 계좌",
+    "source_ref_ids": [
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR"
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "10000000"
+      },
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "10000000",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "source_amount_text": "1천원 부터 1,000만원 까지\n※ 월 1천만원 저축한도 이내에서 자유롭게 저축이 가능하고, 계약기간 3/4 경과 후에는 이전 저축잔액의 1/2을 초과하여 저축할 수 없음",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "1천원 부터 1,000만원 까지\n※ 월 1천만원 저축한도 이내에서 자유롭게 저축이 가능하고, 계약기간 3"
+      },
+      {
+        "value": "10000000",
+        "currency": "KRW",
+        "source_expression": "1,000만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "1천원 부터 1,000만원 까지\n※ 월 1천만원 저축한도 이내에서 자유롭게 저축이 가능하고, 계약기간 3/4 경과 후에는 이"
+      },
+      {
+        "value": "10000000",
+        "currency": "KRW",
+        "source_expression": "1천만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "1천원 부터 1,000만원 까지\n※ 월 1천만원 저축한도 이내에서 자유롭게 저축이 가능하고, 계약기간 3/4 경과 후에는 이전 저축잔액의 1/2을"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-CA65123099D-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.100",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000219-1-CA65123099D-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.600",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000219_1_CA65123099D_PREF_02.QUALIFYING_PERIOD_COUNT",
+          "type": "INTEGER",
+          "unit": "MONTH",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000219-1-CA65123099D-PREF-02-QUALIFYING",
+            "operator": "QUALIFYING_PERIOD_COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "NUMBER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+          ],
+          "unit": "KRW",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%",
+          "aggregation": {
+            "event_ref": "EVENT-INST_KR_000219_1_CA65123099D-INST_KR_000219_1_CA651-SOURCE_CLAUSE_INST_KR_000219_1",
+            "operator": "CONTRACT_MONTHLY_AVERAGE"
+          }
+        },
+        {
+          "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "계약기간 동안 신한은행에 기업여신 보유 내역이 있는 경우 : 0.3%"
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+          ],
+          "unit": "MONTH",
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "계약기간 동안 신한은행에 노란우산공제를 가입한 내역이 있는 경우 : 0.2%"
+        },
+        {
+          "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+          ],
+          "authority": "BANK_SYSTEM_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "본 상품 가입 전 지자체가 발행한 모범납세자 증명서를 영업점에 제출하는 경우 또는 지자체 홈페이지를 통해 모범납세자 금융서비스를 신청하는 경우 : 0.2%"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000219-1-CA65123099D-PREF-02-QUALIFYING",
+          "event_type": "CARD_USAGE",
+          "qualifying_definition": {
+            "source_text": "신한카드 가맹점 결제계좌를 신한은행으로 지정 후 매출액 입금할 경우\n※예금 가입일 다음 달부터 만기일 전전월까지 5개월이상 충족할 경우 계약기간 중 입금된 금액 전체에 우대이자율 제공(월1회이상 입금되어야하며, 5개월 입금은 연속될 필요없음) : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "신한카드 가맹점 결제계좌를 신한은행으로 지정 후 매출액 입금할 경우\n※예금 가입일 다음 달부터 만기일 전전월까지 5개월이상 충족할 경우 계약기간 중 입금된 금액 전체에 우대이자율 제공(월1회이상 입금되어야하며, 5개월 입금은 연속될 필요없음) : 0.5%"
+          },
+          "structuring_status": "SUPPORTED"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000219-1-CA65123099D-PREF-03-QUALIFYING",
+          "event_type": "ACCOUNT_BALANCE_OBSERVED",
+          "qualifying_definition": {
+            "source_text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 500000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "50만원 이상"
+          },
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%",
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          },
+          "structuring_status": "SUPPORTED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          }
+        },
+        {
+          "event_id": "EVENT-INST_KR_000219_1_CA65123099D-INST_KR_000219_1_CA651-SOURCE_CLAUSE_INST_KR_000219_1",
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "event_type": "ACCOUNT_BALANCE_OBSERVED",
+          "authority": "BANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "recognition_criteria": {
+            "source_text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%",
+            "interpretation_basis": "NAVER_SOURCE_CLAUSE"
+          },
+          "count_window": {
+            "start": "SUBSCRIPTION_DATE",
+            "end": "MATURITY"
+          }
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-INST-KR-000219-1-CA65123099D-PREF-06",
+          "applies_to_rule_ids": [
+            "INST-KR-000219-1-CA65123099D-PREF-06"
+          ],
+          "required_actions": [
+            "SUBMIT_EVIDENCE",
+            "COMPLETE_APPLICATION"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "procedure_source_text": "본 상품 가입 전 지자체가 발행한 모범납세자 증명서를 영업점에 제출하는 경우 또는 지자체 홈페이지를 통해 모범납세자 금융서비스를 신청하는 경우 : 0.2%",
+          "submission_channels": [
+            "BRANCH"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-CA65123099D-PREF-02",
+          "title": "신한카드 가맹점 결제계좌를 신한은행으로 지정 후 매출액 입금할 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000219_1_CA65123099D_PREF_02.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 5,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신한카드 가맹점 결제계좌를 신한은행으로 지정 후 매출액 입금할 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+            }
+          ],
+          "semantic_domain": "MERCHANT_SETTLEMENT",
+          "source_clause_text": "신한카드 가맹점 결제계좌를 신한은행으로 지정 후 매출액 입금할 경우\n※예금 가입일 다음 달부터 만기일 전전월까지 5개월이상 충족할 경우 계약기간 중 입금된 금액 전체에 우대이자율 제공(월1회이상 입금되어야하며, 5개월 입금은 연속될 필요없음) : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CA65123099D-PREF-03",
+          "title": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT_BALANCE.AVERAGE_AMOUNT.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+            }
+          ],
+          "semantic_domain": "ACCOUNT_BALANCE",
+          "source_clause_text": "입출금이 자유로운 예금의 월 평균 잔액이 50만원 이상인 경우(단, 수퍼저축예금, 수퍼기업자유예금, 거액기업자유예금, 신한 수퍼드림 기업 자유예금, 신한 S-MORE 포인트 통장은 제외)\n※ 예금 가입일 다음달부터 만기일 전전월까지 매월 말일자 기준 해당 월 평잔이 1회라도 50만원 이상인 경우에 한함 : 0.5%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CA65123099D-PREF-04",
+          "title": "계약기간 동안 신한은행에 기업여신 보유 내역이 있는 경우 : 0.3%",
+          "condition": {
+            "predicate": {
+              "fact_key": "LOAN_HOLDING_OR_PERFORMANCE.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.3",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간 동안 신한은행에 기업여신 보유 내역이 있는 경우 : 0.3%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+            }
+          ],
+          "semantic_domain": "LOAN_HOLDING_OR_PERFORMANCE",
+          "source_clause_text": "계약기간 동안 신한은행에 기업여신 보유 내역이 있는 경우 : 0.3%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CA65123099D-PREF-05",
+          "title": "계약기간 동안 신한은행에 노란우산공제를 가입한 내역이 있는 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "계약기간 동안 신한은행에 노란우산공제를 가입한 내역이 있는 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "계약기간 동안 신한은행에 노란우산공제를 가입한 내역이 있는 경우 : 0.2%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CA65123099D-PREF-06",
+          "title": "본 상품 가입 전 지자체가 발행한 모범납세자 증명서를 영업점에 제출하는 경우 또는 지자체 홈페이지를 통해 모범납세자 금융서비스를 신청하는 경우 : 0.2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CHANNEL_OR_ACCOUNT_FEATURE.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+              }
+            ],
+            "fact_authority": "BANK_SYSTEM_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "본 상품 가입 전 지자체가 발행한 모범납세자 증명서를 영업점에 제출하는 경우 또는 지자체 홈페이지를 통해 모범납세자 금융서비스를 신청하는 경우 : 0.2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+            }
+          ],
+          "semantic_domain": "CHANNEL_OR_ACCOUNT_FEATURE",
+          "source_clause_text": "본 상품 가입 전 지자체가 발행한 모범납세자 증명서를 영업점에 제출하는 경우 또는 지자체 홈페이지를 통해 모범납세자 금융서비스를 신청하는 경우 : 0.2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-01",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06",
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-05"
+        },
+        {
+          "source_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-06"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-RATE",
+      "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "3.1",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "b24d8bf7e5f2c00d8c2bb5bfd3edccd3"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO",
+    "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-RATE",
+    "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "b24d8bf7e5f2c00d8c2bb5bfd3edccd3",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 5,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-B24D8BF7E5F2C00D8C2BB5BFD3EDCCD3-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

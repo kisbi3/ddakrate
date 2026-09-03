@@ -1,0 +1,246 @@
+{
+  "product_code": "INST-KR-000599-3-0001",
+  "version": 1,
+  "institution_id": "INST-KR-000599",
+  "name": "E-RUN플러스 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000599-3-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 19세 이상 실명의 개인 (단, 비대면 전용으로 외국인 불가) / 1인 1계좌",
+    "eligibility_text": "만 19세 이상 실명의 개인 (단, 비대면 전용으로 외국인 불가) / 1인 1계좌",
+    "display_text": "만 19세 이상 실명의 개인 (단, 비대면 전용으로 외국인 불가) / 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000599-3-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 19
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "MONTH",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000599-3-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000599-3-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000599-3-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.900",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000599-3-0001-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.20",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000599-3-0001-01",
+        "title": "우대조건 충족 시 각 항목에 대한 우대금리 적용(각 항목 0.10%p 우대금리 적용 → 최대 0.30%p)",
+        "condition_text": "우대조건 충족 시 각 항목에 대한 우대금리 적용(각 항목 0.10%p 우대금리 적용 → 최대 0.30%p)\n※ 조건 충족 실적을 기준으로 우대금리가 적용되며, 자동이체 해지 시 해지일까지만 적용",
+        "structured_steps": [
+          "우대조건 충족 시 각 항목에 대한 우대금리 적용(각 항목 0.10%p 우대금리 적용 → 최대 0.30%p)",
+          "※ 조건 충족 실적을 기준으로 우대금리가 적용되며, 자동이체 해지 시 해지일까지만 적용"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.30",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "우대조건 충족 시 각 항목에 대한 우대금리 적용(각 항목 0.10%p 우대금리 적용 → 최대 0.30%p)",
+          "summary_text": "우대조건 충족 시 각 항목에 대한 우대금리 적용(각 항목 0.10%p 우대금리 적용 → 최대 0.30%p)",
+          "detail_texts": [
+            "※ 조건 충족 실적을 기준으로 우대금리가 적용되며, 자동이체 해지 시 해지일까지만 적용"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.30",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000599-3-0001-02",
+        "title": "예가람저축은행 첫 거래 고객 : 당행 예·적금(입출금 포함) 상품 가입 이력이 전혀 없는 경우",
+        "condition_text": "예가람저축은행 첫 거래 고객 : 당행 예·적금(입출금 포함) 상품 가입 이력이 전혀 없는 경우\n→ 우대금리 적용 (당일부터 적용) : 0.1%",
+        "structured_steps": [
+          "예가람저축은행 첫 거래 고객 : 당행 예·적금(입출금 포함) 상품 가입 이력이 전혀 없는 경우",
+          "→ 우대금리 적용 (당일부터 적용) : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "예가람저축은행 첫 거래 고객 : 당행 예·적금(입출금 포함) 상품 가입 이력이 전혀 없는 경우",
+          "summary_text": "예가람저축은행 첫 거래 고객 : 당행 예·적금(입출금 포함) 상품 가입 이력이 전혀 없는 경우",
+          "detail_texts": [
+            "→ 우대금리 적용 (당일부터 적용) : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000599-3-0001-03",
+        "title": "자동이체 실적 : 당행 대출 월납입금 또는 당행 적금 월불입금을 E-RUN플러스 파킹통장으로 자동이체 등록",
+        "condition_text": "자동이체 실적 : 당행 대출 월납입금 또는 당행 적금 월불입금을 E-RUN플러스 파킹통장으로 자동이체 등록\n→ 우대금리 적용 (익일부터 적용)\n※ 단, 중복 적용 불가 : 0.1%",
+        "structured_steps": [
+          "자동이체 실적 : 당행 대출 월납입금 또는 당행 적금 월불입금을 E-RUN플러스 파킹통장으로 자동이체 등록",
+          "→ 우대금리 적용 (익일부터 적용)",
+          "※ 단, 중복 적용 불가 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "자동이체 실적 : 당행 대출 월납입금 또는 당행 적금 월불입금을 E-RUN플러스 파킹통장으로 자동이체 등록",
+          "summary_text": "자동이체 실적 : 당행 대출 월납입금 또는 당행 적금 월불입금을 E-RUN플러스 파킹통장으로 자동이체 등록",
+          "detail_texts": [
+            "→ 우대금리 적용 (익일부터 적용)",
+            "※ 단, 중복 적용 불가 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000599-3-0001-04",
+        "title": "체크카드 사용 실적 : 당행 체크카드 발급 후 E-RUN플러스 파킹통장으로 결제계좌 연결 후 월간 10만원 이상 승인 사용 실적",
+        "condition_text": "체크카드 사용 실적 : 당행 체크카드 발급 후 E-RUN플러스 파킹통장으로 결제계좌 연결 후 월간 10만원 이상 승인 사용 실적\n→ 우대금리 적용 (익월에만 적용) : 0.1%",
+        "structured_steps": [
+          "체크카드 사용 실적 : 당행 체크카드 발급 후 E-RUN플러스 파킹통장으로 결제계좌 연결 후 월간 10만원 이상 승인 사용 실적",
+          "→ 우대금리 적용 (익월에만 적용) : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000599-3-0001"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "체크카드 사용 실적 : 당행 체크카드 발급 후 E-RUN플러스 파킹통장으로 결제계좌 연결 후 월간 10만원 이상 승인 사용 실적",
+          "summary_text": "체크카드 사용 실적 : 당행 체크카드 발급 후 E-RUN플러스 파킹통장으로 결제계좌 연결 후 월간 10만원 이상 승인 사용 실적",
+          "detail_texts": [
+            "→ 우대금리 적용 (익월에만 적용) : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000599-3-0001"
+    ],
+    "advertised_max_rate": {
+      "value": "3.20",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000599-3-0001"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000599-3-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.496347+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

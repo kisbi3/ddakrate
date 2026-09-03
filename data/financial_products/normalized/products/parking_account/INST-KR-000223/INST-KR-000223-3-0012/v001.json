@@ -1,0 +1,281 @@
+{
+  "product_code": "INST-KR-000223-3-0012",
+  "version": 1,
+  "institution_id": "INST-KR-000223",
+  "name": "나라사랑머니박스",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-3-0012"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "eligibility_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "display_text": "『IBK나라사랑통장』을 보유한 실명의 개인(개인사업자 및 외국인비거주자 제외)\n※ 1인 1계좌",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-3-0012"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 60,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-3-0012"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-3-0012"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-3-0012-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.100",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-3-0012-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "4.00",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-3-0012-01",
+        "title": "최고 연 3.9%p",
+        "condition_text": "최고 연 3.9%p\n- 전월(1일~말일) 실적*이 아래 조건을 충족하는 경우 당월(1일~말일)에 우대이자율 제공\n* 단, 상품전환을 통해 『IBK나라사랑통장』을 신규한 경우 전환일 이후의 실적부터 인정",
+        "structured_steps": [
+          "최고 연 3.9%p",
+          "- 전월(1일~말일) 실적*이 아래 조건을 충족하는 경우 당월(1일~말일)에 우대이자율 제공",
+          "* 단, 상품전환을 통해 『IBK나라사랑통장』을 신규한 경우 전환일 이후의 실적부터 인정"
+        ],
+        "extracted_reward_candidate": {
+          "value": "3.9",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "최고 연 3.9%p",
+          "summary_text": "최고 연 3.9%p",
+          "detail_texts": [
+            "- 전월(1일~말일) 실적*이 아래 조건을 충족하는 경우 당월(1일~말일)에 우대이자율 제공",
+            "* 단, 상품전환을 통해 『IBK나라사랑통장』을 신규한 경우 전환일 이후의 실적부터 인정"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "3.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-3-0012-02",
+        "title": "전월 IBK나라사랑통장에 IBK기업은행과 국군재정관리단이 체결한 중앙급여이체 계약에 따라 군장병 급여이체 실적*이 있는 경우",
+        "condition_text": "전월 IBK나라사랑통장에 IBK기업은행과 국군재정관리단이 체결한 중앙급여이체 계약에 따라 군장병 급여이체 실적*이 있는 경우\n* 사회복무요원, 대체복무요원 등 복무기관에서 급여를 받는 경우 군 급여이체 실적에 해당하지 않음 : 1.4%",
+        "structured_steps": [
+          "전월 IBK나라사랑통장에 IBK기업은행과 국군재정관리단이 체결한 중앙급여이체 계약에 따라 군장병 급여이체 실적*이 있는 경우",
+          "* 사회복무요원, 대체복무요원 등 복무기관에서 급여를 받는 경우 군 급여이체 실적에 해당하지 않음 : 1.4%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "1.4",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "전월 IBK나라사랑통장에 IBK기업은행과 국군재정관리단이 체결한 중앙급여이체 계약에 따라 군장병 급여이체 실적*이 있는 경우",
+          "summary_text": "전월 IBK나라사랑통장에 IBK기업은행과 국군재정관리단이 체결한 중앙급여이체 계약에 따라 군장병 급여이체 실적*이 있는 경우",
+          "detail_texts": [
+            "* 사회복무요원, 대체복무요원 등 복무기관에서 급여를 받는 경우 군 급여이체 실적에 해당하지 않음 : 1.4%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-3-0012-03",
+        "title": "전월 IBK나라사랑통장 계좌로 12개월 연속하여 군장병 급여이체 실적이 있는 경우 (단, 월 1회 이상 급여실적이 있는 경우 1회로 간주함) : 0.5%",
+        "condition_text": "전월 IBK나라사랑통장 계좌로 12개월 연속하여 군장병 급여이체 실적이 있는 경우 (단, 월 1회 이상 급여실적이 있는 경우 1회로 간주함) : 0.5%",
+        "structured_steps": [
+          "전월 IBK나라사랑통장 계좌로 12개월 연속하여 군장병 급여이체 실적이 있는 경우 (단, 월 1회 이상 급여실적이 있는 경우 1회로 간주함) : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "전월 IBK나라사랑통장 계좌로 12개월 연속하여 군장병 급여이체 실적이 있는 경우 (단, 월 1회 이상 급여실적이 있는 경우 1회로 간주함) : 0.5%",
+          "summary_text": "전월 IBK나라사랑통장 계좌로 12개월 연속하여 군장병 급여이체 실적이 있는 경우 (단, 월 1회 이상 급여실적이 있는 경우 1회로 간주함) : 0.5%",
+          "detail_texts": [],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-3-0012-04",
+        "title": "전월 IBK기업은행 나라사랑카드를 1회 이상 사용한 경우",
+        "condition_text": "전월 IBK기업은행 나라사랑카드를 1회 이상 사용한 경우\n(단, 매출표 접수 기준으로 실적 인정)\n(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용) : 0.5%",
+        "structured_steps": [
+          "전월 IBK기업은행 나라사랑카드를 1회 이상 사용한 경우",
+          "(단, 매출표 접수 기준으로 실적 인정)",
+          "(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용) : 0.5%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.5",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "전월 IBK기업은행 나라사랑카드를 1회 이상 사용한 경우",
+          "summary_text": "전월 IBK기업은행 나라사랑카드를 1회 이상 사용한 경우",
+          "detail_texts": [
+            "(단, 매출표 접수 기준으로 실적 인정)",
+            "(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용) : 0.5%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000223-3-0012-05",
+        "title": "영업점을 방문하여 본인 명의 '수급자 증명서' 또는 '사회보장급여 중지 통지서(사유:군입대)'를 제출(등록) 시",
+        "condition_text": "영업점을 방문하여 본인 명의 '수급자 증명서' 또는 '사회보장급여 중지 통지서(사유:군입대)'를 제출(등록) 시\n(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용)\n*신규일 기준 3개월 이내 발급한 수급자 증명서만 인정 : 2%",
+        "structured_steps": [
+          "영업점을 방문하여 본인 명의 '수급자 증명서' 또는 '사회보장급여 중지 통지서(사유:군입대)'를 제출(등록) 시",
+          "(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용)",
+          "*신규일 기준 3개월 이내 발급한 수급자 증명서만 인정 : 2%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "2",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000223-3-0012"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "영업점을 방문하여 본인 명의 '수급자 증명서' 또는 '사회보장급여 중지 통지서(사유:군입대)'를 제출(등록) 시",
+          "summary_text": "영업점을 방문하여 본인 명의 '수급자 증명서' 또는 '사회보장급여 중지 통지서(사유:군입대)'를 제출(등록) 시",
+          "detail_texts": [
+            "(전월 IBK나라사랑통장에 군장병 급여이체 실적이 있는 경우 우대금리 적용)",
+            "*신규일 기준 3개월 이내 발급한 수급자 증명서만 인정 : 2%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000223-3-0012"
+    ],
+    "advertised_max_rate": {
+      "value": "4.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000223-3-0012"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000223-3-0012"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.450065+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}

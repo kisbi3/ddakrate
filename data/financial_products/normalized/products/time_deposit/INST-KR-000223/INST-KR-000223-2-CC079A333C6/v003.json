@@ -1,0 +1,1413 @@
+{
+  "product_code": "INST-KR-000223-2-CC079A333C6",
+  "version": 3,
+  "institution_id": "INST-KR-000223",
+  "name": "정기예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ],
+    "subscription_channels": [
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "제한 없음 (단, 금융기관 제외)",
+    "eligibility_text": "제한 없음 (단, 금융기관 제외)",
+    "display_text": "제한 없음 (단, 금융기관 제외)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ],
+    "mode": "UNRESTRICTED"
+  },
+  "term_policy": {
+    "source_text": "1년제, 2년제, 3년제\n(회전기간 : 1, 2, 3, 6, 12개월)",
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      12,
+      24,
+      36
+    ],
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ],
+    "rollover_period_policy": {
+      "kind": "DISCRETE",
+      "unit": "MONTH",
+      "values": [
+        1,
+        2,
+        3,
+        6,
+        12
+      ],
+      "source_text": "원문 회전주기/회전기간 명시"
+    },
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "EXISTING_SELECTABLE_REPRESENTATIVE",
+    "source_allowed_terms": [
+      {
+        "value": 12,
+        "unit": "MONTH"
+      },
+      {
+        "value": 24,
+        "unit": "MONTH"
+      },
+      {
+        "value": 36,
+        "unit": "MONTH"
+      }
+    ],
+    "advertised_rate_period": {
+      "value": 12,
+      "unit": "MONTH"
+    }
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ],
+    "source_amount_text": "1백만원 이상 제한없음",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "2.89",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-01-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-01-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-02-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.14",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-02-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.14",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-02-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.24",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-03-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.29",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-03-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.29",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-03-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.39",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-04-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.57",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-04-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.57",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-04-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.67",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-05-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.79",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-05-02",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.79",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-CTX-05-03",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.89",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-002",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-003",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.1",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 1,
+              "min_inclusive": true,
+              "max_value": 1,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "회전기간 1개월",
+          "raw_cell": "2.000% 2.000% 2.100%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-004",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.14",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-005",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.14",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-006",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.24",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 2,
+              "min_inclusive": true,
+              "max_value": 2,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 2개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 1,
+          "source_rate_row_text": "회전기간 2개월",
+          "raw_cell": "2.140% 2.140% 2.240%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 2개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-007",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.29",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-008",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.29",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-009",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.39",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 3,
+              "min_inclusive": true,
+              "max_value": 3,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 3개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 2,
+          "source_rate_row_text": "회전기간 3개월",
+          "raw_cell": "2.290% 2.290% 2.390%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 3개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-010",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.57",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-011",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.57",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-012",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.67",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 6,
+              "min_inclusive": true,
+              "max_value": 6,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 6개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 3,
+          "source_rate_row_text": "회전기간 6개월",
+          "raw_cell": "2.570% 2.570% 2.670%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 6개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-013",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.79",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 0
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-014",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.79",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 1
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      },
+      {
+        "rate_id": "INST-KR-000223-2-CC079A333C6-BASE-015",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.89",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "ROLLOVER_PERIOD",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "회전기간 1년"
+          }
+        ],
+        "rate_context": {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY",
+          "source_rate_row_index": 4,
+          "source_rate_row_text": "회전기간 1년",
+          "raw_cell": "2.790% 2.790% 2.890%",
+          "table_header": "기본 금리 | 기간 월이자지급식 회전기간이자지급식 만기일시지급식",
+          "column_index": 2
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+        ],
+        "source_rate_row_text": "회전기간 1년",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 월이자지급식 회전기간이자지급식 만기일시지급식\n회전기간 1개월\n2.000% 2.000% 2.100%\n회전기간 2개월\n2.140% 2.140% 2.240%\n회전기간 3개월\n2.290% 2.290% 2.390%\n회전기간 6개월\n2.570% 2.570% 2.670%\n회전기간 1년\n2.790% 2.790% 2.890%",
+      "header_lines": [
+        "기본 금리",
+        "기간 월이자지급식 회전기간이자지급식 만기일시지급식"
+      ],
+      "rows": [
+        {
+          "term_text": "회전기간 1개월",
+          "cell_lines": [
+            "2.000% 2.000% 2.100%"
+          ],
+          "rate_values": [
+            "2",
+            "2",
+            "2.1"
+          ]
+        },
+        {
+          "term_text": "회전기간 2개월",
+          "cell_lines": [
+            "2.140% 2.140% 2.240%"
+          ],
+          "rate_values": [
+            "2.14",
+            "2.14",
+            "2.24"
+          ]
+        },
+        {
+          "term_text": "회전기간 3개월",
+          "cell_lines": [
+            "2.290% 2.290% 2.390%"
+          ],
+          "rate_values": [
+            "2.29",
+            "2.29",
+            "2.39"
+          ]
+        },
+        {
+          "term_text": "회전기간 6개월",
+          "cell_lines": [
+            "2.570% 2.570% 2.670%"
+          ],
+          "rate_values": [
+            "2.57",
+            "2.57",
+            "2.67"
+          ]
+        },
+        {
+          "term_text": "회전기간 1년",
+          "cell_lines": [
+            "2.790% 2.790% 2.890%"
+          ],
+          "rate_values": [
+            "2.79",
+            "2.79",
+            "2.89"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "MONTHLY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MONTHLY"
+        },
+        {
+          "context_id": "ROLLOVER_PERIOD_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "ROLLOVER_PERIOD"
+        },
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "semantic_role": "CONTRACT_RATE",
+          "payment_timing": "MATURITY"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ],
+    "listing_base_rate_reference": {
+      "value": "2.89",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+      ],
+      "executable_base_supported_by_detail": true,
+      "representative_rate_period_basis": "ROLLOVER_PERIOD",
+      "contract_term_representative": {
+        "value": 12,
+        "unit": "MONTH"
+      },
+      "representative_term_semantics": "ROLLOVER_PERIOD_NOT_CONTRACT_MATURITY"
+    },
+    "advertised_max_rate": {
+      "value": "2.89",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+      ]
+    },
+    "interest_payment_policy": {
+      "contexts": [
+        {
+          "context_id": "MATURITY_PAYMENT",
+          "payment_timing": "MATURITY",
+          "compounding": "SIMPLE"
+        }
+      ],
+      "multiple_contexts": false,
+      "default_context_id": "MATURITY_PAYMENT"
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T14:47:54+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  },
+  "liquidity_policy": {
+    "renewal_policy": {
+      "mode": "ROLLOVER",
+      "rate_reset": "REFRESH_AT_ROLLOVER",
+      "original_contract_term_preserved": true,
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+      ]
+    }
+  },
+  "data_gaps": [],
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme": "KDIC",
+    "source_text": "예금자보호 1억원",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000223-2-CC079A333C6"
+    ]
+  },
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MATURITY_PAYMENT",
+        "payment_timing": "MATURITY",
+        "compounding": "SIMPLE"
+      }
+    ],
+    "multiple_contexts": false,
+    "default_context_id": "MATURITY_PAYMENT"
+  }
+}

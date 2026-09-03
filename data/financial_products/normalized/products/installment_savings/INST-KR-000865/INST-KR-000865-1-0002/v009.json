@@ -1,0 +1,844 @@
+{
+  "product_code": "INST-KR-000865-1-0002",
+  "version": 9,
+  "institution_id": "INST-KR-000865",
+  "name": "궁금한 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "subscription_channels": [
+      "APP"
+    ],
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n(단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능)",
+    "eligibility_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n(단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능)",
+    "display_text": "만 17세 이상 실명의 개인 및 개인사업자(1인 최대 1계좌)\n(단, 케이뱅크가 복수의 계좌개설을 허용하는 경우(파트너 제휴, 이벤트 등)에 한하여 추가 개설 가능)",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "min_age": 17,
+      "inclusive": true,
+      "anchor": "SUBSCRIPTION_DATE"
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1,
+      "exception": {
+        "type": "BANK_EXPLICIT_MULTI_ACCOUNT_PERMISSION",
+        "examples": [
+          "PARTNER_CAMPAIGN",
+          "BANK_EVENT"
+        ],
+        "note": "케이뱅크가 복수계좌 개설을 명시적으로 허용한 제휴/이벤트에 한해 추가 개설 가능"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "DAY",
+    "fixed_value": 31,
+    "representative_value": 31,
+    "source_expression": "31일",
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      }
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "IRREGULAR",
+    "contribution_frequency_options": [
+      "IRREGULAR"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "100",
+        "max_value": "50000",
+        "increment_value": "1",
+        "interpretation": "DAILY_CONTRIBUTION_AMOUNT_RANGE",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "count_limit_rules": [
+      {
+        "scope": "PER_DAY",
+        "max_count": 1
+      },
+      {
+        "scope": "TOTAL_CONTRACT",
+        "max_count": 31,
+        "derived_from": "31-day contract × max 1 contribution/day"
+      }
+    ],
+    "initial_contribution_rule": {
+      "scope": "AT_SUBSCRIPTION",
+      "type": "FIXED",
+      "currency": "KRW",
+      "value": "0",
+      "source_text": "가입금액 0원"
+    },
+    "funding_channel_policy": {
+      "allowed_source": "KBANK_LINKED_ACCOUNT_ONLY",
+      "manual_direct_contribution_required": true,
+      "automatic_transfer_supported": false
+    },
+    "source_amount_text": "가입금액 0원; 적립한도 일 100원 이상 50,000원 이하(원단위); 1일 1회",
+    "source_contribution_text": "자유적립식, 케이뱅크 연결계좌를 통한 직접 입금",
+    "source_amount_constraints": [
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "가입금액 0원",
+        "scope": "INITIAL",
+        "role": "FIXED"
+      },
+      {
+        "value": "100",
+        "currency": "KRW",
+        "source_expression": "일 최소 1백원",
+        "scope": "PER_DAY",
+        "role": "MINIMUM"
+      },
+      {
+        "value": "50000",
+        "currency": "KRW",
+        "source_expression": "일 최대 5만원",
+        "scope": "PER_DAY",
+        "role": "MAXIMUM"
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000865-1-0002-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.700",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "DAY",
+          "fixed_value": 31
+        },
+        "source_ref_ids": [
+          "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-RATE",
+          "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-RATE"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          }
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "reward_application_scope": "ALL_CONTRIBUTIONS",
+        "source_ref_ids": [
+          "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+          "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+          "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "6.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+          "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+          "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_CONTRIBUTION_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "KBANK_TRANSACTION_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "aggregation": {
+            "operator": "COUNT",
+            "source_event_ref": "EVENT-KBANK-CURIOUS-CONTRIBUTION"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ]
+        },
+        {
+          "fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_RANDOM_BONUS_TOTAL_PP",
+          "type": "NUMBER",
+          "unit": "PERCENTAGE_POINT",
+          "authority": "KBANK_RATE_DRAW_LEDGER",
+          "self_report_eligible": false,
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "NO_SELF_REPORT_FOR_CONFIRMATION",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "aggregation": {
+            "operator": "SUM",
+            "field": "draw_outcome_rate_pp",
+            "source_event_ref": "EVENT-KBANK-CURIOUS-CONTRIBUTION"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-KBANK-CURIOUS-CONTRIBUTION",
+          "event_type": "CONTRIBUTION_POSTED",
+          "channel_scope": [
+            "KBANK_LINKED_ACCOUNT"
+          ],
+          "period_unit": "DAY",
+          "maximum_count_per_period": 1,
+          "maximum_count_per_contract": 31,
+          "amount_range_krw": {
+            "min": "100",
+            "max": "50000"
+          },
+          "random_rate_draw": {
+            "authority": "KBANK_RATE_DRAW_LEDGER",
+            "result_field": "draw_outcome_rate_pp",
+            "allowed_values": [
+              "0.10",
+              "0.20",
+              "0.30",
+              "1.00"
+            ],
+            "inventory_per_account": [
+              {
+                "value": "1.00",
+                "count": 1
+              },
+              {
+                "value": "0.30",
+                "count": 6
+              },
+              {
+                "value": "0.20",
+                "count": 8
+              },
+              {
+                "value": "0.10",
+                "count": 16
+              }
+            ],
+            "draw_behavior": "RANDOM_PERMUTATION_WITHOUT_REPLACEMENT",
+            "note": "31회 전체 노출횟수가 고정된 우대금리 inventory를 입금 시마다 랜덤 순서로 1개씩 노출"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ]
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000865-1-0002-PREF-RANDOM-CUMULATIVE",
+          "title": "입금 시 랜덤 우대금리 누적",
+          "trigger": {
+            "event_ref": "EVENT-KBANK-CURIOUS-CONTRIBUTION",
+            "one_reward_draw_per_event": true
+          },
+          "condition": {
+            "predicate": {
+              "fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_CONTRIBUTION_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "RANDOM_REWARD",
+            "draw_event_ref": "EVENT-KBANK-CURIOUS-CONTRIBUTION",
+            "draw_model": "RANDOM_PERMUTATION_WITHOUT_REPLACEMENT",
+            "aggregation": "CUMULATIVE_SUM",
+            "max_draws": 31,
+            "outcome_inventory": [
+              {
+                "rate_value": "1.00",
+                "unit": "PERCENTAGE_POINT",
+                "occurrence_count": 1,
+                "total_value": "1.00"
+              },
+              {
+                "rate_value": "0.30",
+                "unit": "PERCENTAGE_POINT",
+                "occurrence_count": 6,
+                "total_value": "1.80"
+              },
+              {
+                "rate_value": "0.20",
+                "unit": "PERCENTAGE_POINT",
+                "occurrence_count": 8,
+                "total_value": "1.60"
+              },
+              {
+                "rate_value": "0.10",
+                "unit": "PERCENTAGE_POINT",
+                "occurrence_count": 16,
+                "total_value": "1.60"
+              }
+            ],
+            "full_draw_count": 31,
+            "full_draw_total": "6.00",
+            "full_draw_total_unit": "PERCENTAGE_POINT",
+            "actual_value_fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_RANDOM_BONUS_TOTAL_PP",
+            "partial_draw_range": {
+              "calculation": "SUM_N_SMALLEST_OR_LARGEST_REMAINING_INVENTORY_VALUES",
+              "official_example": {
+                "draw_count": 15,
+                "minimum_pp": "1.50",
+                "maximum_pp": "4.40"
+              },
+              "note": "실제 draw 결과가 없으면 입금횟수만으로 확정 우대금리를 알 수 없고 가능한 범위만 계산"
+            },
+            "source_ref_ids": [
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "rate_crystallization": "FINAL_ACCUMULATED_RANDOM_BONUS_AT_MATURITY",
+            "reward_application_scope": "ALL_CONTRIBUTIONS",
+            "fact_authority": "KBANK_RATE_DRAW_LEDGER",
+            "confirmed_value_status_required": "ACTUAL",
+            "source_ref_ids": [
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+              "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+              "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+              }
+            ]
+          },
+          "display": {
+            "summary": "실제 입금 1회마다 0.10/0.20/0.30/1.00%p 중 하나를 랜덤으로 받고 누적; 31회 완납 시 +6.00%p 확정",
+            "reward_text": "0~+6.00%p (31회 모두 납입 시 +6.00%p)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ],
+          "structuring_status": "NON_DETERMINISTIC",
+          "semantic_domain": "BANK_RANDOM_RATE_DRAW",
+          "source_clause_text": "입금 때마다 고정된 우대금리 inventory에서 랜덤 금리가 1회 노출되어 누적되고, 31회 모두 입금하면 우대금리 합계는 +6.00%p가 된다."
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000865-1-0002-DRAW-SUM",
+          "operator": "CUMULATIVE_SUM",
+          "source_event_ref": "EVENT-KBANK-CURIOUS-CONTRIBUTION",
+          "output_fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_RANDOM_BONUS_TOTAL_PP",
+          "value_field": "draw_outcome_rate_pp",
+          "cap": {
+            "value": "6.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ]
+        },
+        {
+          "relation_id": "REL-INST-KR-000865-1-0002-FULL-DRAW-GUARANTEE",
+          "operator": "IF_THEN",
+          "if": {
+            "fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_CONTRIBUTION_COUNT",
+            "operator": "EQUALS",
+            "expected_value": 31
+          },
+          "then": {
+            "fact_key": "KBANK.CURIOUS_SAVING.ACTUAL_RANDOM_BONUS_TOTAL_PP",
+            "equals": "6.00",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+            "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+            "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+            }
+          ]
+        }
+      ],
+      "structuring_status": "NON_DETERMINISTIC",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01",
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02",
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-SECTION",
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-RATE",
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-LISTING",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+    ],
+    "advertised_max_rate": {
+      "value": "6.7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-LISTING",
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "3dcc5f77c0322eaac977c51193c23f96"
+    },
+    "payment_timing": "MATURITY",
+    "interest_calculation_policy": {
+      "method": "SUM_BY_CONTRIBUTION",
+      "per_contribution_period": {
+        "start": "CONTRIBUTION_DATE",
+        "end": "DAY_BEFORE_TERMINATION"
+      },
+      "rate_basis": "BASE_PLUS_FINAL_ACCUMULATED_RANDOM_BONUS",
+      "rate_finalization_event": "MATURITY",
+      "source_ref_ids": [
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827",
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827"
+        }
+      ]
+    }
+  },
+  "standard_conditions": [
+    {
+      "condition_id": "INST-KR-000865-1-0002-NON_TAXABLE-SAVINGS",
+      "type": "TAX_TREATMENT_OPTION",
+      "value": "NON_TAXABLE_COMPREHENSIVE_SAVINGS_WITHIN_CUSTOMER_LIMIT",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+        },
+        {
+          "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+        }
+      ]
+    }
+  ],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+    "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-RATE",
+    "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-LISTING",
+    "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827",
+    "EVD-IS-OFFICIAL-KBANK-CURIOUS-RATE-20260827",
+    "EVD-IS-OFFICIAL-KBANK-CURIOUS-REWARD-20260827",
+    "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMINATION-20260827"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T10:35:27+09:00",
+    "data_authority": "NAVER_PRIMARY_PLUS_OFFICIAL_KBANK_ENRICHMENT",
+    "publication_gate": "TARGETED_PRODUCT_SEMANTIC_REVIEW_V008",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "NAVER_PRIMARY_PLUS_OFFICIAL_SITE_ENRICHMENT",
+    "source_record_id": "3dcc5f77c0322eaac977c51193c23f96",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260831-installment-savings-13",
+      "reviewed_at": "2026-08-31T10:35:27+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_KBANK_OFFICIAL_PRODUCT_PAGE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER",
+        "KBANK_OFFICIAL_PRODUCT_TERMS",
+        "KBANK_OFFICIAL_REWARD",
+        "KBANK_OFFICIAL_TERMINATION"
+      ],
+      "correction_count": 9,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED_NON_DETERMINISTIC",
+      "reason_codes": [
+        "BANK_RANDOM_RATE_DRAW_REQUIRES_ACTUAL_DRAW_RESULTS_FOR_PARTIAL_COMPLETION"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "IRREGULAR_WITH_DAILY_LIMIT",
+      "source_ref_ids": [
+        "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+        "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMS-20260827"
+      ]
+    }
+  ],
+  "termination_policy": {
+    "maturity": {
+      "interest_payment": "LUMP_SUM_AT_MATURITY",
+      "automatic_termination": {
+        "optional": true,
+        "execution_date": "MATURITY_DATE_INCLUDING_HOLIDAY",
+        "destination": "KBANK_LINKED_ACCOUNT",
+        "blocked_if": [
+          "WITHDRAWAL_RESTRICTION_INCIDENT_REGISTERED"
+        ]
+      }
+    },
+    "early_termination": {
+      "preferential_rate_eligible": false,
+      "rate": "BASE_RATE_POSTED_AT_SUBSCRIPTION"
+    },
+    "post_maturity_rate": [
+      {
+        "holding_period": "WITHIN_1_MONTH",
+        "calculation": "BASE_RATE_AT_MATURITY_X_50_PERCENT"
+      },
+      {
+        "holding_period": "OVER_1_MONTH_TO_6_MONTHS",
+        "calculation": "BASE_RATE_AT_MATURITY_X_30_PERCENT"
+      },
+      {
+        "holding_period": "OVER_6_MONTHS",
+        "fixed_rate_percent": "0.20"
+      }
+    ],
+    "transfer_and_inheritance": {
+      "assignment_allowed": false,
+      "inheritance_name_change_allowed": true,
+      "if_heir_not_kbank_deposit_customer": "TERMINATION_ONLY",
+      "inheritance_termination_rate": "BASE_RATE_AGREED_AT_CONTRACT_DATE"
+    },
+    "source_ref_ids": [
+      "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO",
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMINATION-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-3DCC5F77C0322EAAC977C51193C23F96-PRODUCT-INFO"
+      },
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-TERMINATION-20260827"
+      }
+    ]
+  },
+  "ancillary_reward_policy": {
+    "reward_type": "PARTNER_SUBSCRIPTION_COUPON",
+    "is_interest_or_rate_reward": false,
+    "partner": "밀리의서재",
+    "reward": "1개월 무료 구독권",
+    "campaign_window": {
+      "start_date": "2026-06-15",
+      "end_date": "2026-09-30"
+    },
+    "eligibility": {
+      "operator": "AND",
+      "conditions": [
+        {
+          "type": "PRODUCT_CONTRIBUTION_COUNT",
+          "operator": "EQUALS",
+          "value": 31
+        },
+        {
+          "type": "COMPLETION_WITHIN_CAMPAIGN_WINDOW",
+          "value": true
+        }
+      ]
+    },
+    "customer_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_rewards": 1
+    },
+    "delivery": {
+      "channel": "KBANK_APP_COUPON_BOX",
+      "may_be_delayed_if_inventory_unavailable": true
+    },
+    "campaign_change_policy": {
+      "may_change_or_end_without_advance_notice": true
+    },
+    "abuse_policy": {
+      "improper_completion_may_disqualify": true
+    },
+    "redemption": {
+      "partner_registration_requires": [
+        "COUPON_CODE",
+        "PAYMENT_METHOD"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-IS-OFFICIAL-KBANK-CURIOUS-REWARD-20260827"
+    ],
+    "evidence": [
+      {
+        "source_ref_id": "EVD-IS-OFFICIAL-KBANK-CURIOUS-REWARD-20260827"
+      }
+    ]
+  }
+}

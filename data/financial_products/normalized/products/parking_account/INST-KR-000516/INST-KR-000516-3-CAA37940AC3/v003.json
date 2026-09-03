@@ -1,0 +1,813 @@
+{
+  "product_code": "INST-KR-000516-3-CAA37940AC3",
+  "version": 3,
+  "institution_id": "INST-KR-000516",
+  "name": "쓱머니KB통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 400000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "40만좌"
+    },
+    "account_quota": 400000,
+    "subscription_channel_details": [
+      {
+        "channel": "PARTNER_EMBEDDED_ACCOUNT_OPENING",
+        "platform": "SSG_COM"
+      }
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 이상의 실명의 개인(1인 1계좌)\n※관련서류 미제출 임의단체, 개인사업자 및 공동명의, 비거주자 및 외국인 가입 불가",
+    "eligibility_text": "만 17세 이상의 실명의 개인(1인 1계좌)\n※관련서류 미제출 임의단체, 개인사업자 및 공동명의, 비거주자 및 외국인 가입 불가",
+    "display_text": "만 17세 이상의 실명의 개인(1인 1계좌)\n※관련서류 미제출 임의단체, 개인사업자 및 공동명의, 비거주자 및 외국인 가입 불가",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ],
+    "excluded_customer_types": [
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 17
+    },
+    "nationality_scope": "KOREAN_ONLY",
+    "excluded_residency_statuses": [
+      "NON_RESIDENT"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000516-3-CAA37940AC3-REL-75A356A138BA",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "SSG.COM 앱 內 KB국민은행 전용페이지에 연계된 「쓱머니 KB통장」 비대면 계좌 개설 서비스를 통해서만 가입 가능",
+        "fact_key": "SOURCE_RELATIONSHIP.75A356A138BA.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000516-3-CAA37940AC3-REL-1E84B0777B80",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "▪ SSG.COM 회원 탈퇴일로부터 익일(다음날), 혁신금융서비스 종료일로부터 익일(다음날)에 「KB제휴통장」으로 상품명이 변경됩니다.",
+        "fact_key": "SOURCE_RELATIONSHIP.1E84B0777B80.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-3-CAA37940AC3-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+        ],
+        "source_clause": "기본금리 연 0.1%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "prerequisite_rule": "SSG_COM_MEMBER_AND_FIRST_EVER_PRODUCT_OPEN",
+        "termination_events": [
+          "SSG_COM_MEMBERSHIP_TERMINATED",
+          "INNOVATIVE_FINANCE_SERVICE_ENDED",
+          "PRODUCT_RENAMED_TO_KB_AFFILIATE_ACCOUNT"
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.KB.DEMAND_ACCOUNT_HELD_IN_PREOPEN_6M",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "PAYMENT.SSG_PAY.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "PAYMENT.SSG_PAY.THIS_ACCOUNT_REGISTRATION_DATE",
+          "data_type": "DATE",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.PREVIOUS_MONTH_QUALIFYING_INFLOW_AMOUNT",
+          "data_type": "MONEY",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ],
+          "unit": "KRW"
+        },
+        {
+          "fact_key": "CONSENT.SSG_COM.MARKETING_ACTIVE_PREVIOUS_MONTH_END",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "fact_key": "CONSENT.KB.MARKETING_ACTIVE_PREVIOUS_MONTH_END",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-3-CAA37940AC3-PREF-01",
+          "title": "첫거래 신규우대 첫 1년",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.KB.DEMAND_ACCOUNT_HELD_IN_PREOPEN_6M",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 0,
+                "unit": "DAY",
+                "inclusive": true
+              },
+              "end": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-CAA37940AC3-PREF-02",
+          "title": "첫거래 신규우대 1년 초과 3년 이내",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.KB.DEMAND_ACCOUNT_HELD_IN_PREOPEN_6M",
+                  "operator": "EQUALS",
+                  "expected_value": false
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "ACCOUNT_AGE",
+              "start": {
+                "value": 1,
+                "unit": "YEAR",
+                "inclusive": false
+              },
+              "end": {
+                "value": 3,
+                "unit": "YEAR",
+                "inclusive": true
+              }
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-CAA37940AC3-PREF-03",
+          "title": "SSG PAY 결제계좌 등록",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "PAYMENT.SSG_PAY.THIS_ACCOUNT_SETTLEMENT_REGISTERED",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "effective_window": {
+              "type": "INTERSECTION",
+              "windows": [
+                {
+                  "type": "ACCOUNT_AGE",
+                  "start": {
+                    "value": 0,
+                    "unit": "DAY",
+                    "inclusive": true
+                  },
+                  "end": {
+                    "value": 1,
+                    "unit": "YEAR",
+                    "inclusive": true
+                  }
+                },
+                {
+                  "type": "FROM_FACT_DATE",
+                  "anchor_fact_key": "PAYMENT.SSG_PAY.THIS_ACCOUNT_REGISTRATION_DATE"
+                }
+              ]
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-CAA37940AC3-PREF-04",
+          "title": "전월 합산 입금 50만원 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.PREVIOUS_MONTH_QUALIFYING_INFLOW_AMOUNT",
+                  "operator": "GTE",
+                  "expected_value": 500000,
+                  "unit": "KRW"
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "fact_window": "PREVIOUS_CALENDAR_MONTH",
+            "reward_window": {
+              "start": "CURRENT_MONTH_SECOND_FRIDAY_PLUS_ONE_DAY_OR_ACCOUNT_OPEN_DATE",
+              "end": "NEXT_MONTH_SECOND_FRIDAY"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-CAA37940AC3-PREF-05",
+          "title": "SSG.COM·KB 혜택 수신 동의 모두 유지",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "operator": "AND",
+                "operands": [
+                  {
+                    "predicate": {
+                      "fact_key": "SERVICE.SSG_COM.MEMBER_ACTIVE",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  },
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.PRODUCT.SSG_MONEY_KB_FIRST_EVER_OPEN",
+                      "operator": "EQUALS",
+                      "expected_value": true
+                    }
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.SSG_COM.MARKETING_ACTIVE_PREVIOUS_MONTH_END",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "CONSENT.KB.MARKETING_ACTIVE_PREVIOUS_MONTH_END",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": false,
+                "max_value": "2000000",
+                "max_inclusive": true
+              }
+            },
+            "fact_window": "PREVIOUS_MONTH_END",
+            "reward_window": {
+              "start": "CURRENT_MONTH_SECOND_FRIDAY_PLUS_ONE_DAY_OR_ACCOUNT_OPEN_DATE",
+              "end": "NEXT_MONTH_SECOND_FRIDAY"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "type": "MUTUALLY_EXCLUSIVE_BY_ACCOUNT_AGE",
+          "rule_ids": [
+            "INST-KR-000516-3-CAA37940AC3-PREF-01",
+            "INST-KR-000516-3-CAA37940AC3-PREF-02"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "3.9",
+        "unit": "PERCENTAGE_POINT"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ],
+    "calculation_method": "DAILY_BALANCE",
+    "accrual_basis": "END_OF_DAY_BALANCE",
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ],
+      "structuring_status": "SUPPORTED"
+    },
+    "interest_crediting": {
+      "raw_text": "이자결산일 다음날(단, 매월 제2금요일 다음날은 고객 요청에 의한 이자지급 제한)\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자를 원금에 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일의 다음 결산일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000516-3-CAA37940AC3-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "reference_day": {
+              "ordinal_week": 2,
+              "weekday": "FRIDAY"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000516-3-CAA37940AC3-INT-CREDIT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_text": "이자결산일 다음날(단, 매월 제2금요일 다음날은 고객 요청에 의한 이자지급 제한)\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자를 원금에 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일의 다음 결산일에 일괄 계산하여 지급할 수 있습니다.",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000516-3-CAA37940AC3-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "4.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000516-3-CAA37940AC3",
+    "source_record_id": "97912c506ac8b2b08db61ecc9f1655d5",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 143,
+    "reviewed_source_record_id": "97912c506ac8b2b08db61ecc9f1655d5",
+    "reviewed_individually": true,
+    "audit_status": "SAFE_ISOLATED_REQUIRES_FOLLOWUP",
+    "resolved_audit_findings": [
+      "CUSTOMER_TYPE_CONTRADICTION",
+      "EFFECTIVE_WINDOW_NOT_COMPILED",
+      "EXPLICIT_REWARD_OR_FORMULA_NON_EXECUTABLE",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "TIERED_OR_COMPOSITE_REWARD_LOGIC_LOSS"
+    ],
+    "unresolved_audit_findings": [],
+    "p0_resolution_status": "SOURCE_COMPILED",
+    "p0_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "신규 기간별·SSG PAY·입금·마케팅 우대를 분리",
+      "첫거래 1년 1.5%p·1~3년 0.4%p 기간과 최근 6개월 무보유 조건 복원",
+      "SSG PAY 결제계좌 등록일부터 첫 1년 +1.4%p를 사용실적과 분리",
+      "전월 입금·양사 마케팅 동의 각 0.5%p 및 총 3.9%p cap·40만좌 한도 구조화"
+    ],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-CAA37940AC3"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0
+  }
+}

@@ -1,0 +1,651 @@
+{
+  "product_code": "INST-KR-000219-1-CE0EF3CB63A",
+  "version": 7,
+  "institution_id": "INST-KR-000219",
+  "name": "신한 안녕, 반가워 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB",
+      "BRANCH"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "display_text": "실명의 개인 및 개인사업자 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "500000"
+      }
+    ],
+    "source_amount_text": "1천원 부터 50만원 까지",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1천원 부터 50만원 까지"
+      },
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "MINIMUM",
+        "context": "1천원 부터 50만원 까지"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-1-CE0EF3CB63A-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "1.800",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01",
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02",
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03",
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04",
+          "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "MONTH",
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01",
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02",
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03",
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04",
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 신규 직전 1년간 신한은행 정기예금, 정기적금, 주택청약 상품이 없었던 고객이 이 예금을 신규한 경우 : 2%"
+        },
+        {
+          "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+          ],
+          "authority": "BANK_CARD_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 신한은행으로 결제계좌를 지정하는 경우 (신한 BC 및 체크카드는 제외)\n(※ 이 예금 신규 전 신한카드(신용)을 먼저 신청 시 우대이자율 대상에서 제외될 수 있으므로, 꼭 이 예금 신규후 신한카드(신용)를 신청하여 주시기 바랍니다.) : 2%"
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "이 예금 신규 직전 1년간 신한은행 정기적금이 없었던 고객이 신한은행에서 정한 대고객 이벤트를 통해 특별금리우대 쿠폰을 발급 받은 경우\n※ 이벤트 요건은 신한은행 홈페이지 및 신한 쏠(SOL)에 공지하며, 가입 당시 확정된 이벤트 내용에 대해서는 적금 만기 시까지 유효합니다. 신한은행 대고객 이벤트 공지를 통해 제시된 요건을 충족한 고객에게는 자동으로 특별금리우대 쿠폰이 발급됩니다. : 2%"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-1-CE0EF3CB63A-PREF-02",
+          "title": "이 예금 신규 직전 1년간 신한은행 정기예금, 정기적금, 주택청약 상품이 없었던 고객이 이 예금을 신규한 경우 : 2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규 직전 1년간 신한은행 정기예금, 정기적금, 주택청약 상품이 없었던 고객이 이 예금을 신규한 경우 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "이 예금 신규 직전 1년간 신한은행 정기예금, 정기적금, 주택청약 상품이 없었던 고객이 이 예금을 신규한 경우 : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CE0EF3CB63A-PREF-03",
+          "title": "이 예금 신규 직전 1년간 신한은행으로 급여이체, 급여클럽 월급봉투 수령 실적이 없었던 고객이 이 예금 신규 후 신한은행 입출금통장으로 급여이체를 한 경우 : 2%",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규 직전 1년간 신한은행으로 급여이체, 급여클럽 월급봉투 수령 실적이 없었던 고객이 이 예금 신규 후 신한은행 입출금통장으로 급여이체를 한 경우 : 2%"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+            }
+          ],
+          "semantic_domain": "INCOME_CREDIT",
+          "source_clause_text": "이 예금 신규 직전 1년간 신한은행으로 급여이체, 급여클럽 월급봉투 수령 실적이 없었던 고객이 이 예금 신규 후 신한은행 입출금통장으로 급여이체를 한 경우 : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CE0EF3CB63A-PREF-04",
+          "title": "신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 신한은행으로 결제계좌를 지정하는 경우 (신한 BC 및 체크카드는 제외)",
+          "condition": {
+            "predicate": {
+              "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+              }
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 신한은행으로 결제계좌를 지정하는 경우 (신한 BC 및 체크카드는 제외)"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "신한카드(신용) 최초신규 고객, 탈회 후 3개월 경과 고객, 유효기간 만료 고객이 이 예금 신규 후 신한카드(신용)를 신규하고 신한은행으로 결제계좌를 지정하는 경우 (신한 BC 및 체크카드는 제외)\n(※ 이 예금 신규 전 신한카드(신용)을 먼저 신청 시 우대이자율 대상에서 제외될 수 있으므로, 꼭 이 예금 신규후 신한카드(신용)를 신청하여 주시기 바랍니다.) : 2%"
+        },
+        {
+          "rule_id": "INST-KR-000219-1-CE0EF3CB63A-PREF-05",
+          "title": "이 예금 신규 직전 1년간 신한은행 정기적금이 없었던 고객이 신한은행에서 정한 대고객 이벤트를 통해 특별금리우대 쿠폰을 발급 받은 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "2",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "이 예금 신규 직전 1년간 신한은행 정기적금이 없었던 고객이 신한은행에서 정한 대고객 이벤트를 통해 특별금리우대 쿠폰을 발급 받은 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "이 예금 신규 직전 1년간 신한은행 정기적금이 없었던 고객이 신한은행에서 정한 대고객 이벤트를 통해 특별금리우대 쿠폰을 발급 받은 경우\n※ 이벤트 요건은 신한은행 홈페이지 및 신한 쏠(SOL)에 공지하며, 가입 당시 확정된 이벤트 내용에 대해서는 적금 만기 시까지 유효합니다. 신한은행 대고객 이벤트 공지를 통해 제시된 요건을 충족한 고객에게는 자동으로 특별금리우대 쿠폰이 발급됩니다. : 2%"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01",
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02",
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03",
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04",
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05",
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-RATE",
+      "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.8",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "e1bbd500ebf38c18945d8d565d2e6977"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO",
+    "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-RATE",
+    "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "e1bbd500ebf38c18945d8d565d2e6977",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-IS-E1BBD500EBF38C18945D8D565D2E6977-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

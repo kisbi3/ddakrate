@@ -1,0 +1,250 @@
+{
+  "product_code": "INST-KR-000120-1-CE1C1C6D26C",
+  "version": 1,
+  "institution_id": "INST-KR-000120",
+  "name": "꿈이룸 적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 18세 이하 실명의 개인(1인1계좌)",
+    "eligibility_text": "만 18세 이하 실명의 개인(1인1계좌)",
+    "display_text": "만 18세 이하 실명의 개인(1인1계좌)",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "max_age": 18
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 24,
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+    ],
+    "representative_value": 24
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000120-1-CE1C1C6D26C-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.900",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000120-1-CE1C1C6D26C-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.30",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-CE1C1C6D26C-02",
+        "title": "육아수당 수령 우대이율",
+        "condition_text": "육아수당 수령 우대이율\n- 아동명의의 부산은행 입출금 계좌로 육아수당이 3회 이상 입금된 경우 지급\n⇒ 통장에 '아동, 보육, 가족, 여성, 복지, 육아, 부모, 양육, 가정' 등 문구로 10만원 이상 입금건만 인정 : 0.1%",
+        "structured_steps": [
+          "육아수당 수령 우대이율",
+          "- 아동명의의 부산은행 입출금 계좌로 육아수당이 3회 이상 입금된 경우 지급",
+          "⇒ 통장에 '아동, 보육, 가족, 여성, 복지, 육아, 부모, 양육, 가정' 등 문구로 10만원 이상 입금건만 인정 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "육아수당 수령 우대이율",
+          "summary_text": "육아수당 수령 우대이율",
+          "detail_texts": [
+            "- 아동명의의 부산은행 입출금 계좌로 육아수당이 3회 이상 입금된 경우 지급",
+            "⇒ 통장에 '아동, 보육, 가족, 여성, 복지, 육아, 부모, 양육, 가정' 등 문구로 10만원 이상 입금건만 인정 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-CE1C1C6D26C-03",
+        "title": "초·중·고교 입학 우대이율",
+        "condition_text": "초·중·고교 입학 우대이율\n- 고객이 특정 연령(만7세, 만13세 또는 만16세)에 도달했을 경우, 그 도달 시점이 속하는 재예치기간만 지급 : 0.1%",
+        "structured_steps": [
+          "초·중·고교 입학 우대이율",
+          "- 고객이 특정 연령(만7세, 만13세 또는 만16세)에 도달했을 경우, 그 도달 시점이 속하는 재예치기간만 지급 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "초·중·고교 입학 우대이율",
+          "summary_text": "초·중·고교 입학 우대이율",
+          "detail_texts": [
+            "- 고객이 특정 연령(만7세, 만13세 또는 만16세)에 도달했을 경우, 그 도달 시점이 속하는 재예치기간만 지급 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-CE1C1C6D26C-04",
+        "title": "주택청약종합저축 가입 우대이율",
+        "condition_text": "주택청약종합저축 가입 우대이율\n- 이 적금 만기해지 시 본인명의 주택청약종합저축을 보유 시 지급 : 0.1%",
+        "structured_steps": [
+          "주택청약종합저축 가입 우대이율",
+          "- 이 적금 만기해지 시 본인명의 주택청약종합저축을 보유 시 지급 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "주택청약종합저축 가입 우대이율",
+          "summary_text": "주택청약종합저축 가입 우대이율",
+          "detail_texts": [
+            "- 이 적금 만기해지 시 본인명의 주택청약종합저축을 보유 시 지급 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      },
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000120-1-CE1C1C6D26C-05",
+        "title": "자동이체 우대이율",
+        "condition_text": "자동이체 우대이율\n- 이 적금 전체 불입 회차 중 2/3이상 자동이체를 통해 불입한 경우\n- 당행 간 자동이체만 인정 : 0.1%",
+        "structured_steps": [
+          "자동이체 우대이율",
+          "- 이 적금 전체 불입 회차 중 2/3이상 자동이체를 통해 불입한 경우",
+          "- 당행 간 자동이체만 인정 : 0.1%"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.1",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "자동이체 우대이율",
+          "summary_text": "자동이체 우대이율",
+          "detail_texts": [
+            "- 이 적금 전체 불입 회차 중 2/3이상 자동이체를 통해 불입한 경우",
+            "- 당행 간 자동이체만 인정 : 0.1%"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+    ],
+    "advertised_max_rate": {
+      "value": "3.30",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000120-1-CE1C1C6D26C"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:53.176621+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID"
+  }
+}

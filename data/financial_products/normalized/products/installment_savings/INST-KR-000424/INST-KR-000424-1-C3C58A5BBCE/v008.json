@@ -1,0 +1,678 @@
+{
+  "product_code": "INST-KR-000424-1-C3C58A5BBCE",
+  "version": 8,
+  "institution_id": "INST-KR-000424",
+  "name": "우리 두근두근 행운적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-SALE"
+    ],
+    "subscription_channels": [
+      "APP",
+      "WEB"
+    ],
+    "quantity_limit": {
+      "unit": "ACCOUNT_COUNT",
+      "max_count": 150000,
+      "early_close_when_exhausted": true
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)",
+    "eligibility_text": "실명의 개인 (1인 1계좌)",
+    "display_text": "실명의 개인 (1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 6,
+    "source_expression": "6개월",
+    "source_ref_ids": [
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+    ],
+    "representative_value": 6
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "MONTHLY",
+    "contribution_frequency_options": [
+      "MONTHLY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "max_value": "500000",
+        "increment_value": "1",
+        "period_basis": "CALENDAR_MONTH"
+      }
+    ],
+    "source_amount_text": "월 50만원 이하 (원단위 적립 가능)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "500000",
+        "currency": "KRW",
+        "source_expression": "50만원",
+        "scope": "UNSPECIFIED",
+        "role": "MAXIMUM",
+        "context": "월 50만원 이하 (원단위 적립 가능)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000424-1-C3C58A5BBCE-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.000",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 6
+        },
+        "source_ref_ids": [
+          "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false,
+        "source_ref_ids": [
+          "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.AGE_YEARS",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "YEAR",
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "CUSTOMER.MARKETING_CONTACT_CONSENT_MAINTAINED",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "repeated_dimension": "CONTRACT_LIFETIME",
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION.LUCK_CARD_WIN_COUNT",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "COUNT",
+          "authority": "BANK_OFFICIAL_RESULT",
+          "self_report_eligible": false,
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ]
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-WOORI-LUCK-CARD",
+          "event_type": "PROMOTION_RANDOM_DRAW",
+          "authority": "BANK_OFFICIAL_RESULT",
+          "self_report_eligible": false,
+          "issuance_schedule": {
+            "start": "MONTH_AFTER_SUBSCRIPTION",
+            "day_of_month": 10,
+            "count": 5,
+            "frequency": "MONTHLY"
+          },
+          "per_round_win_probabilities": [
+            {
+              "round": 1,
+              "probability": "0.30"
+            },
+            {
+              "round": 2,
+              "probability": "0.10"
+            },
+            {
+              "round": 3,
+              "probability": "0.10"
+            },
+            {
+              "round": 4,
+              "probability": "0.10"
+            },
+            {
+              "round": 5,
+              "probability": "0.30"
+            }
+          ],
+          "result_check_required_for_reward": false,
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ],
+          "outcomes": [
+            "WIN",
+            "LOSE"
+          ],
+          "win_count_aggregation": {
+            "operator": "COUNT_OUTCOME",
+            "outcome": "WIN",
+            "target_fact_key": "PROMOTION.LUCK_CARD_WIN_COUNT"
+          },
+          "derived_win_count_distribution": [
+            {
+              "win_count": 0,
+              "rate_value": "0.00",
+              "probability_percent": "35.721"
+            },
+            {
+              "win_count": 1,
+              "rate_value": "2.00",
+              "probability_percent": "42.525"
+            },
+            {
+              "win_count": 2,
+              "rate_value": "4.00",
+              "probability_percent": "18.090"
+            },
+            {
+              "win_count": 3,
+              "rate_value": "6.00",
+              "probability_percent": "3.370"
+            },
+            {
+              "win_count": 4,
+              "rate_value": "8.00",
+              "probability_percent": "0.285"
+            },
+            {
+              "win_count": 5,
+              "rate_value": "10.00",
+              "probability_percent": "0.009"
+            }
+          ],
+          "probability_of_at_least_one_win_percent": "64.279"
+        }
+      ],
+      "fulfillment_details": [
+        {
+          "fulfillment_id": "FULFILL-WOORI-MARKETING-CONSENT",
+          "applies_to_rule_ids": [
+            "INST-KR-000424-1-C3C58A5BBCE-PREF-01"
+          ],
+          "applies_when": {
+            "fact_key": "CUSTOMER.AGE_YEARS",
+            "operator": "GTE",
+            "expected_value": 14
+          },
+          "required_actions": [
+            "MAINTAIN_AT_LEAST_ONE_CONTACT_CONSENT"
+          ],
+          "accepted_contact_channels": [
+            "PHONE_MOBILE",
+            "SMS"
+          ],
+          "maintenance_end": "MATURITY_TERMINATION",
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000424-1-C3C58A5BBCE-PREF-01",
+          "title": "행운카드 당첨 우대",
+          "condition": {
+            "operator": "AND",
+            "children": [
+              {
+                "operator": "OR",
+                "children": [
+                  {
+                    "predicate": {
+                      "fact_key": "CUSTOMER.AGE_YEARS",
+                      "operator": "LT",
+                      "accepted_value_status": [
+                        "ACTUAL"
+                      ],
+                      "unit": "YEAR",
+                      "expected_value": 14,
+                      "source_ref_ids": [
+                        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                      ],
+                      "evidence": [
+                        {
+                          "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                        }
+                      ]
+                    },
+                    "source_ref_ids": [
+                      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                      }
+                    ]
+                  },
+                  {
+                    "operator": "AND",
+                    "children": [
+                      {
+                        "predicate": {
+                          "fact_key": "CUSTOMER.AGE_YEARS",
+                          "operator": "GTE",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "unit": "YEAR",
+                          "expected_value": 14,
+                          "source_ref_ids": [
+                            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                          }
+                        ]
+                      },
+                      {
+                        "predicate": {
+                          "fact_key": "CUSTOMER.MARKETING_CONTACT_CONSENT_MAINTAINED",
+                          "operator": "EQUALS",
+                          "accepted_value_status": [
+                            "ACTUAL"
+                          ],
+                          "expected_value": true,
+                          "source_ref_ids": [
+                            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                          ],
+                          "evidence": [
+                            {
+                              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                            }
+                          ]
+                        },
+                        "source_ref_ids": [
+                          "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                        ],
+                        "evidence": [
+                          {
+                            "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                          }
+                        ]
+                      }
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                      }
+                    ]
+                  }
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                  }
+                ]
+              },
+              {
+                "predicate": {
+                  "fact_key": "PROMOTION.LUCK_CARD_WIN_COUNT",
+                  "operator": "GTE",
+                  "accepted_value_status": [
+                    "ACTUAL"
+                  ],
+                  "unit": "COUNT",
+                  "authority": "BANK_OFFICIAL_RESULT",
+                  "self_report_eligible": false,
+                  "expected_value": 1,
+                  "source_ref_ids": [
+                    "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                    }
+                  ]
+                },
+                "source_ref_ids": [
+                  "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+                  }
+                ]
+              }
+            ],
+            "source_ref_ids": [
+              "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "CUMULATIVE_RATE",
+            "counter_event_ref": "EVENT-WOORI-LUCK-CARD",
+            "counter_fact_key": "PROMOTION.LUCK_CARD_WIN_COUNT",
+            "count_outcome": "WIN",
+            "value_per_occurrence": "2.00",
+            "unit": "PERCENTAGE_POINT",
+            "max_occurrences": 5,
+            "cap_value": "10.00",
+            "possible_total_rate_values": [
+              "0.00",
+              "2.00",
+              "4.00",
+              "6.00",
+              "8.00",
+              "10.00"
+            ],
+            "source_ref_ids": [
+              "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+              }
+            ],
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ],
+            "fact_authority": "BANK_CARD_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "월 1개씩 총 5개 행운카드, 당첨 1회당 +2.00%p",
+            "reward_text": "최대 +10.00%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "structuring_status": "NON_DETERMINISTIC",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ],
+          "semantic_domain": "CARD_ACTIVITY",
+          "source_clause_text": "• 가입 다음월부터 매월 10일 우대이율 당첨여부를 확인할 수 있는 행운카드 제공\n• 행운카드는 월 1개, 계약기간 내 총 5개 제공\n- 회차별 당첨 확률 : 1회차 30%, 2회차 10%, 3회차 10%, 4회차 10%, 5회차 30%\n• 당첨 시 행운카드 1개당 우대이율 연 2.0%p 제공 (1번 이상 당첨 확률 : 64.279%)\n• 우대항목별 우대이율 및 당첨 확률\n- 행운 체크인(1번 당첨) : 우대이율 연 2.0%p, 당첨 확률 42.525%\n- 더블 점프(2번 당첨) : 우대이율 연 4.0%p, 당첨 확률 18.090%\n- 트리플 부스트(3번 당첨) : 우대이율 연 6.0%p 당첨 확률 3.370%\n- 클로버 매직(4번 당첨) : 우대이율 연 8.0%p, 당첨 확률 0.285%\n- 하이파이브 행운(5번 당첨) : 우대이율 연 10.0%p, 당첨 확률 0.009%\n※ 우대이율은 14세 이상의 경우 우리은행 상품·서비스 마케팅 동의 항목 중 전화(휴대폰)나 SMS 중 하나 이상 동의 후 만기해지시점까지 유지한 경우 제공하며, 마케팅 동의가 불가능한 14세 미만은 마케팅 동의여부를 확인하지 않고 조건 충족 시 우대금리 제공함.\n※ 우대이율에 당첨된 경우, 당첨여부를 확인하지 않아도 만기해지시 자동적용됩니다. 단, 계약기간 만기 전 중도해지한 계좌에 대해서는 적용하지 않음."
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-WOORI-LUCK-CARD-WIN-CUMULATIVE",
+          "operator": "CUMULATIVE",
+          "member_rule_ids": [
+            "INST-KR-000424-1-C3C58A5BBCE-PREF-01"
+          ],
+          "counter_event_ref": "EVENT-WOORI-LUCK-CARD",
+          "counter_fact_key": "PROMOTION.LUCK_CARD_WIN_COUNT",
+          "aggregation": "COUNT_OUTCOME_WIN",
+          "value_per_occurrence": "2.00",
+          "cap": {
+            "value": "10.00",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+              }
+            ]
+          },
+          "source_ref_ids": [
+            "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "NON_DETERMINISTIC",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01",
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+        }
+      ],
+      "global_cap": {
+        "value": "10.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-01"
+          }
+        ]
+      },
+      "source_section_ref_id": "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-RATE",
+      "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "13",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "ca8c78ca21d84d6e6b0ccf8597b3d971"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO",
+    "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-RATE",
+    "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-LISTING",
+    "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-SALE"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "ca8c78ca21d84d6e6b0ccf8597b3d971",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "REVIEWED_NON_DETERMINISTIC",
+      "reason_codes": [
+        "PREFERENTIAL_NON_DETERMINISTIC"
+      ],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "MONTHLY",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-RATE"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-SALE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "APP",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "WEB",
+      "source_ref_ids": [
+        "EVD-IS-CA8C78CA21D84D6E6B0CCF8597B3D971-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

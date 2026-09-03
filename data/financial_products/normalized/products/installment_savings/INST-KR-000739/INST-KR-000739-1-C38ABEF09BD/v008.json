@@ -1,0 +1,1008 @@
+{
+  "product_code": "INST-KR-000739-1-C38ABEF09BD",
+  "version": 8,
+  "institution_id": "INST-KR-000739",
+  "name": "NH올원e 미니적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+    ],
+    "subscription_channels": [
+      "ONLINE"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인 (1인 최대 5계좌)",
+    "eligibility_text": "개인 (1인 최대 5계좌)",
+    "display_text": "개인 (1인 최대 5계좌)",
+    "source_ref_ids": [
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 5
+    }
+  },
+  "term_policy": {
+    "kind": "RANGE",
+    "unit": "MONTH",
+    "min_value": 1,
+    "max_value": 6,
+    "source_expression": "1개월 이상 6개월 이하(일 단위)",
+    "source_bounds": {
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "source_ref_ids": [
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+    ],
+    "selection_step": {
+      "value": 1,
+      "unit": "DAY"
+    },
+    "duration_selection_granularity_options": [
+      "DAY"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "contribution_frequency": "DAILY",
+    "contribution_frequency_options": [
+      "DAILY"
+    ],
+    "amount_rules": [
+      {
+        "scope": "PER_PERIOD",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "50000",
+        "increment_value": "1000",
+        "period_basis": "CALENDAR_DAY"
+      }
+    ],
+    "source_amount_text": "계좌당, 매일 1천원 이상 5만원 이하(천원 단위)",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "계좌당, 매일 1천원 이상 5만원 이하(천원 단위)"
+      },
+      {
+        "value": "50000",
+        "currency": "KRW",
+        "source_expression": "5만원",
+        "scope": "PER_DAY",
+        "role": "RANGE_BOUND",
+        "context": "계좌당, 매일 1천원 이상 5만원 이하(천원 단위)"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000739-1-C38ABEF09BD-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.150",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 1,
+          "max_value": 3,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-1-C38ABEF09BD-BASE-02",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.250",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 3,
+          "max_value": 6,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000739-1-C38ABEF09BD-BASE-03",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "2.450",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "min_value": 6,
+          "max_value": 12,
+          "min_inclusive": true,
+          "max_inclusive": false
+        },
+        "source_ref_ids": [
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          }
+        ]
+      },
+      "global_cap": {
+        "value": "1.70",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+          "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+          },
+          {
+            "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "CUSTOMER.AGE",
+          "type": "INTEGER",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "unit": "YEAR",
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            }
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "authority": "BANK_TRANSACTION_RECORD",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "RULE.INST_KR_000739_1_C38ABEF09BD_PREF_03.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000739-1-C38ABEF09BD-PREF-03-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            }
+          ]
+        },
+        {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000739_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          ],
+          "authority": "BANK_PRODUCT_LEDGER",
+          "self_report_eligible": false,
+          "source_recognition_text": "상품가입 직전 1년간 농협은행 예적금(청약포함) 미보유 고객 우대금리 : 0.20%p"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000739-1-C38ABEF09BD-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "농협은행 입출식 계좌를 출금계좌로 하는 자동이체 적금 납입 우대금리 : 최고 0.50%p\n• 자동이체를 통한 입금 횟수(휴일 제외)\n- 5회 연 0.20%p / 10회 연 0.30%p / 15회 연 0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "농협은행 입출식 계좌를 출금계좌로 하는 자동이체 적금 납입 우대금리 : 최고 0.50%p\n• 자동이체를 통한 입금 횟수(휴일 제외)\n- 5회 연 0.20%p / 10회 연 0.30%p / 15회 연 0.50%p"
+          },
+          "structuring_status": "AMBIGUOUS"
+        },
+        {
+          "event_id": "EVENT-INST-KR-000739-1-C38ABEF09BD-PREF-03-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "목표금액 달성 축하금리 : 0.50%p\n- 농협은행 입출식 계좌에서 이 적금으로 자동이체를 10회 이상 납입하고 만기일 전일까지 목표금액 이상 납입하는 경우(자동이체를 통한 입금횟수가 10회 미만인 경우 우대금리 미적용)\n※ 목표금액 : 가입시점에 고객이 별도 설정하고, 설정 이후 변경 불가\n* 가입 시 목표금액의 범위는 다음과 같이 설정 가능(만원 단위)\n- 최소금액 : 10만원 이상\n- 최대금액 : [일 적립금액 한도 5만원 × 계약기간 중 신규일 및 만기일을 제외한 영업일* 수]\n- 임시공휴일, 대체공휴일 등으로 인해 매일(휴일 제외) 자동이체가 불가한 영업일*이 있을 수 있으며, 미 입금 분은 고객이 직접 입금 가능\n* 영업일(자동이체 약관 제2조) : 대통령령에 의한 관공서의 공휴일, 토요일, 근로자의 날을 제외한 날"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            }
+          ],
+          "amount_threshold": {
+            "value": 100000,
+            "currency": "KRW",
+            "operator": "GTE",
+            "source_expression": "10만원 이상"
+          },
+          "excluded_source_types": [
+            "직접 입금"
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "목표금액 달성 축하금리 : 0.50%p\n- 농협은행 입출식 계좌에서 이 적금으로 자동이체를 10회 이상 납입하고 만기일 전일까지 목표금액 이상 납입하는 경우(자동이체를 통한 입금횟수가 10회 미만인 경우 우대금리 미적용)\n※ 목표금액 : 가입시점에 고객이 별도 설정하고, 설정 이후 변경 불가\n* 가입 시 목표금액의 범위는 다음과 같이 설정 가능(만원 단위)\n- 최소금액 : 10만원 이상\n- 최대금액 : [일 적립금액 한도 5만원 × 계약기간 중 신규일 및 만기일을 제외한 영업일* 수]\n- 임시공휴일, 대체공휴일 등으로 인해 매일(휴일 제외) 자동이체가 불가한 영업일*이 있을 수 있으며, 미 입금 분은 고객이 직접 입금 가능\n* 영업일(자동이체 약관 제2조) : 대통령령에 의한 관공서의 공휴일, 토요일, 근로자의 날을 제외한 날"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000739-1-C38ABEF09BD-PREF-02",
+          "title": "농협은행 입출식 계좌를 출금계좌로 하는 자동이체 적금 납입 우대금리 : 최고 0.50%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+              "operator": "EXISTS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "TIERED_RATE",
+            "selector_fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+            "tiers": [
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                      }
+                    ],
+                    "unit": "COUNT",
+                    "lower": 5,
+                    "upper": 10,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.20",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "5회 연 0.20%p",
+                "source_ref_ids": [
+                  "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+                    "operator": "BETWEEN",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                      }
+                    ],
+                    "unit": "COUNT",
+                    "lower": 10,
+                    "upper": 15,
+                    "lower_inclusive": true,
+                    "upper_inclusive": false
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.30",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "10회 연 0.30%p",
+                "source_ref_ids": [
+                  "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  }
+                ]
+              },
+              {
+                "condition": {
+                  "predicate": {
+                    "fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+                    "operator": "GTE",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                      }
+                    ],
+                    "expected_value": 15,
+                    "unit": "COUNT"
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                    }
+                  ]
+                },
+                "rate_value": "0.50",
+                "unit": "PERCENTAGE_POINT",
+                "source_text": "15회 연 0.50%p",
+                "source_ref_ids": [
+                  "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+                  }
+                ]
+              }
+            ],
+            "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              }
+            ],
+            "cap_value": "0.50"
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "농협은행 입출식 계좌를 출금계좌로 하는 자동이체 적금 납입 우대금리 : 최고 0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "농협은행 입출식 계좌를 출금계좌로 하는 자동이체 적금 납입 우대금리 : 최고 0.50%p\n• 자동이체를 통한 입금 횟수(휴일 제외)\n- 5회 연 0.20%p / 10회 연 0.30%p / 15회 연 0.50%p"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C38ABEF09BD-PREF-03",
+          "title": "목표금액 달성 축하금리 : 0.50%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000739_1_C38ABEF09BD_PREF_03.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 10,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "목표금액 달성 축하금리 : 0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "목표금액 달성 축하금리 : 0.50%p\n- 농협은행 입출식 계좌에서 이 적금으로 자동이체를 10회 이상 납입하고 만기일 전일까지 목표금액 이상 납입하는 경우(자동이체를 통한 입금횟수가 10회 미만인 경우 우대금리 미적용)\n※ 목표금액 : 가입시점에 고객이 별도 설정하고, 설정 이후 변경 불가\n* 가입 시 목표금액의 범위는 다음과 같이 설정 가능(만원 단위)\n- 최소금액 : 10만원 이상\n- 최대금액 : [일 적립금액 한도 5만원 × 계약기간 중 신규일 및 만기일을 제외한 영업일* 수]\n- 임시공휴일, 대체공휴일 등으로 인해 매일(휴일 제외) 자동이체가 불가한 영업일*이 있을 수 있으며, 미 입금 분은 고객이 직접 입금 가능\n* 영업일(자동이체 약관 제2조) : 대통령령에 의한 관공서의 공휴일, 토요일, 근로자의 날을 제외한 날"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C38ABEF09BD-PREF-04",
+          "title": "청년(MZ세대) 우대금리 : 0.50%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "CUSTOMER.AGE",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+              }
+            ],
+            "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "청년(MZ세대) 우대금리 : 0.50%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            }
+          ],
+          "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+          "source_clause_text": "청년(MZ세대) 우대금리 : 0.50%p\n- 가입일 기준 만 19세 ~ 34세 고객"
+        },
+        {
+          "rule_id": "INST-KR-000739-1-C38ABEF09BD-PREF-05",
+          "title": "상품가입 직전 1년간 농협은행 예적금(청약포함) 미보유 고객 우대금리 : 0.20%p",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000739_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.20",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+              }
+            ],
+            "fact_authority": "BANK_PRODUCT_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "상품가입 직전 1년간 농협은행 예적금(청약포함) 미보유 고객 우대금리 : 0.20%p"
+          },
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          ],
+          "structuring_status": "SUPPORTED",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            }
+          ],
+          "semantic_domain": "PRODUCT_HOLDING",
+          "source_clause_text": "상품가입 직전 1년간 농협은행 예적금(청약포함) 미보유 고객 우대금리 : 0.20%p"
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-INST-KR-000739-1-C38ABEF09BD-PREF-02-TIER-EXACT",
+          "operator": "TIER_SELECT",
+          "member_rule_ids": [
+            "INST-KR-000739-1-C38ABEF09BD-PREF-02"
+          ],
+          "selector_fact_key": "ACCOUNT.AUTO_TRANSFER_CONTRIBUTION_COUNT",
+          "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            }
+          ],
+          "structuring_status": "SUPPORTED",
+          "cap": {
+            "value": "0.50",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              }
+            ]
+          }
+        },
+        {
+          "relation_id": "REL-INST-KR-000739-1-C38ABEF09BD-TOTAL-CAP-ENVELOPE",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "INST-KR-000739-1-C38ABEF09BD-PREF-02",
+            "INST-KR-000739-1-C38ABEF09BD-PREF-03",
+            "INST-KR-000739-1-C38ABEF09BD-PREF-04",
+            "INST-KR-000739-1-C38ABEF09BD-PREF-05"
+          ],
+          "cap": {
+            "value": "1.70",
+            "unit": "PERCENTAGE_POINT",
+            "source_ref_ids": [
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+              "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+              },
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+              },
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+              },
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+              },
+              {
+                "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+              }
+            ]
+          },
+          "scope": "TOTAL_PREFERENTIAL_CAP_ENVELOPE",
+          "note": "개별 하위 MAX_OF/TIER/CUMULATIVE 관계를 먼저 평가한 뒤 상품 전체 cap 적용",
+          "source_ref_ids": [
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+            "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+            },
+            {
+              "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+            }
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01",
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02",
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03",
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04",
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05",
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-03"
+        },
+        {
+          "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-04"
+        },
+        {
+          "source_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-05"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE",
+      "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "4.15",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "0afcc9abad792adcc0528e36b2bbfb92"
+    },
+    "payment_timing": "MATURITY"
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO",
+    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE",
+    "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-LISTING"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "0afcc9abad792adcc0528e36b2bbfb92",
+    "data_gaps": [],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 3,
+      "unresolved_count": 0,
+      "status": "VERIFIED_STRUCTURED",
+      "reason_codes": [],
+      "previous_completion_claims_superseded": true
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_FREQUENCY",
+      "value": "DAILY",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-RATE"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "ONLINE",
+      "source_ref_ids": [
+        "EVD-IS-0AFCC9ABAD792ADCC0528E36B2BBFB92-PRODUCT-INFO"
+      ]
+    }
+  ]
+}

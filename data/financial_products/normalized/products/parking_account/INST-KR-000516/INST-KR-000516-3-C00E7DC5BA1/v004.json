@@ -1,0 +1,672 @@
+{
+  "product_code": "INST-KR-000516-3-C00E7DC5BA1",
+  "version": 4,
+  "institution_id": "INST-KR-000516",
+  "name": "KB 프리N통장",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "BRANCH",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SPECIAL_SALE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    {
+      "tag": "SUBSCRIPTION_CHANNEL",
+      "value": "MOBILE_APP",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+        "EVD-USER-PARK-20260830-KB-FREEN"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+      "EVD-USER-PARK-20260830-KB-FREEN"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "BRANCH"
+    ],
+    "special_sale": true,
+    "quantity_limit": {
+      "max_count": 200000,
+      "unit": "ACCOUNT",
+      "exhaustion_behavior": "END_SALE",
+      "source_text": "20만좌"
+    }
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌 限)\n※ 개인사업자 및 관련서류 미제출 임의단체 가입 가능\n※ 비거주자 가입 불가, 공동명의 가입 불가",
+    "eligibility_text": "실명의 개인 (1인 1계좌 限)\n※ 개인사업자 및 관련서류 미제출 임의단체 가입 가능\n※ 비거주자 가입 불가, 공동명의 가입 불가",
+    "display_text": "실명의 개인 (1인 1계좌 限)\n※ 개인사업자 및 관련서류 미제출 임의단체 가입 가능\n※ 비거주자 가입 불가, 공동명의 가입 불가",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR",
+      "ORGANIZATION"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+      "EVD-USER-PARK-20260830-KB-FREEN"
+    ],
+    "excluded_customer_types": [],
+    "real_name_required": true,
+    "excluded_residency_statuses": [
+      "NON_RESIDENT"
+    ],
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "PERSON",
+      "product_scope": "THIS_PRODUCT",
+      "source_text": "1인 1계좌"
+    },
+    "allowed_customer_type_qualifiers": {
+      "ORGANIZATION": "UNINCORPORATED_OR_VOLUNTARY_ORGANIZATION_WITHOUT_REQUIRED_DOCUMENTS_SUBMITTED"
+    },
+    "excluded_ownership_modes": [
+      "JOINT_OWNERSHIP"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000516-3-C00E7DC5BA1-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.1",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+        ],
+        "source_clause": "기본금리 | 기본금리 연 0.1% (세금공제 전)",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 5,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {
+        "principal_scope": {
+          "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+          "method": "CAPPED_PORTION",
+          "range": {
+            "currency": "KRW",
+            "unit": "KRW",
+            "min_value": "0",
+            "min_inclusive": true,
+            "max_value": "2000000",
+            "max_inclusive": true,
+            "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+          },
+          "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+        },
+        "effective_window": {
+          "start": "FIRST_HOLDING_DATE_OR_FIRST_CONVERSION_DATE",
+          "end": "FIRST_SETTLEMENT_DATE_AFTER_ONE_YEAR_ELAPSED",
+          "end_inclusive": true
+        },
+        "source_text": "특별금리 연 1.4%, 결산기 평균잔액 200만원 이하분, 최초 보유일부터 1년 경과 후 처음 도래하는 결산일까지"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "ACCOUNT.THIS.SUBTYPE",
+          "data_type": "ENUM",
+          "allowed_values": [
+            "ORDINARY_DEPOSIT",
+            "SAVINGS_DEPOSIT"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "fact_key": "INTEREST_SETTLEMENT.SEQUENCE_NUMBER",
+          "data_type": "INTEGER",
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.ORDINARY_DEPOSIT.QUALIFYING_KEYWORD_DEPOSIT_MONTHS_PREVIOUS_6M",
+          "data_type": "INTEGER",
+          "unit": "CALENDAR_MONTH",
+          "aggregation": {
+            "period": "CALENDAR_MONTH",
+            "minimum_monthly_sum": 500000,
+            "currency": "KRW",
+            "match_fields": [
+              "TRANSACTION_MEMO",
+              "PAYER_NAME"
+            ],
+            "recognized_keywords": [
+              "쿠팡",
+              "배달의민족",
+              "우아한청년들",
+              "우아한형제들",
+              "요기요",
+              "땡겨요",
+              "바로고",
+              "부릉",
+              "생각대로",
+              "배민",
+              "카카오",
+              "티맵",
+              "대한통운",
+              "한진택배",
+              "메리츠",
+              "삼성화재",
+              "네이버",
+              "애드포스트",
+              "GOOGLE",
+              "META",
+              "배달",
+              "대리",
+              "택배",
+              "화물",
+              "운송",
+              "보험",
+              "정산"
+            ],
+            "excluded_transactions": [
+              "MISSING_TRANSACTION_MEMO_AND_PAYER_NAME",
+              "TRANSFER_FROM_CUSTOMERS_OWN_KB_ACCOUNT",
+              "DEPOSIT_USING_CUSTOMERS_RESIDENT_REGISTRATION_NUMBER",
+              "TRANSFER_FROM_OTHER_FINANCIAL_INSTITUTION_VIA_KB_OPEN_BANKING"
+            ],
+            "lookback_months": 6,
+            "minimum_qualifying_months": 2,
+            "window_end": "MONTH_END_BEFORE_SUBTYPE_INTEREST_PAYMENT_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "fact_key": "ACCOUNT.THIS.SAVINGS_DEPOSIT.QUALIFYING_KEYWORD_DEPOSIT_MONTHS_PREVIOUS_3M",
+          "data_type": "INTEGER",
+          "unit": "CALENDAR_MONTH",
+          "aggregation": {
+            "period": "CALENDAR_MONTH",
+            "minimum_monthly_sum": 500000,
+            "currency": "KRW",
+            "match_fields": [
+              "TRANSACTION_MEMO",
+              "PAYER_NAME"
+            ],
+            "recognized_keywords": [
+              "쿠팡",
+              "배달의민족",
+              "우아한청년들",
+              "우아한형제들",
+              "요기요",
+              "땡겨요",
+              "바로고",
+              "부릉",
+              "생각대로",
+              "배민",
+              "카카오",
+              "티맵",
+              "대한통운",
+              "한진택배",
+              "메리츠",
+              "삼성화재",
+              "네이버",
+              "애드포스트",
+              "GOOGLE",
+              "META",
+              "배달",
+              "대리",
+              "택배",
+              "화물",
+              "운송",
+              "보험",
+              "정산"
+            ],
+            "excluded_transactions": [
+              "MISSING_TRANSACTION_MEMO_AND_PAYER_NAME",
+              "TRANSFER_FROM_CUSTOMERS_OWN_KB_ACCOUNT",
+              "DEPOSIT_USING_CUSTOMERS_RESIDENT_REGISTRATION_NUMBER",
+              "TRANSFER_FROM_OTHER_FINANCIAL_INSTITUTION_VIA_KB_OPEN_BANKING"
+            ],
+            "lookback_months": 3,
+            "minimum_qualifying_months": 1,
+            "window_end": "MONTH_END_BEFORE_SUBTYPE_INTEREST_PAYMENT_MONTH"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000516-3-C00E7DC5BA1-PREF-FIRST-SETTLEMENT",
+          "title": "신규 후 처음 도래하는 결산일 조건 없이 특별금리",
+          "condition": {
+            "predicate": {
+              "fact_key": "INTEREST_SETTLEMENT.SEQUENCE_NUMBER",
+              "operator": "EQUALS",
+              "expected_value": 1
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "2000000",
+                "max_inclusive": true,
+                "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+              },
+              "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+            },
+            "effective_window": {
+              "start": "FIRST_HOLDING_DATE_OR_FIRST_CONVERSION_DATE",
+              "end": "FIRST_SETTLEMENT_DATE_AFTER_ONE_YEAR_ELAPSED",
+              "end_inclusive": true
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-C00E7DC5BA1-PREF-ORDINARY",
+          "title": "보통예금: 최근 6개월 중 월 50만원 이상 인정입금 월 2개월 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "INTEREST_SETTLEMENT.SEQUENCE_NUMBER",
+                  "operator": "GT",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SUBTYPE",
+                  "operator": "EQUALS",
+                  "expected_value": "ORDINARY_DEPOSIT"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.ORDINARY_DEPOSIT.QUALIFYING_KEYWORD_DEPOSIT_MONTHS_PREVIOUS_6M",
+                  "operator": "GTE",
+                  "expected_value": 2
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "2000000",
+                "max_inclusive": true,
+                "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+              },
+              "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+            },
+            "effective_window": {
+              "start": "FIRST_HOLDING_DATE_OR_FIRST_CONVERSION_DATE",
+              "end": "FIRST_SETTLEMENT_DATE_AFTER_ONE_YEAR_ELAPSED",
+              "end_inclusive": true
+            },
+            "fact_window": "SIX_CALENDAR_MONTHS_ENDING_MONTH_BEFORE_SETTLEMENT"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "rule_id": "INST-KR-000516-3-C00E7DC5BA1-PREF-SAVINGS",
+          "title": "저축예금: 최근 3개월 중 월 50만원 이상 인정입금 월 1개월 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "INTEREST_SETTLEMENT.SEQUENCE_NUMBER",
+                  "operator": "GT",
+                  "expected_value": 1
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SUBTYPE",
+                  "operator": "EQUALS",
+                  "expected_value": "SAVINGS_DEPOSIT"
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "ACCOUNT.THIS.SAVINGS_DEPOSIT.QUALIFYING_KEYWORD_DEPOSIT_MONTHS_PREVIOUS_3M",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "principal_scope": {
+              "basis": "INTEREST_CALCULATION_AVERAGE_BALANCE",
+              "method": "CAPPED_PORTION",
+              "range": {
+                "currency": "KRW",
+                "unit": "KRW",
+                "min_value": "0",
+                "min_inclusive": true,
+                "max_value": "2000000",
+                "max_inclusive": true,
+                "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+              },
+              "source_text": "결산기 평균잔액 200만원 이하 금액까지"
+            },
+            "effective_window": {
+              "start": "FIRST_HOLDING_DATE_OR_FIRST_CONVERSION_DATE",
+              "end": "FIRST_SETTLEMENT_DATE_AFTER_ONE_YEAR_ELAPSED",
+              "end_inclusive": true
+            },
+            "fact_window": "THREE_CALENDAR_MONTHS_ENDING_MONTH_BEFORE_SETTLEMENT"
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "INST-KR-000516-3-C00E7DC5BA1-REL-EXCLUSIVE-ONE",
+          "type": "EXCLUSIVE_ONE",
+          "rule_ids": [
+            "INST-KR-000516-3-C00E7DC5BA1-PREF-FIRST-SETTLEMENT",
+            "INST-KR-000516-3-C00E7DC5BA1-PREF-ORDINARY",
+            "INST-KR-000516-3-C00E7DC5BA1-PREF-SAVINGS"
+          ],
+          "selection": "FIRST_MATCH_BY_SETTLEMENT_SEQUENCE_AND_SUBTYPE",
+          "cap_value": "1.4",
+          "cap_unit": "PERCENTAGE_POINT",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        }
+      ],
+      "global_cap": {
+        "kind": "MAX_TOTAL_ADDITIVE_RATE",
+        "value": "1.4",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+          "EVD-USER-PARK-20260830-KB-FREEN"
+        ]
+      },
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+        "EVD-USER-PARK-20260830-KB-FREEN"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+      "EVD-USER-PARK-20260830-KB-FREEN"
+    ],
+    "interest_crediting": {
+      "variant_schedules": [
+        {
+          "account_subtypes": [
+            "ORDINARY_DEPOSIT"
+          ],
+          "calendar_months": [
+            6,
+            12
+          ],
+          "reference_day": {
+            "ordinal_week": 2,
+            "weekday": "FRIDAY"
+          },
+          "credit_offset": {
+            "value": 1,
+            "unit": "CALENDAR_DAY"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        },
+        {
+          "account_subtypes": [
+            "SAVINGS_DEPOSIT"
+          ],
+          "calendar_months": [
+            2,
+            5,
+            8,
+            11
+          ],
+          "reference_day": {
+            "ordinal_week": 2,
+            "weekday": "FRIDAY"
+          },
+          "credit_offset": {
+            "value": 1,
+            "unit": "CALENDAR_DAY"
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+            "EVD-USER-PARK-20260830-KB-FREEN"
+          ]
+        }
+      ],
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        }
+      },
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "CAPPED_PORTION"
+    ],
+    "advertised_max_rate": {
+      "value": "1.50",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ]
+    },
+    "interest_accrual": {
+      "frequency": "DAILY",
+      "balance_basis": "AVERAGE_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+      ],
+      "structuring_status": "SUPPORTED"
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1",
+    "EVD-USER-PARK-20260830-KB-FREEN"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_PRIMARY_WITH_USER_CONFIRMED_RECONCILIATION",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000516-3-C00E7DC5BA1",
+    "source_record_id": "38d2451986dbeb678333d61ae9dcf7ca",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-30T15:12:00+09:00",
+    "restructure_mode": "NAVER_CONDITION_SECTION_ENRICHMENT_AND_USER_RECONCILIATION",
+    "review_sequence": 139,
+    "reviewed_source_record_id": "38d2451986dbeb678333d61ae9dcf7ca",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "ACCOUNT_SUBTYPE_INTEREST_SCHEDULES_CONFLATED",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "INTEREST_CREDITING_MONTHS_MISMATCH",
+      "INTEREST_CREDITING_MONTH_SET_MISMATCH_SECOND_PASS",
+      "SPECIAL_SALE_LIMIT_UNSTRUCTURED",
+      "SPECIAL_SALE_TRAIT_MISSING",
+      "ELIGIBILITY_ORGANIZATION_CONTRADICTION",
+      "BOGUS_RELATIONSHIP_FROM_RATE_DURATION",
+      "FIRST_SETTLEMENT_UNCONDITIONAL_RULE_LOST",
+      "KEYWORD_DEPOSIT_EXCLUSIONS_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "보통예금 6·12월과 저축예금 2·5·8·11월 결산 schedule을 별도 subtype으로 분리",
+      "subtype별 인정입금 lookback 조건과 결산기 평잔 200만원 특별금리 복원",
+      "KB스타뱅킹·영업점 채널 복원",
+      "첫 결산 무조건 특별금리와 이후 subtype별 조건을 분리",
+      "인정단어 월합산 제외항목 및 결산기 평잔 200만원 scope 구조화",
+      "임의단체 허용/비거주자·공동명의 제외 교정"
+    ],
+    "full_product_review_completed_at": "2026-08-30T15:12:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED",
+    "condition_section_reviewed": true,
+    "condition_section_review_basis": "NAVER_RATE_INFO_AFTER_CONDITIONAL_HEADING",
+    "user_confirmation_applied_at": "2026-08-30T15:12:00+09:00"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000516-3-C00E7DC5BA1"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T15:12:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE",
+    "declared_data_gap_count": 0,
+    "condition_section_reconciled": true
+  }
+}

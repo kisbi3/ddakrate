@@ -1,0 +1,359 @@
+{
+  "product_code": "INST-KR-000219-3-CBD45D2679E",
+  "version": 3,
+  "institution_id": "INST-KR-000219",
+  "name": "SOL모임저금통",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "TIERED",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "SOL모임통장을 보유한 만 17세 이상의 국민으로, 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n1모임 1계좌 연결 가능",
+    "eligibility_text": "SOL모임통장을 보유한 만 17세 이상의 국민으로, 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n1모임 1계좌 연결 가능",
+    "display_text": "SOL모임통장을 보유한 만 17세 이상의 국민으로, 실명의 개인 및 개인사업자 (1인 최대 5계좌)\n1모임 1계좌 연결 가능",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR",
+      "INDIVIDUAL"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 17
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000219-3-CBD45D2679E-REL-0103EE6A7D87",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "SOL모임통장을 보유한 만 17세 이상의 국민으로, 실명의 개인 및 개인사업자 (1인 최대 5계좌)",
+        "fact_key": "SOURCE_RELATIONSHIP.0103EE6A7D87.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ],
+    "amount_rules": [
+      {
+        "scope": "BALANCE",
+        "currency": "KRW",
+        "source_text": "가입금액 : 1원 이상, 납입금액 : 계좌 별 300만원 이내\n실명 확인된 본인 명의 “SOL모임통장”(이하 ‘연결계좌’)을 통해 신규, 연결된 모임통장에서 입,출금 가능",
+        "min_value": "1",
+        "max_value": "3000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000219-3-CBD45D2679E-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "0.10",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-29",
+          "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE"
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+        ],
+        "source_clause": "0원이상 | 연 0.10%",
+        "applies_to": [
+          {
+            "basis": "BALANCE",
+            "range": {
+              "currency": "KRW",
+              "source_text": "0원이상",
+              "min_value": "0",
+              "min_inclusive": true
+            }
+          }
+        ],
+        "balance_application": {
+          "method": "WHOLE_BALANCE_TIER"
+        },
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 4,
+      "status": "STRUCTURED",
+      "executable": true,
+      "global_application": {},
+      "fact_definitions": [
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.SOL_GROUP_LINKED_ACCOUNT_ACTIVE",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+          ]
+        },
+        {
+          "fact_key": "RELATIONSHIP.SHINHAN.SOL_GROUP.NON_OWNER_MEMBER_COUNT",
+          "data_type": "INTEGER",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+          ],
+          "unit": "COUNT"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000219-3-CBD45D2679E-PREF-01",
+          "title": "연결 모임에 모임장 외 모임원 1인 이상",
+          "condition": {
+            "operator": "AND",
+            "operands": [
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SHINHAN.SOL_GROUP_LINKED_ACCOUNT_ACTIVE",
+                  "operator": "EQUALS",
+                  "expected_value": true
+                }
+              },
+              {
+                "predicate": {
+                  "fact_key": "RELATIONSHIP.SHINHAN.SOL_GROUP.NON_OWNER_MEMBER_COUNT",
+                  "operator": "GTE",
+                  "expected_value": 1
+                }
+              }
+            ]
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "1.9",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE",
+            "fact_window": {
+              "as_of": "DAY_BEFORE_THIRD_WEEK_LAST_BUSINESS_DAY"
+            },
+            "reward_window": {
+              "start": "PREVIOUS_MONTH_INTEREST_CREDIT_DATE",
+              "end": "DAY_BEFORE_CURRENT_MONTH_INTEREST_CREDIT_DATE"
+            }
+          },
+          "structuring_status": "SUPPORTED",
+          "executable": true,
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ],
+      "linked_account_relation": {
+        "type": "ONE_SAVINGS_VAULT_PER_LINKED_GROUP",
+        "maximum_group_members_including_owner": 5
+      }
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ],
+    "interest_crediting": {
+      "raw_text": "예금의 이자는 매월 셋째주 마지막 영업일에 계산하여 그 익일(원가일)에 연결계좌로 입금\n※ 예금의 이자는 최종거래일로부터 5년이 경과한 날부터는 이자에 원금을 더하지 않고, 계좌해지 또는 추가 입출금 거래 발생일에 일괄 계산하여 지급할 수 있습니다.",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000219-3-CBD45D2679E-INT-CREDIT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000219-3-CBD45D2679E-INT-CREDIT-TERMINATION",
+          "type": "ON_TERMINATION",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      },
+      "long_inactivity_policy": {
+        "threshold_since_last_transaction": {
+          "value": 5,
+          "unit": "YEAR"
+        },
+        "after_threshold": {
+          "add_interest_to_principal": false,
+          "settlement_mode": "LUMP_SUM_ON_TRIGGER",
+          "triggers": [
+            "ACCOUNT_TERMINATION",
+            "ADDITIONAL_DEPOSIT_OR_WITHDRAWAL_TRANSACTION"
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+        ]
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "balance_calculation_methods": [
+      "WHOLE_BALANCE_TIER"
+    ],
+    "balance_tier_method": "WHOLE_BALANCE",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ],
+      "executable": false,
+      "origin": "NAVER_LISTING_SNAPSHOT"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-29",
+      "snapshot_basis": "NAVER_CRAWL_CAPTURE_DATE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T18:53:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000219-3-CBD45D2679E",
+        "product_name": "SOL모임저금통",
+        "path": "return_policy.interest_accrual",
+        "reason": "원문에서 일별 이자계산 기준을 명시적으로 확정하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000219-3-CBD45D2679E",
+    "source_record_id": "24b124edcba1bc52dae8d53a29b29a00",
+    "supersedes_version": 2,
+    "restructured_at": "2026-08-30T13:18:00+09:00",
+    "restructure_mode": "FULL_220_PRODUCT_BY_PRODUCT_SOURCE_REVIEW",
+    "review_sequence": 84,
+    "reviewed_source_record_id": "24b124edcba1bc52dae8d53a29b29a00",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_WITH_NONBLOCKING_UNRESOLVED",
+    "resolved_audit_findings": [
+      "ELIGIBILITY_REQUIRED_RELATION_RAW_ONLY_SECOND_PASS",
+      "GROUP_MEMBER_COUNT_CONDITION_GENERIC_AND_LINK_SCOPE_LOST",
+      "INTEREST_CREDITING_EXACT_DAY_UNSTRUCTURED_SECOND_PASS",
+      "LINKED_ACCOUNT_CREDIT_DESTINATION_UNSTRUCTURED",
+      "SETTLEMENT_DAY_EVALUATION_WINDOW_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "generic clause를 연결된 SOL모임의 비모임장 인원수 fact로 교정",
+      "모임장 포함 총 2인 이상과 연결모임별 계좌 scope 보존"
+    ],
+    "full_product_review_completed_at": "2026-08-30T13:18:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS"
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000219-3-CBD45D2679E"
+    ],
+    "source_text": "네이버 상세 원문 내 예금자보호 문구 확인"
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-30T13:18:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "FULL_EXECUTABLE_EXCEPT_DECLARED_DATA_GAPS",
+    "declared_data_gap_count": 1
+  }
+}

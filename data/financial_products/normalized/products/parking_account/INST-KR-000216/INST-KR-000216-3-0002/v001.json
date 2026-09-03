@@ -1,0 +1,140 @@
+{
+  "product_code": "INST-KR-000216-3-0002",
+  "version": 1,
+  "institution_id": "INST-KR-000216",
+  "name": "달리자 파킹통장",
+  "product_family": "PARKING_ACCOUNT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0002"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인 (1인 1계좌)\n이 예금 가입일 직전(가입일 제외) 6개월 동안 당행 입출금이 자유로운 예금계좌 보유이력(해지포함, 신규취소 제외)이 없는 실명의 개인(1인 1계좌)\n(단, ① 거래중지좌, 휴면계좌는 미보유로 적용, ② 기존 거래고객의 경우 신규가입 및 이 예금으로의 전환 불가. )",
+    "eligibility_text": "실명의 개인 (1인 1계좌)\n이 예금 가입일 직전(가입일 제외) 6개월 동안 당행 입출금이 자유로운 예금계좌 보유이력(해지포함, 신규취소 제외)이 없는 실명의 개인(1인 1계좌)\n(단, ① 거래중지좌, 휴면계좌는 미보유로 적용, ② 기존 거래고객의 경우 신규가입 및 이 예금으로의 전환 불가. )",
+    "display_text": "실명의 개인 (1인 1계좌)\n이 예금 가입일 직전(가입일 제외) 6개월 동안 당행 입출금이 자유로운 예금계좌 보유이력(해지포함, 신규취소 제외)이 없는 실명의 개인(1인 1계좌)\n(단, ① 거래중지좌, 휴면계좌는 미보유로 적용, ② 기존 거래고객의 경우 신규가입 및 이 예금으로의 전환 불가. )",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0002"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "kind": "DISCRETE",
+    "unit": "MONTH",
+    "allowed_values": [
+      6,
+      60
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0002"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0002"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000216-3-0002-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "0.50",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0002"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000216-3-0002-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "1.20",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0002"
+        ]
+      }
+    ],
+    "preferential_condition_disclosures": [
+      {
+        "disclosure_id": "DISC-NFI-INST-KR-000216-3-0002-01",
+        "title": "아래 우대조건 중 하나 이상을 충족하는 경우 우대금리 0.70% 제공",
+        "condition_text": "아래 우대조건 중 하나 이상을 충족하는 경우 우대금리 0.70% 제공\n(단, 매일 최종잔액 중 1억원 이하만 적용)",
+        "structured_steps": [
+          "아래 우대조건 중 하나 이상을 충족하는 경우 우대금리 0.70% 제공",
+          "(단, 매일 최종잔액 중 1억원 이하만 적용)"
+        ],
+        "extracted_reward_candidate": {
+          "value": "0.70",
+          "unit": "PERCENTAGE_POINT"
+        },
+        "verification_status": "NAVER_SOURCE_STRUCTURED",
+        "evaluator_eligible": false,
+        "source_ref_ids": [
+          "EVD-NFI-INST-KR-000216-3-0002"
+        ],
+        "normalization_authority": "NAVER_RAW_CRAWL",
+        "presentation": {
+          "schema_version": 1,
+          "category": "아래 우대조건 중 하나 이상을 충족하는 경우 우대금리 0.70% 제공",
+          "summary_text": "아래 우대조건 중 하나 이상을 충족하는 경우 우대금리 0.70% 제공",
+          "detail_texts": [
+            "(단, 매일 최종잔액 중 1억원 이하만 적용)"
+          ],
+          "display_role": "ACTION",
+          "reward": {
+            "mode": "UP_TO",
+            "value": "0.70",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "ai_review_status": "SOURCE_STRUCTURED",
+          "confidence": 0.9
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-NFI-INST-KR-000216-3-0002"
+    ],
+    "advertised_max_rate": {
+      "value": "1.20",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-NFI-INST-KR-000216-3-0002"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000216-3-0002"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T04:56:54.441085+00:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.preferential_conditions",
+        "reason": "원문 우대조건을 새 조건 트리로 구조화하기 전에는 최고금리 계산에서 제외"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "LEGACY_SOURCE_MERGE"
+  }
+}
