@@ -3875,6 +3875,11 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         reference_links: list[dict[str, str]] = []
         source_for_link = explanation_details.get("source") or rule_source
         source_url = source_for_link.get("source_url") if source_for_link else None
+        # Deliberate: a PRODUCT_CONDITION link sends the user to the issuer's own
+        # page, never to the comparison service the row was crawled from. Most
+        # deposit/savings products are currently Naver-grounded, so this suppresses
+        # the "자세히 보기" link for the majority of them -- that is intended, not a
+        # gap to close by relaxing the check.
         if source_url and "pay.naver.com/" not in source_url:
             reference_links.append(
                 {
