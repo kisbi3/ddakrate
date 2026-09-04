@@ -35,6 +35,7 @@ BUILD = (
     SHARD
     / "data/financial_products/category_builds/20260829-parking-account-01"
 )
+PUBLISHED_PARKING = ROOT / "data/financial_products/normalized/products/parking_account"
 
 
 def _read_json(path: Path):
@@ -73,7 +74,17 @@ def _products():
     institutions = _load_institutions(ROOT)
     products = {}
     for row in _read_jsonl(BUILD / "index_rows.jsonl"):
-        raw = _read_json(SHARD / row["path"])
+        # row["path"] points into the shard's staging copy, which .gitignore excludes.
+        # All 243 of those product files are byte-identical to the published catalog
+        # except INST-KR-000216-3-0001, where the shard holds older rule titles
+        # ("...조각") that the published version rewords and no test asserts on.
+        # Read the published artifact so this exercises what actually ships.
+        raw = _read_json(
+            PUBLISHED_PARKING
+            / row["institution_id"]
+            / row["product_code"]
+            / f"v{row['version']:03d}.json"
+        )
         products[row["product_code"]] = _adapt_product(
             raw,
             institutions[row["institution_id"]],
