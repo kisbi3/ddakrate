@@ -11,6 +11,8 @@ from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from typing import Any, Iterable, Mapping
 
+from eligibility.catalog.data_gaps import gap_path, gap_reason
+
 
 PREFERENTIAL_GAP_PATH = "return_policy.rate_entries[PREFERENTIAL]"
 
@@ -67,14 +69,8 @@ def _advertised_maximum(policy: Mapping[str, Any]) -> Decimal | None:
 def _has_preferential_gap(product: Mapping[str, Any]) -> bool:
     gaps = (product.get("version_metadata") or {}).get("data_gaps") or []
     for gap in gaps:
-        if isinstance(gap, str):
-            text = gap
-            reason = gap
-        elif isinstance(gap, Mapping):
-            text = str(gap.get("path", ""))
-            reason = str(gap.get("reason", ""))
-        else:
-            continue
+        text = gap_path(gap)
+        reason = gap_reason(gap)
         normalized = text.lower()
         if reason.strip() and any(
             marker in normalized

@@ -9,6 +9,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
+from eligibility.catalog.data_gaps import gap_path
+from eligibility.question_policy import is_future_action_fact
 from eligibility.schema.enums import (
     ComparisonOperator,
     ContributionFrequency,
@@ -32,7 +34,6 @@ from eligibility.schema.product import (
     ProductMetadata,
     Reward,
 )
-from eligibility.question_policy import is_future_action_fact
 from eligibility.schema.rule import (
     AndRule,
     FactAcceptancePolicy,
@@ -1211,7 +1212,7 @@ def _build_rules(
     eligibility_rules: list[Any] = []
     eligibility = product.get("eligibility_policy") or {}
     data_gap_paths = {
-        row.get("path")
+        gap_path(row)
         for row in (product.get("version_metadata", {}) or {}).get("data_gaps", [])
     }
     summary = _eligibility_summary(eligibility)
@@ -2091,7 +2092,7 @@ def _adapt_product(
     official_sources = _official_sources(product, sources, evidence)
     source_reference = _source_reference(product.get("source_ref_ids", []), sources, evidence)
     data_gap_paths = {
-        row.get("path")
+        gap_path(row)
         for row in (product.get("version_metadata", {}) or {}).get("data_gaps", [])
     }
     metadata = ProductMetadata(

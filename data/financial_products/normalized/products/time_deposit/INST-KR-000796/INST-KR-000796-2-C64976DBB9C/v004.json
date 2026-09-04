@@ -1,0 +1,505 @@
+{
+  "product_code": "INST-KR-000796-2-C64976DBB9C",
+  "version": 4,
+  "institution_id": "INST-KR-000796",
+  "name": "굿스타트예금",
+  "product_family": "TIME_DEPOSIT",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ],
+    "subscription_channels": [
+      "MOBILE_APP",
+      "MOBILE_WEB"
+    ],
+    "subscription_channel_source_text": "Naver 가입방법: 스마트뱅킹, 모바일웹뱅킹"
+  },
+  "eligibility_policy": {
+    "raw_text": "실명의 개인(1인 1계좌)",
+    "eligibility_text": "실명의 개인(1인 1계좌)",
+    "display_text": "실명의 개인(1인 1계좌)",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C",
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true
+  },
+  "term_policy": {
+    "source_text": "12개월",
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "selection_units": [
+      "MONTH"
+    ],
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C",
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ],
+    "representative_term": {
+      "value": 12,
+      "unit": "MONTH"
+    },
+    "representative_value": 12,
+    "representative_selection_status": "SUPPORTED",
+    "representative_selection_basis": "NAVER_LISTING_REPRESENTATIVE_CONTRACT_TERM"
+  },
+  "cash_flow_policy": {
+    "funding_type": "LUMP_SUM",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C",
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ],
+    "source_amount_text": "1백만원 이상 1억원 이내 (원단위)",
+    "amount_rules": [
+      {
+        "scope": "INITIAL_DEPOSIT",
+        "min_value": "1000000",
+        "currency": "KRW",
+        "max_value": "100000000"
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000796-2-C64976DBB9C-CTX-01-01",
+        "role": "CONTEXTUAL_RATE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.13",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "3.130%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+        ],
+        "source_rate_row_text": "12개월"
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C64976DBB9C-MAX",
+        "role": "ADVERTISED_MAXIMUM",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "DISPLAYED_MAXIMUM",
+          "value": "3.63",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+        ]
+      },
+      {
+        "rate_id": "INST-KR-000796-2-C64976DBB9C-BASE-001",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.13",
+          "unit": "PERCENT"
+        },
+        "applies_to": [
+          {
+            "basis": "CONTRACT_TERM",
+            "range": {
+              "unit": "MONTH",
+              "min_value": 12,
+              "min_inclusive": true,
+              "max_value": 12,
+              "max_inclusive": true
+            },
+            "source_term_text": "12개월"
+          }
+        ],
+        "rate_context": {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE",
+          "source_rate_row_index": 0,
+          "source_rate_row_text": "12개월",
+          "raw_cell": "3.130%",
+          "table_header": "기본 금리 | 기간 금리"
+        },
+        "source_ref_ids": [
+          "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+        ],
+        "source_rate_row_text": "12개월",
+        "derivation": "EXECUTABLE_CONTRACT_RATE_CONTEXT"
+      }
+    ],
+    "rate_table_snapshot": {
+      "raw_text": "기본 금리\n기간 금리\n12개월\n3.130%",
+      "header_lines": [
+        "기본 금리",
+        "기간 금리"
+      ],
+      "rows": [
+        {
+          "term_text": "12개월",
+          "cell_lines": [
+            "3.130%"
+          ],
+          "rate_values": [
+            "3.13"
+          ]
+        }
+      ],
+      "column_descriptors": [
+        {
+          "context_id": "CONTRACT_RATE",
+          "semantic_role": "CONTRACT_RATE"
+        }
+      ]
+    },
+    "preferential_policy": {
+      "schema_version": 2,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "early_termination_eligible": false
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B01-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ],
+          "definition_text": "이 예금 가입일 1년 전부터 가입일 전일까지의 기간 동안 본인 명의의 당행 정기예금 계좌(외화예금, 퇴직연금전용정기예금 제외) 보유하지 않았거나 신규 또는 해지 거래(신규 취소 제외) 이력이 없는 경우 : 0.4%"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B02-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ],
+          "definition_text": "이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내 수단에 전체 동의하고 만기일 전일까지 유지한 경우 : 0.1% 추가 우대금리 이벤트 또는 쿠폰 발급"
+        },
+        {
+          "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B03-01.QUALIFIED",
+          "value_type": "BOOLEAN",
+          "actual_or_expected": "ACTUAL_OR_EXPECTED",
+          "definition_text": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리 쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷 홈페이지 등에 게시합니다.",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ]
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "PREF-B01-01",
+          "title": "이 예금 가입일 1년 전부터 가입일 전일까지의 기간 동안 본인 명의의 당행 정기예금 계좌(외화예금, 퇴직연금전용정기예금 제외) 보유하지 않았거나 신규 또는 해지 거래(신규 취소 제외) 이력이 없는 경우 : 0.4%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B01-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.4",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "이 예금 가입일 1년 전부터 가입일 전일까지의 기간 동안 본인 명의의 당행 정기예금 계좌(외화예금, 퇴직연금전용정기예금 제외) 보유하지 않았거나 신규 또는 해지 거래(신규 취소 제외) 이력이 없는 경우 : 0.4%",
+            "reward_text": "+0.4%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ],
+          "evidence": [
+            {
+              "text": "이 예금 가입일 1년 전부터 가입일 전일까지의 기간 동안 본인 명의의 당행 정기예금 계좌(외화예금, 퇴직연금전용정기예금 제외) 보유하지 않았거나 신규 또는 해지 거래(신규 취소 제외) 이력이 없는 경우 : 0.4%"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B02-01",
+          "title": "이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내 수단에 전체 동의하고 만기일 전일까지 유지한 경우 : 0.1%",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B02-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "ADD_RATE",
+            "value": "0.1",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내 수단에 전체 동의하고 만기일 전일까지 유지한 경우 : 0.1%",
+            "reward_text": "+0.1%p"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ],
+          "evidence": [
+            {
+              "text": "이 예금 가입 시 개인(신용)정보 수집·이용 동의서(상품서비스 안내 등)의 수집·이용에 관한 모든 항목 및 안내 수단에 전체 동의하고 만기일 전일까지 유지한 경우 : 0.1%\n추가 우대금리 이벤트 또는 쿠폰 발급"
+            }
+          ]
+        },
+        {
+          "rule_id": "PREF-B03-01",
+          "title": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리 쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷 홈페이지 등에 게시합니다.",
+          "condition": {
+            "predicate": {
+              "fact_key": "PRODUCT.INST-KR-000796-2-C64976DBB9C.PREF-B03-01.QUALIFIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value": null,
+            "unit": "PERCENTAGE_POINT",
+            "value_status": "EXTERNAL_SOURCE_REQUIRED"
+          },
+          "application": {
+            "event": "MATURITY",
+            "excluded_events": [
+              "EARLY_TERMINATION"
+            ]
+          },
+          "display": {
+            "summary": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리 쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷 홈페이지 등에 게시합니다."
+          },
+          "structuring_status": "REQUIRES_EXTERNAL_VALUE",
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ],
+          "evidence": [
+            {
+              "text": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리 쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷 홈페이지 등에 게시합니다."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "REL-TOTAL-PREFERENTIAL",
+          "operator": "SUM_WITH_CAP",
+          "members": [
+            "PREF-B01-01",
+            "PREF-B02-01",
+            "PREF-B03-01"
+          ],
+          "cap": {
+            "value": "0.5",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "source_ref_ids": [
+            "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+          ]
+        }
+      ],
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+      ],
+      "structuring_status": "PARTIAL_EXTERNAL_DEPENDENCY",
+      "global_cap": {
+        "value": "0.5",
+        "unit": "PERCENTAGE_POINT",
+        "source_text": "아래의 조건을 충족하는 경우 최고 연 0.5%p의 우대금리를 제공 (단, 중도해지 시에는 적용되지 않음)"
+      }
+    },
+    "source_ref_ids": [
+      "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C",
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-RATE"
+    ],
+    "listing_base_rate_reference": {
+      "value": "3.13",
+      "unit": "PERCENT",
+      "representative_term_text": "12개월",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+      ],
+      "executable_base_supported_by_detail": true
+    },
+    "advertised_max_rate": {
+      "value": "3.63",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+      ]
+    }
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-TD-20260829-INST-KR-000796-2-C64976DBB9C"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-09-02T19:30:00+09:00",
+    "data_authority": "NAVER_RAW_CRAWL_PLUS_KJB_OFFICIAL",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "field": "return_policy.preferential_policy.rules.PREF-B03-01",
+        "reason_code": "REQUIRES_EXTERNAL_VALUE",
+        "message": "쿠폰·가입일 게시이율·별도 이벤트 결과 등 외부에서 결정되는 보상값으로, 원문에 없는 숫자를 추정하지 않음"
+      },
+      {
+        "field": "liquidity_policy.renewal_policy",
+        "reason_code": "AUTOMATIC_REDEPOSIT_NOT_STATED",
+        "message": "자동재예치 여부가 원문·공식자료에 미기재"
+      },
+      {
+        "field": "liquidity_policy.after_maturity_policy",
+        "reason_code": "AFTER_MATURITY_RATE_NOT_STATED",
+        "message": "만기후 적용이율 세부값이 원문·공식자료에 미기재"
+      }
+    ],
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "previous_version": 3,
+    "previous_path": "data/financial_products/normalized/products/time_deposit/INST-KR-000796/INST-KR-000796-2-C64976DBB9C/v003.json",
+    "previous_sha256": "sha256:848a075f71270f5ef022a18c25aec9aa19bf44446dcdddb36974f94e3d4f9bb4",
+    "correction_batch": "20260904-catalog-source-refs-01",
+    "correction_reason": "legacy direct source references bridged through evidence_refs",
+    "correction_applied_at": "2026-09-04T19:00:00+09:00"
+  },
+  "data_gaps": [
+    {
+      "field": "return_policy.preferential_policy.rules.PREF-B03-01",
+      "reason_code": "REQUIRES_EXTERNAL_VALUE",
+      "message": "쿠폰·가입일 게시이율·별도 이벤트 결과 등 외부에서 결정되는 보상값으로, 원문에 없는 숫자를 추정하지 않음"
+    },
+    {
+      "code": "AUTOMATIC_REDEPOSIT_NOT_STATED",
+      "field": "liquidity_policy.renewal_policy",
+      "reason": "자동재예치 여부가 원문·공식자료에 미기재"
+    },
+    {
+      "code": "AFTER_MATURITY_RATE_NOT_STATED",
+      "field": "liquidity_policy.after_maturity_policy",
+      "reason": "만기후 적용이율 세부값이 원문·공식자료에 미기재"
+    }
+  ],
+  "interest_payment_policy": {
+    "contexts": [
+      {
+        "context_id": "MATURITY_LUMP_SUM",
+        "payment_timing": "AT_MATURITY",
+        "compounding": "SIMPLE",
+        "source_text": "만기일시지급식 : 만기(후) 또는 중도해지 요청시 이자를 지급 (Naver 세후수령액 표기 '단리')"
+      }
+    ],
+    "multiple_contexts": false,
+    "default_context_id": "MATURITY_LUMP_SUM",
+    "source_text": "이자지급 만기일시지급식",
+    "source_ref_ids": [
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "PROTECTED",
+    "coverage_limit_krw": "100000000",
+    "scheme": "KDIC",
+    "aggregation_scope_text": "광주은행의 여타 보호상품과 합산",
+    "source_text": "이 예금은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 \"1억원까지\"(광주은행의 여타 보호상품과 합산) 보호됩니다.",
+    "source_ref_ids": [
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ]
+  },
+  "liquidity_policy": {
+    "access_mode": "AT_MATURITY",
+    "renewal_policy": {
+      "mode": "NOT_STATED",
+      "source_text": "자동재예치 여부가 원문·공식자료에 미기재",
+      "source_ref_ids": [
+        "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+        "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+      ]
+    },
+    "early_termination_allowed": true,
+    "early_termination_policy": {
+      "basis": "RATE_POSTED_AT_ORIGIN",
+      "source_text": "만기 전 해지할 경우 계약한 금리보다 낮은 중도해지금리가 적용됩니다. 우대금리는 만기해지 계좌에 한하여 지급합니다.",
+      "source_ref_ids": [
+        "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+        "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+      ]
+    },
+    "after_maturity_policy": {
+      "basis": "NOT_STATED",
+      "source_text": "만기후 적용이율 세부값이 원문·공식자료에 미기재",
+      "source_ref_ids": [
+        "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+        "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+      ]
+    },
+    "partial_withdrawal": {
+      "allowed": false,
+      "status": "NOT_ALLOWED",
+      "source_text": "이 예금은 계약기간 변경 및 계좌분할, 일부해지, 공동명의 가입이 불가합니다.",
+      "source_ref_ids": [
+        "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+        "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+      ]
+    },
+    "maturity_options": [
+      "MANUAL_CLOSE",
+      "AUTO_CLOSE_RESTRICTED"
+    ],
+    "source_text": "압류, 담보설정, 주의코드 설정 등 지급제한 사유가 있는 경우에는 만기자동해지가 불가합니다.",
+    "source_ref_ids": [
+      "EVD-SOURCE-BRIDGE-EVD-TD-ROW0569-INST-KR-000796-2-C64976DBB9C",
+      "EVD-MANUAL-BANK-0569-KJB-PRODUCT"
+    ]
+  }
+}

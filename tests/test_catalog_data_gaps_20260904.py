@@ -76,6 +76,7 @@ def test_catalog_data_gap_repair_counts_and_exception_sets() -> None:
     assert report["missing_document_type_products"] == []
     assert counts["data_gap_schema_count"] == 14
     assert counts["field_schema_gap_items"] == 107
+    assert counts["unresolved_source_ref_products"] == 0
 
 
 def test_rate_gap_repairs_preserve_unknown_values_and_kakao_official_rates() -> None:
@@ -137,3 +138,61 @@ def test_active_manifest_and_index_hashes_are_current() -> None:
         path = ROOT / item["path"]
         digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
         assert digest == item["sha256"], item["product_code"]
+
+
+def test_all_nested_product_source_refs_resolve_through_evidence_to_source() -> None:
+    index = _read("data/financial_products/normalized/index.json")
+    manifest = _read(
+        f"data/financial_products/normalized/manifests/"
+        f"{index['manifest_batch']}.json"
+    )
+    evidence = {
+        row["evidence_ref_id"]: row
+        for row in _read(manifest["evidence_ref_registry"])["evidence_refs"]
+    }
+    sources = {
+        row["source_id"]: row
+        for row in _read(manifest["source_document_registry"])["source_documents"]
+    }
+
+    def refs(value):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key == "source_ref_ids" and isinstance(child, list):
+                    yield from (ref for ref in child if isinstance(ref, str))
+                else:
+                    yield from refs(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from refs(child)
+
+    for row in index["products"]:
+        product = _read(row["path"])
+        for ref_id in refs(product):
+            assert ref_id in evidence, (row["product_code"], ref_id)
+            assert evidence[ref_id].get("source_id") in sources
+
+
+def test_source_bridge_preserves_legacy_locator_and_excerpt() -> None:
+    index = _read("data/financial_products/normalized/index.json")
+    manifest = _read(
+        f"data/financial_products/normalized/manifests/"
+        f"{index['manifest_batch']}.json"
+    )
+    evidence_rows = _read(manifest["evidence_ref_registry"])["evidence_refs"]
+    source_rows = _read(manifest["source_document_registry"])["source_documents"]
+    evidence = next(
+        row
+        for row in evidence_rows
+        if row.get("evidence_ref_id")
+        == "EVD-SOURCE-BRIDGE-EVD-TD-ROW0462-INST-KR-000424-2-CF0A625DD97"
+    )
+    source = next(
+        row
+        for row in source_rows
+        if row.get("source_id")
+        == "EVD-TD-ROW0462-INST-KR-000424-2-CF0A625DD97"
+    )
+    assert evidence["source_id"] == source["source_id"]
+    assert evidence["locator"] == source["locator"]
+    assert evidence["source_text"] == source["excerpt"]

@@ -791,6 +791,23 @@ def test_additional_parking_products_use_official_balance_calculation_and_bindin
     assert ibk.preferential_rules[0].reward.value == Decimal("2.15")
 
 
+def test_field_style_eligibility_gap_is_unresolvable_and_hides_metadata() -> None:
+    """Legacy field/message gaps must carry the same safety semantics as path gaps."""
+
+    products = {
+        item.product_id: item
+        for item in load_normalized_product_catalog(
+            include_sale_statuses={"ON_SALE", "ENDED", "UNKNOWN"}
+        )
+    }
+    product = products["INST-KR-000739-2-C4C876638DA"]
+
+    assert product.eligibility_rule.missing_fact is not None
+    assert product.eligibility_rule.missing_fact.resolution_strategy.value == "UNRESOLVABLE"
+    assert product.metadata.target_customer_summary is None
+    assert product.metadata.one_account_per_person is None
+
+
 def test_pre_search_application_capacity_filters_all_corporate_parking_variants() -> None:
     products = {item.product_id: item for item in load_normalized_product_catalog()}
     compared = [products[f"INST-KR-000129-3-000{index}"] for index in range(2, 6)]

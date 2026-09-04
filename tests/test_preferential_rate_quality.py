@@ -68,6 +68,25 @@ def test_rate_uplift_requires_linked_preferential_rate_or_explicit_gap() -> None
     assert inspect_preferential_rate_quality(_product(gap=True)) == ()
 
 
+def test_legacy_field_message_gap_explains_rate_uplift() -> None:
+    product = _product(maximum="5.0")
+    product["version_metadata"]["data_gaps"] = [
+        {
+            "field": "return_policy.preferential_policy.rules.PREF-B01-01",
+            "reason_code": "REQUIRES_EXTERNAL_VALUE",
+            "message": "쿠폰별 외부 결정값이라 확인 필요",
+        }
+    ]
+
+    assert inspect_preferential_rate_quality(product) == ()
+
+
+def test_canonical_path_reason_gap_remains_supported() -> None:
+    product = _product(maximum="5.0", gap=True)
+
+    assert inspect_preferential_rate_quality(product) == ()
+
+
 def test_every_structured_reward_ref_must_resolve_to_a_rate_entry() -> None:
     product = _product()
     _add_preferential(product, reward_ref="MISSING")
