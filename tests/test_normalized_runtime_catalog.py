@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 from eligibility.application import QuestionGenerator
 from eligibility.application_service import ApplicationService
 from eligibility.catalog.normalized_loader import (
+    _adapt_product,
     load_normalized_product_catalog,
     product_with_scenario_rate,
     select_base_rate,
@@ -794,18 +795,45 @@ def test_additional_parking_products_use_official_balance_calculation_and_bindin
 def test_field_style_eligibility_gap_is_unresolvable_and_hides_metadata() -> None:
     """Legacy field/message gaps must carry the same safety semantics as path gaps."""
 
-    products = {
-        item.product_id: item
-        for item in load_normalized_product_catalog(
-            include_sale_statuses={"ON_SALE", "ENDED", "UNKNOWN"}
-        )
-    }
-    product = products["INST-KR-000739-2-C4C876638DA"]
+    index = _json("data/financial_products/normalized/index.json")
+    row = next(
+        item
+        for item in index["products"]
+        if item["product_code"] == "INST-KR-000739-2-C4C876638DA"
+    )
+    raw = _json(row["path"])
+    raw["version_metadata"]["data_gaps"].append(
+        {
+            "field": "eligibility_policy",
+            "message": "synthetic legacy-shape regression gap",
+        }
+    )
+    product = _adapt_product(
+        raw,
+        {
+            "institution_id": "INST-KR-000739",
+            "official_name_ko": "농협은행 주식회사",
+            "sic_code": "64121",
+        },
+        {},
+        {},
+        {},
+    )
 
     assert product.eligibility_rule.missing_fact is not None
-    assert product.eligibility_rule.missing_fact.resolution_strategy.value == "UNRESOLVABLE"
+    assert product.eligibility_rule.missing_fact.resolution_strategy.value == (
+        "UNRESOLVABLE"
+    )
     assert product.metadata.target_customer_summary is None
     assert product.metadata.one_account_per_person is None
+
+
+def test_corrected_nh_term_deposit_no_longer_inherits_other_product_gap() -> None:
+    products = {item.product_id: item for item in load_normalized_product_catalog()}
+    product = products["INST-KR-000739-2-C4C876638DA"]
+
+    assert product.metadata.target_customer_summary == "공식 가입대상 제한 없음"
+    assert ":DATA_GAP:eligibility_policy" not in product.eligibility_rule.rule_id
 
 
 def test_pre_search_application_capacity_filters_all_corporate_parking_variants() -> None:

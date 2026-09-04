@@ -75,7 +75,7 @@ def test_catalog_data_gap_repair_counts_and_exception_sets() -> None:
     assert counts["missing_document_type"] == 0
     assert report["missing_document_type_products"] == []
     assert counts["data_gap_schema_count"] == 14
-    assert counts["field_schema_gap_items"] == 107
+    assert counts["field_schema_gap_items"] == 100
     assert counts["unresolved_source_ref_products"] == 0
 
 
@@ -118,6 +118,77 @@ def test_rate_gap_repairs_preserve_unknown_values_and_kakao_official_rates() -> 
         gap.get("path") == "official_research"
         for gap in kakao["version_metadata"]["data_gaps"]
     )
+
+
+def test_nh_term_deposit_is_distinct_from_big_satisfaction_deposit() -> None:
+    index = _read("data/financial_products/normalized/index.json")
+    by_code = {row["product_code"]: _read(row["path"]) for row in index["products"]}
+    term_deposit = by_code["INST-KR-000739-2-C4C876638DA"]
+    big_satisfaction = by_code["INST-KR-000739-2-C87539C2B27"]
+
+    assert term_deposit["name"] == "정기예금"
+    assert term_deposit["version"] == 5
+    assert term_deposit["return_policy"]["advertised_max_rate"]["value"] == "2.4"
+    assert term_deposit["eligibility_policy"]["mode"] == "UNRESTRICTED"
+    assert term_deposit["sale_policy"]["subscription_channels"] == ["BRANCH"]
+    assert term_deposit["interest_payment_policy"]["default_context_id"] == (
+        "MATURITY_PAYMENT"
+    )
+
+    assert big_satisfaction["name"] == "큰만족실세예금"
+    assert big_satisfaction["return_policy"]["advertised_max_rate"]["value"] == (
+        "2.45"
+    )
+    assert big_satisfaction["eligibility_policy"]["mode"] == "RESTRICTED"
+
+    serialized = json.dumps(term_deposit, ensure_ascii=False)
+    assert "EVD-TD-ROW0512-NH-PDF" not in serialized
+    assert "automatic_renewal_policy" not in term_deposit["liquidity_policy"]
+    assert "after_maturity_policy" not in term_deposit["liquidity_policy"]
+    assert "partial_withdrawal" not in term_deposit["liquidity_policy"]
+    assert not any(
+        (gap.get("path") or gap.get("field")) == "eligibility_policy"
+        for gap in term_deposit["version_metadata"]["data_gaps"]
+    )
+
+
+def test_nh_identity_correction_preserves_user_evidence_and_repairs_pdf_owner() -> None:
+    index = _read("data/financial_products/normalized/index.json")
+    manifest = _read(
+        f"data/financial_products/normalized/manifests/"
+        f"{index['manifest_batch']}.json"
+    )
+    evidence = {
+        row["evidence_ref_id"]: row
+        for row in _read(manifest["evidence_ref_registry"])["evidence_refs"]
+    }
+    sources = {
+        row["source_id"]: row
+        for row in _read(manifest["source_document_registry"])["source_documents"]
+    }
+
+    pdf_evidence = evidence["EVD-TD-ROW0512-NH-PDF"]
+    pdf_source = sources[pdf_evidence["source_id"]]
+    assert pdf_evidence["product_code"] == "INST-KR-000739-2-C87539C2B27"
+    assert pdf_source["product_code"] == "INST-KR-000739-2-C87539C2B27"
+
+    expected_hashes = {
+        "EVD-USER-20260904-NAVER-NH-DEPOSIT-LIST": (
+            "sha256:1cbb62b6045d15ac701d64744bd97fdad6ca75bb2e02368b452c1fb7553ae05d"
+        ),
+        "EVD-USER-20260904-NH-OFFICIAL-DEPOSIT-LIST": (
+            "sha256:544b268519c9b904f14638b7517841625a61ee584a03f7cdcb9fde11ee7f610e"
+        ),
+    }
+    for evidence_id, expected_hash in expected_hashes.items():
+        row = evidence[evidence_id]
+        source = sources[row["source_id"]]
+        assert row["locator"]["sha256"] == expected_hash
+        assert source["locator"]["sha256"] == expected_hash
+        assert row["related_product_codes"] == [
+            "INST-KR-000739-2-C4C876638DA",
+            "INST-KR-000739-2-C87539C2B27",
+        ]
 
 
 def test_active_manifest_and_index_hashes_are_current() -> None:
