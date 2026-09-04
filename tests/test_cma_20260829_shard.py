@@ -15,7 +15,14 @@ from eligibility.schema.product import ContractTerm
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# data/20260829-cma-01/ is a build shard that .gitignore excludes. Its 71 product
+# files under products/cma/ are byte-for-byte identical to the ones already published
+# under data/financial_products/normalized/products/cma/ (verified: 71 identical, 0
+# different), so the product reads below go to the published catalog and only the four
+# build ledgers that have no published equivalent are committed alongside the shard.
 SHARD = ROOT / "data/20260829-cma-01"
+PUBLISHED_CMA = ROOT / "data/financial_products/normalized/products/cma"
 
 
 def _jsonl(name: str) -> list[dict]:
@@ -27,7 +34,7 @@ def _jsonl(name: str) -> list[dict]:
 
 
 def _product(product_code: str) -> dict:
-    path = next((SHARD / "products/cma").glob(f"*/{product_code}/v002.json"))
+    path = next(PUBLISHED_CMA.glob(f"*/{product_code}/v002.json"))
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -62,7 +69,10 @@ def test_shard_index_hashes_and_paths_are_current() -> None:
     rows = _jsonl("index_rows.jsonl")
     assert len(rows) == 71
     for row in rows:
-        path = ROOT / row["shard_path"]
+        # row["path"] is the published destination; row["shard_path"] is the staging
+        # copy the batch was assembled in. Both carry the same sha256, so assert against
+        # the artifact that actually ships.
+        path = ROOT / row["path"]
         assert path.exists()
         assert row["sha256"] == "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
         product = json.loads(path.read_text(encoding="utf-8"))
@@ -99,7 +109,7 @@ def test_all_product_evidence_references_resolve() -> None:
                 found.update(refs(item))
         return found
 
-    for path in (SHARD / "products/cma").glob("*/*/v002.json"):
+    for path in PUBLISHED_CMA.glob("*/*/v002.json"):
         product = json.loads(path.read_text(encoding="utf-8"))
         assert refs(product) <= evidence | sources
 

@@ -21,7 +21,21 @@ audit_output/
 create_row121_audit.py
 rec16.json
 
-# Generated / bulk financial product data
+# Generated / bulk financial product data.
+#
+# Three test files read from the shards below. Ignoring them wholesale made 27 tests
+# pass locally and fail in CI, so the handful of ledger/fragment files those tests
+# actually open are force-added (`git add -f`) and stay tracked despite these patterns:
+#
+#   data/20260829-cma-01/{index_rows,product_review_ledger}.jsonl
+#   data/20260829-cma-01/{source_documents,evidence_refs}.fragment.json
+#   data/ddakrate_parking_account_latest_full_20260830/data/financial_products/
+#     category_builds/20260829-parking-account-01/{index_rows.jsonl,
+#     source_documents.fragment.json,evidence_refs.fragment.json}
+#
+# Product JSON under these shards is deliberately NOT tracked -- it duplicates
+# data/financial_products/normalized/products/, which the tests read instead.
+# Adding a new file under an ignored shard requires `git add -f` plus an entry here.
 data/financial_products/raw/
 data/financial_products/staging/
 data/financial_products/work/
