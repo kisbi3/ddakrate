@@ -139,15 +139,15 @@ def test_all_deposit_and_savings_products_have_an_official_site_link() -> None:
     #    sources carry no http(s) URL at all -- they are grounded solely on
     #    INTERNAL_ORIGINAL_TEXT / INTERNAL_ORIGINAL_FALLBACK. They are listed by
     #    id, not skipped by rule, so a 23rd product losing its link fails here.
-    #    They are a real sourcing gap worth closing, concentrated in three
-    #    institutions (INST-KR-000055 / -000408 / -000830).
+    #    They are real sourcing gaps worth closing and are enumerated by
+    #    product id so the exception set cannot silently grow.
     #
     #  * document_type is NOT asserted at all. Under the current Naver-first
     #    sourcing strategy 3,948 of these products are grounded on NAVER_CRAWL
     #    and only ~15 on OFFICIAL_PRODUCT_PAGE, so requiring an OFFICIAL_* type
     #    would assert a sourcing policy the catalog deliberately does not follow.
-    #    Separately, 30 products currently carry no document_type on any source;
-    #    that is a second gap worth closing, but it is not what this test is for.
+    #    A separate catalog-data-gap regression test covers document_type
+    #    completeness; it is not what this link invariant is for.
     products = load_normalized_product_catalog(
         include_sale_statuses={"ON_SALE", "ENDED", "UNKNOWN"}
     )
@@ -163,7 +163,7 @@ def test_all_deposit_and_savings_products_have_an_official_site_link() -> None:
         "INST-KR-000408-2-0014", "INST-KR-000408-2-0019",
         "INST-KR-000830-1-0001", "INST-KR-000830-1-0002",
         "INST-KR-000830-1-0003", "INST-KR-000830-1-0004",
-        "INST-KR-000830-1-0005", "INST-KR-000830-2-0001",
+        "INST-KR-000830-1-0005",
     }
 
     def source_url(source: dict) -> str | None:

@@ -1,0 +1,219 @@
+{
+  "product_code": "INST-KR-000244-4-0001",
+  "version": 3,
+  "institution_id": "INST-KR-000244",
+  "name": "다올투자증권 CMA (RP형)",
+  "product_family": "CMA",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "CMA_RP",
+      "source_ref_ids": [
+        "EVD-CMA-20260829-INST-KR-000244-4-0001"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ]
+  },
+  "eligibility_policy": {
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "unit": "DAY",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ]
+  },
+  "return_policy": {
+    "return_kind": "POSTED_YIELD",
+    "calculation_method": "POSTED_RATE",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000244-4-0001-BASE",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.60",
+          "unit": "PERCENT"
+        },
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000244-4-0001"
+        ],
+        "as_of": "2026-07-20",
+        "rate_context": {
+          "kind": "POSTED_RATE_SNAPSHOT",
+          "tax_basis": "PRE_TAX",
+          "observation_source": "OFFICIAL_SOURCE_SUMMARY_PRESERVED_IN_WORKLIST",
+          "contract_authority": "OFFICIAL_SOURCE_SUMMARY",
+          "rate_may_change": true
+        }
+      }
+    ],
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "effective_to": null,
+  "source_ref_ids": [
+    "EVD-CMA-20260829-INST-KR-000244-4-0001"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-29T16:32:00+09:00",
+    "last_verified_at": "2026-08-30T01:55:00+09:00",
+    "data_authority": "INTERNAL_ORIGINAL_WITH_OFFICIAL_ENRICHMENT_WHERE_AVAILABLE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "path": "return_policy.rate_entries[0].current_status",
+        "reason": "공식 보존 요약은 2026-07-20 2.60%만 확인하며 이후 현재 고시수익률은 확인하지 못함",
+        "status": "MISSING_VALUE",
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000244-4-0001"
+        ],
+        "usage_impact": "HISTORICAL_QUOTE_ONLY_NOT_CURRENT_RANKING"
+      },
+      {
+        "path": "official_site_link",
+        "reason": "현재 발행 근거에서 검증된 http(s) 상품·기관 URL을 확인하지 못해 공식 상세 링크를 생성하지 않음. 비교서비스·내부 경로를 임의의 URL로 승격하지 않고 공식 출처 재확인 대상으로 남김."
+      }
+    ],
+    "source_priority": "INTERNAL_ORIGINAL_FALLBACK",
+    "source_reason": "NO_NAVER_CRAWL_RECORD",
+    "usage_restrictions": [
+      "NOT_NAVER_RANKING_SOURCE",
+      "NO_NAVER_LISTING_OR_RANKING_NUMBER"
+    ],
+    "shard_batch": "20260829-cma-01",
+    "previous_version": 2,
+    "previous_path": "data/financial_products/normalized/products/cma/INST-KR-000244/INST-KR-000244-4-0001/v002.json",
+    "previous_sha256": "sha256:ee1da563a7d1a687d00f9505051e26a25414797e64d8609fbf3c9aaca5295c30",
+    "inherited_fields": [
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000244-4-0001"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      },
+      {
+        "path": "sale_policy.status",
+        "from_version": 1,
+        "source_ref_ids": [
+          "EVD-CMA-20260829-INST-KR-000244-4-0001"
+        ],
+        "reason": "현재 fallback worklist는 판매상태의 신규 시점근거가 아니므로 기존 발행 canonical 상태를 보존"
+      }
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260829-cma-reaudit-03",
+      "status": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+      "equivalence_group_id": "CMA-EQ-DAOL-RP",
+      "preferred_product_code": "INST-KR-000244-4-0001",
+      "related_input_product_codes": [
+        "INST-KR-000244-4-C12AB354672"
+      ],
+      "relation": "SAME_CONTRACT_SOURCE_DUPLICATE"
+    },
+    "full_reaudit_revision": "20260830-cma-gap-resolution-08-final",
+    "audit_method": "ROW_BY_ROW_CORE_FIELDS_NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT",
+    "source_resolution_policy": "NAVER_PRIMARY_THEN_OFFICIAL_ENRICHMENT_IF_RICHER_OR_MORE_CURRENT",
+    "full_product_audit": {
+      "audit_revision": "20260829-cma-exhaustive-07",
+      "audited_at": "2026-08-29T22:42:00+09:00",
+      "dimensions": {
+        "subtype": {
+          "status": "VERIFIED",
+          "value": "RP"
+        },
+        "return_semantics": {
+          "status": "VERIFIED",
+          "value": "POSTED_YIELD",
+          "note": "실적배당은 posted yield와 분리하며 performance-linked에는 executable fixed rate를 생성하지 않음"
+        },
+        "rate_fixing_or_performance": {
+          "status": "VERIFIED_WITH_GAP",
+          "value": "POSTED_RATE_FIXING_NOT_EXPLICIT",
+          "note": "근거가 없는 fixing 시점을 추론하지 않음"
+        },
+        "tier_boundaries": {
+          "status": "VERIFIED",
+          "value": "NO_TIER_OR_SINGLE_RATE"
+        },
+        "reinvestment": {
+          "status": "SOURCE_INSUFFICIENT",
+          "value": null
+        },
+        "eligibility": {
+          "status": "VERIFIED",
+          "customer_types": [
+            "INDIVIDUAL"
+          ],
+          "segments": null
+        },
+        "protection": {
+          "status": "VERIFIED",
+          "value": "NOT_PROTECTED"
+        },
+        "identity_variant": {
+          "status": "VERIFIED",
+          "value": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+          "group": "CMA-EQ-DAOL-RP"
+        }
+      }
+    },
+    "audit_scope": "SUBTYPE_RETURN_TIERS_APPLICATION_FIXING_REINVESTMENT_PERFORMANCE_ELIGIBILITY_PROTECTION_IDENTITY",
+    "correction_batch": "20260904-catalog-data-gaps-01",
+    "correction_reason": "검증된 공식 http(s) 링크가 없음을 명시",
+    "correction_applied_at": "2026-09-04T18:00:00+09:00"
+  },
+  "product_subtype": "RP",
+  "investment_policy": {
+    "underlying_asset": "BONDS",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ],
+    "automatic_investment": true,
+    "purchase_window": {
+      "execution_rule": "WEEKDAY_AFTER_23:30_AUTOMATIC_PURCHASE",
+      "source_ref_ids": [
+        "EVD-CMA-20260829-INST-KR-000244-4-0001"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ]
+  },
+  "protection_policy": {
+    "coverage_status": "NOT_PROTECTED",
+    "source_ref_ids": [
+      "EVD-CMA-20260829-INST-KR-000244-4-0001"
+    ],
+    "evidence_authority": "EXPLICIT_NAVER_OR_PRESERVED_OFFICIAL"
+  }
+}
