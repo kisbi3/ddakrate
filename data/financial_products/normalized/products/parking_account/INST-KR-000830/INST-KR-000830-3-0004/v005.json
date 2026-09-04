@@ -1,0 +1,395 @@
+{
+  "product_code": "INST-KR-000830-3-0004",
+  "version": 5,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 세이프박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0004"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0004",
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 14세 이상의 실명 고객이며 카카오뱅크 입출금통장 또는 개인사업자통장을 보유해야 함; 연결된 계좌당 세이프박스 1개",
+    "eligibility_text": "만 14세 이상의 실명 고객이며 카카오뱅크 입출금통장 또는 개인사업자통장을 보유해야 함; 연결된 계좌당 세이프박스 1개",
+    "display_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL",
+      "SOLE_PROPRIETOR"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ],
+    "real_name_required": true,
+    "age_requirement": {
+      "min_age": 14,
+      "unit": "YEARS",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202-BLOG"
+      ]
+    },
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000830-3-0004-REL-ACCOUNT",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "카카오뱅크 입출금통장 또는 개인사업자통장을 보유한 실명의 개인",
+        "fact_key": "SOURCE_RELATIONSHIP.KAKAOBANK_DEMAND_DEPOSIT_OR_SOLE_PROPRIETOR.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-0004",
+          "EVD-OFFICIAL-202",
+          "EVD-OFFICIAL-202-BLOG"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000830-3-0004-REL-PER_LINK",
+        "kind": "LINKED_ACCOUNT_LIMIT",
+        "expected_state": true,
+        "source_text": "연결된 계좌당 1개씩만 개설 가능",
+        "fact_key": "ACCOUNT.LINKED_SOURCE_ACCOUNT.ONE_SAFEBOX",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-0004",
+          "EVD-OFFICIAL-202"
+        ]
+      }
+    ]
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ],
+    "amount_rules": [
+      {
+        "scope": "BALANCE",
+        "currency": "KRW",
+        "source_text": "최대 1억원까지 보관",
+        "min_value": "0",
+        "max_value": "100000000",
+        "source_ref_ids": [
+          "EVD-OFFICIAL-202",
+          "EVD-PARK-20260829-INST-KR-000830-3-0004"
+        ]
+      }
+    ]
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-3-0004-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "1.60",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-31",
+          "snapshot_basis": "ISSUER_OFFICIAL_PRODUCT_PAGE"
+        },
+        "source_ref_ids": [
+          "EVD-OFFICIAL-202",
+          "EVD-OFFICIAL-202-BLOG"
+        ],
+        "source_clause": "하루만 맡겨도 연 1.60%; 최대 1억원까지 보관 가능, 연 1.60%(세전)",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 2,
+      "status": "STRUCTURED_WITH_UNKNOWN_REWARD",
+      "global_application": {
+        "source_text": "금리쿠폰",
+        "source_ref_ids": [
+          "EVD-OFFICIAL-202",
+          "EVD-OFFICIAL-202-BLOG"
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "COUPON.SAFEBOX_ELIGIBLE_COUPON_APPLIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-OFFICIAL-202",
+            "EVD-OFFICIAL-202-BLOG"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000830-3-0004-PREF-COUPON",
+          "title": "금리쿠폰 사용 시 쿠폰별 추가 우대금리",
+          "condition": {
+            "predicate": {
+              "fact_key": "COUPON.SAFEBOX_ELIGIBLE_COUPON_APPLIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "unit": "PERCENTAGE_POINT",
+            "value_status": "UNKNOWN"
+          },
+          "application": {
+            "timing": "AS_DEFINED_BY_COUPON",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "display": {
+            "summary": "금리쿠폰 사용 시 해당 쿠폰 조건에 따른 추가 우대금리",
+            "reward_text": "쿠폰별 세부 이율·기간은 발급 쿠폰 상세정보 확인"
+          },
+          "structuring_status": "SUPPORTED_WITH_UNKNOWN_REWARD",
+          "source_ref_ids": [
+            "EVD-OFFICIAL-202",
+            "EVD-OFFICIAL-202-BLOG"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-OFFICIAL-202",
+              "source_text": "※ 금리쿠폰 사용 시, 금리쿠폰의 우대금리를 더하여 이자를 계산합니다."
+            },
+            {
+              "source_ref_id": "EVD-OFFICIAL-202-BLOG",
+              "source_text": "금리쿠폰은 세이프박스에 적용하며 쿠폰별 우대금리·사용·제공기간은 상세정보에서 확인합니다."
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ],
+    "interest_accrual": {
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "calculation_method": "DAILY_FINAL_BALANCE",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ],
+      "source_text": "매일 최종잔액에 게시 금리를 적용하여 계산"
+    },
+    "interest_crediting": {
+      "raw_text": "직전 이자지급일(또는 가입일)부터 어제까지의 이자를 합산하여 지급; 매월 네번째 금요일 다음날 또는 고객 요청일 지급",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000830-3-0004-INT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "anchor": "FOURTH_FRIDAY",
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-OFFICIAL-202",
+            "EVD-OFFICIAL-202-BLOG"
+          ]
+        },
+        {
+          "event_id": "INST-KR-000830-3-0004-INT-ON-REQUEST",
+          "type": "ON_REQUEST",
+          "source_ref_ids": [
+            "EVD-OFFICIAL-202",
+            "EVD-OFFICIAL-202-BLOG"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "1.60",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ],
+      "executable": false,
+      "origin": "ISSUER_OFFICIAL_PRODUCT_PAGE"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-31",
+      "snapshot_basis": "ISSUER_OFFICIAL_PRODUCT_PAGE",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-202",
+        "EVD-OFFICIAL-202-BLOG"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0004",
+      "EVD-OFFICIAL-202",
+      "EVD-OFFICIAL-202-BLOG"
+    ]
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000830-3-0004",
+    "EVD-OFFICIAL-202",
+    "EVD-OFFICIAL-202-BLOG",
+    "EVD-PARK-20260829-INST-KR-000830-3-C90225C0EC4",
+    "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T00:00:00+09:00",
+    "data_authority": "ISSUER_OFFICIAL_AND_INTERNAL_PRESERVED_SOURCE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000830-3-0004",
+        "product_name": "세이프박스",
+        "path": "listing_snapshot.listing_max_rate",
+        "reason": "이 상품은 Naver listing snapshot이 없어 순위용 listing 최고금리를 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0004",
+        "product_name": "세이프박스",
+        "path": "listing_snapshot.listing_min_rate",
+        "reason": "이 상품은 Naver listing snapshot이 없어 순위용 listing 최저금리를 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0004",
+        "product_name": "세이프박스",
+        "path": "return_policy.preferential_policy.rules[0].reward",
+        "reason": "금리쿠폰별 세부 우대금리·기간은 발급 쿠폰 상세정보에 따르므로 단일 값으로 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0004",
+        "product_name": "세이프박스",
+        "path": "liquidity_policy.fees_and_limits",
+        "reason": "확인한 공식 본문에서 별도 수수료·이체한도 수치를 확인하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "ISSUER_OFFICIAL",
+    "source_reason": "OFFICIAL_PRODUCT_PAGE_AND_OFFICIAL_BLOG_VERIFIED",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000830-3-0004",
+    "source_record_id": "SRC-OFFICIAL-202",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_REVIEW",
+    "review_sequence": 202,
+    "reviewed_source_record_id": "SRC-OFFICIAL-202",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "FALLBACK_RATE_UNSTRUCTURED",
+      "FALLBACK_ELIGIBILITY_UNSTRUCTURED",
+      "FALLBACK_INTEREST_ACCRUAL_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-31T00:00:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "source_ref_ids": [
+      "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+    ],
+    "correction_batch": "20260905-confirmed-identity-merge-01",
+    "correction_applied_at": "2026-09-05T00:00:00+09:00",
+    "correction_reason": "사용자 확인을 받은 동일 상업상품의 기관명 표기 차이를 병합",
+    "previous_version": 4,
+    "previous_path": "data/financial_products/normalized/products/parking_account/INST-KR-000830/INST-KR-000830-3-0004/v004.json",
+    "previous_sha256": "sha256:0a4519223fa7d7be4118b171d97cc148c03d68d5d05fe7a0d576001ed4658a51",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260905-confirmed-identity-merge-01",
+      "status": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+      "equivalence_group_id": "CONFIRMED-IDENTITY-INST-KR-000830-3-0004",
+      "preferred_product_code": "INST-KR-000830-3-0004",
+      "related_input_product_codes": [
+        "INST-KR-000830-3-C90225C0EC4"
+      ],
+      "relation": "USER_CONFIRMED_SAME_COMMERCIAL_PRODUCT"
+    },
+    "identity_merge": {
+      "confirmed_by": "USER",
+      "alias_product_code": "INST-KR-000830-3-C90225C0EC4",
+      "alias_version": 4,
+      "canonical_source_score": 4,
+      "alias_source_score": 4,
+      "source_precedence": "ISSUER_OFFICIAL > USER_CONFIRMED > NAVER > INTERNAL",
+      "merged_fields_policy": "winner_values_preserved_missing_values_filled"
+    }
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "SOURCE_SUPPORTED_EXECUTABLE_FIELDS_ONLY",
+    "declared_data_gap_count": 4
+  }
+}

@@ -1,0 +1,488 @@
+{
+  "product_code": "INST-KR-000830-1-0004",
+  "version": 8,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 우리아이적금",
+  "product_family": "INSTALLMENT_SAVINGS",
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "만 17세 미만의 실명의 개인 (1인 1계좌 가입 가능)\n법정대리인인 부 또는 모가 우리아이서비스를 통해 자녀를 대리하여 가입 가능\n※ 우리아이서비스에 주대리인으로 등록된 부 또는 모가 개설 가능\n※ 카카오뱅크 우리아이통장을 통해서만 개설 가능",
+    "eligibility_text": "만 17세 미만의 실명의 개인 (1인 1계좌 가입 가능)\n법정대리인인 부 또는 모가 우리아이서비스를 통해 자녀를 대리하여 가입 가능\n※ 우리아이서비스에 주대리인으로 등록된 부 또는 모가 개설 가능\n※ 카카오뱅크 우리아이통장을 통해서만 개설 가능",
+    "display_text": "만 17세 미만의 실명의 개인 (1인 1계좌 가입 가능)\n법정대리인인 부 또는 모가 우리아이서비스를 통해 자녀를 대리하여 가입 가능\n※ 우리아이서비스에 주대리인으로 등록된 부 또는 모가 개설 가능\n※ 카카오뱅크 우리아이통장을 통해서만 개설 가능",
+    "source_ref_ids": [
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO"
+    ],
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "INDIVIDUAL"
+    ],
+    "real_name_required": true,
+    "age_range": {
+      "max_age_exclusive": 17
+    },
+    "account_limit": {
+      "scope": "PER_CUSTOMER",
+      "max_accounts": 1
+    }
+  },
+  "term_policy": {
+    "kind": "FIXED",
+    "unit": "MONTH",
+    "fixed_value": 12,
+    "source_expression": "12개월",
+    "source_ref_ids": [
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO"
+    ],
+    "representative_value": 12
+  },
+  "cash_flow_policy": {
+    "funding_type": "PERIODIC",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO"
+    ],
+    "contribution_mode": "FREE",
+    "contribution_mode_options": [
+      "FREE"
+    ],
+    "contribution_pattern": "USER_DEFINED",
+    "amount_rules": [
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "1000",
+        "max_value": "200000"
+      },
+      {
+        "scope": "PER_CONTRIBUTION",
+        "currency": "KRW",
+        "min_value": "0"
+      }
+    ],
+    "source_amount_text": "1천원 이상 20만원 이하\n※ 가입금액은 0원이며 가입 후 바로 납입 가능",
+    "source_contribution_text": "자유적립식",
+    "source_amount_constraints": [
+      {
+        "value": "1000",
+        "currency": "KRW",
+        "source_expression": "1천원",
+        "scope": "INITIAL",
+        "role": "RANGE_BOUND",
+        "context": "1천원 이상 20만원 이하\n※ 가입금액은 0원이며 가입 후 바로 납입 가능"
+      },
+      {
+        "value": "200000",
+        "currency": "KRW",
+        "source_expression": "20만원",
+        "scope": "INITIAL",
+        "role": "RANGE_BOUND",
+        "context": "1천원 이상 20만원 이하\n※ 가입금액은 0원이며 가입 후 바로 납입 가능"
+      },
+      {
+        "value": "0",
+        "currency": "KRW",
+        "source_expression": "0원",
+        "scope": "INITIAL",
+        "role": "RANGE_BOUND",
+        "context": "1천원 이상 20만원 이하\n※ 가입금액은 0원이며 가입 후 바로 납입 가능"
+      }
+    ],
+    "initial_contribution_rule": {
+      "currency": "KRW",
+      "source_text": "가입금액은 0원이며 가입 후 바로 납입 가능",
+      "mentioned_values": [
+        "0"
+      ]
+    }
+  },
+  "return_policy": {
+    "return_kind": "POSTED_RATE",
+    "rate_type": "FIXED",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-1-0004-BASE-01",
+        "role": "BASE",
+        "application_event": "MATURITY",
+        "calculation": {
+          "type": "FIXED",
+          "value": "3.00",
+          "unit": "PERCENT"
+        },
+        "applies_to": {
+          "basis": "CONTRACT_TERM",
+          "unit": "MONTH",
+          "fixed_value": 12
+        },
+        "source_ref_ids": [
+          "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-RATE"
+        ]
+      }
+    ],
+    "preferential_policy": {
+      "schema_version": 1,
+      "global_application": {
+        "required_termination_event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-01",
+          "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02",
+          "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-01"
+          },
+          {
+            "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+          },
+          {
+            "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+          }
+        ]
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "RULE.INST_KR_000830_1_CAAB9B11CC0_PREF_02.QUALIFYING_EVENT_COUNT",
+          "type": "INTEGER",
+          "unit": "COUNT",
+          "aggregation": {
+            "event_ref": "EVENT-INST-KR-000830-1-0004-PREF-02-QUALIFYING",
+            "operator": "COUNT"
+          },
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            }
+          ]
+        },
+        {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000830_1",
+          "type": "BOOLEAN",
+          "value_status_dimension": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "question_generation": {
+            "mode": "TYPED_FACT",
+            "store_question_sentence": false,
+            "planned_values_confirm_rate": false
+          },
+          "source_ref_ids": [
+            "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+          ],
+          "authority": "BANK_OFFICIAL_RECORD",
+          "self_report_eligible": false,
+          "source_recognition_text": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+        }
+      ],
+      "event_definitions": [
+        {
+          "event_id": "EVENT-INST-KR-000830-1-0004-PREF-02-QUALIFYING",
+          "event_type": "AUTO_TRANSFER_CONTRIBUTION",
+          "qualifying_definition": {
+            "source_text": "전체 계약월수의 1/2 이상을 자동이체로 납입하고 만기 해지한 경우\n- 1개월간 최소 1회 이상 자동이체로 납입한 사실이 있다면 해당 월의 자동이체 납입 실적은 달성된 것으로 봄\n※ 단, 만기 자동연장된 원리금은 우대금리를 제공하지 않음\n금리쿠폰"
+          },
+          "source_ref_ids": [
+            "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            }
+          ],
+          "count_window": {
+            "source_expression": "SOURCE_CLAUSE",
+            "text": "전체 계약월수의 1/2 이상을 자동이체로 납입하고 만기 해지한 경우\n- 1개월간 최소 1회 이상 자동이체로 납입한 사실이 있다면 해당 월의 자동이체 납입 실적은 달성된 것으로 봄\n※ 단, 만기 자동연장된 원리금은 우대금리를 제공하지 않음\n금리쿠폰"
+          },
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000830-1-0004-PREF-02",
+          "title": "전체 계약월수의 1/2 이상을 자동이체로 납입하고 만기 해지한 경우",
+          "condition": {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000830_1_CAAB9B11CC0_PREF_02.QUALIFYING_EVENT_COUNT",
+              "operator": "GTE",
+              "expected_value": 1,
+              "unit": "COUNT",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+              }
+            ],
+            "fact_authority": "BANK_TRANSACTION_LEDGER",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "전체 계약월수의 1/2 이상을 자동이체로 납입하고 만기 해지한 경우"
+          },
+          "source_ref_ids": [
+            "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+            }
+          ],
+          "semantic_domain": "AUTOMATIC_TRANSFER",
+          "source_clause_text": "전체 계약월수의 1/2 이상을 자동이체로 납입하고 만기 해지한 경우\n- 1개월간 최소 1회 이상 자동이체로 납입한 사실이 있다면 해당 월의 자동이체 납입 실적은 달성된 것으로 봄\n※ 단, 만기 자동연장된 원리금은 우대금리를 제공하지 않음\n금리쿠폰"
+        },
+        {
+          "rule_id": "INST-KR-000830-1-0004-PREF-03",
+          "title": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000830_1",
+              "operator": "EQUALS",
+              "expected_value": true,
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_semantics": "SOURCE_CLAUSE_GATE",
+              "source_ref_ids": [
+                "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+              }
+            ]
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "value_source": "EXTERNAL_COUPON_DEFINITION",
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+              }
+            ]
+          },
+          "application": {
+            "event": "MATURITY",
+            "source_ref_ids": [
+              "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+              }
+            ],
+            "fact_authority": "BANK_OFFICIAL_RECORD",
+            "confirmed_value_status_required": "ACTUAL"
+          },
+          "display": {
+            "summary": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공"
+          },
+          "source_ref_ids": [
+            "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+          ],
+          "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+            }
+          ],
+          "semantic_domain": "PROMOTION_COUPON",
+          "source_clause_text": "금리쿠폰을 사용하고 만기 해지하는 경우 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리를 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+        }
+      ],
+      "relations": [],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "source_ref_ids": [
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-01",
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02",
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03",
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-SECTION"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-01"
+        },
+        {
+          "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-02"
+        },
+        {
+          "source_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-03"
+        }
+      ],
+      "source_section_ref_id": "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PREF-SECTION"
+    },
+    "source_ref_ids": [
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-RATE",
+      "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-LISTING"
+    ],
+    "advertised_max_rate": {
+      "value": "7",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-LISTING"
+      ],
+      "context": "NAVER_LISTING"
+    },
+    "listing_rate_snapshot_ref": {
+      "snapshot_id": "NAVER-SAVING-20260829-INSTALLMENT-01",
+      "naver_product_id": "04092c4f8c2b48c8efb24f257f816850"
+    },
+    "payment_timing": "MATURITY",
+    "preferential_condition_disclosures": []
+  },
+  "standard_conditions": [],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-NFI-INST-KR-000830-1-0004",
+    "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO",
+    "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-RATE",
+    "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-LISTING",
+    "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-30T20:20:38+09:00",
+    "data_authority": "NAVER_RAW_CRAWL",
+    "publication_gate": "PRODUCT_BY_PRODUCT_SOURCE_REVIEW_V007",
+    "source_priority": "NAVER_PRIMARY",
+    "source_reason": "DIRECT_SOURCE_RECORD_ID",
+    "source_record_id": "04092c4f8c2b48c8efb24f257f816850",
+    "data_gaps": [
+      {
+        "path": "cash_flow_policy",
+        "reason": "납입 주기(일/주/월)가 네이버 상품안내에서 명시적으로 확인되지 않음"
+      }
+    ],
+    "product_by_product_review": {
+      "batch_id": "20260830-installment-savings-06",
+      "reviewed_at": "2026-08-30T20:20:38+09:00",
+      "method": "NAVER_PRODUCT_INFO_PLUS_RATE_CONDITIONAL_PLUS_TERM_RATE_TABLE_DIRECT_COMPARISON",
+      "sections_reviewed": [
+        "NAVER_PRODUCT_GUIDE",
+        "NAVER_RATE_CONDITIONAL",
+        "NAVER_TERM_RATE_TABLE",
+        "NAVER_LISTING_HEADER"
+      ],
+      "correction_count": 1,
+      "unresolved_count": 0,
+      "status": "REVIEWED_WITH_EXTERNAL_DEFINITION",
+      "reason_codes": [
+        "PREFERENTIAL_REQUIRES_EXTERNAL_DEFINITION"
+      ],
+      "previous_completion_claims_superseded": true
+    },
+    "previous_version": 2,
+    "previous_path": "data/financial_products/normalized/products/installment_savings/INST-KR-000830/INST-KR-000830-1-0004/v002.json",
+    "previous_sha256": "sha256:d8ba58439899b1128f36efd3aa5aa845ec6f17096bc207374f8d98ea70e40b80",
+    "correction_batch": "20260905-confirmed-identity-merge-01",
+    "correction_reason": "사용자 확인을 받은 동일 상업상품의 기관명 표기 차이를 병합",
+    "correction_applied_at": "2026-09-05T00:00:00+09:00",
+    "source_ref_ids": [
+      "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+    ],
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260905-confirmed-identity-merge-01",
+      "status": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+      "equivalence_group_id": "CONFIRMED-IDENTITY-INST-KR-000830-1-0004",
+      "preferred_product_code": "INST-KR-000830-1-0004",
+      "related_input_product_codes": [
+        "INST-KR-000830-1-CAAB9B11CC0"
+      ],
+      "relation": "USER_CONFIRMED_SAME_COMMERCIAL_PRODUCT"
+    },
+    "identity_merge": {
+      "confirmed_by": "USER",
+      "alias_product_code": "INST-KR-000830-1-CAAB9B11CC0",
+      "alias_version": 7,
+      "canonical_source_score": 1,
+      "alias_source_score": 2,
+      "source_precedence": "ISSUER_OFFICIAL > USER_CONFIRMED > NAVER > INTERNAL",
+      "merged_fields_policy": "winner_values_preserved_missing_values_filled"
+    }
+  },
+  "classifications": [
+    {
+      "tag": "CONTRIBUTION_MODE",
+      "value": "FREE",
+      "source_ref_ids": [
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-PRODUCT-INFO"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "FIXED",
+      "source_ref_ids": [
+        "EVD-IS-04092C4F8C2B48C8EFB24F257F816850-RATE"
+      ]
+    }
+  ]
+}

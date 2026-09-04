@@ -162,9 +162,6 @@ def test_all_deposit_and_savings_products_have_an_official_site_link() -> None:
         "INST-KR-000408-2-0010", "INST-KR-000408-2-0011",
         "INST-KR-000408-2-0012", "INST-KR-000408-2-0013",
         "INST-KR-000408-2-0014", "INST-KR-000408-2-0019",
-        "INST-KR-000830-1-0001", "INST-KR-000830-1-0002",
-        "INST-KR-000830-1-0003", "INST-KR-000830-1-0004",
-        "INST-KR-000830-1-0005",
     }
 
     def source_url(source: dict) -> str | None:

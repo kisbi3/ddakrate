@@ -7,6 +7,7 @@ from .loader import (
 )
 from .normalized_loader import (
     NormalizedCatalogError,
+    load_product_aliases,
     load_normalized_product_catalog,
 )
 from .requirement_compiler import (
@@ -24,6 +25,7 @@ __all__ = [
     "load_product_catalog",
     "load_product_definition",
     "load_normalized_product_catalog",
+    "load_product_aliases",
     "NormalizedCatalogError",
     "COMPILER_VERSION",
     "KNOWN_VARIABLE_FAMILIES",

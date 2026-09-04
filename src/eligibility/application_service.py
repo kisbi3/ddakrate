@@ -72,6 +72,7 @@ from eligibility.schema.eligibility_text_review import (
 from eligibility.schema.evaluation import MissingFactRequest
 from eligibility.schema.condition_requirement import UserConditionState
 from eligibility.schema.product import ProductDefinition
+from eligibility.catalog.normalized_loader import load_product_aliases
 from eligibility.schema.search import (
     CandidateEvaluation,
     CandidateFilterDecision,
@@ -229,8 +230,19 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         audit_event_types: frozenset[AuditEventType] | None = None,
         eligibility_text_reviewer: EligibilityTextReviewer | None = None,
         eligibility_text_review_max_rounds: int = 10,
+        product_aliases: dict[str, str] | None = None,
     ) -> None:
         self.products = {product.product_id: product for product in products}
+        if product_aliases is None:
+            try:
+                product_aliases = load_product_aliases()
+            except (FileNotFoundError, ValueError, OSError):
+                product_aliases = {}
+        self.product_aliases = {
+            alias: canonical
+            for alias, canonical in product_aliases.items()
+            if alias not in self.products and canonical in self.products
+        }
         # This is a read-only shadow index.  REVIEW_REQUIRED requirements are
         # observable but cannot affect eligibility, rate or ranking until a
         # reviewed family is explicitly activated in a later migration.
@@ -269,6 +281,16 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         self.eligibility_text_review_max_rounds = eligibility_text_review_max_rounds
         self.pre_search_question_planner = DeterministicPreSearchQuestionPlanner()
         self._sessions: dict[str, _SearchRuntime] = {}
+
+    def resolve_product_id(self, product_id: str) -> str:
+        """Resolve a historical catalog ID to its active canonical ID."""
+
+        return self.product_aliases.get(product_id, product_id)
+
+    def get_catalog_product(self, product_id: str) -> ProductDefinition | None:
+        """Look up an active product through canonical or historical ID."""
+
+        return self.products.get(self.resolve_product_id(product_id))
 
     # ------------------------------------------------------------------
     # Intent/session operations
@@ -2966,6 +2988,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         *,
         include_explanation: bool = True,
     ) -> ProductRecommendationDetail:
+        product_id = self.resolve_product_id(product_id)
         runtime = self._runtime(search_session_id)
         recommendation = runtime.recommendation or self.get_top_recommendations(
             search_session_id

@@ -44,11 +44,6 @@ KNOWN_PRODUCTS_WITHOUT_A_WEB_LINK = {
     "INST-KR-000459-4-0001",
     "INST-KR-000459-4-0002",
     "INST-KR-000459-4-0003",
-    "INST-KR-000830-1-0001",
-    "INST-KR-000830-1-0002",
-    "INST-KR-000830-1-0003",
-    "INST-KR-000830-1-0004",
-    "INST-KR-000830-1-0005",
 }
 
 
@@ -66,16 +61,16 @@ def test_catalog_data_gap_repair_counts_and_exception_sets() -> None:
     assert {
         item["product_code"] for item in report["missing_web_link_products"]
     } == KNOWN_PRODUCTS_WITHOUT_A_WEB_LINK
-    assert counts["no_rate_entries"] == 66
+    assert counts["no_rate_entries"] == 61
     assert counts["no_rate_entries_performance_observations"] == 11
     assert counts["no_rate_entries_ranking_ineligible"] == 3
-    assert counts["no_rate_entries_declared_rate_gap"] == 52
+    assert counts["no_rate_entries_declared_rate_gap"] == 47
     assert counts["no_rate_entries_silent"] == 0
     assert report["no_rate_entries_silent_products"] == []
     assert counts["missing_document_type"] == 0
     assert report["missing_document_type_products"] == []
     assert counts["data_gap_schema_count"] == 14
-    assert counts["field_schema_gap_items"] == 100
+    assert counts["field_schema_gap_items"] == 98
     assert counts["unresolved_source_ref_products"] == 0
 
 

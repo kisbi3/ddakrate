@@ -379,7 +379,7 @@ def create_app(
 
     @app.get("/api/catalog/products/{product_id}", include_in_schema=False)
     def catalog_product_detail(product_id: str) -> JSONResponse:
-        product = runtime.service.products.get(product_id)
+        product = runtime.service.get_catalog_product(product_id)
         if product is None:
             return JSONResponse(
                 status_code=404,

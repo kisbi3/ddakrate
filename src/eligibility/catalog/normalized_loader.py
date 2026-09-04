@@ -2209,6 +2209,27 @@ def load_normalized_product_catalog(
     return [product.model_copy(deep=True) for product in cached]
 
 
+def load_product_aliases(index_path: str | Path | None = None) -> dict[str, str]:
+    """Return published backwards-compatible alias -> canonical mappings."""
+
+    root = repository_root()
+    path = Path(index_path) if index_path is not None else root / "data/financial_products/normalized/index.json"
+    payload = _read_json(path.expanduser().resolve())
+    active = {row.get("product_code") for row in payload.get("products") or []}
+    aliases: dict[str, str] = {}
+    for row in payload.get("aliases") or []:
+        alias = row.get("alias_product_code")
+        canonical = row.get("canonical_product_code")
+        if not isinstance(alias, str) or not isinstance(canonical, str):
+            raise NormalizedCatalogError("Alias registry rows require string product codes")
+        if alias == canonical or alias in active or canonical not in active:
+            raise NormalizedCatalogError(f"Invalid product alias mapping: {alias} -> {canonical}")
+        if alias in aliases and aliases[alias] != canonical:
+            raise NormalizedCatalogError(f"Conflicting product alias mapping: {alias}")
+        aliases[alias] = canonical
+    return aliases
+
+
 @lru_cache(maxsize=None)
 def _load_normalized_product_catalog_cached(
     cache_key: tuple[str | None, frozenset[str] | None, bool],

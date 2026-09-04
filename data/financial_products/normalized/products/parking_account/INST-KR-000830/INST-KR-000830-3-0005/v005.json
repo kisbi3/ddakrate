@@ -1,0 +1,425 @@
+{
+  "product_code": "INST-KR-000830-3-0005",
+  "version": 5,
+  "institution_id": "INST-KR-000830",
+  "name": "카카오뱅크 부가세박스",
+  "product_family": "PARKING_ACCOUNT",
+  "classifications": [
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "PARKING_ACCOUNT",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0005"
+      ]
+    },
+    {
+      "tag": "RATE_TYPE",
+      "value": "VARIABLE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0005",
+        "EVD-OFFICIAL-203"
+      ]
+    },
+    {
+      "tag": "PRODUCT_TRAIT",
+      "value": "SOHO_VAT_RESERVE_BOX",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203"
+      ]
+    }
+  ],
+  "sale_policy": {
+    "status": "ON_SALE",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0005",
+      "EVD-OFFICIAL-203"
+    ]
+  },
+  "eligibility_policy": {
+    "raw_text": "개인사업자통장에만 연결할 수 있으며, 사업자번호당 1개의 계좌만 개설 가능",
+    "eligibility_text": "카카오뱅크 개인사업자통장 보유 사업자",
+    "display_text": "개인사업자통장에만 연결 가능; 사업자번호당 1개",
+    "mode": "RESTRICTED",
+    "allowed_customer_types": [
+      "SOLE_PROPRIETOR"
+    ],
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0005",
+      "EVD-OFFICIAL-203"
+    ],
+    "relationship_requirements": [
+      {
+        "requirement_id": "INST-KR-000830-3-0005-REL-SOHO",
+        "kind": "PRODUCT_OR_SERVICE_RELATIONSHIP",
+        "expected_state": true,
+        "source_text": "개인사업자통장에만 연결할 수 있음",
+        "fact_key": "SOURCE_RELATIONSHIP.KAKAOBANK_SOLE_PROPRIETOR_ACCOUNT.SATISFIED",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-OFFICIAL-203"
+        ]
+      },
+      {
+        "requirement_id": "INST-KR-000830-3-0005-REL-ONE",
+        "kind": "ACCOUNT_LIMIT",
+        "expected_state": true,
+        "source_text": "사업자번호당 1개의 계좌만 개설 가능",
+        "fact_key": "ACCOUNT.BUSINESS_REGISTRATION_NUMBER.ONE_VAT_BOX",
+        "structuring_status": "SUPPORTED_SOURCE_CLAUSE",
+        "source_ref_ids": [
+          "EVD-OFFICIAL-203"
+        ]
+      }
+    ],
+    "real_name_required": true,
+    "nationality_scope": "KOREAN_ONLY",
+    "age_range": {
+      "age_basis": "FULL_AGE",
+      "reference_date": "SUBSCRIPTION_DATE",
+      "min_age": 17
+    },
+    "fact_definitions": [
+      {
+        "fact_key": "RELATIONSHIP.KAKAO_BANK.PERSONAL_BUSINESS_ACCOUNT_HELD_AND_LINKABLE",
+        "data_type": "BOOLEAN",
+        "value_status_modes": [
+          "ACTUAL",
+          "UNKNOWN"
+        ],
+        "structuring_status": "SUPPORTED",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-C67C2196311",
+          "EVD-OFFICIAL-204"
+        ]
+      }
+    ],
+    "condition": {
+      "predicate": {
+        "fact_key": "RELATIONSHIP.KAKAO_BANK.PERSONAL_BUSINESS_ACCOUNT_HELD_AND_LINKABLE",
+        "operator": "EQUALS",
+        "expected_value": true
+      }
+    },
+    "account_limit": {
+      "max_active_accounts": 1,
+      "subject_scope": "BUSINESS_REGISTRATION_NUMBER",
+      "product_scope": "THIS_PRODUCT"
+    },
+    "linked_account_relation": {
+      "type": "MUST_OPEN_THROUGH_LINKED_KAKAO_PERSONAL_BUSINESS_ACCOUNT"
+    }
+  },
+  "term_policy": {
+    "kind": "OPEN_ENDED",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0005",
+      "EVD-OFFICIAL-203"
+    ]
+  },
+  "cash_flow_policy": {
+    "funding_type": "ON_DEMAND",
+    "currency": "KRW",
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0005",
+      "EVD-OFFICIAL-203"
+    ],
+    "amount_rules": [
+      {
+        "scope": "BALANCE",
+        "currency": "KRW",
+        "source_text": "입금한도 1억원",
+        "min_value": "0",
+        "max_value": "100000000",
+        "source_ref_ids": [
+          "EVD-PARK-20260829-INST-KR-000830-3-0005"
+        ]
+      }
+    ],
+    "auto_save": {
+      "enabled": true,
+      "method": "PERCENT_OF_ELIGIBLE_INFLOWS",
+      "percentage": "10",
+      "timing": "NEXT_DAY_AFTER_12",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203"
+      ],
+      "source_text": "연결 계좌 입금액의 10%를 다음날 오후 12시 이후 부가세박스로 모음"
+    }
+  },
+  "return_policy": {
+    "return_kind": "INTEREST",
+    "rate_entries": [
+      {
+        "rate_id": "INST-KR-000830-3-0005-BASE-01",
+        "role": "BASE",
+        "application_event": "ANY",
+        "calculation": {
+          "type": "VARIABLE_POSTED",
+          "value": "2.00",
+          "unit": "PERCENT",
+          "snapshot_as_of": "2026-08-31",
+          "snapshot_basis": "ISSUER_OFFICIAL_PRODUCT_PAGE"
+        },
+        "source_ref_ids": [
+          "EVD-OFFICIAL-203",
+          "EVD-PARK-20260829-INST-KR-000830-3-0005"
+        ],
+        "source_clause": "금리 연 2.00%",
+        "executable": true
+      }
+    ],
+    "preferential_policy": {
+      "policy_version": 1,
+      "status": "NO_RATE_PREFERENCE_DISCLOSED",
+      "global_application": {
+        "source_text": "금리쿠폰"
+      },
+      "fact_definitions": [
+        {
+          "fact_key": "COUPON.ELIGIBLE_COUPON_APPLIED",
+          "data_type": "BOOLEAN",
+          "value_status_modes": [
+            "ACTUAL",
+            "PLANNED",
+            "ESTIMATED",
+            "UNKNOWN"
+          ],
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C67C2196311"
+          ],
+          "structuring_status": "SUPPORTED"
+        }
+      ],
+      "event_definitions": [],
+      "fulfillment_details": [],
+      "rules": [
+        {
+          "rule_id": "INST-KR-000830-3-0005-PREF-01",
+          "title": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리 제공",
+          "condition": {
+            "predicate": {
+              "fact_key": "COUPON.ELIGIBLE_COUPON_APPLIED",
+              "operator": "EQUALS",
+              "expected_value": true
+            }
+          },
+          "reward": {
+            "kind": "COUPON_VARIABLE",
+            "unit": "PERCENTAGE_POINT"
+          },
+          "application": {
+            "timing": "AS_DEFINED_BY_SOURCE",
+            "base_interaction": "ADD_TO_BASE_WHEN_REWARD_IS_ADDITIVE"
+          },
+          "display": {
+            "summary": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리 제공",
+            "reward_text": "쿠폰별 변동 우대금리"
+          },
+          "structuring_status": "SUPPORTED",
+          "source_ref_ids": [
+            "EVD-PARK-20260829-INST-KR-000830-3-C67C2196311"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-PARK-20260829-INST-KR-000830-3-C67C2196311",
+              "source_text": "금리쿠폰 사용 시 해당 금리쿠폰에 명시된 조건에 따라 추가적인 우대금리 제공\n금리쿠폰의 우대금리 및 사용, 제공기간 등과 같은 세부사항은 발급된 금리쿠폰의 상세정보를 통해 확인 가능"
+            }
+          ]
+        }
+      ],
+      "relations": [],
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0005",
+        "EVD-OFFICIAL-203"
+      ]
+    },
+    "source_ref_ids": [
+      "EVD-PARK-20260829-INST-KR-000830-3-0005",
+      "EVD-OFFICIAL-203"
+    ],
+    "interest_accrual": {
+      "balance_basis": "END_OF_DAY_BALANCE",
+      "calculation_method": "DAILY_FINAL_BALANCE",
+      "source_ref_ids": [
+        "EVD-PARK-20260829-INST-KR-000830-3-0005"
+      ],
+      "source_text": "매일 최종잔액 합산 계산"
+    },
+    "interest_crediting": {
+      "raw_text": "매월 네 번째 금요일 결산 후 다음날 지급",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203",
+        "EVD-PARK-20260829-INST-KR-000830-3-0005"
+      ],
+      "crediting_events": [
+        {
+          "event_id": "INST-KR-000830-3-0005-INT-PERIODIC",
+          "type": "PERIODIC",
+          "schedule": {
+            "frequency": {
+              "value": 1,
+              "unit": "MONTH"
+            },
+            "anchor": "FOURTH_FRIDAY",
+            "credit_offset": {
+              "value": 1,
+              "unit": "CALENDAR_DAY"
+            }
+          },
+          "source_ref_ids": [
+            "EVD-OFFICIAL-203",
+            "EVD-PARK-20260829-INST-KR-000830-3-0005"
+          ]
+        }
+      ],
+      "frequency": {
+        "value": 1,
+        "unit": "MONTH"
+      }
+    },
+    "payment_timing": "PERIODIC",
+    "advertised_max_rate": {
+      "value": "2.00",
+      "unit": "PERCENT",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203",
+        "EVD-PARK-20260829-INST-KR-000830-3-0005"
+      ],
+      "executable": false,
+      "origin": "ISSUER_OFFICIAL_PRODUCT_PAGE"
+    },
+    "rate_nature": {
+      "type": "VARIABLE",
+      "snapshot_as_of": "2026-08-31",
+      "snapshot_basis": "ISSUER_OFFICIAL_PRODUCT_PAGE",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203",
+        "EVD-PARK-20260829-INST-KR-000830-3-0005"
+      ]
+    }
+  },
+  "liquidity_policy": {
+    "access_mode": "ON_DEMAND",
+    "withdrawal": "FREE_WITHDRAWAL_TO_LINKED_ACCOUNT",
+    "source_ref_ids": [
+      "EVD-OFFICIAL-203",
+      "EVD-PARK-20260829-INST-KR-000830-3-0005"
+    ]
+  },
+  "standard_conditions": [
+    {
+      "condition_id": "AUTO_SAVE_10_PERCENT",
+      "source_text": "연결된 개인사업자통장 전일 입금액의 10%를 다음날 오후 12시 이후 모음",
+      "condition_type": "AUTO_SAVE",
+      "source_ref_ids": [
+        "EVD-OFFICIAL-203"
+      ]
+    }
+  ],
+  "custom_bindings": [],
+  "source_ref_ids": [
+    "EVD-PARK-20260829-INST-KR-000830-3-0005",
+    "EVD-OFFICIAL-203",
+    "EVD-PARK-20260829-INST-KR-000830-3-C67C2196311",
+    "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+  ],
+  "version_metadata": {
+    "captured_at": "2026-08-31T00:00:00+09:00",
+    "data_authority": "ISSUER_OFFICIAL_AND_INTERNAL_PRESERVED_SOURCE",
+    "publication_gate": "PUBLISHED_WITH_EXPLICIT_DATA_GAPS",
+    "data_gaps": [
+      {
+        "product_code": "INST-KR-000830-3-0005",
+        "product_name": "부가세박스",
+        "path": "protection_policy",
+        "reason": "확인한 공식 상품 본문에 예금자보호 문구가 없어 보호대상·한도를 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0005",
+        "product_name": "부가세박스",
+        "path": "listing_snapshot.listing_max_rate",
+        "reason": "Naver listing snapshot이 없어 순위용 listing 최고금리를 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0005",
+        "product_name": "부가세박스",
+        "path": "listing_snapshot.listing_min_rate",
+        "reason": "Naver listing snapshot이 없어 순위용 listing 최저금리를 확정하지 않음",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      },
+      {
+        "product_code": "INST-KR-000830-3-0005",
+        "product_name": "부가세박스",
+        "path": "liquidity_policy.fees_and_limits",
+        "reason": "자유출금은 확인했으나 별도 수수료·이체한도 수치를 확인하지 못함",
+        "status": "SOURCE_GAP_REVIEWED",
+        "execution_policy": "DO_NOT_INFER_OR_EXECUTE"
+      }
+    ],
+    "source_priority": "ISSUER_OFFICIAL",
+    "source_reason": "OFFICIAL_PRODUCT_PAGE_VERIFIED_WITH_INTERNAL_FALLBACK_FOR_DAILY_CREDITING",
+    "rebuild_input_id": "NFI-20260828-INST-KR-000830-3-0005",
+    "source_record_id": "SRC-OFFICIAL-203",
+    "supersedes_version": 3,
+    "restructured_at": "2026-08-31T00:00:00+09:00",
+    "restructure_mode": "INDIVIDUAL_EXTERNAL_OFFICIAL_REVIEW",
+    "review_sequence": 203,
+    "reviewed_source_record_id": "SRC-OFFICIAL-203",
+    "reviewed_individually": true,
+    "audit_status": "PATCHED_AND_REVIEWED",
+    "resolved_audit_findings": [
+      "FALLBACK_RATE_UNSTRUCTURED",
+      "FALLBACK_CUSTOMER_SCOPE_UNSTRUCTURED",
+      "AUTO_SAVE_RULE_UNSTRUCTURED"
+    ],
+    "unresolved_audit_findings": [],
+    "full_product_review_completed_at": "2026-08-31T00:00:00+09:00",
+    "full_product_review_status": "REVIEWED_AND_REMODELED_WITH_EXPLICIT_SOURCE_GAPS",
+    "remaining74_resolution_status": "SOURCE_COMPILED_OR_SAFE_EXTERNALIZED",
+    "remaining74_resolution_at": "2026-08-30T13:18:00+09:00",
+    "product_by_product_changes": [
+      "카카오뱅크 개인사업자통장 연결 신규 prerequisite와 사업자번호별 1계좌를 구조화"
+    ],
+    "source_ref_ids": [
+      "EVD-IDENTITY-MERGE-20260905-CONFIRMED"
+    ],
+    "correction_batch": "20260905-confirmed-identity-merge-01",
+    "correction_applied_at": "2026-09-05T00:00:00+09:00",
+    "correction_reason": "사용자 확인을 받은 동일 상업상품의 기관명 표기 차이를 병합",
+    "previous_version": 4,
+    "previous_path": "data/financial_products/normalized/products/parking_account/INST-KR-000830/INST-KR-000830-3-0005/v004.json",
+    "previous_sha256": "sha256:c0f88cddb90fa25f2c08f9c6893cc57ca0b95cafdd82a38fdb27ebfea1336ff1",
+    "identity_audit": {
+      "reviewed": true,
+      "audit_revision": "20260905-confirmed-identity-merge-01",
+      "status": "PREFERRED_CANONICAL_FOR_DUPLICATE_SOURCE",
+      "equivalence_group_id": "CONFIRMED-IDENTITY-INST-KR-000830-3-0005",
+      "preferred_product_code": "INST-KR-000830-3-0005",
+      "related_input_product_codes": [
+        "INST-KR-000830-3-C67C2196311"
+      ],
+      "relation": "USER_CONFIRMED_SAME_COMMERCIAL_PRODUCT"
+    },
+    "identity_merge": {
+      "confirmed_by": "USER",
+      "alias_product_code": "INST-KR-000830-3-C67C2196311",
+      "alias_version": 4,
+      "canonical_source_score": 4,
+      "alias_source_score": 4,
+      "source_precedence": "ISSUER_OFFICIAL > USER_CONFIRMED > NAVER > INTERNAL",
+      "merged_fields_policy": "winner_values_preserved_missing_values_filled"
+    }
+  },
+  "quality_status": {
+    "product_by_product_reviewed": true,
+    "reviewed_at": "2026-08-31T00:00:00+09:00",
+    "active_audit_finding_count": 0,
+    "rankability": "SOURCE_SUPPORTED_EXECUTABLE_FIELDS_ONLY",
+    "declared_data_gap_count": 4
+  }
+}
