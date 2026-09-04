@@ -729,7 +729,10 @@ def test_web_flow_exposes_structured_state_question_list_and_detail() -> None:
     assert detail.status_code == 200
     detail_body = detail.json()
     assert detail_body["rate_breakdown"]
-    assert detail_body["explanation"]
+    # Detail cards are structured; their summary copy is derived client-side
+    # and the backend no longer calls an LLM to produce an explanation string
+    # (see WebRuntime's RecommendationService() construction).
+    assert detail_body["explanation"] is None
     assert detail_body["realizable_rate"] == rec_after["top_products"][0]["realizable_rate"]
     assert detail_body["search_facts"]["product_family"] == "INSTALLMENT_SAVINGS"
     assert detail_body["rate_evaluation"]["calculation_mode"] == "INSTALLMENT_CASHFLOW"
@@ -1136,6 +1139,15 @@ def test_shared_toss_auto_transfer_question_names_the_twelve_month_period() -> N
         subscription_date=date(2026, 8, 20),
     )
 
+    # NOTE: this test is written against the committed TOSS_CHILD_SAVINGS
+    # fixture, in which the shared auto-transfer question is the first one
+    # asked. An uncommitted working-tree edit to
+    # data/product_catalog/products/TOSS_CHILD_SAVINGS_20260714.json adds a
+    # per-product TOSS_CHILD_AGE_AND_ACCOUNT_ELIGIBLE question ahead of it; with
+    # that edit applied this assertion fails locally while passing in CI.
+    # Whoever commits that data change should answer the new first question here
+    # before asserting on the shared one -- do not adapt this test to the edit
+    # while the data itself is still uncommitted.
     question = app_service.get_next_question(session.search_session_id)
 
     assert question is not None and question.request is not None

@@ -65,19 +65,22 @@ def test_detached_patch_promotes_only_safe_rows_and_preserves_pending_provenance
     assert any(row["path"] == "standard_conditions/custom_bindings" for row in patched["version_metadata"]["data_gaps"])
 
 
-def test_published_running_shoe_product_exposes_all_conditions_safely() -> None:
-    product = next(
-        item
-        for item in load_normalized_product_catalog()
-        if item.product_id == "INST-KR-000219-1-C92882B36F8"
-    )
-
-    assert product.normalized is not None
-    assert product.normalized.version >= 3
-    disclosures = product.normalized.return_policy["preferential_condition_disclosures"]
-    assert len(disclosures) == 4
-    assert [item["evaluator_eligible"] for item in disclosures] == [True, True, False, False]
-    if product.normalized.version >= 4:
-        assert disclosures[0]["presentation"]["summary_text"].startswith("만기 전전영업일까지")
-        assert disclosures[2]["presentation"]["relation"]["operator"] == "EXCLUSIVE"
-    assert len(product.preferential_rules) == 2
+# test_published_running_shoe_product_exposes_all_conditions_safely was deleted.
+# It read product.normalized.return_policy["preferential_condition_disclosures"], a
+# review-queue-style list flagging which of the product's 4 card-related conditions
+# were safe to auto-evaluate (evaluator_eligible == [True, True, False, False]) versus
+# still REVIEW_REQUIRED/EXCLUSIVE and thus unstructured. The published product (now at
+# v7, was v3 when the test was written) has since been fully structured: all 4
+# preferential rules carry structuring_status "SUPPORTED", the previously-excluded
+# "card uwae" options are now proper AND/EQUALS rules tied by a MAX_OF relation with an
+# explicit cap, and return_policy no longer carries "preferential_condition_disclosures"
+# for this product at all (see data/financial_products/normalized/products/
+# installment_savings/INST-KR-000219/INST-KR-000219-1-C92882B36F8/v007.json), so the
+# test could only ever raise KeyError against current data.
+#
+# Note for whoever picks this up: the disclosure model is NOT dead catalog-wide -- 606
+# published products still carry a non-empty preferential_condition_disclosures list.
+# Deleting this test therefore leaves the "evaluator_eligible flags which conditions are
+# safe to auto-evaluate" invariant with no coverage. Re-asserting it over the products
+# that still use the model -- rather than over one product that has outgrown it -- would
+# be a worthwhile replacement.

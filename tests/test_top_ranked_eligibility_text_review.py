@@ -254,7 +254,11 @@ def test_sh_age_65_is_unsatisfiable_and_removed(sh_product) -> None:
     session = service.create_search_session(user_id=user_id, intent=_intent(user_id))
     runtime = service._sessions[session.search_session_id]
 
-    assert runtime.structured_evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.SATISFIED
+    # The published eligibility_rule now requires an explicit
+    # REAL_NAME_SUBSCRIPTION_POSSIBLE fact (on_missing_status UNKNOWN); this user's
+    # store only declares AGE_YEARS, so the structured evaluation is UNKNOWN, not
+    # SATISFIED, independent of the age conflict the text reviewer catches below.
+    assert runtime.structured_evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.UNKNOWN
     assert sh_product.product_id not in runtime.evaluations
     assert runtime.ranking is not None
     assert sh_product.product_id not in runtime.ranking.ordered_product_ids
@@ -299,7 +303,11 @@ def test_bad_grounding_rolls_back_entire_batch_and_suppresses_message(sh_product
     assert runtime.eligibility_text_review_pending_count == 1
     assert runtime.eligibility_text_review_cache == {}
     assert runtime.eligibility_text_review_assistant_message is None
-    assert runtime.evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.SATISFIED
+    # No UserFactStore is supplied for this user, so the now-required
+    # REAL_NAME_SUBSCRIPTION_POSSIBLE fact is missing and the eligibility_rule leaves
+    # the structured evaluation UNKNOWN (not SATISFIED); the bad-grounding rollback
+    # this test protects is orthogonal to that and still applies on top of it.
+    assert runtime.evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.UNKNOWN
     recommendation = service.get_top_recommendations(session.search_session_id)
     assert recommendation.recommendation_status == "PROVISIONAL"
 
@@ -309,6 +317,19 @@ def _clone_product(product, product_id: str, rate: str):
         update={"product_id": product_id, "product_name": product_id},
         deep=True,
     )
+    # Ranking (and thus the eligibility-text review frontier) is driven off the
+    # computed rate in normalized.return_policy["rate_entries"], not off the
+    # top-level ProductDefinition.base_rate/advertised_max_rate fields -- those are
+    # still set below for completeness, but distinct clones must also carry distinct
+    # rate_entries or the ranking service ties every clone at rank 1.
+    rate_entries = deepcopy(product.normalized.return_policy.get("rate_entries") or [])
+    for entry in rate_entries:
+        if entry.get("role") == "BASE":
+            entry["calculation"]["value"] = rate
+    return_policy = {
+        **deepcopy(product.normalized.return_policy),
+        "rate_entries": rate_entries,
+    }
     normalized = product.normalized.model_copy(
         update={
             "version": 1,
@@ -316,6 +337,7 @@ def _clone_product(product, product_id: str, rate: str):
                 "eligibility_text": "실명의 개인만 가입 가능",
                 "source_ref_ids": [f"SRC-{product_id}"],
             },
+            "return_policy": return_policy,
             "raw_product": {
                 **deepcopy(product.normalized.raw_product),
                 "product_code": product_id,
@@ -490,4 +512,7 @@ def test_feature_disabled_keeps_previous_deterministic_behavior(sh_product) -> N
     runtime = service._sessions[session.search_session_id]
 
     assert runtime.eligibility_text_review_state == "DISABLED"
-    assert runtime.evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.SATISFIED
+    # No UserFactStore is supplied, so REAL_NAME_SUBSCRIPTION_POSSIBLE (now a required
+    # structured fact on this product's eligibility_rule) is missing and the
+    # deterministic structured evaluation is UNKNOWN, not SATISFIED.
+    assert runtime.evaluations[sh_product.product_id].eligibility_status == EvaluationStatus.UNKNOWN

@@ -1092,6 +1092,22 @@ def test_common_benefit_question_is_always_applicable() -> None:
     )
 
 
+class _MissingProductTypeIntentGateway:
+    """A general-intent parser that genuinely fails to resolve PRODUCT_TYPE.
+
+    ``_InitialIntentGateway`` always guesses a product type (defaulting to
+    ``INSTALLMENT_SAVINGS``), which ``DeterministicPreSearchQuestionPlanner.
+    sync_from_intent`` treats as an answer regardless of correctness -- so it
+    can never reproduce the "general parser misses the field" precondition
+    this test exercises. This stub leaves ``upsert_product_types`` empty,
+    matching a parser that truly could not extract the field from "수시로
+    찾고 넣고 하고 싶어요".
+    """
+
+    def generate_structured(self, _purpose, _prompt, _schema, **_kwargs):
+        return SimpleNamespace(data=IntentPatch())
+
+
 def test_initial_question_answer_is_not_repeated_when_general_parser_misses_it() -> None:
     interpreter = _PreSearchInterpreter(
         {
@@ -1101,7 +1117,12 @@ def test_initial_question_answer_is_not_repeated_when_general_parser_misses_it()
             )
         }
     )
-    service = _service(interpreter)
+    service = ApplicationService(
+        load_default_product_catalog(),
+        intent_parser=IntentParser(_MissingProductTypeIntentGateway()),
+        conversation_orchestrator=interpreter,
+        pre_search_enabled=True,
+    )
     rest = RestApplicationAdapter(service)
 
     created = rest.handle(
@@ -1117,10 +1138,15 @@ def test_initial_question_answer_is_not_repeated_when_general_parser_misses_it()
     )
 
     assert created.status_code == 201
-    assert created.body["active_question_id"] == "PRESEARCH-APPLICATION_CAPACITY"
     assert interpreter.keys_seen == ["PRODUCT_TYPE"]
     intent = service.get_search_intent(created.body["search_session_id"])
     assert intent.product_types == ["PARKING_ACCOUNT", "CMA"]
+    # The PRODUCT_TYPE question was answered by the focused interpreter, not
+    # re-asked, so the session advances to the next planned question. This was
+    # PRESEARCH-APPLICATION_CAPACITY when the test was written; the planner's
+    # order has since changed, but the next question is still deterministic and
+    # is pinned exactly rather than merely asserted to differ from PRODUCT_TYPE.
+    assert created.body["active_question_id"] == "PRESEARCH-CONTRIBUTION_AND_TERM"
 
 
 def test_one_non_applicable_common_action_does_not_close_the_other_actions() -> None:

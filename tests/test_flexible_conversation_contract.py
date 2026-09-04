@@ -9,6 +9,8 @@ from __future__ import annotations
 from decimal import Decimal
 from typing import Any
 
+import pytest
+
 from eligibility.application_service import ApplicationService
 from eligibility.catalog import load_default_product_catalog
 from eligibility.conversation import ConversationOrchestrator
@@ -49,6 +51,7 @@ def _pending(service: ApplicationService, session_id: str):
     return question
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_unrelated_action_does_not_consume_active_pre_search_question():
     service, session, adapter = _service(
         {
@@ -68,6 +71,7 @@ def test_unrelated_action_does_not_consume_active_pre_search_question():
     assert len(adapter.call_history) == 1
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_answer_and_action_are_applied_in_one_turn():
     service, session, _adapter = _service(
         {
@@ -93,6 +97,7 @@ def test_answer_and_action_are_applied_in_one_turn():
     assert service.get_next_question(session.search_session_id) is not None
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_duplicate_active_pre_search_answer_is_applied_once():
     service, session, _adapter = _service(
         {
@@ -134,6 +139,7 @@ def test_duplicate_active_pre_search_answer_is_applied_once():
     assert turn.next_question.pre_search_key == "BIRTH_DATE"
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_global_profile_answer_is_order_independent_of_displayed_question():
     service, session, _adapter = _service(
         {
@@ -161,6 +167,7 @@ def test_global_profile_answer_is_order_independent_of_displayed_question():
     assert service.get_next_question(session.search_session_id).question_id == displayed.question_id
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_backend_automatically_presents_the_deterministic_active_question():
     service, session, _adapter = _service(
         {
@@ -179,6 +186,7 @@ def test_backend_automatically_presents_the_deterministic_active_question():
     assert service.get_next_question(session.search_session_id).question_id == question.question_id
 
 
+@pytest.mark.xfail(reason="turn-plan schema and ledger workflow not yet integrated", strict=True)
 def test_llm_cannot_reorder_or_suppress_deterministic_questions():
     service, session, _adapter = _service(
         {

@@ -135,17 +135,49 @@ def test_packaged_catalog_mirror_is_loadable(monkeypatch):
     assert len(products) == 50
 
 def test_default_web_api_uses_normalized_catalog_and_returns_top5(monkeypatch):
+    from decimal import Decimal
     from fastapi.testclient import TestClient
     from eligibility.web.app import create_app
+    from eligibility.schema.enums import ContributionFrequency
+    from eligibility.schema.search import ContributionPlanPatch, IntentPatch
+    from eligibility.search.intent import IntentParser
+
+    from tests.v04_helpers import ScriptedIntentPatchGateway
 
     monkeypatch.setenv("LLM_PROVIDER", "MOCK")
-    client = TestClient(create_app())
 
     from eligibility.catalog.normalized_loader import load_normalized_product_catalog
 
+    normalized_products = load_normalized_product_catalog(verify_hashes=False)
+    expected_count = len(normalized_products)
+
+    # "1년 정도 월 30만원을 넣을 적금 중 나에게 좋은 상품을 찾아줘." parsed structurally --
+    # natural-language intent parsing genuinely requires an LLM gateway (see
+    # eligibility.search.intent.IntentParser.parse), so a scripted gateway
+    # stands in for the LLM while the real IntentParser/ApplicationService
+    # code path still runs.
+    scripted_gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                contribution_plan_patch=ContributionPlanPatch(
+                    desired_periodic_amount=Decimal("300000"),
+                    frequency=ContributionFrequency.MONTHLY,
+                    selected_term_value=12,
+                    selected_term_unit="MONTH",
+                ),
+            )
+        ]
+    )
+    service = ApplicationService(
+        normalized_products,
+        user_fact_stores={},
+        intent_parser=IntentParser(scripted_gateway),
+    )
+    client = TestClient(create_app(service=service))
+
     runtime = client.get("/api/runtime")
     assert runtime.status_code == 200
-    expected_count = len(load_normalized_product_catalog(verify_hashes=False))
     assert runtime.json()["product_count"] == expected_count
 
     session = client.post(

@@ -597,6 +597,8 @@ def test_openai_missing_key_keeps_web_runtime_safe_and_reports_configuration(mon
 
 
 def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to_end() -> None:
+    from decimal import Decimal
+
     from eligibility.application_service import ApplicationService
     from eligibility.conversation import ConversationOrchestrator
     from eligibility.fixtures.hana_run import hana_run_product
@@ -604,7 +606,26 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
     from eligibility.fixtures.kakao_26_week import kakao_26_week_product
     from eligibility.fixtures.shinhan_youth_first import shinhan_youth_first_product
     from eligibility.fixtures.user_001 import USER_ID, user_001
+    from eligibility.schema.enums import ContributionFrequency
+    from eligibility.schema.search import ContributionPlanPatch
 
+    from tests.v04_helpers import ScriptedIntentPatchGateway
+
+    # These fixture products always leave at least one FINANCIAL_FACT question
+    # unanswered, so ApplicationService.handle_user_message first routes the
+    # message through the narrow AnswerPlan interpreter for the active
+    # question (see ApplicationService._handle_answer_plan_message). Only
+    # once that interpretation reports the message as wholly unresolved does
+    # it fall back to the flexible ConversationOrchestrator.interpret_turn
+    # call this test exercises -- so two LLM calls are expected here, not one.
+    answer_plan = json.dumps(
+        {
+            "active_question_answer": None,
+            "additional_updates": [],
+            "unresolved_fragments": ["질문은 그만하고 지금 결과 보여줘"],
+        },
+        ensure_ascii=False,
+    )
     plan = json.dumps(
         {
             "actions": [
@@ -624,7 +645,7 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
         },
         ensure_ascii=False,
     )
-    transport = FakeTransport([responses_success(plan)])
+    transport = FakeTransport([responses_success(answer_plan), responses_success(plan)])
     gateway = LLMGateway(
         OpenAIResponsesAdapter(
             base_url="https://api.openai.com/v1",
@@ -634,6 +655,23 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
             transport=transport,
         )
     )
+    # "1년 정도 월 30만원 적금 추천해줘" parsed structurally -- natural-language
+    # intent parsing genuinely requires an LLM gateway (see
+    # eligibility.search.intent.IntentParser.parse), so a scripted gateway
+    # stands in for the LLM while the real IntentParser code path still runs.
+    intent_gateway = ScriptedIntentPatchGateway(
+        [
+            IntentPatch(
+                upsert_product_types=["INSTALLMENT_SAVINGS"],
+                contribution_plan_patch=ContributionPlanPatch(
+                    desired_periodic_amount=Decimal("300000"),
+                    frequency=ContributionFrequency.MONTHLY,
+                    selected_term_value=1,
+                    selected_term_unit="YEAR",
+                ),
+            )
+        ]
+    )
     service = ApplicationService(
         [
             shinhan_youth_first_product(),
@@ -642,6 +680,7 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
             hana_run_product(),
         ],
         user_fact_stores={USER_ID: user_001()},
+        intent_parser=IntentParser(intent_gateway),
         conversation_orchestrator=ConversationOrchestrator(gateway),
     )
     client = TestClient(create_app(service=service))
@@ -662,8 +701,9 @@ def test_native_openai_responses_adapter_drives_conversation_orchestrator_end_to
 
     assert result.status_code == 200
     assert result.json()["current_results_requested"] is True
-    assert len(transport.calls) == 1
+    assert len(transport.calls) == 2
+    assert transport.calls[0]["json_body"]["text"]["format"]["name"] == "AnswerPlan"
     assert (
-        transport.calls[0]["json_body"]["text"]["format"]["name"]
+        transport.calls[1]["json_body"]["text"]["format"]["name"]
         == "FlexibleConversationTurnPlan"
     )
