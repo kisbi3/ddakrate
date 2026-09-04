@@ -127,7 +127,7 @@ def test_nh_term_deposit_is_distinct_from_big_satisfaction_deposit() -> None:
     big_satisfaction = by_code["INST-KR-000739-2-C87539C2B27"]
 
     assert term_deposit["name"] == "정기예금"
-    assert term_deposit["version"] == 5
+    assert term_deposit["version"] == 6
     assert term_deposit["return_policy"]["advertised_max_rate"]["value"] == "2.4"
     assert term_deposit["eligibility_policy"]["mode"] == "UNRESTRICTED"
     assert term_deposit["sale_policy"]["subscription_channels"] == ["BRANCH"]
@@ -143,9 +143,9 @@ def test_nh_term_deposit_is_distinct_from_big_satisfaction_deposit() -> None:
 
     serialized = json.dumps(term_deposit, ensure_ascii=False)
     assert "EVD-TD-ROW0512-NH-PDF" not in serialized
-    assert "automatic_renewal_policy" not in term_deposit["liquidity_policy"]
-    assert "after_maturity_policy" not in term_deposit["liquidity_policy"]
-    assert "partial_withdrawal" not in term_deposit["liquidity_policy"]
+    assert term_deposit["liquidity_policy"]["automatic_renewal_allowed"] is False
+    assert term_deposit["liquidity_policy"]["after_maturity_policy"]
+    assert term_deposit["liquidity_policy"]["partial_withdrawal"]["max_events_including_maturity"] == 3
     assert not any(
         (gap.get("path") or gap.get("field")) == "eligibility_policy"
         for gap in term_deposit["version_metadata"]["data_gaps"]
@@ -189,6 +189,41 @@ def test_nh_identity_correction_preserves_user_evidence_and_repairs_pdf_owner() 
             "INST-KR-000739-2-C4C876638DA",
             "INST-KR-000739-2-C87539C2B27",
         ]
+
+
+def test_nh_official_terms_v006_preserve_current_rate_and_resolve_gaps() -> None:
+    index = _read("data/financial_products/normalized/index.json")
+    row = next(x for x in index["products"] if x["product_code"] == "INST-KR-000739-2-C4C876638DA")
+    product = _read(row["path"])
+    assert row["version"] == 6
+    assert product["return_policy"]["advertised_max_rate"]["value"] == "2.4"
+    assert product["official_site_link"]["url"] == "https://smartmarket.nonghyup.com/servlet/BFDCW1021R.view"
+    manifest = _read(f"data/financial_products/normalized/manifests/{index['manifest_batch']}.json")
+    evidence = _read(manifest["evidence_ref_registry"])["evidence_refs"]
+    pdf = next(x for x in evidence if x["evidence_ref_id"] == "EVD-USER-20260904-NH-TERM-DEPOSIT-PDF")
+    assert pdf["locator"]["sha256"] == "sha256:00fd5752d6be9549a8b49959074b280f0f96af0c4b254af62ebe583637fe4d58"
+    terms = next(x for x in evidence if x["evidence_ref_id"].endswith("PDF-TERMS"))
+    auto = next(x for x in evidence if x["evidence_ref_id"].endswith("PDF-AUTORENEWAL-DECISION"))
+    assert terms["locator"]["page"] == 2
+    assert "만기후" not in terms["source_text"]
+    assert auto["locator"]["page_range"] == "1-5"
+    assert "자동재예치 조항 없음" in auto["source_text"]
+    assert product["data_gaps"] == []
+    assert product["version_metadata"]["data_gaps"] == []
+    assert all(
+        "TERM-DEPOSIT-PDF" not in ref and "TERM-DEPOSIT-DETAIL" not in ref
+        for entry in product["return_policy"]["rate_entries"]
+        for ref in entry.get("source_ref_ids", [])
+    )
+    liquidity = product["liquidity_policy"]
+    assert liquidity["automatic_renewal_allowed"] is False
+    assert liquidity["partial_withdrawal"]["max_events_including_maturity"] == 3
+    assert liquidity["partial_withdrawal"]["remaining_balance_min_krw"] == "1000000"
+    assert liquidity["early_termination_policy"]["tiers"][-1]["rate"]["minimum_percent"] == "0.10"
+    assert liquidity["early_termination_policy"]["tiers"][-1]["rate"]["formula"] == (
+        "EARLY_BASE_RATE*80%*ELAPSED_MONTHS/CONTRACT_MONTHS"
+    )
+    assert liquidity["after_maturity_policy"]["tiers"][0]["rate"]["formula"].endswith("50%")
 
 
 def test_active_manifest_and_index_hashes_are_current() -> None:
