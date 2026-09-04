@@ -58,6 +58,14 @@ _SHARED_FACT_TYPE_ALIASES = {
     "CUSTOMER_AGE_AT_SUBSCRIPTION_YEARS": "AGE_YEARS",
 }
 
+_LOTTERY_BENEFIT_EVENT_TYPES = frozenset(
+    {
+        "PROMOTION_RANDOM_DRAW",
+        "OFFICIAL_RANDOM_ALLOCATION",
+        "OFFICIAL_RANDOM_PAIRING",
+    }
+)
+
 
 def _canonical_fact_type(fact_key: str) -> str:
     normalized = fact_key.replace(".", "_")
@@ -99,11 +107,36 @@ def _canonical_fact_acceptance_policy(
 def _normalized_product_features(product: dict[str, Any]) -> list[ProductFeature]:
     """Project explicitly supported normalized structures into typed features.
 
-    This deliberately keys off the canonical preferential application mode;
-    variable rates and free-form text are not evidence of a lottery benefit.
+    A lottery benefit must be represented by an explicit structured signal in
+    the preferential policy: a random reward, a counted ``WIN`` outcome, an
+    official random draw/allocation/pairing event, or an additive rate sourced
+    from a canonical ``*_RANDOM_RATE`` fact.  Variable rates, generic random
+    result labels, product names, and free-form text are not evidence by
+    themselves; for example, a zodiac-based "lucky rate" is deterministic.
     """
-    preferential = (product.get("return_policy") or {}).get("preferential_application") or {}
-    if preferential.get("mode") == "CUMULATIVE_LOTTERY":
+    preferential = (
+        (product.get("return_policy") or {}).get("preferential_policy") or {}
+    )
+    rules = preferential.get("rules") or []
+    for rule in rules:
+        reward = rule.get("reward") or {}
+        if (
+            reward.get("kind") == "RANDOM_REWARD"
+            or reward.get("count_outcome") == "WIN"
+            or (
+                reward.get("kind") == "ADD_RATE_FROM_FACT"
+                and str(reward.get("fact_key") or "")
+                .upper()
+                .endswith("_RANDOM_RATE")
+            )
+        ):
+            return [ProductFeature(feature_id="LOTTERY_BASED_BENEFIT", present=True)]
+
+    if any(
+        str(event.get("event_type") or "").upper()
+        in _LOTTERY_BENEFIT_EVENT_TYPES
+        for event in (preferential.get("event_definitions") or [])
+    ):
         return [ProductFeature(feature_id="LOTTERY_BASED_BENEFIT", present=True)]
     return []
 
