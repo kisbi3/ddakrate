@@ -204,6 +204,15 @@ class RankingService:
                 material_internal_question_remaining=material_internal_question_remaining,
                 reason_code="MISSING_COMPARABLE_INTEREST_INPUT",
             )
+        if any(item.eligibility_status == EvaluationStatus.UNKNOWN for item in ordered[:top_k]):
+            # A missing eligibility fact can remove a selected product. Keep
+            # the unbounded lower sentinel internal; API decimals stay finite.
+            return TopKStabilityResult(
+                stable=False,
+                stable_membership=False,
+                material_internal_question_remaining=material_internal_question_remaining,
+                reason_code="PENDING_SELECTED_ELIGIBILITY",
+            )
         if len(ordered) <= top_k:
             return TopKStabilityResult(
                 stable=not material_internal_question_remaining,
@@ -217,7 +226,7 @@ class RankingService:
             )
         selected = ordered[:top_k]
         nonselected = ordered[top_k:]
-        kth = self.realizable_metric(selected[-1], objective)
+        kth = self.selected_lower_bound(selected, objective)
         maximum_upper = max(self.optimistic_metric(item, objective) for item in nonselected)
         stable = kth > maximum_upper
         return TopKStabilityResult(
@@ -236,6 +245,23 @@ class RankingService:
                 )
             ),
         )
+
+    @classmethod
+    def selected_lower_bound(
+        cls,
+        selected: list[CandidateEvaluation],
+        objective: RankingObjective,
+    ) -> Decimal:
+        """Conservative lower bound shared by membership and question frontier.
+
+        Possible-max order is not lower-bound order. Any selected product can
+        lose its unknown bonus, including the current first-ranked product.
+        """
+        if any(item.eligibility_status == EvaluationStatus.UNKNOWN for item in selected):
+            # A pending mandatory eligibility condition can remove the product
+            # regardless of its quoted rate, so outsiders remain challengers.
+            return _NEG_INF
+        return min((cls.realizable_metric(item, objective) for item in selected), default=_NEG_INF)
 
     def _with_rank_intervals(
         self,
@@ -328,6 +354,7 @@ class RankingService:
             "NOT_SPECIFIED": 0,
             "EXACT": 0,
             "SELECTABLE_EXACT": 0,
+            "WITHIN_BOUNDS": 0,
             "ALTERNATIVE_SHORTER": 1,
             "MISMATCH": 2,
         }.get(candidate.contribution_projection.term_match_status, 2)

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import re
 from typing import Any
 
 from eligibility.audit import canonical_hash
@@ -19,6 +18,7 @@ from eligibility.schema.conversation import (
     PreSearchAnswerPlan,
 )
 from eligibility.search.institution_names import resolve_institution_references
+from eligibility.search.operation_grounding import grounded_targets
 
 
 class ConversationOrchestrator:
@@ -190,48 +190,46 @@ class ConversationOrchestrator:
     def _project_context(message: str, context: dict[str, Any]) -> dict[str, Any]:
         projected = dict(context)
         catalog = list(projected.get("PRODUCT_CATALOG_SUMMARY") or [])
-        compact = "".join(message.split()).casefold()
         institution_catalog = list(projected.get("INSTITUTION_CATALOG_SUMMARY") or [])
         institution_resolution = resolve_institution_references(
             message,
             institution_catalog,
         )
-        resolved_institution_ids = {
-            item["institution_id"] for item in institution_resolution.resolved
-        }
-        mentioned = []
-        for row in catalog:
-            parts = str(row).split("|", 2)
-            institution_id = parts[1] if len(parts) == 3 else ""
-            product_name = parts[2] if len(parts) == 3 else ""
-            product_tokens = [
-                token for token in re.split(r"[\s·()/_-]+", product_name)
-                if len(token) >= 3
-            ]
-            if institution_id in resolved_institution_ids or any(
-                token.casefold() in compact for token in product_tokens
-            ):
-                mentioned.append(row)
+        product_ids, allowed_institutions = grounded_targets(message, context)
+        mentioned = [row for row in catalog if str(row).split("|", 1)[0] in product_ids]
         projected["PRODUCT_CATALOG_SUMMARY"] = mentioned[:12]
-        projected["INSTITUTION_CATALOG_SUMMARY"] = list(
-            institution_resolution.resolved
-        )[:12]
+        projected["INSTITUTION_CATALOG_SUMMARY"] = [
+            item for item in institution_resolution.resolved
+            if item["institution_id"] in allowed_institutions
+        ][:12]
         projected["AMBIGUOUS_INSTITUTION_REFERENCES"] = list(
             institution_resolution.ambiguous
         )[:6]
-        # Do not expose the full institution-ID allowlist to the model. It may
-        # mutate only an institution resolved from this utterance, or undo an
-        # institution exclusion already visible in mutable session state.
+        # Expose only backend-grounded mutation targets. A full catalog
+        # allowlist invites valid-but-unmentioned product IDs in model plans.
         allowed_operations = dict(projected.get("ALLOWED_OPERATIONS") or {})
-        mutable_state = projected.get("MUTABLE_SEARCH_STATE") or {}
-        currently_excluded = {
-            str(item)
-            for item in mutable_state.get("excluded_institution_ids", [])
-        }
-        allowed_operations["institution_ids"] = sorted(
-            resolved_institution_ids | currently_excluded
-        )
+        allowed_operations["institution_ids"] = sorted(allowed_institutions)
+        allowed_operations["product_ids"] = sorted(product_ids)
         projected["ALLOWED_OPERATIONS"] = allowed_operations
+        state = dict(projected.get("CURRENT_STATE_SNAPSHOT") or {})
+        candidates = state.pop("current_candidate_ids", [])
+        state["current_candidate_count"] = len(candidates)
+        projected["CURRENT_STATE_SNAPSHOT"] = state
+        for key in ("ACTIVE_QUESTION",):
+            if isinstance(projected.get(key), dict):
+                item = dict(projected[key])
+                affected = item.get("affected_product_ids") or []
+                item["affected_product_count"] = len(affected)
+                item["affected_product_ids"] = affected[:16]
+                projected[key] = item
+        workflow = []
+        for original in projected.get("PENDING_WORKFLOW") or []:
+            item = dict(original)
+            affected = item.get("affected_product_ids") or []
+            item["affected_product_count"] = len(affected)
+            item["affected_product_ids"] = affected[:16]
+            workflow.append(item)
+        projected["PENDING_WORKFLOW"] = workflow
         evidence_index = projected.pop("_PRODUCT_EVIDENCE_INDEX", {}) or {}
         existing_evidence = list(projected.get("REFERENCED_PRODUCT_EVIDENCE") or [])
         existing_ids = {
