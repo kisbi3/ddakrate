@@ -22,6 +22,7 @@ from eligibility.schema.search import (
     RecommendationListItem,
     TopKStabilityResult,
 )
+from eligibility.search.semantic import compact_semantic_memos
 
 
 _NEG_INF = Decimal("-Infinity")
@@ -716,6 +717,7 @@ class RankingService:
             eligibility_text_review_fingerprint=(
                 candidate.eligibility_text_review_fingerprint
             ),
+            semantic_memos=compact_semantic_memos(candidate.semantic_interpretations),
         )
 
 

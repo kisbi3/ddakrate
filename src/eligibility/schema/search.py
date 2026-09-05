@@ -435,6 +435,7 @@ class CandidateEvaluation(StrictSearchModel):
     eligibility_text_review_status: EvaluationStatus | None = None
     eligibility_text_review_reason_code: str | None = None
     eligibility_text_review_fingerprint: str | None = None
+    semantic_interpretations: list[dict[str, Any]] = Field(default_factory=list)
 
     @property
     def eligibility_status(self) -> EvaluationStatus:
@@ -545,6 +546,11 @@ class TopKStabilityResult(StrictSearchModel):
     reason_code: str
 
 
+class SemanticConditionMemo(StrictSearchModel):
+    code: Literal["RULED_OUT", "NEEDS_INPUT", "NEEDS_OFFICIAL", "UNRESOLVED"]
+    text: str
+
+
 class RecommendationListItem(StrictSearchModel):
     rank: int = Field(ge=1)
     product_id: str
@@ -586,6 +592,7 @@ class RecommendationListItem(StrictSearchModel):
     eligibility_text_review_status: EvaluationStatus | None = None
     eligibility_text_review_reason_code: str | None = None
     eligibility_text_review_fingerprint: str | None = None
+    semantic_memos: list[SemanticConditionMemo] = Field(default_factory=list)
 
 
 class RateContribution(StrictSearchModel):
@@ -643,6 +650,7 @@ class PersonalizedRecommendationReason(StrictSearchModel):
 
 
 class ProductRecommendationDetail(StrictSearchModel):
+    semantic_interpretations: list[dict[str, Any]] = Field(default_factory=list)
     recommendation_id: str
     search_session_id: str
     product_id: str
@@ -708,6 +716,7 @@ class RankingResult(StrictSearchModel):
 
 
 class ProductRecommendationResult(StrictSearchModel):
+    semantic_review: dict[str, Any] = Field(default_factory=dict)
     recommendation_id: str
     search_session_id: str
     ranking_objective: RankingObjective

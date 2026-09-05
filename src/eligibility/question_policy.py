@@ -231,6 +231,8 @@ def normalize_user_question_request(request: MissingFactRequest) -> MissingFactR
     thing: whether the action can be performed after opening.
     """
 
+    if request.semantic_input is not None:
+        return request
     source_question = request.question or ""
     source_rewrite = None
     if "인터넷/모바일뱅킹에서 가입" in source_question:

@@ -1441,6 +1441,70 @@ function maybeLoadMoreRecommendations(event) {
   if (distanceFromBottom <= 180) loadNextRecommendationPage();
 }
 
+function semanticMemoItems(source) {
+  const memos = source?.semantic_memos
+    || (source?.semantic_interpretations || [])
+      .filter((item) => item.memo_code && item.memo_text)
+      .filter((item, index, rows) => rows.findIndex((row) => row.memo_code === item.memo_code) === index)
+      .map((item) => ({ code: item.memo_code, text: item.memo_text }));
+  return Array.isArray(memos) ? memos : [];
+}
+
+function semanticMemosHtml(source, className) {
+  const memos = semanticMemoItems(source);
+  if (!memos.length) return '';
+  const items = memos.map((memo) => (
+    `<span class="semantic-memo semantic-memo-${escapeHtml(memo.code)}">${escapeHtml(memo.text)}</span>`
+  )).join('');
+  return `<div class="${className}">${items}</div>`;
+}
+
+function renderSemanticReviewStatus(rec) {
+  const review = rec.semantic_review;
+  if (!review || ['DISABLED', 'DEFERRED'].includes(review.status)) return;
+  const note = document.createElement('div');
+  note.className = 'semantic-review-note';
+  note.setAttribute('role', 'status');
+  const text = document.createElement('p');
+  const pending = Number(review.pending_product_count || 0);
+  const unresolved = Number(review.unresolved_clause_count || 0);
+  text.textContent = pending > 0
+    ? `추가 우대조건을 아직 분석하지 않은 상위권 후보가 ${pending}개 있습니다. 현재 추천은 잠정 결과입니다.`
+    : unresolved > 0
+      ? `원문 우대조건 중 ${unresolved}개는 자동 판단하지 않았습니다. 확인되지 않은 우대는 현재 예상금리에 추가하지 않습니다.`
+      : review.ai_interpreted
+        ? '일부 우대조건은 원문을 AI로 해석했습니다. 사용자 답변에 따른 예상값이며, 서류·금융기관 확인과 구분됩니다.'
+        : '이번 후보군의 추가 우대조건 검토를 마쳤습니다.';
+  note.appendChild(text);
+  const canRetry = review.error_code === 'SEMANTIC_COMPILATION_FAILED';
+  if ((pending > 0 || canRetry) && state.session) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = canRetry ? '추가 조건 분석 재시도' : '추가 조건 분석 계속';
+    button.disabled = state.busy;
+    button.addEventListener('click', async () => {
+      if (state.busy || !state.session) return;
+      const sessionId = state.session.search_session_id;
+      setBusy(true);
+      button.disabled = true;
+      text.textContent = '현재 상위권 후보의 추가 우대조건을 분석하고 있습니다.';
+      try {
+        await api(`/search-sessions/${sessionId}/semantic-review`, {
+          method: 'POST', body: { retry_failed: canRetry },
+        });
+        if (state.session?.search_session_id === sessionId) await syncAll();
+      } catch (error) {
+        text.textContent = `추가 조건 분석을 완료하지 못했습니다. ${error.message}`;
+      } finally {
+        setBusy(false);
+        button.disabled = false;
+      }
+    });
+    note.appendChild(button);
+  }
+  els.recommendations.appendChild(note);
+}
+
 function renderRecommendations() {
   const rec = state.recommendations;
   if (!rec) return;
@@ -1489,6 +1553,7 @@ function renderRecommendations() {
   const allItems = filteredItems.slice(0, 100);
   const items = allItems.slice(0, state.visibleRecommendationCount);
   els.recommendations.innerHTML = '';
+  renderSemanticReviewStatus(rec);
   els.recommendations.classList.toggle(
     'expanded-results',
     state.visibleRecommendationCount >= RECOMMENDATION_PAGE_SIZE
@@ -1584,6 +1649,7 @@ function renderRecommendations() {
         <div class="expected-rate-block">${expectedRateHtml}</div>
         ${rateBlockHtml}
       </div>
+      ${semanticMemosHtml(item, 'card-semantic-memos')}
     `;
     const open = () => openDetail(item.product_id, previewMode);
     card.addEventListener('click', open);
@@ -2235,7 +2301,7 @@ function detailSummaryCopy(detail) {
 
   return {
     title: rank === 1 ? '내 조건에서 가장 유리한 이유' : `${rank}위로 추천된 이유`,
-    reason: rankText || '상품별 적용 조건과 금리를 비교해 추천했어요.',
+    reason: (rankText || '상품별 적용 조건과 금리를 비교해 추천했어요.') + ((detail.semantic_interpretations || []).some((item) => item.status === 'AI_INTERPRETED') ? ' 일부 우대조건은 원문을 AI로 해석한 잠정 판단이며 공식 검증과 구분됩니다.' : ''),
     reward: rewardText,
     action: actionText,
   };
@@ -3185,6 +3251,7 @@ function renderDetail(detail) {
     <section class="detail-section detail-section-first">
       <div class="detail-section-heading"><div><h3>${isCma ? '우대 수익률' : '우대 금리'}</h3></div><span class="detail-as-of">기준일 ${escapeHtml(evaluatedRate.rate_as_of || detail.rate_as_of || '확인 전')}</span></div>
       <p class="detail-section-description">조건별 우대금리와 받는 방법을 보여드려요. 검증 전 조건은 '공식 확인 필요'로 표시합니다.</p>
+      ${semanticMemosHtml(detail, 'detail-semantic-memos')}
       <div class="rate-legend"><span><i class="status-SATISFIED">✓</i> 적용</span><span><i class="status-ACHIEVABLE">→</i> 받을 수 있음</span><span><i class="status-UNSATISFIABLE">×</i> 적용 불가</span><span><i class="status-UNKNOWN">?</i> 확인 필요</span></div>
       <div class="rate-tree">${conditionNodes}${pendingDisclosureEntries}</div>
       ${upsideNotice}

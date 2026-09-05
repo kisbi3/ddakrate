@@ -4,6 +4,12 @@ from eligibility.llm.models import LLMProfile, LLMPurpose
 
 
 DEFAULT_PROFILES: dict[LLMPurpose, LLMProfile] = {
+    LLMPurpose.SEMANTIC_CONDITION_COMPILATION: LLMProfile(
+        purpose=LLMPurpose.SEMANTIC_CONDITION_COMPILATION,
+        prompt_template_id="semantic-preferential-conditions",
+        prompt_template_version="1.0.0", response_schema_version="1.0.0",
+        temperature=0.0, timeout_seconds=30.0,
+    ),
     LLMPurpose.RULE_EXTRACTION: LLMProfile(
         purpose=LLMPurpose.RULE_EXTRACTION,
         prompt_template_id="financial-rule-extraction",

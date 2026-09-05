@@ -55,6 +55,8 @@ class QuestionGenerator:
         self._cache: dict[str, str] = {}
 
     def generate(self, request: MissingFactRequest) -> str:
+        if request.semantic_input is not None and request.question:
+            return request.question
         fallback = self.deterministic_fallback(request)
         if self.gateway is None:
             return fallback
