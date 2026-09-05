@@ -7,6 +7,7 @@ from datetime import date
 from decimal import Decimal
 import json
 from pathlib import Path
+import subprocess
 
 import pytest
 from fastapi.testclient import TestClient
@@ -26,6 +27,7 @@ from eligibility.schema.semantic import ClauseInterpretation, SemanticCompilatio
 from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
 from eligibility.search.semantic import (
     SemanticConditionCompiler, compact_semantic_memos, existing_question_family,
+    first_transaction_holding_rules_out, has_unlinked_alternative_path,
     overlay_product, product_packet, validate_compilation, evaluate_expression,
     normalize_answer, user_inputs,
 )
@@ -68,6 +70,42 @@ def semantic_product(pid, text=COUNT_TEXT, *, official=False, reward="1", base="
         "normalized": normalized,
         "advertised_max_rate": p.base_rate + cap, "preferential_rate_cap": cap,
         "metadata": p.metadata.model_copy(update={"advertised_max_rate": p.base_rate + cap, "preferential_rate_cap": cap}),
+    }, deep=True)
+    return ProductDefinition.model_validate(p.model_dump())
+
+
+def semantic_product_from_rules(pid, specs, *, base="2", cap=None, relations=None):
+    p = make_product(pid, base_rate=base)
+    rules = []
+    total = Decimal("0")
+    for index, spec in enumerate(specs, start=1):
+        text = spec["text"]
+        reward = Decimal(str(spec["reward"]))
+        total += reward
+        rules.append({
+            "rule_id": spec.get("rule_id", f"{pid}-RAW-{index:02d}"),
+            "title": spec.get("title", "우대"),
+            "source_clause_text": text,
+            "self_report_eligible": True,
+            "condition": {"source_text": text, **(spec.get("condition") or {})},
+            "reward": {"kind": "BONUS_RATE", "value": str(reward), "unit": "PERCENTAGE_POINT"},
+            "source_ref_ids": [f"SOURCE-{pid}-{index}"],
+        })
+    cap_value = Decimal(str(cap)) if cap is not None else total
+    advertised = Decimal(base) + cap_value
+    normalized = NormalizedProductData(
+        version=1, institution_name="테스트은행", sale_status="ON_SALE", raw_product={},
+        term_policy={"kind": "FIXED", "value": 12, "unit": "MONTH"},
+        return_policy={
+            "return_kind": "INTEREST", "advertised_max_rate": {"value": str(advertised)},
+            "rate_entries": [{"rate_id": "BASE", "role": "BASE", "calculation": {"value": base, "unit": "PERCENT"}}],
+            "preferential_policy": {"rules": rules, "relations": relations or []},
+        },
+    )
+    p = p.model_copy(update={
+        "normalized": normalized,
+        "advertised_max_rate": advertised, "preferential_rate_cap": cap_value,
+        "metadata": p.metadata.model_copy(update={"advertised_max_rate": advertised, "preferential_rate_cap": cap_value}),
     }, deep=True)
     return ProductDefinition.model_validate(p.model_dump())
 
@@ -663,9 +701,13 @@ def test_declined_existing_benefit_rules_out_unread_clause_and_drops_upper(pid, 
     service, sid = service_for([product], compiler, intent=_declined_intent(field))
     assert compiler.calls == []
     candidate = service._runtime(sid).evaluations[pid]
+    original = Decimal("2") + Decimal("1")
     assert candidate.realizable_rate == candidate.user_specific_conditional_upper_rate == Decimal("2")
+    assert candidate.product_evaluation.rates.advertised_max_rate == original
     assert any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
     item = next(x for x in service.get_top_recommendations(sid).top_products if x.product_id == pid)
+    assert item.advertised_max_rate == original
+    assert item.user_specific_conditional_upper_rate == Decimal("2")
     assert any(memo.code == "RULED_OUT" for memo in item.semantic_memos)
     question = service.get_next_question(sid)
     assert question is None or question.request is None or question.request.semantic_input is None
@@ -740,3 +782,131 @@ def test_willing_card_clause_needs_official_confirmation_not_a_new_slot():
     assert candidate.user_specific_conditional_upper_rate == Decimal("3")
     question = service.get_next_question(sid)
     assert question is None or question.request is None or question.request.semantic_input != "CHILDREN"
+
+
+def test_web_app_javascript_parses():
+    app_js = Path("src/eligibility/web/static/app.js")
+    result = subprocess.run(["node", "--check", str(app_js)], capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stderr
+
+
+def test_first_transaction_holding_requires_matching_period_and_product_scope():
+    assert first_transaction_holding_rules_out(FIRST_TX_TEXT) is True
+    assert first_transaction_holding_rules_out("최근 6개월 당행 예적금 미보유 고객") is True
+    assert first_transaction_holding_rules_out("최근 3년 당행 적금 거래가 없는 고객") is True
+    assert first_transaction_holding_rules_out("최근 3개월 당행 예적금 미보유 고객") is False
+    assert first_transaction_holding_rules_out("최근 1년 당행 입출금 거래가 없는 고객") is False
+    assert first_transaction_holding_rules_out("우대금리 제공") is False
+
+
+def test_mismatched_first_transaction_holding_stays_needs_official():
+    product = semantic_product("FIRST", "최근 1년 당행 입출금 거래가 없는 고객에게 우대금리 1%p")
+    packet = product_packet(product, "test")
+    overlay, _, requests, views = overlay_product(
+        product, packet, (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        holding_institution_names=["테스트은행(주)"],
+    )
+    assert requests == []
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in views)
+    assert overlay.advertised_max_rate == product.advertised_max_rate == Decimal("3")
+    compiler = CompilerDouble({"FIRST": count_expr()})
+    service, sid = service_for([product], compiler)
+    runtime = service._runtime(sid)
+    runtime.pre_search_profile[INSTITUTION_PRODUCT_HOLDING_HISTORY] = PreSearchProfileEntry(
+        question_key=INSTITUTION_PRODUCT_HOLDING_HISTORY,
+        answer_status=PreSearchAnswerStatus.ANSWERED,
+        value={"prior_product_holding_institutions": ["테스트 은행"]},
+    )
+    service._evaluate(runtime, list(runtime.candidate_products.values()))
+    candidate = runtime.evaluations["FIRST"]
+    assert compiler.calls == []
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    assert compact_semantic_memos(candidate.semantic_interpretations)[0]["code"] == "NEEDS_OFFICIAL"
+
+
+def test_absent_holding_does_not_confirm_first_transaction():
+    product = semantic_product("FIRST", FIRST_TX_TEXT)
+    overlay, _, _, views = overlay_product(
+        product, product_packet(product, "test"), (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        holding_institution_names=["다른은행"],
+    )
+    assert overlay.advertised_max_rate == product.advertised_max_rate
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in views)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in views)
+
+
+def test_card_clause_with_other_path_is_not_ruled_out_by_declined_card():
+    text = "당행 신용카드 이용실적 또는 자동이체 충족 시 우대금리 1%p"
+    assert existing_question_family(text=text) == "CARD"
+    assert has_unlinked_alternative_path(text, "CARD") is True
+    product = semantic_product("CARD", text)
+    compiler = CompilerDouble({"CARD": count_expr()})
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    assert compiler.calls == []
+    candidate = service._runtime(sid).evaluations["CARD"]
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in candidate.semantic_interpretations)
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("3")
+
+
+def test_remaining_exclusive_alternative_keeps_user_upper():
+    product = semantic_product_from_rules(
+        "MIXED",
+        [
+            {"title": "카드", "text": CARD_TEXT, "reward": "1"},
+            {"title": "급여", "text": SALARY_TEXT, "reward": "1"},
+        ],
+        cap="1",
+        relations=[{"type": "MAX_OF", "rule_ids": ["MIXED-RAW-01", "MIXED-RAW-02"]}],
+    )
+    compiler = CompilerDouble({"MIXED": count_expr()})
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    assert compiler.calls == []
+    candidate = service._runtime(sid).evaluations["MIXED"]
+    memos = {item.get("memo_code") for item in candidate.semantic_interpretations}
+    assert "RULED_OUT" in memos
+    assert "NEEDS_OFFICIAL" in memos
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("3")
+
+
+def test_global_cap_keeps_user_upper_after_one_bonus_is_ruled_out():
+    product = semantic_product_from_rules(
+        "CAP",
+        [
+            {"title": "카드", "text": CARD_TEXT, "reward": "1"},
+            {"title": "급여", "text": SALARY_TEXT, "reward": "2"},
+        ],
+        cap="2",
+    )
+    compiler = CompilerDouble({"CAP": count_expr()})
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    candidate = service._runtime(sid).evaluations["CAP"]
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("4")
+    assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("4")
+
+
+def test_next_compile_batch_follows_reranked_frontier():
+    high = semantic_product("HIGH", COUNT_TEXT, reward="5")
+    later = semantic_product("LATER", COUNT_TEXT, reward="4")
+    filler = [semantic_product(f"F{i}", COUNT_TEXT, reward="0.1") for i in range(3)]
+    products = [high, *filler, later]
+    compiler = CompilerDouble({item.product_id: count_expr() for item in products})
+    service, sid = service_for(
+        products, compiler, semantic_batch_size=1,
+        intent=make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=1),
+    )
+    first_ids = [packet.product_id for packet in compiler.calls[0]]
+    assert first_ids == ["HIGH"]
+    answer_children(service, sid, count=0)
+    compiled_ids = [packet.product_id for batch in compiler.calls for packet in batch]
+    assert "LATER" in compiled_ids
+    if "F0" in compiled_ids:
+        assert compiled_ids.index("LATER") < compiled_ids.index("F0")
+    assert service._runtime(sid).evaluations["HIGH"].user_specific_conditional_upper_rate == Decimal("2")

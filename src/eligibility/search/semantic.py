@@ -71,9 +71,24 @@ _MARKETING_RE = re.compile(r"마케팅|광고성|수신\s*동의|상품\s*안내
 _CARD_RE = re.compile(r"카드\s*(?:발급|사용|이용|결제|실적|매입)|체크카드|신용카드|당행\s*카드")
 _SALARY_RE = re.compile(r"급여이체|급여계좌|급여\s*수령|급여실적|급여 입금")
 _FIRST_TX_RE = re.compile(
-    r"첫거래|첫\s*거래|신규고객|신규 고객|당행.*없|기존고객이 아닌|"
-    r"최근\s*\d+\s*개월.*없|거래실적이 없는|비고객"
+    r"첫거래|첫\s*거래|신규고객|신규 고객|당행.*없|당행.*미보유|기존고객이 아닌|"
+    r"최근\s*\d+\s*(?:개월|년).*없|최근\s*\d+\s*(?:개월|년).*미보유|"
+    r"거래실적이 없는|비고객"
 )
+_ALT_SPLIT_RE = re.compile(r"또는|혹은")
+_OTHER_ACTION_RE = re.compile(r"자동이체|오픈뱅킹|앱\s*사용|모바일뱅킹|비대면|인터넷뱅킹|펀드|대출")
+_HOLDING_HISTORY_MONTHS = 6
+_HOLDING_HISTORY_PRODUCTS = frozenset({"DEPOSIT_SAVINGS", "HOUSING_SUBSCRIPTION"})
+_MONTHS_RE = re.compile(r"최근\s*(\d+)\s*개월")
+_YEARS_RE = re.compile(r"최근\s*(\d+)\s*년")
+_EVER_FIRST_TX_RE = re.compile(
+    r"첫거래|첫\s*거래|신규고객|신규\s*고객|기존고객이 아닌|비고객|"
+    r"거래실적이 없는|최초|처음"
+)
+_DEPOSIT_PRODUCT_RE = re.compile(r"예금|적금|예적금|정기예금|정기적금")
+_SUBSCRIPTION_PRODUCT_RE = re.compile(r"청약")
+_DEMAND_PRODUCT_RE = re.compile(r"입출금|요구불")
+_LOAN_PRODUCT_RE = re.compile(r"대출|주담대")
 
 SYSTEM_PROMPT = """당신은 사전 질문이 끝난 금융상품 후보군의 우대조건을 읽는 제한된 컴파일러입니다.
 여러 상품의 raw_clauses와 read_only_typed_rules를 함께 보고 공통 입력으로 조건을 표현하세요.
@@ -579,19 +594,105 @@ def compact_semantic_memos(views: Iterable[dict[str, Any]]) -> list[dict[str, st
     return [{"code": code, "text": seen[code]} for code in MEMO_CODES if code in seen]
 
 
+def required_absence_months(text: str) -> int | None:
+    """Lookback the clause requires, in months. None if the period is unknown."""
+
+    month = _MONTHS_RE.search(text)
+    if month:
+        return int(month.group(1))
+    year = _YEARS_RE.search(text)
+    if year:
+        return int(year.group(1)) * 12
+    if _EVER_FIRST_TX_RE.search(text):
+        return 10**9
+    return None
+
+
+def required_absence_products(text: str) -> set[str]:
+    """Product types whose absence the clause requires."""
+
+    products: set[str] = set()
+    if _DEPOSIT_PRODUCT_RE.search(text):
+        products.add("DEPOSIT_SAVINGS")
+    if _SUBSCRIPTION_PRODUCT_RE.search(text):
+        products.add("HOUSING_SUBSCRIPTION")
+    if _DEMAND_PRODUCT_RE.search(text):
+        products.add("DEMAND")
+    if _LOAN_PRODUCT_RE.search(text):
+        products.add("LOAN")
+    if _CARD_RE.search(text):
+        products.add("CARD")
+    if products:
+        return products
+    if _EVER_FIRST_TX_RE.search(text):
+        return {"ANY_RELATIONSHIP"}
+    return set()
+
+
+def first_transaction_holding_rules_out(text: str) -> bool:
+    """Whether 6-month 예적금·청약 holdings prove this first-tx clause is false.
+
+    The pre-search answer only covers deposits/savings/housing subscription at
+    named institutions in the last six months. A shorter window, a different
+    product type, or an unspecified period is not enough to rule the clause out.
+    """
+
+    months = required_absence_months(text)
+    products = required_absence_products(text)
+    if months is None or not products:
+        return False
+    if months < _HOLDING_HISTORY_MONTHS:
+        return False
+    if "ANY_RELATIONSHIP" in products:
+        return True
+    return bool(products & _HOLDING_HISTORY_PRODUCTS)
+
+
+def has_unlinked_alternative_path(text: str, family: str) -> bool:
+    """True when the sentence still has a fulfillment path outside this family."""
+
+    if not _ALT_SPLIT_RE.search(text):
+        return False
+    parts = [part.strip() for part in _ALT_SPLIT_RE.split(text) if part.strip()]
+    if len(parts) < 2:
+        return False
+    for part in parts:
+        part_family = existing_question_family(text=part)
+        if part_family == family:
+            continue
+        if part_family is not None and part_family != family:
+            return True
+        if _OTHER_ACTION_RE.search(part):
+            return True
+        if family == "CARD" and not _CARD_RE.search(part):
+            return True
+        if family == "SALARY" and not _SALARY_RE.search(part):
+            return True
+        if family == "FIRST_TRANSACTION" and not _FIRST_TX_RE.search(part):
+            return True
+    return False
+
+
 def linked_clause_outcome(
     family: str,
     *,
+    clause_text: str = "",
     declined_benefit_fields: Iterable[str] = (),
     holding_match: bool = False,
 ) -> str:
     declined = set(declined_benefit_fields)
     if family == "MARKETING":
         return "NEEDS_OFFICIAL"
+    if has_unlinked_alternative_path(clause_text, family):
+        return "NEEDS_OFFICIAL"
     field = FAMILY_BENEFIT_FIELD.get(family)
     if field and field in declined:
         return "RULED_OUT"
-    if family == "FIRST_TRANSACTION" and holding_match:
+    if (
+        family == "FIRST_TRANSACTION"
+        and holding_match
+        and first_transaction_holding_rules_out(clause_text)
+    ):
         return "RULED_OUT"
     return "NEEDS_OFFICIAL"
 
@@ -664,16 +765,6 @@ def _wrap_existing_rule(existing, extra_child):
     return existing.model_copy(update={"rule": root}, deep=True)
 
 
-def _lower_advertised_max(product: ProductDefinition, amount: Decimal) -> ProductDefinition:
-    if amount <= 0 or product.advertised_max_rate is None or product.base_rate is None:
-        return product
-    new_max = max(product.base_rate, product.advertised_max_rate - amount)
-    updates: dict[str, Any] = {"advertised_max_rate": new_max}
-    if product.metadata is not None:
-        updates["metadata"] = product.metadata.model_copy(update={"advertised_max_rate": new_max}, deep=True)
-    return product.model_copy(update=updates, deep=True)
-
-
 def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                     interpretations: Iterable[ClauseInterpretation], store: UserFactStore,
                     *, as_of: date, subscription_date: date,
@@ -696,7 +787,6 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
     views = []
     allowed = {c.clause_id: c for c in packet.clauses} if packet else {}
     interpreted_ids = set()
-    ruled_out_pp = Decimal("0")
     holding_match = holding_matches_product(product, holding_institution_names)
     if packet is not None:
         for clause in packet.empty_clauses:
@@ -706,7 +796,10 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
         for clause in packet.linked_clauses:
             family = clause.existing_question_family or ""
             outcome = linked_clause_outcome(
-                family, declined_benefit_fields=declined_benefit_fields, holding_match=holding_match,
+                family,
+                clause_text=clause.text,
+                declined_benefit_fields=declined_benefit_fields,
+                holding_match=holding_match,
             )
             interpreted_ids.add(clause.clause_id)
             source = SourceReference(
@@ -716,8 +809,6 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
             predicate = _linked_predicate(clause, outcome, source)
             if outcome == "RULED_OUT":
                 facts.append(_self_report(store.user_id, predicate.fact_type, False, as_of, clause.clause_id))
-                if clause.reward_pp is not None:
-                    ruled_out_pp += clause.reward_pp
             existing = next((r for r in rules if r.rule.rule_id == clause.existing_runtime_rule_id), None)
             if existing is not None:
                 wrapped = _wrap_existing_rule(existing, predicate.model_copy(
@@ -845,7 +936,6 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                 clause, status="UNRESOLVED", reason="SEMANTIC_PENDING", memo_code="UNRESOLVED",
             ))
     overlay = product.model_copy(update={"preferential_rules": rules}, deep=True) if rules != product.preferential_rules else product
-    overlay = _lower_advertised_max(overlay, ruled_out_pp)
     return overlay, store.model_copy(update={"facts": facts}), requests, views
 
 
