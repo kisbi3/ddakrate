@@ -1,3 +1,5 @@
+import pytest
+
 from eligibility.conversation import ConversationOrchestrator
 from eligibility.search.institution_names import resolve_institution_references
 
@@ -66,4 +68,22 @@ def test_projected_context_exposes_resolved_id_and_related_products_only():
         "P-SH|SH_BANK|Sh매일받는통장"
     ]
     assert projected["AMBIGUOUS_INSTITUTION_REFERENCES"] == []
-    assert projected["ALLOWED_OPERATIONS"]["institution_ids"] == ["POST", "SH_BANK"]
+    # Prior exclusion is history, not blanket authorization to change POST
+    # during an unrelated institution request. Undo requires its own grounding.
+    assert projected["ALLOWED_OPERATIONS"]["institution_ids"] == ["SH_BANK"]
+
+
+@pytest.mark.parametrize("message,excluded,expected", [
+    ("우체국 제외 취소해줘", ["POST"], ["POST"]),
+    ("뺀 거 취소해줘", ["POST"], ["POST"]),
+    ("기간만 바꿔줘", ["POST"], []),
+    ("뺀 거 취소해줘", ["POST", "SH_BANK"], []),
+])
+def test_institution_undo_requires_explicit_or_unique_reference(message, excluded, expected):
+    projected = ConversationOrchestrator._project_context(message, {
+        "INSTITUTION_CATALOG_SUMMARY": CATALOG,
+        "PRODUCT_CATALOG_SUMMARY": [],
+        "ALLOWED_OPERATIONS": {"institution_ids": [row["institution_id"] for row in CATALOG]},
+        "MUTABLE_SEARCH_STATE": {"excluded_institution_ids": excluded},
+    })
+    assert projected["ALLOWED_OPERATIONS"]["institution_ids"] == expected

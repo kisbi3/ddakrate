@@ -87,6 +87,17 @@ def terms_equivalent(left: ContractTerm, right: ContractTerm, *, tolerance_days:
     return abs(_term_days(left) - _term_days(right)) <= tolerance_days
 
 
+def _term_comparison_days(term: ContractTerm) -> Decimal:
+    """Use one calendar scale for bounds: one year is exactly twelve months.
+
+    Keep this separate from cashflow day-count approximations; changing a
+    comparison must not silently change the monetary calculation convention.
+    """
+    if term.unit == TermUnit.YEAR:
+        return Decimal(term.value * 12) * Decimal("30.4375")
+    return _term_days(term)
+
+
 def resolve_term(product: ProductDefinition, plan: ContributionPlan | None) -> ContractTerm:
     """Resolve the product's actual selectable contract term.
 
@@ -114,15 +125,28 @@ def resolve_term(product: ProductDefinition, plan: ContributionPlan | None) -> C
     metadata = product.metadata
     if metadata is None:
         return core
+    requested_days = _term_comparison_days(requested)
     if metadata.available_terms:
+        # A boundary is not an exact term. Select from the intersection of the
+        # finite product domain and the user's bound, never the representative
+        # term merely because the boundary itself is absent from the domain.
+        if plan.term_strictness == "MAXIMUM":
+            feasible = [item for item in metadata.available_terms if _term_comparison_days(item) <= requested_days]
+            return max(feasible, key=_term_comparison_days) if feasible else core
+        if plan.term_strictness == "MINIMUM":
+            feasible = [item for item in metadata.available_terms if _term_comparison_days(item) >= requested_days]
+            return min(feasible, key=_term_comparison_days) if feasible else core
         for available in metadata.available_terms:
             if terms_equivalent(available, requested):
                 return available
         return core
     if metadata.min_term is not None and metadata.max_term is not None:
-        requested_days = _term_days(requested)
-        if _term_days(metadata.min_term) <= requested_days <= _term_days(metadata.max_term):
+        if _term_comparison_days(metadata.min_term) <= requested_days <= _term_comparison_days(metadata.max_term):
             return requested
+        if plan.term_strictness == "MAXIMUM" and _term_comparison_days(metadata.max_term) <= requested_days:
+            return metadata.max_term
+        if plan.term_strictness == "MINIMUM" and _term_comparison_days(metadata.min_term) >= requested_days:
+            return metadata.min_term
     return core
 
 

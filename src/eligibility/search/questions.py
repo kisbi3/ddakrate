@@ -725,13 +725,7 @@ class RankingAwareQuestionPlanner:
         # belongs in Top 3.
         selected = list(final_order[:verification_top_k])
         selected_ids = {item.product_id for item in selected}
-        kth = (
-            self.ranking_service.realizable_metric(
-                selected[-1], intent.ranking_objective
-            )
-            if selected
-            else Decimal("-Infinity")
-        )
+        kth = self.ranking_service.selected_lower_bound(selected, intent.ranking_objective)
         for candidate in optimistic:
             if (
                 candidate.product_id not in selected_ids
