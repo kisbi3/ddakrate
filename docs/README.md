@@ -11,6 +11,13 @@
 - [유연한 대화 턴·문맥·Decision Ledger 설계](guides/FLEXIBLE_CONVERSATION_CONTEXT_AND_LEDGER_DESIGN.md)
 - [상위 추천상품 eligibility_text LLM 가입조건 검수 구현 계획](guides/TOP_RANKED_ELIGIBILITY_TEXT_LLM_REVIEW_PLAN.md)
 
+## 우대조건 의미 분석 (진행 중)
+
+실험 기능이다. 스위치 기본값은 꺼짐이며, 아직 main에 넣지 않았다.
+
+- [지금까지 한 일과 앞으로 할 일 (2026-09-06)](handoff/SEMANTIC_PREFERENTIAL_PROGRESS_20260906_KO.md) — 현황의 출발점
+- 계획·1금융권 표본·코드 PR은 그 문서 8절의 GitHub 링크를 본다
+
 ## 릴리스 보고서
 
 버전별 구현·강화·의미론 변경 기록은 [`reports/releases/`](reports/releases/)에 있다.
