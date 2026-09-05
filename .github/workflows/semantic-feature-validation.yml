@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 3
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p /tmp/semantic-validation
-          test "$(git rev-parse HEAD^)" = '79a9a7ab605276d8933164f7899a27d658501f86'
+          test "$(git rev-parse HEAD~2)" = '79a9a7ab605276d8933164f7899a27d658501f86'
           python - <<'PY'
           import base64, hashlib, lzma, pathlib, subprocess
           packed = ''.join(p.read_text() for p in sorted(pathlib.Path('scripts/.semantic-feature-transport').glob('part*.txt')))
@@ -34,9 +34,12 @@ jobs:
           path.write_bytes(patch)
           subprocess.run(['git', 'apply', '--check', str(path)], check=True)
           subprocess.run(['git', 'apply', '--index', str(path)], check=True)
+          delta = pathlib.Path('scripts/.semantic-feature-transport/date.patch')
+          assert hashlib.sha256(delta.read_bytes()).hexdigest() == 'f4352521412c4c240253c7dd6409771a1cb793bc64e2ecbdb139c8d6c232469f'
+          subprocess.run(['git', 'apply', '--index', str(delta)], check=True)
           PY
-          git rm -- .github/workflows/semantic-feature-validation.yml scripts/.semantic-feature-transport/part0.txt scripts/.semantic-feature-transport/part1.txt scripts/.semantic-feature-transport/part2.txt scripts/.semantic-feature-transport/part3.txt
-          test "$(git write-tree)" = 'de85ba455e47e6ddb8284e0c77aa9dfc146effff'
+          git rm -r -- .github/workflows/semantic-feature-validation.yml scripts/.semantic-feature-transport
+          test "$(git write-tree)" = 'd09bf37b0d1fb048ee4ed7259f4d42404bc46b4d'
           git diff --cached --stat > /tmp/semantic-validation/change-stat.txt
       - name: Install dependencies
         shell: bash
@@ -73,7 +76,7 @@ jobs:
         run: |
           test "$GITHUB_REF" = 'refs/heads/codex/semantic-preferential-questions'
           git diff --exit-code
-          test "$(git write-tree)" = 'de85ba455e47e6ddb8284e0c77aa9dfc146effff'
+          test "$(git write-tree)" = 'd09bf37b0d1fb048ee4ed7259f4d42404bc46b4d'
           git fetch origin codex/semantic-preferential-questions
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
           git config user.name 'github-actions[bot]'
