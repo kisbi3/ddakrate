@@ -546,6 +546,11 @@ class TopKStabilityResult(StrictSearchModel):
     reason_code: str
 
 
+class SemanticConditionMemo(StrictSearchModel):
+    code: Literal["RULED_OUT", "NEEDS_INPUT", "NEEDS_OFFICIAL", "UNRESOLVED"]
+    text: str
+
+
 class RecommendationListItem(StrictSearchModel):
     rank: int = Field(ge=1)
     product_id: str
@@ -587,6 +592,7 @@ class RecommendationListItem(StrictSearchModel):
     eligibility_text_review_status: EvaluationStatus | None = None
     eligibility_text_review_reason_code: str | None = None
     eligibility_text_review_fingerprint: str | None = None
+    semantic_memos: list[SemanticConditionMemo] = Field(default_factory=list)
 
 
 class RateContribution(StrictSearchModel):

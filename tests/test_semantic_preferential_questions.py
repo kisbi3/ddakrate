@@ -17,12 +17,16 @@ from eligibility.conversation import ConversationOrchestrator
 from eligibility.llm import LLMGateway, LLMPurpose, MockLLMAdapter
 from eligibility.schema.enums import (
     ComparisonOperator, EvaluationStatus, FactSemanticType, RankingObjective,
-    PreSearchAnswerStatus,
+    PreSearchAnswerStatus, PreferenceValue,
 )
+from eligibility.schema.application_input import Preference
 from eligibility.schema.product import NormalizedProductData, ProductDefinition
+from eligibility.schema.search import PreSearchProfileEntry
 from eligibility.schema.semantic import ClauseInterpretation, SemanticCompilation, SemanticExpression, ChildrenAnswer
+from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
 from eligibility.search.semantic import (
-    SemanticConditionCompiler, product_packet, validate_compilation, evaluate_expression,
+    SemanticConditionCompiler, compact_semantic_memos, existing_question_family,
+    overlay_product, product_packet, validate_compilation, evaluate_expression,
     normalize_answer, user_inputs,
 )
 from eligibility.web.app import create_app
@@ -102,9 +106,10 @@ class CompilerDouble:
 
 
 def service_for(products, compiler, **kwargs):
+    intent = kwargs.pop("intent", None)
     service = ApplicationService(products, user_fact_stores={USER_ID: base_store()},
                                  semantic_compiler=compiler, **kwargs)
-    intent = make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=3)
+    intent = intent or make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=3)
     session = service.create_search_session(user_id=USER_ID, intent=intent, as_of=AS_OF,
                                            subscription_date=SUBSCRIPTION_DATE)
     return service, session.search_session_id
@@ -617,3 +622,121 @@ def test_empty_only_packet_is_unresolved_not_unsupported():
     assert runtime.semantic_review.error_code != "SOURCE_PACKET_UNSUPPORTED"
     views = runtime.evaluations["EMPTY"].semantic_interpretations
     assert any(item.get("reason") == "EMPTY_SOURCE_CLAUSE" for item in views)
+    assert any(item.get("memo_code") == "UNRESOLVED" for item in views)
+
+
+CARD_TEXT = "당행 신용카드 이용실적 충족 시 우대금리 1%p"
+SALARY_TEXT = "급여이체 실적 충족 시 우대금리 1%p"
+FIRST_TX_TEXT = "당행 첫거래 고객에게 우대금리 1%p"
+MARKETING_TEXT = "상품 안내 및 마케팅 수신 동의 시 우대금리 1%p"
+
+
+def test_existing_question_family_maps_unambiguous_clauses_only():
+    assert existing_question_family(text=CARD_TEXT) == "CARD"
+    assert existing_question_family(text=SALARY_TEXT) == "SALARY"
+    assert existing_question_family(text=FIRST_TX_TEXT) == "FIRST_TRANSACTION"
+    assert existing_question_family(text=MARKETING_TEXT) == "MARKETING"
+    assert existing_question_family(text=COUNT_TEXT) is None
+    assert existing_question_family(text="급여이체 또는 신용카드 이용실적") is None
+    assert existing_question_family(text="행운카드 우대") is None
+
+
+def _declined_intent(*fields: str):
+    return make_intent(
+        objective=RankingObjective.MAX_REALIZABLE_RATE,
+        top_k=3,
+        preferences=[
+            Preference(field=field, preference=PreferenceValue.PREFER_ABSENT)
+            for field in fields
+        ],
+    )
+
+
+@pytest.mark.parametrize("pid, text, field", [
+    ("CARD", CARD_TEXT, "CARD_BENEFIT"),
+    ("SALARY", SALARY_TEXT, "SALARY_BENEFIT"),
+    ("FIRST", FIRST_TX_TEXT, "FIRST_TRANSACTION_BENEFIT"),
+])
+def test_declined_existing_benefit_rules_out_unread_clause_and_drops_upper(pid, text, field):
+    product = semantic_product(pid, text)
+    compiler = CompilerDouble({pid: count_expr()})
+    service, sid = service_for([product], compiler, intent=_declined_intent(field))
+    assert compiler.calls == []
+    candidate = service._runtime(sid).evaluations[pid]
+    assert candidate.realizable_rate == candidate.user_specific_conditional_upper_rate == Decimal("2")
+    assert any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    item = next(x for x in service.get_top_recommendations(sid).top_products if x.product_id == pid)
+    assert any(memo.code == "RULED_OUT" for memo in item.semantic_memos)
+    question = service.get_next_question(sid)
+    assert question is None or question.request is None or question.request.semantic_input is None
+
+
+def test_children_question_is_asked_without_duplicate_marketing_question():
+    children = semantic_product("KIDS", COUNT_TEXT)
+    marketing = semantic_product("ADS", MARKETING_TEXT)
+    compiler = CompilerDouble({"KIDS": count_expr(), "ADS": count_expr()})
+    service, sid = service_for([children, marketing], compiler)
+    compiled_ids = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert "KIDS" in compiled_ids
+    assert "ADS" not in compiled_ids
+    question = service.get_next_question(sid)
+    assert question is not None and question.request.semantic_input == "CHILDREN"
+    assert "마케팅" not in (question.question or "")
+    ads = service._runtime(sid).evaluations["ADS"]
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in ads.semantic_interpretations)
+    assert ads.user_specific_conditional_upper_rate == Decimal("3")
+    assert ads.realizable_rate == Decimal("2")
+    with TestClient(create_app(service=service)) as client:
+        listing = client.get(f"/api/search-sessions/{sid}/recommendations").json()
+        ads_item = next(item for item in listing["top_products"] if item["product_id"] == "ADS")
+        assert any(memo["code"] == "NEEDS_OFFICIAL" for memo in ads_item["semantic_memos"])
+        kids_detail = client.get(f"/api/search-sessions/{sid}/recommendations/KIDS").json()
+        ads_detail = client.get(f"/api/search-sessions/{sid}/recommendations/ADS").json()
+        assert any(item.get("memo_code") == "NEEDS_INPUT" for item in kids_detail["semantic_interpretations"])
+        assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in ads_detail["semantic_interpretations"])
+
+
+def test_first_transaction_holding_history_rules_out_without_llm():
+    product = semantic_product("FIRST", FIRST_TX_TEXT)
+    packet = product_packet(product, "test")
+    assert [c.existing_question_family for c in packet.linked_clauses] == ["FIRST_TRANSACTION"]
+    assert packet.clauses == ()
+    _, _, requests, views = overlay_product(
+        product, packet, (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        holding_institution_names=["테스트은행(주)"],
+    )
+    assert requests == []
+    assert any(item.get("memo_code") == "RULED_OUT" for item in views)
+    compiler = CompilerDouble({"FIRST": count_expr()})
+    service, sid = service_for([product], compiler)
+    runtime = service._runtime(sid)
+    runtime.pre_search_profile[INSTITUTION_PRODUCT_HOLDING_HISTORY] = PreSearchProfileEntry(
+        question_key=INSTITUTION_PRODUCT_HOLDING_HISTORY,
+        answer_status=PreSearchAnswerStatus.ANSWERED,
+        value={"prior_product_holding_institutions": ["테스트 은행"]},
+    )
+    service._evaluate(runtime, list(runtime.candidate_products.values()))
+    candidate = runtime.evaluations["FIRST"]
+    assert compiler.calls == []
+    assert candidate.realizable_rate == candidate.user_specific_conditional_upper_rate == Decimal("2")
+    assert compact_semantic_memos(candidate.semantic_interpretations)[0]["code"] == "RULED_OUT"
+
+
+def test_willing_card_clause_needs_official_confirmation_not_a_new_slot():
+    product = semantic_product("CARD", CARD_TEXT)
+    compiler = CompilerDouble({"CARD": count_expr()})
+    service, sid = service_for(
+        [product], compiler,
+        intent=make_intent(
+            objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=3,
+            preferences=[Preference(field="CARD_BENEFIT", preference=PreferenceValue.PREFER_PRESENT)],
+        ),
+    )
+    assert compiler.calls == []
+    candidate = service._runtime(sid).evaluations["CARD"]
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in candidate.semantic_interpretations)
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    question = service.get_next_question(sid)
+    assert question is None or question.request is None or question.request.semantic_input != "CHILDREN"
