@@ -382,6 +382,14 @@ class RateEngine:
             for member in members[1:]:
                 union(members[0], member)
 
+        # Catalog relations are often empty for 1%/2%/3% child-count tiers that
+        # still share one official sentence. Treat that shared source as a max
+        # choice even when no exclusive relation was published. Distinct source
+        # texts remain additive.
+        for members in RateEngine._same_source_tier_groups(policy, values):
+            for member in members[1:]:
+                union(members[0], member)
+
         groups: dict[str, list[str]] = {}
         for rule_id in values:
             groups.setdefault(find(rule_id), []).append(rule_id)
@@ -434,3 +442,34 @@ class RateEngine:
         if product.base_rate is not None:
             total -= product.base_rate * sum(replacement_scopes.values(), Decimal("0"))
         return max(Decimal("0"), total)
+
+    @staticmethod
+    def _same_source_tier_groups(
+        policy: dict,
+        values: dict[str, Decimal],
+    ) -> list[list[str]]:
+        """Group executable rewards that copy the same official sentence.
+
+        A child-count ladder published as three ADD_RATE rows with empty
+        relations must not sum to 1+2+3. The grouping key is the stripped
+        source clause text, not a guessed family name.
+        """
+
+        grouped: dict[str, list[str]] = {}
+        for row in policy.get("rules") or []:
+            if not isinstance(row, dict):
+                continue
+            rule_id = str(row.get("rule_id") or "")
+            if rule_id not in values:
+                continue
+            text = row.get("source_clause_text") or row.get("condition_text") or ""
+            if not isinstance(text, str):
+                continue
+            text = " ".join(text.split())
+            if not text:
+                continue
+            members = grouped.setdefault(text, [])
+            if rule_id not in members:
+                members.append(rule_id)
+        return [members for members in grouped.values() if len(members) >= 2]
+
