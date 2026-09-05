@@ -1441,7 +1441,23 @@ function maybeLoadMoreRecommendations(event) {
   if (distanceFromBottom <= 180) loadNextRecommendationPage();
 }
 
-function renderSemanticReviewStatus(rec) {
+function semanticMemoItems(source) {
+  const memos = source?.semantic_memos
+    || (source?.semantic_interpretations || [])
+      .filter((item) => item.memo_code && item.memo_text)
+      .filter((item, index, rows) => rows.findIndex((row) => row.memo_code === item.memo_code) === index)
+      .map((item) => ({ code: item.memo_code, text: item.memo_text }));
+  return Array.isArray(memos) ? memos : [];
+}
+
+function semanticMemosHtml(source, className) {
+  const memos = semanticMemoItems(source);
+  if (!memos.length) return '';
+  const items = memos.map((memo) => (
+    `<span class="semantic-memo semantic-memo-${escapeHtml(memo.code)}">${escapeHtml(memo.text)}</span>`
+  )).join('');
+  return `<div class="${className}">${items}</div>`;
+}
   const review = rec.semantic_review;
   if (!review || ['DISABLED', 'DEFERRED'].includes(review.status)) return;
   const note = document.createElement('div');
@@ -1631,6 +1647,7 @@ function renderRecommendations() {
         <div class="expected-rate-block">${expectedRateHtml}</div>
         ${rateBlockHtml}
       </div>
+      ${semanticMemosHtml(item, 'card-semantic-memos')}
     `;
     const open = () => openDetail(item.product_id, previewMode);
     card.addEventListener('click', open);
@@ -3232,6 +3249,7 @@ function renderDetail(detail) {
     <section class="detail-section detail-section-first">
       <div class="detail-section-heading"><div><h3>${isCma ? '우대 수익률' : '우대 금리'}</h3></div><span class="detail-as-of">기준일 ${escapeHtml(evaluatedRate.rate_as_of || detail.rate_as_of || '확인 전')}</span></div>
       <p class="detail-section-description">조건별 우대금리와 받는 방법을 보여드려요. 검증 전 조건은 '공식 확인 필요'로 표시합니다.</p>
+      ${semanticMemosHtml(detail, 'detail-semantic-memos')}
       <div class="rate-legend"><span><i class="status-SATISFIED">✓</i> 적용</span><span><i class="status-ACHIEVABLE">→</i> 받을 수 있음</span><span><i class="status-UNSATISFIABLE">×</i> 적용 불가</span><span><i class="status-UNKNOWN">?</i> 확인 필요</span></div>
       <div class="rate-tree">${conditionNodes}${pendingDisclosureEntries}</div>
       ${upsideNotice}

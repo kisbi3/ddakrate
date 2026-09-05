@@ -440,6 +440,13 @@
           ],
           "default": null,
           "title": "Eligibility Text Review Fingerprint"
+        },
+        "semantic_memos": {
+          "items": {
+            "$ref": "#/$defs/SemanticConditionMemo"
+          },
+          "title": "Semantic Memos",
+          "type": "array"
         }
       },
       "required": [
@@ -457,6 +464,31 @@
         "material_unknown_count"
       ],
       "title": "RecommendationListItem",
+      "type": "object"
+    },
+    "SemanticConditionMemo": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "RULED_OUT",
+            "NEEDS_INPUT",
+            "NEEDS_OFFICIAL",
+            "UNRESOLVED"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "text"
+      ],
+      "title": "SemanticConditionMemo",
       "type": "object"
     },
     "TopKStabilityResult": {

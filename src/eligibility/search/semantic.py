@@ -40,6 +40,40 @@ QUESTIONS = {
     "MARRIAGE_DATE": "혼인일이 언제인가요? 해당하지 않거나 알려주기 어려우시면 그렇게 말씀해 주세요.",
     "PREGNANT_SELF": "임신 관련 우대 확인을 위해, 가입자 본인이 현재 임신 중인지 알려주실 수 있나요? 답변하지 않으셔도 됩니다.",
 }
+LINK_PREFIX = "SEMANTIC_LINKED::"
+MEMO_CODES = ("RULED_OUT", "NEEDS_INPUT", "NEEDS_OFFICIAL", "UNRESOLVED")
+MEMO_TEXT = {
+    "RULED_OUT": "이 우대는 현재 답 기준으로 해당 없습니다",
+    "NEEDS_INPUT": "해당될 수 있습니다. {slot}를 더 알면 판단할 수 있습니다",
+    "NEEDS_OFFICIAL": "조건은 맞을 수 있으나 은행 확인이 필요합니다",
+    "UNRESOLVED": "이 우대는 자동으로 판단하지 못했습니다",
+}
+SLOT_LABELS = {
+    "CHILDREN": "자녀 정보",
+    "MARRIAGE_DATE": "혼인일",
+    "PREGNANT_SELF": "임신 여부",
+}
+FAMILY_BENEFIT_FIELD = {
+    "CARD": "CARD_BENEFIT",
+    "SALARY": "SALARY_BENEFIT",
+    "FIRST_TRANSACTION": "FIRST_TRANSACTION_BENEFIT",
+}
+FAMILY_EXISTING_QUESTION = {
+    "CARD": "COMMON_BENEFIT_WILLINGNESS",
+    "SALARY": "COMMON_BENEFIT_WILLINGNESS",
+    "FIRST_TRANSACTION": "COMMON_BENEFIT_WILLINGNESS",
+    "MARKETING": "EXISTING_MARKETING_QUESTION",
+}
+_CHILDREN_RE = re.compile(r"자녀|다자녀|미성년 자녀|출산|출생아|소아|영아|유아")
+_MARRIAGE_RE = re.compile(r"혼인|결혼기념|결혼일|혼인신고|배우자 명의")
+_PREGNANCY_RE = re.compile(r"임신")
+_MARKETING_RE = re.compile(r"마케팅|광고성|수신\s*동의|상품\s*안내|정보성\s*동의")
+_CARD_RE = re.compile(r"카드\s*(?:발급|사용|이용|결제|실적|매입)|체크카드|신용카드|당행\s*카드")
+_SALARY_RE = re.compile(r"급여이체|급여계좌|급여\s*수령|급여실적|급여 입금")
+_FIRST_TX_RE = re.compile(
+    r"첫거래|첫\s*거래|신규고객|신규 고객|당행.*없|기존고객이 아닌|"
+    r"최근\s*\d+\s*개월.*없|거래실적이 없는|비고객"
+)
 
 SYSTEM_PROMPT = """당신은 사전 질문이 끝난 금융상품 후보군의 우대조건을 읽는 제한된 컴파일러입니다.
 여러 상품의 raw_clauses와 read_only_typed_rules를 함께 보고 공통 입력으로 조건을 표현하세요.
@@ -83,6 +117,7 @@ class SourceClause:
     official_only: bool
     reward_pp: Decimal | None
     existing_runtime_rule_id: str | None = None
+    existing_question_family: str | None = None
 
 
 @dataclass(frozen=True)
@@ -92,6 +127,57 @@ class ProductPacket:
     clauses: tuple[SourceClause, ...]
     payload: dict[str, Any]
     empty_clauses: tuple[SourceClause, ...] = ()
+    linked_clauses: tuple[SourceClause, ...] = ()
+
+
+def first_fact_key(row: dict[str, Any]) -> str:
+    for node in walk(row.get("condition") or {}):
+        key = node.get("fact_key")
+        if key:
+            return str(key)
+    return ""
+
+
+def existing_question_family(*, title: str = "", text: str = "", fact_key: str = "") -> str | None:
+    """Map an unread clause onto an existing question family, or None.
+
+    Mixed/ambiguous sentences stay with the compiler instead of inventing a
+    new slot. Children/marriage/pregnancy remain typed semantic inputs.
+    """
+
+    compact = f"{title} {text} {fact_key}"
+    blob = compact.upper()
+    if _PREGNANCY_RE.search(compact) or _CHILDREN_RE.search(compact) or _MARRIAGE_RE.search(compact):
+        return None
+    hits: list[str] = []
+    if (
+        _FIRST_TX_RE.search(compact)
+        or "PRODUCT_HOLDING" in blob
+        or "NEW_CUSTOMER" in blob
+        or "FIRST_TRANSACTION" in blob
+        or "FIRST_DEPOSIT" in blob
+    ):
+        hits.append("FIRST_TRANSACTION")
+    if _MARKETING_RE.search(compact) or "MARKETING" in blob:
+        hits.append("MARKETING")
+    if _SALARY_RE.search(compact) or "SALARY" in blob or "INCOME_CREDIT" in blob:
+        hits.append("SALARY")
+    if _CARD_RE.search(compact) or "CARD_" in blob or "CARD." in blob:
+        hits.append("CARD")
+    unique = list(dict.fromkeys(hits))
+    return unique[0] if len(unique) == 1 else None
+
+
+def institution_history_name_key(name: str | None) -> str:
+    return re.sub(r"(?:\(주\)|주식회사|㈜|\s)+", "", name or "").casefold()
+
+
+def product_institution_name(product: ProductDefinition) -> str:
+    if product.metadata is not None and product.metadata.institution_name:
+        return product.metadata.institution_name
+    if product.normalized is not None:
+        return product.normalized.institution_name
+    return product.institution_id or ""
 
 
 def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPacket | None:
@@ -107,6 +193,7 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
     runtime_by_id = {item.canonical_rule_id or item.rule.rule_id: item for item in product.preferential_rules}
     clauses = []
     empty_clauses = []
+    linked_clauses = []
     for row in policy.get("rules") or []:
         rid = row.get("rule_id")
         if not rid:
@@ -156,20 +243,37 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
                 pass
         source_hash = digest(metadata)
         cid = f"{product.product_id}:v{normalized.version}:{rid}:{source_hash[:12]}"
-        clause = SourceClause(cid, str(rid), source_hash, text, row, official, amount, existing.rule.rule_id if opaque_gate else None)
+        family = None if not text else existing_question_family(
+            title=str(row.get("title") or ""),
+            text=text,
+            fact_key=first_fact_key(row),
+        )
+        clause = SourceClause(
+            cid, str(rid), source_hash, text, row, official, amount,
+            existing.rule.rule_id if opaque_gate else None, family,
+        )
         if not text:
             # An empty official sentence cannot be compiled. Skip it and keep
             # the remaining clauses; the overlay records UNRESOLVED memos.
             empty_clauses.append(clause)
             continue
+        if family:
+            # Existing pre-search/planner families own these sentences. Do not
+            # send them to the compiler or invent a duplicate question slot.
+            linked_clauses.append(clause)
+            continue
         clauses.append(clause)
-    if not clauses and not empty_clauses:
+    if not clauses and not empty_clauses and not linked_clauses:
         return None
     payload = {
         "product_id": product.product_id,
         "product_version": normalized.version,
         "product_name": product.name,
         "skipped_empty_clause_ids": [c.canonical_id for c in empty_clauses],
+        "linked_clause_ids": [
+            {"clause_id": c.clause_id, "family": c.existing_question_family}
+            for c in linked_clauses
+        ],
         "raw_clauses": [
             {"clause_id": c.clause_id, "source_hash": c.source_hash, "source_text": c.text,
              "source_metadata": c.row, "requires_official_confirmation": c.official_only,
@@ -182,7 +286,10 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
         ],
     }
     key = digest({"compiler": compiler_key, "packet": payload})
-    return ProductPacket(product.product_id, key, tuple(clauses), payload, tuple(empty_clauses))
+    return ProductPacket(
+        product.product_id, key, tuple(clauses), payload,
+        tuple(empty_clauses), tuple(linked_clauses),
+    )
 
 
 class SemanticConditionCompiler:
@@ -457,9 +564,121 @@ def _self_report(user_id: str, fact_type: str, value: Any, as_of: date, source: 
     )
 
 
+def memo_text(code: str, *, slot: str | None = None) -> str:
+    text = MEMO_TEXT[code]
+    return text.format(slot=slot or "추가 정보") if code == "NEEDS_INPUT" else text
+
+
+def compact_semantic_memos(views: Iterable[dict[str, Any]]) -> list[dict[str, str]]:
+    seen: dict[str, str] = {}
+    for view in views:
+        code = view.get("memo_code")
+        text = view.get("memo_text")
+        if code in MEMO_CODES and isinstance(text, str) and text and code not in seen:
+            seen[code] = text
+    return [{"code": code, "text": seen[code]} for code in MEMO_CODES if code in seen]
+
+
+def linked_clause_outcome(
+    family: str,
+    *,
+    declined_benefit_fields: Iterable[str] = (),
+    holding_match: bool = False,
+) -> str:
+    declined = set(declined_benefit_fields)
+    if family == "MARKETING":
+        return "NEEDS_OFFICIAL"
+    field = FAMILY_BENEFIT_FIELD.get(family)
+    if field and field in declined:
+        return "RULED_OUT"
+    if family == "FIRST_TRANSACTION" and holding_match:
+        return "RULED_OUT"
+    return "NEEDS_OFFICIAL"
+
+
+def holding_matches_product(product: ProductDefinition, holding_institution_names: Iterable[str]) -> bool:
+    product_key = institution_history_name_key(product_institution_name(product))
+    if not product_key:
+        return False
+    return any(
+        institution_history_name_key(name) == product_key
+        for name in holding_institution_names
+        if isinstance(name, str) and name.strip()
+    )
+
+
+def _clause_view(clause: SourceClause, *, status: str, memo_code: str | None = None,
+                 slot: str | None = None, **extra: Any) -> dict[str, Any]:
+    view = {"clause_id": clause.clause_id, "status": status, "source_text": clause.text, **extra}
+    if memo_code:
+        view["memo_code"] = memo_code
+        view["memo_text"] = memo_text(memo_code, slot=slot)
+    if clause.existing_question_family:
+        view["existing_question_family"] = clause.existing_question_family
+        view["linked_question"] = FAMILY_EXISTING_QUESTION.get(clause.existing_question_family)
+    return view
+
+
+def _clause_application(product: ProductDefinition, clause: SourceClause) -> dict[str, Any]:
+    application = dict(
+        ((product.normalized.return_policy.get("preferential_policy") or {}) if product.normalized else {})
+        .get("global_application") or {}
+    )
+    application.update(clause.row.get("application") or {})
+    return application
+
+
+def _linked_predicate(clause: SourceClause, outcome: str, source: SourceReference) -> FactComparisonRule:
+    fact_type = LINK_PREFIX + clause.clause_id
+    if outcome == "RULED_OUT":
+        return FactComparisonRule(
+            rule_id=f"{clause.canonical_id}:LINKED",
+            name=str(clause.row.get("title") or "추가 우대조건"),
+            purpose=RulePurpose.PREFERENTIAL_RATE, source=source,
+            fact_type=fact_type, operator=ComparisonOperator.EQ, expected=True,
+            on_false_status=EvaluationStatus.UNSATISFIABLE,
+            on_missing_status=EvaluationStatus.UNKNOWN,
+            fact_acceptance_policy=FactAcceptancePolicy(allow_provisional=True),
+        )
+    return FactComparisonRule(
+        rule_id=f"{clause.canonical_id}:LINKED",
+        name=str(clause.row.get("title") or "추가 우대조건"),
+        purpose=RulePurpose.PREFERENTIAL_RATE, source=source,
+        fact_type=fact_type, operator=ComparisonOperator.EQ, expected=True,
+        on_missing_status=EvaluationStatus.UNKNOWN,
+        fact_acceptance_policy=FactAcceptancePolicy(allow_provisional=False),
+        missing_fact=MissingFactSpec(resolution_strategy=ResolutionStrategy.UNRESOLVABLE),
+    )
+
+
+def _wrap_existing_rule(existing, extra_child):
+    original = existing.rule.model_copy(update={
+        "rule_id": existing.rule.rule_id + ":ORIGINAL",
+        "missing_fact": MissingFactSpec(resolution_strategy=ResolutionStrategy.UNRESOLVABLE),
+    }, deep=True)
+    root = AndRule(
+        rule_id=existing.rule.rule_id, name=existing.rule.name,
+        purpose=RulePurpose.PREFERENTIAL_RATE, source=existing.rule.source,
+        children=[original, extra_child],
+    )
+    return existing.model_copy(update={"rule": root}, deep=True)
+
+
+def _lower_advertised_max(product: ProductDefinition, amount: Decimal) -> ProductDefinition:
+    if amount <= 0 or product.advertised_max_rate is None or product.base_rate is None:
+        return product
+    new_max = max(product.base_rate, product.advertised_max_rate - amount)
+    updates: dict[str, Any] = {"advertised_max_rate": new_max}
+    if product.metadata is not None:
+        updates["metadata"] = product.metadata.model_copy(update={"advertised_max_rate": new_max}, deep=True)
+    return product.model_copy(update=updates, deep=True)
+
+
 def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                     interpretations: Iterable[ClauseInterpretation], store: UserFactStore,
-                    *, as_of: date, subscription_date: date):
+                    *, as_of: date, subscription_date: date,
+                    declined_benefit_fields: Iterable[str] = (),
+                    holding_institution_names: Iterable[str] = ()):
     """Return independent executable product/facts plus missing shared inputs."""
     answers = user_inputs(store, as_of)
     facts = list(store.facts)
@@ -477,20 +696,57 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
     views = []
     allowed = {c.clause_id: c for c in packet.clauses} if packet else {}
     interpreted_ids = set()
+    ruled_out_pp = Decimal("0")
+    holding_match = holding_matches_product(product, holding_institution_names)
     if packet is not None:
         for clause in packet.empty_clauses:
-            views.append({
-                "clause_id": clause.clause_id,
-                "status": "UNRESOLVED",
-                "reason": "EMPTY_SOURCE_CLAUSE",
-                "source_text": clause.text,
-            })
+            views.append(_clause_view(
+                clause, status="UNRESOLVED", reason="EMPTY_SOURCE_CLAUSE", memo_code="UNRESOLVED",
+            ))
+        for clause in packet.linked_clauses:
+            family = clause.existing_question_family or ""
+            outcome = linked_clause_outcome(
+                family, declined_benefit_fields=declined_benefit_fields, holding_match=holding_match,
+            )
+            interpreted_ids.add(clause.clause_id)
+            source = SourceReference(
+                document="상품 우대조건 원문 (기존 질문 연결)",
+                document_id=clause.canonical_id, source_text=clause.text,
+            )
+            predicate = _linked_predicate(clause, outcome, source)
+            if outcome == "RULED_OUT":
+                facts.append(_self_report(store.user_id, predicate.fact_type, False, as_of, clause.clause_id))
+                if clause.reward_pp is not None:
+                    ruled_out_pp += clause.reward_pp
+            existing = next((r for r in rules if r.rule.rule_id == clause.existing_runtime_rule_id), None)
+            if existing is not None:
+                wrapped = _wrap_existing_rule(existing, predicate.model_copy(
+                    update={"rule_id": existing.rule.rule_id + ":LINKED"}, deep=True,
+                ))
+                rules = [wrapped if r is existing else r for r in rules]
+            elif clause.reward_pp is not None:
+                rules.append(PreferentialRateRule(
+                    rule=predicate, reward=Reward(value=clause.reward_pp),
+                    canonical_rule_id=clause.canonical_id, reward_kind="ADD_RATE",
+                    application=_clause_application(product, clause),
+                ))
+            views.append(_clause_view(
+                clause,
+                status="RULED_OUT" if outcome == "RULED_OUT" else "UNRESOLVED",
+                reason="EXISTING_QUESTION_LINK",
+                memo_code=outcome,
+                linked_outcome=outcome,
+            ))
     for interpretation in interpretations:
         clause = allowed.get(interpretation.clause_id)
         if clause is None or clause.source_hash != interpretation.source_hash:
             continue
         if interpretation.expression is None or clause.reward_pp is None:
-            views.append({"clause_id": clause.clause_id, "status": "UNRESOLVED", "reason": interpretation.unresolved_reason or "UNSUPPORTED_REWARD"})
+            views.append(_clause_view(
+                clause, status="UNRESOLVED",
+                reason=interpretation.unresolved_reason or "UNSUPPORTED_REWARD",
+                memo_code="UNRESOLVED",
+            ))
             continue
         interpreted_ids.add(clause.clause_id)
         outcome = evaluate_expression(interpretation.expression, answers, as_of=as_of, subscription_date=subscription_date)
@@ -531,8 +787,7 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                 missing_fact=MissingFactSpec(resolution_strategy=ResolutionStrategy.UNRESOLVABLE, required_source="OFFICIAL_PRODUCT_SOURCE"),
             ))
         rule = AndRule(rule_id=rule_id, name=predicate.name, purpose=RulePurpose.PREFERENTIAL_RATE, source=source, children=children)
-        application = dict((product.normalized.return_policy.get("preferential_policy") or {}).get("global_application") or {})
-        application.update(clause.row.get("application") or {})
+        application = _clause_application(product, clause)
         if existing is not None:
             rules = [r.model_copy(update={"rule": rule}, deep=True) if r is existing else r for r in rules]
         else:
@@ -550,21 +805,30 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                 impact={"rate_pp": clause.reward_pp},
                 grounding_terms=[predicate.name],
             ))
-        views.append({"clause_id": clause.clause_id, "status": "AI_INTERPRETED", "predicate_result": outcome.value,
-                      "official_confirmation_required": clause.official_only, "source_text": clause.text})
+        if outcome.value is False:
+            memo_code, slot = "RULED_OUT", None
+        elif outcome.value is True and clause.official_only:
+            memo_code, slot = "NEEDS_OFFICIAL", None
+        elif outcome.missing:
+            memo_code, slot = "NEEDS_INPUT", "·".join(SLOT_LABELS.get(v, v) for v in sorted(outcome.missing))
+        elif outcome.value is None:
+            memo_code, slot = "UNRESOLVED", None
+        else:
+            memo_code, slot = None, None
+        views.append(_clause_view(
+            clause, status="AI_INTERPRETED", memo_code=memo_code, slot=slot,
+            predicate_result=outcome.value, official_confirmation_required=clause.official_only,
+        ))
     # Pending/failed opaque gates must not fall back to "yes = every hidden
     # condition satisfied". Keep their upper bound, but block current rewards
     # until interpretation supplies a proper predicate and authority checks.
+    viewed_ids = {item["clause_id"] for item in views}
     for clause in allowed.values():
         if not clause.existing_runtime_rule_id or clause.clause_id in interpreted_ids:
             continue
         existing = next((p for p in rules if p.rule.rule_id == clause.existing_runtime_rule_id), None)
         if existing is None:
             continue
-        original = existing.rule.model_copy(update={
-            "rule_id": existing.rule.rule_id + ":ORIGINAL",
-            "missing_fact": MissingFactSpec(resolution_strategy=ResolutionStrategy.UNRESOLVABLE),
-        }, deep=True)
         guard = FactComparisonRule(
             rule_id=existing.rule.rule_id + ":SEMANTIC_PENDING",
             name="원문 조건 해석 미완료", purpose=RulePurpose.PREFERENTIAL_RATE,
@@ -574,11 +838,14 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
             fact_acceptance_policy=FactAcceptancePolicy(allow_provisional=False),
             missing_fact=MissingFactSpec(resolution_strategy=ResolutionStrategy.UNRESOLVABLE),
         )
-        root = AndRule(rule_id=existing.rule.rule_id, name=existing.rule.name,
-                       purpose=RulePurpose.PREFERENTIAL_RATE, source=existing.rule.source,
-                       children=[original, guard])
-        rules = [p.model_copy(update={"rule": root}, deep=True) if p is existing else p for p in rules]
+        wrapped = _wrap_existing_rule(existing, guard)
+        rules = [wrapped if p is existing else p for p in rules]
+        if clause.clause_id not in viewed_ids:
+            views.append(_clause_view(
+                clause, status="UNRESOLVED", reason="SEMANTIC_PENDING", memo_code="UNRESOLVED",
+            ))
     overlay = product.model_copy(update={"preferential_rules": rules}, deep=True) if rules != product.preferential_rules else product
+    overlay = _lower_advertised_max(overlay, ruled_out_pp)
     return overlay, store.model_copy(update={"facts": facts}), requests, views
 
 

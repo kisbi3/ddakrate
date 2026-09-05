@@ -440,6 +440,13 @@
           ],
           "default": null,
           "title": "Eligibility Text Review Fingerprint"
+        },
+        "semantic_memos": {
+          "items": {
+            "$ref": "#/$defs/SemanticConditionMemo"
+          },
+          "title": "Semantic Memos",
+          "type": "array"
         }
       },
       "required": [
@@ -459,6 +466,31 @@
       "title": "RecommendationListItem",
       "type": "object"
     },
+    "SemanticConditionMemo": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "RULED_OUT",
+            "NEEDS_INPUT",
+            "NEEDS_OFFICIAL",
+            "UNRESOLVED"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "text"
+      ],
+      "title": "SemanticConditionMemo",
+      "type": "object"
+    },
     "VerificationBadge": {
       "enum": [
         "FINANCIAL_DATA_VERIFIED",
@@ -472,6 +504,11 @@
   },
   "additionalProperties": false,
   "properties": {
+    "semantic_review": {
+      "additionalProperties": true,
+      "title": "Semantic Review",
+      "type": "object"
+    },
     "recommendation_id": {
       "title": "Recommendation Id",
       "type": "string"

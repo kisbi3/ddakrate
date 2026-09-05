@@ -10,9 +10,13 @@ from typing import Any
 
 from eligibility.application import UserAnswerSubmission, submit_user_answer
 from eligibility.audit import AuditEventType
-from eligibility.schema.enums import FactRecordStatus, FactSemanticType, ResolutionStrategy
+from eligibility.schema.conversation import ProductFeaturePolicy
+from eligibility.schema.enums import (
+    FactRecordStatus, FactSemanticType, PreferenceValue, PreSearchAnswerStatus, ResolutionStrategy,
+)
 from eligibility.schema.evaluation import MissingFactRequest
 from eligibility.schema.semantic import SemanticReviewState
+from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
 from eligibility.search.semantic import (
     INPUT_PREFIX, QUESTIONS, TYPED_INPUTS, attach_requests, normalize_answer, overlay_product,
     product_packet, user_inputs, validate_compilation, validate_shared_input,
@@ -25,16 +29,42 @@ class SemanticAugmentationMixin:
             return None
         return product_packet(product, self.semantic_compiler.cache_key)
 
+    @staticmethod
+    def _declined_benefit_fields(runtime):
+        fields = {
+            item.field
+            for item in runtime.intent.preferences
+            if item.preference == PreferenceValue.PREFER_ABSENT
+        }
+        fields.update(
+            feature_id
+            for feature_id, policy in runtime.feature_policies.items()
+            if policy == ProductFeaturePolicy.PREFER_ABSENT
+        )
+        return fields
+
+    @staticmethod
+    def _holding_institution_names(runtime):
+        entry = runtime.pre_search_profile.get(INSTITUTION_PRODUCT_HOLDING_HISTORY)
+        if entry is None or entry.answer_status != PreSearchAnswerStatus.ANSWERED:
+            return ()
+        names = entry.value.get("prior_product_holding_institutions", [])
+        return tuple(name for name in names if isinstance(name, str) and name.strip())
+
     def _semantic_evaluation_inputs(self, runtime, products, fact_store):
         overlays = []
         details = {}
         all_facts = {fact.fact_id: fact for fact in fact_store.facts}
+        declined = self._declined_benefit_fields(runtime)
+        holdings = self._holding_institution_names(runtime)
         for product in products:
             packet = self._semantic_packet(product)
             interpretations = runtime.semantic_cache.get(packet.cache_key, ()) if packet else ()
             overlay, store, requests, views = overlay_product(
                 product, packet, interpretations, fact_store,
                 as_of=runtime.as_of, subscription_date=runtime.subscription_date,
+                declined_benefit_fields=declined,
+                holding_institution_names=holdings,
             )
             overlays.append(overlay)
             all_facts.update((fact.fact_id, fact) for fact in store.facts)
