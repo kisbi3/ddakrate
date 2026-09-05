@@ -677,6 +677,30 @@ def test_existing_question_family_maps_unambiguous_clauses_only():
     assert existing_question_family(text=COUNT_TEXT) is None
     assert existing_question_family(text="급여이체 또는 신용카드 이용실적") is None
     assert existing_question_family(text="행운카드 우대") is None
+    assert existing_question_family(
+        text="만기 해지시점에 당행 주택청약종합저축 보유",
+        fact_key="PRODUCT_HOLDING",
+    ) is None
+    assert existing_question_family(text="당행 수익증권(MMF제외) 100만원 이상 보유 고객") is None
+    assert existing_question_family(
+        text="이 예금 신규일로부터 6개월전까지 적립식 예금 미보유한 경우",
+    ) == "FIRST_TRANSACTION"
+    assert existing_question_family(
+        text="상품 가입 전 최근 1년간 당행 적립식예금을 보유하지 않은 고객",
+    ) == "FIRST_TRANSACTION"
+
+
+def test_declined_first_transaction_does_not_rule_out_subscription_holding():
+    text = "만기 해지시점에 당행 주택청약종합저축 보유"
+    product = semantic_product("SUB", text)
+    compiler = CompilerDouble()
+    service, sid = service_for(
+        [product], compiler, intent=_declined_intent("FIRST_TRANSACTION_BENEFIT"),
+    )
+    assert compiler.calls
+    candidate = service._runtime(sid).evaluations["SUB"]
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("3")
 
 
 def _declined_intent(*fields: str):

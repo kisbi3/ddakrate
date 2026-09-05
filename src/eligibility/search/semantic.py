@@ -71,8 +71,10 @@ _MARKETING_RE = re.compile(r"마케팅|광고성|수신\s*동의|상품\s*안내
 _CARD_RE = re.compile(r"카드\s*(?:발급|사용|이용|결제|실적|매입)|체크카드|신용카드|당행\s*카드")
 _SALARY_RE = re.compile(r"급여이체|급여계좌|급여\s*수령|급여실적|급여 입금")
 _FIRST_TX_RE = re.compile(
-    r"첫거래|첫\s*거래|신규고객|신규 고객|당행.*없|당행.*미보유|기존고객이 아닌|"
+    r"첫거래|첫\s*거래|첫\s*신규|신규고객|신규 고객|"
+    r"당행.*없|당행.*미보유|기존고객이 아닌|"
     r"최근\s*\d+\s*(?:개월|년).*없|최근\s*\d+\s*(?:개월|년).*미보유|"
+    r"미보유|보유하지\s*않|"
     r"거래실적이 없는|비고객"
 )
 _ALT_SPLIT_RE = re.compile(r"또는|혹은")
@@ -167,7 +169,6 @@ def existing_question_family(*, title: str = "", text: str = "", fact_key: str =
     hits: list[str] = []
     if (
         _FIRST_TX_RE.search(compact)
-        or "PRODUCT_HOLDING" in blob
         or "NEW_CUSTOMER" in blob
         or "FIRST_TRANSACTION" in blob
         or "FIRST_DEPOSIT" in blob
