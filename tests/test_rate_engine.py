@@ -201,3 +201,69 @@ def test_source_first_operator_and_member_rule_ids_drive_component_cap():
     )
 
     assert total == Decimal("0.35")
+
+
+def _same_source_tier_product():
+    """KB아이사랑적금-shaped fixture: one sentence, rewards 1/2/3, empty relations."""
+
+    shared = (
+        "아이사랑 우대이율 (최고 연 4.0%p) 아래 가와 나 조건 충족 여부에 따라 "
+        "최고 연 4.0%p적용 [1명] 연 1.0%p, [2명] 연 2.0%p, [3명] 연 3.0%p"
+    )
+    preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=f"R{index}"),
+            canonical_rule_id=f"R{index}",
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for index in (1, 2, 3)
+    ]
+    rules = [
+        {
+            "rule_id": f"R{index}",
+            "source_clause_text": shared,
+            "reward": {
+                "kind": "ADD_RATE",
+                "value": str(index),
+                "unit": "PERCENTAGE_POINT",
+            },
+        }
+        for index in (1, 2, 3)
+    ]
+    return SimpleNamespace(
+        preferential_rules=preferential_rules,
+        base_rate=None,
+        normalized=SimpleNamespace(
+            return_policy={"preferential_policy": {"rules": rules, "relations": []}}
+        ),
+    )
+
+
+def test_same_source_child_count_tiers_take_max_not_sum():
+    product = _same_source_tier_product()
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2", "R3"},
+        {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("3")},
+        None,
+    )
+
+    assert total == Decimal("3")
+
+
+def test_distinct_source_texts_remain_additive():
+    product = _same_source_tier_product()
+    rules = product.normalized.return_policy["preferential_policy"]["rules"]
+    rules[1]["source_clause_text"] = "급여이체 우대 연 2.0%p"
+    rules[2]["source_clause_text"] = "마케팅 동의 우대 연 3.0%p"
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2", "R3"},
+        {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("3")},
+        None,
+    )
+
+    assert total == Decimal("6")
