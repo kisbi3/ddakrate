@@ -1458,6 +1458,8 @@ function semanticMemosHtml(source, className) {
   )).join('');
   return `<div class="${className}">${items}</div>`;
 }
+
+function renderSemanticReviewStatus(rec) {
   const review = rec.semantic_review;
   if (!review || ['DISABLED', 'DEFERRED'].includes(review.status)) return;
   const note = document.createElement('div');
