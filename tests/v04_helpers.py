@@ -191,7 +191,9 @@ def make_product(
         advertised_max_rate=base + cap,
         preferential_rate_cap=cap,
         allowed_channels=allowed_channels or [SubscriptionChannel.MOBILE],
-        effective_from=date(2026, 8, 20),
+        # Keep the synthetic product active at the fixture's AS_OF date;
+        # CandidateRetriever now enforces metadata validity windows.
+        effective_from=AS_OF,
         source_reference=source(product_id, "metadata"),
     )
     return ProductDefinition(

@@ -19,6 +19,11 @@ def test_list_uses_only_realizable_values_for_expected_rate_and_interest():
 
 
 def test_detail_and_completion_copy_distinguish_pending_state():
+    assert "조건 충족 시 가능한 최고 금리" in APP_JS
+    assert "const rankingRate = possibleUpperRate ?? detail.realizable_rate ?? detail.advertised_max_rate;" in APP_JS
+    assert "현재 순위는 조건 확인 전 임시 순위예요." in APP_JS
+    assert "실제로 받을 수 있는 금리" not in APP_JS
+    assert "조건 충족 시 가능한 우대금리" in APP_JS
     assert "확인 전 조건 포함 최고" in APP_JS
     assert "아직 확인 전인 조건을 모두 충족하면" in APP_JS
     assert "PROVISIONAL_USER_STOPPED" in APP_JS

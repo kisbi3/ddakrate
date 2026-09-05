@@ -1,13 +1,17 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from decimal import Decimal
 
+import eligibility.application_service as application_service_module
 from eligibility.application_service import ApplicationService
+from eligibility.audit import AuditEventType
 from eligibility.fixtures.kakao_26_week import kakao_26_week_product
 from eligibility.llm import LLMGateway, LLMPurpose, MockLLMAdapter
+from eligibility.schema.application_input import Capability
 from eligibility.schema.enums import (
     ContributionFrequency,
+    CapabilityState,
     EvaluationStatus,
     FactSemanticType,
     FactSourceType,
@@ -16,7 +20,7 @@ from eligibility.schema.enums import (
     VerificationLevel,
 )
 from eligibility.schema.product import PreferentialRateRule, Reward
-from eligibility.schema.search import ContributionPlan
+from eligibility.schema.search import ContributionPlan, IntentPatch
 from eligibility.schema.user_fact import UserFact
 from eligibility.schema.user_fact import UserFactStore
 from eligibility.search.contribution import ContributionPlanner
@@ -694,6 +698,123 @@ def test_detail_re_evaluates_from_current_session_facts():
     assert detail.eligibility_status == EvaluationStatus.SATISFIED
     assert detail.confirmed_or_achievable_products_ahead == 0
     assert detail.recommendation_reason.unknowns == []
+
+
+def test_detail_preview_does_not_admit_filtered_product_into_ranking_state():
+    candidate = make_product("DETAIL-CANDIDATE", base_rate="2.0")
+    filtered = make_product(
+        "DETAIL-FILTERED",
+        product_type="TIME_DEPOSIT",
+        base_rate="9.0",
+    )
+    intent = make_intent(top_k=1).model_copy(
+        update={"product_types": ["INSTALLMENT_SAVINGS"]},
+        deep=True,
+    )
+    service = ApplicationService(
+        [candidate, filtered],
+        user_fact_stores={USER_ID: base_store()},
+    )
+    session = service.create_search_session(
+        user_id=USER_ID,
+        intent=intent,
+        as_of=AS_OF,
+        subscription_date=SUBSCRIPTION_DATE,
+    )
+    service.get_top_recommendations(session.search_session_id)
+    runtime = service._runtime(session.search_session_id)
+    runtime.audit.bind_evaluation_id("EVAL-BEFORE-DETAIL")
+    before_evaluations = dict(runtime.evaluations)
+    before_ranking_ids = runtime.ranking.ordered_product_ids
+
+    detail = service.get_product_recommendation_detail(
+        session.search_session_id,
+        filtered.product_id,
+        include_explanation=False,
+    )
+
+    assert detail.product_id == filtered.product_id
+    assert filtered.product_id not in runtime.candidate_products
+    assert runtime.evaluations == before_evaluations
+    assert runtime.ranking.ordered_product_ids == before_ranking_ids
+    assert runtime.audit.evaluation_id == "EVAL-BEFORE-DETAIL"
+
+    # A ranking-only update reuses the session evaluations. The previewed
+    # browse-only product must not become rankable merely because its detail
+    # page was opened.
+    service.update_search_intent(
+        session.search_session_id,
+        patch=IntentPatch(
+            ranking_objective_patch=RankingObjective.MAX_REALIZABLE_RATE,
+        ),
+    )
+    assert filtered.product_id not in runtime.evaluations
+    assert runtime.ranking.ordered_product_ids == [candidate.product_id]
+
+
+def test_detail_preview_does_not_repeat_capability_supersession_audit():
+    product = make_product(
+        "DETAIL-AUDIT",
+        reward_pp="1.0",
+        bonus_fact_type="SALARY_ACCOUNT_CHANGE_POSSIBLE",
+    )
+    intent = make_intent(
+        top_k=1,
+        capabilities=[
+            Capability(capability_id="CHANGE_SALARY_ACCOUNT", state=CapabilityState.CAN)
+        ],
+    )
+    service = ApplicationService([product], user_fact_stores={USER_ID: base_store()})
+    session = service.create_search_session(
+        user_id=USER_ID,
+        intent=intent,
+        as_of=AS_OF,
+        subscription_date=SUBSCRIPTION_DATE,
+    )
+    runtime = service._runtime(session.search_session_id)
+    stale = verified_fact(
+        "DETAIL-STALE-CAPABILITY",
+        "SALARY_ACCOUNT_CHANGE_POSSIBLE",
+        True,
+        semantic_type=FactSemanticType.SELF_REPORTED_FACT,
+        source_type=FactSourceType.USER_DECLARED,
+    )
+    runtime.fact_store = runtime.fact_store.with_fact(stale)
+    service.get_top_recommendations(session.search_session_id)
+    before = sum(
+        event.event_type == AuditEventType.USER_DECLARED_FACT_SUPERSEDED_BY_INTENT_UPDATE
+        for event in service.get_evaluation_trace(session.search_session_id)
+    )
+
+    service.get_product_recommendation_detail(
+        session.search_session_id,
+        product.product_id,
+        include_explanation=False,
+    )
+
+    after = sum(
+        event.event_type == AuditEventType.USER_DECLARED_FACT_SUPERSEDED_BY_INTENT_UPDATE
+        for event in service.get_evaluation_trace(session.search_session_id)
+    )
+    assert after == before
+
+
+def test_session_default_dates_use_business_today(monkeypatch):
+    expected = date(2026, 9, 5)
+    monkeypatch.setattr(application_service_module, "_business_today", lambda: expected)
+    service = ApplicationService(
+        [make_product("BUSINESS-DATE")],
+        user_fact_stores={USER_ID: base_store()},
+    )
+
+    session = service.create_search_session(
+        user_id=USER_ID,
+        intent=make_intent(top_k=1),
+    )
+
+    runtime = service._runtime(session.search_session_id)
+    assert runtime.as_of == expected
+    assert runtime.subscription_date == expected
 
 
 def _capped_product_and_store():

@@ -6,6 +6,7 @@ from datetime import date, datetime, timezone
 from decimal import Decimal
 import re
 from typing import Any, Iterable
+from zoneinfo import ZoneInfo
 
 from eligibility.application import (
     UserAnswerRecord,
@@ -150,6 +151,13 @@ _DEFAULT_CAPABILITY_FACT_MAP = {
 
 _DEBUG_HISTORY_PRODUCT_LIMIT = 100
 _DEBUG_REQUEST_PRODUCT_LIMIT = 200
+_BUSINESS_TIMEZONE = ZoneInfo("Asia/Seoul")
+
+
+def _business_today() -> date:
+    """Return today's date in the product's business timezone."""
+
+    return datetime.now(_BUSINESS_TIMEZONE).date()
 
 
 @dataclass
@@ -419,13 +427,15 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 update={"answered_question_ids": initially_answered},
                 deep=True,
             )
+        effective_as_of = as_of or _business_today()
+        effective_subscription_date = subscription_date or effective_as_of
         runtime = _SearchRuntime(
             session=session,
             intent=intent,
             base_fact_store=base_store,
             fact_store=base_store,
-            as_of=as_of or date.today(),
-            subscription_date=subscription_date or (as_of or date.today()),
+            as_of=effective_as_of,
+            subscription_date=effective_subscription_date,
             audit=audit,
             pre_search_profile=initial_pre_search_profile,
             session_origin={
@@ -435,7 +445,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 ),
                 "initial_product_types": list(intent.product_types),
                 "subscription_date": (
-                    subscription_date or (as_of or date.today())
+                    effective_subscription_date
                 ).isoformat(),
                 "initial_contribution_plan": (
                     intent.contribution_plan.model_dump(mode="json")
@@ -2002,41 +2012,59 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
 
         search_session_id = runtime.session.search_session_id
         snapshot = self._snapshot_runtime(runtime)
-        # Only a review executed during this turn may contribute user-facing
-        # copy. An approved message from session creation or a previous turn is
-        # never replayed as if it were new.
-        runtime.eligibility_text_review_assistant_message = None
-        context = self._conversation_context(runtime)
-        runtime.working_note_turn_sequence += 1
-        turn_id = runtime.working_note_turn_sequence
-        runtime.recent_user_messages = [
-            *runtime.recent_user_messages,
-            message,
-        ][-5:]
-        self._safe_record_working_note_turn(
-            runtime,
-            sequence=turn_id,
-            utterance=message,
-        )
-        runtime.audit.emit(
-            "CONVERSATION_ORCHESTRATOR",
-            AuditEventType.CONVERSATION_TURN_RECEIVED,
-            entity_refs={"search_session_id": search_session_id},
-            input_data={"message_hash": canonical_hash(message)},
-            payload={
-                "message_hash": canonical_hash(message),
-                "context_schema_version": "flexible-conversation-v1",
-                "context_hash": canonical_hash(context),
-            },
-        )
-        raw_plan = interpreter(message, context=context)
-        plan = (
-            raw_plan
-            if isinstance(raw_plan, FlexibleConversationTurnPlan)
-            else FlexibleConversationTurnPlan.model_validate(raw_plan)
-        )
-        plan = self._normalize_legacy_pre_search_actions(runtime, plan)
-        self._validate_flexible_turn_plan(runtime, plan)
+        try:
+            # Only a review executed during this turn may contribute user-facing
+            # copy. An approved message from session creation or a previous turn is
+            # never replayed as if it were new.
+            runtime.eligibility_text_review_assistant_message = None
+            context = self._conversation_context(runtime)
+            runtime.working_note_turn_sequence += 1
+            turn_id = runtime.working_note_turn_sequence
+            runtime.recent_user_messages = [
+                *runtime.recent_user_messages,
+                message,
+            ][-5:]
+            self._safe_record_working_note_turn(
+                runtime,
+                sequence=turn_id,
+                utterance=message,
+            )
+            runtime.audit.emit(
+                "CONVERSATION_ORCHESTRATOR",
+                AuditEventType.CONVERSATION_TURN_RECEIVED,
+                entity_refs={"search_session_id": search_session_id},
+                input_data={"message_hash": canonical_hash(message)},
+                payload={
+                    "message_hash": canonical_hash(message),
+                    "context_schema_version": "flexible-conversation-v1",
+                    "context_hash": canonical_hash(context),
+                },
+            )
+            raw_plan = interpreter(message, context=context)
+            plan = (
+                raw_plan
+                if isinstance(raw_plan, FlexibleConversationTurnPlan)
+                else FlexibleConversationTurnPlan.model_validate(raw_plan)
+            )
+            plan = self._normalize_legacy_pre_search_actions(runtime, plan)
+            self._validate_flexible_turn_plan(runtime, plan)
+        except Exception as exc:
+            # Interpreter/contract failures happen before the action execution
+            # transaction below. They still must not consume a conversation turn
+            # or leave review/message state behind.
+            self._restore_runtime(runtime, snapshot)
+            runtime.audit.emit(
+                "CONVERSATION_ORCHESTRATOR",
+                AuditEventType.CONVERSATION_TURN_ROLLED_BACK,
+                entity_refs={"search_session_id": search_session_id},
+                input_data={"message_hash": canonical_hash(message)},
+                output_data={"business_state_committed": False},
+                payload={
+                    "reason": str(exc),
+                    "assistant_message_exposed": False,
+                },
+            )
+            raise
 
         runtime.changeset_sequence += 1
         changeset_id = f"CHG-{runtime.changeset_sequence:05d}"
@@ -3003,22 +3031,40 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         # A detail page may be opened from the full browse catalog, not only
         # from the current Top-K. Re-materialize session-wide facts and
         # evaluate that exact product so its detail never falls back to a
-        # stale published maximum rate.
-        runtime.fact_store = self._materialize_capabilities(runtime)
-        self._evaluate(runtime, [product], merge=True)
-        candidate = runtime.evaluations[product_id]
-        return self.recommendation_service.build_detail(
-            search_session_id=search_session_id,
-            recommendation_id=recommendation.recommendation_id,
-            product=product,
-            candidate=candidate,
-            rank=rank_by_id.get(product_id, len(rank_by_id) + 1),
-            intent=runtime.intent,
-            ranking=runtime.ranking,
-            condition_states=runtime.condition_states,
-            audit=runtime.audit,
-            include_explanation=include_explanation,
+        # stale published maximum rate. Detail rendering is a read operation:
+        # keep the one-product result local so opening a filtered/browse-only
+        # product cannot add it to the session's candidate or ranking state.
+        fact_store = self._materialize_capabilities(
+            runtime,
+            persist_answer_records=False,
+            emit_supersession_audit=False,
         )
+        previous_evaluation_id = runtime.audit.evaluation_id
+        try:
+            evaluated = self.evaluator.evaluate(
+                [product],
+                fact_store,
+                self._intent_with_feature_policies(runtime),
+                as_of=runtime.as_of,
+                subscription_date=runtime.subscription_date,
+                audit=runtime.audit,
+                product_contribution_choices=self._product_choice_map(runtime),
+            )
+            candidate = evaluated[product_id]
+            return self.recommendation_service.build_detail(
+                search_session_id=search_session_id,
+                recommendation_id=recommendation.recommendation_id,
+                product=product,
+                candidate=candidate,
+                rank=rank_by_id.get(product_id, len(rank_by_id) + 1),
+                intent=runtime.intent,
+                ranking=runtime.ranking,
+                condition_states=runtime.condition_states,
+                audit=runtime.audit,
+                include_explanation=include_explanation,
+            )
+        finally:
+            runtime.audit.bind_evaluation_id(previous_evaluation_id)
 
     def get_evaluation_trace(self, search_session_id: str) -> tuple[AuditEvent, ...]:
         runtime = self._runtime(search_session_id)
@@ -5718,7 +5764,13 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             },
         )
 
-    def _materialize_capabilities(self, runtime: _SearchRuntime) -> UserFactStore:
+    def _materialize_capabilities(
+        self,
+        runtime: _SearchRuntime,
+        *,
+        persist_answer_records: bool = True,
+        emit_supersession_audit: bool = True,
+    ) -> UserFactStore:
         """Synchronize intent capabilities into effective USER_DECLARED facts.
 
         v0.4.2 treats an explicit capability update as a revision of the same
@@ -5843,26 +5895,28 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                     and item.record_status == FactRecordStatus.ACTIVE
                 )
 
-            for prior in [*cross_reference_superseded, *same_reference_superseded]:
-                runtime.audit.emit(
-                    "APPLICATION_SERVICE",
-                    AuditEventType.USER_DECLARED_FACT_SUPERSEDED_BY_INTENT_UPDATE,
-                    entity_refs={
-                        "prior_fact_id": prior.fact_id,
-                        "new_fact_id": active_fact.fact_id,
-                        "fact_type": fact_type,
-                    },
-                    input_data=prior,
-                    output_data=active_fact,
-                    payload={
-                        "capability_id": capability.capability_id,
-                        "prior_value_hash": canonical_hash(prior.value),
-                        "new_value_hash": canonical_hash(active_fact.value),
-                        "authoritative_fact_superseded": False,
-                    },
-                )
+            if emit_supersession_audit:
+                for prior in [*cross_reference_superseded, *same_reference_superseded]:
+                    runtime.audit.emit(
+                        "APPLICATION_SERVICE",
+                        AuditEventType.USER_DECLARED_FACT_SUPERSEDED_BY_INTENT_UPDATE,
+                        entity_refs={
+                            "prior_fact_id": prior.fact_id,
+                            "new_fact_id": active_fact.fact_id,
+                            "fact_type": fact_type,
+                        },
+                        input_data=prior,
+                        output_data=active_fact,
+                        payload={
+                            "capability_id": capability.capability_id,
+                            "prior_value_hash": canonical_hash(prior.value),
+                            "new_value_hash": canonical_hash(active_fact.value),
+                            "authoritative_fact_superseded": False,
+                        },
+                    )
 
-        runtime.answer_records = self._answer_records(store)
+        if persist_answer_records:
+            runtime.answer_records = self._answer_records(store)
         return store
 
     def _materialize_institution_product_holding_history(
@@ -6245,8 +6299,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
     ) -> datetime:
         """Make a web answer effective in the session's evaluation date.
 
-        Production sessions normally evaluate ``date.today()``.  Historical or
-        deterministic replay sessions can use an earlier ``as_of`` date; in that
+        Production sessions normally evaluate the Asia/Seoul business date.
+        Historical or deterministic replay sessions can use an earlier
+        ``as_of`` date; in that
         case a wall-clock timestamp from today would otherwise be future-dated
         and ignored by FactResolver.  Explicit timestamps are preserved.
         """

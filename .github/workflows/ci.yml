@@ -21,6 +21,9 @@ jobs:
       - name: Install
         run: pip install -e ".[web,dev]"
 
+      - name: Compile Python sources
+        run: python -m compileall -q src tests
+
       # The published catalog is committed, so the runtime must load it here
       # exactly as it does locally. A drift between index.json and what the
       # loader accepts should fail CI, not surface later in the web runtime.

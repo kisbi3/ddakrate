@@ -23,7 +23,8 @@ def user_facts_to_mermaid(
 ) -> str:
     """Render the User Fact Store without deriving any financial judgment."""
 
-    lines = ["flowchart LR", f'    U["{mermaid_escape(f"사용자\\n{store.user_id}")}"]']
+    user_label = mermaid_escape(f"사용자\n{store.user_id}")
+    lines = ["flowchart LR", f'    U["{user_label}"]']
     person_nodes: dict[str, str] = {store.user_id: "U"}
 
     def person_node(person_id: str) -> str:
@@ -31,7 +32,8 @@ def user_facts_to_mermaid(
             return person_nodes[person_id]
         node_id = f"P{len(person_nodes)}"
         person_nodes[person_id] = node_id
-        lines.append(f'    {node_id}["{mermaid_escape(f"관련인\\n{person_id}")}"]')
+        person_label = mermaid_escape(f"관련인\n{person_id}")
+        lines.append(f'    {node_id}["{person_label}"]')
         return node_id
 
     relationships = sorted(store.relationships, key=lambda item: item.relationship_id)

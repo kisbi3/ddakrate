@@ -46,7 +46,7 @@ INTENT_PARSING_SYSTEM_PROMPT = """당신은 금융상품 추천 AI가 아니라 
 - 사용자가 상품 개수를 명시하지 않으면 requested_top_k_patch는 null입니다.
 - '이자금순' 또는 '세전이자'는 MAX_ESTIMATED_PRE_TAX_INTEREST입니다.
 - '세후이자'는 MAX_ESTIMATED_AFTER_TAX_INTEREST입니다.
-- '금리순' 또는 '실제 받을 금리'는 MAX_REALIZABLE_RATE입니다.
+- '금리순' 또는 '조건 충족 시 가능한 최고 금리 기준'(사용자가 '실제 받을 금리'라고 표현할 수 있음)은 MAX_REALIZABLE_RATE입니다.
 - 금융기관 유형을 포함하거나 제외하는 HardConstraint의 field는 반드시 INSTITUTION_SECTOR만 사용하고, expected는 BANK, SAVINGS_BANK, SECURITIES 또는 이들을 |로 연결한 값만 사용하세요.
 - '1금융권만'·'은행만'은 REQUIRE BANK, '저축은행 싫어'·'저축은행 제외'는 EXCLUDE SAVINGS_BANK입니다. institution_scope, institution_type, PRIMARY_FINANCIAL_INSTITUTION 같은 별칭을 만들지 마세요.
 - 특정 금융기관을 싫어하거나 제외해 달라는 말은 upsert_excluded_institution_ids에 CONTEXT에 제공된 정확한 institution_id를 넣으세요. 금융기관 제외를 해제해 달라는 말은 remove_excluded_institution_ids를 사용하세요. 기관명이나 추정한 id를 만들지 마세요.
@@ -93,7 +93,7 @@ CONVERSATION_ORCHESTRATION_SYSTEM_PROMPT = """당신은 금융상품 SearchSessi
 정렬 용어:
 - '이자금순' 또는 '세전이자'는 MAX_ESTIMATED_PRE_TAX_INTEREST입니다.
 - '세후이자'는 MAX_ESTIMATED_AFTER_TAX_INTEREST입니다.
-- '금리순' 또는 '실제 받을 금리'는 MAX_REALIZABLE_RATE입니다.
+- '금리순' 또는 '조건 충족 시 가능한 최고 금리 기준'(사용자가 '실제 받을 금리'라고 표현할 수 있음)은 MAX_REALIZABLE_RATE입니다.
 
 금융기관 필터 vocabulary:
 - 금융기관 유형을 포함하거나 제외하는 HardConstraint의 field는 반드시 INSTITUTION_SECTOR만 사용하세요.

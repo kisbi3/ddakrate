@@ -2143,9 +2143,19 @@ function rateCalculationMessage(detail) {
   };
 }
 
+function hasPossibleRateUpside(detail) {
+  const upper = detail.rate_evaluation?.user_specific_conditional_upper_rate
+    ?? detail.advertised_max_rate;
+  const realizable = detail.realizable_rate;
+  return (upper !== null && upper !== undefined
+    && (realizable === null || realizable === undefined || Number(upper) > Number(realizable)))
+    || Number(detail.additional_possible_rate_pp || 0) > 0;
+}
+
 function detailRankMessage(detail) {
   const ahead = Number(detail.confirmed_or_achievable_products_ahead || 0);
   const unknownCount = Number(detail.material_unknown_count || 0);
+  const provisional = hasPossibleRateUpside(detail);
   if (detail.eligibility_status === 'UNKNOWN') {
     return {
       kind: 'unknown',
@@ -2157,7 +2167,13 @@ function detailRankMessage(detail) {
   if (detail.eligibility_status === 'ACHIEVABLE') {
     return {
       kind: 'plan',
-      description: '아래의 필요한 행동과 우대조건을 지킬 수 있는지 확인해 주세요.',
+      description: `아래의 필요한 행동과 우대조건을 지킬 수 있는지 확인해 주세요.${provisional ? ' 현재 순위는 조건 확인 전 임시 순위입니다.' : ''}`,
+    };
+  }
+  if (provisional) {
+    return {
+      kind: 'unknown',
+      description: '확인 전 우대조건을 포함한 가능한 최고 금리 기준의 임시 순위입니다.',
     };
   }
   return {
@@ -2176,17 +2192,20 @@ function detailSummaryCopy(detail) {
   const rankingBasis = {
     MAX_ESTIMATED_AFTER_TAX_INTEREST: '예상 세후 이자금',
     MAX_ESTIMATED_PRE_TAX_INTEREST: '예상 세전 이자금',
-    MAX_REALIZABLE_RATE: '실제로 받을 수 있는 금리',
+    MAX_REALIZABLE_RATE: '조건 충족 시 가능한 최고 금리',
     BALANCED: '금리와 예상 이자금의 균형',
   }[objective] || '내 조건에 맞는 비교 기준';
+  const possibleUpperRate = detail.rate_evaluation?.user_specific_conditional_upper_rate;
+  const rankingRate = possibleUpperRate ?? detail.realizable_rate ?? detail.advertised_max_rate;
   const rankingValue = objective === 'MAX_ESTIMATED_AFTER_TAX_INTEREST'
     ? formatWon(detail.estimated_after_tax_interest)
     : objective === 'MAX_ESTIMATED_PRE_TAX_INTEREST'
       ? formatWon(detail.estimated_pre_tax_interest)
-      : formatRate(detail.realizable_rate);
+      : formatRate(rankingRate);
+  const provisional = objective === 'MAX_REALIZABLE_RATE' && hasPossibleRateUpside(detail);
   const rankText = rank === 1
-    ? `${rankingBasis}${rankingValue !== '-' && rankingValue !== '확인 전' ? ` ${rankingValue}` : ''}를 기준으로 비교했을 때 가장 유리해 1위로 추천됐어요.`
-    : `${rankingBasis}${rankingValue !== '-' && rankingValue !== '확인 전' ? ` ${rankingValue}` : ''}를 기준으로 비교한 결과 ${rank}위예요.`;
+    ? `${rankingBasis}${rankingValue !== '-' && rankingValue !== '확인 전' ? ` ${rankingValue}` : ''}를 기준으로 비교했을 때 가장 유리해 ${rank}위로 추천됐어요.${provisional ? ' 현재 순위는 조건 확인 전 임시 순위예요.' : ''}`
+    : `${rankingBasis}${rankingValue !== '-' && rankingValue !== '확인 전' ? ` ${rankingValue}` : ''}를 기준으로 비교한 결과 ${rank}위예요.${provisional ? ' 현재 순위는 조건 확인 전 임시 순위예요.' : ''}`;
 
   const rateItems = flattenRateBreakdown(detail.rate_breakdown || []);
   const eligibleRateItems = rateItems.filter((item) => (
@@ -2200,7 +2219,7 @@ function detailSummaryCopy(detail) {
   ])).values()];
   const rewardText = uniqueRewards.length
     ? uniqueRewards.slice(0, 3).join(' · ')
-    : '현재 조건에서 받을 수 있는 우대금리를 아직 확정하지 못했어요.';
+    : '조건 충족 시 가능한 우대금리를 아직 확정하지 못했어요.';
 
   const actionableItems = rateItems.filter((item) => (
     ['SATISFIED', 'ACHIEVABLE'].includes(item.status)
@@ -3151,7 +3170,7 @@ function renderDetail(detail) {
       <strong>${escapeHtml(summary.title)}</strong>
       <div class="detail-summary-breakdown">
         <p><b>추천 이유</b><span>${escapeHtml(summary.reason)}</span></p>
-        <p><b>받을 수 있는 우대금리</b><span>${escapeHtml(summary.reward)}</span></p>
+        <p><b>조건 충족 시 가능한 우대금리</b><span>${escapeHtml(summary.reward)}</span></p>
         <p><b>받는 방법</b><span>${escapeHtml(summary.action)}</span></p>
       </div>
     </section>

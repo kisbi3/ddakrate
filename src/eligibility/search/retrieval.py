@@ -53,8 +53,26 @@ class CandidateRetriever:
         if metadata is not None:
             if metadata.sale_status in _CLOSED_STATUSES:
                 return self._remove(product, "SALE_STATUS_CLOSED", sale_status=metadata.sale_status.value)
+            if metadata.sale_start is not None and metadata.sale_start > as_of:
+                return self._remove(
+                    product,
+                    "SALE_NOT_STARTED",
+                    sale_start=metadata.sale_start.isoformat(),
+                )
             if metadata.sale_end is not None and metadata.sale_end < as_of:
                 return self._remove(product, "SALE_END_PASSED", sale_end=metadata.sale_end.isoformat())
+            if metadata.effective_from is not None and metadata.effective_from > as_of:
+                return self._remove(
+                    product,
+                    "EFFECTIVE_DATE_NOT_STARTED",
+                    effective_from=metadata.effective_from.isoformat(),
+                )
+            if metadata.effective_to is not None and metadata.effective_to < as_of:
+                return self._remove(
+                    product,
+                    "EFFECTIVE_DATE_PASSED",
+                    effective_to=metadata.effective_to.isoformat(),
+                )
 
         if intent.product_types and product.product_type not in set(intent.product_types):
             return self._remove(
@@ -102,6 +120,7 @@ class CandidateRetriever:
                     value=contribution_plan.selected_term_value,
                     unit=contribution_plan.selected_term_unit,
                 ),
+                strictness=contribution_plan.term_strictness or "PREFERRED",
             )
         ):
             return self._remove(
@@ -323,7 +342,12 @@ class CandidateRetriever:
             if metadata is None or not metadata.allowed_channels:
                 return None
             branch_only = metadata.allowed_channels == [SubscriptionChannel.BRANCH]
-            expected = bool(hard.expected)
+            expected = self._as_bool(hard.expected)
+            # Do not turn arbitrary non-empty strings (e.g. "falsehood")
+            # into a truthy branch requirement. Invalid values are unknown and
+            # therefore cannot justify a hard removal.
+            if expected is None:
+                return None
             matches = branch_only == expected
             if self._violates(matches, hard.constraint):
                 return "HARD_BRANCH_REQUIREMENT_VIOLATION", {"branch_only": branch_only}
@@ -339,7 +363,18 @@ class CandidateRetriever:
                 return None
             minimum, maximum = bounds
             if field == "TERM_MONTHS":
-                present = minimum <= expected_months <= maximum
+                metadata = product.metadata
+                if metadata is not None and metadata.available_terms:
+                    requested = ContractTerm(value=expected_months, unit=TermUnit.MONTH)
+                    present = any(
+                        terms_equivalent(available, requested)
+                        for available in metadata.available_terms
+                    )
+                else:
+                    # A product with only min/max metadata is a continuous
+                    # range; unlike a finite option list, any value inside it
+                    # is selectable.
+                    present = minimum <= expected_months <= maximum
             elif field == "MAX_TERM_MONTHS":
                 present = minimum <= expected_months
             else:
@@ -459,36 +494,60 @@ class CandidateRetriever:
         cls,
         product: ProductDefinition,
         requested: ContractTerm,
+        *,
+        strictness: str = "PREFERRED",
     ) -> bool:
         metadata = product.metadata
-        if (
-            product.normalized is not None
-            and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
-        ):
-            return True
+        if product.normalized is not None:
+            term_kind = product.normalized.term_policy.get("kind")
+            if term_kind == "OPEN_ENDED" or term_kind not in {"FIXED", "DISCRETE", "RANGE"}:
+                # No maturity (or unknown term metadata) uses the requested
+                # period only as a comparison horizon, never as a hard reject.
+                return True
         requested_months = cls._term_to_months(requested)
         if metadata is not None:
             if metadata.available_terms:
-                return (
-                    any(
+                # A finite option list describes selectable terms, not a
+                # continuous interval.  PREFERRED keeps the historical
+                # shorter-alternative behavior; EXACT must match one of the
+                # selectable values (e.g. [6, 12] does not support 9).
+                if strictness == "EXACT":
+                    return any(
                         terms_equivalent(available, requested)
                         for available in metadata.available_terms
                     )
-                    or min(
-                        cls._term_to_months(available)
-                        for available in metadata.available_terms
-                    )
-                    <= requested_months
-                )
+                return any(
+                    terms_equivalent(available, requested)
+                    for available in metadata.available_terms
+                ) or min(
+                    cls._term_to_months(available)
+                    for available in metadata.available_terms
+                ) <= requested_months
             if metadata.min_term is not None and metadata.max_term is not None:
+                minimum = cls._term_to_months(metadata.min_term)
+                maximum = cls._term_to_months(metadata.max_term)
+                if strictness == "EXACT":
+                    if metadata.min_term == metadata.max_term:
+                        return terms_equivalent(metadata.min_term, requested)
+                    # min/max without available_terms is an explicit
+                    # continuous range, so an exact request is valid anywhere
+                    # inside the interval.
+                    return minimum <= requested_months <= maximum
                 # A shorter fixed product can still be a useful alternative to
                 # a preferred horizon. A product whose *minimum* term already
                 # exceeds the requested horizon must not be projected at its
                 # longer representative/max term.
-                return cls._term_to_months(metadata.min_term) <= requested_months
+                return minimum <= requested_months
         if product.contract_term is not None:
+            if strictness == "EXACT":
+                return terms_equivalent(product.contract_term, requested)
             return cls._term_to_months(product.contract_term) <= requested_months
         if product.contract_months is not None:
+            if strictness == "EXACT":
+                return terms_equivalent(
+                    ContractTerm(value=product.contract_months, unit=TermUnit.MONTH),
+                    requested,
+                )
             return Decimal(product.contract_months) <= requested_months
         return True
 

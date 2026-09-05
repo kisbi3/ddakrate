@@ -208,7 +208,7 @@ function renderCoreStatusCards(snapshot) {
   const topProducts = rankingItems.slice(0, 5).map((item) => `
     <li>
       <span class="rank-number">${item.rank ?? "-"}</span>
-      <div><strong>${escapeHtml(item.institution_name || "기관 확인 전")} · ${escapeHtml(item.product_name || item.product_id)}</strong><small>${escapeHtml(item.term_summary || "기간 확인 전")} · ${item.realizable_rate != null ? `예상 가능 금리 ${escapeHtml(item.realizable_rate)}%` : "계산 가능한 금리 없음"} · 미확인 ${item.material_unknown_count ?? 0}건</small></div>
+      <div><strong>${escapeHtml(item.institution_name || "기관 확인 전")} · ${escapeHtml(item.product_name || item.product_id)}</strong><small>${escapeHtml(item.term_summary || "기간 확인 전")} · ${item.realizable_rate != null ? `현재 실현 가능 금리 ${escapeHtml(item.realizable_rate)}%` : "계산 가능한 금리 없음"} · 미확인 ${item.material_unknown_count ?? 0}건</small></div>
     </li>`).join("") || '<li class="empty-copy">아직 순위 결과가 없습니다.</li>';
   const failedRequests = state.bundle.requests.filter((request) => request.error || Number(request.status_code) >= 500);
   const materialUnknowns = rankingItems.reduce((sum, item) => sum + Number(item.material_unknown_count || 0), 0);

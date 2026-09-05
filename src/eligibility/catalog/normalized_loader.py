@@ -950,18 +950,11 @@ def _eligibility_summary(
     return ", ".join(parts) if parts else "공식 가입대상 세부 확인 필요"
 
 
-def _has_non_capacity_eligibility(policy: dict[str, Any]) -> bool:
-    ignored = {
+_ELIGIBILITY_PRESENTATION_FIELDS = frozenset(
+    {
         "mode",
         "allowed_customer_types",
-        "age_range",
-        "account_limit",
-        "nationality_scope",
         "real_name_required",
-        # Relationship clauses preserved from the source are not sufficiently
-        # typed to make a reliable yes/no eligibility question.  Keep them in
-        # the product detail, but never turn a data gap into a user gate.
-        "relationship_requirements",
         # Source-preserving presentation fields are not extra predicates once
         # their contents have been normalized into the typed fields above.
         "raw_text",
@@ -969,20 +962,97 @@ def _has_non_capacity_eligibility(policy: dict[str, Any]) -> bool:
         "display_text",
         "source_ref_ids",
         "evidence_ref_ids",
+        "evidence",
+        "subscription_method_disclosure",
+        "target_customer_disclosure",
     }
+)
+
+_COMPILED_AGE_FIELDS = frozenset(
+    {"min_age", "max_age", "min_value", "max_value", "source_text", "source_ref_ids"}
+)
+_COMPILED_ACCOUNT_LIMIT_FIELDS = frozenset(
+    {"max_active_accounts", "product_scope", "source_text", "source_ref_ids"}
+)
+
+
+def _has_relationship_requirements(policy: dict[str, Any]) -> bool:
+    """Return whether normalized relationship rows gate subscription.
+
+    The published catalog annotates each row with ``requirement_role`` during
+    migration.  Missing roles remain conservative for backwards compatibility
+    (a non-empty legacy row is treated as a requirement), while empty or
+    malformed containers do not create a false gate.
+    """
+
+    rows = policy.get("relationship_requirements")
+    if not isinstance(rows, list):
+        return False
+    return any(
+        isinstance(row, dict)
+        and row
+        and str(row.get("requirement_role") or "SUBSCRIPTION_ELIGIBILITY").upper()
+        == "SUBSCRIPTION_ELIGIBILITY"
+        for row in rows
+    )
+
+
+def _uncompiled_eligibility_fields(policy: dict[str, Any]) -> list[str]:
+    """Return mandatory eligibility fields with no executable typed rule.
+
+    Normalized source records intentionally retain more detail than the
+    runtime rule AST can currently express.  That detail must not disappear at
+    the catalog boundary: a restricted product with only an unmodelled
+    relationship requirement used to receive the permissive base pass rule.
+    Keep presentation/evidence metadata out of this check, but treat every
+    other non-empty field as a conservative official-verification gate.
+    """
+
+    fields: list[str] = []
     for key, value in policy.items():
+        if key == "relationship_requirements":
+            if _has_relationship_requirements(policy):
+                fields.append(key)
+            continue
+        if key == "age_range" and isinstance(value, dict):
+            if set(value) <= _COMPILED_AGE_FIELDS:
+                continue
+        if key == "account_limit" and isinstance(value, dict):
+            if (
+                value.get("product_scope") == "THIS_PRODUCT"
+                and value.get("max_active_accounts") is not None
+                and set(value) <= _COMPILED_ACCOUNT_LIMIT_FIELDS
+            ):
+                continue
+        if key == "nationality_scope" and value in {"ANY", "KOREAN_ONLY"}:
+            continue
         if (
-            key in ignored
+            key in _ELIGIBILITY_PRESENTATION_FIELDS
             or value is None
             or value is False
             or value == ""
             or value == "ANY"
+            or (isinstance(value, (list, dict)) and not value)
         ):
             continue
-        if isinstance(value, (list, dict)) and not value:
-            continue
-        return True
-    return False
+        fields.append(key)
+    # A missing mode with a source clause is itself an unresolved eligibility
+    # shape. Do not interpret Korean display text here; the catalog must supply
+    # an explicit mode before the clause can be treated as unrestricted.
+    if not policy.get("mode"):
+        text = str(
+            policy.get("eligibility_text")
+            or policy.get("display_text")
+            or policy.get("raw_text")
+            or ""
+        ).strip()
+        if text:
+            fields.append("eligibility_text")
+    return fields
+
+
+def _has_non_capacity_eligibility(policy: dict[str, Any]) -> bool:
+    return bool(_uncompiled_eligibility_fields(policy))
 
 
 def _age_eligibility_rules(
@@ -1144,6 +1214,60 @@ def _question_rule(
     )
 
 
+def _official_eligibility_unknown_rule(
+    product_code: str,
+    *,
+    fields: list[str],
+    source: SourceReference | None,
+) -> FactComparisonRule:
+    """Block a false eligibility pass for source clauses not in the AST.
+
+    These clauses are intentionally not converted into a self-reported yes/no
+    question.  Until an institution (or an equivalent authoritative source)
+    verifies them, the product remains a candidate with UNKNOWN eligibility.
+    """
+
+    labels = ", ".join(fields)
+    return FactComparisonRule(
+        rule_id=f"{product_code}:OFFICIAL_ELIGIBILITY_UNKNOWN",
+        name="공식 가입조건 확인 필요",
+        purpose=RulePurpose.ELIGIBILITY,
+        source=source,
+        description=(
+            "다음 가입조건은 실행 가능한 typed rule로 표현되지 않아 "
+            f"공식 확인이 필요합니다: {labels}"
+        ),
+        fact_type=f"NORMALIZED_ELIGIBILITY_UNKNOWN::{product_code}",
+        operator=ComparisonOperator.EQ,
+        expected=True,
+        on_true_status=EvaluationStatus.SATISFIED,
+        on_false_status=EvaluationStatus.UNSATISFIABLE,
+        on_missing_status=EvaluationStatus.UNKNOWN,
+        missing_reason_code="OFFICIAL_ELIGIBILITY_VERIFICATION_REQUIRED",
+        missing_fact=MissingFactSpec(
+            resolution_strategy=ResolutionStrategy.QUERY_INSTITUTION,
+            required_source="OFFICIAL_PRODUCT_SOURCE",
+            question=None,
+            expected_semantic_type=FactSemanticType.OBSERVED_FACT,
+            grounding_terms=fields,
+        ),
+        required_semantic_type=FactSemanticType.OBSERVED_FACT,
+        fact_acceptance_policy=FactAcceptancePolicy(
+            strict_semantic_types=[
+                FactSemanticType.OBSERVED_FACT,
+                FactSemanticType.OBSERVED_EVENT,
+                FactSemanticType.DERIVED_FACT,
+            ],
+            strict_source_types=[
+                FactSourceType.INSTITUTION_VERIFIED,
+                FactSourceType.MYDATA_VERIFIED,
+                FactSourceType.DERIVED,
+            ],
+            allow_provisional=False,
+        ),
+    )
+
+
 def _pass_rule(product_code: str, source: SourceReference | None) -> FactComparisonRule:
     return FactComparisonRule(
         rule_id=f"{product_code}:BASE_ELIGIBILITY",
@@ -1216,6 +1340,12 @@ def _build_rules(
         for row in (product.get("version_metadata", {}) or {}).get("data_gaps", [])
     }
     summary = _eligibility_summary(eligibility)
+    eligibility_source = (
+        _source_reference(
+            eligibility.get("source_ref_ids", []), sources, evidence
+        )
+        or default_source
+    )
     if "eligibility_policy" in data_gap_paths:
         eligibility_rules.append(
             _data_gap_rule(
@@ -1241,12 +1371,6 @@ def _build_rules(
             )
         )
     elif eligibility.get("mode") == "RESTRICTED":
-        eligibility_source = (
-            _source_reference(
-                eligibility.get("source_ref_ids", []), sources, evidence
-            )
-            or default_source
-        )
         allowed_customer_types = list(
             eligibility.get("allowed_customer_types") or []
         )
@@ -1293,34 +1417,29 @@ def _build_rules(
         )
         if account_limit_rule is not None:
             eligibility_rules.append(account_limit_rule)
-        if _has_non_capacity_eligibility(eligibility):
-            residual_summary = _eligibility_summary(
-                eligibility,
-                include_customer_types=False,
-                include_shared_identity=False,
-                include_age=False,
-                include_account_limit=False,
+
+    # This invariant applies independently of the policy mode.  A residual
+    # field is not executable merely because the source called the policy
+    # unrestricted (or omitted the mode), and must not disappear into the
+    # permissive base pass rule. Existing explicit data-gap guards already
+    # represent this state and should remain the sole guard for those paths.
+    residual_fields = _uncompiled_eligibility_fields(eligibility)
+    if (
+        residual_fields
+        and "eligibility_policy" not in data_gap_paths
+        and not (
+            (product.get("version_metadata") or {}).get("source_priority")
+            == "INTERNAL_ORIGINAL_FALLBACK"
+            and not eligibility.get("mode")
+        )
+    ):
+        eligibility_rules.append(
+            _official_eligibility_unknown_rule(
+                code,
+                fields=residual_fields,
+                source=eligibility_source,
             )
-            eligibility_terms = [
-                item.strip()
-                for item in (residual_summary or "").split(",")
-                if item.strip()
-            ]
-            eligibility_rules.append(
-                _question_rule(
-                    product_code=code,
-                    rule_id="OFFICIAL_ELIGIBILITY",
-                    fact_type=f"NORMALIZED_ELIGIBILITY::{code}",
-                    name="공식 가입대상 세부 조건",
-                    question=(
-                        f"{product['name']}의 가입대상 세부 조건은 "
-                        f"{residual_summary}입니다. 이 조건에 해당하시나요?"
-                    ),
-                    purpose=RulePurpose.ELIGIBILITY,
-                    source=eligibility_source,
-                    grounding_terms=eligibility_terms or ["공식 가입대상 세부 조건"],
-                )
-            )
+        )
 
     if "청년미래적금" in product["name"] and not any(
         getattr(rule, "fact_type", None) == "YOUTH_FUTURE_OR_LEAP_ACCOUNT_HELD"

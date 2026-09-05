@@ -24,8 +24,9 @@ from __future__ import annotations
 import hmac
 import os
 import uuid
-from datetime import date
+from datetime import datetime
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import PlainTextResponse
@@ -196,7 +197,7 @@ def mount_eval_routes(app: FastAPI, adapter: Any) -> None:
         return resp.body
 
     def _new_session(alias: str, first_message: str | None) -> str:
-        today = date.today().isoformat()
+        today = datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
         body = _call(
             "POST",
             "/search-sessions",

@@ -107,11 +107,10 @@ def resolve_term(product: ProductDefinition, plan: ContributionPlan | None) -> C
 
     assert plan.selected_term_unit is not None
     requested = ContractTerm(value=plan.selected_term_value, unit=plan.selected_term_unit)
-    if (
-        product.normalized is not None
-        and product.normalized.term_policy.get("kind") == "OPEN_ENDED"
-    ):
-        return requested
+    if product.normalized is not None:
+        term_kind = product.normalized.term_policy.get("kind")
+        if term_kind == "OPEN_ENDED" or term_kind not in {"FIXED", "DISCRETE", "RANGE"}:
+            return requested
     metadata = product.metadata
     if metadata is None:
         return core
@@ -125,6 +124,47 @@ def resolve_term(product: ProductDefinition, plan: ContributionPlan | None) -> C
         if _term_days(metadata.min_term) <= requested_days <= _term_days(metadata.max_term):
             return requested
     return core
+
+
+def exact_term_is_supported(product: ProductDefinition, plan: ContributionPlan | None) -> bool:
+    """Return whether an EXACT request has a proven selectable/fixed term.
+
+    Open-ended and incomplete term metadata intentionally remain usable: the
+    requested period is a comparison horizon for those products.  Only a
+    finite selectable list or a fixed term can make an EXACT request fail.
+    """
+
+    if (
+        plan is None
+        or plan.term_strictness != "EXACT"
+        or plan.selected_term_value is None
+        or plan.selected_term_unit is None
+    ):
+        return True
+    if product.normalized is not None:
+        term_kind = product.normalized.term_policy.get("kind")
+        if term_kind == "OPEN_ENDED" or term_kind not in {"FIXED", "DISCRETE", "RANGE"}:
+            # No maturity (or unknown term metadata) uses the requested period
+            # only as a comparison horizon, never as a hard reject.
+            return True
+    requested = ContractTerm(value=plan.selected_term_value, unit=plan.selected_term_unit)
+    metadata = product.metadata
+    if metadata is not None:
+        if metadata.available_terms:
+            return any(terms_equivalent(item, requested) for item in metadata.available_terms)
+        if metadata.min_term is not None and metadata.max_term is not None:
+            if metadata.min_term == metadata.max_term:
+                return terms_equivalent(metadata.min_term, requested)
+            # min/max without a finite option list is an explicit continuous
+            # range; an exact request is valid anywhere in that interval.
+            return _term_days(metadata.min_term) <= _term_days(requested) <= _term_days(metadata.max_term)
+    # A product-level contract term is fixed. If neither metadata nor a core
+    # term exists, term information is unknown and must not be rejected.
+    if product.contract_term is not None:
+        return terms_equivalent(product.contract_term, requested)
+    if product.contract_months is not None:
+        return _term_days(ContractTerm(value=product.contract_months, unit=TermUnit.MONTH)) == _term_days(requested)
+    return True
 
 
 def build_evaluation_context(
@@ -579,8 +619,52 @@ class ContributionPlanner:
         *,
         subscription_date: date | None = None,
     ) -> PlannedContributionResult:
-        term = resolve_term(product, plan)
         metadata = product.metadata
+        if not exact_term_is_supported(product, plan):
+            policy = metadata.contribution_policy if metadata is not None else None
+            term = _product_core_term(product)
+            if policy is None:
+                projection = ContributionProjection(
+                    term_summary=term_summary(term),
+                    contribution_summary="납입 방식 확인 필요",
+                    maximum_deposit_summary="상품 한도 확인 필요",
+                    planned_contribution_summary="납입계획 미계산",
+                    assumptions=["Requested EXACT term is not a selectable product term."],
+                )
+                return PlannedContributionResult(
+                    projection=projection,
+                    core_plan=None,
+                    not_comparable_reason="EXACT_TERM_NOT_AVAILABLE",
+                )
+            ranking_input = self._ranking_input(
+                product,
+                required_field="selected_term",
+                allowed_options=[
+                    {"value": item.value, "unit": item.unit.value}
+                    for item in metadata.available_terms
+                ],
+                reason="정확히 요청한 기간은 상품에서 선택할 수 없습니다.",
+                question=(
+                    f"{product.name}에서는 요청하신 기간으로 가입할 수 없습니다. "
+                    "선택 가능한 가입기간을 확인해 주세요."
+                ),
+            )
+            projection = ContributionProjection(
+                frequency=policy.contribution_frequency,
+                maximum_periodic_amount=policy.periodic_amount_max,
+                term_summary="선택 가능한 가입 기간 확인 필요",
+                contribution_summary=self._policy_summary(policy),
+                maximum_deposit_summary=self._maximum_summary(policy),
+                planned_contribution_summary="가입 기간 확인 후 납입계획 계산 가능",
+                assumptions=["Requested EXACT term is not a selectable product term."],
+            )
+            return PlannedContributionResult(
+                projection=projection,
+                core_plan=None,
+                missing_ranking_inputs=(ranking_input,),
+                not_comparable_reason="EXACT_TERM_NOT_AVAILABLE",
+            )
+        term = resolve_term(product, plan)
         policy = metadata.contribution_policy if metadata is not None else None
         if policy is None:
             projection = ContributionProjection(

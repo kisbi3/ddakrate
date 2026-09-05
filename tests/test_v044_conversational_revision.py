@@ -687,6 +687,42 @@ def test_invalid_conversational_revision_rolls_back_business_state():
     assert before == after
 
 
+def test_flexible_interpreter_failure_rolls_back_turn_bookkeeping():
+    orch, _ = _orchestrator(RuntimeError("conversation provider unavailable"))
+    service, session, _ = _kakao_service(maximum="300000", orchestrator=orch)
+    runtime = service._runtime(session.search_session_id)
+    before = deepcopy(
+        (
+            runtime.session,
+            runtime.recent_user_messages,
+            runtime.working_note_turn_sequence,
+            runtime.visible_dialogue,
+            runtime.eligibility_text_review_assistant_message,
+            runtime.eligibility_text_review_state,
+        )
+    )
+
+    with pytest.raises(RuntimeError, match="conversation provider unavailable"):
+        service.handle_user_message(
+            session.search_session_id,
+            message="이번에는 금리순으로 보여줘.",
+        )
+
+    after = (
+        runtime.session,
+        runtime.recent_user_messages,
+        runtime.working_note_turn_sequence,
+        runtime.visible_dialogue,
+        runtime.eligibility_text_review_assistant_message,
+        runtime.eligibility_text_review_state,
+    )
+    assert after == before
+    assert any(
+        event.event_type == AuditEventType.CONVERSATION_TURN_ROLLED_BACK
+        for event in service.get_evaluation_trace(session.search_session_id)
+    )
+
+
 def test_rest_conversational_follow_up_endpoint():
     response = {
         "actions": [{

@@ -26,17 +26,20 @@ from eligibility.schema.enums import (
     SearchSessionStatus,
     RulePurpose,
     RankingObjective,
+    SubscriptionChannel,
     TermUnit,
 )
 from eligibility.schema.rule import FactComparisonRule
 from eligibility.schema.search import ContributionPlan, IntentPatch
+from eligibility.schema.product import ContractTerm, NormalizedProductData
 from eligibility.search.intent import (
     IntentConflictValidator,
     IntentParser,
 )
+from eligibility.search.contribution import ContributionPlanner
 from eligibility.search.retrieval import CandidateRetriever
 
-from tests.v04_helpers import AS_OF, base_store, make_intent, make_product
+from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, base_store, make_intent, make_product
 
 
 def test_natural_language_intent_requires_an_llm_gateway():
@@ -354,6 +357,314 @@ def test_product_whose_minimum_term_exceeds_preferred_horizon_is_removed():
 
     assert retained == []
     assert decisions[0].reason_code == "REQUESTED_TERM_NOT_AVAILABLE"
+
+
+def test_preferred_term_keeps_shorter_alternatives_for_discrete_terms():
+    product = make_product("TERM-DISCRETE", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-DISCRETE-META", term_value=12).metadata.model_copy(
+                update={
+                    "min_term": ContractTerm(value=6, unit=TermUnit.MONTH),
+                    "max_term": ContractTerm(value=12, unit=TermUnit.MONTH),
+                    "available_terms": [
+                        ContractTerm(value=6, unit=TermUnit.MONTH),
+                        ContractTerm(value=12, unit=TermUnit.MONTH),
+                    ],
+                }
+            )
+        },
+        deep=True,
+    )
+    intent = make_intent(selected_term_value=9)
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == [product]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+
+
+def test_exact_term_rejects_unlisted_discrete_term():
+    product = make_product("TERM-DISCRETE", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-DISCRETE-META", term_value=12).metadata.model_copy(
+                update={
+                    "min_term": ContractTerm(value=6, unit=TermUnit.MONTH),
+                    "max_term": ContractTerm(value=12, unit=TermUnit.MONTH),
+                    "available_terms": [
+                        ContractTerm(value=6, unit=TermUnit.MONTH),
+                        ContractTerm(value=12, unit=TermUnit.MONTH),
+                    ],
+                }
+            )
+        },
+        deep=True,
+    )
+    base_intent = make_intent(selected_term_value=9)
+    intent = base_intent.model_copy(
+        update={
+            "contribution_plan": base_intent.contribution_plan.model_copy(
+                update={"term_strictness": "EXACT"}
+            )
+        },
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == []
+    assert decisions[0].reason_code == "REQUESTED_TERM_NOT_AVAILABLE"
+
+
+def test_hard_term_months_rejects_unlisted_discrete_term():
+    product = make_product("TERM-DISCRETE", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-DISCRETE-META", term_value=12).metadata.model_copy(
+                update={
+                    "min_term": ContractTerm(value=6, unit=TermUnit.MONTH),
+                    "max_term": ContractTerm(value=12, unit=TermUnit.MONTH),
+                    "available_terms": [
+                        ContractTerm(value=6, unit=TermUnit.MONTH),
+                        ContractTerm(value=12, unit=TermUnit.MONTH),
+                    ],
+                }
+            )
+        },
+        deep=True,
+    )
+    intent = make_intent(
+        hard_constraints=[
+            HardConstraint(
+                field="TERM_MONTHS",
+                constraint=HardConstraintValue.REQUIRE,
+                expected=9,
+            )
+        ]
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == []
+    assert decisions[0].reason_code == "HARD_TERM_VIOLATION"
+
+
+def test_contribution_planner_does_not_fallback_for_invalid_exact_discrete_term():
+    product = make_product("TERM-DISCRETE", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-DISCRETE-META", term_value=12).metadata.model_copy(
+                update={
+                    "min_term": ContractTerm(value=6, unit=TermUnit.MONTH),
+                    "max_term": ContractTerm(value=12, unit=TermUnit.MONTH),
+                    "available_terms": [
+                        ContractTerm(value=6, unit=TermUnit.MONTH),
+                        ContractTerm(value=12, unit=TermUnit.MONTH),
+                    ],
+                }
+            )
+        },
+        deep=True,
+    )
+    base_intent = make_intent(selected_term_value=9)
+    plan = base_intent.contribution_plan.model_copy(update={"term_strictness": "EXACT"})
+
+    planned = ContributionPlanner().build(product, plan, subscription_date=SUBSCRIPTION_DATE)
+
+    assert planned.core_plan is None
+    assert planned.not_comparable_reason == "EXACT_TERM_NOT_AVAILABLE"
+    assert planned.missing_ranking_inputs[0].required_field == "selected_term"
+
+
+def test_retrieval_filters_sale_and_effective_date_windows():
+    future_sale = make_product("FUTURE-SALE").model_copy(
+        update={"metadata": make_product("FUTURE-SALE-META").metadata.model_copy(
+            update={"sale_start": AS_OF.replace(day=AS_OF.day + 1)}
+        )},
+        deep=True,
+    )
+    expired_version = make_product("EXPIRED-VERSION").model_copy(
+        update={"metadata": make_product("EXPIRED-VERSION-META").metadata.model_copy(
+            update={"effective_to": AS_OF.replace(day=AS_OF.day - 1)}
+        )},
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve(
+        [future_sale, expired_version], make_intent(), as_of=AS_OF
+    )
+
+    assert retained == []
+    assert [item.reason_code for item in decisions] == [
+        "SALE_NOT_STARTED",
+        "EFFECTIVE_DATE_PASSED",
+    ]
+
+
+def test_invalid_branch_requirement_value_is_unknown_not_truthy():
+    product = make_product(
+        "BRANCH-PRODUCT", allowed_channels=[SubscriptionChannel.BRANCH]
+    )
+    intent = make_intent(
+        hard_constraints=[
+            HardConstraint(
+                field="REQUIRES_BRANCH",
+                constraint=HardConstraintValue.REQUIRE,
+                expected="not-a-boolean",
+            )
+        ]
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == [product]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+
+
+def test_string_false_branch_requirement_is_not_treated_as_true():
+    product = make_product(
+        "BRANCH-ONLY-PRODUCT", allowed_channels=[SubscriptionChannel.BRANCH]
+    )
+    intent = make_intent(
+        hard_constraints=[
+            HardConstraint(
+                field="REQUIRES_BRANCH",
+                constraint=HardConstraintValue.REQUIRE,
+                expected="false",
+            )
+        ]
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == []
+    assert decisions[0].reason_code == "HARD_BRANCH_REQUIREMENT_VIOLATION"
+
+
+def test_conflict_resolution_preserves_other_expected_values_and_currencies():
+    validator = IntentConflictValidator()
+    intent = make_intent(
+        hard_constraints=[
+            HardConstraint(field="FEATURE", constraint=HardConstraintValue.REQUIRE, expected=True),
+            HardConstraint(field="FEATURE", constraint=HardConstraintValue.EXCLUDE, expected=True),
+            HardConstraint(field="FEATURE", constraint=HardConstraintValue.REQUIRE, expected=False),
+        ],
+        numeric_preferences=[
+            NumericPreference(
+                field="AMOUNT", value=Decimal("300"),
+                direction=NumericPreferenceDirection.AT_LEAST,
+                strictness=PreferenceStrictness.HARD, currency="KRW",
+            ),
+            NumericPreference(
+                field="AMOUNT", value=Decimal("200"),
+                direction=NumericPreferenceDirection.AT_MOST,
+                strictness=PreferenceStrictness.HARD, currency="KRW",
+            ),
+            NumericPreference(
+                field="AMOUNT", value=Decimal("10"),
+                direction=NumericPreferenceDirection.AT_MOST,
+                strictness=PreferenceStrictness.HARD, currency="USD",
+            ),
+        ],
+    )
+    conflicts = validator.validate(intent)
+    hard_conflict = next(item for item in conflicts if item.field == "FEATURE")
+    numeric_conflict = next(item for item in conflicts if item.field == "AMOUNT")
+
+    resolved_hard = validator.apply_resolution(intent, hard_conflict, "KEEP_REQUIRE")
+    assert sorted(
+        (item.constraint.value, item.expected) for item in resolved_hard.hard_constraints
+    ) == [("REQUIRE", False), ("REQUIRE", True)]
+    resolved_numeric = validator.apply_resolution(intent, numeric_conflict, "KEEP_LOWER_BOUND")
+    assert sorted(
+        (item.direction.value, item.currency)
+        for item in resolved_numeric.numeric_preferences
+    ) == [("AT_LEAST", "KRW"), ("AT_MOST", "USD")]
+
+
+def test_exact_term_accepts_value_inside_explicit_continuous_range():
+    product = make_product("TERM-RANGE", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-RANGE-META", term_value=12).metadata.model_copy(
+                update={
+                    "min_term": ContractTerm(value=6, unit=TermUnit.MONTH),
+                    "max_term": ContractTerm(value=12, unit=TermUnit.MONTH),
+                    "available_terms": [],
+                }
+            )
+        },
+        deep=True,
+    )
+    base_intent = make_intent(selected_term_value=9)
+    intent = base_intent.model_copy(
+        update={
+            "contribution_plan": base_intent.contribution_plan.model_copy(
+                update={"term_strictness": "EXACT"}
+            )
+        },
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == [product]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+
+
+def test_exact_fixed_term_uses_same_cross_unit_equivalence_as_discrete_terms():
+    product = make_product("TERM-FIXED", term_value=12).model_copy(
+        update={
+            "metadata": make_product("TERM-FIXED-META", term_value=12).metadata.model_copy(
+                update={"available_terms": []}
+            )
+        },
+        deep=True,
+    )
+    base_intent = make_intent(selected_term_value=365)
+    intent = base_intent.model_copy(
+        update={
+            "contribution_plan": base_intent.contribution_plan.model_copy(
+                update={
+                    "selected_term_unit": TermUnit.DAY,
+                    "term_strictness": "EXACT",
+                }
+            )
+        },
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+
+    assert retained == [product]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+
+
+def test_unknown_term_metadata_uses_exact_request_as_comparison_horizon():
+    product = make_product("TERM-UNKNOWN", term_value=12)
+    unknown_term = NormalizedProductData(
+        version=1,
+        institution_name=product.name,
+        sale_status="ON_SALE",
+        term_policy={"kind": "UNKNOWN"},
+        raw_product={},
+    )
+    product = product.model_copy(update={"normalized": unknown_term}, deep=True)
+    base_intent = make_intent(selected_term_value=9)
+    intent = base_intent.model_copy(
+        update={
+            "contribution_plan": base_intent.contribution_plan.model_copy(
+                update={"term_strictness": "EXACT"}
+            )
+        },
+        deep=True,
+    )
+
+    retained, decisions = CandidateRetriever().retrieve([product], intent, as_of=AS_OF)
+    planned = ContributionPlanner().build(
+        product, intent.contribution_plan, subscription_date=SUBSCRIPTION_DATE
+    )
+
+    assert retained == [product]
+    assert decisions[0].reason_code == "RETAINED_NO_CERTAIN_HARD_FAILURE"
+    assert planned.core_plan is not None
+    assert planned.projection.term_summary == "9개월"
 
 
 def test_capability_cannot_does_not_remove_product():

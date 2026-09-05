@@ -600,14 +600,34 @@ class IntentConflictValidator:
         field = conflict.field
 
         if resolution == "KEEP_HARD_REMOVE_PREFERENCE":
-            payload["preferences"] = [item for item in intent.preferences if item.field != field]
-        elif resolution == "REMOVE_HARD_KEEP_PREFERENCE":
-            payload["hard_constraints"] = [item for item in intent.hard_constraints if item.field != field]
-        elif resolution == "SET_NEUTRAL":
-            payload["hard_constraints"] = [item for item in intent.hard_constraints if item.field != field]
             payload["preferences"] = [
-                item for item in intent.preferences if item.field != field
-            ] + [Preference(field=field, preference=PreferenceValue.NEUTRAL)]
+                item
+                for item in intent.preferences
+                if not self._belongs_to_conflict(item, field, conflict)
+            ]
+        elif resolution == "REMOVE_HARD_KEEP_PREFERENCE":
+            payload["hard_constraints"] = [
+                item
+                for item in intent.hard_constraints
+                if not self._belongs_to_conflict(item, field, conflict)
+            ]
+        elif resolution == "SET_NEUTRAL":
+            payload["hard_constraints"] = [
+                item
+                for item in intent.hard_constraints
+                if not self._belongs_to_conflict(item, field, conflict)
+            ]
+            payload["preferences"] = [
+                item
+                for item in intent.preferences
+                if not self._belongs_to_conflict(item, field, conflict)
+            ] + [
+                Preference(
+                    field=field,
+                    expected=conflict.left_input.get("expected", True),
+                    preference=PreferenceValue.NEUTRAL,
+                )
+            ]
         elif resolution in {"KEEP_CAN", "KEEP_CANNOT", "SET_UNKNOWN"}:
             state = {
                 "KEEP_CAN": CapabilityState.CAN,
@@ -623,8 +643,16 @@ class IntentConflictValidator:
                 if resolution == "KEEP_PRESENT"
                 else PreferenceValue.PREFER_ABSENT
             )
-            payload["preferences"] = [item for item in intent.preferences if item.field != field] + [
-                Preference(field=field, preference=preference)
+            payload["preferences"] = [
+                item
+                for item in intent.preferences
+                if not self._belongs_to_conflict(item, field, conflict)
+            ] + [
+                Preference(
+                    field=field,
+                    expected=conflict.left_input.get("expected", True),
+                    preference=preference,
+                )
             ]
         elif resolution in {"KEEP_REQUIRE", "KEEP_EXCLUDE"}:
             constraint = (
@@ -633,13 +661,33 @@ class IntentConflictValidator:
                 else HardConstraintValue.EXCLUDE
             )
             payload["hard_constraints"] = [
-                item for item in intent.hard_constraints if item.field != field
-            ] + [HardConstraint(field=field, constraint=constraint)]
+                item
+                for item in intent.hard_constraints
+                if not self._belongs_to_conflict(item, field, conflict)
+            ] + [
+                HardConstraint(
+                    field=field,
+                    expected=conflict.left_input.get("expected", True),
+                    constraint=constraint,
+                )
+            ]
         elif resolution == "REMOVE_BOTH":
-            payload["hard_constraints"] = [item for item in intent.hard_constraints if item.field != field]
+            payload["hard_constraints"] = [
+                item
+                for item in intent.hard_constraints
+                if not self._belongs_to_conflict(item, field, conflict)
+            ]
         elif resolution in {"KEEP_LOWER_BOUND", "KEEP_UPPER_BOUND", "MAKE_SOFT"}:
-            filtered = [item for item in intent.numeric_preferences if item.field != field]
-            candidates = [item for item in intent.numeric_preferences if item.field == field]
+            filtered = [
+                item
+                for item in intent.numeric_preferences
+                if not self._numeric_group_matches(item, field, conflict)
+            ]
+            candidates = [
+                item
+                for item in intent.numeric_preferences
+                if self._numeric_group_matches(item, field, conflict)
+            ]
             if resolution == "KEEP_LOWER_BOUND":
                 candidates = [item for item in candidates if item.direction == NumericPreferenceDirection.AT_LEAST]
             elif resolution == "KEEP_UPPER_BOUND":
@@ -656,10 +704,39 @@ class IntentConflictValidator:
             ] + [Capability(capability_id=capability_id, state=CapabilityState.CAN)]
         elif resolution == "REMOVE_REQUIRE_KEEP_CANNOT":
             payload["hard_constraints"] = [
-                item for item in intent.hard_constraints if item.field != field
+                item
+                for item in intent.hard_constraints
+                if not self._belongs_to_conflict(item, field, conflict)
             ]
         else:  # pragma: no cover - guarded by the allowed options above.
             raise ValueError(f"Unsupported resolution: {resolution}")
 
         payload["updated_at"] = datetime.now(timezone.utc)
         return ProductSearchIntent.model_validate(payload)
+
+    @staticmethod
+    def _belongs_to_conflict(item: BaseModel, field: str, conflict: IntentConflict) -> bool:
+        """Match only the conflicting expected value, preserving same-field variants."""
+
+        if str(getattr(item, "field", "")).upper() != field.upper():
+            return False
+        expected = getattr(item, "expected", object())
+        return expected == conflict.left_input.get("expected") or expected == conflict.right_input.get("expected")
+
+    @staticmethod
+    def _numeric_group_matches(
+        item: NumericPreference,
+        field: str,
+        conflict: IntentConflict,
+    ) -> bool:
+        if item.field.upper() != field.upper():
+            return False
+
+        def currency(value: Any) -> str | None:
+            return str(value).upper() if value is not None else None
+
+        currencies = {
+            currency(conflict.left_input.get("currency")),
+            currency(conflict.right_input.get("currency")),
+        }
+        return currency(item.currency) in currencies
