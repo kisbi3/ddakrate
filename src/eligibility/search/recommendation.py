@@ -500,6 +500,7 @@ class RecommendationService:
                     }
                 )
         detail = ProductRecommendationDetail(
+            semantic_interpretations=candidate.semantic_interpretations,
             recommendation_id=recommendation_id,
             search_session_id=search_session_id,
             product_id=product.product_id,

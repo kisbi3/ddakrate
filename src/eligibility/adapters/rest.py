@@ -130,6 +130,14 @@ class RestApplicationAdapter:
                 )
                 return RestResponse(status_code=200, body=result.model_dump(mode="json"))
 
+            match = re.fullmatch(r"/search-sessions/([^/]+)/semantic-review", path)
+            if method == "POST" and match:
+                retry = payload.get("retry_failed", False)
+                if not isinstance(retry, bool):
+                    raise ValueError("retry_failed must be a JSON boolean")
+                result = self.service.advance_semantic_review(match.group(1), retry_failed=retry)
+                return RestResponse(status_code=200, body=result.model_dump(mode="json"))
+
             match = re.fullmatch(r"/search-sessions/([^/]+)/state", path)
             if method == "GET" and match:
                 state = self.service.get_mutable_search_state(match.group(1))

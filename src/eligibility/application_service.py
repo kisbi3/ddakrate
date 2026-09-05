@@ -15,6 +15,9 @@ from eligibility.application import (
     submit_user_answer as submit_answer_to_store,
 )
 from eligibility.conversation import ConversationOrchestrator
+from eligibility.semantic_augmentation import SemanticAugmentationMixin
+from eligibility.schema.semantic import ClauseInterpretation, SemanticReviewState
+from eligibility.search.semantic import SemanticConditionCompiler, INPUT_PREFIX, attach_requests, user_inputs
 from eligibility.conversation_ledger import (
     Changeset,
     Decision,
@@ -212,9 +215,12 @@ class _SearchRuntime:
     eligibility_text_review_pending_count: int = 0
     eligibility_text_review_frontier_ids: list[str] = field(default_factory=list)
     eligibility_text_review_assistant_message: str | None = None
+    semantic_cache: dict[str, tuple[ClauseInterpretation, ...]] = field(default_factory=dict)
+    semantic_failures: dict[str, str] = field(default_factory=dict)
+    semantic_review: SemanticReviewState = field(default_factory=SemanticReviewState)
 
 
-class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, EligibilityReviewMixin):
+class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, EligibilityReviewMixin, SemanticAugmentationMixin):
     """Transport-independent personalized product search orchestration."""
 
     def __init__(
@@ -239,7 +245,15 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         eligibility_text_reviewer: EligibilityTextReviewer | None = None,
         eligibility_text_review_max_rounds: int = 10,
         product_aliases: dict[str, str] | None = None,
+        semantic_compiler: SemanticConditionCompiler | None = None,
+        semantic_batch_size: int = 8,
+        semantic_max_characters: int = 50000,
     ) -> None:
+        if not 1 <= semantic_batch_size <= 20 or semantic_max_characters < 1000:
+            raise ValueError("Invalid semantic processing budget")
+        self.semantic_compiler = semantic_compiler
+        self.semantic_batch_size = semantic_batch_size
+        self.semantic_max_characters = semantic_max_characters
         self.products = {product.product_id: product for product in products}
         if product_aliases is None:
             try:
@@ -1029,6 +1043,16 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 if request.fact_type == fact_type
                 and request.resolution_strategy == ResolutionStrategy.ASK_USER
             ]
+            if requests and any(request.semantic_input is not None for request in requests):
+                request = next(request for request in requests if request.semantic_input is not None)
+                snapshot = self._snapshot_runtime(runtime)
+                try:
+                    self._store_semantic_input(runtime, request.semantic_input, new_value)
+                    self._run_pipeline(runtime)
+                    return runtime.session
+                except Exception:
+                    self._restore_runtime(runtime, snapshot)
+                    raise
             if requests:
                 request = sorted(
                     requests,
@@ -1933,6 +1957,21 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
     ) -> None:
         """Persist one explicit side-answer across every bound requirement."""
 
+        if variable_id.startswith(INPUT_PREFIX):
+            variable = variable_id[len(INPUT_PREFIX):]
+            if not any(request.semantic_input == variable for request in requests):
+                raise ValueError("Unbound semantic variable")
+            if status in {UserConditionStatus.ACKNOWLEDGED_UNKNOWN, UserConditionStatus.WILLING_UNSPECIFIED} or (status == UserConditionStatus.DECLINED and variable != "PREGNANT_SELF"):
+                runtime.condition_states[variable_id] = UserConditionState(
+                    variable_id=variable_id, status=UserConditionStatus.ACKNOWLEDGED_UNKNOWN,
+                    source_turn_id=runtime.audit.request_id, interpreter_version=interpreter_version,
+                )
+            else:
+                self._store_semantic_input(runtime, variable, False if status == UserConditionStatus.DECLINED else value)
+            self._sync_condition_states_to_session(runtime)
+            runtime.pipeline_requested_while_deferred = True
+            return
+
         if status in {
             UserConditionStatus.ACKNOWLEDGED_UNKNOWN,
             UserConditionStatus.WILLING_UNSPECIFIED,
@@ -2617,6 +2656,8 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             raise ValueError(
                 "사전 질문의 자연어 답변은 messages endpoint로 제출해야 합니다"
             )
+        if question.request is not None and question.request.semantic_input is not None:
+            return self._submit_semantic_input(runtime, question, answer, select_next=select_next)
         if self._is_unknown_answer(answer):
             self._set_condition_state(
                 runtime,
@@ -2882,6 +2923,15 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                     break
         if request is None:
             raise KeyError(f"Unknown request_reference: {request_reference}")
+        if request.semantic_input is not None:
+            snapshot = self._snapshot_runtime(runtime)
+            try:
+                self._store_semantic_input(runtime, request.semantic_input, new_value)
+                self._run_pipeline(runtime)
+                return runtime.session
+            except Exception:
+                self._restore_runtime(runtime, snapshot)
+                raise
         runtime.fact_store, _, _ = revise_answer_in_store(
             runtime.fact_store,
             request,
@@ -2957,9 +3007,12 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             )
             and runtime.ranking.stability.stable
             and runtime.eligibility_text_review_state in {"DISABLED", "COMPLETE"}
+            and not self._semantic_incomplete(runtime)
+            and not runtime.semantic_review.ai_interpreted
         )
         recommendation = recommendation.model_copy(
             update={
+                "semantic_review": runtime.semantic_review.model_dump(mode="json"),
                 "recommendation_status": "CONFIRMED" if confirmed else "PROVISIONAL",
                 "provisional_candidates": (
                     [] if confirmed else recommendation.top_products
@@ -3024,6 +3077,10 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             persist_answer_records=False,
             emit_supersession_audit=False,
         )
+        semantic_details = {}
+        if self.semantic_compiler is not None:
+            overlays, fact_store, semantic_details = self._semantic_evaluation_inputs(runtime, [product], fact_store)
+            product = overlays[0]
         previous_evaluation_id = runtime.audit.evaluation_id
         try:
             evaluated = self.evaluator.evaluate(
@@ -3036,6 +3093,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 product_contribution_choices=self._product_choice_map(runtime),
             )
             candidate = evaluated[product_id]
+            if semantic_details:
+                info = semantic_details[product_id]
+                candidate = attach_requests(candidate, *info, user_inputs(fact_store, runtime.as_of))
             return self.recommendation_service.build_detail(
                 search_session_id=search_session_id,
                 recommendation_id=recommendation.recommendation_id,
@@ -3179,15 +3239,25 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         *,
         merge: bool = False,
     ) -> None:
+        details = {}
+        fact_store = runtime.fact_store
+        if self.semantic_compiler is not None:
+            products, fact_store, details = self._semantic_evaluation_inputs(runtime, list(products), fact_store)
         evaluated = self.evaluator.evaluate(
             products,
-            runtime.fact_store,
+            fact_store,
             self._intent_with_feature_policies(runtime),
             as_of=runtime.as_of,
             subscription_date=runtime.subscription_date,
             audit=runtime.audit,
             product_contribution_choices=self._product_choice_map(runtime),
         )
+        if details:
+            answers = user_inputs(fact_store, runtime.as_of)
+            evaluated = {
+                pid: attach_requests(candidate, details[pid][0], details[pid][1], details[pid][2], answers)
+                for pid, candidate in evaluated.items()
+            }
         runtime.structured_evaluations = (
             {**runtime.structured_evaluations, **evaluated} if merge else evaluated
         )
@@ -3223,6 +3293,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
 
     def _rank(self, runtime: _SearchRuntime) -> None:
         self._rank_once(runtime)
+        self._augment_semantic_conditions(runtime)
         self._review_top_ranked_eligibility_text(runtime)
 
     def _rank_once(self, runtime: _SearchRuntime) -> None:
@@ -3584,6 +3655,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             == "ELIGIBILITY"
         )
         explanation_details: dict[str, Any] = {
+            **question.explanation_details,
+            "semantic_input": question.request.semantic_input if question.request else None,
+            "known_semantic_inputs": user_inputs(runtime.fact_store, runtime.as_of) if question.request and question.request.semantic_input else {},
             "fact_type": fact_type or None,
             "product_context": product_context,
             "institutions": sorted(
@@ -4918,6 +4992,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         return {
             "intent": runtime.intent.model_dump(mode="json"),
             "user_declarations": user_declarations,
+            "semantic_review": runtime.semantic_review.model_dump(mode="json"),
             "pre_search_profile_answers": [
                 {"fact_type": fact_type, "summary": summary}
                 for fact_type, summary in sorted(
@@ -5457,6 +5532,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             "eligibility_text_review_pending_count",
             "eligibility_text_review_frontier_ids",
             "eligibility_text_review_assistant_message",
+            "semantic_cache",
+            "semantic_failures",
+            "semantic_review",
         )
         return {name: deepcopy(getattr(runtime, name)) for name in fields}
 
@@ -5749,7 +5827,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             ordered,
             top_k=runtime.intent.requested_top_k,
             objective=runtime.intent.ranking_objective,
-            material_internal_question_remaining=material_question,
+            material_internal_question_remaining=material_question or self._semantic_incomplete(runtime),
         )
         runtime.ranking = runtime.ranking.model_copy(
             update={"stability": stability},

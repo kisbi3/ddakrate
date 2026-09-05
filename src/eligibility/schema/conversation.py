@@ -8,6 +8,7 @@ from typing import Literal, TypeAlias
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from eligibility.schema.application_input import ApplicationScalar
+from eligibility.schema.semantic import ChildrenAnswer
 from eligibility.schema.enums import UserConditionStatus
 from eligibility.schema.search import (
     IntentPatch,
@@ -73,7 +74,7 @@ class ConversationStructuredAnswer(BaseModel):
     maximum_affordable_periodic_amount: ApplicationScalar | None = None
 
 
-ConversationAnswer: TypeAlias = ApplicationScalar | ConversationStructuredAnswer
+ConversationAnswer: TypeAlias = ApplicationScalar | ConversationStructuredAnswer | ChildrenAnswer
 
 
 class QuantitativeConditionValue(BaseModel):
@@ -86,7 +87,7 @@ class QuantitativeConditionValue(BaseModel):
     period: Literal["DAY", "WEEK", "MONTH", "YEAR"] | None = None
 
 
-ConditionAnswerValue: TypeAlias = ApplicationScalar | QuantitativeConditionValue
+ConditionAnswerValue: TypeAlias = ApplicationScalar | QuantitativeConditionValue | ChildrenAnswer
 
 
 class ConversationAction(BaseModel):
