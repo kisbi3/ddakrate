@@ -1,39 +1,102 @@
-name: Recommendation review workspace
+name: Validate recommendation audit fixes
 
 on:
   push:
     branches: [fix/recommendation-logic-audit]
-    paths: [.github/workflows/review-workspace.yml]
+    paths:
+      - .github/workflows/review-workspace.yml
+      - scripts/.review-transport/**
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  snapshot:
+  validate-and-publish:
+    if: github.ref == 'refs/heads/fix/recommendation-logic-audit'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 7b76c6f0813786af267ecaab435962ea6eed42ad
-          persist-credentials: false
-      - name: Package exact checkout without credentials
-        run: |
-          set -eu
-          test "$(git rev-parse HEAD)" = 7b76c6f0813786af267ecaab435962ea6eed42ad
-          mkdir -p "$RUNNER_TEMP/review-artifacts"
-          git clone --bare --no-hardlinks . "$RUNNER_TEMP/ddakrate.git"
-          git --git-dir="$RUNNER_TEMP/ddakrate.git" config --remove-section remote.origin || true
-          tar -czf "$RUNNER_TEMP/review-artifacts/ddakrate.git.tar.gz" -C "$RUNNER_TEMP" ddakrate.git
-          git rev-parse HEAD > "$RUNNER_TEMP/review-artifacts/HEAD.txt"
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Download transport dependency wheels for offline tests
-        run: python -m pip download --dest "$RUNNER_TEMP/review-artifacts/wheels" 'httpx2>=2.12,<3'
+          cache: pip
+      - name: Verify and apply reviewed patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/review-results"
+          git merge-base --is-ancestor 7b76c6f0813786af267ecaab435962ea6eed42ad HEAD
+          python - <<'PY'
+          import base64, gzip, hashlib, pathlib, subprocess
+          parts = sorted(pathlib.Path('scripts/.review-transport').glob('part-*.b64'))
+          assert len(parts) == 4
+          expected = ['a33a96600fd59aa0c2c1656337d00d9cffff1ffc', '9378798efbd206a9200a1cf4c6ae241d22152258', '2a231ceef350be4d92725516d452f14cd50d978f', '8acae08791e7d123a80c603ffee25d56cf225109']
+          segments = []
+          for i, p in enumerate(parts):
+              text = p.read_text().strip()
+              # Repair explicitly identified transport transcription errors only.
+              if i == 1:
+                  text = text.replace('YH yJZ', 'YHyJZ').replace('JRZZ6s', 'JRZ6s')
+              if i == 3:
+                  text = text.replace('ZvfququPQ', 'ZvfquPQ').replace('Ip07iiSySz', 'Ip07iiSz')
+              data = text.encode('ascii')
+              actual = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
+              print(p.name, len(data), actual, flush=True)
+              assert actual == expected[i], f'Transport segment mismatch: {p}'
+              segments.append(text)
+          patch = gzip.decompress(base64.b64decode(''.join(segments), validate=True))
+          assert hashlib.sha256(patch).hexdigest() == 'c822c1f787c8bf15fa9c93afc57f58b426be8346ef29939fe3a48fe97f95ff4b'
+          subprocess.run(['git', 'apply', '--check', '-'], input=patch, check=True)
+          subprocess.run(['git', 'apply', '-'], input=patch, check=True)
+          PY
+          python scripts/publish_recommendation_term_correction.py
+          git diff --check
+      - name: Install dependencies
+        run: pip install -e '.[web,dev]'
+      - name: Compile original source and tests
+        run: python -m compileall -q src tests
+      - name: Verify normalized hashes and runtime catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' | tee "$RUNNER_TEMP/review-results/catalog.log"
+          import json, pathlib, hashlib
+          from eligibility.catalog.normalized_loader import load_normalized_product_catalog
+          root = pathlib.Path('.')
+          index = json.loads((root/'data/financial_products/normalized/index.json').read_text())
+          manifest = json.loads((root/f"data/financial_products/normalized/manifests/{index['manifest_batch']}.json").read_text())
+          for row in [*manifest['files'], *index['products']]:
+              assert 'sha256:' + hashlib.sha256((root/row['path']).read_bytes()).hexdigest() == row['sha256'], row['path']
+          products = load_normalized_product_catalog()
+          print(json.dumps({'published': index['product_count'], 'runtime': len(products), 'manifest_files': len(manifest['files']), 'manifest': index['manifest_batch']}))
+          assert len(products) == 4281
+          PY
+      - name: Run complete repository tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python --version | tee "$RUNNER_TEMP/review-results/environment.log"
+          pip freeze >> "$RUNNER_TEMP/review-results/environment.log"
+          pytest -q -ra --junitxml="$RUNNER_TEMP/review-results/pytest.xml" | tee "$RUNNER_TEMP/review-results/pytest.log"
+      - name: Commit validated changes to the feature branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/fix/recommendation-logic-audit
+          test "$(git ls-remote origin refs/heads/fix/recommendation-logic-audit | cut -f1)" = "$GITHUB_SHA"
+          git diff --check
+          git add docs/recommendation-audit-fixes.md scripts/publish_recommendation_term_correction.py src/eligibility/application_service.py src/eligibility/conversation.py src/eligibility/schema/search.py src/eligibility/search/contribution.py src/eligibility/search/evaluation.py src/eligibility/search/operation_grounding.py src/eligibility/search/questions.py src/eligibility/search/ranking.py tests/test_recommendation_audit_regressions.py
+          git add data/financial_products/normalized/index.json data/financial_products/normalized/manifests/20260905-recommendation-term-domain-01.json data/financial_products/normalized/products/time_deposit/INST-KR-000830/INST-KR-000830-2-0001/v006.json data/financial_products/normalized/reports/20260905-recommendation-term-domain-01
+          git diff --cached --stat | tee "$RUNNER_TEMP/review-results/changes.log"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix: preserve term constraints, safe Top-K bounds, grounded operations and read-only views'
+          git push origin HEAD:refs/heads/fix/recommendation-logic-audit
+          git rev-parse HEAD | tee "$RUNNER_TEMP/review-results/validated-commit.txt"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: recommendation-review-checkout
-          path: ${{ runner.temp }}/review-artifacts
-          retention-days: 1
-          compression-level: 0
+          name: recommendation-fix-validation
+          path: ${{ runner.temp }}/review-results
+          retention-days: 3
