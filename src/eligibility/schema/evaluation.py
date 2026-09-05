@@ -51,6 +51,8 @@ class MissingFactRequest(StrictModel):
     # Stable Application Layer reference. Existing fixtures may omit it; the
     # UserAnswerMapper deterministically derives a reference in that case.
     missing_fact_id: str | None = None
+    semantic_input: Literal["CHILDREN", "MARRIAGE_DATE", "PREGNANT_SELF"] | None = None
+    semantic_input_fields: list[Literal["COUNT", "BIRTH_YEARS", "BIRTH_DATES"]] = Field(default_factory=list)
 
 
 class ProvenanceRecord(StrictModel):

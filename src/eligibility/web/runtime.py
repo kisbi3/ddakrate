@@ -17,6 +17,7 @@ from eligibility.catalog.loader import CATALOG_MODE_ENV, CATALOG_PATH_ENV
 from eligibility.catalog.normalized_loader import repository_root
 from eligibility.llm import LLMConfigurationError, LLMGateway, LLMSettings
 from eligibility.search.intent import IntentParser
+from eligibility.search.semantic import SemanticConditionCompiler
 from eligibility.search.questions import RankingAwareQuestionPlanner
 from eligibility.search.recommendation import RecommendationService
 from eligibility.web.debug_trace import DebugTraceStore
@@ -27,6 +28,7 @@ from eligibility.web.debug_trace import DebugTraceStore
 # ordinary Web sessions. Full rule outcomes remain available on each evaluation.
 _WEB_AUDIT_EVENT_TYPES = frozenset(
     {
+        AuditEventType.SEMANTIC_CONDITIONS_ANALYZED,
         AuditEventType.LLM_CALL_STARTED,
         AuditEventType.LLM_CALL_COMPLETED,
         AuditEventType.LLM_CALL_FAILED,
@@ -193,6 +195,12 @@ def build_web_runtime() -> WebRuntime:
         recommendation_service=RecommendationService(),
         conversation_orchestrator=(ConversationOrchestrator(gateway) if gateway else None),
         pre_search_enabled=True,
+        semantic_compiler=(
+            SemanticConditionCompiler(gateway)
+            if gateway is not None
+            and os.environ.get("ELIGIBILITY_SEMANTIC_CONDITIONS", "0").strip().lower() in {"1", "true", "yes"}
+            else None
+        ),
         audit_event_types=_WEB_AUDIT_EVENT_TYPES,
     )
     return WebRuntime(

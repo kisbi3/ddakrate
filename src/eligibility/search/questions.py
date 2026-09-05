@@ -299,6 +299,13 @@ class RankingAwareQuestionPlanner:
             product_ids = sorted({product_id for product_id, _ in entries})
             requests = [request for _, request in entries]
             primary = self._primary_request(requests)
+            if primary.semantic_input is not None:
+                from eligibility.search.semantic import input_question
+                fields = sorted({field for request in requests for field in request.semantic_input_fields})
+                primary = primary.model_copy(update={
+                    "semantic_input_fields": fields,
+                    "question": input_question(primary.semantic_input, {}, fields),
+                })
             question_id = f"QUESTION-{canonical_hash({'family_id': family_id, 'semantic': primary.expected_semantic_type.value if primary.expected_semantic_type else None})[:16]}"
 
             ranking_impact = sum(
@@ -586,6 +593,21 @@ class RankingAwareQuestionPlanner:
                 else None
             ),
         )
+        if question.request is not None and question.request.semantic_input is not None:
+            from eligibility.search.semantic import input_schema
+            variable = question.request.semantic_input
+            question = question.model_copy(update={
+                "answer_mode": "FREE_TEXT",
+                "explanation": "여러 상품의 조건을 함께 확인하는 질문입니다. 답변은 자기진술로 사용하며 서류·기관 승인과 구분합니다.",
+                "question_spec": QuestionSpec(
+                    question_id=question.question_id, family_id="SEMANTIC_INPUT::" + variable,
+                    variable_id="SEMANTIC_INPUT::" + variable, value_schema=input_schema(variable),
+                    scope={"answer_scope": "SHARED_USER_INPUT"},
+                    bound_requirement_ids=list(selected.affected_request_ids),
+                    affected_product_ids=list(selected.affected_product_ids),
+                    prompt_template_id="semantic-input-v1:" + variable,
+                ),
+            }, deep=True)
         if audit is not None:
             audit.bind_search_context(question_id=question.question_id)
             audit.emit(
@@ -638,6 +660,8 @@ class RankingAwareQuestionPlanner:
         them. Identical questions still share one answer.
         """
 
+        if request.semantic_input is not None:
+            return "SEMANTIC_INPUT::" + request.semantic_input
         normalized_request = normalize_user_question_request(request)
         if (
             RankingAwareQuestionPlanner._is_quantitative_family(

@@ -181,6 +181,9 @@ ACTIVE_FINANCIAL_FACT_SYSTEM_PROMPT = """당신은 현재 화면에 표시된 �
 ANSWER_PLAN_SYSTEM_PROMPT = """당신은 backend가 선택한 현재 조건 질문에 대한 답과, 사용자가 같은 문장에서 명시한 제한된 추가 변경만 AnswerPlan으로 추출합니다.
 
 - ACTIVE_QUESTION의 question_id를 그대로 복사하세요. 질문을 새로 만들거나 다음 질문을 고르지 마세요.
+- semantic_input=CHILDREN이면 ChildrenAnswer {count, children:[{birth_date,birth_year}], complete}로 답을 추출하세요. 출생연도를 생년월일로 추정하지 마세요. 전체 자녀를 빠짐없이 열거한 경우만 complete=true이며 count와 목록 길이가 같아야 합니다. 자녀가 없다는 명시적 답은 count=0,children=[],complete=true입니다. 일부만 알려졌다면 complete=false이고 모르는 값은 null입니다. 자녀 이름은 추출하지 마세요.
+- semantic_input=MARRIAGE_DATE는 명시된 과거 혼인일(YYYY-MM-DD)만, PREGNANT_SELF는 가입자 본인의 임신 여부만 추출하세요. 자녀 존재에서 혼인 여부, 배우자 상태나 서류 승인을 추론하지 마세요.
+- semantic_input 답변 중 모름/거절은 ACKNOWLEDGED_UNKNOWN입니다. 가족 정보 거절을 '자녀 없음'이나 우대 부적격으로 바꾸지 마세요.
 - ALLOWED_VARIABLE_IDS와 ALLOWED_INSTITUTION_IDS에 없는 ID를 만들거나 추정하지 마세요.
 - 구체적인 값으로 판정할 수 있으면 DECLARED_FEASIBLE과 실제 value를 사용하세요.
 - 단순한 의향만 있고 금액·횟수 등 임계값을 판정할 수 없으면 WILLING_UNSPECIFIED입니다. 임의 숫자를 만들지 마세요.
