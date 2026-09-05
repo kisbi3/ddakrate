@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from decimal import Decimal
 
 from eligibility.schema.enums import EvaluationStatus, VerificationLevel
@@ -382,6 +383,15 @@ class RateEngine:
             for member in members[1:]:
                 union(members[0], member)
 
+        # Catalog relations are often empty for staged 1%/2%/3% ladders that
+        # still share one official sentence. Take the max only when the shared
+        # source itself shows a same-condition ladder. Independent bonuses
+        # copied onto the same sentence stay additive; unclear copies are not
+        # forced into either a max or a newly invented exclusive relation.
+        for members in RateEngine._same_source_tier_groups(policy, values):
+            for member in members[1:]:
+                union(members[0], member)
+
         groups: dict[str, list[str]] = {}
         for rule_id in values:
             groups.setdefault(find(rule_id), []).append(rule_id)
@@ -434,3 +444,109 @@ class RateEngine:
         if product.base_rate is not None:
             total -= product.base_rate * sum(replacement_scopes.values(), Decimal("0"))
         return max(Decimal("0"), total)
+
+    _PERSON_COUNT_RE = re.compile(r"\[\s*(\d+)\s*명\s*\]|(?<!\d)(\d+)\s*명")
+    _BAND_MARKER_RE = re.compile(
+        r"\[\s*\d+(?:\.\d+)?\s*(?:개월|년|만원|원|회)\s*\]"
+        r"|(?<!\d)\d+(?:\.\d+)?\s*(?:개월|년)\s*(?:이상|이하|미만)?"
+    )
+    _INDEPENDENT_JOIN_RE = re.compile(r"및|그리고|와\s|과\s|각각")
+
+    @staticmethod
+    def _walk_policy_nodes(value: object):
+        if isinstance(value, dict):
+            yield value
+            for child in value.values():
+                yield from RateEngine._walk_policy_nodes(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from RateEngine._walk_policy_nodes(child)
+
+    @staticmethod
+    def _condition_ladder_key(row: dict) -> tuple[str | None, object | None]:
+        fact_key = None
+        expected = None
+        for node in RateEngine._walk_policy_nodes(row.get("condition") or {}):
+            if node.get("fact_key") and fact_key is None:
+                fact_key = str(node.get("fact_key"))
+            if "expected" in node and expected is None:
+                expected = node.get("expected")
+        return fact_key, expected
+
+    @staticmethod
+    def _is_staged_same_condition_group(text: str, rows: list[dict]) -> bool:
+        """True only when the shared sentence is a same-condition reward ladder."""
+
+        person_counts = {
+            match.group(1) or match.group(2)
+            for match in RateEngine._PERSON_COUNT_RE.finditer(text)
+        }
+        if len(person_counts) >= 2:
+            return True
+        band_markers = set(RateEngine._BAND_MARKER_RE.findall(text))
+        if len(band_markers) >= 2:
+            return True
+        keys = [RateEngine._condition_ladder_key(row) for row in rows]
+        fact_keys = {fact for fact, _expected in keys if fact}
+        expecteds = {expected for _fact, expected in keys if expected is not None}
+        if len(fact_keys) == 1 and len(expecteds) >= 2:
+            return True
+        return False
+
+    @staticmethod
+    def _same_source_has_independent_rewards(text: str, rows: list[dict]) -> bool:
+        if RateEngine._INDEPENDENT_JOIN_RE.search(text):
+            titles = {
+                " ".join(str(row.get("title") or "").split())
+                for row in rows
+                if str(row.get("title") or "").strip()
+            }
+            if len(titles) >= 2:
+                return True
+        fact_keys = {
+            fact
+            for fact, _expected in (RateEngine._condition_ladder_key(row) for row in rows)
+            if fact
+        }
+        return len(fact_keys) >= 2
+
+    @staticmethod
+    def _same_source_tier_groups(
+        policy: dict,
+        values: dict[str, Decimal],
+    ) -> list[list[str]]:
+        """Group staged same-condition rewards that copy one official sentence.
+
+        A child-count ladder published as three ADD_RATE rows with empty
+        relations must not sum to 1+2+3. Matching source text is necessary
+        but not sufficient: independent bonuses written in the same sentence
+        stay additive, and an unclear copy is not turned into a max group.
+        """
+
+        grouped: dict[str, list[dict]] = {}
+        for row in policy.get("rules") or []:
+            if not isinstance(row, dict):
+                continue
+            rule_id = str(row.get("rule_id") or "")
+            if rule_id not in values:
+                continue
+            text = row.get("source_clause_text") or row.get("condition_text") or ""
+            if not isinstance(text, str):
+                continue
+            text = " ".join(text.split())
+            if not text:
+                continue
+            members = grouped.setdefault(text, [])
+            if all(str(item.get("rule_id") or "") != rule_id for item in members):
+                members.append(row)
+        staged: list[list[str]] = []
+        for text, rows in grouped.items():
+            if len(rows) < 2:
+                continue
+            if RateEngine._same_source_has_independent_rewards(text, rows):
+                continue
+            if not RateEngine._is_staged_same_condition_group(text, rows):
+                continue
+            staged.append([str(row.get("rule_id")) for row in rows])
+        return staged
+

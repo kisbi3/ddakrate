@@ -201,3 +201,162 @@ def test_source_first_operator_and_member_rule_ids_drive_component_cap():
     )
 
     assert total == Decimal("0.35")
+
+
+def _same_source_tier_product():
+    """KB아이사랑적금-shaped fixture: one sentence, rewards 1/2/3, empty relations."""
+
+    shared = (
+        "아이사랑 우대이율 (최고 연 4.0%p) 아래 가와 나 조건 충족 여부에 따라 "
+        "최고 연 4.0%p적용 [1명] 연 1.0%p, [2명] 연 2.0%p, [3명] 연 3.0%p"
+    )
+    preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=f"R{index}"),
+            canonical_rule_id=f"R{index}",
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for index in (1, 2, 3)
+    ]
+    rules = [
+        {
+            "rule_id": f"R{index}",
+            "source_clause_text": shared,
+            "reward": {
+                "kind": "ADD_RATE",
+                "value": str(index),
+                "unit": "PERCENTAGE_POINT",
+            },
+        }
+        for index in (1, 2, 3)
+    ]
+    return SimpleNamespace(
+        preferential_rules=preferential_rules,
+        base_rate=None,
+        normalized=SimpleNamespace(
+            return_policy={"preferential_policy": {"rules": rules, "relations": []}}
+        ),
+    )
+
+
+def test_same_source_child_count_tiers_take_max_not_sum():
+    product = _same_source_tier_product()
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2", "R3"},
+        {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("3")},
+        None,
+    )
+
+    assert total == Decimal("3")
+
+
+def test_distinct_source_texts_remain_additive():
+    product = _same_source_tier_product()
+    rules = product.normalized.return_policy["preferential_policy"]["rules"]
+    rules[1]["source_clause_text"] = "급여이체 우대 연 2.0%p"
+    rules[2]["source_clause_text"] = "마케팅 동의 우대 연 3.0%p"
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2", "R3"},
+        {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("3")},
+        None,
+    )
+
+    assert total == Decimal("6")
+
+
+def test_same_source_independent_bonuses_remain_additive():
+    shared = (
+        "급여이체 시 연 0.3%p 및 당행 카드 이용실적 시 연 0.2%p를 제공한다"
+    )
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "title": "급여이체 우대",
+            "source_clause_text": shared,
+            "condition": {"predicate": {"fact_key": "SALARY_TRANSFER"}},
+            "reward": {"kind": "ADD_RATE", "value": "0.3", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "title": "카드실적 우대",
+            "source_clause_text": shared,
+            "condition": {"predicate": {"fact_key": "CARD_PERFORMANCE"}},
+            "reward": {"kind": "ADD_RATE", "value": "0.2", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id="R1"),
+            canonical_rule_id="R1",
+            reward_kind="ADD_RATE",
+            application={},
+        ),
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id="R2"),
+            canonical_rule_id="R2",
+            reward_kind="ADD_RATE",
+            application={},
+        ),
+    ]
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2"},
+        {"R1": Decimal("0.3"), "R2": Decimal("0.2")},
+        None,
+    )
+
+    assert total == Decimal("0.5")
+
+
+def test_unclear_same_source_copy_is_not_forced_to_max_or_new_exclusive():
+    """Matching source text without ladder evidence must not invent a max group."""
+
+    shared = "아래 조건을 충족하는 경우 우대금리를 제공한다"
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": f"R{index}",
+            "title": f"우대 {index}",
+            "source_clause_text": shared,
+            "reward": {
+                "kind": "ADD_RATE",
+                "value": str(index),
+                "unit": "PERCENTAGE_POINT",
+            },
+        }
+        for index in (1, 2)
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id="R1"),
+            canonical_rule_id="R1",
+            reward_kind="ADD_RATE",
+            application={},
+        ),
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id="R2"),
+            canonical_rule_id="R2",
+            reward_kind="ADD_RATE",
+            application={},
+        ),
+    ]
+
+    total = RateEngine._aggregate_canonical_rewards(
+        product,
+        {"R1", "R2"},
+        {"R1": Decimal("1"), "R2": Decimal("2")},
+        None,
+    )
+
+    assert total == Decimal("3")
+    assert RateEngine._same_source_tier_groups(
+        product.normalized.return_policy["preferential_policy"],
+        {"R1": Decimal("1"), "R2": Decimal("2")},
+    ) == []
