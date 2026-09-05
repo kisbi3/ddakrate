@@ -10,6 +10,7 @@
 - [Top 3 조건 질문·추천 안정화 구현 설계](guides/TOP3_CONDITION_QUESTION_IMPLEMENTATION_DESIGN.md)
 - [유연한 대화 턴·문맥·Decision Ledger 설계](guides/FLEXIBLE_CONVERSATION_CONTEXT_AND_LEDGER_DESIGN.md)
 - [상위 추천상품 eligibility_text LLM 가입조건 검수 구현 계획](guides/TOP_RANKED_ELIGIBILITY_TEXT_LLM_REVIEW_PLAN.md)
+- [상위 후보 우대조건 의미 분석 — main 머지 계획과 후속 작업](handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md)
 
 ## 우대조건 의미 분석 (진행 중)
 
