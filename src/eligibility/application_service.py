@@ -114,11 +114,11 @@ from eligibility.search.pre_search import (
     DeterministicPreSearchQuestionPlanner,
     pre_search_answer_examples,
 )
-from eligibility.search.ranking import RankingService
+from eligibility.search.ranking import RankingService, _institution_name
+from eligibility.search.operation_grounding import grounded_targets
 from eligibility.search.recommendation import RecommendationService
 from eligibility.search.retrieval import CandidateRetriever
 from eligibility.search.feature_policy import feature_present, random_promotion_rule_ids
-from eligibility.search.institution_names import resolve_institution_references
 from eligibility.search.query_tools import (
     ProductQuerySpec,
     ReadOnlyProductQueryTools,
@@ -1657,13 +1657,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 }
             )
         ]
-        resolved_institution_ids = {
-            item["institution_id"]
-            for item in resolve_institution_references(
-                message,
-                institution_catalog,
-            ).resolved
-        }
+        _, resolved_institution_ids = grounded_targets(message, context)
         existing_institution_ids = {item["institution_id"] for item in institution_catalog}
         seen_active_variable = False
         for update in plan.additional_updates:
@@ -1672,8 +1666,6 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 if update.institution_id not in existing_institution_ids:
                     raise ValueError(f"Unknown institution_id: {update.institution_id}")
                 permitted = set(resolved_institution_ids)
-                if not update.excluded:
-                    permitted.update(runtime.intent.excluded_institution_ids)
                 if update.institution_id not in permitted:
                     raise ValueError(
                         "Institution update was not grounded in the current user message"
@@ -2047,7 +2039,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 else FlexibleConversationTurnPlan.model_validate(raw_plan)
             )
             plan = self._normalize_legacy_pre_search_actions(runtime, plan)
-            self._validate_flexible_turn_plan(runtime, plan)
+            self._validate_flexible_turn_plan(runtime, plan, message=message)
         except Exception as exc:
             # Interpreter/contract failures happen before the action execution
             # transaction below. They still must not consume a conversation turn
@@ -2395,7 +2387,10 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         self,
         runtime: _SearchRuntime,
         plan: FlexibleConversationTurnPlan,
+        *,
+        message: str,
     ) -> None:
+        self._validate_operation_targets(runtime, plan.actions, message=message)
         if not plan.actions and not plan.profile_updates and not plan.assistant_message:
             raise ValueError("Flexible turn plan must contain an update, action, or message")
         if plan.profile_updates and not self.pre_search_enabled:
@@ -2563,12 +2558,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         runtime = self._runtime(search_session_id)
         if runtime.conflicts:
             return None
-        # The pipeline selects and stores the active question. Rewording it on
-        # every GET adds an unnecessary LLM call and can make one conversational
-        # turn appear to ask two slightly different questions. Only select when
-        # no active question has been materialized yet.
-        if runtime.active_question is None:
-            self._select_question(runtime)
+        # Question selection is a command-stage responsibility. An absent
+        # question is a legitimate read result, not permission to advance the
+        # workflow (or reopen a completed session) from a GET/prefetch.
         return runtime.active_question
 
     def submit_user_answer(
@@ -2923,10 +2915,9 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         complete: bool = False,
     ) -> ProductRecommendationResult:
         runtime = self._runtime(search_session_id)
-        if runtime.ranking is None:
-            self._run_pipeline(runtime)
-        assert runtime.ranking is not None
-        runtime.recommendation = self.recommendation_service.build_result(
+        if runtime.conflicts or runtime.ranking is None:
+            raise ValueError("RECOMMENDATION_NOT_READY: resolve search conflicts before reading results")
+        recommendation = self.recommendation_service.build_result(
             search_session_id,
             runtime.ranking,
             audit=runtime.audit,
@@ -2948,7 +2939,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                     question.feasibility_clarification.clarification_id
                 )
         visible_ids = {
-            item.product_id for item in runtime.recommendation.top_products
+            item.product_id for item in recommendation.top_products
         }
         visible_unresolved = {
             unresolved_id
@@ -2967,14 +2958,14 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             and runtime.ranking.stability.stable
             and runtime.eligibility_text_review_state in {"DISABLED", "COMPLETE"}
         )
-        runtime.recommendation = runtime.recommendation.model_copy(
+        recommendation = recommendation.model_copy(
             update={
                 "recommendation_status": "CONFIRMED" if confirmed else "PROVISIONAL",
                 "provisional_candidates": (
-                    [] if confirmed else runtime.recommendation.top_products
+                    [] if confirmed else recommendation.top_products
                 ),
                 "confirmed_top_products": (
-                    runtime.recommendation.top_products if confirmed else []
+                    recommendation.top_products if confirmed else []
                 ),
                 "unresolved_question_count": len(unresolved_question_ids),
                 "acknowledged_unknown_count": len(acknowledged_visible),
@@ -2990,24 +2981,18 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
             },
             deep=True,
         )
-        status = (
-            SearchSessionStatus.COMPLETED
-            if complete
-            else (
-                SearchSessionStatus.QUESTIONING
-                if runtime.active_question is not None
-                else SearchSessionStatus.RANKING_READY
+        if complete:
+            # Explicit backwards-compatible command, never used by GET routes.
+            runtime.recommendation = recommendation
+            runtime.session = runtime.session.model_copy(
+                update={
+                    "recommendation_id": recommendation.recommendation_id,
+                    "status": SearchSessionStatus.COMPLETED,
+                    "updated_at": datetime.now(timezone.utc),
+                },
+                deep=True,
             )
-        )
-        runtime.session = runtime.session.model_copy(
-            update={
-                "recommendation_id": runtime.recommendation.recommendation_id,
-                "status": status,
-                "updated_at": datetime.now(timezone.utc),
-            },
-            deep=True,
-        )
-        return runtime.recommendation
+        return recommendation
 
     def get_product_recommendation_detail(
         self,
@@ -5129,18 +5114,14 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
 
         top_k_summary: list[dict[str, Any]] = []
         if runtime.ranking is not None:
-            for rank, product_id in enumerate(
-                runtime.ranking.ordered_product_ids[: runtime.intent.requested_top_k],
-                start=1,
-            ):
-                candidate = runtime.evaluations.get(product_id)
-                product = runtime.candidate_products.get(product_id)
-                if candidate is None or product is None:
+            for item in runtime.ranking.items:
+                product = runtime.candidate_products.get(item.product_id)
+                if product is None:
                     continue
                 top_k_summary.append(
                     {
-                        "rank": rank,
-                        "product_id": product_id,
+                        "rank": item.rank,
+                        "product_id": item.product_id,
                         "product_name": product.name,
                     }
                 )
@@ -5393,7 +5374,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                                 product.metadata.institution_name
                                 if product.metadata is not None
                                 and product.metadata.institution_name
-                                else product.institution_id
+                                else _institution_name(product.institution_id)
                             ),
                         )
                         for product in self.products.values()
@@ -5488,6 +5469,33 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         runtime.audit.question_id = runtime.session.active_question_id
         runtime.audit.recommendation_id = runtime.session.recommendation_id
 
+    def _validate_operation_targets(
+        self,
+        runtime: _SearchRuntime,
+        actions: list[ConversationAction],
+        *,
+        message: str,
+    ) -> None:
+        scoped = [action for action in actions if action.product_id is not None or (
+            action.intent_patch is not None and (
+                action.intent_patch.upsert_excluded_institution_ids
+                or action.intent_patch.remove_excluded_institution_ids
+            )
+        )]
+        if not scoped:
+            return
+        product_ids, institution_ids = grounded_targets(message, self._conversation_context(runtime))
+        for action in scoped:
+            if action.product_id is not None:
+                if action.product_id not in self.products:
+                    raise KeyError(f"Unknown product_id: {action.product_id}")
+                if action.product_id not in product_ids:
+                    raise ValueError("Product update was not grounded in the current user message or an unambiguous conversational reference")
+            if action.intent_patch is not None:
+                targets = set(action.intent_patch.upsert_excluded_institution_ids) | set(action.intent_patch.remove_excluded_institution_ids)
+                if targets - institution_ids:
+                    raise ValueError("Institution update was not grounded in the current user message")
+
     def _execute_conversation_action(
         self,
         runtime: _SearchRuntime,
@@ -5495,6 +5503,7 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
         *,
         message: str | None = None,
     ) -> None:
+        self._validate_operation_targets(runtime, [action], message=message or "")
         session_id = runtime.session.search_session_id
         if action.operation == ConversationOperation.UPDATE_SEARCH_INTENT:
             assert action.intent_patch is not None

@@ -467,7 +467,16 @@ class MultiProductEvaluator:
             )
             actual = resolve_term(product, plan)
             core = resolve_term(product, None)
-            if terms_equivalent(actual, requested):
+            actual_months = CandidateRetriever._term_to_months(actual)
+            requested_months = CandidateRetriever._term_to_months(requested)
+            bound_satisfied = (
+                plan.term_strictness == "MAXIMUM" and actual_months <= requested_months
+            ) or (
+                plan.term_strictness == "MINIMUM" and actual_months >= requested_months
+            )
+            if bound_satisfied:
+                updates["term_match_status"] = "WITHIN_BOUNDS"
+            elif terms_equivalent(actual, requested):
                 updates["term_match_status"] = (
                     "EXACT" if terms_equivalent(core, requested) else "SELECTABLE_EXACT"
                 )

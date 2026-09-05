@@ -327,6 +327,7 @@ class ContributionProjection(StrictSearchModel):
         "NOT_SPECIFIED",
         "EXACT",
         "SELECTABLE_EXACT",
+        "WITHIN_BOUNDS",
         "ALTERNATIVE_SHORTER",
         "MISMATCH",
     ] = "NOT_SPECIFIED"
