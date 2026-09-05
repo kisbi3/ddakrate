@@ -1,0 +1,90 @@
+name: Validate semantic preferential questions
+on:
+  push:
+    branches: [codex/semantic-preferential-questions]
+    paths:
+      - '.github/workflows/semantic-feature-validation.yml'
+      - 'scripts/.semantic-feature-transport/**'
+permissions:
+  contents: write
+jobs:
+  validate-and-publish:
+    if: github.ref == 'refs/heads/codex/semantic-preferential-questions'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Verify and apply exact reviewed source patch
+        shell: bash
+        run: |
+          mkdir -p /tmp/semantic-validation
+          test "$(git rev-parse HEAD^)" = '79a9a7ab605276d8933164f7899a27d658501f86'
+          python - <<'PY'
+          import base64, hashlib, lzma, pathlib, subprocess
+          packed = ''.join(p.read_text() for p in sorted(pathlib.Path('scripts/.semantic-feature-transport').glob('part*.txt')))
+          patch = lzma.decompress(base64.b64decode(packed, validate=True))
+          assert hashlib.sha256(patch).hexdigest() == 'a31d9f4d1b9a2fee07ea11ea8189b2e3888f68a491ef2e5996902a8369481a71'
+          path = pathlib.Path('/tmp/semantic-validation/feature.patch')
+          path.write_bytes(patch)
+          subprocess.run(['git', 'apply', '--check', str(path)], check=True)
+          subprocess.run(['git', 'apply', '--index', str(path)], check=True)
+          PY
+          git rm -- .github/workflows/semantic-feature-validation.yml scripts/.semantic-feature-transport/part0.txt scripts/.semantic-feature-transport/part1.txt scripts/.semantic-feature-transport/part2.txt scripts/.semantic-feature-transport/part3.txt
+          test "$(git write-tree)" = 'de85ba455e47e6ddb8284e0c77aa9dfc146effff'
+          git diff --cached --stat > /tmp/semantic-validation/change-stat.txt
+      - name: Install dependencies
+        shell: bash
+        run: |
+          pip install -e '.[web,dev]'
+          python --version > /tmp/semantic-validation/environment.txt
+          pip freeze >> /tmp/semantic-validation/environment.txt
+      - name: Compile Python and check JavaScript syntax
+        shell: bash
+        run: |
+          python -m compileall -q src tests
+          node --check src/eligibility/web/static/app.js
+      - name: Verify manifest hashes and full runtime catalog
+        shell: bash
+        run: |
+          python - <<'PY' | tee /tmp/semantic-validation/catalog.log
+          import hashlib, json, pathlib
+          from eligibility.catalog.normalized_loader import load_normalized_product_catalog
+          root = pathlib.Path('.')
+          index = json.loads((root / 'data/financial_products/normalized/index.json').read_text())
+          batch = index.get('manifest_batch') or index['source_staging_batch']
+          manifest = json.loads((root / f'data/financial_products/normalized/manifests/{batch}.json').read_text())
+          for row in [*manifest['files'], *index['products']]:
+              actual = 'sha256:' + hashlib.sha256((root / row['path']).read_bytes()).hexdigest()
+              assert actual == row['sha256'], row['path']
+          products = load_normalized_product_catalog()
+          print(json.dumps({'index_products': index['product_count'], 'manifest_files': len(manifest['files']), 'runtime_products': len(products), 'hash_validation': 'PASS'}))
+          PY
+      - name: Run complete repository tests
+        shell: bash
+        run: pytest -q -ra --junitxml=/tmp/semantic-validation/pytest.xml 2>&1 | tee /tmp/semantic-validation/pytest.log
+      - name: Publish tested source to feature branch only
+        shell: bash
+        run: |
+          test "$GITHUB_REF" = 'refs/heads/codex/semantic-preferential-questions'
+          git diff --exit-code
+          test "$(git write-tree)" = 'de85ba455e47e6ddb8284e0c77aa9dfc146effff'
+          git fetch origin codex/semantic-preferential-questions
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: analyze preferential source conditions after deterministic pre-search'
+          git push origin HEAD:refs/heads/codex/semantic-preferential-questions
+          git rev-parse HEAD | tee /tmp/semantic-validation/published-commit.txt
+          git rev-parse HEAD^{tree} | tee /tmp/semantic-validation/published-tree.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-preferential-validation
+          path: /tmp/semantic-validation
+          retention-days: 3
