@@ -1,0 +1,39 @@
+name: Recommendation review workspace
+
+on:
+  push:
+    branches: [fix/recommendation-logic-audit]
+    paths: [.github/workflows/review-workspace.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 7b76c6f0813786af267ecaab435962ea6eed42ad
+          persist-credentials: false
+      - name: Package exact checkout without credentials
+        run: |
+          set -eu
+          test "$(git rev-parse HEAD)" = 7b76c6f0813786af267ecaab435962ea6eed42ad
+          mkdir -p "$RUNNER_TEMP/review-artifacts"
+          git clone --bare --no-hardlinks . "$RUNNER_TEMP/ddakrate.git"
+          git --git-dir="$RUNNER_TEMP/ddakrate.git" config --remove-section remote.origin || true
+          tar -czf "$RUNNER_TEMP/review-artifacts/ddakrate.git.tar.gz" -C "$RUNNER_TEMP" ddakrate.git
+          git rev-parse HEAD > "$RUNNER_TEMP/review-artifacts/HEAD.txt"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download transport dependency wheels for offline tests
+        run: python -m pip download --dest "$RUNNER_TEMP/review-artifacts/wheels" 'httpx2>=2.12,<3'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recommendation-review-checkout
+          path: ${{ runner.temp }}/review-artifacts
+          retention-days: 1
+          compression-level: 0
