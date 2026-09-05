@@ -37,7 +37,6 @@ jobs:
           segments = []
           for i, p in enumerate(parts):
               text = p.read_text().strip()
-              # Repair explicitly identified transport transcription errors only.
               if i == 1:
                   text = text.replace('YH yJZ', 'YHyJZ').replace('JRZZ6s', 'JRZ6s')
               if i == 3:
@@ -51,6 +50,10 @@ jobs:
           assert hashlib.sha256(patch).hexdigest() == 'c822c1f787c8bf15fa9c93afc57f58b426be8346ef29939fe3a48fe97f95ff4b'
           subprocess.run(['git', 'apply', '--check', '-'], input=patch, check=True)
           subprocess.run(['git', 'apply', '-'], input=patch, check=True)
+          followup = pathlib.Path('scripts/.review-transport/followup.patch').read_bytes().replace(b'\n diff --git ', b'\ndiff --git ')
+          assert hashlib.sha256(followup).hexdigest() == 'd7cd3091d1e4e7fbeef738c11de560314c6b5a9c62d04c29e21f1c24e52f9987'
+          subprocess.run(['git', 'apply', '--check', '-'], input=followup, check=True)
+          subprocess.run(['git', 'apply', '-'], input=followup, check=True)
           PY
           python scripts/publish_recommendation_term_correction.py
           git diff --check
@@ -88,7 +91,7 @@ jobs:
           test "$GITHUB_REF" = refs/heads/fix/recommendation-logic-audit
           test "$(git ls-remote origin refs/heads/fix/recommendation-logic-audit | cut -f1)" = "$GITHUB_SHA"
           git diff --check
-          git add docs/recommendation-audit-fixes.md scripts/publish_recommendation_term_correction.py src/eligibility/application_service.py src/eligibility/conversation.py src/eligibility/schema/search.py src/eligibility/search/contribution.py src/eligibility/search/evaluation.py src/eligibility/search/operation_grounding.py src/eligibility/search/questions.py src/eligibility/search/ranking.py tests/test_recommendation_audit_regressions.py
+          git add docs/recommendation-audit-fixes.md scripts/publish_recommendation_term_correction.py src/eligibility/application_service.py src/eligibility/conversation.py src/eligibility/schema/search.py src/eligibility/search/contribution.py src/eligibility/search/evaluation.py src/eligibility/search/operation_grounding.py src/eligibility/search/questions.py src/eligibility/search/ranking.py tests/test_recommendation_audit_regressions.py tests/test_institution_name_resolver.py
           git add data/financial_products/normalized/index.json data/financial_products/normalized/manifests/20260905-recommendation-term-domain-01.json data/financial_products/normalized/products/time_deposit/INST-KR-000830/INST-KR-000830-2-0001/v006.json data/financial_products/normalized/reports/20260905-recommendation-term-domain-01
           git diff --cached --stat | tee "$RUNNER_TEMP/review-results/changes.log"
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix: preserve term constraints, safe Top-K bounds, grounded operations and read-only views'
