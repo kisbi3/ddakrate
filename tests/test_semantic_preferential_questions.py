@@ -566,3 +566,54 @@ def test_child_must_already_be_born_at_condition_reference_date(birth, subscript
         "count": 1, "children": [birth], "complete": True,
     }}, as_of=AS_OF, subscription_date=subscription)
     assert result.value is expected
+
+
+def _with_empty_clause(product, rule_id="EMPTY-02"):
+    product = product.model_copy(deep=True)
+    product.normalized.return_policy["preferential_policy"]["rules"].append(
+        {
+            "rule_id": rule_id,
+            "title": "원문 없는 우대",
+            "source_clause_text": "   ",
+            "condition": {},
+            "reward": {"kind": "BONUS_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        }
+    )
+    return ProductDefinition.model_validate(product.model_dump())
+
+
+def test_empty_source_clause_is_skipped_without_failing_the_product():
+    product = _with_empty_clause(semantic_product("MIXED"))
+    packet = product_packet(product, "test")
+    assert len(packet.clauses) == 1
+    assert len(packet.empty_clauses) == 1
+    assert packet.clauses[0].text == COUNT_TEXT
+    assert packet.empty_clauses[0].text == ""
+
+
+def test_empty_clause_does_not_block_readable_compile_or_rate_recalc():
+    product = _with_empty_clause(semantic_product("MIXED"))
+    compiler = CompilerDouble({"MIXED": count_expr()})
+    service, sid = service_for([product], compiler)
+    runtime = service._runtime(sid)
+    assert runtime.semantic_review.error_code != "SOURCE_PACKET_UNSUPPORTED"
+    assert len(compiler.calls) == 1
+    assert len(compiler.calls[0][0].clauses) == 1
+    views = runtime.evaluations["MIXED"].semantic_interpretations
+    assert any(item.get("reason") == "EMPTY_SOURCE_CLAUSE" for item in views)
+    q = service.get_next_question(sid)
+    assert q is not None and q.request.semantic_input == "CHILDREN"
+    answer_children(service, sid, count=2, years=[2017, 2025])
+    assert service._runtime(sid).evaluations["MIXED"].realizable_rate == Decimal("3")
+
+
+def test_empty_only_packet_is_unresolved_not_unsupported():
+    product = semantic_product("EMPTY", text="   ")
+    compiler = CompilerDouble({"EMPTY": count_expr()})
+    service, sid = service_for([product], compiler)
+    runtime = service._runtime(sid)
+    assert compiler.calls == []
+    assert runtime.semantic_review.status != "FAILED"
+    assert runtime.semantic_review.error_code != "SOURCE_PACKET_UNSUPPORTED"
+    views = runtime.evaluations["EMPTY"].semantic_interpretations
+    assert any(item.get("reason") == "EMPTY_SOURCE_CLAUSE" for item in views)

@@ -91,6 +91,7 @@ class ProductPacket:
     cache_key: str
     clauses: tuple[SourceClause, ...]
     payload: dict[str, Any]
+    empty_clauses: tuple[SourceClause, ...] = ()
 
 
 def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPacket | None:
@@ -105,6 +106,7 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
     policy = normalized.return_policy.get("preferential_policy") or {}
     runtime_by_id = {item.canonical_rule_id or item.rule.rule_id: item for item in product.preferential_rules}
     clauses = []
+    empty_clauses = []
     for row in policy.get("rules") or []:
         rid = row.get("rule_id")
         if not rid:
@@ -154,13 +156,20 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
                 pass
         source_hash = digest(metadata)
         cid = f"{product.product_id}:v{normalized.version}:{rid}:{source_hash[:12]}"
-        clauses.append(SourceClause(cid, str(rid), source_hash, text, row, official, amount, existing.rule.rule_id if opaque_gate else None))
-    if not clauses:
+        clause = SourceClause(cid, str(rid), source_hash, text, row, official, amount, existing.rule.rule_id if opaque_gate else None)
+        if not text:
+            # An empty official sentence cannot be compiled. Skip it and keep
+            # the remaining clauses; the overlay records UNRESOLVED memos.
+            empty_clauses.append(clause)
+            continue
+        clauses.append(clause)
+    if not clauses and not empty_clauses:
         return None
     payload = {
         "product_id": product.product_id,
         "product_version": normalized.version,
         "product_name": product.name,
+        "skipped_empty_clause_ids": [c.canonical_id for c in empty_clauses],
         "raw_clauses": [
             {"clause_id": c.clause_id, "source_hash": c.source_hash, "source_text": c.text,
              "source_metadata": c.row, "requires_official_confirmation": c.official_only,
@@ -173,7 +182,7 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
         ],
     }
     key = digest({"compiler": compiler_key, "packet": payload})
-    return ProductPacket(product.product_id, key, tuple(clauses), payload)
+    return ProductPacket(product.product_id, key, tuple(clauses), payload, tuple(empty_clauses))
 
 
 class SemanticConditionCompiler:
@@ -468,6 +477,14 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
     views = []
     allowed = {c.clause_id: c for c in packet.clauses} if packet else {}
     interpreted_ids = set()
+    if packet is not None:
+        for clause in packet.empty_clauses:
+            views.append({
+                "clause_id": clause.clause_id,
+                "status": "UNRESOLVED",
+                "reason": "EMPTY_SOURCE_CLAUSE",
+                "source_text": clause.text,
+            })
     for interpretation in interpretations:
         clause = allowed.get(interpretation.clause_id)
         if clause is None or clause.source_hash != interpretation.source_hash:

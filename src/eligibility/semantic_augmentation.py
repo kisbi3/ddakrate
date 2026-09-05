@@ -69,13 +69,18 @@ class SemanticAugmentationMixin:
             return
         packets = self._semantic_frontier_packets(runtime)
         batch = []
+        empty_only = []
         chars = 0
         clauses = 0
         for packet in packets:
             if packet.cache_key in runtime.semantic_cache or packet.cache_key in runtime.semantic_failures:
                 continue
+            if not packet.clauses:
+                runtime.semantic_cache[packet.cache_key] = ()
+                empty_only.append(packet)
+                continue
             size = len(json.dumps(packet.payload, ensure_ascii=False))
-            if size > self.semantic_max_characters or len(packet.clauses) > 48 or any(not c.text or len(c.text) > 8000 for c in packet.clauses):
+            if size > self.semantic_max_characters or len(packet.clauses) > 48 or any(len(c.text) > 8000 for c in packet.clauses):
                 runtime.semantic_failures[packet.cache_key] = "SOURCE_PACKET_UNSUPPORTED"
                 continue
             if len(batch) >= self.semantic_batch_size or chars + size > self.semantic_max_characters or clauses + len(packet.clauses) > 48:
@@ -84,6 +89,8 @@ class SemanticAugmentationMixin:
             chars += size
             clauses += len(packet.clauses)
         error_code = None
+        evaluated = [runtime.candidate_products[p.product_id] for p in batch]
+        evaluated.extend(runtime.candidate_products[p.product_id] for p in empty_only)
         if batch:
             try:
                 compiled = validate_compilation(self.semantic_compiler.compile(batch), batch)
@@ -99,7 +106,8 @@ class SemanticAugmentationMixin:
                 error_code = "SEMANTIC_COMPILATION_FAILED"
                 for packet in batch:
                     runtime.semantic_failures[packet.cache_key] = error_code
-            self._evaluate(runtime, [runtime.candidate_products[p.product_id] for p in batch], merge=True)
+        if evaluated:
+            self._evaluate(runtime, evaluated, merge=True)
             self._rank_once(runtime)
         # Recompute after the new evidence: demoted candidates can uncover an
         # entirely new challenger. A budget never certifies those unread rows.
@@ -118,6 +126,7 @@ class SemanticAugmentationMixin:
                     if '"UNKNOWN"' in clause.expression.model_dump_json():
                         unresolved += 1
             unresolved += sum(c.reward_pp is None for c in packet.clauses)
+            unresolved += len(packet.empty_clauses)
         reviewed = [p.product_id for p in frontier_packets if p.cache_key in runtime.semantic_cache]
         runtime.semantic_review = SemanticReviewState(
             status="FAILED" if failed else "PENDING" if pending else "COMPLETE",
