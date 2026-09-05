@@ -1,9 +1,9 @@
 # 상위 후보 우대조건 의미 분석 — main 머지 계획과 후속 작업
 
 - 작성일: 2026-09-05
-- 상태: 합의된 방향 문서. 기능 브랜치는 main에 아직 넣지 않음
+- 상태: 합의된 방향 문서. 의미 분석 MVP는 2026-09-06에 스위치 기본 OFF로 main에 들어갔다 (`1afb41210`, #8). 운영 기본값은 켜지 않음. 후속 현황은 `SEMANTIC_PREFERENTIAL_PROGRESS_20260906_KO.md`
 - 대상 브랜치: `codex/semantic-preferential-questions` (`7ba70053a`)
-- 현재 main: `7b76c6f08`
+- 당시 main: `7b76c6f08`. 이 문서 갱신 시점 main: `973b2297d`
 - 관련 검증 자료: `ddakrate_semantic_feature_validation` 압축 파일
 - 기능 브랜치 사용 문서: 해당 브랜치의 `docs/semantic-preferential-questions.md`
 

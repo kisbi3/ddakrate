@@ -12,12 +12,12 @@
 - [상위 추천상품 eligibility_text LLM 가입조건 검수 구현 계획](guides/TOP_RANKED_ELIGIBILITY_TEXT_LLM_REVIEW_PLAN.md)
 - [상위 후보 우대조건 의미 분석 — main 머지 계획과 후속 작업](handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md)
 
-## 우대조건 의미 분석 (진행 중)
+## 우대조건 의미 분석
 
-실험 기능이다. 스위치 기본값은 꺼짐이며, 아직 main에 넣지 않았다.
+실험 기능이다. MVP는 스위치 기본 OFF로 main에 들어갔다. 운영 기본값은 켜지 않는다.
 
-- [지금까지 한 일과 앞으로 할 일 (2026-09-06)](handoff/SEMANTIC_PREFERENTIAL_PROGRESS_20260906_KO.md) — 현황의 출발점
-- 계획·1금융권 표본·코드 PR은 그 문서 8절의 GitHub 링크를 본다
+- [지금까지 한 일과 앞으로 할 일 (2026-09-06)](handoff/SEMANTIC_PREFERENTIAL_PROGRESS_20260906_KO.md) — 현황
+- [main 머지 계획과 후속 작업](handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md)
 
 ## 릴리스 보고서
 
