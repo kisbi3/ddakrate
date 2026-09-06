@@ -17,6 +17,7 @@
 실험 기능이다. MVP는 스위치 기본 OFF로 main에 들어갔다. 운영 기본값은 켜지 않는다.
 
 - [지금까지 한 일과 앞으로 할 일 (2026-09-06)](handoff/SEMANTIC_PREFERENTIAL_PROGRESS_20260906_KO.md) — 현황
+- [2026-09-06 검증에서 드러난 문제](handoff/SEMANTIC_PREFERENTIAL_VERIFICATION_PROBLEMS_20260906_KO.md)
 - [main 머지 계획과 후속 작업](handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md)
 - [기존 질문 목록과 1금융권 표본](handoff/SEMANTIC_EXISTING_QUESTIONS_AND_BANK_SAMPLE_20260906_KO.md)
 

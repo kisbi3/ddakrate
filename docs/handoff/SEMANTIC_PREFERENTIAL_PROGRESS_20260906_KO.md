@@ -3,9 +3,8 @@
 - 작성일: 2026-09-06
 - 상태: 리뷰 보완과 회귀 테스트를 반영한 의미 분석 MVP가 **스위치 기본 OFF**로 main에 들어갔다 (`1afb41210`, #8). 실제 외부 모델(`gpt-5.6-luna`)과 브라우저 ON 경로를 소수 시나리오로 확인했고, **운영 기본 스위치는 켜지 않는다.**
 - 이 문서가 답하는 질문: **무엇을 만들었고, 무엇이 남았으며, 지금은 무엇을 하면 안 되는가**
-- 선행 계획: [PR #1 머지 계획](https://github.com/kisbi3/ddakrate/pull/1) (`docs/handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md`, 아직 main 아님)
-- 이 문서가 답하는 질문: **무엇을 만들었고, 무엇이 남았으며, 지금은 무엇을 하면 안 되는가**
-- 선행 계획: [PR #1 머지 계획](https://github.com/kisbi3/ddakrate/pull/1) (`docs/handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md`, 아직 main 아님)
+- 선행 계획: [머지 계획](SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md) (`f6dbd138b`, #1)
+- 검증 실패 상세: [2026-09-06 검증에서 드러난 문제](SEMANTIC_PREFERENTIAL_VERIFICATION_PROBLEMS_20260906_KO.md)
 
 이 문서는 코드를 바꾸지 않는다. 앞에서 말이 꼬였던 “A/B로 나눈다”를, 앱이 하는 일과 깃허브에 올리는 일을 구분해 다시 적는다.
 
@@ -492,6 +491,5 @@ main에 넣을 때는 이 줄만, **스위치 꺼진 채** 넣는다. 추천 감
 ### 남은 일과 하지 말 것
 
 1. 운영 기본값을 켜지 않는다. 일괄 ON은 하지 않는다.
-2. 켜기 전에 필요한 후속(별도 작업): 너무 큰 원문 패킷 가드와, 상한 없는 후보가 frontier를 수백 개로 늘리지 않게 하는 것. 모델이 서류·승인·다자녀 정의를 `UNKNOWN`으로 더 자주 남기게 하는 것.
-3. `#1` `#2` 문서 PR은 범위 문구가 맞으면 별도 머지하면 된다.
-4. 임베딩, 전 카탈로그 전처리, 자유 질문 생성은 하지 않는다.
+2. 검증에서 깨진 지점의 상세는 [검증 문제 문서](SEMANTIC_PREFERENTIAL_VERIFICATION_PROBLEMS_20260906_KO.md)다. 켜기 전 후속: 저출생상생을 출산 한 칸/증빙으로 접지 않기, 한 절 실패가 묶음 전체를 죽이지 않기, 큰 패킷·상한 없는 frontier 가드, 추정 숫자 대신 `UNKNOWN`.
+3. 임베딩, 전 카탈로그 전처리, 자유 질문 생성, 난임·증빙 공통 칸 추가는 하지 않는다.
