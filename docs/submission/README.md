@@ -13,7 +13,7 @@
 |---|---|
 | 위 두 Markdown 원고 | 2026-09-07 개정본. 내용 검토의 기준 |
 | `2026_금융_AI_Challenge_기획서_ddakrate_초안.hwpx` | 제출 양식. 2026-09-07 개정 문구를 Markdown과 동기화함. 페이지 배치·이미지는 제출 전 한글에서 확인 |
-| `2026_금융_AI_Challenge_기능명세서_ddakrate_초안.hwpx` | 제출 양식 요약본. 2026-09-07 개정 숫자를 Markdown과 동기화함 |
+| `2026_금융_AI_Challenge_기능명세서_ddakrate_초안.hwpx` | 제출 양식 요약본. 기획서와 같은 팀명·딱금리 표기, 실제 화면(조건 카드·필터·Top 3) 기준으로 맞춤 |
 | `*.backup_*.hwpx` | 2026-08-25 당시 편집 백업. 이번 개정 미반영 |
 | [통합 제출 초안](CONTEST_SUBMISSION_DRAFT.md) | 이전 배경 자료. 현재 구현·검증 상태는 개정 원고를 우선 |
 | [금융상품 데이터 관계 설계](FINANCIAL_PRODUCT_DATA_RELATIONSHIP.md) | 데이터 모델 설명. 구축 규모는 2026-09-05 발행 수치 |
