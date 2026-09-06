@@ -32,7 +32,8 @@ from eligibility.search.semantic import (
     first_transaction_holding_rules_out, has_unlinked_alternative_path,
     overlay_product, product_packet, validate_compilation, evaluate_expression,
     normalize_answer, user_inputs, accept_compilation, family_condition_is_necessary,
-    targets_semantic_inputs, linked_clause_outcome,
+    targets_semantic_inputs, linked_clause_outcome, coerce_expression,
+    clause_needs_compiler,
 )
 from eligibility.web.app import create_app
 from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, USER_ID, base_store, make_intent, make_product
@@ -939,11 +940,12 @@ def test_card_clause_with_other_path_is_not_ruled_out_by_declined_card():
     assert existing_question_family(text=text) == "CARD"
     assert has_unlinked_alternative_path(text, "CARD") is True
     product = semantic_product("CARD", text)
-    compiler = CompilerDouble({"CARD": count_expr()})
+    compiler = CompilerDouble()
     service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
-    assert compiler.calls == []
+    assert compiler.calls
     candidate = service._runtime(sid).evaluations["CARD"]
-    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in candidate.semantic_interpretations)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert any(item.get("memo_code") in {"NEEDS_OFFICIAL", "UNRESOLVED"} for item in candidate.semantic_interpretations)
     assert candidate.realizable_rate == Decimal("2")
     assert candidate.user_specific_conditional_upper_rate == Decimal("3")
     assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("3")
@@ -1063,11 +1065,11 @@ def test_declined_card_does_not_rule_out_alternative_transfer_path():
         "CARD", clause_text=CARD_OR_TRANSFER, declined_benefit_fields=["CARD_BENEFIT"],
     ) == "NEEDS_OFFICIAL"
     product = semantic_product("CARD", CARD_OR_TRANSFER)
-    compiler = CompilerDouble({"CARD": count_expr()})
+    compiler = CompilerDouble()
     service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
-    assert compiler.calls == []
+    assert compiler.calls
     candidate = service._runtime(sid).evaluations["CARD"]
-    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in candidate.semantic_interpretations)
+    assert any(item.get("memo_code") in {"NEEDS_OFFICIAL", "UNRESOLVED"} for item in candidate.semantic_interpretations)
     assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
     assert candidate.user_specific_conditional_upper_rate == Decimal("3")
 
@@ -1210,4 +1212,192 @@ def test_unsupported_packet_does_not_mark_review_failed_when_others_compile():
     assert "OK" in {packet.product_id for batch in compiler.calls for packet in batch}
     assert runtime.semantic_review.status in {"PARTIAL", "PENDING", "COMPLETE"}
     assert runtime.semantic_review.status != "FAILED"
+
+
+CARD_OR_REFERRAL = "카드 이용실적 또는 친구 추천 시 우대"
+TANTAN_CARD_GATE = (
+    "가입월부터 만기일 전전월말까지 당행 신용·체크카드 결제금액이 "
+    "12개월 500만원 / 24개월 이하 1,000만원 / 36개월 이하 1,500만원이면 0.20% 우대"
+)
+KYONGNAM_SALARY_OR_MERCHANT = (
+    "이 적금 가입기간 중 가입기간의 1/2이상 급여입금 또는 가맹점 결제대금 입금 실적을 "
+    "보유하는 경우 0.7% 우대"
+)
+
+
+def _load_catalog_product(product_code: str):
+    from eligibility.catalog.normalized_loader import _adapt_product
+
+    root = Path(__file__).resolve().parents[1]
+    index = json.loads((root / "data/financial_products/normalized/index.json").read_text())
+    row = next(item for item in index["products"] if item["product_code"] == product_code)
+    raw = json.loads((root / row["path"]).read_text())
+    return _adapt_product(
+        raw,
+        {"institution_id": raw["institution_id"], "official_name_ko": "테스트기관"},
+        {},
+        {},
+        {},
+    )
+
+
+def test_unknown_alternative_path_is_not_treated_as_necessary():
+    assert family_condition_is_necessary(CARD_OR_REFERRAL, "CARD") is False
+    assert has_unlinked_alternative_path(CARD_OR_REFERRAL, "CARD") is True
+    assert linked_clause_outcome(
+        "CARD", clause_text=CARD_OR_REFERRAL, declined_benefit_fields=["CARD_BENEFIT"],
+    ) == "NEEDS_OFFICIAL"
+    product = semantic_product("CARD", CARD_OR_REFERRAL)
+    compiler = CompilerDouble()
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    candidate = service._runtime(sid).evaluations["CARD"]
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+
+
+def test_overlong_or_is_deferred_instead_of_truncating_true_branch():
+    children = [
+        {
+            "op": "CHILD_COUNT",
+            "source_quote": f"조건{index} 99명",
+            "comparator": "GTE",
+            "expected": 99,
+        }
+        for index in range(1, 13)
+    ]
+    children.append({
+        "op": "CHILD_COUNT",
+        "source_quote": "자녀 2명",
+        "comparator": "GTE",
+        "expected": 2,
+    })
+    text = " 또는 ".join(item["source_quote"] for item in children)
+    product = semantic_product("OR13", text)
+    packet = product_packet(product, "test")
+    clause = packet.clauses[0]
+    raw = {"op": "ANY", "source_quote": text, "children": children}
+    assert coerce_expression(raw, clause) is None
+    compiled = accept_compilation(
+        {
+            "clauses": [{
+                "clause_id": clause.clause_id,
+                "source_hash": clause.source_hash,
+                "source_quote": clause.text,
+                "expression": raw,
+            }]
+        },
+        [packet],
+    )
+    assert compiled.clauses[0].expression is None
+    overlay, _, _, views = overlay_product(
+        product, packet, compiled.clauses, base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+    )
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in views)
+    assert overlay.advertised_max_rate == Decimal("3")
+
+
+def test_outside_analysis_window_stays_pending_and_later_batches_reach_it():
+    products = [semantic_product(f"W{index}") for index in range(13)]
+    compiler = CompilerDouble({item.product_id: count_expr() for item in products})
+    service, sid = service_for(
+        products,
+        compiler,
+        semantic_batch_size=20,
+        intent=make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=3),
+    )
+    runtime = service._runtime(sid)
+    first_ids = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert len(first_ids) == 12
+    assert runtime.semantic_review.status != "COMPLETE"
+    assert runtime.semantic_review.pending_product_count >= 1
+    for _ in range(5):
+        if runtime.semantic_review.pending_product_count == 0:
+            break
+        service.advance_semantic_review(sid)
+        runtime = service._runtime(sid)
+    compiled = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert compiled == {item.product_id for item in products}
+    assert runtime.semantic_review.pending_product_count == 0
+    assert runtime.semantic_review.status == "COMPLETE"
+
+
+def test_card_amount_gate_is_compiled_and_decline_does_not_prove_spend():
+    product = opaque_product("GATE")
+    row = product.normalized.return_policy["preferential_policy"]["rules"][0]
+    row["title"] = "신용(체크)카드 결제금액"
+    row["source_clause_text"] = TANTAN_CARD_GATE
+    row["condition"]["source_text"] = TANTAN_CARD_GATE
+    product = ProductDefinition.model_validate(product.model_dump())
+    packet = product_packet(product, "test")
+    assert packet.clauses
+    assert packet.linked_clauses == ()
+    assert existing_question_family(text=TANTAN_CARD_GATE) == "CARD"
+    assert clause_needs_compiler(text=TANTAN_CARD_GATE, family="CARD", opaque_gate=True) is True
+    assert linked_clause_outcome(
+        "CARD",
+        clause_text=TANTAN_CARD_GATE,
+        declined_benefit_fields=["CARD_BENEFIT"],
+        opaque_gate=True,
+    ) == "NEEDS_OFFICIAL"
+    compiler = CompilerDouble()
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    assert compiler.calls
+    candidate = service._runtime(sid).evaluations["GATE"]
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    question = service.get_next_question(sid)
+    assert question is None or question.request is None or question.request.semantic_input is None
+
+
+def test_salary_or_merchant_gate_keeps_merchant_path_after_salary_decline():
+    product = opaque_product("PAY")
+    row = product.normalized.return_policy["preferential_policy"]["rules"][0]
+    row["title"] = "급여(가맹점 결제대금) 입금"
+    row["source_clause_text"] = KYONGNAM_SALARY_OR_MERCHANT
+    row["condition"]["source_text"] = KYONGNAM_SALARY_OR_MERCHANT
+    product = ProductDefinition.model_validate(product.model_dump())
+    assert existing_question_family(text=KYONGNAM_SALARY_OR_MERCHANT) == "SALARY"
+    assert family_condition_is_necessary(KYONGNAM_SALARY_OR_MERCHANT, "SALARY") is False
+    compiler = CompilerDouble()
+    service, sid = service_for([product], compiler, intent=_declined_intent("SALARY_BENEFIT"))
+    assert compiler.calls
+    candidate = service._runtime(sid).evaluations["PAY"]
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+
+
+def test_catalog_card_and_salary_gates_are_compiler_targets():
+    tantan = _load_catalog_product("INST-KR-000010-1-C47962C303F")
+    youth = _load_catalog_product("INST-KR-000010-1-C9788B1329E")
+    tantan_packet = product_packet(tantan, "test")
+    youth_packet = product_packet(youth, "test")
+    assert tantan_packet is not None and youth_packet is not None
+    card = [clause for clause in tantan_packet.clauses if "결제금액" in clause.text]
+    salary = [clause for clause in youth_packet.clauses if "가맹점" in clause.text]
+    assert card
+    assert salary
+    assert all(clause.existing_runtime_rule_id for clause in card)
+    assert all(clause.existing_runtime_rule_id for clause in salary)
+    assert not any("결제금액" in clause.text for clause in tantan_packet.linked_clauses)
+    _, _, _, card_views = overlay_product(
+        tantan, tantan_packet, (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        declined_benefit_fields=["CARD_BENEFIT"],
+    )
+    _, _, _, salary_views = overlay_product(
+        youth, youth_packet, (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        declined_benefit_fields=["SALARY_BENEFIT"],
+    )
+    card_ids = {clause.clause_id for clause in card}
+    salary_ids = {clause.clause_id for clause in salary}
+    assert not any(
+        item.get("clause_id") in card_ids and item.get("memo_code") == "RULED_OUT"
+        for item in card_views
+    )
+    assert not any(
+        item.get("clause_id") in salary_ids and item.get("memo_code") == "RULED_OUT"
+        for item in salary_views
+    )
 

@@ -76,7 +76,9 @@ class SemanticAugmentationMixin:
             details[product.product_id] = (overlay, requests, views)
         return overlays, fact_store.model_copy(update={"facts": list(all_facts.values())}), details
 
-    def _semantic_frontier_packets(self, runtime):
+    def _semantic_challenger_packets(self, runtime):
+        """Every Top-K or still-competitive packet, including those outside this turn."""
+
         if runtime.ranking is None:
             return []
         intent = runtime.intent
@@ -92,11 +94,8 @@ class SemanticAugmentationMixin:
             if rate is not None
         ]
         cutoff = min(possibles) if possibles else None
-        window = max(intent.requested_top_k * 3, 12)
         packets = []
         for pid in ordered:
-            if len(packets) >= window:
-                break
             product = runtime.candidate_products.get(pid)
             if product is None:
                 continue
@@ -113,6 +112,22 @@ class SemanticAugmentationMixin:
             if possible is not None and possible >= cutoff:
                 packets.append(packet)
         return packets
+
+    def _semantic_compile_packets(self, runtime):
+        """Unread challengers for this turn. Finished products do not keep a slot."""
+
+        window = max(runtime.intent.requested_top_k * 3, 12)
+        packets = []
+        for packet in self._semantic_challenger_packets(runtime):
+            if not self._remaining_compile_clauses(runtime, packet):
+                continue
+            packets.append(packet)
+            if len(packets) >= window:
+                break
+        return packets
+
+    def _semantic_frontier_packets(self, runtime):
+        return self._semantic_challenger_packets(runtime)
 
     def _remaining_compile_clauses(self, runtime, packet):
         done = {item.clause_id for item in runtime.semantic_cache.get(packet.cache_key, ())}
@@ -172,18 +187,19 @@ class SemanticAugmentationMixin:
         ) is not None:
             runtime.semantic_review = SemanticReviewState(status="DEFERRED")
             return
-        packets = self._semantic_frontier_packets(runtime)
+        challengers = self._semantic_challenger_packets(runtime)
+        packets = self._semantic_compile_packets(runtime)
         jobs = []
         empty_only = []
         current: list = []
         chars = 0
         clause_count = 0
-        for packet in packets:
-            remaining = self._remaining_compile_clauses(runtime, packet)
+        for packet in challengers:
             if not packet.clauses:
                 runtime.semantic_cache.setdefault(packet.cache_key, ())
                 empty_only.append(packet)
-                continue
+        for packet in packets:
+            remaining = self._remaining_compile_clauses(runtime, packet)
             if packet.cache_key in runtime.semantic_failures:
                 continue
             if not remaining:
@@ -224,7 +240,7 @@ class SemanticAugmentationMixin:
         if unique:
             self._evaluate(runtime, unique, merge=True)
             self._rank_once(runtime)
-        frontier_packets = self._semantic_frontier_packets(runtime)
+        frontier_packets = self._semantic_challenger_packets(runtime)
         pending = []
         failed = []
         unresolved = 0

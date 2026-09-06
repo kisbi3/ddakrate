@@ -498,6 +498,25 @@ class RateEngine:
             for match in RateEngine._PERIOD_RATE_RE.finditer(text)
         ]
 
+    _INDEPENDENT_KEYWORDS = (
+        "급여", "급여이체", "카드", "카드실적", "결제", "자동이체",
+        "마케팅", "첫거래", "신규", "청약", "오픈뱅킹", "모바일",
+        "인터넷", "펀드", "대출", "환전", "송금", "이벤트", "추천", "가맹점",
+    )
+    _PERSON_SUBJECT_KEYWORDS = ("명", "자녀", "아이", "다둥이", "가족", "출산", "인원")
+    _PERIOD_SUBJECT_KEYWORDS = ("개월", "년", "기간", "만기", "유지")
+
+    @staticmethod
+    def _row_text(row: dict) -> str:
+        parts = [
+            str(row.get("title") or ""),
+            str(row.get("display", {}).get("summary") or "") if isinstance(row.get("display"), dict) else "",
+            str(row.get("name") or ""),
+            str(row.get("display_name") or ""),
+            str(row.get("condition_text") or ""),
+        ]
+        return " ".join(part for part in parts if part).strip()
+
     @staticmethod
     def _is_staged_same_condition_group(text: str, rows: list[dict]) -> bool:
         """True only when these rows are a same-condition reward ladder.
@@ -515,6 +534,13 @@ class RateEngine:
             return False
         if len(fact_keys) == 1 and len(expecteds) >= 2:
             return True
+        row_texts = [RateEngine._row_text(row) for row in rows]
+        has_independent = any(
+            any(kw in rt for kw in RateEngine._INDEPENDENT_KEYWORDS)
+            for rt in row_texts
+        )
+        if has_independent:
+            return False
         values = {RateEngine._rule_reward_value(row) for row in rows}
         values.discard(None)
         person_bands = {
@@ -522,14 +548,14 @@ class RateEngine:
             for count, rate in RateEngine._person_rate_pairs(text)
             if rate in values
         }
-        if len(person_bands) >= 2:
+        if len(person_bands) >= 2 and len(person_bands) == len(rows):
             return True
         period_bands = {
             band
             for band, rate in RateEngine._period_rate_pairs(text)
             if rate in values
         }
-        return len(period_bands) >= 2
+        return len(period_bands) >= 2 and len(period_bands) == len(rows)
 
     @staticmethod
     def _rows_matching_rate_bands(
@@ -537,21 +563,43 @@ class RateEngine:
         rows: list[dict],
         pairs: list[tuple[str, Decimal]],
     ) -> list[dict]:
-        counts_by_rate: dict[Decimal, set[str]] = {}
-        for band, rate in pairs:
-            counts_by_rate.setdefault(rate, set()).add(band)
+        is_period = any("개월" in b or "년" in b for b, _ in pairs)
+        subject_keywords = RateEngine._PERIOD_SUBJECT_KEYWORDS if is_period else RateEngine._PERSON_SUBJECT_KEYWORDS
+
         matched: list[dict] = []
-        bands: set[str] = set()
-        used: set[str] = set()
-        for row in rows:
-            value = RateEngine._rule_reward_value(row)
-            rule_id = str(row.get("rule_id") or "")
-            if value is None or rule_id in used or value not in counts_by_rate:
+        used_rule_ids: set[str] = set()
+        matched_bands: set[str] = set()
+
+        for band, rate in pairs:
+            candidates: list[tuple[int, dict]] = []
+            for row in rows:
+                rule_id = str(row.get("rule_id") or "")
+                if rule_id in used_rule_ids:
+                    continue
+                value = RateEngine._rule_reward_value(row)
+                if value is None or value != rate:
+                    continue
+                r_text = RateEngine._row_text(row)
+                if any(kw in r_text for kw in RateEngine._INDEPENDENT_KEYWORDS):
+                    continue
+                score = 0
+                if band in r_text:
+                    score += 10
+                if any(sk in r_text for sk in subject_keywords):
+                    score += 5
+                candidates.append((score, row))
+
+            if not candidates:
                 continue
-            matched.append(row)
-            bands.update(counts_by_rate[value])
-            used.add(rule_id)
-        if len(matched) >= 2 and len(bands) >= 2:
+            candidates.sort(key=lambda x: x[0], reverse=True)
+            if len(candidates) > 1 and candidates[0][0] == candidates[1][0] and candidates[0][0] == 0:
+                continue
+            best_row = candidates[0][1]
+            matched.append(best_row)
+            used_rule_ids.add(str(best_row.get("rule_id") or ""))
+            matched_bands.add(band)
+
+        if len(matched) >= 2 and len(matched) == len(matched_bands) and len(matched_bands) >= 2:
             return matched
         return []
 

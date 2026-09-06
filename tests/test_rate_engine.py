@@ -361,6 +361,51 @@ def test_mixed_child_ladder_and_independent_salary_stay_additive():
     assert groups == [["R1", "R2"]]
 
 
+def test_mixed_ladder_with_equal_bonus_amounts_keeps_independent_bonus():
+    """Child 1: 1%p, Child 2: 2%p, Salary: 1%p (equal amount to Child 1) -> 3.0%p."""
+    shared = "자녀 1명 연 1%p, 자녀 2명 연 2%p, 급여이체 연 1%p 추가 제공"
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "title": "자녀 1명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "title": "자녀 2명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "2", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R3",
+            "title": "급여이체",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=rule_id),
+            canonical_rule_id=rule_id,
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for rule_id in ("R1", "R2", "R3")
+    ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("1")}
+
+    total = RateEngine._aggregate_canonical_rewards(product, set(values), values, None)
+
+    assert total == Decimal("3.0")
+    groups = RateEngine._same_source_tier_groups(
+        product.normalized.return_policy["preferential_policy"],
+        values,
+    )
+    assert groups == [["R1", "R2"]]
+
+
 def test_mixed_ladder_with_fact_keys_also_keeps_independent_bonus():
     shared = "자녀 1명 연 1%p, 자녀 2명 연 2%p, 급여이체 연 0.5%p 추가 제공"
     product = _same_source_tier_product()

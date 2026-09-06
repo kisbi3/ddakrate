@@ -29,7 +29,7 @@ from eligibility.schema.product import PreferentialRateRule, ProductDefinition, 
 from eligibility.schema.rule import AndRule, FactAcceptancePolicy, FactComparisonRule, MissingFactSpec, SourceReference
 from eligibility.schema.user_fact import FactProvenance, UserFact, UserFactStore
 
-POLICY_VERSION = "semantic-preferential-v2"
+POLICY_VERSION = "semantic-preferential-v3"
 INPUT_PREFIX = "SEMANTIC_INPUT::"
 RESULT_PREFIX = "SEMANTIC_RESULT::"
 # Exact identifiers only. A qualifying-child count for a bank must not be
@@ -69,7 +69,7 @@ _MARRIAGE_RE = re.compile(r"혼인|결혼|신혼|배우자 명의")
 _PREGNANCY_RE = re.compile(r"임신")
 _MARKETING_RE = re.compile(r"마케팅|광고성|수신\s*동의|상품\s*안내|정보성\s*동의")
 _CARD_RE = re.compile(r"카드\s*(?:발급|사용|이용|결제|실적|매입)|체크카드|신용카드|당행\s*카드")
-_SALARY_RE = re.compile(r"급여이체|급여계좌|급여\s*수령|급여실적|급여 입금")
+_SALARY_RE = re.compile(r"급여이체|급여계좌|급여\s*수령|급여실적|급여\s*입금|급여입금")
 _FIRST_TX_RE = re.compile(
     r"첫거래|첫\s*거래|첫\s*신규|신규고객|신규 고객|"
     r"당행.*없|당행.*미보유|기존고객이 아닌|"
@@ -77,10 +77,17 @@ _FIRST_TX_RE = re.compile(
     r"미보유|보유하지\s*않|"
     r"거래실적이 없는|비고객"
 )
-_OTHER_ACTION_RE = re.compile(r"자동이체|오픈뱅킹|앱\s*사용|모바일뱅킹|비대면|인터넷뱅킹|펀드|대출")
+_OTHER_ACTION_RE = re.compile(
+    r"자동이체|오픈뱅킹|앱\s*사용|모바일뱅킹|비대면|인터넷뱅킹|펀드|대출|"
+    r"가맹점|결제대금|친구\s*추천|추천"
+)
 _CONJUNCTIVE_RE = re.compile(r"및|그리고|모두\s*충족|전부\s*충족|동시에|각각")
 _ALTERNATIVE_RE = re.compile(
-    r"또는|혹은|중\s*하나|중\s*택|하나\s*충족|어느\s*하나|택\s*1|택일"
+    r"또는|혹은|중\s*하나|중\s*택|하나\s*충족|어느\s*하나|택\s*1|택일|(?:\S+)(?:이나|거나)\b"
+)
+_THRESHOLD_STRUCTURE_RE = re.compile(
+    r"\d[\d,\.]*\s*(?:만\s*원|천\s*원|원|백만\s*원)|"
+    r"가입월|전전월|가입기간|절반\s*이상|1/2\s*이상"
 )
 _CHILD_NAME_RE = re.compile(r"(?:부모.{0,24})?자녀\s*명의")
 _LIFE_EVENT_RE = re.compile(r"난임|저출생")
@@ -116,6 +123,7 @@ CHILD_COUNT는 전체 자녀 중 child_filter를 만족하는 인원입니다. �
 서류 제출과 은행 승인은 사용자 칸이 아닙니다. 조건식에는 생명사건·자녀·혼인·임신만 넣고, 빈 COMPARE를 만들지 마세요.
 자녀 명의 보유나 청약 가입은 자녀 수 조건이 아닙니다.
 가입기간중 출산/월평잔/거래이력 등 이 언어로 표현하지 못하는 조건은 UNKNOWN 노드로 남기세요.
+급여이체, 카드 결제실적, 가맹점 결제대금, 첫거래, 마케팅 등 거래실적 및 대체 충족 경로(또는/혹은)가 포함된 조건은 ALL/ANY 논리 구조를 보존하고, 지원하지 않는 거래조건 갈래는 UNKNOWN 노드로 남기세요. 새로운 질문이나 입력 슬롯을 임의로 생성하지 마세요.
 AND는 ALL, OR는 ANY로 원문의 구조를 보존합니다. 한 갈래를 이해하지 못했다고 삭제하면 안 됩니다.
 금리 인상 수치가 아니라 조건의 임계값만 expected에 넣으세요. 비교값이 원문에 없으면 UNKNOWN입니다.
 지원하지 않는 조건은 expression=null과 unresolved_reason을 반환하세요.
@@ -225,6 +233,42 @@ def existing_question_family(*, title: str = "", text: str = "", fact_key: str =
     return unique[0] if len(unique) == 1 else None
 
 
+def clause_has_unjudged_structure(
+    text: str,
+    family: str | None,
+    *,
+    opaque_gate: bool = False,
+) -> bool:
+    """True when a family label cannot finish the unread sentence."""
+
+    if opaque_gate:
+        return True
+    if _THRESHOLD_STRUCTURE_RE.search(text):
+        return True
+    if family and (_ALTERNATIVE_RE.search(text) or has_unlinked_alternative_path(text, family)):
+        return True
+    return False
+
+
+def clause_needs_compiler(
+    *,
+    title: str = "",
+    text: str = "",
+    family: str | None = None,
+    opaque_gate: bool = False,
+) -> bool:
+    """Unread sentences the compiler must read, including card/salary gates.
+
+    A verified typed condition never reaches this function. SOURCE_CLAUSE_GATE
+    and source-only structure still do, even when they map to an existing
+    question family. Additional questions stay limited to the three slots.
+    """
+
+    if targets_semantic_inputs(title=title, text=text):
+        return True
+    return clause_has_unjudged_structure(text, family, opaque_gate=opaque_gate)
+
+
 def institution_history_name_key(name: str | None) -> str:
     return re.sub(r"(?:\(주\)|주식회사|㈜|\s)+", "", name or "").casefold()
 
@@ -315,15 +359,20 @@ def product_packet(product: ProductDefinition, compiler_key: str) -> ProductPack
             # the remaining clauses; the overlay records UNRESOLVED memos.
             empty_clauses.append(clause)
             continue
+        if clause_needs_compiler(
+            title=str(row.get("title") or ""),
+            text=text,
+            family=family,
+            opaque_gate=opaque_gate,
+        ):
+            clauses.append(clause)
+            continue
         if family:
-            # Existing pre-search/planner families own these sentences. Do not
-            # send them to the compiler or invent a duplicate question slot.
+            # Only skip the compiler when an existing answer can already
+            # determine the whole sentence. A family label is not enough.
             linked_clauses.append(clause)
             continue
-        if not targets_semantic_inputs(title=str(row.get("title") or ""), text=text):
-            untargeted_clauses.append(clause)
-            continue
-        clauses.append(clause)
+        untargeted_clauses.append(clause)
     if not clauses and not empty_clauses and not linked_clauses and not untargeted_clauses:
         return None
     payload = {
@@ -423,8 +472,12 @@ def coerce_expression(raw: Any, clause: SourceClause, *, depth: int = 0) -> Sema
     if not isinstance(children_raw, list):
         children_raw = []
     if op in {"ALL", "ANY", "NOT"}:
+        if len(children_raw) > 12:
+            # A dropped OR/AND branch can flip the whole judgment. Defer the
+            # oversized tree instead of applying a truncated copy.
+            return None
         children = []
-        for child in children_raw[:12]:
+        for child in children_raw:
             node = coerce_expression(child, clause, depth=depth + 1)
             if node is None:
                 child_dump = _dump(child) if child is not None else {}
@@ -861,12 +914,14 @@ def family_condition_is_necessary(text: str, family: str) -> bool:
 
     Question linking may still attach the sentence to this family. Exclusion
     uses this test. A remaining path or mixed AND/OR structure stays open.
+    Missing a keyword from the known-action list is not proof that no other
+    path exists.
     """
 
-    if not _other_fulfillment_present(text, family):
-        return True
     if _ALTERNATIVE_RE.search(text):
         return False
+    if not _other_fulfillment_present(text, family):
+        return True
     if _CONJUNCTIVE_RE.search(text):
         return True
     return False
@@ -884,15 +939,21 @@ def linked_clause_outcome(
     clause_text: str = "",
     declined_benefit_fields: Iterable[str] = (),
     holding_match: bool = False,
+    opaque_gate: bool = False,
 ) -> str:
     declined = set(declined_benefit_fields)
     if family == "MARKETING":
         return "NEEDS_OFFICIAL"
     field = FAMILY_BENEFIT_FIELD.get(family)
     if field and field in declined:
-        if family_condition_is_necessary(clause_text, family):
-            return "RULED_OUT"
-        return "NEEDS_OFFICIAL"
+        if not family_condition_is_necessary(clause_text, family):
+            return "NEEDS_OFFICIAL"
+        if family in {"CARD", "SALARY"} and clause_has_unjudged_structure(
+            clause_text, family, opaque_gate=opaque_gate,
+        ):
+            # Willingness is not card spend, salary credit, or a hidden gate.
+            return "NEEDS_OFFICIAL"
+        return "RULED_OUT"
     if (
         family == "FIRST_TRANSACTION"
         and holding_match
@@ -1007,14 +1068,24 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
                 views.append(_clause_view(
                     clause, status="UNRESOLVED", reason="SOURCE_CLAUSE_TOO_LARGE", memo_code="UNRESOLVED",
                 ))
-        for clause in packet.linked_clauses:
+        family_clauses = list(packet.linked_clauses)
+        family_clauses.extend(
+            clause for clause in packet.clauses
+            if clause.existing_question_family and clause not in family_clauses
+        )
+        for clause in family_clauses:
             family = clause.existing_question_family or ""
             outcome = linked_clause_outcome(
                 family,
                 clause_text=clause.text,
                 declined_benefit_fields=declined_benefit_fields,
                 holding_match=holding_match,
+                opaque_gate=clause.existing_runtime_rule_id is not None,
             )
+            compiler_target = clause in packet.clauses
+            if compiler_target and outcome != "RULED_OUT":
+                # Structure still needs AI. Do not treat a family label as done.
+                continue
             interpreted_ids.add(clause.clause_id)
             source = SourceReference(
                 document="상품 우대조건 원문 (기존 질문 연결)",
@@ -1124,7 +1195,34 @@ def overlay_product(product: ProductDefinition, packet: ProductPacket | None,
             clause, status="AI_INTERPRETED", memo_code=memo_code, slot=slot,
             predicate_result=outcome.value, official_confirmation_required=clause.official_only,
         ))
-    # Pending/failed opaque gates must not fall back to "yes = every hidden
+    if packet is not None:
+        viewed_by_id = {item["clause_id"]: item for item in views}
+        for clause in packet.clauses:
+            family = clause.existing_question_family
+            if not family:
+                continue
+            current = viewed_by_id.get(clause.clause_id)
+            if current and current.get("status") == "AI_INTERPRETED" and current.get("memo_code") not in {None, "UNRESOLVED"}:
+                continue
+            outcome = linked_clause_outcome(
+                family,
+                clause_text=clause.text,
+                declined_benefit_fields=declined_benefit_fields,
+                holding_match=holding_match,
+                opaque_gate=clause.existing_runtime_rule_id is not None,
+            )
+            if outcome != "NEEDS_OFFICIAL":
+                continue
+            if current is None:
+                views.append(_clause_view(
+                    clause, status="UNRESOLVED", reason="EXISTING_QUESTION_LINK",
+                    memo_code="NEEDS_OFFICIAL", linked_outcome=outcome,
+                ))
+            elif current.get("memo_code") == "UNRESOLVED":
+                current["memo_code"] = "NEEDS_OFFICIAL"
+                current["memo_text"] = memo_text("NEEDS_OFFICIAL")
+                current["linked_outcome"] = outcome
+    # Pending/failed opaque gates must not fall back to "yes = every hidden"
     # condition satisfied". Keep their upper bound, but block current rewards
     # until interpretation supplies a proper predicate and authority checks.
     viewed_ids = {item["clause_id"] for item in views}

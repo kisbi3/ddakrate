@@ -27,6 +27,9 @@ PowerShell에서는 `$env:ELIGIBILITY_SEMANTIC_CONDITIONS = "1"`을 사용합니
 3. 후보의 canonical `preferential_policy.rules` 중 runtime adapter가 없는 rule과
    명시적인 `SOURCE_CLAUSE_GATE` boolean placeholder를 수집합니다. genuinely typed
    comparison은 분석 대상이 아니며 read-only 참고 정보로만 모델에 전달합니다.
+   카드·급여·첫거래·마케팅으로 분류되었다는 이유만으로 분석을 건너뛰지 않습니다.
+   `SOURCE_CLAUSE_GATE`와 금액·기간·대체 경로가 있는 원문은 기존 질문 답을 재사용하면서
+   컴파일러가 구조를 읽습니다. 새 질문 칸은 만들지 않습니다.
 4. 원문과 기존 typed rules를 함께 공급하고, 고정된 표현식 언어로 해석합니다.
 5. 전체 batch의 원문 hash, clause ID, 인용문, 타입, 숫자 근거, 깊이/크기를 검증합니다.
 6. 원본 상품은 보존하고 세션의 임시 overlay에 해석을 적용합니다. 금리, 이자, 자격,
@@ -35,8 +38,10 @@ PowerShell에서는 `$env:ELIGIBILITY_SEMANTIC_CONDITIONS = "1"`을 사용합니
    플래너에서 묶습니다. 답변 수정/삭제 때 파생 facts를 새로 만들며 별도로 영구 저장하지 않습니다.
 
 한 write command에서 기본 최대 **8상품 / 48원문 / 50,000문자**를 분석합니다.
-이는 처리 batch 제한이며 후보 삭제 기준이 아닙니다. 새 답변 또는 명시적 계속 명령으로
-다음 batch를 처리합니다. 나머지 후보가 있으면 `PENDING`으로 표시하고 확정을 막습니다.
+이번 호출 창은 `max(3K, 12)`의 **아직 읽지 않은** 도전 가능 후보이고, 이미 분석한
+상품이 창을 계속 차지하지 않습니다. 창 밖 미분석 후보는 `pending_product_count`에
+남기고 `COMPLETE`로 바꾸지 않습니다. 새 답변 또는 명시적 계속 명령으로 다음 batch를
+처리합니다.
 세션 내 source cache는 상품 버전, source metadata/hash, typed context, compiler/prompt/model/schema
 식별자를 포함합니다. 사용자 정보는 compiler prompt/cache에 넣지 않습니다. 현재 MVP는
 persistent cross-session cache와 비동기 worker를 포함하지 않습니다.
@@ -59,13 +64,17 @@ persistent cross-session cache와 비동기 worker를 포함하지 않습니다.
 - 불명확한 논리 가지, 복잡한 거래/서류/승인/가입기간 중 사건과 미지원 보상은 UNKNOWN으로 유지합니다.
 - `SOURCE_CLAUSE_GATE`는 원래 비교·보상·근거 정책을 유지한 채 guard를 추가합니다.
   같은 우대를 두 번 합산하거나 generic “예” 답변으로 미해석 조건을 충족시키지 않습니다.
+  카드 의향 거절은 결제금액 미달을 입증하지 않고, 급여 의향 거절은 가맹점 입금 경로를
+  지우지 않습니다. 알 수 없는 대체 경로를 정규식 목록에 없다고 해서 필수로 보지 않습니다.
+- 자식이 12개를 넘는 ALL/ANY 식은 가지를 잘라 적용하지 않고 해당 절을 보류합니다.
 - 일반 structured schema/숫자/인용문 검증만으로 자연어 해석의 정확성을 증명할 수는 없습니다.
   AI 해석이 사용된 추천은 실험적 잠정 결과로 표시합니다.
 
 **전체 비정형 원문의 완전한 coverage를 보장하지 않습니다.** canonical preferential-policy 외의
 standalone disclosure/custom 텍스트 intake, 새로운 ontology, 개인별 세금·복리, 영구 캐시,
-동시 요청 직렬화는 별도 확장 대상입니다. `COMPLETE`는 지원 intake의 현 frontier 처리가 끝났다는 뜻이지
-상품의 모든 조건이나 금융기관 승인이 검증되었다는 뜻이 아닙니다.
+동시 요청 직렬화는 별도 확장 대상입니다. `COMPLETE`는 도전 가능한 미분석 패킷이 더 없을 때입니다.
+창 밖에 읽지 않은 후보가 있으면 `PENDING`/`PARTIAL`을 유지합니다. 상품의 모든 조건이나
+금융기관 승인이 검증되었다는 뜻은 아닙니다.
 
 ## API / UI
 
