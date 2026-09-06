@@ -140,13 +140,13 @@ class RateEngine:
 
         declared_cap = product.preferential_rate_cap
         confirmed_total = RateEngine._aggregate_canonical_rewards(
-            product, verified_rule_ids, effective_rewards, declared_cap
+            product, verified_rule_ids, effective_rewards, declared_cap, layer="confirmed"
         )
         realizable_total = RateEngine._aggregate_canonical_rewards(
-            product, realizable_rule_ids, effective_rewards, declared_cap
+            product, realizable_rule_ids, effective_rewards, declared_cap, layer="confirmed"
         )
         upper_total = RateEngine._aggregate_canonical_rewards(
-            product, upper_rule_ids, effective_rewards, declared_cap
+            product, upper_rule_ids, effective_rewards, declared_cap, layer="upper"
         )
         if (
             not rewards_blocked
@@ -328,6 +328,8 @@ class RateEngine:
         included_runtime_rule_ids: set[str],
         reward_by_runtime_rule_id: dict[str, Decimal],
         declared_cap: Decimal | None,
+        *,
+        layer: str = "confirmed",
     ) -> Decimal:
         if not included_runtime_rule_ids:
             return Decimal("0")
@@ -392,6 +394,12 @@ class RateEngine:
         for members in RateEngine._same_source_tier_groups(policy, values):
             for member in members[1:]:
                 union(members[0], member)
+        if layer != "upper":
+            # Unclear copies must not inflate the locked-in rate. The possible
+            # upper may still sum them; advertised ceilings remain a cap.
+            for members in RateEngine._same_source_unclear_groups(policy, values):
+                for member in members[1:]:
+                    union(members[0], member)
 
         groups: dict[str, list[str]] = {}
         for rule_id in values:
@@ -498,16 +506,11 @@ class RateEngine:
             for match in RateEngine._PERIOD_RATE_RE.finditer(text)
         ]
 
-    _INDEPENDENT_KEYWORDS = (
-        "급여", "급여이체", "카드", "카드실적", "결제", "자동이체",
-        "마케팅", "첫거래", "신규", "청약", "오픈뱅킹", "모바일",
-        "인터넷", "펀드", "대출", "환전", "송금", "이벤트", "추천", "가맹점",
-    )
     _PERSON_SUBJECT_KEYWORDS = ("명", "자녀", "아이", "다둥이", "가족", "출산", "인원")
     _PERIOD_SUBJECT_KEYWORDS = ("개월", "년", "기간", "만기", "유지")
 
     @staticmethod
-    def _row_text(row: dict) -> str:
+    def _row_own_text(row: dict) -> str:
         parts = [
             str(row.get("title") or ""),
             str(row.get("display", {}).get("summary") or "") if isinstance(row.get("display"), dict) else "",
@@ -518,15 +521,27 @@ class RateEngine:
         return " ".join(part for part in parts if part).strip()
 
     @staticmethod
+    def _row_text(row: dict) -> str:
+        return " ".join(
+            part for part in (
+                RateEngine._row_own_text(row),
+                str(row.get("source_clause_text") or ""),
+            ) if part
+        ).strip()
+
+    @staticmethod
     def _is_staged_same_condition_group(text: str, rows: list[dict]) -> bool:
         """True only when these rows are a same-condition reward ladder.
 
         Multiple person or period numbers in the shared sentence are not
         evidence that every copied rule is exclusive. A ladder requires the
         same condition key with different thresholds, or rewards that bind to
-        two or more distinct bands of that same condition.
+        two or more distinct bands of that same condition. A family keyword
+        such as 급여 does not by itself prove independence or a ladder.
         """
 
+        if len(rows) < 2:
+            return False
         keys = [RateEngine._condition_ladder_key(row) for row in rows]
         fact_keys = {fact for fact, _expected in keys if fact}
         expecteds = {expected for _fact, expected in keys if expected is not None}
@@ -534,13 +549,6 @@ class RateEngine:
             return False
         if len(fact_keys) == 1 and len(expecteds) >= 2:
             return True
-        row_texts = [RateEngine._row_text(row) for row in rows]
-        has_independent = any(
-            any(kw in rt for kw in RateEngine._INDEPENDENT_KEYWORDS)
-            for rt in row_texts
-        )
-        if has_independent:
-            return False
         values = {RateEngine._rule_reward_value(row) for row in rows}
         values.discard(None)
         person_bands = {
@@ -548,13 +556,13 @@ class RateEngine:
             for count, rate in RateEngine._person_rate_pairs(text)
             if rate in values
         }
-        if len(person_bands) >= 2 and len(person_bands) == len(rows):
-            return True
         period_bands = {
             band
             for band, rate in RateEngine._period_rate_pairs(text)
             if rate in values
         }
+        if len(person_bands) >= 2 and len(person_bands) == len(rows):
+            return True
         return len(period_bands) >= 2 and len(period_bands) == len(rows)
 
     @staticmethod
@@ -579,20 +587,26 @@ class RateEngine:
                 value = RateEngine._rule_reward_value(row)
                 if value is None or value != rate:
                     continue
-                r_text = RateEngine._row_text(row)
-                if any(kw in r_text for kw in RateEngine._INDEPENDENT_KEYWORDS):
-                    continue
+                own_text = RateEngine._row_own_text(row)
+                shared_text = str(row.get("source_clause_text") or text)
                 score = 0
-                if band in r_text:
+                if band in own_text:
                     score += 10
-                if any(sk in r_text for sk in subject_keywords):
+                elif band in shared_text:
+                    score += 2
+                if any(sk in own_text for sk in subject_keywords):
                     score += 5
+                elif any(sk in shared_text for sk in subject_keywords):
+                    score += 1
+                if score <= 0:
+                    continue
                 candidates.append((score, row))
 
             if not candidates:
                 continue
             candidates.sort(key=lambda x: x[0], reverse=True)
-            if len(candidates) > 1 and candidates[0][0] == candidates[1][0] and candidates[0][0] == 0:
+            if len(candidates) > 1 and candidates[0][0] == candidates[1][0]:
+                # Two rows equally fit the same band: not a confirmed mapping.
                 continue
             best_row = candidates[0][1]
             matched.append(best_row)
@@ -604,8 +618,8 @@ class RateEngine:
         return []
 
     @staticmethod
-    def _partition_same_source_rows(text: str, rows: list[dict]) -> list[list[dict]]:
-        """Split one copied sentence into condition groups; leftovers stay independent."""
+    def _partition_same_source_rows(text: str, rows: list[dict]) -> tuple[list[list[dict]], list[dict]]:
+        """Split one copied sentence into condition groups and unclear leftovers."""
 
         by_fact: dict[str, list[dict]] = {}
         unkeyed: list[dict] = []
@@ -628,23 +642,10 @@ class RateEngine:
             partitions.append(matched)
             used.update(str(row.get("rule_id") or "") for row in matched)
         leftover = [row for row in unkeyed if str(row.get("rule_id") or "") not in used]
-        partitions.extend([row] for row in leftover)
-        return partitions
+        return partitions, leftover
 
     @staticmethod
-    def _same_source_tier_groups(
-        policy: dict,
-        values: dict[str, Decimal],
-    ) -> list[list[str]]:
-        """Group staged same-condition rewards that copy one official sentence.
-
-        A child-count ladder published as three ADD_RATE rows with empty
-        relations must not sum to 1+2+3. Matching source text is necessary
-        but not sufficient: only the same condition, subject, and reference
-        time form a max group. Independent bonuses in that sentence stay
-        additive. An unclear copy is not turned into a max group.
-        """
-
+    def _grouped_same_source_rows(policy: dict, values: dict[str, Decimal]) -> list[tuple[str, list[dict]]]:
         grouped: dict[str, list[dict]] = {}
         for row in policy.get("rules") or []:
             if not isinstance(row, dict):
@@ -661,15 +662,54 @@ class RateEngine:
             members = grouped.setdefault(text, [])
             if all(str(item.get("rule_id") or "") != rule_id for item in members):
                 members.append(row)
+        return [(text, rows) for text, rows in grouped.items() if len(rows) >= 2]
+
+    @staticmethod
+    def _same_source_tier_groups(
+        policy: dict,
+        values: dict[str, Decimal],
+    ) -> list[list[str]]:
+        """Group staged same-condition rewards that copy one official sentence.
+
+        A child-count or period ladder published as separate ADD_RATE rows
+        with empty relations must not sum. Matching source text is necessary
+        but not sufficient: only the same condition, subject, and reference
+        time form a max group. Independent bonuses in that sentence stay
+        additive. An unclear copy is not turned into a max group.
+        """
+
         staged: list[list[str]] = []
-        for text, rows in grouped.items():
-            if len(rows) < 2:
-                continue
-            for members in RateEngine._partition_same_source_rows(text, rows):
+        for text, rows in RateEngine._grouped_same_source_rows(policy, values):
+            partitions, _leftover = RateEngine._partition_same_source_rows(text, rows)
+            for members in partitions:
                 if len(members) < 2:
                     continue
                 if not RateEngine._is_staged_same_condition_group(text, members):
                     continue
                 staged.append([str(row.get("rule_id")) for row in members])
         return staged
+
+    @staticmethod
+    def _same_source_unclear_groups(
+        policy: dict,
+        values: dict[str, Decimal],
+    ) -> list[list[str]]:
+        """Same-source copies whose exclusive/additive relation is unproven."""
+
+        unclear: list[list[str]] = []
+        for text, rows in RateEngine._grouped_same_source_rows(policy, values):
+            partitions, leftover = RateEngine._partition_same_source_rows(text, rows)
+            leftover_ids = [str(row.get("rule_id")) for row in leftover]
+            if len(leftover_ids) >= 2:
+                unclear.append(leftover_ids)
+            for members in partitions:
+                if len(members) < 2:
+                    continue
+                if RateEngine._is_staged_same_condition_group(text, members):
+                    continue
+                if len({RateEngine._condition_ladder_key(row)[0] for row in members}) == 1:
+                    # Same fact key but not enough distinct thresholds: still
+                    # not proven additive.
+                    unclear.append([str(row.get("rule_id")) for row in members])
+        return unclear
 

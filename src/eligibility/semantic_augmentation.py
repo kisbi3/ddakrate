@@ -77,23 +77,26 @@ class SemanticAugmentationMixin:
         return overlays, fact_store.model_copy(update={"facts": list(all_facts.values())}), details
 
     def _semantic_challenger_packets(self, runtime):
-        """Every Top-K or still-competitive packet, including those outside this turn."""
+        """Every Top-K or still-competitive packet, including those outside this turn.
+
+        A candidate is dropped only when rank reversal is impossible: its
+        comparable upper is strictly below every current Top-K lower bound.
+        Missing bounds keep the candidate. Possible maxima of the leader are
+        not a cutoff.
+        """
 
         if runtime.ranking is None:
             return []
         intent = runtime.intent
         ordered = list(runtime.ranking.ordered_product_ids)
         top_k_ids = ordered[: intent.requested_top_k]
-        visible = [
-            runtime.evaluations[pid]
+        lowers = [
+            RankingService._ranking_lower_rate(runtime.evaluations[pid])
             for pid in top_k_ids
             if pid in runtime.evaluations
         ]
-        possibles = [
-            rate for rate in (RankingService._possible_rate(item) for item in visible)
-            if rate is not None
-        ]
-        cutoff = min(possibles) if possibles else None
+        comparable_lowers = [rate for rate in lowers if rate is not None]
+        cutoff = min(comparable_lowers) if len(comparable_lowers) == len(top_k_ids) and comparable_lowers else None
         packets = []
         for pid in ordered:
             product = runtime.candidate_products.get(pid)
@@ -107,9 +110,10 @@ class SemanticAugmentationMixin:
                 continue
             candidate = runtime.evaluations.get(pid)
             if candidate is None or cutoff is None:
+                packets.append(packet)
                 continue
-            possible = RankingService._possible_rate(candidate)
-            if possible is not None and possible >= cutoff:
+            upper = RankingService._ranking_upper_rate(candidate)
+            if upper is None or upper >= cutoff:
                 packets.append(packet)
         return packets
 
@@ -230,8 +234,9 @@ class SemanticAugmentationMixin:
         if current:
             jobs.append(current)
         calls = 0
+        leftover_jobs = []
         if jobs:
-            calls, _leftover_jobs, _failed = self._compile_jobs(runtime, jobs)
+            calls, leftover_jobs, _failed = self._compile_jobs(runtime, jobs)
         evaluated_ids = list(dict.fromkeys(
             [packet.product_id for job in jobs for packet in job]
             + [packet.product_id for packet in empty_only]
@@ -247,6 +252,7 @@ class SemanticAugmentationMixin:
         interpreted = False
         reviewed = []
         error_code = None
+        leftover_ids = {packet.product_id for job in leftover_jobs for packet in job}
         for packet in frontier_packets:
             remaining = self._remaining_compile_clauses(runtime, packet)
             if packet.cache_key in runtime.semantic_failures:
@@ -270,9 +276,12 @@ class SemanticAugmentationMixin:
             unresolved += sum(len(c.text) > SEMANTIC_MAX_CLAUSE_CHARS for c in packet.clauses)
             unresolved += len(packet.empty_clauses)
             unresolved += len(packet.untargeted_clauses)
+        budget_exhausted = bool(leftover_jobs or leftover_ids)
         if failed and not interpreted and not pending:
             status = "FAILED"
         elif interpreted and (pending or failed):
+            status = "PARTIAL"
+        elif pending and (calls > 0 or budget_exhausted):
             status = "PARTIAL"
         elif pending:
             status = "PENDING"

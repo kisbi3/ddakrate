@@ -537,6 +537,42 @@ class RankingService:
             return result.user_specific_conditional_upper_rate
         return candidate.user_specific_conditional_upper_rate
 
+    @staticmethod
+    def _confirmed_rate(candidate: CandidateEvaluation) -> Decimal | None:
+        result = candidate.rate_evaluation
+        if result is not None and result.confirmed_rate is not None:
+            return result.confirmed_rate
+        return candidate.confirmed_rate
+
+    @classmethod
+    def _ranking_lower_rate(cls, candidate: CandidateEvaluation) -> Decimal | None:
+        """Rate that remains if still-unknown bonuses fail.
+
+        Used only to decide whether another candidate can still overtake.
+        Missing bounds are not replaced with an optimistic maximum.
+        """
+
+        rate = cls._realizable_rate(candidate)
+        if rate is not None:
+            return rate
+        confirmed = cls._confirmed_rate(candidate)
+        if confirmed is not None:
+            return confirmed
+        breakdown = candidate.product_evaluation.rates.evidence_breakdown
+        return breakdown.base_rate if breakdown is not None else None
+
+    @classmethod
+    def _ranking_upper_rate(cls, candidate: CandidateEvaluation) -> Decimal | None:
+        """Best rate that has not been ruled out. None means incomparable."""
+
+        upper = cls._conditional_upper_rate(candidate)
+        if upper is not None:
+            return upper
+        result = candidate.rate_evaluation
+        if result is not None and result.advertised_max_rate is not None:
+            return result.advertised_max_rate
+        return candidate.product_evaluation.rates.advertised_max_rate
+
     @classmethod
     def _possible_rate(cls, candidate: CandidateEvaluation) -> Decimal | None:
         """Return the best rate that has not been ruled out for this user.

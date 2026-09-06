@@ -547,7 +547,7 @@ class TopKStabilityResult(StrictSearchModel):
 
 
 class SemanticConditionMemo(StrictSearchModel):
-    code: Literal["RULED_OUT", "NEEDS_INPUT", "NEEDS_OFFICIAL", "UNRESOLVED"]
+    code: Literal["RULED_OUT", "NEEDS_INPUT", "INSUFFICIENT_FACTS", "NEEDS_OFFICIAL", "UNRESOLVED"]
     text: str
 
 

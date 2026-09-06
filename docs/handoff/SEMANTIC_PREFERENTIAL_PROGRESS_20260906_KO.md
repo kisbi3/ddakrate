@@ -1,7 +1,7 @@
 # 우대조건 의미 분석 — 지금까지 한 일과 앞으로 할 일
 
-- 작성일: 2026-09-06
-- 상태: 리뷰 보완과 회귀 테스트를 반영한 의미 분석 MVP가 **스위치 기본 OFF**로 main에 들어갔다 (`1afb41210`, #8). 이후 독립 리뷰의 세 반례와 검증 문제 P1–P6, 그리고 PR #10에서 재현된 반례 A–D(동일 금액 독립 우대, 알 수 없는 대체 경로, 식 잘라내기, 창 밖 COMPLETE)를 후속 수정했다. 실제 외부 모델(`gpt-5.6-luna`)로 신한 원문과 탄탄성공·경남 청년미래 게이트를 소수 읽었고, **운영 기본 스위치는 켜지 않는다.**
+- 작성일: 2026-09-06, 2026-09-07 갱신
+- 상태: 리뷰 보완과 회귀 테스트를 반영한 의미 분석 MVP가 **스위치 기본 OFF**로 main에 들어갔다 (`1afb41210`, #8). `#10` (`45e2d453d`) 이후, 급여 기간 티어 합산·상한만으로 경쟁 후보를 빼는 COMPLETE·카드/급여 구조 스키마·해석 실패를 은행 확인으로 바꾸던 overlay를 이어서 고쳤다. 실제 외부 모델(`gpt-5.6-luna`)로 탄탄성공 PREF-02·경남 청년미래 PREF-06만 다시 읽었고, **운영 기본 스위치는 켜지 않는다.** 테스트 대역에서 스키마·판정은 통과했으나, 실제 모델은 아직 PREDICATE 잎을 UNKNOWN으로 남기는 품질 공백이 있다. ON 브라우저 E2E는 이 환경에서 실행하지 못했다.
 - 이 문서가 답하는 질문: **무엇을 만들었고, 무엇이 남았으며, 지금은 무엇을 하면 안 되는가**
 - 선행 계획: [머지 계획](SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md) (`f6dbd138b`, #1)
 - 검증 실패 상세: [2026-09-06 검증에서 드러난 문제](SEMANTIC_PREFERENTIAL_VERIFICATION_PROBLEMS_20260906_KO.md)
@@ -542,8 +542,8 @@ main에 넣을 때는 이 줄만, **스위치 꺼진 채** 넣는다. 추천 감
 ### 11.4 남은 일
 
 - 실제 모델이 명시적 인원 절을 `CHILD_COUNT`로 옮기는 품질.
+- 거래실적 PREDICATE(카드 결제액·급여/가맹점 구간)를 UNKNOWN 잎으로 남기지 않는 품질.
 - 의미 분석 ON 브라우저 E2E (사전 질문 → 공통 질문 → 답변 → 순위 갱신 → 계속 분석 → 카드·상세 메모 → OFF).
-- 거래실적 `SOURCE_CLAUSE_GATE`를 세 칸 언어로 억지 실행하지 않으면서, 구조를 더 정확히 남기는 품질.
 - 운영 활성화는 위 검증 뒤에만 별도 권한으로 검토한다. **이번 작업은 운영 ON을 승인하지 않는다.**
 
 ---
@@ -582,11 +582,64 @@ main에 넣을 때는 이 줄만, **스위치 꺼진 채** 넣는다. 추천 감
 ### 12.3 실제 모델과 브라우저
 
 - `gpt-5.6-luna`, 전 카탈로그 미전송. 탄탄성공 카드 게이트 + 경남 급여/가맹점 게이트 1호출 5826ms.
-- 모델은 거래실적을 세 칸으로 억지 변환하지 않고 `expression=null` + 이유를 남겼다. 카드/급여 거절 뒤에도 **RULED_OUT 아님**, 메모 `NEEDS_OFFICIAL`.
-- OFF 카탈로그 목록 4,281개·탄탄성공적금 상세 HTTP 200, `llm_enabled=false`.
+- 모델은 거래실적을 세 칸으로 억지 변환하지 않고 `expression=null` + 이유를 남겼다. 카드/급여 거절 뒤에도 **RULED_OUT 아님**, 메모 `NEEDS_OFFICIAL`. **이 결과를 카드·급여 구조 해석 성공으로 적지는 않는다.** 당시 스키마가 거래 조건을 표현하지 못했다.
+- OFF 카탈로그 목록 4,281개·탄탄성공적금 상세 HTTP 200, `llm_enabled=false`. HTTP 200은 ON 브라우저 E2E가 아니다.
 - ON 브라우저 E2E는 **실행하지 않음**. 수행하지 않은 검증을 통과로 표시하지 않는다.
 
 산출물(gitignore): `.runtime/real-model-verify/gate_clauses_20260906.json`
+
+### 배포·스위치
+
+- 운영 기본값 **OFF** (`ELIGIBILITY_SEMANTIC_CONDITIONS` 미설정 = 꺼짐).
+- OFF 복귀: 환경 변수 제거 또는 `ELIGIBILITY_SEMANTIC_CONDITIONS=0`. 웹 프로세스 재시작.
+
+---
+
+## 13. 2026-09-07 (기간 티어·경쟁 후보 하한·조건 스키마)
+
+기준 커밋 `45e2d453d` 위에 이어서 구현했다. 운영 기본값은 여전히 **OFF**다. 설계: [SEMANTIC_PREFERENTIAL_DESIGN_20260907_KO.md](SEMANTIC_PREFERENTIAL_DESIGN_20260907_KO.md).
+
+### 13.1 코드에서 고친 것
+
+1. **급여 기간 티어** (`rate_engine.py`) — 의미 분석 OFF에서도 적용
+   - 제목에 ‘급여’가 있다고 티어 후보에서 빼지 않는다.
+   - 같은 조건·대상·기간 기준의 단계만 최댓값. `급여이체 6개월 1%p / 12개월 2%p` → **2%p**.
+   - 기존 반례 유지: 자녀 사다리 + 독립 급여이체 → 3%p 또는 2.5%p.
+   - 확인되지 않은 같은 원문 복제는 확정/실현 금리에 합산하지 않고, 가능한 상한에서는 합산할 수 있다.
+   - 검증된 `TIER_MAX`만 집계기가 추가로 소비한다. OFF 경로는 실시간 AI에 의존하지 않는다.
+2. **경쟁 후보 제외** (`semantic_augmentation.py`, `ranking.py`)
+   - 하한 = 미확정 우대가 빠졌을 때의 금리. 상한 = 사용자별 조건부 상한(없으면 광고 최고금리).
+   - Top-K 하한보다 상한이 낮은 경우에만 제외. 비교할 값이 없으면 제외하지 않는다.
+   - `top_k=1`에서 A 상한 10 / 하한 2, B 상한 5이면 B를 읽고 `COMPLETE`하지 않는다.
+   - 전체 도전 후보와 이번 호출 창을 분리. 창 밖 미분석은 pending. 호출 예산이 끝나면 `PARTIAL`.
+   - `COMPLETE`는 도전 후보 분석이 끝난 뜻이지, 모든 조건 판정이 끝난 뜻이 아니다.
+3. **조건 스키마** (`schema/semantic.py`) — 질문 칸과 분리
+   - `PREDICATE`: 카드 결제, 급여 입금, 가맹점 정산, 보유·미보유, 동의, 금액 단위, 기간 창, 대상·범위.
+   - ALL/ANY/NOT, 티어/독립 관계, 원문 인용, 기존 rule ID, 필요 사실, 별도 증빙 요구.
+   - 원문에 없는 수치·기간·배타 관계를 만들지 않는다. 모델은 금리·사실·코드·순위를 만들지 못한다.
+4. **판정과 메모**
+   - 카드 의향 ≠ 결제액, 급여 의향 ≠ 가맹점 정산, 은행 보유 ≠ 특정 상품·기간 이력.
+   - AND/OR 3값. 새 질문 없음. 기존 자녀/혼인/임신 칸으로 되는 것은 판단한다.
+   - `UNRESOLVED` / `INSUFFICIENT_FACTS` / `NEEDS_OFFICIAL`을 섞지 않는다.
+   - 가족 연결만으로 UNRESOLVED를 NEEDS_OFFICIAL로 덮지 않는다.
+   - 해석 캐시는 답변과 분리. 스키마·프롬프트·모델 버전은 `semantic-preferential-v4`.
+
+### 13.2 테스트 대역 (실제 모델과 분리)
+
+통과: `tests/test_rate_engine.py`, `tests/test_semantic_preferential_questions.py`, `tests/test_recommendation_audit_regressions.py`, `tests/test_web_mvp_runtime.py`, `tests/test_pre_search_flow.py`, `node --check src/eligibility/web/static/app.js`.
+
+고정 반례: 급여 6/12개월 최댓값 2%p, 자녀+급여 3%p/2.5%p, 불명확 복제의 확정 미합산, top_k=1 상한만으로 COMPLETE 금지, 해석 실패 메모 보존, 탄탄성공·경남 원문 인용으로 PREDICATE 구조 유지.
+
+### 13.3 실제 모델과 브라우저
+
+- `gpt-5.6-luna`, 전 카탈로그 미전송. 탄탄성공 PREF-02 + 경남 PREF-06만 1호출 17733ms.
+- 카드: `ANY` 아래 12/24/36개월×금액 ALL. 금액 인용(`5,000천원` 등)은 남김. PREDICATE 잎은 **UNKNOWN**. 가입월~전전월 창은 식에 안 남김.
+- 급여: `ANY`(급여입금 UNKNOWN, 가맹점 UNKNOWN). `1/2` 인용은 남김. 50만원·지정일 ±영업일은 PREDICATE로 안 옮김.
+- 카드/급여 거절 뒤 `RULED_OUT` 아님. 새 질문 0. 카탈로그 `official_only`라 해석된 논리식은 `NEEDS_OFFICIAL`.
+- **테스트 대역의 PREDICATE 유지와 실제 모델 성공을 같게 보지 않는다.**
+- ON 브라우저(사전 질문→분석→공통 질문→답변 변경→순위→계속 분석→카드·상세 메모→OFF)는 **실행하지 않음**. 이 환경에 브라우저 도구가 없다. HTTP 200으로 대체하지 않는다.
+
+산출물(gitignore): `.runtime/real-model-verify/gate_structure_20260907.json`
 
 ### 배포·스위치
 

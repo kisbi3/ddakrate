@@ -446,7 +446,10 @@ def test_mixed_ladder_with_fact_keys_also_keeps_independent_bonus():
 
 
 def test_unclear_same_source_copy_is_not_forced_to_max_or_new_exclusive():
-    """Matching source text without ladder evidence must not invent a max group."""
+    """Matching source text without ladder evidence must not invent a max group.
+
+    Confirmed/realizable rates also must not invent an independent sum.
+    """
 
     shared = "아래 조건을 충족하는 경우 우대금리를 제공한다"
     product = _same_source_tier_product()
@@ -477,16 +480,102 @@ def test_unclear_same_source_copy_is_not_forced_to_max_or_new_exclusive():
             application={},
         ),
     ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2")}
 
-    total = RateEngine._aggregate_canonical_rewards(
-        product,
-        {"R1", "R2"},
-        {"R1": Decimal("1"), "R2": Decimal("2")},
-        None,
-    )
-
-    assert total == Decimal("3")
+    assert RateEngine._aggregate_canonical_rewards(
+        product, set(values), values, None, layer="confirmed",
+    ) == Decimal("2")
+    assert RateEngine._aggregate_canonical_rewards(
+        product, set(values), values, None, layer="upper",
+    ) == Decimal("3")
     assert RateEngine._same_source_tier_groups(
         product.normalized.return_policy["preferential_policy"],
-        {"R1": Decimal("1"), "R2": Decimal("2")},
+        values,
     ) == []
+
+
+def test_same_source_salary_period_tiers_take_max_not_sum():
+    """Period ladders stay a max group even when titles contain 급여."""
+
+    shared = (
+        "급여이체 6개월 연 1%p, 급여이체 12개월 연 2%p "
+        "(기간별 우대 중 최댓값 적용)"
+    )
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "title": "급여이체 6개월",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "title": "급여이체 12개월",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "2", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=rule_id),
+            canonical_rule_id=rule_id,
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for rule_id in ("R1", "R2")
+    ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2")}
+
+    assert RateEngine._aggregate_canonical_rewards(
+        product, set(values), values, None, layer="confirmed",
+    ) == Decimal("2")
+    groups = RateEngine._same_source_tier_groups(
+        product.normalized.return_policy["preferential_policy"],
+        values,
+    )
+    assert groups == [["R1", "R2"]]
+
+
+def test_child_ladder_plus_independent_salary_period_stays_split():
+    """Child max + independent salary, including equal salary amount."""
+
+    shared = "자녀 1명 연 1%p, 자녀 2명 연 2%p, 급여이체 연 1%p 추가 제공"
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "title": "자녀 1명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "title": "자녀 2명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "2", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R3",
+            "title": "급여이체",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=rule_id),
+            canonical_rule_id=rule_id,
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for rule_id in ("R1", "R2", "R3")
+    ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("1")}
+    assert RateEngine._aggregate_canonical_rewards(
+        product, set(values), values, None,
+    ) == Decimal("3.0")
+    assert RateEngine._same_source_tier_groups(
+        product.normalized.return_policy["preferential_policy"],
+        values,
+    ) == [["R1", "R2"]]

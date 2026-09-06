@@ -25,7 +25,10 @@ from eligibility.schema.application_input import Preference
 from eligibility.schema.product import NormalizedProductData, ProductDefinition
 from eligibility.schema.search import PreSearchProfileEntry
 from eligibility.llm.json_schema import openai_strict_json_schema
-from eligibility.schema.semantic import ClauseInterpretation, SemanticCompilation, SemanticExpression, ChildrenAnswer, LooseSemanticCompilation
+from eligibility.schema.semantic import (
+    ChildrenAnswer, ClauseInterpretation, SemanticCompilation, SemanticExpression,
+    LooseSemanticCompilation, PeriodWindow, ConditionScope,
+)
 from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
 from eligibility.search.semantic import (
     SemanticConditionCompiler, compact_semantic_memos, existing_question_family,
@@ -1400,4 +1403,271 @@ def test_catalog_card_and_salary_gates_are_compiler_targets():
         item.get("clause_id") in salary_ids and item.get("memo_code") == "RULED_OUT"
         for item in salary_views
     )
+
+
+def test_unconfirmed_leader_upper_does_not_complete_without_challenger():
+    leader = semantic_product("A", reward="8", base="2")
+    challenger = semantic_product("B", reward="2", base="3")
+    compiler = CompilerDouble({"A": count_expr(), "B": count_expr()})
+    service, sid = service_for(
+        [leader, challenger],
+        compiler,
+        semantic_batch_size=1,
+        intent=make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=1),
+    )
+    runtime = service._runtime(sid)
+    first_ids = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert first_ids == {"A"}
+    assert runtime.semantic_review.status != "COMPLETE"
+    assert runtime.semantic_review.pending_product_count >= 1
+    service.advance_semantic_review(sid)
+    compiled = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert compiled == {"A", "B"}
+
+
+def test_failed_card_interpretation_stays_unresolved_not_needs_official():
+    product = opaque_product("GATE")
+    row = product.normalized.return_policy["preferential_policy"]["rules"][0]
+    row["title"] = "신용(체크)카드 결제금액"
+    row["source_clause_text"] = TANTAN_CARD_GATE
+    row["condition"]["source_text"] = TANTAN_CARD_GATE
+    product = ProductDefinition.model_validate(product.model_dump())
+    packet = product_packet(product, "test")
+    clause = packet.clauses[0]
+    failed = ClauseInterpretation(
+        clause_id=clause.clause_id,
+        source_hash=clause.source_hash,
+        source_quote=clause.text,
+        expression=None,
+        unresolved_reason="UNSUPPORTED_STRUCTURE",
+    )
+    _, _, _, views = overlay_product(
+        product, packet, [failed], base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        declined_benefit_fields=["CARD_BENEFIT"],
+    )
+    card_views = [item for item in views if item["clause_id"] == clause.clause_id]
+    assert card_views
+    assert all(item.get("memo_code") == "UNRESOLVED" for item in card_views)
+    assert not any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in card_views)
+
+
+def _card_structure(text: str) -> SemanticExpression:
+    window = PeriodWindow(
+        start_quote="가입월부터",
+        end_quote="만기일 전전월말까지",
+        basis="MATURITY_PREV_PREV_MONTH_END",
+    )
+    tiers = [
+        ("12개월 500만원", "500만원", 12),
+        ("24개월 이하 1,000만원", "1,000만원", 24),
+        ("36개월 이하 1,500만원", "1,500만원", 36),
+    ]
+    children = []
+    for quote, literal, months in tiers:
+        children.append(SemanticExpression(
+            op="PREDICATE",
+            source_quote=quote,
+            kind="CARD_PAYMENT",
+            subject="SELF",
+            scope=ConditionScope(institution="THIS_INSTITUTION"),
+            metric="AMOUNT",
+            comparator="GTE",
+            expected_literal=literal,
+            expected_unit="MAN_WON",
+            period=PeriodWindow(length=months, unit="MONTH", start_quote=window.start_quote, end_quote=window.end_quote, basis=window.basis),
+        ))
+    return SemanticExpression(op="ANY", source_quote=text, children=children)
+
+
+def _salary_or_merchant_structure(text: str) -> SemanticExpression:
+    salary = SemanticExpression(
+        op="PREDICATE",
+        source_quote="급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우",
+        kind="SALARY_DEPOSIT",
+        subject="SELF",
+        scope=ConditionScope(institution="THIS_INSTITUTION"),
+        metric="AMOUNT",
+        comparator="GTE",
+        expected_literal="50만원",
+        expected_unit="MAN_WON",
+        period=PeriodWindow(
+            basis="SALARY_DESIGNATED_DATE",
+            unit="BUSINESS_DAY",
+            before_offset=5,
+            after_offset=10,
+            term_ratio="1/2",
+            start_quote="급여지정일자 전 5영업일부터",
+            end_quote="급여지정일자 후 10영업일 이내",
+        ),
+    )
+    merchant = SemanticExpression(
+        op="PREDICATE",
+        source_quote="가맹점 결제대금 입금 실적을 보유하는 경우",
+        kind="MERCHANT_SETTLEMENT",
+        subject="SELF",
+        scope=ConditionScope(institution="THIS_INSTITUTION", networks=["비씨", "신한", "삼성카드사"]),
+        metric="BOOLEAN",
+        period=PeriodWindow(term_ratio="1/2", basis="TERM_RATIO"),
+    )
+    return SemanticExpression(op="ANY", source_quote=text, children=[salary, merchant])
+
+
+def test_card_structure_is_judged_insufficient_not_dumped_unknown():
+    product = opaque_product("GATE", official=False)
+    row = product.normalized.return_policy["preferential_policy"]["rules"][0]
+    row["title"] = "신용(체크)카드 결제금액"
+    row["source_clause_text"] = TANTAN_CARD_GATE
+    row["condition"]["source_text"] = TANTAN_CARD_GATE
+    product = ProductDefinition.model_validate(product.model_dump())
+    expr = _card_structure(TANTAN_CARD_GATE)
+    outcome = evaluate_expression(expr, {}, as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE)
+    assert outcome.value is None
+    assert not outcome.missing
+    assert outcome.insufficient is True
+    compiler = CompilerDouble({"GATE": expr})
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    candidate = service._runtime(sid).evaluations["GATE"]
+    memos = {item.get("memo_code") for item in candidate.semantic_interpretations}
+    assert "RULED_OUT" not in memos
+    assert "UNRESOLVED" not in memos
+    assert "INSUFFICIENT_FACTS" in memos
+    question = service.get_next_question(sid)
+    assert question is None or question.request is None or question.request.semantic_input is None
+
+
+def test_salary_or_merchant_structure_keeps_or_after_salary_decline():
+    product = opaque_product("PAY", official=False)
+    row = product.normalized.return_policy["preferential_policy"]["rules"][0]
+    row["title"] = "급여(가맹점 결제대금) 입금"
+    row["source_clause_text"] = KYONGNAM_SALARY_OR_MERCHANT
+    row["condition"]["source_text"] = KYONGNAM_SALARY_OR_MERCHANT
+    product = ProductDefinition.model_validate(product.model_dump())
+    expr = _salary_or_merchant_structure(KYONGNAM_SALARY_OR_MERCHANT)
+    outcome = evaluate_expression(expr, {}, as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE)
+    assert outcome.value is None
+    assert outcome.insufficient is True
+    compiler = CompilerDouble({"PAY": expr})
+    service, sid = service_for([product], compiler, intent=_declined_intent("SALARY_BENEFIT"))
+    candidate = service._runtime(sid).evaluations["PAY"]
+    memos = {item.get("memo_code") for item in candidate.semantic_interpretations}
+    assert "RULED_OUT" not in memos
+    interpreted = [item for item in candidate.semantic_interpretations if item.get("status") == "AI_INTERPRETED"]
+    assert interpreted
+
+
+def test_catalog_gate_structure_is_preserved_from_source_quotes():
+    tantan = _load_catalog_product("INST-KR-000010-1-C47962C303F")
+    youth = _load_catalog_product("INST-KR-000010-1-C9788B1329E")
+    tantan_packet = product_packet(tantan, "test")
+    youth_packet = product_packet(youth, "test")
+    card = next(clause for clause in tantan_packet.clauses if "결제금액" in clause.text)
+    salary = next(clause for clause in youth_packet.clauses if "가맹점" in clause.text)
+    card_expr = SemanticExpression(
+        op="ANY",
+        source_quote="적금가입기간 : 12개월, 결제금액 : 5,000천원",
+        children=[
+            SemanticExpression(
+                op="PREDICATE",
+                source_quote="적금가입기간 : 12개월, 결제금액 : 5,000천원",
+                kind="CARD_PAYMENT",
+                metric="AMOUNT",
+                expected_literal="5,000천원",
+                expected_unit="CHEON_WON",
+                period=PeriodWindow(
+                    length=12, unit="MONTH",
+                    start_quote="가입월로부터",
+                    end_quote="만기일 전전월말일까지",
+                    basis="MATURITY_PREV_PREV_MONTH_END",
+                ),
+            ),
+            SemanticExpression(
+                op="PREDICATE",
+                source_quote="적금가입기간 : 24개월 이하, 결제금액 : 10,000천원",
+                kind="CARD_PAYMENT",
+                metric="AMOUNT",
+                expected_literal="10,000천원",
+                expected_unit="CHEON_WON",
+                period=PeriodWindow(length=24, unit="MONTH"),
+            ),
+            SemanticExpression(
+                op="PREDICATE",
+                source_quote="적금가입기간 : 36개월 이하, 결제금액 : 15,000천원",
+                kind="CARD_PAYMENT",
+                metric="AMOUNT",
+                expected_literal="15,000천원",
+                expected_unit="CHEON_WON",
+                period=PeriodWindow(length=36, unit="MONTH"),
+            ),
+        ],
+    )
+    salary_expr = SemanticExpression(
+        op="ANY",
+        source_quote="가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을",
+        children=[
+            SemanticExpression(
+                op="PREDICATE",
+                source_quote="급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상",
+                kind="SALARY_DEPOSIT",
+                expected_literal="50만원",
+                expected_unit="MAN_WON",
+                period=PeriodWindow(
+                    before_offset=5, after_offset=10, unit="BUSINESS_DAY",
+                    term_ratio="1/2", basis="SALARY_DESIGNATED_DATE",
+                ),
+            ),
+            SemanticExpression(
+                op="PREDICATE",
+                source_quote="가맹점 결제대금** 입금 실적을 보유하는 경우",
+                kind="MERCHANT_SETTLEMENT",
+                period=PeriodWindow(term_ratio="1/2", basis="TERM_RATIO"),
+            ),
+        ],
+    )
+    compiled = accept_compilation(
+        {
+            "clauses": [
+                {
+                    "clause_id": card.clause_id,
+                    "source_hash": card.source_hash,
+                    "source_quote": card.text,
+                    "expression": card_expr.model_dump(mode="json"),
+                },
+                {
+                    "clause_id": salary.clause_id,
+                    "source_hash": salary.source_hash,
+                    "source_quote": salary.text,
+                    "expression": salary_expr.model_dump(mode="json"),
+                },
+            ]
+        },
+        [tantan_packet, youth_packet],
+    )
+    by_id = {item.clause_id: item for item in compiled.clauses}
+    assert by_id[card.clause_id].expression is not None
+    assert by_id[card.clause_id].expression.op == "ANY"
+    kinds = [child.kind for child in by_id[card.clause_id].expression.children]
+    assert kinds == ["CARD_PAYMENT", "CARD_PAYMENT", "CARD_PAYMENT"]
+    literals = [child.expected_literal for child in by_id[card.clause_id].expression.children]
+    assert literals == ["5,000천원", "10,000천원", "15,000천원"]
+    assert by_id[salary.clause_id].expression.op == "ANY"
+    salary_kinds = [child.kind for child in by_id[salary.clause_id].expression.children]
+    assert salary_kinds == ["SALARY_DEPOSIT", "MERCHANT_SETTLEMENT"]
+    _, _, requests, card_views = overlay_product(
+        tantan, tantan_packet, [by_id[card.clause_id]], base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        declined_benefit_fields=["CARD_BENEFIT"],
+    )
+    _, _, salary_requests, salary_views = overlay_product(
+        youth, youth_packet, [by_id[salary.clause_id]], base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        declined_benefit_fields=["SALARY_BENEFIT"],
+    )
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in card_views)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in salary_views)
+    assert not requests and not salary_requests
+    assert any(item.get("status") == "AI_INTERPRETED" for item in card_views)
+    dumped = by_id[card.clause_id].expression.model_dump(mode="json")
+    assert "5,000천원" in json.dumps(dumped, ensure_ascii=False)
+    assert "가입월로부터" in json.dumps(dumped, ensure_ascii=False)
 

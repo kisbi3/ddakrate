@@ -23,7 +23,8 @@ PowerShell에서는 `$env:ELIGIBILITY_SEMANTIC_CONDITIONS = "1"`을 사용합니
 ## 실행 경로
 
 1. 기존 사전 질문과 조건 수정, 후보 필터, typed evaluation을 그대로 실행합니다.
-2. 기존 ranking frontier, 요청한 Top-K, 비교 가능한 upper가 없는 후보를 확인합니다.
+2. 기존 ranking frontier, 요청한 Top-K, 그리고 하한·상한으로 순위 역전이
+   아직 가능한 후보를 확인합니다. 리더의 가능한 상한만으로 탈락시키지 않습니다.
 3. 후보의 canonical `preferential_policy.rules` 중 runtime adapter가 없는 rule과
    명시적인 `SOURCE_CLAUSE_GATE` boolean placeholder를 수집합니다. genuinely typed
    comparison은 분석 대상이 아니며 read-only 참고 정보로만 모델에 전달합니다.
@@ -49,9 +50,11 @@ persistent cross-session cache와 비동기 worker를 포함하지 않습니다.
 ## 지원하는 조건과 보수적 처리
 
 표현식은 ALL/ANY/NOT, 자녀 존재/인원 비교, 가입일 또는 기준일의 나이/출생 범위,
-혼인일 비교, 가입자 본인의 현재 임신 여부, UNKNOWN으로 제한됩니다.
-공통 사용자 입력은 CHILDREN, MARRIAGE_DATE, PREGNANT_SELF 세 종류입니다.
-기존 다른 typed 조건(급여, 카드 등)은 원래 엔진/플래너에 남습니다.
+혼인일 비교, 가입자 본인의 현재 임신 여부, PREDICATE(카드 결제·급여 입금·가맹점 정산·
+보유/미보유 이력·동의 등), UNKNOWN입니다.
+공통 사용자 입력은 여전히 CHILDREN, MARRIAGE_DATE, PREGNANT_SELF 세 종류입니다.
+해석 스키마를 이 세 입력으로 제한하지 않습니다. 새 질문 칸은 만들지 않습니다.
+기존 typed 비교는 재해석하지 않습니다.
 
 - 자녀 수만 필요하면 생년월일을 묻지 않습니다.
 - 출생연도만 받았는데 경계에 걸리면 정확한 날짜를 추가 질문합니다. 1월 1일로 추정하지 않습니다.
@@ -61,12 +64,15 @@ persistent cross-session cache와 비동기 worker를 포함하지 않습니다.
 - 기관 확인이 필요한 조건은 사용자 응답만으로 SATISFIED/confirmed가 되지 않습니다.
 - 원문이 공급한 고정 ADD_RATE/BONUS_RATE의 percentage-point 보상만 지원합니다.
   모델은 보상 숫자, 사용자 facts, 상품 제외, 순위 또는 실행 코드를 만들 수 없습니다.
-- 불명확한 논리 가지, 복잡한 거래/서류/승인/가입기간 중 사건과 미지원 보상은 UNKNOWN으로 유지합니다.
+- 금액 단위와 기간 기준·포함 범위를 원문 그대로 보존합니다. 없는 수치·기간·배타 관계를 넣지 않습니다.
+- 카드 사용 의향은 과거 카드 결제액 충족이 아닙니다. 급여이체 의향은 가맹점 정산 입금이 아닙니다.
+  은행 보유 이력은 특정 상품 종류의 해당 기간 이력이 아닙니다.
 - `SOURCE_CLAUSE_GATE`는 원래 비교·보상·근거 정책을 유지한 채 guard를 추가합니다.
   같은 우대를 두 번 합산하거나 generic “예” 답변으로 미해석 조건을 충족시키지 않습니다.
-  카드 의향 거절은 결제금액 미달을 입증하지 않고, 급여 의향 거절은 가맹점 입금 경로를
-  지우지 않습니다. 알 수 없는 대체 경로를 정규식 목록에 없다고 해서 필수로 보지 않습니다.
 - 자식이 12개를 넘는 ALL/ANY 식은 가지를 잘라 적용하지 않고 해당 절을 보류합니다.
+- 해석 실패/미지원 구조는 `UNRESOLVED`, 해석했으나 판단할 사실이 부족하면 `INSUFFICIENT_FACTS`,
+  원문 또는 검증된 카탈로그 정책이 은행·서류 확인을 요구하면 `NEEDS_OFFICIAL`입니다.
+  카드·급여 분류 자체는 은행 확인 근거가 아닙니다.
 - 일반 structured schema/숫자/인용문 검증만으로 자연어 해석의 정확성을 증명할 수는 없습니다.
   AI 해석이 사용된 추천은 실험적 잠정 결과로 표시합니다.
 
@@ -74,15 +80,18 @@ persistent cross-session cache와 비동기 worker를 포함하지 않습니다.
 standalone disclosure/custom 텍스트 intake, 새로운 ontology, 개인별 세금·복리, 영구 캐시,
 동시 요청 직렬화는 별도 확장 대상입니다. `COMPLETE`는 도전 가능한 미분석 패킷이 더 없을 때입니다.
 창 밖에 읽지 않은 후보가 있으면 `PENDING`/`PARTIAL`을 유지합니다. 상품의 모든 조건이나
-금융기관 승인이 검증되었다는 뜻은 아닙니다.
+금융기관 승인이 검증되었다는 뜻은 아닙니다. 순위 역전이 불가능함이 확인된 경우에만
+후보를 분석 대상에서 제외합니다. 리더의 가능한 상한만으로 탈락시키지 않습니다.
 
 ## API / UI
 
 목록 응답 `semantic_review`:
 
-- `status`: DISABLED / DEFERRED / PENDING / COMPLETE / FAILED
+- `status`: DISABLED / DEFERRED / PENDING / PARTIAL / COMPLETE / FAILED
 - `pending_product_count`, `unresolved_clause_count`, `reviewed_product_ids`
 - `ai_interpreted`, `calls_this_turn`, `error_code`
+
+상품 카드/상세 메모 코드: `RULED_OUT`, `NEEDS_INPUT`, `INSUFFICIENT_FACTS`, `NEEDS_OFFICIAL`, `UNRESOLVED`.
 
 계속 분석 또는 실패 재시도는 **명시적 POST**입니다.
 
