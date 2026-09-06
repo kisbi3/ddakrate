@@ -16,6 +16,7 @@ from eligibility.application_service import ApplicationService
 from eligibility.audit import canonical_hash
 from eligibility.conversation import ConversationOrchestrator
 from eligibility.llm import LLMGateway, LLMPurpose, MockLLMAdapter
+from eligibility.llm.client import LLMStructuredOutputError
 from eligibility.schema.enums import (
     ComparisonOperator, EvaluationStatus, FactSemanticType, RankingObjective,
     PreSearchAnswerStatus, PreferenceValue,
@@ -23,13 +24,15 @@ from eligibility.schema.enums import (
 from eligibility.schema.application_input import Preference
 from eligibility.schema.product import NormalizedProductData, ProductDefinition
 from eligibility.schema.search import PreSearchProfileEntry
-from eligibility.schema.semantic import ClauseInterpretation, SemanticCompilation, SemanticExpression, ChildrenAnswer
+from eligibility.llm.json_schema import openai_strict_json_schema
+from eligibility.schema.semantic import ClauseInterpretation, SemanticCompilation, SemanticExpression, ChildrenAnswer, LooseSemanticCompilation
 from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
 from eligibility.search.semantic import (
     SemanticConditionCompiler, compact_semantic_memos, existing_question_family,
     first_transaction_holding_rules_out, has_unlinked_alternative_path,
     overlay_product, product_packet, validate_compilation, evaluate_expression,
-    normalize_answer, user_inputs,
+    normalize_answer, user_inputs, accept_compilation, family_condition_is_necessary,
+    targets_semantic_inputs, linked_clause_outcome,
 )
 from eligibility.web.app import create_app
 from tests.v04_helpers import AS_OF, SUBSCRIPTION_DATE, USER_ID, base_store, make_intent, make_product
@@ -122,14 +125,17 @@ def typed_count_product():
 class CompilerDouble:
     cache_key = "tests-semantic-v1"
 
-    def __init__(self, expressions=None, failure=None):
+    def __init__(self, expressions=None, failure=None, fail_first_n=None):
         self.expressions = expressions or {}
         self.failure = failure
+        self.fail_first_n = fail_first_n
         self.calls = []
 
     def compile(self, packets):
         self.calls.append(packets)
-        if self.failure:
+        if self.failure is not None and (self.fail_first_n is None or self.fail_first_n > 0):
+            if self.fail_first_n is not None:
+                self.fail_first_n -= 1
             raise self.failure
         rows = []
         for packet in packets:
@@ -273,6 +279,30 @@ def test_failed_compilation_keeps_typed_questions_and_provisional_result():
     assert len(compiler.calls) == 1
 
 
+def test_structured_output_error_retries_sibling_products_separately():
+    compiler = CompilerDouble(
+        {"GOOD": count_expr(), "BAD": count_expr()},
+        failure=LLMStructuredOutputError("invalid structured output"),
+        fail_first_n=1,
+    )
+    service, sid = service_for(
+        [semantic_product("GOOD"), semantic_product("BAD")],
+        compiler,
+        intent=make_intent(objective=RankingObjective.MAX_REALIZABLE_RATE, top_k=2),
+    )
+    runtime = service._runtime(sid)
+    assert len(compiler.calls) >= 2
+    assert all(len(batch) == 1 for batch in compiler.calls[1:])
+    compiled_ids = {packet.product_id for batch in compiler.calls[1:] for packet in batch}
+    assert compiled_ids == {"GOOD", "BAD"}
+    assert runtime.semantic_review.status != "FAILED"
+    assert runtime.semantic_review.ai_interpreted is True
+    for pid in ("GOOD", "BAD"):
+        views = runtime.evaluations[pid].semantic_interpretations
+        assert any(item.get("status") == "AI_INTERPRETED" for item in views)
+        assert not any(item.get("memo_code") == "RULED_OUT" for item in views)
+
+
 def test_budget_defers_challengers_without_excluding_them_and_can_advance():
     products = [semantic_product(f"P{i}") for i in range(5)]
     compiler = CompilerDouble({p.product_id: count_expr() for p in products})
@@ -356,19 +386,42 @@ def test_real_llm_boundary_is_strict_and_does_not_send_entire_catalog():
 
 
 @pytest.mark.parametrize("change", ["wrong_id", "wrong_hash", "wrong_quote", "duplicate", "missing", "invented_threshold"])
-def test_invalid_compile_batch_is_rejected_atomically(change):
-    p = product_packet(semantic_product("RAW"), "test")
-    c = p.clauses[0]
-    row = ClauseInterpretation(clause_id=c.clause_id, source_hash=c.source_hash, source_quote=c.text, expression=count_expr())
-    rows = [row]
-    if change == "wrong_id": rows = [row.model_copy(update={"clause_id": "OTHER"})]
-    if change == "wrong_hash": rows = [row.model_copy(update={"source_hash": "OTHER"})]
-    if change == "wrong_quote": rows = [row.model_copy(update={"source_quote": "OTHER"})]
-    if change == "duplicate": rows *= 2
-    if change == "missing": rows = []
-    if change == "invented_threshold": rows = [row.model_copy(update={"expression": count_expr(expected=7)})]
-    with pytest.raises(ValueError):
-        validate_compilation(SemanticCompilation(clauses=rows), [p])
+def test_invalid_compile_clause_is_isolated(change):
+    good_packet = product_packet(semantic_product("GOOD"), "test")
+    bad_packet = product_packet(semantic_product("BAD"), "test")
+    good = good_packet.clauses[0]
+    bad = bad_packet.clauses[0]
+    good_row = ClauseInterpretation(
+        clause_id=good.clause_id, source_hash=good.source_hash,
+        source_quote=good.text, expression=count_expr(),
+    )
+    bad_row = ClauseInterpretation(
+        clause_id=bad.clause_id, source_hash=bad.source_hash,
+        source_quote=bad.text, expression=count_expr(),
+    )
+    rows = [good_row, bad_row]
+    if change == "wrong_id":
+        rows = [good_row, bad_row.model_copy(update={"clause_id": "OTHER"})]
+    if change == "wrong_hash":
+        rows = [good_row, bad_row.model_copy(update={"source_hash": "OTHER"})]
+    if change == "wrong_quote":
+        rows = [good_row, bad_row.model_copy(update={"source_quote": "OTHER"})]
+    if change == "duplicate":
+        rows = [good_row, good_row, bad_row]
+    if change == "missing":
+        rows = [good_row]
+    if change == "invented_threshold":
+        rows = [good_row, bad_row.model_copy(update={"expression": count_expr(expected=7)})]
+    compiled = validate_compilation(SemanticCompilation(clauses=rows), [good_packet, bad_packet])
+    by_id = {item.clause_id: item for item in compiled.clauses}
+    assert good.clause_id in by_id
+    assert by_id[good.clause_id].expression.op == "CHILD_COUNT"
+    if change == "invented_threshold":
+        assert by_id[bad.clause_id].expression.op == "UNKNOWN"
+    elif change == "duplicate":
+        assert list(by_id) == [good.clause_id, bad.clause_id]
+    elif change != "missing":
+        assert bad.clause_id not in by_id
 
 
 @pytest.mark.parametrize("op, expected", [("ALL", False), ("ANY", None)])
@@ -521,7 +574,8 @@ def test_field_budgets_leave_unread_products_provisional():
     service, sid = service_for([product], compiler)
     assert compiler.calls == []
     result = service.get_top_recommendations(sid)
-    assert result.semantic_review["status"] == "FAILED"
+    assert result.semantic_review["status"] != "FAILED"
+    assert result.semantic_review["unresolved_clause_count"] > 0
     assert result.recommendation_status == "PROVISIONAL"
 
 
@@ -576,8 +630,8 @@ def test_compiler_cannot_invent_a_marriage_cutoff_date():
         expected="2025-01-01", source_quote=clause.text)
     compiled = SemanticCompilation(clauses=[ClauseInterpretation(clause_id=clause.clause_id,
         source_hash=clause.source_hash, source_quote=clause.text, expression=expr)])
-    with pytest.raises(ValueError, match="literal source"):
-        validate_compilation(compiled, [packet])
+    accepted = validate_compilation(compiled, [packet])
+    assert accepted.clauses[0].expression.op == "UNKNOWN"
 
 
 def test_grounded_marriage_date_and_pregnancy_are_supported_without_financial_llm_output():
@@ -697,7 +751,7 @@ def test_declined_first_transaction_does_not_rule_out_subscription_holding():
     service, sid = service_for(
         [product], compiler, intent=_declined_intent("FIRST_TRANSACTION_BENEFIT"),
     )
-    assert compiler.calls
+    assert compiler.calls == []
     candidate = service._runtime(sid).evaluations["SUB"]
     assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
     assert candidate.product_evaluation.rates.advertised_max_rate == Decimal("3")
@@ -808,6 +862,22 @@ def test_willing_card_clause_needs_official_confirmation_not_a_new_slot():
     assert question is None or question.request is None or question.request.semantic_input != "CHILDREN"
 
 
+def test_loose_compilation_schema_is_openai_strict():
+    schema = openai_strict_json_schema(LooseSemanticCompilation.model_json_schema())
+
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("type") == "object":
+                assert node.get("additionalProperties") is False
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(schema)
+
+
 def test_web_app_javascript_parses():
     app_js = Path("src/eligibility/web/static/app.js")
     result = subprocess.run(["node", "--check", str(app_js)], capture_output=True, text=True, check=False)
@@ -816,8 +886,10 @@ def test_web_app_javascript_parses():
 
 def test_first_transaction_holding_requires_matching_period_and_product_scope():
     assert first_transaction_holding_rules_out(FIRST_TX_TEXT) is True
-    assert first_transaction_holding_rules_out("최근 6개월 당행 예적금 미보유 고객") is True
-    assert first_transaction_holding_rules_out("최근 3년 당행 적금 거래가 없는 고객") is True
+    assert first_transaction_holding_rules_out("최근 6개월 당행 예적금·청약 미보유") is True
+    assert first_transaction_holding_rules_out("최근 6개월 당행 예적금 미보유 고객") is False
+    assert first_transaction_holding_rules_out("최근 6개월 당행 정기예금 미보유") is False
+    assert first_transaction_holding_rules_out("최근 3년 당행 적금 거래가 없는 고객") is False
     assert first_transaction_holding_rules_out("최근 3개월 당행 예적금 미보유 고객") is False
     assert first_transaction_holding_rules_out("최근 1년 당행 입출금 거래가 없는 고객") is False
     assert first_transaction_holding_rules_out("우대금리 제공") is False
@@ -934,3 +1006,208 @@ def test_next_compile_batch_follows_reranked_frontier():
     if "F0" in compiled_ids:
         assert compiled_ids.index("LATER") < compiled_ids.index("F0")
     assert service._runtime(sid).evaluations["HIGH"].user_specific_conditional_upper_rate == Decimal("2")
+
+
+SHINHAN_LOW_BIRTH = (
+    "저출생상생 우대* : 1.0%\n"
+    "* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n"
+    "- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우"
+)
+SHINHAN_MULTI_CHILD = (
+    "다둥이 상생 우대*\n"
+    "* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n"
+    "- 다자녀에 해당하는 증빙서류를 제출하여 승인 완료 된 경우\n"
+    "  (2007년 이후 출생 미성년 자녀 기준)\n"
+    "2자녀 (2명) : 1.5%, 3자녀 (3명 이상) : 2.5%"
+)
+IBK_CHILD_NAME_HOLDING = "주택청약종합저축은 부모 또는 자녀 명의 가입 시 우대"
+TERM_DEPOSIT_FIRST_TX = "최근 6개월 당행 정기예금 미보유 고객에게 우대금리 1%p"
+CARD_OR_TRANSFER = "카드 이용실적이나 자동이체 등록 중 하나 충족 시 우대"
+
+
+def _life_event_or(text=SHINHAN_LOW_BIRTH):
+    return SemanticExpression(
+        op="ANY",
+        source_quote=text,
+        children=[
+            SemanticExpression(op="UNKNOWN", source_quote="결혼"),
+            SemanticExpression(
+                op="COMPARE", variable="PREGNANT_SELF", comparator="EQ",
+                expected=True, source_quote="임신",
+            ),
+            SemanticExpression(op="UNKNOWN", source_quote="난임"),
+            SemanticExpression(op="CHILD_EXISTS", source_quote="출산"),
+        ],
+    )
+
+
+def test_term_deposit_first_transaction_holding_is_not_ruled_out():
+    assert existing_question_family(text=TERM_DEPOSIT_FIRST_TX) == "FIRST_TRANSACTION"
+    assert first_transaction_holding_rules_out(TERM_DEPOSIT_FIRST_TX) is False
+    product = semantic_product("TERM", TERM_DEPOSIT_FIRST_TX)
+    overlay, _, _, views = overlay_product(
+        product, product_packet(product, "test"), (), base_store(),
+        as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE,
+        holding_institution_names=["테스트은행(주)"],
+    )
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in views)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in views)
+    assert overlay.advertised_max_rate == Decimal("3")
+
+
+def test_declined_card_does_not_rule_out_alternative_transfer_path():
+    assert existing_question_family(text=CARD_OR_TRANSFER) == "CARD"
+    assert family_condition_is_necessary(CARD_OR_TRANSFER, "CARD") is False
+    assert has_unlinked_alternative_path(CARD_OR_TRANSFER, "CARD") is True
+    assert linked_clause_outcome(
+        "CARD", clause_text=CARD_OR_TRANSFER, declined_benefit_fields=["CARD_BENEFIT"],
+    ) == "NEEDS_OFFICIAL"
+    product = semantic_product("CARD", CARD_OR_TRANSFER)
+    compiler = CompilerDouble({"CARD": count_expr()})
+    service, sid = service_for([product], compiler, intent=_declined_intent("CARD_BENEFIT"))
+    assert compiler.calls == []
+    candidate = service._runtime(sid).evaluations["CARD"]
+    assert any(item.get("memo_code") == "NEEDS_OFFICIAL" for item in candidate.semantic_interpretations)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in candidate.semantic_interpretations)
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+
+
+def test_declined_card_still_rules_out_single_card_condition():
+    assert family_condition_is_necessary(CARD_TEXT, "CARD") is True
+    assert linked_clause_outcome(
+        "CARD", clause_text=CARD_TEXT, declined_benefit_fields=["CARD_BENEFIT"],
+    ) == "RULED_OUT"
+
+
+def test_card_and_transfer_conjunction_is_still_necessary():
+    text = "당행 카드 이용실적 및 자동이체 등록 시 우대금리 1%p"
+    assert family_condition_is_necessary(text, "CARD") is True
+    assert linked_clause_outcome(
+        "CARD", clause_text=text, declined_benefit_fields=["CARD_BENEFIT"],
+    ) == "RULED_OUT"
+
+
+def test_or_particle_without_listed_conjunction_holds_not_rules_out():
+    text = "카드 이용실적이나 자동이체 등록 시 우대"
+    assert existing_question_family(text=text) == "CARD"
+    assert family_condition_is_necessary(text, "CARD") is False
+    assert linked_clause_outcome(
+        "CARD", clause_text=text, declined_benefit_fields=["CARD_BENEFIT"],
+    ) == "NEEDS_OFFICIAL"
+
+
+def test_marketing_copy_with_dajanyeo_is_not_children_target():
+    text = "마케팅 수신 동의 고객에게 다자녀 우대 안내"
+    assert targets_semantic_inputs(text=text) is False
+    packet = product_packet(semantic_product("MKT", text), "test")
+    assert packet.clauses == ()
+
+
+def test_child_name_holding_is_not_a_children_compile_target():
+    assert targets_semantic_inputs(text=IBK_CHILD_NAME_HOLDING) is False
+    packet = product_packet(semantic_product("IBK", IBK_CHILD_NAME_HOLDING), "test")
+    assert packet.clauses == ()
+    assert packet.untargeted_clauses
+    compiler = CompilerDouble({"IBK": count_expr()})
+    service, sid = service_for([semantic_product("IBK", IBK_CHILD_NAME_HOLDING)], compiler)
+    assert compiler.calls == []
+    views = service._runtime(sid).evaluations["IBK"].semantic_interpretations
+    assert any(item.get("reason") == "NOT_SEMANTIC_INPUT_TARGET" for item in views)
+    assert not any(item.get("memo_code") == "RULED_OUT" for item in views)
+
+
+def test_empty_compare_becomes_unknown_and_keeps_sibling_clause():
+    life = product_packet(semantic_product("LIFE", SHINHAN_LOW_BIRTH, official=True), "test")
+    kids = product_packet(semantic_product("KIDS"), "test")
+    life_clause = life.clauses[0]
+    kids_clause = kids.clauses[0]
+    payload = {
+        "clauses": [
+            {
+                "clause_id": life_clause.clause_id,
+                "source_hash": life_clause.source_hash,
+                "source_quote": life_clause.text,
+                "expression": {
+                    "op": "COMPARE",
+                    "source_quote": "결혼",
+                    "variable": "MARRIAGE_DATE",
+                },
+            },
+            {
+                "clause_id": kids_clause.clause_id,
+                "source_hash": kids_clause.source_hash,
+                "source_quote": kids_clause.text,
+                "expression": count_expr().model_dump(mode="json"),
+            },
+        ]
+    }
+    compiled = accept_compilation(payload, [life, kids])
+    by_id = {item.clause_id: item for item in compiled.clauses}
+    assert by_id[life_clause.clause_id].expression.op == "UNKNOWN"
+    assert by_id[kids_clause.clause_id].expression.op == "CHILD_COUNT"
+
+
+def test_life_event_or_does_not_rule_out_when_infertility_remains():
+    expr = _life_event_or()
+    none_children = {"CHILDREN": {"count": 0, "children": [], "complete": True}, "PREGNANT_SELF": False}
+    out = evaluate_expression(expr, none_children, as_of=AS_OF, subscription_date=SUBSCRIPTION_DATE)
+    assert out.value is None
+    product = semantic_product("SHINHAN", SHINHAN_LOW_BIRTH, official=True)
+    packet = product_packet(product, "test")
+    service, sid = service_for(
+        [product],
+        CompilerDouble({"SHINHAN": expr}),
+    )
+    runtime = service._runtime(sid)
+    service._store_semantic_input(runtime, "CHILDREN", {"count": 0, "children": [], "complete": True})
+    service._store_semantic_input(runtime, "PREGNANT_SELF", False)
+    service._evaluate(runtime, list(runtime.candidate_products.values()))
+    candidate = runtime.evaluations["SHINHAN"]
+    memos = {item.get("memo_code") for item in candidate.semantic_interpretations}
+    assert "RULED_OUT" not in memos
+    assert "NEEDS_OFFICIAL" in memos
+    assert candidate.realizable_rate == Decimal("2")
+    assert candidate.user_specific_conditional_upper_rate == Decimal("3")
+    assert packet.clauses[0].official_only is True
+
+
+def test_multi_child_inferred_age_becomes_unknown_not_applied_count():
+    packet = product_packet(semantic_product("MULTI", SHINHAN_MULTI_CHILD, official=True), "test")
+    clause = packet.clauses[0]
+    expr = SemanticExpression(
+        op="CHILD_COUNT", source_quote=clause.text, comparator="GTE", expected=2,
+        child_filter={"max_age": 18, "born_from": "2007-01-01"},
+    )
+    compiled = validate_compilation(SemanticCompilation(clauses=[ClauseInterpretation(
+        clause_id=clause.clause_id, source_hash=clause.source_hash,
+        source_quote=clause.text, expression=expr,
+    )]), [packet])
+    assert compiled.clauses[0].expression.op == "UNKNOWN"
+
+
+def test_oversized_clause_does_not_fail_a_readable_sibling_product():
+    huge = semantic_product("HUGE", "자녀 1명 " + ("조건 " * 4000) + "우대")
+    ok = semantic_product("OK")
+    compiler = CompilerDouble({"HUGE": count_expr(), "OK": count_expr()})
+    service, sid = service_for([huge, ok], compiler)
+    runtime = service._runtime(sid)
+    assert runtime.semantic_review.error_code != "SOURCE_PACKET_UNSUPPORTED"
+    assert runtime.semantic_review.status != "FAILED"
+    compiled_ids = {packet.product_id for batch in compiler.calls for packet in batch}
+    assert "OK" in compiled_ids
+    assert runtime.evaluations["OK"].semantic_interpretations
+
+
+def test_unsupported_packet_does_not_mark_review_failed_when_others_compile():
+    huge = "x" * 9000
+    product = semantic_product("HUGE", f"자녀 우대 {huge}")
+    packet = product_packet(product, "test")
+    assert any(len(clause.text) > 8000 for clause in packet.clauses)
+    ok = semantic_product("OK")
+    compiler = CompilerDouble({"OK": count_expr(), "HUGE": count_expr()})
+    service, sid = service_for([ok, product], compiler)
+    runtime = service._runtime(sid)
+    assert "OK" in {packet.product_id for batch in compiler.calls for packet in batch}
+    assert runtime.semantic_review.status in {"PARTIAL", "PENDING", "COMPLETE"}
+    assert runtime.semantic_review.status != "FAILED"
+

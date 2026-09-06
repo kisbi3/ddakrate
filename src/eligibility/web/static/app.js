@@ -1472,15 +1472,19 @@ function renderSemanticReviewStatus(rec) {
     ? `추가 우대조건을 아직 분석하지 않은 상위권 후보가 ${pending}개 있습니다. 현재 추천은 잠정 결과입니다.`
     : unresolved > 0
       ? `원문 우대조건 중 ${unresolved}개는 자동 판단하지 않았습니다. 확인되지 않은 우대는 현재 예상금리에 추가하지 않습니다.`
+      : review.status === 'PARTIAL'
+        ? '일부 우대조건만 해석했습니다. 나머지는 잠정 결과입니다.'
       : review.ai_interpreted
         ? '일부 우대조건은 원문을 AI로 해석했습니다. 사용자 답변에 따른 예상값이며, 서류·금융기관 확인과 구분됩니다.'
         : '이번 후보군의 추가 우대조건 검토를 마쳤습니다.';
   note.appendChild(text);
-  const canRetry = review.error_code === 'SEMANTIC_COMPILATION_FAILED';
+  const canRetry = review.error_code === 'SEMANTIC_COMPILATION_FAILED'
+    || review.status === 'FAILED'
+    || review.status === 'PARTIAL';
   if ((pending > 0 || canRetry) && state.session) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = canRetry ? '추가 조건 분석 재시도' : '추가 조건 분석 계속';
+    button.textContent = canRetry && pending === 0 ? '추가 조건 분석 재시도' : '추가 조건 분석 계속';
     button.disabled = state.busy;
     button.addEventListener('click', async () => {
       if (state.busy || !state.session) return;
@@ -1490,7 +1494,10 @@ function renderSemanticReviewStatus(rec) {
       text.textContent = '현재 상위권 후보의 추가 우대조건을 분석하고 있습니다.';
       try {
         await api(`/search-sessions/${sessionId}/semantic-review`, {
-          method: 'POST', body: { retry_failed: canRetry },
+          method: 'POST', body: {
+            retry_failed: review.status === 'FAILED'
+              || review.error_code === 'SEMANTIC_COMPILATION_FAILED',
+          },
         });
         if (state.session?.search_session_id === sessionId) await syncAll();
       } catch (error) {

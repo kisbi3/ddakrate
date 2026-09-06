@@ -6,10 +6,12 @@ packets keep results provisional. Reads never compile, advance or write caches.
 from __future__ import annotations
 
 import json
+import time
 from typing import Any
 
 from eligibility.application import UserAnswerSubmission, submit_user_answer
 from eligibility.audit import AuditEventType
+from eligibility.llm.client import LLMStructuredOutputError
 from eligibility.schema.conversation import ProductFeaturePolicy
 from eligibility.schema.enums import (
     FactRecordStatus, FactSemanticType, PreferenceValue, PreSearchAnswerStatus, ResolutionStrategy,
@@ -17,9 +19,12 @@ from eligibility.schema.enums import (
 from eligibility.schema.evaluation import MissingFactRequest
 from eligibility.schema.semantic import SemanticReviewState
 from eligibility.search.pre_search import INSTITUTION_PRODUCT_HOLDING_HISTORY
+from eligibility.search.ranking import RankingService
 from eligibility.search.semantic import (
-    INPUT_PREFIX, QUESTIONS, TYPED_INPUTS, attach_requests, normalize_answer, overlay_product,
-    product_packet, user_inputs, validate_compilation, validate_shared_input,
+    INPUT_PREFIX, QUESTIONS, SEMANTIC_MAX_CALLS_PER_TURN, SEMANTIC_MAX_CLAUSE_CHARS,
+    SEMANTIC_MAX_CLAUSES_PER_CALL, SEMANTIC_RETRY_SECONDS, TYPED_INPUTS,
+    attach_requests, normalize_answer, overlay_product, packet_for_clauses,
+    product_packet, split_packet_for_budget, user_inputs, validate_shared_input,
 )
 
 
@@ -74,19 +79,89 @@ class SemanticAugmentationMixin:
     def _semantic_frontier_packets(self, runtime):
         if runtime.ranking is None:
             return []
-        frontier = set(self.question_planner.frontier_product_ids(runtime.evaluations, runtime.intent))
-        frontier.update(runtime.ranking.ordered_product_ids[:runtime.intent.requested_top_k])
-        # A missing upper bound is not proof of inferiority.
-        frontier.update(pid for pid in runtime.ranking.ordered_product_ids
-                        if runtime.evaluations[pid].user_specific_conditional_upper_rate is None)
+        intent = runtime.intent
+        ordered = list(runtime.ranking.ordered_product_ids)
+        top_k_ids = ordered[: intent.requested_top_k]
+        visible = [
+            runtime.evaluations[pid]
+            for pid in top_k_ids
+            if pid in runtime.evaluations
+        ]
+        possibles = [
+            rate for rate in (RankingService._possible_rate(item) for item in visible)
+            if rate is not None
+        ]
+        cutoff = min(possibles) if possibles else None
+        window = max(intent.requested_top_k * 3, 12)
         packets = []
-        for pid in runtime.ranking.ordered_product_ids:
-            if pid not in frontier:
+        for pid in ordered:
+            if len(packets) >= window:
+                break
+            product = runtime.candidate_products.get(pid)
+            if product is None:
                 continue
-            packet = self._semantic_packet(runtime.candidate_products[pid])
-            if packet:
+            packet = self._semantic_packet(product)
+            if packet is None:
+                continue
+            if pid in top_k_ids:
+                packets.append(packet)
+                continue
+            candidate = runtime.evaluations.get(pid)
+            if candidate is None or cutoff is None:
+                continue
+            possible = RankingService._possible_rate(candidate)
+            if possible is not None and possible >= cutoff:
                 packets.append(packet)
         return packets
+
+    def _remaining_compile_clauses(self, runtime, packet):
+        done = {item.clause_id for item in runtime.semantic_cache.get(packet.cache_key, ())}
+        return [
+            clause for clause in packet.clauses
+            if clause.clause_id not in done and len(clause.text) <= SEMANTIC_MAX_CLAUSE_CHARS
+        ]
+
+    def _merge_semantic_cache(self, runtime, packet, rows):
+        merged = {item.clause_id: item for item in runtime.semantic_cache.get(packet.cache_key, ())}
+        merged.update({item.clause_id: item for item in rows})
+        runtime.semantic_cache[packet.cache_key] = tuple(merged.values())
+
+    def _compile_jobs(self, runtime, jobs):
+        deadline = time.monotonic() + SEMANTIC_RETRY_SECONDS
+        calls = 0
+        pending_jobs = list(jobs)
+        failed_packets = []
+        while pending_jobs and calls < SEMANTIC_MAX_CALLS_PER_TURN and time.monotonic() < deadline:
+            job = pending_jobs.pop(0)
+            if not job:
+                continue
+            calls += 1
+            try:
+                compiled = self.semantic_compiler.compile(job)
+                for packet in job:
+                    allowed = {clause.clause_id for clause in packet.clauses}
+                    rows = [row for row in compiled.clauses if row.clause_id in allowed]
+                    self._merge_semantic_cache(runtime, packet, rows)
+                    runtime.semantic_failures.pop(packet.cache_key, None)
+            except LLMStructuredOutputError:
+                if len(job) > 1:
+                    pending_jobs[0:0] = [[packet] for packet in job]
+                    continue
+                packet = job[0]
+                if len(packet.clauses) > 1:
+                    mid = max(1, len(packet.clauses) // 2)
+                    pending_jobs[0:0] = [
+                        [packet_for_clauses(packet, tuple(packet.clauses[:mid]))],
+                        [packet_for_clauses(packet, tuple(packet.clauses[mid:]))],
+                    ]
+                    continue
+                runtime.semantic_failures[packet.cache_key] = "SEMANTIC_COMPILATION_FAILED"
+                failed_packets.append(packet)
+            except Exception:
+                for packet in job:
+                    runtime.semantic_failures[packet.cache_key] = "SEMANTIC_COMPILATION_FAILED"
+                    failed_packets.append(packet)
+        return calls, pending_jobs, failed_packets
 
     def _augment_semantic_conditions(self, runtime):
         if self.semantic_compiler is None:
@@ -98,56 +173,76 @@ class SemanticAugmentationMixin:
             runtime.semantic_review = SemanticReviewState(status="DEFERRED")
             return
         packets = self._semantic_frontier_packets(runtime)
-        batch = []
+        jobs = []
         empty_only = []
+        current: list = []
         chars = 0
-        clauses = 0
+        clause_count = 0
         for packet in packets:
-            if packet.cache_key in runtime.semantic_cache or packet.cache_key in runtime.semantic_failures:
-                continue
+            remaining = self._remaining_compile_clauses(runtime, packet)
             if not packet.clauses:
-                runtime.semantic_cache[packet.cache_key] = ()
+                runtime.semantic_cache.setdefault(packet.cache_key, ())
                 empty_only.append(packet)
                 continue
-            size = len(json.dumps(packet.payload, ensure_ascii=False))
-            if size > self.semantic_max_characters or len(packet.clauses) > 48 or any(len(c.text) > 8000 for c in packet.clauses):
-                runtime.semantic_failures[packet.cache_key] = "SOURCE_PACKET_UNSUPPORTED"
+            if packet.cache_key in runtime.semantic_failures:
                 continue
-            if len(batch) >= self.semantic_batch_size or chars + size > self.semantic_max_characters or clauses + len(packet.clauses) > 48:
+            if not remaining:
                 continue
-            batch.append(packet)
-            chars += size
-            clauses += len(packet.clauses)
-        error_code = None
-        evaluated = [runtime.candidate_products[p.product_id] for p in batch]
-        evaluated.extend(runtime.candidate_products[p.product_id] for p in empty_only)
-        if batch:
-            try:
-                compiled = validate_compilation(self.semantic_compiler.compile(batch), batch)
-                staged = {}
-                for packet in batch:
-                    allowed = {c.clause_id for c in packet.clauses}
-                    staged[packet.cache_key] = tuple(c for c in compiled.clauses if c.clause_id in allowed)
-                # Full batch validation precedes any live cache mutation.
-                runtime.semantic_cache.update(staged)
-            except Exception:
-                # The user command remains usable. No failed interpretation is
-                # applied; existing typed questions remain available.
-                error_code = "SEMANTIC_COMPILATION_FAILED"
-                for packet in batch:
-                    runtime.semantic_failures[packet.cache_key] = error_code
-        if evaluated:
-            self._evaluate(runtime, evaluated, merge=True)
+            chunks, _oversized = split_packet_for_budget(
+                packet_for_clauses(packet, tuple(remaining)),
+                max_clauses=SEMANTIC_MAX_CLAUSES_PER_CALL,
+                max_characters=self.semantic_max_characters,
+                max_clause_chars=SEMANTIC_MAX_CLAUSE_CHARS,
+            )
+            stop = False
+            for chunk in chunks:
+                size = len(json.dumps(chunk.payload, ensure_ascii=False))
+                if size > self.semantic_max_characters and len(chunk.clauses) == 1:
+                    continue
+                if current and (
+                    len(current) >= self.semantic_batch_size
+                    or chars + size > self.semantic_max_characters
+                    or clause_count + len(chunk.clauses) > SEMANTIC_MAX_CLAUSES_PER_CALL
+                ):
+                    stop = True
+                    break
+                current.append(chunk)
+                chars += size
+                clause_count += len(chunk.clauses)
+            if stop:
+                break
+        if current:
+            jobs.append(current)
+        calls = 0
+        if jobs:
+            calls, _leftover_jobs, _failed = self._compile_jobs(runtime, jobs)
+        evaluated_ids = list(dict.fromkeys(
+            [packet.product_id for job in jobs for packet in job]
+            + [packet.product_id for packet in empty_only]
+        ))
+        unique = [runtime.candidate_products[pid] for pid in evaluated_ids if pid in runtime.candidate_products]
+        if unique:
+            self._evaluate(runtime, unique, merge=True)
             self._rank_once(runtime)
-        # Recompute after the new evidence: demoted candidates can uncover an
-        # entirely new challenger. A budget never certifies those unread rows.
         frontier_packets = self._semantic_frontier_packets(runtime)
-        pending = [p for p in frontier_packets if p.cache_key not in runtime.semantic_cache and p.cache_key not in runtime.semantic_failures]
-        failed = [p for p in frontier_packets if p.cache_key in runtime.semantic_failures]
+        pending = []
+        failed = []
         unresolved = 0
         interpreted = False
+        reviewed = []
+        error_code = None
         for packet in frontier_packets:
+            remaining = self._remaining_compile_clauses(runtime, packet)
+            if packet.cache_key in runtime.semantic_failures:
+                failed.append(packet)
+                error_code = error_code or runtime.semantic_failures[packet.cache_key]
+                unresolved += len(packet.clauses) or 1
+                continue
+            if remaining:
+                pending.append(packet)
             results = runtime.semantic_cache.get(packet.cache_key, ())
+            if packet.cache_key in runtime.semantic_cache:
+                reviewed.append(packet.product_id)
             for clause in results:
                 if clause.expression is None:
                     unresolved += 1
@@ -156,18 +251,29 @@ class SemanticAugmentationMixin:
                     if '"UNKNOWN"' in clause.expression.model_dump_json():
                         unresolved += 1
             unresolved += sum(c.reward_pp is None for c in packet.clauses)
+            unresolved += sum(len(c.text) > SEMANTIC_MAX_CLAUSE_CHARS for c in packet.clauses)
             unresolved += len(packet.empty_clauses)
-        reviewed = [p.product_id for p in frontier_packets if p.cache_key in runtime.semantic_cache]
+            unresolved += len(packet.untargeted_clauses)
+        if failed and not interpreted and not pending:
+            status = "FAILED"
+        elif interpreted and (pending or failed):
+            status = "PARTIAL"
+        elif pending:
+            status = "PENDING"
+        else:
+            status = "COMPLETE"
         runtime.semantic_review = SemanticReviewState(
-            status="FAILED" if failed else "PENDING" if pending else "COMPLETE",
-            reviewed_product_ids=reviewed, pending_product_count=len(pending),
-            unresolved_clause_count=unresolved + sum(len(p.clauses) for p in failed),
-            ai_interpreted=interpreted, calls_this_turn=int(bool(batch)),
-            error_code=error_code or (runtime.semantic_failures[failed[0].cache_key] if failed else None),
+            status=status,
+            reviewed_product_ids=reviewed,
+            pending_product_count=len(pending),
+            unresolved_clause_count=unresolved,
+            ai_interpreted=interpreted,
+            calls_this_turn=calls,
+            error_code=error_code,
         )
         runtime.audit.emit("SEMANTIC_AUGMENTATION", AuditEventType.SEMANTIC_CONDITIONS_ANALYZED,
                            output_data=runtime.semantic_review,
-                           payload={"compiled_product_ids": [p.product_id for p in batch],
+                           payload={"compiled_product_ids": [p.product_id for job in jobs for p in job],
                                     "existing_typed_rules_mutated": False,
                                     "financial_values_from_llm": False})
 
@@ -256,4 +362,4 @@ class SemanticAugmentationMixin:
     @staticmethod
     def _semantic_incomplete(runtime):
         review = runtime.semantic_review
-        return review.status in {"PENDING", "FAILED"} or review.unresolved_clause_count > 0
+        return review.status in {"PENDING", "PARTIAL", "FAILED"} or review.unresolved_clause_count > 0

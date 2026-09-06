@@ -124,8 +124,40 @@ class SemanticCompilation(SemanticModel):
     clauses: list[ClauseInterpretation] = Field(max_length=48)
 
 
+class LooseSemanticExpression(BaseModel):
+    """Transport envelope. Invalid leaves are coerced to UNKNOWN, not applied."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    op: str | None = None
+    source_quote: str = ""
+    children: list["LooseSemanticExpression"] = Field(default_factory=list)
+    variable: str | None = None
+    comparator: str | None = None
+    expected: StrictInt | StrictBool | str | None = None
+    child_filter: ChildFilter | None = None
+
+
+class LooseClauseInterpretation(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    clause_id: str | None = None
+    source_hash: str | None = None
+    source_quote: str | None = None
+    expression: LooseSemanticExpression | None = None
+    unresolved_reason: str | None = None
+
+
+class LooseSemanticCompilation(BaseModel):
+    """Lenient LLM envelope. Per-clause validation stays strict."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    clauses: list[LooseClauseInterpretation] = Field(default_factory=list, max_length=48)
+
+
 class SemanticReviewState(SemanticModel):
-    status: Literal["DISABLED", "DEFERRED", "PENDING", "COMPLETE", "FAILED"] = "DISABLED"
+    status: Literal["DISABLED", "DEFERRED", "PENDING", "PARTIAL", "COMPLETE", "FAILED"] = "DISABLED"
     reviewed_product_ids: list[str] = Field(default_factory=list)
     pending_product_count: int = 0
     unresolved_clause_count: int = 0

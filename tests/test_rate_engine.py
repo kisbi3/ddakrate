@@ -315,6 +315,91 @@ def test_same_source_independent_bonuses_remain_additive():
     assert total == Decimal("0.5")
 
 
+def test_mixed_child_ladder_and_independent_salary_stay_additive():
+    """Same source with 1명/2명 plus an extra salary bonus is 2.5, not max 2."""
+
+    shared = "자녀 1명 연 1%p, 자녀 2명 연 2%p, 급여이체 연 0.5%p 추가 제공"
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "title": "자녀 1명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "title": "자녀 2명",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "2", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R3",
+            "title": "급여이체",
+            "source_clause_text": shared,
+            "reward": {"kind": "ADD_RATE", "value": "0.5", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=rule_id),
+            canonical_rule_id=rule_id,
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for rule_id in ("R1", "R2", "R3")
+    ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("0.5")}
+
+    total = RateEngine._aggregate_canonical_rewards(product, set(values), values, None)
+
+    assert total == Decimal("2.5")
+    groups = RateEngine._same_source_tier_groups(
+        product.normalized.return_policy["preferential_policy"],
+        values,
+    )
+    assert groups == [["R1", "R2"]]
+
+
+def test_mixed_ladder_with_fact_keys_also_keeps_independent_bonus():
+    shared = "자녀 1명 연 1%p, 자녀 2명 연 2%p, 급여이체 연 0.5%p 추가 제공"
+    product = _same_source_tier_product()
+    product.normalized.return_policy["preferential_policy"]["rules"] = [
+        {
+            "rule_id": "R1",
+            "source_clause_text": shared,
+            "condition": {"predicate": {"fact_key": "CHILD_COUNT", "expected": 1}},
+            "reward": {"kind": "ADD_RATE", "value": "1", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R2",
+            "source_clause_text": shared,
+            "condition": {"predicate": {"fact_key": "CHILD_COUNT", "expected": 2}},
+            "reward": {"kind": "ADD_RATE", "value": "2", "unit": "PERCENTAGE_POINT"},
+        },
+        {
+            "rule_id": "R3",
+            "source_clause_text": shared,
+            "condition": {"predicate": {"fact_key": "SALARY_TRANSFER"}},
+            "reward": {"kind": "ADD_RATE", "value": "0.5", "unit": "PERCENTAGE_POINT"},
+        },
+    ]
+    product.preferential_rules = [
+        SimpleNamespace(
+            rule=SimpleNamespace(rule_id=rule_id),
+            canonical_rule_id=rule_id,
+            reward_kind="ADD_RATE",
+            application={},
+        )
+        for rule_id in ("R1", "R2", "R3")
+    ]
+    values = {"R1": Decimal("1"), "R2": Decimal("2"), "R3": Decimal("0.5")}
+
+    total = RateEngine._aggregate_canonical_rewards(product, set(values), values, None)
+
+    assert total == Decimal("2.5")
+
+
 def test_unclear_same_source_copy_is_not_forced_to_max_or_new_exclusive():
     """Matching source text without ladder evidence must not invent a max group."""
 
