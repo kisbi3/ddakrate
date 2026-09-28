@@ -8,11 +8,18 @@ UNKNOWN is a first-class expression leaf.
 from __future__ import annotations
 
 from datetime import date
-from typing import Literal
+from typing import Annotated, Literal, get_args
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, WithJsonSchema, model_validator
 
 SemanticVariable = Literal["CHILDREN", "MARRIAGE_DATE", "PREGNANT_SELF"]
+ExpressionOp = Literal["ALL", "ANY", "NOT", "CHILD_COUNT", "CHILD_EXISTS", "COMPARE", "PREDICATE", "UNKNOWN"]
+ScalarVariable = Literal["MARRIAGE_DATE", "PREGNANT_SELF"]
+PeriodUnit = Literal["DAY", "MONTH", "YEAR", "BUSINESS_DAY"]
+PeriodBasis = Literal[
+    "SUBSCRIPTION_MONTH", "MATURITY_PREV_PREV_MONTH_END", "SALARY_DESIGNATED_DATE",
+    "TERM_RATIO", "AS_OF", "UNSPECIFIED",
+]
 Comparator = Literal["EQ", "NE", "GT", "GTE", "LT", "LTE"]
 ConditionKind = Literal[
     "CARD_PAYMENT",
@@ -101,15 +108,8 @@ class PeriodWindow(SemanticModel):
     """Aggregation window copied from source. Missing pieces stay None."""
 
     length: StrictInt | None = Field(default=None, ge=0, le=1200)
-    unit: Literal["DAY", "MONTH", "YEAR", "BUSINESS_DAY"] | None = None
-    basis: Literal[
-        "SUBSCRIPTION_MONTH",
-        "MATURITY_PREV_PREV_MONTH_END",
-        "SALARY_DESIGNATED_DATE",
-        "TERM_RATIO",
-        "AS_OF",
-        "UNSPECIFIED",
-    ] | None = None
+    unit: PeriodUnit | None = None
+    basis: PeriodBasis | None = None
     start_quote: str | None = Field(default=None, max_length=500)
     end_quote: str | None = Field(default=None, max_length=500)
     before_offset: StrictInt | None = Field(default=None, ge=0, le=365)
@@ -133,10 +133,10 @@ class RewardRelation(SemanticModel):
 
 
 class SemanticExpression(SemanticModel):
-    op: Literal["ALL", "ANY", "NOT", "CHILD_COUNT", "CHILD_EXISTS", "COMPARE", "PREDICATE", "UNKNOWN"]
+    op: ExpressionOp
     source_quote: str = Field(min_length=1, max_length=8000)
     children: list["SemanticExpression"] = Field(default_factory=list, max_length=12)
-    variable: Literal["MARRIAGE_DATE", "PREGNANT_SELF"] | None = None
+    variable: ScalarVariable | None = None
     comparator: Comparator | None = None
     expected: StrictInt | StrictBool | str | None = None
     child_filter: ChildFilter | None = None
@@ -216,12 +216,21 @@ class SemanticCompilation(SemanticModel):
     clauses: list[ClauseInterpretation] = Field(max_length=48)
 
 
+def _transport_enum_schema(values) -> WithJsonSchema:
+    """Advertise receiving enum values without rejecting an entire response.
+
+    The model sees the strict vocabulary; local transport parsing still accepts
+    unexpected strings so the source-linked validator can isolate a bad leaf.
+    """
+    return WithJsonSchema({"type": "string", "enum": list(get_args(values))})
+
+
 class LoosePeriodWindow(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     length: StrictInt | None = None
-    unit: str | None = None
-    basis: str | None = None
+    unit: Annotated[str, _transport_enum_schema(PeriodUnit)] | None = None
+    basis: Annotated[str, _transport_enum_schema(PeriodBasis)] | None = None
     start_quote: str | None = None
     end_quote: str | None = None
     before_offset: StrictInt | None = None
@@ -234,7 +243,7 @@ class LoosePeriodWindow(BaseModel):
 class LooseConditionScope(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
-    institution: str | None = None
+    institution: Annotated[str, _transport_enum_schema(ScopeKind)] | None = None
     product_kind: str | None = None
     account_or_product: str | None = None
     networks: list[str] = Field(default_factory=list)
@@ -243,7 +252,7 @@ class LooseConditionScope(BaseModel):
 class LooseRewardRelation(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
-    relation: str | None = None
+    relation: Annotated[str, _transport_enum_schema(RewardRelationType)] | None = None
     rule_ids: list[str] = Field(default_factory=list)
     source_quote: str | None = None
 
@@ -253,24 +262,24 @@ class LooseSemanticExpression(BaseModel):
 
     model_config = ConfigDict(extra="ignore")
 
-    op: str | None = None
+    op: Annotated[str, _transport_enum_schema(ExpressionOp)] | None = None
     source_quote: str = ""
     children: list["LooseSemanticExpression"] = Field(default_factory=list)
-    variable: str | None = None
-    comparator: str | None = None
+    variable: Annotated[str, _transport_enum_schema(ScalarVariable)] | None = None
+    comparator: Annotated[str, _transport_enum_schema(Comparator)] | None = None
     expected: StrictInt | StrictBool | str | None = None
     child_filter: ChildFilter | None = None
-    kind: str | None = None
-    subject: str | None = None
+    kind: Annotated[str, _transport_enum_schema(ConditionKind)] | None = None
+    subject: Annotated[str, _transport_enum_schema(SubjectRole)] | None = None
     scope: LooseConditionScope | None = None
-    metric: str | None = None
+    metric: Annotated[str, _transport_enum_schema(MetricKind)] | None = None
     expected_literal: str | None = None
-    expected_unit: str | None = None
+    expected_unit: Annotated[str, _transport_enum_schema(AmountUnit)] | None = None
     period: LoosePeriodWindow | None = None
     existing_rule_id: str | None = None
     required_facts: list[str] = Field(default_factory=list)
     official_confirmation_required: StrictBool | None = None
-    official_confirmation_basis: str | None = None
+    official_confirmation_basis: Annotated[str, _transport_enum_schema(OfficialBasis)] | None = None
 
 
 class LooseClauseInterpretation(BaseModel):

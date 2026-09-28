@@ -441,7 +441,13 @@ def _unknown_leaf(quote: str) -> SemanticExpression:
 def _leaf_is_grounded(node: SemanticExpression, clause: SourceClause) -> bool:
     if node.source_quote not in clause.text:
         return False
-    numbers = set(re.findall(r"\d+", node.source_quote))
+    # Match whole numeric tokens: 5,000 grounds 5000, but neither 5 nor 0.
+    # Do not turn decimal parts or malformed grouping into integer evidence.
+    numbers = {
+        token.replace(",", "")
+        for token in re.findall(r"(?<![\d.,])\d+(?:,\d+)*(?:\.\d+)?(?![\d.,])", node.source_quote)
+        if re.fullmatch(r"\d+|\d{1,3}(?:,\d{3})+", token)
+    }
     quote = node.source_quote
     if node.op == "COMPARE" and node.variable == "MARRIAGE_DATE":
         try:
@@ -463,10 +469,6 @@ def _leaf_is_grounded(node: SemanticExpression, clause: SourceClause) -> bool:
     if node.op == "PREDICATE":
         if node.expected_literal and node.expected_literal not in quote:
             return False
-        if node.existing_rule_id and node.existing_rule_id not in {
-            clause.canonical_id, clause.existing_runtime_rule_id or "", str(clause.row.get("rule_id") or ""),
-        }:
-            return False
         if node.period:
             if node.period.length is not None:
                 numeric_values.append(node.period.length)
@@ -480,15 +482,10 @@ def _leaf_is_grounded(node: SemanticExpression, clause: SourceClause) -> bool:
                 return False
             if node.period.term_ratio and node.period.term_ratio not in clause.text:
                 return False
-        if isinstance(node.expected, int):
+        if type(node.expected) is int:
             numeric_values.append(node.expected)
         elif isinstance(node.expected, str) and node.expected not in quote:
             return False
-        if node.official_confirmation_required:
-            if node.official_confirmation_basis != "SOURCE_TEXT":
-                return False
-            if _OFFICIAL_CONFIRMATION_RE.search(clause.text) is None:
-                return False
     for number in numeric_values:
         if number is not None and str(number) not in numbers:
             return False
@@ -510,6 +507,38 @@ def _coerce_period(raw: Any, clause: SourceClause) -> PeriodWindow | None:
     if window.term_ratio and window.term_ratio not in clause.text:
         return None
     return window
+
+
+def _allowed_rule_ids(clause: SourceClause) -> set[str]:
+    return {item for item in (
+        clause.canonical_id,
+        clause.existing_runtime_rule_id,
+        str(clause.row.get("rule_id") or "") if isinstance(clause.row, dict) else "",
+    ) if item}
+
+
+def _accepted_existing_rule_id(raw_id: str | None, clause: SourceClause) -> str | None:
+    """Keep a known catalog alias; drop an unmatched id without discarding the leaf."""
+
+    if not raw_id:
+        return None
+    allowed = _allowed_rule_ids(clause)
+    if raw_id in allowed:
+        return raw_id
+    aliases = [item for item in allowed if raw_id.endswith(item) or item.endswith(raw_id)]
+    return max(aliases, key=len) if aliases else None
+
+
+def _accepted_official_confirmation(
+    required: Any, basis: Any, clause: SourceClause,
+) -> tuple[bool | None, str | None]:
+    """Drop an ungrounded official flag. Catalog official_only is applied later."""
+
+    if required is True and basis == "SOURCE_TEXT" and _OFFICIAL_CONFIRMATION_RE.search(clause.text):
+        return True, "SOURCE_TEXT"
+    if required is False:
+        return False, None
+    return None, None
 
 
 def _coerce_scope(raw: Any) -> ConditionScope | None:
@@ -566,18 +595,34 @@ def coerce_expression(raw: Any, clause: SourceClause, *, depth: int = 0) -> Sema
         "child_filter": raw.get("child_filter"),
     }
     if op == "PREDICATE":
+        scope = _coerce_scope(raw.get("scope"))
+        period = _coerce_period(raw.get("period"), clause)
+        # An invalid qualifier cannot be discarded: doing so would widen the
+        # condition. Preserve valid siblings, but defer this entire leaf.
+        if (raw.get("scope") is not None and scope is None) or (
+            raw.get("period") is not None and period is None
+        ):
+            return _unknown_leaf(quote)
+        official_required, official_basis = _accepted_official_confirmation(
+            raw.get("official_confirmation_required"),
+            raw.get("official_confirmation_basis"),
+            clause,
+        )
         payload.update({
             "kind": raw.get("kind"),
             "subject": raw.get("subject"),
-            "scope": _coerce_scope(raw.get("scope")),
+            "scope": scope,
             "metric": raw.get("metric"),
             "expected_literal": raw.get("expected_literal") if isinstance(raw.get("expected_literal"), str) else None,
             "expected_unit": raw.get("expected_unit"),
-            "period": _coerce_period(raw.get("period"), clause),
-            "existing_rule_id": raw.get("existing_rule_id") if isinstance(raw.get("existing_rule_id"), str) else None,
+            "period": period,
+            "existing_rule_id": _accepted_existing_rule_id(
+                raw.get("existing_rule_id") if isinstance(raw.get("existing_rule_id"), str) else None,
+                clause,
+            ),
             "required_facts": [item for item in (raw.get("required_facts") or []) if isinstance(item, str)][:12],
-            "official_confirmation_required": raw.get("official_confirmation_required"),
-            "official_confirmation_basis": raw.get("official_confirmation_basis"),
+            "official_confirmation_required": official_required,
+            "official_confirmation_basis": official_basis,
         })
     try:
         expr = SemanticExpression.model_validate(payload)

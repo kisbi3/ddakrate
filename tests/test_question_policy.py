@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 from eligibility.application_service import ApplicationService
-from eligibility.question_policy import normalize_user_question_request
+from eligibility.catalog.normalized_loader import _official_eligibility_unknown_rule
+from eligibility.question_policy import (
+    is_applicant_age_fact,
+    is_official_eligibility_placeholder,
+    normalize_user_question_request,
+)
 from eligibility.schema.conversation import FlexibleConversationTurnPlan
 from eligibility.schema.enums import FactSemanticType
 from eligibility.schema.enums import ResolutionStrategy
@@ -314,3 +319,58 @@ def test_first_customer_history_question_is_not_confused_with_account_holding() 
     assert question is not None
     assert "현재 계좌 보유 여부와 별개로" in question.question
     assert "입출금·예금·적금" in question.question
+
+
+def test_applicant_age_follow_up_is_not_asked() -> None:
+    assert is_applicant_age_fact("AGE_YEARS", "가입일 기준 만 나이를 알려주세요")
+    assert is_applicant_age_fact("CUSTOMER_AGE", "공식 연령 조건에 해당하시나요?")
+    assert not is_applicant_age_fact(
+        "SEMANTIC_INPUT::CHILDREN",
+        "자녀의 나이 경계를 정확히 비교하려면 각 자녀의 생년월일이 필요합니다.",
+    )
+    product = make_product(
+        "AGE-BONUS",
+        reward_pp="1",
+        bonus_fact_type="AGE_YEARS",
+        bonus_semantic_type=FactSemanticType.SELF_REPORTED_FACT,
+        rule_name="공식 연령 조건",
+    )
+    intent = make_intent(top_k=1)
+    question = RankingAwareQuestionPlanner().select_next(
+        _evaluate([product], intent),
+        intent,
+    )
+    assert question is None or (
+        question.request is not None
+        and not is_applicant_age_fact(question.request.fact_type, question.request.question)
+    )
+
+
+def test_official_eligibility_placeholder_is_not_asked() -> None:
+    assert is_official_eligibility_placeholder(
+        "NORMALIZED_ELIGIBILITY_UNKNOWN::KB-KIDS",
+        None,
+    )
+    product = make_product("KB-KIDS")
+    product = product.model_copy(
+        update={
+            "eligibility_rule": _official_eligibility_unknown_rule(
+                "KB-KIDS",
+                fields=["공식 원문에만 있는 가입조건"],
+                source=None,
+            )
+        }
+    )
+    intent = make_intent(top_k=1)
+    question = RankingAwareQuestionPlanner().select_next(
+        _evaluate([product], intent),
+        intent,
+    )
+    assert question is None or (
+        question.request is not None
+        and not is_official_eligibility_placeholder(
+            question.request.fact_type,
+            question.request.question,
+        )
+        and "공식 가입조건 확인 필요" not in (question.question or "")
+    )

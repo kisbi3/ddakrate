@@ -84,6 +84,16 @@ def is_routine_onboarding_fact(fact_type: str, question: str | None = None) -> b
     return any(marker in text for marker in _ROUTINE_ONBOARDING_MARKERS)
 
 
+def is_official_eligibility_placeholder(fact_type: str, question: str | None = None) -> bool:
+    """True for catalog placeholders that are not a real user-answerable condition."""
+
+    key = fact_type.upper()
+    if key.startswith("NORMALIZED_ELIGIBILITY_UNKNOWN::"):
+        return True
+    text = question or ""
+    return "공식 가입조건 확인 필요" in text
+
+
 def is_official_random_promotion_result_fact(fact_type: str) -> bool:
     """True when only the institution can determine a promotion outcome."""
 
@@ -122,6 +132,22 @@ def is_opaque_generic_question(question: str | None) -> bool:
 
     compact = "".join((question or "").split()).rstrip("?.")
     return any(marker in compact for marker in _OPAQUE_GENERIC_QUESTIONS)
+
+
+def is_applicant_age_fact(fact_type: str, question: str | None = None) -> bool:
+    """True for the applicant's age, not a child's age or account tenure."""
+
+    text = question or ""
+    if "자녀" in text:
+        return False
+    key = fact_type.upper()
+    if "ACCOUNT_AGE" in key:
+        return False
+    if key in {"AGE_YEARS", "CUSTOMER_AGE"} or key.endswith("_AGE_YEARS"):
+        return True
+    if "CUSTOMER_AGE" in key:
+        return True
+    return "공식 연령" in text or "연령 조건에 해당" in text
 
 
 def is_information_only_fact(fact_type: str) -> bool:

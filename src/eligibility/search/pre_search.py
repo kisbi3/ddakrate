@@ -46,6 +46,18 @@ QUESTION_ORDER = (
 )
 
 
+def _birth_date_declined(profile: dict[str, PreSearchProfileEntry] | None) -> bool:
+    """True when the user closed the birth-date question without an age."""
+
+    if profile is None:
+        return False
+    entry = profile.get(BIRTH_DATE)
+    return (
+        entry is not None
+        and entry.answer_status == PreSearchAnswerStatus.ACKNOWLEDGED_UNKNOWN
+    )
+
+
 def pre_search_answer_examples(
     key: str,
     product_types: Iterable[str] = (),
@@ -377,6 +389,8 @@ class DeterministicPreSearchQuestionPlanner:
         if key in {
             YOUTH_POLICY_ACCOUNT_HOLDING,
         }:
+            if _birth_date_declined(profile):
+                return False
             selected_types = (
                 set(intent.product_types)
                 if intent is not None

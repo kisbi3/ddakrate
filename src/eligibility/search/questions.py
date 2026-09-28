@@ -23,10 +23,12 @@ from eligibility.schema.search import (
 from eligibility.schema.condition_requirement import QuestionSpec
 from eligibility.question_policy import (
     is_future_action_fact,
+    is_applicant_age_fact,
     is_card_benefit_request,
     is_first_transaction_history_fact,
     is_institution_product_holding_history_fact,
     is_information_only_fact,
+    is_official_eligibility_placeholder,
     is_official_random_promotion_result_fact,
     is_routine_onboarding_fact,
     is_salary_benefit_request,
@@ -227,11 +229,21 @@ class RankingAwareQuestionPlanner:
                     # Ordinary ID preparation belongs in the final sign-up
                     # checklist; it does not help compare financial products.
                     continue
+                if is_applicant_age_fact(request.fact_type, request.question):
+                    # Birth date is collected once in pre-search. Do not ask
+                    # age again as a product condition, including after the
+                    # user declined to share a birth date.
+                    continue
                 if is_information_only_fact(request.fact_type) and not (
                     request.impact is not None
                     and request.impact.rate_pp is not None
                     and request.impact.rate_pp > 0
                 ):
+                    continue
+                if is_official_eligibility_placeholder(request.fact_type, request.question):
+                    # This is a catalog gap marker, not a condition the user
+                    # can confirm. Asking "해당하시나요?" would hide the
+                    # actual unpublished eligibility clause.
                     continue
                 if is_official_random_promotion_result_fact(request.fact_type):
                     # An official draw result cannot be answered or promised
@@ -897,7 +909,8 @@ class RankingAwareQuestionPlanner:
             result = stack.pop()
             if result.rule_id == requested_by_rule_id:
                 return (
-                    result.rule_name.strip() != "공식 가입대상 충족"
+                    result.rule_name.strip()
+                    not in {"공식 가입대상 충족", "공식 가입조건 확인 필요"}
                     and isinstance(result.evidence.get("expected"), bool)
                 )
             stack.extend(result.children)

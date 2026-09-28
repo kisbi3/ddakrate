@@ -434,6 +434,64 @@ def test_youth_policy_account_question_is_global_for_installment_savings() -> No
         profile=profile,
     )
 
+    profile[BIRTH_DATE] = profile[BIRTH_DATE].model_copy(
+        update={
+            "answer_status": PreSearchAnswerStatus.ACKNOWLEDGED_UNKNOWN,
+            "value": {},
+        },
+        deep=True,
+    )
+    assert not DeterministicPreSearchQuestionPlanner._is_applicable(
+        YOUTH_POLICY_ACCOUNT_HOLDING,
+        products,
+        intent=intent,
+        profile=profile,
+    )
+
+
+def test_unknown_birth_date_skips_youth_policy_question() -> None:
+    interpreter = _PreSearchInterpreter(
+        {
+            BIRTH_DATE: PreSearchAnswerPlan(resolution="ACKNOWLEDGED_UNKNOWN"),
+            SOLDIER_TOMORROW_SAVINGS_ELIGIBILITY: PreSearchAnswerPlan(
+                resolution="ANSWER",
+                soldier_tomorrow_savings_eligible=False,
+            ),
+            INSTITUTION_SCOPE: PreSearchAnswerPlan(
+                resolution="ANSWER",
+                institution_scope="ANY",
+            ),
+            COMMON_BENEFIT_WILLINGNESS: PreSearchAnswerPlan(
+                resolution="ANSWER",
+                first_transaction_willingness="WILLING",
+                salary_transfer_willingness="WILLING",
+                card_willingness="WILLING",
+            ),
+            INSTITUTION_PRODUCT_HOLDING_HISTORY: PreSearchAnswerPlan(
+                resolution="ACKNOWLEDGED_UNKNOWN"
+            ),
+        }
+    )
+    service = _service(interpreter)
+    session = service.create_search_session(
+        user_id="SKIP-AGE-USER",
+        utterance="개인 명의로 월 30만원씩 1년 적금을 찾고 있어요",
+    )
+    assert service.get_next_question(session.search_session_id).pre_search_key == BIRTH_DATE
+    result = service.handle_user_message(
+        session.search_session_id,
+        message="생년월일은 알려드리기 어려워요.",
+    )
+    assert result.next_question is not None
+    assert result.next_question.pre_search_key != BIRTH_DATE
+    assert result.next_question.pre_search_key != YOUTH_POLICY_ACCOUNT_HOLDING
+    assert result.next_question.pre_search_key in {
+        SOLDIER_TOMORROW_SAVINGS_ELIGIBILITY,
+        INSTITUTION_SCOPE,
+        COMMON_BENEFIT_WILLINGNESS,
+        INSTITUTION_PRODUCT_HOLDING_HISTORY,
+    }
+
 
 def test_soldier_question_is_asked_only_when_a_soldier_candidate_remains() -> None:
     intent = ProductSearchIntent(
