@@ -145,12 +145,15 @@ def main():
     parser.add_argument("--run", required=True)
     parser.add_argument("--variant", choices=["baseline", "contract", "contract-v2"], required=True)
     parser.add_argument("--cases", required=True)
+    parser.add_argument("--output-dir", type=Path, default=OUT)
+    parser.add_argument("--cases-file", type=Path, default=OUT / "cases.json")
     args = parser.parse_args()
     if not args.run.replace("-", "").replace("_", "").isalnum():
         raise SystemExit("Invalid run name")
-    dest = OUT / args.run
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    dest = args.output_dir / args.run
     dest.mkdir(exist_ok=False)
-    cases = json.loads((OUT / "cases.json").read_text())
+    cases = json.loads(args.cases_file.read_text())
     selected = [cases[int(i)] for i in args.cases.split(",")]
     catalog = {p.product_id: p for p in load_normalized_product_catalog(verify_hashes=False)}
     packets = []
@@ -211,6 +214,9 @@ def main():
     meta = {"variant": args.variant, "model": response.model, "latency_ms": response.latency_ms,
             "usage": response.token_usage.model_dump(mode="json") if response.token_usage else None,
             "retry_count": response.retry_count, "routes": routes,
+            "source_hashes": {str(p.relative_to(ROOT)): sem.digest(p.read_text()) for p in (
+                ROOT / "src/eligibility/search/semantic.py", ROOT / "src/eligibility/schema/semantic.py",
+                Path(__file__).resolve())},
             "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()}
     save(dest / "metadata.json", meta)
     print(f"DONE {args.run}: {response.latency_ms}ms", flush=True)
