@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproducible read-only duplicate candidate audit."""
 from __future__ import annotations
-import difflib, hashlib, json, re
+import argparse, difflib, hashlib, json, re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -31,7 +31,7 @@ def manual():
  reviews=[row(list(x[:2]),"LIKELY_DUPLICATE_NEEDS_EVIDENCE",["https://www.kakaobank.com/view/service",x[2]],"Issuer service index and product page identify the same named listing; canonical ID not public.") for x in kak]
  reviews += [row(["INST-KR-000055-2-0001","INST-KR-000055-2-0004"],"DISTINCT_VARIANT",["https://www.acuonsb.co.kr/sv_pdt0010113.act"],"Official list separates 6M and 1-year rotation products."),row(["INST-KR-000055-2-0007","INST-KR-000055-2-CEF9405DC03"],"LIKELY_DUPLICATE_NEEDS_EVIDENCE",["https://www.acuonsb.co.kr/sv_dpt0070110.act"],"Registry lists general deposit interest-method expressions; code identity remains unresolved."),row(["INST-KR-000408-2-0001","INST-KR-000408-2-C9F745A6513","INST-KR-000408-2-CD7A1D43C4E"],"LIKELY_DUPLICATE_NEEDS_EVIDENCE",["https://www.hanwhasbank.com/ProdList_001.act?rnum=34"],"One issuer page contains simple/compound methods; registry separates rows."),row(["INST-KR-000408-2-0003","INST-KR-000408-2-C77B5A42C75","INST-KR-000408-2-CCF9516A8D7"],"LIKELY_DUPLICATE_NEEDS_EVIDENCE",["https://www.hanwhasbank.com/ProdList_001.act?rnum=89"],"6M rotation issuer page contains simple/compound methods."),row(["INST-KR-000408-2-0004","INST-KR-000408-2-C6470067B1C","INST-KR-000408-2-CB40DE9089C"],"LIKELY_DUPLICATE_NEEDS_EVIDENCE",["https://www.hanwhasbank.com/ProdList_001.act?rnum=92"],"12M rotation issuer page contains simple/compound methods."),row(["INST-KR-000408-2-0010","INST-KR-000408-2-0011","INST-KR-000408-2-0012","INST-KR-000408-2-0013","INST-KR-000408-2-0014"],"NOT_DUPLICATE",["https://www.hanwhasbank.com/ProdList_001.act?rnum=40"],"HS numbered products are separately listed by product/term.")]
  return {"status":"PARTIAL_PRIMARY_SOURCE_REVIEW","policy":"Primary issuer pages only; no deletion/merge/alias; confirmation requires canonical ID evidence.","reviews":reviews,"coverage_observations":[{"pair":["INST-KR-000408-2-0002"],"status":"NO_SIBLING_CANDIDATE","source_urls":["https://www.hanwhasbank.com/ProdList_001.act?rnum=88"],"checked_at":"2026-09-04","evidence_note":"3M issuer page observed; no matching hash sibling in catalog."}]}
-def run():
+def run(out=OUT):
  idx=json.loads(INDEX.read_text()); rows=[load(x) for x in idx["products"]]; groups=defaultdict(list)
  for r in rows:groups[(r["institution_id"],r["product_family"])].append(r)
  candidates=[]; total=0
@@ -39,9 +39,11 @@ def run():
   for i,a in enumerate(ms):
    for b in ms[i+1:]: total+=1; c=compare(a,b); c and (c.update({"group":{"institution_id":key[0],"product_family":key[1]}}),candidates.append(c))
  result={"audit":{"index_sha256":"sha256:"+hashlib.sha256(INDEX.read_bytes()).hexdigest(),"product_count":len(rows),"same_group_pair_count":total,"candidate_pair_count":len(candidates),"priority_candidate_pair_count":sum(c["group"]["institution_id"] in {"INST-KR-000830","INST-KR-000055","INST-KR-000408"} for c in candidates)},"verdict_counts":dict(sorted(Counter(c["verdict"] for c in candidates).items())),"manual_review":manual(),"candidates":candidates}
- OUT.mkdir(parents=True,exist_ok=True); (OUT/"candidates.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+ out.mkdir(parents=True,exist_ok=True); (out/"candidates.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  lines=["# Catalog identity candidate audit (2026-09-04)","",f"- Active records: **{len(rows):,}**",f"- Same institution/family pairs scanned: **{total:,}**",f"- Automatic candidates: **{len(candidates):,}**",f"- Automatic verdicts: `{result['verdict_counts']}`","","## Methodology","","Candidates require meaningful name/code/evidence/URL blocking within institution and family. Missing values never match. Variant tokens remain distinct. Automatic candidates and partial primary-source review are separate; no pair is confirmed without canonical issuer evidence.","","## Partial primary-source review","", "Issuer pages were checked on 2026-09-04. Reviews remain conservative and recommend `NONE_PENDING_EVIDENCE` unless canonical identity is published.","","## Manual priority review","","| Pair | Verdict | Source | Evidence / unresolved |", "|---|---|---|---|"]
  for x in result["manual_review"]["reviews"]: lines.append(f"| {' ↔ '.join(x['pair'])} | {x['verdict']} | {'; '.join(x['source_urls'])} | {x['evidence_note']} / {x['recommended_canonical']} |")
  lines += ["", "## Coverage observations", "", "- `INST-KR-000408-2-0002` (Hanwha 3M) has no hash sibling candidate; issuer observation is recorded separately.","", "## Auto-candidate appendix", "", "Full automatic candidates are in `candidates.json`; non-candidate pair count is the scan total minus retained candidates."]
- (OUT/"CATALOG_IDENTITY_AUDIT.md").write_text("\n".join(lines)+"\n",encoding="utf-8"); return result
-if __name__=="__main__": print(json.dumps(run()["audit"],ensure_ascii=False,indent=2))
+ (out/"CATALOG_IDENTITY_AUDIT.md").write_text("\n".join(lines)+"\n",encoding="utf-8"); return result
+if __name__=="__main__":
+ ap=argparse.ArgumentParser(); ap.add_argument("--output-dir",type=Path,default=OUT)
+ print(json.dumps(run(ap.parse_args().output_dir)["audit"],ensure_ascii=False,indent=2))

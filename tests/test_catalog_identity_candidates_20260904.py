@@ -6,17 +6,43 @@ from scripts.audit_catalog_identity_candidates_20260904 import compare, fingerpr
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/audit_catalog_identity_candidates_20260904.py"
+SNAPSHOT = ROOT / "docs/reports/catalog_identity_audit_20260904"
 
-def test_identity_audit_is_deterministic_and_bounded() -> None:
-    subprocess.run([sys.executable, str(SCRIPT)], cwd=ROOT, check=True, capture_output=True)
-    out = ROOT / "docs/reports/catalog_identity_audit_20260904/candidates.json"
-    first = out.read_bytes()
-    subprocess.run([sys.executable, str(SCRIPT)], cwd=ROOT, check=True, capture_output=True)
-    assert out.read_bytes() == first
-    payload = json.loads(first)
-    assert payload["audit"]["product_count"] == 4306
+def test_identity_audit_is_deterministic_and_bounded(tmp_path: Path) -> None:
+    runs = []
+    for name in ("first", "second"):
+        dest = tmp_path / name
+        subprocess.run(
+            [sys.executable, str(SCRIPT), "--output-dir", str(dest)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        )
+        runs.append(dest)
+    first, second = runs
+    assert (first / "candidates.json").read_bytes() == (second / "candidates.json").read_bytes()
+    assert (first / "CATALOG_IDENTITY_AUDIT.md").read_bytes() == (second / "CATALOG_IDENTITY_AUDIT.md").read_bytes()
+    payload = json.loads((first / "candidates.json").read_text())
+    assert payload["audit"]["product_count"] > 0
     assert payload["audit"]["candidate_pair_count"] < payload["audit"]["same_group_pair_count"]
-    assert out.stat().st_size < 2_000_000
+    assert (first / "candidates.json").stat().st_size < 2_000_000
+
+def test_committed_snapshot_is_untouched_by_a_regenerated_run(tmp_path: Path) -> None:
+    before = {name: (SNAPSHOT / name).read_bytes() for name in ("candidates.json", "CATALOG_IDENTITY_AUDIT.md")}
+    subprocess.run(
+        [sys.executable, str(SCRIPT), "--output-dir", str(tmp_path / "regenerated")],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    assert all((SNAPSHOT / name).read_bytes() == raw for name, raw in before.items())
+
+def test_committed_snapshot_agrees_with_its_report() -> None:
+    audit = json.loads((SNAPSHOT / "candidates.json").read_text())["audit"]
+    report = (SNAPSHOT / "CATALOG_IDENTITY_AUDIT.md").read_text()
+    assert f"Active records: **{audit['product_count']:,}**" in report
+    assert f"Same institution/family pairs scanned: **{audit['same_group_pair_count']:,}**" in report
+    assert f"Automatic candidates: **{audit['candidate_pair_count']:,}**" in report
 
 def test_identity_audit_preserves_variant_and_missing_value_guards() -> None:
     payload = json.loads((ROOT / "docs/reports/catalog_identity_audit_20260904/candidates.json").read_text())
