@@ -1,0 +1,438 @@
+{
+  "scope": "Offline, fixture-specific structural evaluation. Never imported by runtime.\n\nThis is a hand-authored oracle for two named catalog clauses, not a Korean\ninterpreter. It checks preserved fields and Boolean relations independently of\nruntime acceptance. PASS covers only the enumerated facts, not overall meaning,\nsource grounding, official authority, or executable treatment of overlapping tiers.\n",
+  "results": [
+    {
+      "run": "schema-v2-01",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0.0: unsupported or UNKNOWN leaf",
+        "expression.1.0: unsupported or UNKNOWN leaf",
+        "expression.2.0: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 56,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_5000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_10000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_15000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_ratio"
+          ],
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "amount_10000",
+        "amount_15000",
+        "amount_5000",
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0.0: unsupported or UNKNOWN leaf",
+        "expression.0.1: unsupported or UNKNOWN leaf",
+        "expression.1.0: unsupported or UNKNOWN leaf",
+        "expression.1.1: unsupported or UNKNOWN leaf",
+        "expression.2.0: unsupported or UNKNOWN leaf",
+        "expression.2.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 128,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "UNKNOWN"
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_network",
+        "merchant_ratio",
+        "salary_amount",
+        "salary_ratio",
+        "salary_window"
+      ],
+      "structural_issues": [
+        "expression.0: unsupported or UNKNOWN leaf",
+        "expression.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 32,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "UNKNOWN"
+        ],
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01-repeat",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_12"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_5000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_24"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_10000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_36"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_15000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01-repeat",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_ratio"
+          ],
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01-repeat",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "amount_10000",
+        "amount_15000",
+        "amount_5000",
+        "card_window"
+      ],
+      "structural_issues": [
+        "expression.0.1: unsupported or UNKNOWN leaf",
+        "expression.1.1: unsupported or UNKNOWN leaf",
+        "expression.2.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 112,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_12"
+            ]
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_24"
+            ]
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_36"
+            ]
+          ],
+          [
+            "UNKNOWN"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "schema-v2-01-repeat",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_ratio"
+          ],
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    }
+  ]
+}

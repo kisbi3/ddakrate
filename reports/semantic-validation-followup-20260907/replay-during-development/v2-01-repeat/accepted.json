@@ -1,0 +1,133 @@
+{
+  "clauses": [
+    {
+      "clause_id": "INST-KR-000010-1-C9788B1329E:v8:INST-KR-000010-1-C9788B1329E-PREF-06:1c3323e3cd34",
+      "source_hash": "1c3323e3cd348ab4f2f9eafbc0745c348e872f7a29f10de323113afce9272994",
+      "source_quote": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%",
+      "expression": {
+        "op": "ANY",
+        "source_quote": "급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+        "children": [
+          {
+            "op": "PREDICATE",
+            "source_quote": "이 적금 가입기간 중 가입기간의 1/2이상 급여입금*",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": null,
+            "child_filter": null,
+            "kind": "SALARY_DEPOSIT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": "이 적금",
+              "networks": []
+            },
+            "metric": "RATIO",
+            "expected_literal": "1/2이상",
+            "expected_unit": "TERM_RATIO",
+            "period": {
+              "length": null,
+              "unit": null,
+              "basis": "TERM_RATIO",
+              "start_quote": "이 적금 가입기간 중",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": "1/2",
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "PREDICATE",
+            "source_quote": "급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": null,
+            "child_filter": null,
+            "kind": "SALARY_DEPOSIT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": []
+            },
+            "metric": "AMOUNT",
+            "expected_literal": "50만원 이상",
+            "expected_unit": "MAN_WON",
+            "period": {
+              "length": null,
+              "unit": null,
+              "basis": "SALARY_DESIGNATED_DATE",
+              "start_quote": "급여지정일자 전 5영업일부터",
+              "end_quote": "급여지정일자 후 10영업일 이내",
+              "before_offset": 5,
+              "after_offset": 10,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "PREDICATE",
+            "source_quote": "비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": 1,
+            "child_filter": null,
+            "kind": "MERCHANT_SETTLEMENT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": [
+                "비씨",
+                "신한",
+                "삼성카드사"
+              ]
+            },
+            "metric": "COUNT",
+            "expected_literal": "1개 이상",
+            "expected_unit": "COUNT",
+            "period": null,
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          }
+        ],
+        "variable": null,
+        "comparator": null,
+        "expected": null,
+        "child_filter": null,
+        "kind": null,
+        "subject": null,
+        "scope": null,
+        "metric": null,
+        "expected_literal": null,
+        "expected_unit": null,
+        "period": null,
+        "existing_rule_id": null,
+        "required_facts": [],
+        "official_confirmation_required": null,
+        "official_confirmation_basis": null
+      },
+      "unresolved_reason": null,
+      "relations": []
+    }
+  ]
+}

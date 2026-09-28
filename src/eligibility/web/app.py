@@ -120,6 +120,7 @@ def create_app(
             "user_data_mode": runtime.user_data_mode,
             "product_count": runtime.product_count,
             "llm_enabled": runtime.llm_enabled,
+            "semantic_conditions_enabled": runtime.service.semantic_compiler is not None,
             "llm_provider": runtime.llm_provider,
             "llm_model": runtime.llm_model,
             "llm_api_family": runtime.llm_api_family,

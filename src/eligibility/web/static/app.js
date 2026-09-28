@@ -1441,22 +1441,12 @@ function maybeLoadMoreRecommendations(event) {
   if (distanceFromBottom <= 180) loadNextRecommendationPage();
 }
 
-function semanticMemoItems(source) {
-  const memos = source?.semantic_memos
-    || (source?.semantic_interpretations || [])
-      .filter((item) => item.memo_code && item.memo_text)
-      .filter((item, index, rows) => rows.findIndex((row) => row.memo_code === item.memo_code) === index)
-      .map((item) => ({ code: item.memo_code, text: item.memo_text }));
-  return Array.isArray(memos) ? memos : [];
+function semanticMemoItems(_source) {
+  return [];
 }
 
-function semanticMemosHtml(source, className) {
-  const memos = semanticMemoItems(source);
-  if (!memos.length) return '';
-  const items = memos.map((memo) => (
-    `<span class="semantic-memo semantic-memo-${escapeHtml(memo.code)}">${escapeHtml(memo.text)}</span>`
-  )).join('');
-  return `<div class="${className}">${items}</div>`;
+function semanticMemosHtml(_source, _className) {
+  return '';
 }
 
 function renderSemanticReviewStatus(rec) {

@@ -3775,7 +3775,10 @@ class ApplicationService(ApplicationDebugMixin, PreSearchHandlerMixin, Eligibili
                 question.request.requested_by_rule_id,
             )
             subject = product_context or "현재 비교 중인 상품"
-            if not rule_label or rule_label == "공식 가입대상 충족":
+            if not rule_label or rule_label in {
+                "공식 가입대상 충족",
+                "공식 가입조건 확인 필요",
+            }:
                 raise ValueError(
                     "Generic official eligibility must be datafied before it can "
                     "be presented as a user question"

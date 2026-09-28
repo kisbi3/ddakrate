@@ -1,0 +1,683 @@
+{
+  "$defs": {
+    "ChildFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "default": "SUBSCRIPTION_DATE",
+          "enum": [
+            "SUBSCRIPTION_DATE",
+            "AS_OF"
+          ],
+          "title": "Reference",
+          "type": "string"
+        },
+        "min_age": {
+          "anyOf": [
+            {
+              "maximum": 120,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Age"
+        },
+        "max_age": {
+          "anyOf": [
+            {
+              "maximum": 120,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Age"
+        },
+        "min_inclusive": {
+          "default": true,
+          "title": "Min Inclusive",
+          "type": "boolean"
+        },
+        "max_inclusive": {
+          "default": true,
+          "title": "Max Inclusive",
+          "type": "boolean"
+        },
+        "born_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Born From"
+        },
+        "born_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Born To"
+        }
+      },
+      "title": "ChildFilter",
+      "type": "object"
+    },
+    "LooseClauseInterpretation": {
+      "properties": {
+        "clause_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clause Id"
+        },
+        "source_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Hash"
+        },
+        "source_quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Quote"
+        },
+        "expression": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LooseSemanticExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "unresolved_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unresolved Reason"
+        },
+        "relations": {
+          "items": {
+            "$ref": "#/$defs/LooseRewardRelation"
+          },
+          "title": "Relations",
+          "type": "array"
+        }
+      },
+      "title": "LooseClauseInterpretation",
+      "type": "object"
+    },
+    "LooseConditionScope": {
+      "properties": {
+        "institution": {
+          "anyOf": [
+            {
+              "enum": [
+                "THIS_INSTITUTION",
+                "THIS_PRODUCT",
+                "PRODUCT_KIND",
+                "ACCOUNT",
+                "CARD_NETWORK",
+                "UNSPECIFIED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Institution"
+        },
+        "product_kind": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Kind"
+        },
+        "account_or_product": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Account Or Product"
+        },
+        "networks": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Networks",
+          "type": "array"
+        }
+      },
+      "title": "LooseConditionScope",
+      "type": "object"
+    },
+    "LoosePeriodWindow": {
+      "properties": {
+        "length": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Length"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "DAY",
+                "MONTH",
+                "YEAR",
+                "BUSINESS_DAY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "SUBSCRIPTION_MONTH",
+                "MATURITY_PREV_PREV_MONTH_END",
+                "SALARY_DESIGNATED_DATE",
+                "TERM_RATIO",
+                "AS_OF",
+                "UNSPECIFIED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Basis"
+        },
+        "start_quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Quote"
+        },
+        "end_quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Quote"
+        },
+        "before_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Before Offset"
+        },
+        "after_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "After Offset"
+        },
+        "term_ratio": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Term Ratio"
+        },
+        "inclusive_start": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inclusive Start"
+        },
+        "inclusive_end": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inclusive End"
+        }
+      },
+      "title": "LoosePeriodWindow",
+      "type": "object"
+    },
+    "LooseRewardRelation": {
+      "properties": {
+        "relation": {
+          "anyOf": [
+            {
+              "enum": [
+                "TIER_MAX",
+                "INDEPENDENT_ADD"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relation"
+        },
+        "rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Rule Ids",
+          "type": "array"
+        },
+        "source_quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Quote"
+        }
+      },
+      "title": "LooseRewardRelation",
+      "type": "object"
+    },
+    "LooseSemanticExpression": {
+      "description": "Transport envelope. Invalid leaves are coerced to UNKNOWN, not applied.",
+      "properties": {
+        "op": {
+          "anyOf": [
+            {
+              "enum": [
+                "ALL",
+                "ANY",
+                "NOT",
+                "CHILD_COUNT",
+                "CHILD_EXISTS",
+                "COMPARE",
+                "PREDICATE",
+                "UNKNOWN"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Op"
+        },
+        "source_quote": {
+          "default": "",
+          "title": "Source Quote",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/$defs/LooseSemanticExpression"
+          },
+          "title": "Children",
+          "type": "array"
+        },
+        "variable": {
+          "anyOf": [
+            {
+              "enum": [
+                "MARRIAGE_DATE",
+                "PREGNANT_SELF"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Variable"
+        },
+        "comparator": {
+          "anyOf": [
+            {
+              "enum": [
+                "EQ",
+                "NE",
+                "GT",
+                "GTE",
+                "LT",
+                "LTE"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Comparator"
+        },
+        "expected": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected"
+        },
+        "child_filter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ChildFilter"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "CARD_PAYMENT",
+                "SALARY_DEPOSIT",
+                "MERCHANT_SETTLEMENT",
+                "HOLDING_HISTORY",
+                "ABSENCE_HISTORY",
+                "CONSENT",
+                "CHILD_COUNT",
+                "CHILD_EXISTS",
+                "MARRIAGE_DATE",
+                "PREGNANT_SELF",
+                "OTHER"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Kind"
+        },
+        "subject": {
+          "anyOf": [
+            {
+              "enum": [
+                "SELF",
+                "CHILD",
+                "SPOUSE",
+                "HOUSEHOLD",
+                "UNSPECIFIED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LooseConditionScope"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "metric": {
+          "anyOf": [
+            {
+              "enum": [
+                "AMOUNT",
+                "COUNT",
+                "PERIOD",
+                "RATIO",
+                "BOOLEAN",
+                "UNSPECIFIED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Metric"
+        },
+        "expected_literal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Literal"
+        },
+        "expected_unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "KRW",
+                "CHEON_WON",
+                "MAN_WON",
+                "COUNT",
+                "MONTH",
+                "YEAR",
+                "DAY",
+                "BUSINESS_DAY",
+                "PERCENT",
+                "PERCENTAGE_POINT",
+                "TERM_RATIO"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Unit"
+        },
+        "period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LoosePeriodWindow"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "existing_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Existing Rule Id"
+        },
+        "required_facts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Facts",
+          "type": "array"
+        },
+        "official_confirmation_required": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Official Confirmation Required"
+        },
+        "official_confirmation_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "SOURCE_TEXT",
+                "CATALOG_POLICY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Official Confirmation Basis"
+        }
+      },
+      "title": "LooseSemanticExpression",
+      "type": "object"
+    }
+  },
+  "description": "Lenient LLM envelope. Per-clause validation stays strict.",
+  "properties": {
+    "clauses": {
+      "items": {
+        "$ref": "#/$defs/LooseClauseInterpretation"
+      },
+      "maxItems": 48,
+      "title": "Clauses",
+      "type": "array"
+    }
+  },
+  "title": "LooseSemanticCompilation",
+  "type": "object"
+}

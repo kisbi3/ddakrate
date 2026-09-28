@@ -1,0 +1,198 @@
+[
+  {
+    "clause_id": "INST-KR-000010-1-0005:v8:INST-KR-000010-1-0005-PREF-03:0f87310ece49",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "PREDICATE",
+        "accepted_op": "PREDICATE",
+        "issues": [],
+        "changed_fields": {}
+      }
+    ]
+  },
+  {
+    "clause_id": "INST-KR-000219-1-0002:v7:INST-KR-000219-1-0002-PREF-03:51292ac19d61",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "ANY",
+        "accepted_op": "ANY",
+        "issues": [],
+        "changed_fields": {
+          "official_confirmation_required": {
+            "raw": true,
+            "accepted": null
+          },
+          "official_confirmation_basis": {
+            "raw": "SOURCE_TEXT",
+            "accepted": null
+          }
+        }
+      },
+      {
+        "path": "expression.children[0]",
+        "raw_op": "ALL",
+        "accepted_op": "ALL",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[0].children[0]",
+        "raw_op": "CHILD_COUNT",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "GROUNDING_REJECTED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "CHILD_COUNT",
+            "accepted": "UNKNOWN"
+          },
+          "comparator": {
+            "raw": "EQ",
+            "accepted": null
+          },
+          "expected": {
+            "raw": 2,
+            "accepted": null
+          },
+          "child_filter": {
+            "raw": {
+              "reference": "AS_OF",
+              "min_age": null,
+              "max_age": null,
+              "min_inclusive": false,
+              "max_inclusive": false,
+              "born_from": "2007-01-01",
+              "born_to": null
+            },
+            "accepted": null
+          },
+          "kind": {
+            "raw": "CHILD_COUNT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "HOUSEHOLD",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": []
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "COUNT",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "2명",
+            "accepted": null
+          },
+          "expected_unit": {
+            "raw": "COUNT",
+            "accepted": null
+          },
+          "official_confirmation_required": {
+            "raw": true,
+            "accepted": null
+          },
+          "official_confirmation_basis": {
+            "raw": "SOURCE_TEXT",
+            "accepted": null
+          }
+        }
+      },
+      {
+        "path": "expression.children[1]",
+        "raw_op": "ALL",
+        "accepted_op": null,
+        "issues": [
+          "NONCONTIGUOUS_OR_MISSING_QUOTE"
+        ]
+      },
+      {
+        "path": "expression.children[1].children[0]",
+        "raw_op": "CHILD_COUNT",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "GROUNDING_REJECTED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "CHILD_COUNT",
+            "accepted": "UNKNOWN"
+          },
+          "comparator": {
+            "raw": "GTE",
+            "accepted": null
+          },
+          "expected": {
+            "raw": 3,
+            "accepted": null
+          },
+          "child_filter": {
+            "raw": {
+              "reference": "AS_OF",
+              "min_age": null,
+              "max_age": null,
+              "min_inclusive": false,
+              "max_inclusive": false,
+              "born_from": "2007-01-01",
+              "born_to": null
+            },
+            "accepted": null
+          },
+          "kind": {
+            "raw": "CHILD_COUNT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "HOUSEHOLD",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": []
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "COUNT",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "3명 이상",
+            "accepted": null
+          },
+          "expected_unit": {
+            "raw": "COUNT",
+            "accepted": null
+          },
+          "official_confirmation_required": {
+            "raw": true,
+            "accepted": null
+          },
+          "official_confirmation_basis": {
+            "raw": "SOURCE_TEXT",
+            "accepted": null
+          }
+        }
+      }
+    ]
+  }
+]

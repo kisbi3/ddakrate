@@ -1,0 +1,177 @@
+[
+  {
+    "case_id": "life_event_or",
+    "split": "development",
+    "product_id": "INST-KR-000219-1-0002",
+    "product_name": "신한 다둥이 상생 적금",
+    "rule_id": "INST-KR-000219-1-0002-PREF-02",
+    "title": "저출생상생 우대* : 1.0%",
+    "source_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우",
+    "expected_extraction_facts": [
+      "결혼 OR 임신 OR 난임 OR 출산 중 해당 증빙",
+      "신규일부터 만기 전일까지 승인 완료 필요"
+    ],
+    "must_not_infer": [
+      "임신 아님 또는 자녀 없음만으로 전체 경로 제외하지 않음",
+      "결혼/임신/난임/출산을 자녀 존재 한 사실로 접지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000219-1-0002-PREF-02",
+      "title": "저출생상생 우대* : 1.0%",
+      "condition": {
+        "predicate": {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000219_1",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "1.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ],
+        "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "저출생상생 우대* : 1.0%"
+      },
+      "source_ref_ids": [
+        "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        }
+      ],
+      "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+      "source_clause_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우"
+    }
+  },
+  {
+    "case_id": "marketing_and",
+    "split": "holdout",
+    "product_id": "INST-KR-000010-1-0001",
+    "product_name": "오늘도세이브적금\n네이버 페이",
+    "rule_id": "INST-KR-000010-1-0001-PREF-02",
+    "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+    "source_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+    "expected_extraction_facts": [
+      "마케팅동의 AND 모바일메세지 수신동의"
+    ],
+    "must_not_infer": [
+      "모바일메세지 수신동의를 모든 채널 전체 동의로 확대하지 않음",
+      "원문 없는 유지기간이나 은행 승인을 생성하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-0001-PREF-02",
+      "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+      "condition": {
+        "predicate": {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.25",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ],
+        "fact_authority": "BANK_CONSENT_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+      },
+      "source_ref_ids": [
+        "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        }
+      ],
+      "semantic_domain": "MARKETING_CONSENT",
+      "source_clause_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+    }
+  }
+]

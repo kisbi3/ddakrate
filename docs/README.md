@@ -20,6 +20,7 @@
 - [2026-09-06 검증에서 드러난 문제](handoff/SEMANTIC_PREFERENTIAL_VERIFICATION_PROBLEMS_20260906_KO.md)
 - [main 머지 계획과 후속 작업](handoff/SEMANTIC_PREFERENTIAL_QUESTIONS_MAIN_MERGE_PLAN_20260905_KO.md)
 - [기존 질문 목록과 1금융권 표본](handoff/SEMANTIC_EXISTING_QUESTIONS_AND_BANK_SAMPLE_20260906_KO.md)
+- [2026-09-07 실제 원문 프롬프트 실험](../reports/semantic-prompt-experiment-20260907/README.md) — 원응답·검증 후 결과·반복 호출 비교. 프롬프트 실험은 마무리했으며 운영 적용을 승인한 결과는 아니다. 공모전 기획서·기능 명세서 개정에도 이 한계를 반영한다.
 
 ## 릴리스 보고서
 
@@ -46,6 +47,9 @@ UI, UX, LLM, Catalog 통합 기록은 [`reports/web/`](reports/web/)에 있다.
 
 ## 공모전 제출 자료
 
+- [제출 자료 버전 안내](submission/README.md)
+- [기획서 — 2026-09-07 개정 원고](submission/2026_FINANCIAL_AI_CHALLENGE_PLAN_DRAFT.md)
+- [기능 명세서 — 2026-09-07 개정 원고](submission/2026_FINANCIAL_AI_CHALLENGE_FUNCTION_SPEC_DRAFT.md)
 - [금융상품 데이터 관계 설계](submission/FINANCIAL_PRODUCT_DATA_RELATIONSHIP.md)
 
 ## 실행 결과 원문

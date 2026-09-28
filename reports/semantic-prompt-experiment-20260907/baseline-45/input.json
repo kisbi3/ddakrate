@@ -1,0 +1,610 @@
+{
+  "products": [
+    {
+      "product_id": "INST-KR-000219-1-0002",
+      "product_version": 7,
+      "product_name": "신한 다둥이 상생 적금",
+      "skipped_empty_clause_ids": [],
+      "skipped_untargeted_clause_ids": [],
+      "linked_clause_ids": [],
+      "raw_clauses": [
+        {
+          "clause_id": "INST-KR-000219-1-0002:v7:INST-KR-000219-1-0002-PREF-02:bf64533ab757",
+          "source_hash": "bf64533ab757724091fe9ef0c7c2d2adcba3f964eac0554333ae65a4bcb6df41",
+          "source_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우",
+          "source_metadata": {
+            "rule_id": "INST-KR-000219-1-0002-PREF-02",
+            "title": "저출생상생 우대* : 1.0%",
+            "condition": {
+              "predicate": {
+                "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000219_1",
+                "operator": "EQUALS",
+                "expected_value": true,
+                "accepted_value_status": [
+                  "ACTUAL"
+                ],
+                "source_semantics": "SOURCE_CLAUSE_GATE",
+                "source_ref_ids": [
+                  "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+                  }
+                ]
+              },
+              "source_ref_ids": [
+                "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+                }
+              ]
+            },
+            "reward": {
+              "kind": "ADD_RATE",
+              "value": "1.0",
+              "unit": "PERCENTAGE_POINT",
+              "source_ref_ids": [
+                "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+                }
+              ]
+            },
+            "application": {
+              "event": "MATURITY",
+              "source_ref_ids": [
+                "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+                }
+              ],
+              "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+              "confirmed_value_status_required": "ACTUAL"
+            },
+            "display": {
+              "summary": "저출생상생 우대* : 1.0%"
+            },
+            "source_ref_ids": [
+              "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+            ],
+            "structuring_status": "SUPPORTED",
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+              }
+            ],
+            "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+            "source_clause_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우"
+          },
+          "requires_official_confirmation": true,
+          "supported_reward": true,
+          "existing_runtime_rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-02"
+        }
+      ],
+      "read_only_typed_rules": [
+        {
+          "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-02",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-02",
+            "name": "저출생상생 우대* : 1.0%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+              "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+              "source_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "DEMOGRAPHIC_OR_LIFE_EVENT_AGE_YEARS_SOURCE_CLAUSE_INST_KR_000219_1",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "1.0"
+              },
+              "required_source": null,
+              "question": "저출생상생 우대* : 1.0% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "저출생상생 우대* : 1.0%",
+                "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000219_1"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-04",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-04",
+            "name": "카드 우대* : 1.0%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+              "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+              "source_text": "카드 우대* : 1.0%\n* 이 예금 신규월로부터 만기일이 속한 달의 전전월 말까지 거래실적 확인 시 적용됩니다.\n- 본인명의 신한은행 통장을 통해 신한카드 [서울시다둥이 행복카드(신용/체크)] 결제 실적이 있는 경우\n※ 신한카드 Point Plan (서울시다둥이 행복카드)"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CARD_ACTIVITY_SATISFIED_CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "1.0"
+              },
+              "required_source": null,
+              "question": "카드 우대* : 1.0% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "FUTURE_INTENT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "카드 우대* : 1.0%",
+                "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "FUTURE_INTENT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "FUTURE_INTENT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-05",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-05",
+            "name": "주거래 우대* : 1.0%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+              "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+              "source_text": "주거래 우대* : 1.0%\n* 이 예금 신규월로부터 만기일이 속한 달의 전전월 말까지 거래실적 확인 시 적용됩니다.\n- 부모급여(복지수당), 영아, 양육, 아동수당 중 1가지를 신한은행 본인명의 계좌로 6개월 이상 수령 시"
+            },
+            "type": "AND",
+            "children": [
+              {
+                "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-05:1",
+                "name": "주거래 우대* : 1.0%",
+                "purpose": "PREFERENTIAL_RATE",
+                "evaluation_phase": "PRE_SUBSCRIPTION",
+                "description": null,
+                "source": {
+                  "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+                  "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+                  "version_date": "2026-08-29",
+                  "page": null,
+                  "section": null,
+                  "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+                  "source_text": "주거래 우대* : 1.0%\n* 이 예금 신규월로부터 만기일이 속한 달의 전전월 말까지 거래실적 확인 시 적용됩니다.\n- 부모급여(복지수당), 영아, 양육, 아동수당 중 1가지를 신한은행 본인명의 계좌로 6개월 이상 수령 시"
+                },
+                "type": "FACT_COMPARE",
+                "fact_type": "CUSTOMER_SALARY_TRANSFER_MONTH_COUNT",
+                "value_path": null,
+                "effective_at": null,
+                "subject_selector": null,
+                "operator": "GTE",
+                "expected": 6,
+                "on_true_status": "SATISFIED",
+                "on_false_status": "UNSATISFIABLE",
+                "on_missing_status": "UNKNOWN",
+                "true_reason_code": "FACT_COMPARISON_MATCH",
+                "false_reason_code": "FACT_COMPARISON_MISMATCH",
+                "missing_reason_code": "REQUIRED_FACT_MISSING",
+                "missing_fact": {
+                  "resolution_strategy": "ASK_USER",
+                  "impact": {
+                    "rate_pp": "1.0"
+                  },
+                  "required_source": null,
+                  "question": "주거래 우대* : 1.0% 조건에 해당하는지 알려주세요.",
+                  "expected_semantic_type": "SELF_REPORTED_FACT",
+                  "action_id": null,
+                  "reward_id": null,
+                  "grounding_terms": [
+                    "주거래 우대* : 1.0%",
+                    "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT"
+                  ]
+                },
+                "action": null,
+                "required_semantic_type": "SELF_REPORTED_FACT",
+                "fact_acceptance_policy": {
+                  "strict_semantic_types": [
+                    "OBSERVED_FACT",
+                    "OBSERVED_EVENT",
+                    "DERIVED_FACT"
+                  ],
+                  "strict_source_types": [
+                    "INSTITUTION_VERIFIED",
+                    "MYDATA_VERIFIED",
+                    "DERIVED"
+                  ],
+                  "provisional_semantic_types": [
+                    "SELF_REPORTED_FACT"
+                  ],
+                  "provisional_source_types": [
+                    "USER_DECLARED"
+                  ],
+                  "allow_provisional": true
+                }
+              },
+              {
+                "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-05:2",
+                "name": "주거래 우대* : 1.0%",
+                "purpose": "PREFERENTIAL_RATE",
+                "evaluation_phase": "PRE_SUBSCRIPTION",
+                "description": null,
+                "source": {
+                  "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+                  "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+                  "version_date": "2026-08-29",
+                  "page": null,
+                  "section": null,
+                  "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+                  "source_text": "주거래 우대* : 1.0%\n* 이 예금 신규월로부터 만기일이 속한 달의 전전월 말까지 거래실적 확인 시 적용됩니다.\n- 부모급여(복지수당), 영아, 양육, 아동수당 중 1가지를 신한은행 본인명의 계좌로 6개월 이상 수령 시"
+                },
+                "type": "FACT_COMPARE",
+                "fact_type": "RULE_INST_KR_000219_1_0002_PREF_05_QUALIFYING_PERIOD_COUNT",
+                "value_path": null,
+                "effective_at": null,
+                "subject_selector": null,
+                "operator": "GTE",
+                "expected": 6,
+                "on_true_status": "SATISFIED",
+                "on_false_status": "UNSATISFIABLE",
+                "on_missing_status": "UNKNOWN",
+                "true_reason_code": "FACT_COMPARISON_MATCH",
+                "false_reason_code": "FACT_COMPARISON_MISMATCH",
+                "missing_reason_code": "REQUIRED_FACT_MISSING",
+                "missing_fact": {
+                  "resolution_strategy": "ASK_USER",
+                  "impact": {
+                    "rate_pp": "1.0"
+                  },
+                  "required_source": null,
+                  "question": "주거래 우대* : 1.0% 조건에 해당하는지 알려주세요.",
+                  "expected_semantic_type": "SELF_REPORTED_FACT",
+                  "action_id": null,
+                  "reward_id": null,
+                  "grounding_terms": [
+                    "주거래 우대* : 1.0%",
+                    "RULE.INST_KR_000219_1_0002_PREF_05.QUALIFYING_PERIOD_COUNT"
+                  ]
+                },
+                "action": null,
+                "required_semantic_type": "SELF_REPORTED_FACT",
+                "fact_acceptance_policy": {
+                  "strict_semantic_types": [
+                    "OBSERVED_FACT",
+                    "OBSERVED_EVENT",
+                    "DERIVED_FACT"
+                  ],
+                  "strict_source_types": [
+                    "INSTITUTION_VERIFIED",
+                    "MYDATA_VERIFIED",
+                    "DERIVED"
+                  ],
+                  "provisional_semantic_types": [
+                    "SELF_REPORTED_FACT"
+                  ],
+                  "provisional_source_types": [
+                    "USER_DECLARED"
+                  ],
+                  "allow_provisional": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-06",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-0002:CANONICAL:INST-KR-000219-1-0002-PREF-06",
+            "name": "첫 거래 우대 : 1.0%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 다둥이 상생 적금",
+              "document_id": "SRC-IS-1F8B66051A59BD70BAFF71F7F3E19B50",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/1f8b66051a59bd70baff71f7f3e19b50",
+              "source_text": "첫 거래 우대 : 1.0%\n- 신한은행 입출금 통장 첫 신규 대상인 경우 또는 입출금 통장 중 거래중지 계좌만을 보유한 경우"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "PRODUCT_HOLDING_SATISFIED_SOURCE_CLAUSE_INST_KR_000219_1",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "1.0"
+              },
+              "required_source": null,
+              "question": "첫 거래 우대 : 1.0% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "첫 거래 우대 : 1.0%",
+                "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000219_1"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "product_id": "INST-KR-000010-1-0001",
+      "product_version": 7,
+      "product_name": "오늘도세이브적금\n네이버 페이",
+      "skipped_empty_clause_ids": [],
+      "skipped_untargeted_clause_ids": [],
+      "linked_clause_ids": [],
+      "raw_clauses": [
+        {
+          "clause_id": "INST-KR-000010-1-0001:v7:INST-KR-000010-1-0001-PREF-02:9387b41265ff",
+          "source_hash": "9387b41265ff4f480c837d9bd2612ef55fa6280bcab5453aaa5b92c6146c9406",
+          "source_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+          "source_metadata": {
+            "rule_id": "INST-KR-000010-1-0001-PREF-02",
+            "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+            "condition": {
+              "predicate": {
+                "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+                "operator": "EQUALS",
+                "expected_value": true,
+                "accepted_value_status": [
+                  "ACTUAL"
+                ],
+                "source_semantics": "SOURCE_CLAUSE_GATE",
+                "source_ref_ids": [
+                  "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+                  }
+                ]
+              },
+              "source_ref_ids": [
+                "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+                }
+              ]
+            },
+            "reward": {
+              "kind": "ADD_RATE",
+              "value": "0.25",
+              "unit": "PERCENTAGE_POINT",
+              "source_ref_ids": [
+                "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+                }
+              ]
+            },
+            "application": {
+              "event": "MATURITY",
+              "source_ref_ids": [
+                "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+                }
+              ],
+              "fact_authority": "BANK_CONSENT_LEDGER",
+              "confirmed_value_status_required": "ACTUAL"
+            },
+            "display": {
+              "summary": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+            },
+            "source_ref_ids": [
+              "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+            ],
+            "structuring_status": "SUPPORTED",
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+              }
+            ],
+            "semantic_domain": "MARKETING_CONSENT",
+            "source_clause_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+          },
+          "requires_official_confirmation": true,
+          "supported_reward": true,
+          "existing_runtime_rule_id": "INST-KR-000010-1-0001:CANONICAL:INST-KR-000010-1-0001-PREF-02"
+        }
+      ],
+      "read_only_typed_rules": [
+        {
+          "rule_id": "INST-KR-000010-1-0001:CANONICAL:INST-KR-000010-1-0001-PREF-02",
+          "condition": {
+            "rule_id": "INST-KR-000010-1-0001:CANONICAL:INST-KR-000010-1-0001-PREF-02",
+            "name": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 오늘도세이브적금\n네이버 페이",
+              "document_id": "SRC-IS-418F4C1EEA554159C14F47883BD3AB17",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/418f4c1eea554159c14f47883bd3ab17",
+              "source_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "MARKETING_CONSENT_SATISFIED_CUSTOMER_CONSENT_FULFILLMENT",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.25"
+              },
+              "required_source": null,
+              "question": "마케팅동의 및 모바일메세지 수신동의 : 0.25% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "FUTURE_INTENT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+                "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "FUTURE_INTENT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "FUTURE_INTENT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

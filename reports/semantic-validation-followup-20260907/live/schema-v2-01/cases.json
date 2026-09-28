@@ -1,0 +1,183 @@
+[
+  {
+    "case_id": "card_contract_threshold",
+    "split": "development",
+    "product_id": "INST-KR-000010-1-C47962C303F",
+    "product_name": "탄탄성공적금",
+    "rule_id": "INST-KR-000010-1-C47962C303F-PREF-02",
+    "title": "신용(체크)카드 결제금액",
+    "source_text": "신용(체크)카드 결제금액\n(1) 조건 : 이 예금 가입월로부터 만기일 전전월말일까지 당행신용(체크)카드 결제금액이 아래의 조건을 충족하는 경우 우대금리를 제공한다.\n적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원\n(2) 우대금리 : 0.20%",
+    "expected_extraction_facts": [
+      "당행 신용 또는 체크카드 결제금액",
+      "가입기간 12개월 ↔ 5,000천원; 24개월 이하 ↔ 10,000천원; 36개월 이하 ↔ 15,000천원 대응 보존",
+      "집계 시작은 가입월, 종료는 만기일 전전월말",
+      "금액 단위 천원을 보존하거나 500만/1000만/1500만원으로 정확히 환산"
+    ],
+    "must_not_infer": [
+      "카드 사용 의향을 금액 충족으로 간주하지 않음",
+      "원문에 없는 기간 구간 하한이나 가입기간을 창작하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-C47962C303F-PREF-02",
+      "title": "신용(체크)카드 결제금액",
+      "condition": {
+        "predicate": {
+          "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_THRESHOLD_SATISFIED",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.20",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ],
+        "fact_authority": "BANK_CARD_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "신용(체크)카드 결제금액"
+      },
+      "source_ref_ids": [
+        "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        }
+      ],
+      "semantic_domain": "CARD_ACTIVITY",
+      "source_clause_text": "신용(체크)카드 결제금액\n(1) 조건 : 이 예금 가입월로부터 만기일 전전월말일까지 당행신용(체크)카드 결제금액이 아래의 조건을 충족하는 경우 우대금리를 제공한다.\n적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원\n(2) 우대금리 : 0.20%"
+    }
+  },
+  {
+    "case_id": "salary_or_merchant",
+    "split": "development",
+    "product_id": "INST-KR-000010-1-C9788B1329E",
+    "product_name": "경남은행 청년미래적금",
+    "rule_id": "INST-KR-000010-1-C9788B1329E-PREF-06",
+    "title": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+    "source_text": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%",
+    "expected_extraction_facts": [
+      "급여입금 OR 가맹점 결제대금 입금",
+      "가입기간의 1/2 이상 실적",
+      "급여: 지정일 전 5영업일부터 후 10영업일 이내 50만원 이상 입금",
+      "가맹점: 비씨/신한/삼성카드사 중 1개 이상"
+    ],
+    "must_not_infer": [
+      "급여 경로의 50만원 조건을 가맹점 경로에 전파하지 않음",
+      "급여 의향 거절만으로 가맹점 경로를 제외하지 않음",
+      "영업일을 달력일로 변환하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-C9788B1329E-PREF-06",
+      "title": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+      "condition": {
+        "predicate": {
+          "fact_key": "CUSTOMER.SALARY_OR_MERCHANT_SETTLEMENT_HALF_TERM_SATISFIED",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.7",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ],
+        "fact_authority": "BANK_TRANSACTION_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우"
+      },
+      "source_ref_ids": [
+        "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        }
+      ],
+      "semantic_domain": "MERCHANT_SETTLEMENT",
+      "source_clause_text": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%"
+    }
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "session_id": "SEARCH-1d6be7128248ab35",
+  "turns_timed": 9,
+  "total_http_ms": 203875,
+  "slowest_ms": 71832,
+  "rows": [
+    {
+      "step": "create_session",
+      "http_ms": 10534,
+      "followup_get_next_ms": 38,
+      "http_status": 201,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "APPLICATION_CAPACITY",
+      "prompt": "개인 명의, 개인사업자 명의, 법인 명의 중 어떤 명의로 가입할 상품을 찾으시나요? 외국인이면 말해주세요."
+    },
+    {
+      "step": "message:APPLICATION_CAPACITY",
+      "http_ms": 14533,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "BIRTH_DATE",
+      "prompt": "가입 가능한 연령대의 상품을 한 번에 확인할 수 있도록 생년월일을 알려주세요.",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:BIRTH_DATE",
+      "http_ms": 16557,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "YOUTH_POLICY_ACCOUNT_HOLDING",
+      "prompt": "청년미래적금이 이미 있거나 청년도약계좌에 중복가입되어 있나요?",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:YOUTH_POLICY_ACCOUNT_HOLDING",
+      "http_ms": 12840,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "SOLDIER_TOMORROW_SAVINGS_ELIGIBILITY",
+      "prompt": "현역병, 상근예비역, 의무경찰, 대체복무요원, 사회복무요원 중 하나에 해당하시나요? 모르거나 확인할 수 없으면 가입 불가로 처리됩니다.",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:SOLDIER_TOMORROW_SAVINGS_ELIGIBILITY",
+      "http_ms": 14244,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "INSTITUTION_SCOPE",
+      "prompt": "은행(1금융권) 상품만 볼까요, 아니면 저축은행이나 증권사 상품도 함께 비교해도 괜찮으신가요?",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:INSTITUTION_SCOPE",
+      "http_ms": 12930,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "COMMON_BENEFIT_WILLINGNESS",
+      "prompt": "더 유리한 혜택을 받을 수 있다면 새 금융기관 거래, 급여계좌 변경, 카드 사용 같은 추가 조건을 활용할 의향이 있으신가요?",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:COMMON_BENEFIT_WILLINGNESS",
+      "http_ms": 15234,
+      "http_status": 200,
+      "next_kind": "PRE_SEARCH_PROFILE",
+      "next_key": "INSTITUTION_PRODUCT_HOLDING_HISTORY",
+      "prompt": "가입 직전 6개월 동안 예금·적금·청약을 보유했던 은행이나 저축은행이 있나요? 있다면 금융기관 이름을 모두 알려주세요. 없었다면 없다고 말씀해 ",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:INSTITUTION_PRODUCT_HOLDING_HISTORY",
+      "http_ms": 71832,
+      "http_status": 200,
+      "next_kind": "PROMOTION_RISK_PREFERENCE",
+      "next_key": null,
+      "prompt": "현재 조건에서 3위 안에 들 수 있는 JB 슈퍼씨드 적금\n네이버 페이은(는) 당첨 결과에 따라 최고금리가 달라지는 확률형 상품이에요. 이런 상품",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "message:PROMOTION_RISK_PREFERENCE",
+      "http_ms": 35171,
+      "http_status": 200,
+      "next_kind": "FINANCIAL_FACT",
+      "next_key": null,
+      "prompt": "(주)국민은행 · KB아이사랑적금의 '공식 가입조건 확인 필요' 조건에 해당하시나요?",
+      "semantic_status": null,
+      "semantic_calls": null,
+      "semantic_pending": null,
+      "ai_interpreted": null,
+      "top_count": 0
+    },
+    {
+      "step": "first_product_condition",
+      "question_kind": "FINANCIAL_FACT",
+      "prompt": "(주)국민은행 · KB아이사랑적금의 '공식 가입조건 확인 필요' 조건에 해당하시나요?"
+    }
+  ]
+}

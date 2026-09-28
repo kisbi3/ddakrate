@@ -686,3 +686,11 @@ recommendation_id
 - 예상이자는 상품 ContributionPolicy를 반영한 deterministic approximation이며 실제 은행의 일수·절사 규칙과 차이가 날 수 있다.
 - **Accepted AI Risk:** 최초 사용자 자연어를 LLM이 Structured Intent로 변환할 때 의미를 잘못 해석할 가능성은 MVP에서 완전히 제거하지 않는다. schema/enum validation, deterministic IntentConflict validation, 원본 utterance↔parsed intent Audit, `Quick Input > LLM inferred value` 우선순위를 유지하며, 이후 Eligibility / Rate / Interest / Ranking은 deterministic code가 수행한다.
 - **Accepted AI Risk:** Result Explanation은 structured reason codes / claims / rule status를 context로 받지만 자연스러운 자유 prose를 허용한다. 설명 문장은 금융판정 Source of Truth가 아니며, Web UI의 금리·이자·상태·추천 reason은 항상 structured backend DTO를 직접 렌더링한다.
+
+## 12. 라이선스
+
+[Apache License 2.0](LICENSE) — Copyright 2026 Jaesung Kim
+
+이 저장소의 코드·문서·테스트는 위 라이선스 따릅니다.
+
+`data/financial_products/normalized/`의 상품 정보는 금융위원회 data.go.kr 공개 API와 각 금융기관이 공개한 약관에서 수집한 것입니다. 코드 라이선스와 달리 해당 데이터의 배포에는 각 원문의 저작권자 권리가 별도로 적용될 수 있습니다.

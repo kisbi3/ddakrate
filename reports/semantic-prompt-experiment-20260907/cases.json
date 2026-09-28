@@ -1,0 +1,840 @@
+[
+  {
+    "case_id": "card_contract_threshold",
+    "split": "development",
+    "product_id": "INST-KR-000010-1-C47962C303F",
+    "product_name": "탄탄성공적금",
+    "rule_id": "INST-KR-000010-1-C47962C303F-PREF-02",
+    "title": "신용(체크)카드 결제금액",
+    "source_text": "신용(체크)카드 결제금액\n(1) 조건 : 이 예금 가입월로부터 만기일 전전월말일까지 당행신용(체크)카드 결제금액이 아래의 조건을 충족하는 경우 우대금리를 제공한다.\n적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원\n(2) 우대금리 : 0.20%",
+    "expected_extraction_facts": [
+      "당행 신용 또는 체크카드 결제금액",
+      "가입기간 12개월 ↔ 5,000천원; 24개월 이하 ↔ 10,000천원; 36개월 이하 ↔ 15,000천원 대응 보존",
+      "집계 시작은 가입월, 종료는 만기일 전전월말",
+      "금액 단위 천원을 보존하거나 500만/1000만/1500만원으로 정확히 환산"
+    ],
+    "must_not_infer": [
+      "카드 사용 의향을 금액 충족으로 간주하지 않음",
+      "원문에 없는 기간 구간 하한이나 가입기간을 창작하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-C47962C303F-PREF-02",
+      "title": "신용(체크)카드 결제금액",
+      "condition": {
+        "predicate": {
+          "fact_key": "CARD_ACTIVITY.CONTRACT_TERM_THRESHOLD_SATISFIED",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.20",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+          }
+        ],
+        "fact_authority": "BANK_CARD_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "신용(체크)카드 결제금액"
+      },
+      "source_ref_ids": [
+        "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-0E7F49F29F732BB1BCD8FD33EFDE0D1A-PREF-02"
+        }
+      ],
+      "semantic_domain": "CARD_ACTIVITY",
+      "source_clause_text": "신용(체크)카드 결제금액\n(1) 조건 : 이 예금 가입월로부터 만기일 전전월말일까지 당행신용(체크)카드 결제금액이 아래의 조건을 충족하는 경우 우대금리를 제공한다.\n적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원\n(2) 우대금리 : 0.20%"
+    }
+  },
+  {
+    "case_id": "salary_or_merchant",
+    "split": "development",
+    "product_id": "INST-KR-000010-1-C9788B1329E",
+    "product_name": "경남은행 청년미래적금",
+    "rule_id": "INST-KR-000010-1-C9788B1329E-PREF-06",
+    "title": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+    "source_text": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%",
+    "expected_extraction_facts": [
+      "급여입금 OR 가맹점 결제대금 입금",
+      "가입기간의 1/2 이상 실적",
+      "급여: 지정일 전 5영업일부터 후 10영업일 이내 50만원 이상 입금",
+      "가맹점: 비씨/신한/삼성카드사 중 1개 이상"
+    ],
+    "must_not_infer": [
+      "급여 경로의 50만원 조건을 가맹점 경로에 전파하지 않음",
+      "급여 의향 거절만으로 가맹점 경로를 제외하지 않음",
+      "영업일을 달력일로 변환하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-C9788B1329E-PREF-06",
+      "title": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+      "condition": {
+        "predicate": {
+          "fact_key": "CUSTOMER.SALARY_OR_MERCHANT_SETTLEMENT_HALF_TERM_SATISFIED",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.7",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+          }
+        ],
+        "fact_authority": "BANK_TRANSACTION_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우"
+      },
+      "source_ref_ids": [
+        "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-83A1B3CB7D237243750A6EDB758C7CCD-PREF-06"
+        }
+      ],
+      "semantic_domain": "MERCHANT_SETTLEMENT",
+      "source_clause_text": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%"
+    }
+  },
+  {
+    "case_id": "first_transaction_scope",
+    "split": "development",
+    "product_id": "INST-KR-000010-1-0005",
+    "product_name": "BNK 위더스WithUs 자유적금",
+    "rule_id": "INST-KR-000010-1-0005-PREF-03",
+    "title": "신규 고객",
+    "source_text": "신규 고객\n가. 우대금리 : 1.00%\n나. 제공조건 : 가입일 기준 직전 1년간 경남은행 예ᆞ적금(주택청약 포함) 미 보유 고객",
+    "expected_extraction_facts": [
+      "가입일 기준 직전 1년",
+      "경남은행 예적금 미보유",
+      "주택청약 포함"
+    ],
+    "must_not_infer": [
+      "은행 거래 전체가 없음으로 확대하지 않음",
+      "현재 보유 여부만으로 직전 1년 이력을 확정하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-0005-PREF-03",
+      "title": "신규 고객",
+      "condition": {
+        "predicate": {
+          "fact_key": "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000010_1",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "1.00",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+          }
+        ],
+        "fact_authority": "BANK_PRODUCT_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "신규 고객"
+      },
+      "source_ref_ids": [
+        "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-39114B5CA7C0030D2785B2BD312F9F27-PREF-03"
+        }
+      ],
+      "semantic_domain": "PRODUCT_HOLDING",
+      "source_clause_text": "신규 고객\n가. 우대금리 : 1.00%\n나. 제공조건 : 가입일 기준 직전 1년간 경남은행 예ᆞ적금(주택청약 포함) 미 보유 고객"
+    }
+  },
+  {
+    "case_id": "child_tier",
+    "split": "development",
+    "product_id": "INST-KR-000219-1-0002",
+    "product_name": "신한 다둥이 상생 적금",
+    "rule_id": "INST-KR-000219-1-0002-PREF-03",
+    "title": "다둥이 상생 우대*",
+    "source_text": "다둥이 상생 우대*\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 다자녀에 해당하는 증빙서류를 제출하여 승인 완료 된 경우 (2007년 이후 출생 미성년 자녀 기준)\n2자녀 (2명) : 1.5%, 3자녀 (3명 이상) : 2.5%",
+    "expected_extraction_facts": [
+      "자녀 2명 1.5%, 자녀 3명 이상 2.5% 단계",
+      "2007년 이후 출생 미성년 자녀 범위",
+      "신규일부터 만기 전일까지 증빙서류 제출 승인 완료"
+    ],
+    "must_not_infer": [
+      "현재 연도에서 임의 만18세 조건으로 치환하지 않음",
+      "자녀 명수만으로 은행 승인 충족을 확정하지 않음",
+      "두 보상 단계를 더하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000219-1-0002-PREF-03",
+      "title": "다둥이 상생 우대*",
+      "condition": {
+        "predicate": {
+          "fact_key": "HOUSEHOLD.QUALIFYING_MINOR_CHILD_COUNT",
+          "operator": "EXISTS",
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_ref_ids": [
+            "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "TIERED_RATE",
+        "selector_fact_key": "HOUSEHOLD.QUALIFYING_MINOR_CHILD_COUNT",
+        "tiers": [
+          {
+            "condition": {
+              "predicate": {
+                "fact_key": "HOUSEHOLD.QUALIFYING_MINOR_CHILD_COUNT",
+                "operator": "EQUALS",
+                "accepted_value_status": [
+                  "ACTUAL"
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                  }
+                ],
+                "expected_value": 2,
+                "unit": "COUNT"
+              },
+              "source_ref_ids": [
+                "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                }
+              ]
+            },
+            "rate_value": "1.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_text": "2자녀 (2명) : 1.5%",
+            "source_ref_ids": [
+              "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+              }
+            ]
+          },
+          {
+            "condition": {
+              "predicate": {
+                "fact_key": "HOUSEHOLD.QUALIFYING_MINOR_CHILD_COUNT",
+                "operator": "GTE",
+                "accepted_value_status": [
+                  "ACTUAL"
+                ],
+                "source_ref_ids": [
+                  "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                  }
+                ],
+                "expected_value": 3,
+                "unit": "COUNT"
+              },
+              "source_ref_ids": [
+                "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+                }
+              ]
+            },
+            "rate_value": "2.5",
+            "unit": "PERCENTAGE_POINT",
+            "source_text": "3자녀 (3명 이상) : 2.5%",
+            "source_ref_ids": [
+              "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+              }
+            ]
+          }
+        ],
+        "selection": "HIGHEST_MATCHING_SINGLE_TIER",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+          }
+        ],
+        "cap_value": "2.5"
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+          }
+        ],
+        "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "다둥이 상생 우대*"
+      },
+      "source_ref_ids": [
+        "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-03"
+        }
+      ],
+      "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+      "source_clause_text": "다둥이 상생 우대*\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 다자녀에 해당하는 증빙서류를 제출하여 승인 완료 된 경우 (2007년 이후 출생 미성년 자녀 기준)\n2자녀 (2명) : 1.5%, 3자녀 (3명 이상) : 2.5%"
+    }
+  },
+  {
+    "case_id": "life_event_or",
+    "split": "development",
+    "product_id": "INST-KR-000219-1-0002",
+    "product_name": "신한 다둥이 상생 적금",
+    "rule_id": "INST-KR-000219-1-0002-PREF-02",
+    "title": "저출생상생 우대* : 1.0%",
+    "source_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우",
+    "expected_extraction_facts": [
+      "결혼 OR 임신 OR 난임 OR 출산 중 해당 증빙",
+      "신규일부터 만기 전일까지 승인 완료 필요"
+    ],
+    "must_not_infer": [
+      "임신 아님 또는 자녀 없음만으로 전체 경로 제외하지 않음",
+      "결혼/임신/난임/출산을 자녀 존재 한 사실로 접지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000219-1-0002-PREF-02",
+      "title": "저출생상생 우대* : 1.0%",
+      "condition": {
+        "predicate": {
+          "fact_key": "DEMOGRAPHIC_OR_LIFE_EVENT.AGE_YEARS.SOURCE_CLAUSE_INST_KR_000219_1",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "1.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+          }
+        ],
+        "fact_authority": "DOCUMENT_OR_OFFICIAL_RECORD",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "저출생상생 우대* : 1.0%"
+      },
+      "source_ref_ids": [
+        "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-1F8B66051A59BD70BAFF71F7F3E19B50-PREF-02"
+        }
+      ],
+      "semantic_domain": "DEMOGRAPHIC_OR_LIFE_EVENT",
+      "source_clause_text": "저출생상생 우대* : 1.0%\n* 이 예금 신규일부터 만기 전일까지 승인 완료되어야 적용됩니다.\n- 결혼, 임신, 난임, 출산 중 해당하는 증빙서류를 제출하여 승인 완료 된 경우"
+    }
+  },
+  {
+    "case_id": "marketing_and",
+    "split": "holdout",
+    "product_id": "INST-KR-000010-1-0001",
+    "product_name": "오늘도세이브적금\n네이버 페이",
+    "rule_id": "INST-KR-000010-1-0001-PREF-02",
+    "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+    "source_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+    "expected_extraction_facts": [
+      "마케팅동의 AND 모바일메세지 수신동의"
+    ],
+    "must_not_infer": [
+      "모바일메세지 수신동의를 모든 채널 전체 동의로 확대하지 않음",
+      "원문 없는 유지기간이나 은행 승인을 생성하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000010-1-0001-PREF-02",
+      "title": "마케팅동의 및 모바일메세지 수신동의 : 0.25%",
+      "condition": {
+        "predicate": {
+          "fact_key": "MARKETING_CONSENT.SATISFIED.CUSTOMER_CONSENT_FULFILLMENT",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "0.25",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+          }
+        ],
+        "fact_authority": "BANK_CONSENT_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+      },
+      "source_ref_ids": [
+        "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+      ],
+      "structuring_status": "SUPPORTED",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-418F4C1EEA554159C14F47883BD3AB17-PREF-02"
+        }
+      ],
+      "semantic_domain": "MARKETING_CONSENT",
+      "source_clause_text": "마케팅동의 및 모바일메세지 수신동의 : 0.25%"
+    }
+  },
+  {
+    "case_id": "independent_additive",
+    "split": "holdout",
+    "product_id": "INST-KR-000223-1-0003",
+    "product_name": "IBK청년미래적금",
+    "rule_id": "INST-KR-000223-1-0003-PREF-04-SALARY",
+    "title": "급여이체 : 연 1.0% - 급여이체 실적(월 50만원 이상)이 24개월 이상",
+    "source_text": "주거래 우대이자율 : 다음 중 1개 이상 충족하는 경우 각 항목별로 우대이자율 제공\n• 급여이체 : 연 1.0%\n- IBK기업은행 입출식 계좌로 급여이체 실적(월 50만원 이상)이 24개월 이상 있는 경우\n• 카드이용 : 연 0.5%\n- IBK기업은행 신용(체크)카드 이용실적 월평균 30만원* 이상 및 만기시점까지 카드를 보유한 경우\n* 계산방식 = 계약기간 중 총 카드이용실적 ÷ 36개월\n• IBK 주택청약저축 보유 : 연 0.5%\n- IBK기업은행 주택청약종합저축 또는 청년 주택드림 청약통장을 IBK청년미래적금 만기시점에 보유한 경우\n• 중소기업 재직자 우대 : 연 0.3%\n- IBK청년미래적금 가입시점 가입유형이 중소기업 재직자(우대) 또는 중소기업 신규취업자(우대)인 경우\n• 연계가입고객 또는 최초고객 우대 : 연 0.5%\n- 1 IBK청년미래적금으로 연계가입을 위해 IBK청년도약계좌를 특별중도해지한 경우\n- 2 가입시점 최초고객에 해당되는 경우\n정부기여금",
+    "expected_extraction_facts": [
+      "각 항목별로 우대이자율 제공하는 독립 항목들 보존",
+      "급여: IBK 입출식 계좌 월50만원 이상 24개월 이상",
+      "카드: 월평균30만원 이상 AND 만기까지 보유; 총실적/36개월",
+      "청약: 지정 상품 만기시점 보유",
+      "중소기업 재직: 가입시점 지정 가입유형",
+      "연계가입 OR 최초고객 경로"
+    ],
+    "must_not_infer": [
+      "다음 중1개이상이라는 표현을 보상 전체 최댓값 티어로 바꾸지 않음",
+      "월평균 금액을 매월 최소금액으로 바꾸지 않음",
+      "정의가 없는 최초고객 기준을 창작하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000223-1-0003-PREF-04-SALARY",
+      "title": "급여이체 : 연 1.0% - 급여이체 실적(월 50만원 이상)이 24개월 이상",
+      "condition": {
+        "operator": "AND",
+        "children": [
+          {
+            "predicate": {
+              "fact_key": "INCOME_CREDIT.AVERAGE_AMOUNT.SOURCE_COMPONENT_INST_KR_00022",
+              "operator": "EQUALS",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+                }
+              ],
+              "expected_value": true
+            },
+            "source_ref_ids": [
+              "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+              }
+            ]
+          },
+          {
+            "predicate": {
+              "fact_key": "RULE.INST_KR_000223_1_0003_PREF_04_SALARY.QUALIFYING_PERIOD_COUNT",
+              "operator": "GTE",
+              "expected_value": 24,
+              "unit": "MONTH",
+              "accepted_value_status": [
+                "ACTUAL"
+              ],
+              "source_ref_ids": [
+                "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+                }
+              ]
+            },
+            "source_ref_ids": [
+              "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+            ],
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+              }
+            ]
+          }
+        ],
+        "source_ref_ids": [
+          "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "ADD_RATE",
+        "value": "1.0",
+        "unit": "PERCENTAGE_POINT",
+        "source_ref_ids": [
+          "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+          }
+        ],
+        "fact_authority": "BANK_TRANSACTION_LEDGER",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "급여이체 : 연 1.0% - 급여이체 실적(월 50만원 이상)이 24개월 이상",
+        "reward_text": "+1.0%p"
+      },
+      "source_ref_ids": [
+        "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+      ],
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-52F68DCDEE662CCAE02284506258A58D-PREF-04"
+        }
+      ],
+      "structuring_status": "SUPPORTED",
+      "source_component_text": "급여이체 : 연 1.0% - 급여이체 실적(월 50만원 이상)이 24개월 이상",
+      "semantic_domain": "INCOME_CREDIT",
+      "source_clause_text": "주거래 우대이자율 : 다음 중 1개 이상 충족하는 경우 각 항목별로 우대이자율 제공\n• 급여이체 : 연 1.0%\n- IBK기업은행 입출식 계좌로 급여이체 실적(월 50만원 이상)이 24개월 이상 있는 경우\n• 카드이용 : 연 0.5%\n- IBK기업은행 신용(체크)카드 이용실적 월평균 30만원* 이상 및 만기시점까지 카드를 보유한 경우\n* 계산방식 = 계약기간 중 총 카드이용실적 ÷ 36개월\n• IBK 주택청약저축 보유 : 연 0.5%\n- IBK기업은행 주택청약종합저축 또는 청년 주택드림 청약통장을 IBK청년미래적금 만기시점에 보유한 경우\n• 중소기업 재직자 우대 : 연 0.3%\n- IBK청년미래적금 가입시점 가입유형이 중소기업 재직자(우대) 또는 중소기업 신규취업자(우대)인 경우\n• 연계가입고객 또는 최초고객 우대 : 연 0.5%\n- 1 IBK청년미래적금으로 연계가입을 위해 IBK청년도약계좌를 특별중도해지한 경우\n- 2 가입시점 최초고객에 해당되는 경우\n정부기여금"
+    }
+  },
+  {
+    "case_id": "underspecified_event",
+    "split": "holdout",
+    "product_id": "INST-KR-000796-1-C1DE74E2C42",
+    "product_name": "전남청년미래적금",
+    "rule_id": "INST-KR-000796-1-C1DE74E2C42-PREF-05",
+    "title": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷홈페이지 등에 게시합니다.",
+    "source_text": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷홈페이지 등에 게시합니다.",
+    "expected_extraction_facts": [
+      "이벤트 조건 부합 OR 우대금리쿠폰 발급 및 쿠폰 조건 충족",
+      "구체 이벤트/쿠폰 조건은 원문에 없으며 홈페이지 게시 참조"
+    ],
+    "must_not_infer": [
+      "없는 금액/기간/대상/금리 수치를 생성하지 않음",
+      "조건 미기재를 자동 충족 또는 불충족으로 간주하지 않음"
+    ],
+    "raw_rule": {
+      "rule_id": "INST-KR-000796-1-C1DE74E2C42-PREF-05",
+      "title": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷홈페이지 등에 게시합니다.",
+      "condition": {
+        "predicate": {
+          "fact_key": "PROMOTION_COUPON.SATISFIED.SOURCE_CLAUSE_INST_KR_000796_1",
+          "operator": "EQUALS",
+          "expected_value": true,
+          "accepted_value_status": [
+            "ACTUAL"
+          ],
+          "source_semantics": "SOURCE_CLAUSE_GATE",
+          "source_ref_ids": [
+            "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+          ],
+          "evidence": [
+            {
+              "source_ref_id": "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+            }
+          ]
+        },
+        "source_ref_ids": [
+          "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+          }
+        ]
+      },
+      "reward": {
+        "kind": "COUPON_VARIABLE",
+        "value_source": "EXTERNAL_COUPON_DEFINITION",
+        "source_ref_ids": [
+          "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+          }
+        ]
+      },
+      "application": {
+        "event": "MATURITY",
+        "source_ref_ids": [
+          "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+        ],
+        "evidence": [
+          {
+            "source_ref_id": "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+          }
+        ],
+        "fact_authority": "BANK_OFFICIAL_RECORD",
+        "confirmed_value_status_required": "ACTUAL"
+      },
+      "display": {
+        "summary": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷홈페이지 등에 게시합니다."
+      },
+      "source_ref_ids": [
+        "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+      ],
+      "structuring_status": "REQUIRES_EXTERNAL_DEFINITION",
+      "evidence": [
+        {
+          "source_ref_id": "EVD-IS-70C6A445E58893ABF50ED2189032678C-PREF-05"
+        }
+      ],
+      "semantic_domain": "PROMOTION_COUPON",
+      "source_clause_text": "광주은행에서 실시하는 이벤트 조건에 부합하거나 우대금리쿠폰을 발급 받아 쿠폰 조건을 충족한 경우 추가 우대금리를 제공하며, 이벤트 또는 쿠폰 발급 시행 시 해당 내용을 인터넷홈페이지 등에 게시합니다."
+    }
+  }
+]
