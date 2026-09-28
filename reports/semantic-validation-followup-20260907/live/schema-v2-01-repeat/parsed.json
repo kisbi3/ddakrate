@@ -1,0 +1,390 @@
+{
+  "clauses": [
+    {
+      "clause_id": "INST-KR-000010-1-C47962C303F:v8:INST-KR-000010-1-C47962C303F-PREF-02:c5d40b70ddfc",
+      "source_hash": "c5d40b70ddfcb64646ff2d6920418477bfddaa863e86c4a72525a1faf988b978",
+      "source_quote": "신용(체크)카드 결제금액\n(1) 조건 : 이 예금 가입월로부터 만기일 전전월말일까지 당행신용(체크)카드 결제금액이 아래의 조건을 충족하는 경우 우대금리를 제공한다.\n적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원\n(2) 우대금리 : 0.20%",
+      "expression": {
+        "op": "ANY",
+        "source_quote": "적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원",
+        "children": [
+          {
+            "op": "ALL",
+            "source_quote": "적금가입기간 : 12개월, 결제금액 : 5,000천원",
+            "children": [
+              {
+                "op": "PREDICATE",
+                "source_quote": "적금가입기간 : 12개월",
+                "children": [],
+                "variable": null,
+                "comparator": "EQ",
+                "expected": 12,
+                "child_filter": null,
+                "kind": "OTHER",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_PRODUCT",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "PERIOD",
+                "expected_literal": "12개월",
+                "expected_unit": "MONTH",
+                "period": null,
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              },
+              {
+                "op": "PREDICATE",
+                "source_quote": "당행신용(체크)카드 결제금액",
+                "children": [],
+                "variable": null,
+                "comparator": "GTE",
+                "expected": null,
+                "child_filter": null,
+                "kind": "CARD_PAYMENT",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_INSTITUTION",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "AMOUNT",
+                "expected_literal": "5,000천원",
+                "expected_unit": "CHEON_WON",
+                "period": {
+                  "length": null,
+                  "unit": null,
+                  "basis": "MATURITY_PREV_PREV_MONTH_END",
+                  "start_quote": "이 예금 가입월로부터",
+                  "end_quote": "만기일 전전월말일까지",
+                  "before_offset": null,
+                  "after_offset": null,
+                  "term_ratio": null,
+                  "inclusive_start": null,
+                  "inclusive_end": null
+                },
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              }
+            ],
+            "variable": null,
+            "comparator": null,
+            "expected": null,
+            "child_filter": null,
+            "kind": null,
+            "subject": null,
+            "scope": null,
+            "metric": null,
+            "expected_literal": null,
+            "expected_unit": null,
+            "period": null,
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "ALL",
+            "source_quote": "적금가입기간 : 24개월 이하, 결제금액 : 10,000천원",
+            "children": [
+              {
+                "op": "PREDICATE",
+                "source_quote": "적금가입기간 : 24개월 이하",
+                "children": [],
+                "variable": null,
+                "comparator": "LTE",
+                "expected": 24,
+                "child_filter": null,
+                "kind": "OTHER",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_PRODUCT",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "PERIOD",
+                "expected_literal": "24개월 이하",
+                "expected_unit": "MONTH",
+                "period": null,
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              },
+              {
+                "op": "PREDICATE",
+                "source_quote": "당행신용(체크)카드 결제금액",
+                "children": [],
+                "variable": null,
+                "comparator": "GTE",
+                "expected": null,
+                "child_filter": null,
+                "kind": "CARD_PAYMENT",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_INSTITUTION",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "AMOUNT",
+                "expected_literal": "10,000천원",
+                "expected_unit": "CHEON_WON",
+                "period": {
+                  "length": null,
+                  "unit": null,
+                  "basis": "MATURITY_PREV_PREV_MONTH_END",
+                  "start_quote": "이 예금 가입월로부터",
+                  "end_quote": "만기일 전전월말일까지",
+                  "before_offset": null,
+                  "after_offset": null,
+                  "term_ratio": null,
+                  "inclusive_start": null,
+                  "inclusive_end": null
+                },
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              }
+            ],
+            "variable": null,
+            "comparator": null,
+            "expected": null,
+            "child_filter": null,
+            "kind": null,
+            "subject": null,
+            "scope": null,
+            "metric": null,
+            "expected_literal": null,
+            "expected_unit": null,
+            "period": null,
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "ALL",
+            "source_quote": "적금가입기간 : 36개월 이하, 결제금액 : 15,000천원",
+            "children": [
+              {
+                "op": "PREDICATE",
+                "source_quote": "적금가입기간 : 36개월 이하",
+                "children": [],
+                "variable": null,
+                "comparator": "LTE",
+                "expected": 36,
+                "child_filter": null,
+                "kind": "OTHER",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_PRODUCT",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "PERIOD",
+                "expected_literal": "36개월 이하",
+                "expected_unit": "MONTH",
+                "period": null,
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              },
+              {
+                "op": "PREDICATE",
+                "source_quote": "당행신용(체크)카드 결제금액",
+                "children": [],
+                "variable": null,
+                "comparator": "GTE",
+                "expected": null,
+                "child_filter": null,
+                "kind": "CARD_PAYMENT",
+                "subject": "SELF",
+                "scope": {
+                  "institution": "THIS_INSTITUTION",
+                  "product_kind": null,
+                  "account_or_product": null,
+                  "networks": []
+                },
+                "metric": "AMOUNT",
+                "expected_literal": "15,000천원",
+                "expected_unit": "CHEON_WON",
+                "period": {
+                  "length": null,
+                  "unit": null,
+                  "basis": "MATURITY_PREV_PREV_MONTH_END",
+                  "start_quote": "이 예금 가입월로부터",
+                  "end_quote": "만기일 전전월말일까지",
+                  "before_offset": null,
+                  "after_offset": null,
+                  "term_ratio": null,
+                  "inclusive_start": null,
+                  "inclusive_end": null
+                },
+                "existing_rule_id": null,
+                "required_facts": [],
+                "official_confirmation_required": null,
+                "official_confirmation_basis": null
+              }
+            ],
+            "variable": null,
+            "comparator": null,
+            "expected": null,
+            "child_filter": null,
+            "kind": null,
+            "subject": null,
+            "scope": null,
+            "metric": null,
+            "expected_literal": null,
+            "expected_unit": null,
+            "period": null,
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          }
+        ],
+        "variable": null,
+        "comparator": null,
+        "expected": null,
+        "child_filter": null,
+        "kind": null,
+        "subject": null,
+        "scope": null,
+        "metric": null,
+        "expected_literal": null,
+        "expected_unit": null,
+        "period": null,
+        "existing_rule_id": "INST-KR-000010-1-C47962C303F:CANONICAL:INST-KR-000010-1-C47962C303F-PREF-02",
+        "required_facts": [],
+        "official_confirmation_required": null,
+        "official_confirmation_basis": null
+      },
+      "unresolved_reason": null,
+      "relations": [
+        {
+          "relation": "TIER_MAX",
+          "rule_ids": [
+            "INST-KR-000010-1-C47962C303F:CANONICAL:INST-KR-000010-1-C47962C303F-PREF-02"
+          ],
+          "source_quote": "적금가입기간 : 12개월, 결제금액 : 5,000천원\n적금가입기간 : 24개월 이하, 결제금액 : 10,000천원\n적금가입기간 : 36개월 이하, 결제금액 : 15,000천원"
+        }
+      ]
+    },
+    {
+      "clause_id": "INST-KR-000010-1-C9788B1329E:v8:INST-KR-000010-1-C9788B1329E-PREF-06:1c3323e3cd34",
+      "source_hash": "1c3323e3cd348ab4f2f9eafbc0745c348e872f7a29f10de323113afce9272994",
+      "source_quote": "급여(가맹점 결제대금) 입금 : 이 적금 가입기간 중 가입기간의 1/2이상 급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우\n* 급여입금 : 급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우\n** 가맹점 결제대금 입금 : 비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우 : 0.7%",
+      "expression": {
+        "op": "ANY",
+        "source_quote": "급여입금* 또는 가맹점 결제대금** 입금 실적을 보유하는 경우",
+        "children": [
+          {
+            "op": "PREDICATE",
+            "source_quote": "급여지정일자 전 5영업일부터 급여지정일자 후 10영업일 이내, 50만원 이상 입금거래가 있는 경우",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": null,
+            "child_filter": null,
+            "kind": "SALARY_DEPOSIT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "UNSPECIFIED",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": []
+            },
+            "metric": "AMOUNT",
+            "expected_literal": "50만원",
+            "expected_unit": "MAN_WON",
+            "period": {
+              "length": null,
+              "unit": "BUSINESS_DAY",
+              "basis": "SALARY_DESIGNATED_DATE",
+              "start_quote": "급여지정일자 전 5영업일부터",
+              "end_quote": "급여지정일자 후 10영업일 이내",
+              "before_offset": 5,
+              "after_offset": 10,
+              "term_ratio": "1/2",
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "PREDICATE",
+            "source_quote": "비씨, 신한, 삼성카드사 중 1개 이상의 가맹점 결제 대금이 입금되는 경우",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": 1,
+            "child_filter": null,
+            "kind": "MERCHANT_SETTLEMENT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "CARD_NETWORK",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": [
+                "비씨",
+                "신한",
+                "삼성카드사"
+              ]
+            },
+            "metric": "COUNT",
+            "expected_literal": "1개 이상",
+            "expected_unit": "COUNT",
+            "period": {
+              "length": null,
+              "unit": null,
+              "basis": "TERM_RATIO",
+              "start_quote": "이 적금 가입기간 중 가입기간의 1/2이상",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": "1/2",
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          }
+        ],
+        "variable": null,
+        "comparator": null,
+        "expected": null,
+        "child_filter": null,
+        "kind": null,
+        "subject": null,
+        "scope": null,
+        "metric": null,
+        "expected_literal": null,
+        "expected_unit": null,
+        "period": null,
+        "existing_rule_id": "INST-KR-000010-1-C9788B1329E:CANONICAL:INST-KR-000010-1-C9788B1329E-PREF-06",
+        "required_facts": [],
+        "official_confirmation_required": null,
+        "official_confirmation_basis": null
+      },
+      "unresolved_reason": null,
+      "relations": []
+    }
+  ]
+}

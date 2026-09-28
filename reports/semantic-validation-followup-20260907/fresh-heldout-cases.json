@@ -1,0 +1,42 @@
+[
+  {
+    "case_id": "heldout_checkcard_holding_and_payment",
+    "split": "fresh_holdout",
+    "selection_note": "Selected and expectations written before follow-up model outputs; verified packet.clauses compiler route.",
+    "product_id": "INST-KR-000046-1-C62E733F206",
+    "product_name": "iM장병내일준비적금",
+    "rule_id": "INST-KR-000046-1-C62E733F206-PREF-03",
+    "source_text": "다음의 두 가지 요건을 모두 충족한 고객\n1 만기일에 당행 체크카드 보유 (신용카드제외)\n2 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%",
+    "expected_extraction_facts": [
+      "만기일의 당행 체크카드 보유 AND 가입일부터 만기 전일까지의 체크카드 결제 실적",
+      "신용카드는 보유 조건에서 제외",
+      "결제계좌는 당행 입출금이 자유로운 예금",
+      "당행 체크카드 종류는 제한 없음",
+      "승인 취소 건은 결제 실적에서 제외"
+    ],
+    "must_not_infer": [
+      "보유와 결제를 OR로 연결하지 않음",
+      "원문에 없는 결제 금액 또는 횟수 임계값을 창작하지 않음",
+      "만기일의 보유 기준과 만기 전일까지의 결제 집계 기간을 하나로 합치지 않음"
+    ]
+  },
+  {
+    "case_id": "heldout_salary_or_merchant_18months",
+    "split": "fresh_holdout",
+    "selection_note": "Selected and expectations written before follow-up model outputs; verified packet.clauses compiler route.",
+    "product_id": "INST-KR-000219-1-C5427E389F1",
+    "product_name": "신한 청년미래적금",
+    "rule_id": "INST-KR-000219-1-C5427E389F1-PREF-04",
+    "source_text": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%",
+    "expected_extraction_facts": [
+      "신규 후 본인명의 신한은행 입출금통장으로 입금",
+      "(급여 건당 50만원 이상 AND 18개월 이상 입금) OR (신한카드 가맹점 매출대금 AND 18개월 이상 입금)",
+      "18개월은 원문에 있는 기간; 가입기간의 1/2로 바꾸지 않음"
+    ],
+    "must_not_infer": [
+      "급여 건당 50만원 기준을 가맹점 경로에 전파하지 않음",
+      "원문에 없는 지정일 전후 영업일 구간을 이전 사례에서 가져오지 않음",
+      "원문에 없는 월 1회 집계 또는 연속 18개월 조건을 만들지 않음"
+    ]
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "clause_id": "INST-KR-000046-1-C62E733F206:v7:INST-KR-000046-1-C62E733F206-PREF-03:d9780c979acf",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "ALL",
+        "accepted_op": "ALL",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[0]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "PREDICATE",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[1]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "PREDICATE",
+        "issues": [],
+        "changed_fields": {}
+      }
+    ]
+  },
+  {
+    "clause_id": "INST-KR-000219-1-C5427E389F1:v8:INST-KR-000219-1-C5427E389F1-PREF-04:70ffa15ed93a",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "ANY",
+        "accepted_op": "ANY",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[0]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "GROUNDING_REJECTED",
+          "POST_NORMALIZATION_GROUNDING_REJECTED",
+          "PERIOD_DROPPED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "PREDICATE",
+            "accepted": "UNKNOWN"
+          },
+          "comparator": {
+            "raw": "GTE",
+            "accepted": null
+          },
+          "kind": {
+            "raw": "SALARY_DEPOSIT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "SELF",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": "THIS_INSTITUTION",
+              "product_kind": null,
+              "account_or_product": "본인명의 신한은행 입출금통장",
+              "networks": []
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "AMOUNT",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "50만원",
+            "accepted": null
+          },
+          "expected_unit": {
+            "raw": "MAN_WON",
+            "accepted": null
+          },
+          "period": {
+            "raw": {
+              "length": 18,
+              "unit": "MONTH",
+              "basis": "UNSPECIFIED",
+              "start_quote": "이 상품 신규 후",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "accepted": null
+          }
+        }
+      },
+      {
+        "path": "expression.children[1]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "PREDICATE",
+        "issues": [],
+        "changed_fields": {}
+      }
+    ]
+  }
+]

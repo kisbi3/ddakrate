@@ -1,0 +1,526 @@
+[
+  {
+    "clause_id": "INST-KR-000010-1-C47962C303F:v8:INST-KR-000010-1-C47962C303F-PREF-02:c5d40b70ddfc",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "ALL",
+        "accepted_op": "ALL",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[0]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "STRICT_RAW_SCHEMA_INVALID",
+          "POST_NORMALIZATION_SCHEMA_INVALID",
+          "PERIOD_DROPPED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "schema_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "scope",
+              "institution"
+            ],
+            "msg": "Input should be 'THIS_INSTITUTION', 'THIS_PRODUCT', 'PRODUCT_KIND', 'ACCOUNT', 'CARD_NETWORK' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "expected_literal"
+            ],
+            "msg": "String should have at most 80 characters"
+          },
+          {
+            "loc": [
+              "expected_unit"
+            ],
+            "msg": "Input should be 'KRW', 'CHEON_WON', 'MAN_WON', 'COUNT', 'MONTH', 'YEAR', 'DAY', 'BUSINESS_DAY', 'PERCENT', 'PERCENTAGE_POINT' or 'TERM_RATIO'"
+          },
+          {
+            "loc": [
+              "period",
+              "basis"
+            ],
+            "msg": "Input should be 'SUBSCRIPTION_MONTH', 'MATURITY_PREV_PREV_MONTH_END', 'SALARY_DESIGNATED_DATE', 'TERM_RATIO', 'AS_OF' or 'UNSPECIFIED'"
+          }
+        ],
+        "normalized_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "expected_literal"
+            ],
+            "msg": "String should have at most 80 characters"
+          },
+          {
+            "loc": [
+              "expected_unit"
+            ],
+            "msg": "Input should be 'KRW', 'CHEON_WON', 'MAN_WON', 'COUNT', 'MONTH', 'YEAR', 'DAY', 'BUSINESS_DAY', 'PERCENT', 'PERCENTAGE_POINT' or 'TERM_RATIO'"
+          }
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "PREDICATE",
+            "accepted": "UNKNOWN"
+          },
+          "variable": {
+            "raw": "CARD_ACTIVITY.CONTRACT_TERM_THRESHOLD_SATISFIED",
+            "accepted": null
+          },
+          "comparator": {
+            "raw": "EQUALS",
+            "accepted": null
+          },
+          "expected": {
+            "raw": true,
+            "accepted": null
+          },
+          "kind": {
+            "raw": "CARD_PAYMENT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "당행신용(체크)카드 결제금액",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": "당행",
+              "product_kind": null,
+              "account_or_product": "이 예금",
+              "networks": []
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "결제금액",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "적금가입기간 : 12개월, 결제금액 : 5,000천원; 적금가입기간 : 24개월 이하, 결제금액 : 10,000천원; 적금가입기간 : 36개월 이하, 결제금액 : 15,000천원",
+            "accepted": null
+          },
+          "expected_unit": {
+            "raw": "천원",
+            "accepted": null
+          },
+          "period": {
+            "raw": {
+              "length": null,
+              "unit": null,
+              "basis": "이 예금 가입월부터 만기일 전전월말일까지",
+              "start_quote": "이 예금 가입월",
+              "end_quote": "만기일 전전월말일까지",
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": true
+            },
+            "accepted": null
+          },
+          "existing_rule_id": {
+            "raw": "INST-KR-000010-1-C47962C303F:CANONICAL:INST-KR-000010-1-C47962C303F-PREF-02",
+            "accepted": null
+          },
+          "required_facts": {
+            "raw": [
+              "CARD_ACTIVITY.CONTRACT_TERM_THRESHOLD_SATISFIED"
+            ],
+            "accepted": []
+          },
+          "official_confirmation_required": {
+            "raw": false,
+            "accepted": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "clause_id": "INST-KR-000010-1-C9788B1329E:v8:INST-KR-000010-1-C9788B1329E-PREF-06:1c3323e3cd34",
+    "clause_issues": [],
+    "nodes": [
+      {
+        "path": "expression",
+        "raw_op": "ANY",
+        "accepted_op": "ANY",
+        "issues": [],
+        "changed_fields": {}
+      },
+      {
+        "path": "expression.children[0]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "STRICT_RAW_SCHEMA_INVALID",
+          "POST_NORMALIZATION_SCHEMA_INVALID",
+          "PERIOD_DROPPED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "schema_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "scope",
+              "institution"
+            ],
+            "msg": "Input should be 'THIS_INSTITUTION', 'THIS_PRODUCT', 'PRODUCT_KIND', 'ACCOUNT', 'CARD_NETWORK' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "expected_unit"
+            ],
+            "msg": "Input should be 'KRW', 'CHEON_WON', 'MAN_WON', 'COUNT', 'MONTH', 'YEAR', 'DAY', 'BUSINESS_DAY', 'PERCENT', 'PERCENTAGE_POINT' or 'TERM_RATIO'"
+          },
+          {
+            "loc": [
+              "period",
+              "basis"
+            ],
+            "msg": "Input should be 'SUBSCRIPTION_MONTH', 'MATURITY_PREV_PREV_MONTH_END', 'SALARY_DESIGNATED_DATE', 'TERM_RATIO', 'AS_OF' or 'UNSPECIFIED'"
+          }
+        ],
+        "normalized_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "expected_unit"
+            ],
+            "msg": "Input should be 'KRW', 'CHEON_WON', 'MAN_WON', 'COUNT', 'MONTH', 'YEAR', 'DAY', 'BUSINESS_DAY', 'PERCENT', 'PERCENTAGE_POINT' or 'TERM_RATIO'"
+          }
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "PREDICATE",
+            "accepted": "UNKNOWN"
+          },
+          "variable": {
+            "raw": "CUSTOMER.SALARY_HALF_TERM_SATISFIED",
+            "accepted": null
+          },
+          "comparator": {
+            "raw": "EQUALS",
+            "accepted": null
+          },
+          "expected": {
+            "raw": true,
+            "accepted": null
+          },
+          "kind": {
+            "raw": "SALARY_DEPOSIT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "급여입금",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": null,
+              "product_kind": null,
+              "account_or_product": "이 적금",
+              "networks": []
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "입금거래",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "50만원 이상",
+            "accepted": null
+          },
+          "expected_unit": {
+            "raw": "만원",
+            "accepted": null
+          },
+          "period": {
+            "raw": {
+              "length": null,
+              "unit": null,
+              "basis": "가입기간 중 가입기간의 1/2이상",
+              "start_quote": "급여지정일자 전 5영업일부터",
+              "end_quote": "급여지정일자 후 10영업일 이내",
+              "before_offset": 5,
+              "after_offset": 10,
+              "term_ratio": "1/2",
+              "inclusive_start": true,
+              "inclusive_end": true
+            },
+            "accepted": null
+          },
+          "existing_rule_id": {
+            "raw": "INST-KR-000010-1-C9788B1329E:CANONICAL:INST-KR-000010-1-C9788B1329E-PREF-06",
+            "accepted": null
+          },
+          "required_facts": {
+            "raw": [
+              "CUSTOMER.SALARY_HALF_TERM_SATISFIED"
+            ],
+            "accepted": []
+          },
+          "official_confirmation_required": {
+            "raw": false,
+            "accepted": null
+          }
+        }
+      },
+      {
+        "path": "expression.children[1]",
+        "raw_op": "PREDICATE",
+        "accepted_op": "UNKNOWN",
+        "issues": [
+          "STRICT_RAW_SCHEMA_INVALID",
+          "POST_NORMALIZATION_SCHEMA_INVALID",
+          "PERIOD_DROPPED",
+          "SCOPE_DROPPED",
+          "VALIDATOR_UNKNOWN"
+        ],
+        "schema_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "scope",
+              "institution"
+            ],
+            "msg": "Input should be 'THIS_INSTITUTION', 'THIS_PRODUCT', 'PRODUCT_KIND', 'ACCOUNT', 'CARD_NETWORK' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "period",
+              "basis"
+            ],
+            "msg": "Input should be 'SUBSCRIPTION_MONTH', 'MATURITY_PREV_PREV_MONTH_END', 'SALARY_DESIGNATED_DATE', 'TERM_RATIO', 'AS_OF' or 'UNSPECIFIED'"
+          }
+        ],
+        "normalized_errors": [
+          {
+            "loc": [
+              "variable"
+            ],
+            "msg": "Input should be 'MARRIAGE_DATE' or 'PREGNANT_SELF'"
+          },
+          {
+            "loc": [
+              "comparator"
+            ],
+            "msg": "Input should be 'EQ', 'NE', 'GT', 'GTE', 'LT' or 'LTE'"
+          },
+          {
+            "loc": [
+              "subject"
+            ],
+            "msg": "Input should be 'SELF', 'CHILD', 'SPOUSE', 'HOUSEHOLD' or 'UNSPECIFIED'"
+          },
+          {
+            "loc": [
+              "metric"
+            ],
+            "msg": "Input should be 'AMOUNT', 'COUNT', 'PERIOD', 'RATIO', 'BOOLEAN' or 'UNSPECIFIED'"
+          }
+        ],
+        "changed_fields": {
+          "op": {
+            "raw": "PREDICATE",
+            "accepted": "UNKNOWN"
+          },
+          "variable": {
+            "raw": "CUSTOMER.MERCHANT_SETTLEMENT_HALF_TERM_SATISFIED",
+            "accepted": null
+          },
+          "comparator": {
+            "raw": "EQUALS",
+            "accepted": null
+          },
+          "expected": {
+            "raw": true,
+            "accepted": null
+          },
+          "kind": {
+            "raw": "MERCHANT_SETTLEMENT",
+            "accepted": null
+          },
+          "subject": {
+            "raw": "가맹점 결제대금 입금",
+            "accepted": null
+          },
+          "scope": {
+            "raw": {
+              "institution": null,
+              "product_kind": null,
+              "account_or_product": "이 적금",
+              "networks": [
+                "비씨",
+                "신한",
+                "삼성카드사"
+              ]
+            },
+            "accepted": null
+          },
+          "metric": {
+            "raw": "가맹점 결제 대금 입금",
+            "accepted": null
+          },
+          "expected_literal": {
+            "raw": "1개 이상의 가맹점 결제 대금",
+            "accepted": null
+          },
+          "period": {
+            "raw": {
+              "length": null,
+              "unit": null,
+              "basis": "가입기간 중 가입기간의 1/2이상",
+              "start_quote": null,
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": "1/2",
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "accepted": null
+          },
+          "existing_rule_id": {
+            "raw": "INST-KR-000010-1-C9788B1329E:CANONICAL:INST-KR-000010-1-C9788B1329E-PREF-06",
+            "accepted": null
+          },
+          "required_facts": {
+            "raw": [
+              "CUSTOMER.MERCHANT_SETTLEMENT_HALF_TERM_SATISFIED"
+            ],
+            "accepted": []
+          },
+          "official_confirmation_required": {
+            "raw": false,
+            "accepted": null
+          }
+        }
+      }
+    ]
+  }
+]

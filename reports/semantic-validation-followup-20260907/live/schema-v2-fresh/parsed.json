@@ -1,0 +1,206 @@
+{
+  "clauses": [
+    {
+      "clause_id": "INST-KR-000046-1-C62E733F206:v7:INST-KR-000046-1-C62E733F206-PREF-03:d9780c979acf",
+      "source_hash": "d9780c979acfe5ba5df162f66ad8c5a4901bc4ac33ad2f16e3589c7a00ad1f71",
+      "source_quote": "다음의 두 가지 요건을 모두 충족한 고객\n1 만기일에 당행 체크카드 보유 (신용카드제외)\n2 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%",
+      "expression": {
+        "op": "ALL",
+        "source_quote": "다음의 두 가지 요건을 모두 충족한 고객\n1 만기일에 당행 체크카드 보유 (신용카드제외)\n2 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%",
+        "children": [
+          {
+            "op": "PREDICATE",
+            "source_quote": "만기일에 당행 체크카드 보유 (신용카드제외)",
+            "children": [],
+            "variable": null,
+            "comparator": null,
+            "expected": null,
+            "child_filter": null,
+            "kind": "HOLDING_HISTORY",
+            "subject": "SELF",
+            "scope": {
+              "institution": "THIS_INSTITUTION",
+              "product_kind": null,
+              "account_or_product": null,
+              "networks": []
+            },
+            "metric": "BOOLEAN",
+            "expected_literal": "보유",
+            "expected_unit": null,
+            "period": {
+              "length": null,
+              "unit": null,
+              "basis": "AS_OF",
+              "start_quote": "만기일에",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "PREDICATE",
+            "source_quote": "가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외",
+            "children": [],
+            "variable": null,
+            "comparator": null,
+            "expected": null,
+            "child_filter": null,
+            "kind": "CARD_PAYMENT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "THIS_INSTITUTION",
+              "product_kind": null,
+              "account_or_product": "당행 입출금이자유로운 예금",
+              "networks": []
+            },
+            "metric": "BOOLEAN",
+            "expected_literal": "결제 실적 보유",
+            "expected_unit": null,
+            "period": {
+              "length": null,
+              "unit": null,
+              "basis": "UNSPECIFIED",
+              "start_quote": "가입일로부터",
+              "end_quote": "만기일 전일까지",
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          }
+        ],
+        "variable": null,
+        "comparator": null,
+        "expected": null,
+        "child_filter": null,
+        "kind": null,
+        "subject": null,
+        "scope": null,
+        "metric": null,
+        "expected_literal": null,
+        "expected_unit": null,
+        "period": null,
+        "existing_rule_id": null,
+        "required_facts": [],
+        "official_confirmation_required": null,
+        "official_confirmation_basis": null
+      },
+      "unresolved_reason": null,
+      "relations": []
+    },
+    {
+      "clause_id": "INST-KR-000219-1-C5427E389F1:v8:INST-KR-000219-1-C5427E389F1-PREF-04:70ffa15ed93a",
+      "source_hash": "70ffa15ed93a94e4c8442dae6de1a42f8c16ff4808a09696ff8e6e29eead1666",
+      "source_quote": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%",
+      "expression": {
+        "op": "ANY",
+        "source_quote": "급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금",
+        "children": [
+          {
+            "op": "PREDICATE",
+            "source_quote": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상)",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": null,
+            "child_filter": null,
+            "kind": "SALARY_DEPOSIT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "THIS_INSTITUTION",
+              "product_kind": null,
+              "account_or_product": "본인명의 신한은행 입출금통장",
+              "networks": []
+            },
+            "metric": "AMOUNT",
+            "expected_literal": "50만원",
+            "expected_unit": "MAN_WON",
+            "period": {
+              "length": 18,
+              "unit": "MONTH",
+              "basis": "UNSPECIFIED",
+              "start_quote": "이 상품 신규 후",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          },
+          {
+            "op": "PREDICATE",
+            "source_quote": "신한카드 가맹점 매출대금을 18개월 이상 입금(수령)",
+            "children": [],
+            "variable": null,
+            "comparator": "GTE",
+            "expected": null,
+            "child_filter": null,
+            "kind": "MERCHANT_SETTLEMENT",
+            "subject": "SELF",
+            "scope": {
+              "institution": "THIS_INSTITUTION",
+              "product_kind": null,
+              "account_or_product": "본인명의 신한은행 입출금통장",
+              "networks": [
+                "신한카드"
+              ]
+            },
+            "metric": "PERIOD",
+            "expected_literal": "18개월",
+            "expected_unit": "MONTH",
+            "period": {
+              "length": 18,
+              "unit": "MONTH",
+              "basis": "UNSPECIFIED",
+              "start_quote": "이 상품 신규 후",
+              "end_quote": null,
+              "before_offset": null,
+              "after_offset": null,
+              "term_ratio": null,
+              "inclusive_start": null,
+              "inclusive_end": null
+            },
+            "existing_rule_id": null,
+            "required_facts": [],
+            "official_confirmation_required": null,
+            "official_confirmation_basis": null
+          }
+        ],
+        "variable": null,
+        "comparator": null,
+        "expected": null,
+        "child_filter": null,
+        "kind": null,
+        "subject": null,
+        "scope": null,
+        "metric": null,
+        "expected_literal": null,
+        "expected_unit": null,
+        "period": null,
+        "existing_rule_id": null,
+        "required_facts": [],
+        "official_confirmation_required": null,
+        "official_confirmation_basis": null
+      },
+      "unresolved_reason": null,
+      "relations": []
+    }
+  ]
+}

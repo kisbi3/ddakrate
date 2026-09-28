@@ -1,0 +1,973 @@
+{
+  "scope": "Offline, fixture-specific structural evaluation. Never imported by runtime.\n\nThis is a hand-authored oracle for two named catalog clauses, not a Korean\ninterpreter. It checks preserved fields and Boolean relations independently of\nruntime acceptance. PASS covers only the enumerated facts, not overall meaning,\nsource grounding, official authority, or executable treatment of overlapping tiers.\n",
+  "results": [
+    {
+      "run": "baseline-01b",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "amount_10000",
+        "amount_15000",
+        "amount_5000",
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0: leaf has no mapped structured fixture fact"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 128,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ALL",
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "baseline-01b",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_network",
+        "merchant_ratio",
+        "salary_amount",
+        "salary_ratio",
+        "salary_window"
+      ],
+      "structural_issues": [
+        "expression.0: leaf has no mapped structured fixture fact",
+        "expression.1: leaf has no mapped structured fixture fact"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 32,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "UNKNOWN"
+        ],
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "baseline-01b",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "amount_10000",
+        "amount_15000",
+        "amount_5000",
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 128,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ALL",
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "baseline-01b",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_network",
+        "merchant_ratio",
+        "salary_amount",
+        "salary_ratio",
+        "salary_window"
+      ],
+      "structural_issues": [
+        "expression.0: unsupported or UNKNOWN leaf",
+        "expression.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 32,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "UNKNOWN"
+        ],
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "contract-01b",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0: THIS_INSTITUTION scope missing",
+        "expression.1: THIS_INSTITUTION scope missing",
+        "expression.2: THIS_INSTITUTION scope missing"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 75,
+      "counterexamples": [
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": false,
+            "amount_15000": true,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": false,
+            "amount_15000": true,
+            "card_window": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": true,
+            "amount_15000": true,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": true,
+            "term_36": false,
+            "amount_15000": false,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": true,
+            "term_36": false,
+            "amount_15000": false,
+            "card_window": true
+          },
+          "expected": false,
+          "actual": true
+        }
+      ],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_5000"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_10000"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_15000"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "contract-01b",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [],
+      "structural_issues": [
+        "expression.0: salary window missing BUSINESS_DAY unit"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_ratio"
+          ],
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "contract-01b",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression.0: THIS_INSTITUTION scope missing",
+        "expression.1: THIS_INSTITUTION scope missing",
+        "expression.2: THIS_INSTITUTION scope missing"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 75,
+      "counterexamples": [
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": false,
+            "amount_15000": true,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": false,
+            "amount_15000": true,
+            "card_window": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": false,
+            "term_36": true,
+            "amount_15000": true,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": true,
+            "term_36": false,
+            "amount_15000": false,
+            "card_window": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "term_12": false,
+            "amount_5000": false,
+            "term_24": false,
+            "amount_10000": true,
+            "term_36": false,
+            "amount_15000": false,
+            "card_window": true
+          },
+          "expected": false,
+          "actual": true
+        }
+      ],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_5000"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_10000"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "amount_15000"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "contract-01b",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_network",
+        "merchant_ratio"
+      ],
+      "structural_issues": [
+        "expression.0: salary window missing BUSINESS_DAY unit",
+        "expression.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 28,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "v2-01",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_12"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_5000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_24"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_10000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_36"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_15000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "v2-01",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [],
+      "structural_issues": [
+        "expression.0: salary window missing BUSINESS_DAY unit"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ],
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_ratio"
+          ],
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "v2-01",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_12"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_5000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_24"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_10000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_36"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_15000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "v2-01",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_network",
+        "merchant_ratio",
+        "salary_amount",
+        "salary_ratio",
+        "salary_window"
+      ],
+      "structural_issues": [
+        "expression.0: unsupported or UNKNOWN leaf",
+        "expression.1: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 32,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "UNKNOWN"
+        ],
+        [
+          "UNKNOWN"
+        ]
+      ]
+    },
+    {
+      "run": "v2-01-repeat",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "card_contract_threshold",
+      "status": "PASS_ENUMERATED_CHECKS",
+      "missing_structured_facts": [],
+      "structural_issues": [],
+      "truth_table_rows": 128,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_12"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_5000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_24"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_10000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ALL",
+            [
+              "ATOM",
+              "term_36"
+            ]
+          ],
+          [
+            "ALL",
+            [
+              "ATOM",
+              "amount_15000"
+            ],
+            [
+              "ATOM",
+              "card_window"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "v2-01-repeat",
+      "stage": "parsed",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_ratio"
+      ],
+      "structural_issues": [
+        "expression.1: salary window missing BUSINESS_DAY unit"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 15,
+      "counterexamples": [
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": false,
+            "salary_window": false,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": false,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": false,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        }
+      ],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    },
+    {
+      "run": "v2-01-repeat",
+      "stage": "accepted",
+      "clause_present": false,
+      "case_id": "card_contract_threshold",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "amount_10000",
+        "amount_15000",
+        "amount_5000",
+        "card_window",
+        "term_12",
+        "term_24",
+        "term_36"
+      ],
+      "structural_issues": [
+        "expression: unsupported or UNKNOWN leaf"
+      ],
+      "truth_table_rows": 128,
+      "undecided_rows": 128,
+      "logic_mismatch_count": 0,
+      "counterexamples": [],
+      "projection": [
+        "UNKNOWN"
+      ]
+    },
+    {
+      "run": "v2-01-repeat",
+      "stage": "accepted",
+      "clause_present": true,
+      "case_id": "salary_or_merchant",
+      "status": "FAIL_OR_INCOMPLETE",
+      "missing_structured_facts": [
+        "merchant_ratio"
+      ],
+      "structural_issues": [
+        "expression.1: salary window missing BUSINESS_DAY unit"
+      ],
+      "truth_table_rows": 32,
+      "undecided_rows": 0,
+      "logic_mismatch_count": 15,
+      "counterexamples": [
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": false,
+            "salary_window": false,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": false,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": false,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": false
+          },
+          "expected": false,
+          "actual": true
+        },
+        {
+          "facts": {
+            "salary_ratio": false,
+            "salary_amount": true,
+            "salary_window": true,
+            "merchant_ratio": false,
+            "merchant_network": true
+          },
+          "expected": false,
+          "actual": true
+        }
+      ],
+      "projection": [
+        "ANY",
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_ratio"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "salary_amount"
+          ],
+          [
+            "ATOM",
+            "salary_window"
+          ]
+        ],
+        [
+          "ALL",
+          [
+            "ATOM",
+            "merchant_network"
+          ]
+        ]
+      ]
+    }
+  ]
+}

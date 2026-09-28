@@ -1,0 +1,774 @@
+{
+  "products": [
+    {
+      "product_id": "INST-KR-000046-1-C62E733F206",
+      "product_version": 7,
+      "product_name": "iM장병내일준비적금",
+      "skipped_empty_clause_ids": [],
+      "skipped_untargeted_clause_ids": [],
+      "linked_clause_ids": [],
+      "raw_clauses": [
+        {
+          "clause_id": "INST-KR-000046-1-C62E733F206:v7:INST-KR-000046-1-C62E733F206-PREF-03:d9780c979acf",
+          "source_hash": "d9780c979acfe5ba5df162f66ad8c5a4901bc4ac33ad2f16e3589c7a00ad1f71",
+          "source_text": "다음의 두 가지 요건을 모두 충족한 고객\n1 만기일에 당행 체크카드 보유 (신용카드제외)\n2 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%",
+          "source_metadata": {
+            "rule_id": "INST-KR-000046-1-C62E733F206-PREF-03",
+            "title": "다음의 두 가지 요건을 모두 충족한 고객",
+            "condition": {
+              "predicate": {
+                "fact_key": "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN",
+                "operator": "EQUALS",
+                "expected_value": true,
+                "accepted_value_status": [
+                  "ACTUAL"
+                ],
+                "source_semantics": "SOURCE_CLAUSE_GATE",
+                "source_ref_ids": [
+                  "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+                ],
+                "evidence": [
+                  {
+                    "source_ref_id": "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+                  }
+                ]
+              },
+              "source_ref_ids": [
+                "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+                }
+              ]
+            },
+            "reward": {
+              "kind": "ADD_RATE",
+              "value": "0.3",
+              "unit": "PERCENTAGE_POINT",
+              "source_ref_ids": [
+                "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+                }
+              ]
+            },
+            "application": {
+              "event": "MATURITY",
+              "source_ref_ids": [
+                "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+                }
+              ],
+              "fact_authority": "BANK_CARD_LEDGER",
+              "confirmed_value_status_required": "ACTUAL"
+            },
+            "display": {
+              "summary": "다음의 두 가지 요건을 모두 충족한 고객"
+            },
+            "source_ref_ids": [
+              "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+            ],
+            "structuring_status": "SUPPORTED",
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-F75B012CE207C0D2D5FA548F86E37201-PREF-03"
+              }
+            ],
+            "semantic_domain": "CARD_ACTIVITY",
+            "source_clause_text": "다음의 두 가지 요건을 모두 충족한 고객\n1 만기일에 당행 체크카드 보유 (신용카드제외)\n2 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%"
+          },
+          "requires_official_confirmation": true,
+          "supported_reward": true,
+          "existing_runtime_rule_id": "INST-KR-000046-1-C62E733F206:CANONICAL:INST-KR-000046-1-C62E733F206-PREF-03"
+        }
+      ],
+      "read_only_typed_rules": [
+        {
+          "rule_id": "INST-KR-000046-1-C62E733F206:CANONICAL:INST-KR-000046-1-C62E733F206-PREF-02",
+          "condition": {
+            "rule_id": "INST-KR-000046-1-C62E733F206:CANONICAL:INST-KR-000046-1-C62E733F206-PREF-02",
+            "name": "상품 가입 전 당행에서 가입한 주택청약상품 보유 고객 : 0.2%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: iM장병내일준비적금",
+              "document_id": "SRC-IS-F75B012CE207C0D2D5FA548F86E37201",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/f75b012ce207c0d2d5fa548f86e37201",
+              "source_text": "상품 가입 전 당행에서 가입한 주택청약상품 보유 고객 : 0.2%"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "PRODUCT_HOLDING_SATISFIED_SOURCE_CLAUSE_INST_KR_000046_1",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.2"
+              },
+              "required_source": null,
+              "question": "상품 가입 전 당행에서 가입한 주택청약상품 보유 고객 : 0.2% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "상품 가입 전 당행에서 가입한 주택청약상품 보유 고객 : 0.2%",
+                "PRODUCT_HOLDING.SATISFIED.SOURCE_CLAUSE_INST_KR_000046_1"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000046-1-C62E733F206:CANONICAL:INST-KR-000046-1-C62E733F206-PREF-03",
+          "condition": {
+            "rule_id": "INST-KR-000046-1-C62E733F206:CANONICAL:INST-KR-000046-1-C62E733F206-PREF-03",
+            "name": "다음의 두 가지 요건을 모두 충족한 고객",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: iM장병내일준비적금",
+              "document_id": "SRC-IS-F75B012CE207C0D2D5FA548F86E37201",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/f75b012ce207c0d2d5fa548f86e37201",
+              "source_text": "다음의 두 가지 요건을 모두 충족한 고객\n① 만기일에 당행 체크카드 보유 (신용카드제외)\n② 가입일로부터 만기일 전일까지 당행 입출금이자유로운 예금을 결제계좌로한 당행 체크카드(종류 상관 없음) 결제 실적 보유\n단, 승인 취소 건은 결제실적에서 제외 : 0.3%"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CARD_ACTIVITY_SATISFIED_CUSTOMER_CARD_USAGE_FULFILLMEN",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.3"
+              },
+              "required_source": null,
+              "question": "다음의 두 가지 요건을 모두 충족한 고객 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "FUTURE_INTENT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "다음의 두 가지 요건을 모두 충족한 고객",
+                "CARD_ACTIVITY.SATISFIED.CUSTOMER_CARD_USAGE_FULFILLMEN"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "FUTURE_INTENT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "FUTURE_INTENT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "product_id": "INST-KR-000219-1-C5427E389F1",
+      "product_version": 8,
+      "product_name": "신한 청년미래적금",
+      "skipped_empty_clause_ids": [],
+      "skipped_untargeted_clause_ids": [
+        "INST-KR-000219-1-C5427E389F1-PREF-09"
+      ],
+      "linked_clause_ids": [],
+      "raw_clauses": [
+        {
+          "clause_id": "INST-KR-000219-1-C5427E389F1:v8:INST-KR-000219-1-C5427E389F1-PREF-04:70ffa15ed93a",
+          "source_hash": "70ffa15ed93a94e4c8442dae6de1a42f8c16ff4808a09696ff8e6e29eead1666",
+          "source_text": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%",
+          "source_metadata": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1-PREF-04",
+            "title": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%",
+            "condition": {
+              "operator": "AND",
+              "children": [
+                {
+                  "predicate": {
+                    "fact_key": "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT",
+                    "operator": "GTE",
+                    "expected_value": 18,
+                    "unit": "MONTH",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                      }
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                    }
+                  ]
+                },
+                {
+                  "predicate": {
+                    "fact_key": "RULE.INST_KR_000219_1_C5427E389F1_PREF_04.SUCCESS_COUNT",
+                    "operator": "GTE",
+                    "expected_value": 1,
+                    "unit": "COUNT",
+                    "accepted_value_status": [
+                      "ACTUAL"
+                    ],
+                    "source_ref_ids": [
+                      "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                    ],
+                    "evidence": [
+                      {
+                        "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                      }
+                    ]
+                  },
+                  "source_ref_ids": [
+                    "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                  ],
+                  "evidence": [
+                    {
+                      "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                    }
+                  ]
+                }
+              ],
+              "source_ref_ids": [
+                "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                }
+              ]
+            },
+            "reward": {
+              "kind": "CUMULATIVE_RATE",
+              "counter_event_ref": "EVENT-INST-KR-000219-1-C5427E389F1-PREF-04-SUCCESS",
+              "value_per_occurrence": "0.3",
+              "occurrence_block_size": 1,
+              "unit": "PERCENTAGE_POINT",
+              "source_ref_ids": [
+                "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                }
+              ]
+            },
+            "application": {
+              "event": "MATURITY",
+              "source_ref_ids": [
+                "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+              ],
+              "evidence": [
+                {
+                  "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+                }
+              ],
+              "fact_authority": "BANK_TRANSACTION_LEDGER",
+              "confirmed_value_status_required": "ACTUAL"
+            },
+            "display": {
+              "summary": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%"
+            },
+            "source_ref_ids": [
+              "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+            ],
+            "structuring_status": "SUPPORTED",
+            "evidence": [
+              {
+                "source_ref_id": "EVD-IS-D85FF37B0293A0FCF980C414FCCAF12F-PREF-04"
+              }
+            ],
+            "semantic_domain": "MERCHANT_SETTLEMENT",
+            "source_clause_text": "이 상품 신규 후 본인명의 신한은행 입출금통장으로 급여(건당 50만원 이상) 또는 신한카드 가맹점 매출대금을 18개월 이상 입금(수령)한 경우 : 0.3%"
+          },
+          "requires_official_confirmation": true,
+          "supported_reward": false,
+          "existing_runtime_rule_id": null
+        }
+      ],
+      "read_only_typed_rules": [
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-02",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-02",
+            "name": "신청 시점에 확인된 개인소득금액이 총급여 3,600만원, 종합소득 2,600만원 이하*인 경우 : 0.5%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "신청 시점에 확인된 개인소득금액이 총급여 3,600만원, 종합소득 2,600만원 이하*인 경우 : 0.5%\n* 서민금융진흥원이 진행하는 가입신청심사에서 확인되는 개인소득금액 기준"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CUSTOMER_SALARY_TRANSFER_MONTH_COUNT",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.5"
+              },
+              "required_source": null,
+              "question": "신청 시점에 확인된 개인소득금액이 총급여 3,600만원, 종합소득 2,600만원 이하*인 경우 : 0.5% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "신청 시점에 확인된 개인소득금액이 총급여 3,600만원, 종합소득 2,600만원 이하*인 경우 : 0.5%",
+                "CUSTOMER.SALARY_TRANSFER_MONTH_COUNT"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-03",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-03",
+            "name": "계좌 만기일이 속하는 월의 3개월 전 말일까지 서민금융진흥원에서 제공하는 청년재무상담*을 이수한 경우 : 0.2%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "계좌 만기일이 속하는 월의 3개월 전 말일까지 서민금융진흥원에서 제공하는 청년재무상담*을 이수한 경우 : 0.2%\n* 서민금융진흥원 청년재무상담 웹페이지를 통해 신청하여 이수한 대면 또는 비대면 상담"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CUSTOMER_AGE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.2"
+              },
+              "required_source": null,
+              "question": "계좌 만기일이 속하는 월의 3개월 전 말일까지 서민금융진흥원에서 제공하는 청년재무상담*을 이수한 경우 : 0.2% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "계좌 만기일이 속하는 월의 3개월 전 말일까지 서민금융진흥원에서 제공하는 청년재무상담*을 이수한 경우 : 0.2%",
+                "CUSTOMER.AGE"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-05",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-05",
+            "name": "이 상품 신규 후 본인명의 신한은행 입출금통장을 결제계좌로 지정하여 본인명의 신한카드(신용/체크) 결제 실적이 18개월 이상 있는 경우 : 0.2%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "이 상품 신규 후 본인명의 신한은행 입출금통장을 결제계좌로 지정하여 본인명의 신한카드(신용/체크) 결제 실적이 18개월 이상 있는 경우 : 0.2%"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "RULE_INST_KR_000219_1_C5427E389F1_PREF_05_QUALIFYING_PERIOD_COUNT",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "GTE",
+            "expected": 18,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.2"
+              },
+              "required_source": null,
+              "question": "이 상품 신규 후 본인명의 신한은행 입출금통장을 결제계좌로 지정하여 본인명의 신한카드(신용/체크) 결제 실적이 18개월 이상 있는 경우 : 0.2% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "이 상품 신규 후 본인명의 신한은행 입출금통장을 결제계좌로 지정하여 본인명의 신한카드(신용/체크) 결제 실적이 18개월 이상 있는 경우 : 0.2%",
+                "RULE.INST_KR_000219_1_C5427E389F1_PREF_05.QUALIFYING_PERIOD_COUNT"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-06",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-06",
+            "name": "이 상품 신규 후 본인명의 신한은행 증권계좌*에서 신한투자증권 증권거래가 3개월 이상 발생한 경우 : 0.5%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "이 상품 신규 후 본인명의 신한은행 증권계좌*에서 신한투자증권 증권거래가 3개월 이상 발생한 경우 : 0.5%\n* 신한은행 증권계좌는 신한투자증권 은행연계 증권계좌(FNA, S-LITE 등)에 한합니다."
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "SECURITIES_ACTIVITY_CONTRACT_TERM_MONTHS_SOURCE_CLAUSE_INST_KR_000219_1",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.5"
+              },
+              "required_source": null,
+              "question": "이 상품 신규 후 본인명의 신한은행 증권계좌*에서 신한투자증권 증권거래가 3개월 이상 발생한 경우 : 0.5% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "이 상품 신규 후 본인명의 신한은행 증권계좌*에서 신한투자증권 증권거래가 3개월 이상 발생한 경우 : 0.5%",
+                "SECURITIES_ACTIVITY.CONTRACT_TERM_MONTHS.SOURCE_CLAUSE_INST_KR_000219_1"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-07",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-07",
+            "name": "아래 요건중 1가지 이상 충족할 경우 : 0.3%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "아래 요건중 1가지 이상 충족할 경우 : 0.3%\n① 이 상품 신규 직전 6개월간 신한은행 정기예금, 정기적금 상품이 없었던 고객이 이 상품을 신규한 경우\n② 신한 청년도약계좌 가입 고객이 연계가입으로 가입하는 경우"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CUSTOMER_AGE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "0.3"
+              },
+              "required_source": null,
+              "question": "아래 요건중 1가지 이상 충족할 경우 : 0.3% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "아래 요건중 1가지 이상 충족할 경우 : 0.3%",
+                "CUSTOMER.AGE"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        },
+        {
+          "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-08",
+          "condition": {
+            "rule_id": "INST-KR-000219-1-C5427E389F1:CANONICAL:INST-KR-000219-1-C5427E389F1-PREF-08",
+            "name": "2026년 8월 31일까지 신한 청년도약계좌 가입 고객이 연계가입으로 가입하는 경우 : 1%",
+            "purpose": "PREFERENTIAL_RATE",
+            "evaluation_phase": "PRE_SUBSCRIPTION",
+            "description": null,
+            "source": {
+              "document": "네이버페이 적금 상세: 신한 청년미래적금",
+              "document_id": "SRC-IS-D85FF37B0293A0FCF980C414FCCAF12F",
+              "version_date": "2026-08-29",
+              "page": null,
+              "section": null,
+              "source_url": "https://pay.naver.com/savings/detail/d85ff37b0293a0fcf980c414fccaf12f",
+              "source_text": "2026년 8월 31일까지 신한 청년도약계좌 가입 고객이 연계가입으로 가입하는 경우 : 1%\n정부기여금"
+            },
+            "type": "FACT_COMPARE",
+            "fact_type": "CUSTOMER_AGE",
+            "value_path": null,
+            "effective_at": null,
+            "subject_selector": null,
+            "operator": "EQ",
+            "expected": true,
+            "on_true_status": "SATISFIED",
+            "on_false_status": "UNSATISFIABLE",
+            "on_missing_status": "UNKNOWN",
+            "true_reason_code": "FACT_COMPARISON_MATCH",
+            "false_reason_code": "FACT_COMPARISON_MISMATCH",
+            "missing_reason_code": "REQUIRED_FACT_MISSING",
+            "missing_fact": {
+              "resolution_strategy": "ASK_USER",
+              "impact": {
+                "rate_pp": "1"
+              },
+              "required_source": null,
+              "question": "2026년 8월 31일까지 신한 청년도약계좌 가입 고객이 연계가입으로 가입하는 경우 : 1% 조건에 해당하는지 알려주세요.",
+              "expected_semantic_type": "SELF_REPORTED_FACT",
+              "action_id": null,
+              "reward_id": null,
+              "grounding_terms": [
+                "2026년 8월 31일까지 신한 청년도약계좌 가입 고객이 연계가입으로 가입하는 경우 : 1%",
+                "CUSTOMER.AGE"
+              ]
+            },
+            "action": null,
+            "required_semantic_type": "SELF_REPORTED_FACT",
+            "fact_acceptance_policy": {
+              "strict_semantic_types": [
+                "OBSERVED_FACT",
+                "OBSERVED_EVENT",
+                "DERIVED_FACT"
+              ],
+              "strict_source_types": [
+                "INSTITUTION_VERIFIED",
+                "MYDATA_VERIFIED",
+                "DERIVED"
+              ],
+              "provisional_semantic_types": [
+                "SELF_REPORTED_FACT"
+              ],
+              "provisional_source_types": [
+                "USER_DECLARED"
+              ],
+              "allow_provisional": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
