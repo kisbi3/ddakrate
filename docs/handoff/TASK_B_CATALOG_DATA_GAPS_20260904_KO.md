@@ -1,7 +1,7 @@
 # 작업 B — 발행 카탈로그의 데이터 구멍 조사·복구
 
-리포지토리: `/Users/jaesung_kim-mac/ddakrate`
-Python: `/Users/jaesung_kim-mac/ddakrate/.venv/bin/python`
+리포지토리: 이 문서가 있는 저장소 루트
+Python: `.venv/bin/python`
 테스트: `.venv/bin/python -m pytest -q`
 
 **시작 전에 반드시:** `git switch -c fix/catalog-data-gaps`
